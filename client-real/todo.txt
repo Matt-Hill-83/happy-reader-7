@@ -1,0 +1,21 @@
+TODO
+----------------
+add db
+random unicorns
+animations on click
+conversations
+play sounds on click words
+cool fonts for word types
+
+figure out currying or func prog
+words.byType.isSelected.getrandom.get name
+
+
+DONE
+-------------
+install mobx
+add sass
+color icons
+backdrop images
+character images
+word picker

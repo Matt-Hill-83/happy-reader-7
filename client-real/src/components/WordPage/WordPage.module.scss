@@ -1,0 +1,68 @@
+.textPage {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+  .decisionButtonRow {
+    display: flex;
+    margin-top: auto;
+
+    .choiceButton {
+      display: flex;
+      align-items: center;
+      flex: 1 1;
+
+      margin: 0 40px;
+      height: 56px;
+      font-size: 24px;
+      text-transform: capitalize;
+
+      &:hover {
+        border: 1px solid blue !important;
+      }
+    }
+  }
+}
+
+.story {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 24px;
+  height: 100%;
+  border: 3px solid purple;
+
+  .narrative {
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+    padding-left: 10px;
+
+    .sentence {
+      display: flex;
+      align-items: center;
+
+      font-size: 30px;
+      flex-wrap: wrap;
+
+      .sentenceWord {
+        border: 1px solid transparent !important;
+        border-radius: 3px;
+
+        margin-left: 0;
+        padding-right: 0.25em;
+        padding-left: 0.25em;
+      }
+
+      .sentenceWord:focus {
+        border: 1px solid blue !important;
+        outline: none;
+      }
+    }
+
+    .sentence:nth-of-type(3n) {
+      margin-bottom: 24px;
+    }
+  }
+}

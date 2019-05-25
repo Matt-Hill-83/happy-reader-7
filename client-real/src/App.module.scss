@@ -1,0 +1,17 @@
+body {
+  // border: 1px solid red !important;
+  margin: 0px;
+}
+
+.App {
+  --color-blue: blue;
+  --color-blue-light: #00ade4;
+  --color-purple: #9451f9;
+  --color-purple-dark: #9451f9;
+  --color-pink: #00ade4;
+
+  text-align: center;
+  display: flex;
+  flex: 1;
+  height: 100vh;
+}

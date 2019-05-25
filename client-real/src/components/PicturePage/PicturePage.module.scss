@@ -1,0 +1,83 @@
+.imageContainer {
+  position: relative;
+  display: flex;
+  width: 50%;
+  overflow: hidden;
+
+  .sceneList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    margin: auto;
+    background: #e8e8a4;
+    padding: 15px;
+    border-radius: 10px;
+
+    .scene {
+      display: flex;
+      align-items: center;
+
+      height: 24px;
+    }
+
+    .sceneName {
+      margin-left: 8px;
+    }
+  }
+
+  .pageNumber {
+    position: absolute;
+    background: aliceblue;
+    padding: 0 6px;
+    border-radius: 0 0 3px 0;
+    left: 3px;
+    top: 3px;
+  }
+
+  .backgroundImage {
+    border: 3px solid purple !important;
+    display: flex;
+
+    width: 100%;
+    height: auto;
+  }
+
+  .locationHeader {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+
+    font-size: 24px;
+    left: 50%;
+
+    text-transform: capitalize;
+    background: pink;
+    border-radius: 4px;
+    padding: 0 6px;
+  }
+
+  .characterImage {
+    position: absolute;
+    max-width: 322px;
+    height: auto;
+
+    bottom: 0px;
+  }
+
+  .character1 {
+    bottom: 0px;
+    left: 50px;
+    height: 200px;
+    width: auto;
+  }
+
+  .character2 {
+    bottom: 50px;
+    left: 400px;
+    max-width: 150px;
+  }
+}
