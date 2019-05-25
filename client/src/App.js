@@ -38,6 +38,11 @@
 
 import React, { Component } from "react";
 import axios from "axios";
+import { Button, Icon, Tab, Tabs } from "@blueprintjs/core";
+// import words from "../../Models/words";
+
+import words from "./Models/words";
+
 import "./App.css";
 
 class App extends Component {
@@ -106,12 +111,6 @@ class App extends Component {
           buyItems: response.data
         });
       });
-
-    if (newBuyItems.length === 0) {
-      this.setState({
-        message: "No Item on the list, add some"
-      });
-    }
   }
 
   clearAll() {
@@ -141,7 +140,8 @@ class App extends Component {
               return (
                 <tr key={item.id}>
                   <th scope="row">{id++}</th>
-                  <td>{item.item}</td>
+                  <td>{item.item.name}</td>
+                  {/* <td>{item.item}</td> */}
                   <td>
                     <button
                       onClick={e => this.removeItem(item)}
@@ -173,10 +173,51 @@ class App extends Component {
     );
   }
 
+  onPressAdd = () => {
+    // this.addItems({ words: [] });
+    this.addItems({ words: words.words });
+  };
+
+  addItems = ({ words }) => {
+    console.log("words", words); // zzz
+
+    const newItem = { name: "cat", color: "black" };
+
+    // console.log("words", words.docs); // zzz
+
+    // const someWords = words;
+    const someWords = words.slice(0, 5);
+
+    someWords.forEach(async word => {
+      console.log("word", word); // zzz
+
+      try {
+        axios
+          .post(
+            "https://us-central1-happy-reader-7.cloudfunctions.net/addItem",
+            {
+              word
+              // item: word
+            }
+          )
+          .then(response => {
+            this.setState({
+              buyItems: response.data,
+              message: ""
+            });
+            this.addForm.reset();
+          });
+      } catch (err) {
+        console.log("error", err); // zzz
+      }
+    });
+  };
+
   render() {
     const { buyItems, message } = this.state;
     return (
       <div className="container">
+        <Button onClick={this.onPressAdd}>Load Data to DataBase</Button>
         <h1>Shopping List - Happy Reader 7</h1>
         <div className="content">
           <form
