@@ -107,9 +107,7 @@ class MainStory extends React.Component {
       sceneOptionB,
       story
     };
-
-    console.log("UserConfigStore.docs", UserConfigStore.docs.length); // zzz
-    console.log("words2", words2.docs.length); // zzz
+    console.log("wordPageProps", wordPageProps); // zzz
 
     return (
       <div className={css.main}>

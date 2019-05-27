@@ -48,7 +48,8 @@ class WordPage extends React.Component {
 
     const renderedNarrative =
       narrative &&
-      narrative.map((sentence, sentenceIndex) => {
+      narrative.story &&
+      narrative.story.map((sentence, sentenceIndex) => {
         const parsedSentence = sentence.split(/\s/);
 
         const renderedSentence = parsedSentence.map((word, wordIndex) => {
@@ -112,6 +113,8 @@ class WordPage extends React.Component {
 
   render() {
     const { activeScene } = this.state;
+
+    console.log("render WordPage"); // zzz
 
     return (
       <div className={css.textPage}>

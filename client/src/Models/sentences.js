@@ -5,14 +5,16 @@ const { words, wordTypes } = myWords;
 
 // This cannot be chosen for the next scene.
 const createHomeStory = ({ you }) => {
-  return [
-    `Your name is ${you.name}.`,
-    `You live in the ${you.homeLocation}.`,
-    `You are happy.`,
-    `You have a ${you.vehicle}.`,
-    `Your ${you.vehicle} is fast.`,
-    `Where do you go?`
-  ];
+  return {
+    story: [
+      `Your name is ${you.name}.`,
+      `You live in the ${you.homeLocation}.`,
+      `You are happy.`,
+      `You have a ${you.vehicle}.`,
+      `Your ${you.vehicle} is fast.`,
+      `Where do you go?`
+    ]
+  };
 };
 
 const lostCreatureStory = ({ you, activeScene, sceneOptionA }) => {
@@ -24,7 +26,7 @@ const lostCreatureStory = ({ you, activeScene, sceneOptionA }) => {
     `The ${activeScene.newFriend.type} says, "Hello ${
       you.name
     }, can you help me?"`,
-    `I lost my ${activeScene.missingItem}.`,
+    // `I lost my ${activeScene.missingItem}.`,
     `Can you help me?"`,
 
     `I am sooooooo sad.`
@@ -48,7 +50,7 @@ const lostThingStory = ({ you, activeScene, sceneOptionA }) => {
     `I need to go to the ${sceneOptionA.location} to find my friend ${
       sceneOptionA.newFriend.name
     }.`,
-    `I lost my ${activeScene.missingItem}.`,
+    // `I lost my ${activeScene.missingItem}.`,
     `I am sooooooo sad.`
   ];
 };
@@ -94,34 +96,90 @@ const argumentStory = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
 const scenes = {
   home: {
     location: "forest",
-    missingItem: "birthday present",
     newFriend: {
       type: undefined,
       name: "Crystal"
     },
     narrative: createHomeStory,
-    isHome: true
+    isHome: true,
+    mission: {
+      item: {
+        name: "blueberries",
+        location: "location 2",
+        recipient: "creature 3"
+      },
+      bringToLocation: "birthday-party",
+      giveToCreature: "creature 1"
+    }
   },
 
   meadow: {
     location: "meadow",
-    missingItem: "birthday present",
-    newFriend: { type: "unicorn", name: "Sparkle" }
+    newFriend: {
+      gender: "female",
+      type: "elf",
+      name: "Elliot",
+      mission: {
+        item: {
+          name: "blueberries",
+          location: "location 2",
+          recipient: "creature 3"
+        },
+        bringToLocation: "birthday-party",
+        giveToCreature: "creature 1"
+      }
+    }
   },
   waterfall: {
     location: "waterfall",
-    missingItem: "birthday present",
-    newFriend: { type: "mermaid", name: "Luna" }
+    newFriend: {
+      gender: "female",
+      type: "elf",
+      name: "Elliot",
+      mission: {
+        item: {
+          name: "blueberries",
+          location: "location 2",
+          recipient: "creature 3"
+        },
+        bringToLocation: "birthday-party",
+        giveToCreature: "creature 1"
+      }
+    }
   },
   school: {
     location: "school",
-    missingItem: "birthday cake",
-    newFriend: { type: "elf", name: "Elliot" }
+    newFriend: {
+      gender: "female",
+      type: "elf",
+      name: "Elliot",
+      mission: {
+        item: {
+          name: "blueberries",
+          location: "location 2",
+          recipient: "creature 3"
+        },
+        bringToLocation: "birthday-party",
+        giveToCreature: "creature 1"
+      }
+    }
   },
   garden: {
     location: "garden",
-    missingItem: "rose bush",
-    newFriend: { type: "fairy", name: "AnnaDare" }
+    newFriend: {
+      gender: "female",
+      type: "elf",
+      name: "Elliot",
+      mission: {
+        item: {
+          name: "blueberries",
+          location: "location 2",
+          recipient: "creature 3"
+        },
+        bringToLocation: "birthday-party",
+        giveToCreature: "creature 1"
+      }
+    }
   }
 };
 
@@ -129,6 +187,7 @@ const startScene = scenes.home;
 
 /////////////////////////
 const you = {
+  name: "Charlie",
   mission: {
     item: {
       name: "blueberries",
@@ -145,25 +204,116 @@ const you = {
 };
 
 const newStoryP1 = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
-  return [];
-  return [
-    `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}.`,
-    `The ${activeScene.newFriend.type} is happy.`,
-    `I need to go to the ${sceneOptionA.location} to find my friend ${
-      sceneOptionA.newFriend.name
-    }.`,
-    `I lost my ${activeScene.missingItem}.`,
-    `I am sooooooo sad.`
-  ];
+  // return [];
+
+  const { newFriend, location } = activeScene;
+
+  // return [
+  //   `You go to the ${location}.`,
+  //   `At the ${location}, you see a ${newFriend.type}`,
+  //   `You say, "Hello ${newFriend.type}, my name is ${you.name}"`,
+
+  //   `The ${newFriend.type} says, "Hello ${you.name}."`,
+  //   `"My name is ${newFriend.name}."`,
+  //   `"I am sooooooo sad."`,
+
+  //   `The ${newFriend.type} starts to cry.`,
+  //   `The ${newFriend.type} says,"`,
+  //   `"Hello ${you.name}."`,
+
+  //   `"Can you help me?"`,
+  //   `"I need to go to the ${newFriend.mission.item.location} to get a  ${
+  //     newFriend.mission.item.name
+  //   }."`,
+  //   `"Will you go with me?"`
+  // ];
+  return {
+    story: [
+      `You go to the ${location}.`,
+      `At the ${location}, you see a ${newFriend.type}`,
+      `You say, "Hello ${newFriend.type}, my name is ${you.name}"`,
+
+      `The ${newFriend.type} says, "Hello ${you.name}."`,
+      `"My name is ${newFriend.name}."`,
+      `"I am sooooooo sad."`,
+
+      `The ${newFriend.type} starts to cry.`,
+      `The ${newFriend.type} says,"`,
+      `"Hello ${you.name}."`,
+
+      `"Can you help me?"`,
+      `"I need to go to the ${newFriend.mission.item.location} to get a  ${
+        newFriend.mission.item.name
+      }."`,
+      `"Will you go with me?"`
+    ]
+    // proposition: [
+    //   `Do you go to the ${newFriend.mission.item.location} to help ${
+    //     newFriend.name
+    //   } find a ${newFriend.mission.item.name}?"`,
+    //   `--- OR ---`,
+    //   `Do you go to the ${you.mission.location}?`
+    // ]
+  };
 };
 
 const generateNewStory = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
   return newStoryP1({ you, activeScene, sceneOptionA, sceneOptionB });
 };
 
-const activeScene = {};
-const sceneOptionA = {};
-const sceneOptionB = {};
+const activeScene = {
+  location: "forest",
+  newFriend: {
+    gender: "female",
+    name: "Crystal",
+    type: "zombie",
+    mission: {
+      item: {
+        name: "blueberries",
+        location: "location 2",
+        recipient: "creature 3"
+      },
+      bringToLocation: "birthday-party",
+      giveToCreature: "creature 1"
+    }
+  }
+};
+
+const sceneOptionA = {
+  location: "school",
+  newFriend: {
+    gender: "female",
+    type: "elf",
+    name: "Elliot",
+    mission: {
+      item: {
+        name: "blueberries",
+        location: "location 2",
+        recipient: "creature 3"
+      },
+      bringToLocation: "birthday-party",
+      giveToCreature: "creature 1"
+    }
+  }
+};
+
+const sceneOptionB = {
+  location: "garden",
+  newFriend: {
+    gender: "female",
+    type: "fairy",
+    name: "AnnaDare",
+    mission: {
+      item: {
+        name: "blueberries",
+        location: "location 2",
+        recipient: "creature 3"
+      },
+      bringToLocation: "birthday-party",
+      giveToCreature: "creature 1"
+    }
+  }
+};
 
 const test = generateNewStory({ you, activeScene, sceneOptionA, sceneOptionB });
 console.log("test", test); // zzz
@@ -172,9 +322,10 @@ console.log("test", test); // zzz
 
 const stories = [
   // argumentStory,
-  birthdayPartyStory,
-  lostCreatureStory,
-  lostThingStory
+  newStoryP1
+  // birthdayPartyStory,
+  // lostCreatureStory,
+  // lostThingStory
 ];
 
 const plot = {

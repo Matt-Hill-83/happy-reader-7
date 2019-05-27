@@ -19,9 +19,6 @@ function App() {
   if (!cookies.name) {
     setCookie("name", newName, { path: "/" });
   }
-  // setCookie("name", newName, { path: "/" });
-
-  // console.log("UserConfigStore", UserConfigStore); // zzz
 
   return (
     <MuiThemeProvider muiTheme={muiTheme}>
