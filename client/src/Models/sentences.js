@@ -127,6 +127,49 @@ const scenes = {
 
 const startScene = scenes.home;
 
+/////////////////////////
+const you = {
+  mission: {
+    item: {
+      name: "blueberries",
+      location: "location 2",
+      recipient: "creature 3"
+    },
+    bringToLocation: "birthday-party",
+    giveToCreature: "creature 1"
+  },
+  home: {
+    location: "house"
+  },
+  friends: [{ type: "dog", name: "Doggers", withMe: true }]
+};
+
+const newStoryP1 = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
+  return [];
+  return [
+    `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}.`,
+    `The ${activeScene.newFriend.type} is happy.`,
+    `I need to go to the ${sceneOptionA.location} to find my friend ${
+      sceneOptionA.newFriend.name
+    }.`,
+    `I lost my ${activeScene.missingItem}.`,
+    `I am sooooooo sad.`
+  ];
+};
+
+const generateNewStory = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
+  return newStoryP1({ you, activeScene, sceneOptionA, sceneOptionB });
+};
+
+const activeScene = {};
+const sceneOptionA = {};
+const sceneOptionB = {};
+
+const test = generateNewStory({ you, activeScene, sceneOptionA, sceneOptionB });
+console.log("test", test); // zzz
+
+/////////////////////////
+
 const stories = [
   // argumentStory,
   birthdayPartyStory,
