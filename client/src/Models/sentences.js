@@ -17,44 +17,6 @@ const createHomeStory = ({ you }) => {
   };
 };
 
-const lostCreatureStory = ({ you, activeScene, sceneOptionA }) => {
-  return [
-    `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}`,
-    `The ${activeScene.newFriend.type} is sad.`,
-    `The ${activeScene.newFriend.type} is crying.`,
-    `You say, "Hello ${activeScene.newFriend.type}, my name is ${you.name}"`,
-    `The ${activeScene.newFriend.type} says, "Hello ${
-      you.name
-    }, can you help me?"`,
-    // `I lost my ${activeScene.missingItem}.`,
-    `Can you help me?"`,
-
-    `I am sooooooo sad.`
-  ];
-};
-
-const birthdayPartyStory = ({ you, activeScene, sceneOptionA }) => {
-  return [
-    `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}.`,
-    `You say, "Hello ${activeScene.newFriend.type}, my name is ${you.name}."`,
-    `The ${activeScene.newFriend.type} says, "Hello ${you.name}?"`,
-    `I am sooooooo happy.`,
-    `I need to go to a birthday party.`
-  ];
-};
-
-const lostThingStory = ({ you, activeScene, sceneOptionA }) => {
-  return [
-    `At the ${activeScene.location}, you see a ${activeScene.newFriend.type}.`,
-    `The ${activeScene.newFriend.type} is happy.`,
-    `I need to go to the ${sceneOptionA.location} to find my friend ${
-      sceneOptionA.newFriend.name
-    }.`,
-    // `I lost my ${activeScene.missingItem}.`,
-    `I am sooooooo sad.`
-  ];
-};
-
 const argumentStory = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
   const creatures = Utils.getWordsByType({ words, type: wordTypes.animal });
   const animal1 = Utils.getRandomItem({ items: creatures });
@@ -113,6 +75,8 @@ const scenes = {
     }
   },
 
+  // make scenes not tied to a location, and tie them to a random location.
+  // scenes should be coupled with a narrative.
   meadow: {
     location: "meadow",
     newFriend: {
@@ -188,6 +152,9 @@ const startScene = scenes.home;
 /////////////////////////
 const you = {
   name: "Charlie",
+  creature: "girl",
+  homeLocation: startScene.location,
+  vehicle: "scooter",
   mission: {
     item: {
       name: "blueberries",
@@ -204,41 +171,20 @@ const you = {
 };
 
 const newStoryP1 = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
-  // return [];
-
   const { newFriend, location } = activeScene;
 
-  // return [
-  //   `You go to the ${location}.`,
-  //   `At the ${location}, you see a ${newFriend.type}`,
-  //   `You say, "Hello ${newFriend.type}, my name is ${you.name}"`,
-
-  //   `The ${newFriend.type} says, "Hello ${you.name}."`,
-  //   `"My name is ${newFriend.name}."`,
-  //   `"I am sooooooo sad."`,
-
-  //   `The ${newFriend.type} starts to cry.`,
-  //   `The ${newFriend.type} says,"`,
-  //   `"Hello ${you.name}."`,
-
-  //   `"Can you help me?"`,
-  //   `"I need to go to the ${newFriend.mission.item.location} to get a  ${
-  //     newFriend.mission.item.name
-  //   }."`,
-  //   `"Will you go with me?"`
-  // ];
   return {
     story: [
       `You go to the ${location}.`,
       `At the ${location}, you see a ${newFriend.type}`,
-      `You say, "Hello ${newFriend.type}, my name is ${you.name}"`,
+      `You say, "Hello ${newFriend.type}, my name is ${you.name}."`,
 
       `The ${newFriend.type} says, "Hello ${you.name}."`,
       `"My name is ${newFriend.name}."`,
       `"I am sooooooo sad."`,
 
       `The ${newFriend.type} starts to cry.`,
-      `The ${newFriend.type} says,"`,
+      `The ${newFriend.type} says,`,
       `"Hello ${you.name}."`,
 
       `"Can you help me?"`,
@@ -246,14 +192,14 @@ const newStoryP1 = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
         newFriend.mission.item.name
       }."`,
       `"Will you go with me?"`
+    ],
+    proposition: [
+      `Do you go to the ${newFriend.mission.item.location} to help ${
+        newFriend.name
+      } find a ${newFriend.mission.item.name}?"`,
+      `--- OR ---`,
+      `Do you go to the ${you.mission.location}?`
     ]
-    // proposition: [
-    //   `Do you go to the ${newFriend.mission.item.location} to help ${
-    //     newFriend.name
-    //   } find a ${newFriend.mission.item.name}?"`,
-    //   `--- OR ---`,
-    //   `Do you go to the ${you.mission.location}?`
-    // ]
   };
 };
 
@@ -330,12 +276,7 @@ const stories = [
 
 const plot = {
   activeScene: startScene,
-  you: {
-    name: "Matt",
-    creature: "girl",
-    homeLocation: startScene.location,
-    vehicle: "scooter"
-  },
+  you,
   scenes,
   stories
 };

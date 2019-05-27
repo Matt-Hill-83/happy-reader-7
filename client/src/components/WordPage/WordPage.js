@@ -83,6 +83,58 @@ class WordPage extends React.Component {
     return <div className={css.narrative}>{renderedNarrative}</div>;
   };
 
+  renderNarrativeOptions = () => {
+    const { activeScene, sceneOptionA, sceneOptionB, story } = this.state;
+
+    if (!activeScene) {
+      return null;
+    }
+
+    const narrative = getNarrative({
+      plot,
+      activeScene,
+      sceneOptionA,
+      sceneOptionB,
+      story
+    });
+
+    const renderedNarrative =
+      narrative &&
+      narrative.proposition &&
+      narrative.proposition.map((sentence, sentenceIndex) => {
+        const parsedSentence = sentence.split(/\s/);
+
+        const renderedSentence = parsedSentence.map((word, wordIndex) => {
+          const tabIndex = 100 * sentenceIndex + (wordIndex + 1);
+
+          // TODO - fix autofocus
+          const autofocus = tabIndex === 1 ? { autoFocus: true } : { test: 3 };
+
+          return (
+            <span
+              key={wordIndex}
+              {...autofocus}
+              autoFocus
+              tabIndex={tabIndex}
+              className={css.sentenceWord}
+              onClick={event => this.playWordSound(event, { word })}
+              onFocus={event => this.playWordSound(event, { word })}
+            >
+              {word}
+            </span>
+          );
+        });
+
+        return (
+          <span key={sentenceIndex} className={css.sentence}>
+            {renderedSentence}
+          </span>
+        );
+      });
+
+    return <div className={css.narrative}>{renderedNarrative}</div>;
+  };
+
   changeScene = ({ scene }) => {
     this.props.updateActiveScene({ activeScene: scene });
   };
@@ -121,6 +173,7 @@ class WordPage extends React.Component {
         <audio src={this.state.sound} autoPlay />
         <div className={css.story}>
           {this.renderNarrative()}
+          {this.renderNarrativeOptions()}
           {this.renderButtons({ activeScene })}
         </div>
       </div>
