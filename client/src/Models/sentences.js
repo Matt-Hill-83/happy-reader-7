@@ -10,8 +10,14 @@ const createHomeStory = ({ you }) => {
       `Your name is ${you.name}.`,
       `You live in the ${you.homeLocation}.`,
       `You are happy.`,
+      `You have a pet ${you.pet.type}.`,
+      `Your ${you.pet.type}'s name is ${you.pet.name}.`,
       `You have a ${you.vehicle}.`,
       `Your ${you.vehicle} is fast.`,
+      `Today, you need to go to the ${
+        you.mission.bringToLocation
+      } to bring your friend ${you.mission.item.recipient}
+      a ${you.mission.item.name}.`,
       `Where do you go?`
     ]
   };
@@ -149,7 +155,6 @@ const scenes = {
 
 const startScene = scenes.home;
 
-/////////////////////////
 const you = {
   name: "Charlie",
   creature: "girl",
@@ -159,7 +164,7 @@ const you = {
     item: {
       name: "blueberries",
       location: "location 2",
-      recipient: "creature 3"
+      recipient: "friend 3"
     },
     bringToLocation: "birthday-party",
     giveToCreature: "creature 1"
@@ -167,8 +172,11 @@ const you = {
   home: {
     location: "house"
   },
-  friends: [{ type: "dog", name: "Doggers", withMe: true }]
+  friends: [],
+  pet: { type: "dog", name: "Doggy", withMe: true }
 };
+
+/////////////////////////
 
 const newStoryP1 = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
   const { newFriend, location } = activeScene;
@@ -185,7 +193,7 @@ const newStoryP1 = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
 
       `The ${newFriend.type} starts to cry.`,
       `The ${newFriend.type} says,`,
-      `"Hello ${you.name}."`,
+      // `"Hello ${you.name}."`,
 
       `"Can you help me?"`,
       `"I need to go to the ${newFriend.mission.item.location} to get a  ${
