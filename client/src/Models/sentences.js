@@ -260,7 +260,7 @@ const getNarrative = ({ plot, activeScene }) => {
       activeScene
     });
   } else {
-    return activeScene.newNarrative({ you, activeScene });
+    return activeScene.narrative({ you, activeScene });
   }
 };
 
