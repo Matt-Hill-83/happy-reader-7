@@ -249,14 +249,9 @@ const stories = [
   // lostThingStory
 ];
 
-const plot = {
-  activeScene: startScene,
-  you,
-  scenes,
-  stories
-};
+const plot = { activeScene: startScene, you, scenes, stories };
 
-const getNarrative = ({ plot, activeScene, story }) => {
+const getNarrative = ({ plot, activeScene }) => {
   const { you } = plot;
 
   if (activeScene.narrative) {
@@ -265,10 +260,7 @@ const getNarrative = ({ plot, activeScene, story }) => {
       activeScene
     });
   } else {
-    return story({
-      you,
-      activeScene
-    });
+    return activeScene.story({ you, activeScene });
   }
 };
 

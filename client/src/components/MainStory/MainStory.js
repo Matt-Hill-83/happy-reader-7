@@ -58,18 +58,12 @@ class MainStory extends React.Component {
     activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
     activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
 
-    const story = Utils.getRandomItem({ items: plot.stories });
+    activeScene.story = Utils.getRandomItem({ items: plot.stories });
 
     activeScene = Utils.generateActiveScene({ activeScene });
     console.log("activeScene", activeScene); // zzz
 
-    this.setState({
-      activeScene,
-      // sceneOptionA,
-      // sceneOptionB,
-      pageNum: this.state.pageNum + 1,
-      story
-    });
+    this.setState({ activeScene, pageNum: this.state.pageNum + 1 });
   };
 
   newStory = () => {
@@ -107,21 +101,9 @@ class MainStory extends React.Component {
   };
 
   render() {
-    const {
-      activeScene,
-      pageNum,
-      // sceneOptionA,
-      // sceneOptionB,
-      story
-    } = this.state;
+    const { activeScene, pageNum } = this.state;
+    const wordPageProps = { activeScene, pageNum };
 
-    const wordPageProps = {
-      activeScene,
-      pageNum,
-      // sceneOptionA,
-      // sceneOptionB,
-      story
-    };
     console.log("wordPageProps", wordPageProps); // zzz
 
     return (

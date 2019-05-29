@@ -11,7 +11,6 @@ const { getNarrative, plot } = mySentences;
 
 class WordPage extends React.Component {
   state = {
-    showStory: true,
     activeScene: undefined,
     pageNum: 0,
     sound: null
@@ -31,7 +30,7 @@ class WordPage extends React.Component {
   };
 
   renderNarrative = () => {
-    const { activeScene, story } = this.state;
+    const { activeScene } = this.state;
 
     if (!activeScene) {
       return null;
@@ -39,8 +38,7 @@ class WordPage extends React.Component {
 
     const narrative = getNarrative({
       plot,
-      activeScene,
-      story
+      activeScene
     });
 
     const renderedNarrative =
@@ -81,7 +79,7 @@ class WordPage extends React.Component {
   };
 
   renderNarrativeOptions = () => {
-    const { activeScene, story } = this.state;
+    const { activeScene } = this.state;
 
     if (!activeScene) {
       return null;
@@ -89,8 +87,7 @@ class WordPage extends React.Component {
 
     const narrative = getNarrative({
       plot,
-      activeScene,
-      story
+      activeScene
     });
 
     const renderedNarrative =
