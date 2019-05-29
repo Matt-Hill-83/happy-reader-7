@@ -47,7 +47,6 @@ class MainStory extends React.Component {
     // narrative
     // random narrative components
 
-    // scene vs story vs narrative?
     activeScene.isUsed = true;
 
     const scenes = plot.scenes;
@@ -57,7 +56,6 @@ class MainStory extends React.Component {
 
     activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
     activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
-
     activeScene.newNarrative = Utils.getRandomItem({ items: plot.narratives });
 
     activeScene = Utils.generateActiveScene({ activeScene });
@@ -66,7 +64,7 @@ class MainStory extends React.Component {
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 });
   };
 
-  newStory = () => {
+  toggleFlashCards = () => {
     this.setState({ showStory: !this.state.showStory });
   };
 
@@ -83,7 +81,11 @@ class MainStory extends React.Component {
     const goodAt = Utils.getRandomItem({ items: goodAtList });
 
     const toggleButton = (
-      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.newStory}>
+      <Button
+        tabIndex={0}
+        className={css.newStoryBtn}
+        onClick={this.toggleFlashCards}
+      >
         Flash Cards
       </Button>
     );
@@ -103,8 +105,6 @@ class MainStory extends React.Component {
   render() {
     const { activeScene, pageNum } = this.state;
     const wordPageProps = { activeScene, pageNum };
-
-    console.log("wordPageProps", wordPageProps); // zzz
 
     return (
       <div className={css.main}>

@@ -100,7 +100,7 @@ const scenes = {
       type: undefined,
       name: "Crystal"
     },
-    narrative: createHomeStory,
+    builtInNarrative: createHomeStory,
     isHome: true,
     mission: {
       item: {
@@ -254,8 +254,8 @@ const plot = { activeScene: startScene, you, scenes, narratives };
 const getNarrative = ({ plot, activeScene }) => {
   const { you } = plot;
 
-  if (activeScene.narrative) {
-    return activeScene.narrative({
+  if (activeScene.builtInNarrative) {
+    return activeScene.builtInNarrative({
       you,
       activeScene
     });
