@@ -262,15 +262,12 @@ const getNarrative = ({ plot, activeScene, story }) => {
   if (activeScene.narrative) {
     return activeScene.narrative({
       you,
-      activeScene,
-      sceneOptionA: activeScene.sceneOptionA
+      activeScene
     });
   } else {
     return story({
       you,
-      activeScene,
-      sceneOptionA: activeScene.sceneOptionA,
-      sceneOptionB: activeScene.sceneOptionB
+      activeScene
     });
   }
 };
