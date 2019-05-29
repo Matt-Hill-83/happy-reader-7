@@ -3,7 +3,6 @@ import { observer } from "mobx-react";
 import { Button } from "@blueprintjs/core";
 
 import mySentences from "../../Models/sentences.js";
-
 import Sounds from "../../Sounds/Sounds";
 
 import css from "./WordPage.module.scss";
@@ -135,7 +134,7 @@ class WordPage extends React.Component {
     return <div className={css.narrative}>{renderedNarrative}</div>;
   };
 
-  changeScene = ({ scene }) => {
+  changeLocation = ({ scene }) => {
     this.props.updateActiveScene({ activeScene: scene });
   };
 
@@ -152,7 +151,7 @@ class WordPage extends React.Component {
         return null;
       }
 
-      const onClick = () => this.changeScene({ scene });
+      const onClick = () => this.changeLocation({ scene });
 
       return (
         <Button key={i} onClick={onClick} className={css.choiceButton}>
@@ -166,13 +165,12 @@ class WordPage extends React.Component {
   render() {
     const { activeScene } = this.state;
 
-    console.log("render WordPage"); // zzz
-
     return (
       <div className={css.textPage}>
         <audio src={this.state.sound} autoPlay />
         <div className={css.story}>
           {this.renderNarrative()}
+          ---------------------------------------------------------------------------
           {this.renderNarrativeOptions()}
           {this.renderButtons({ activeScene })}
         </div>

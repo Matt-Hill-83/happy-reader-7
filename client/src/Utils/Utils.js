@@ -60,6 +60,15 @@ export default class Utils {
     items && items.forEach(item => (item.isReserved = false));
   };
 
+  static generateActiveScene = ({ activeScene }) => {
+    // TODO
+    // TODO
+    // TODO
+    // pack new content into activeScene
+
+    return activeScene;
+  };
+
   static getRandomWordByType = ({ words, type }) => {
     const output = this.getWordsByType({ words, type }).map(word => word.name);
 

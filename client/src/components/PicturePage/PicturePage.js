@@ -36,7 +36,8 @@ class PicturePage extends React.Component {
     const renderedImage = Images[activeScene.location] || Images[defaultImage];
 
     const youImage = plot.you.creature;
-    const friendImage = Images[activeScene.newFriend.type];
+    const friendImage =
+      activeScene.newFriend && Images[activeScene.newFriend.type];
 
     return (
       <div className={css.imageContainer}>

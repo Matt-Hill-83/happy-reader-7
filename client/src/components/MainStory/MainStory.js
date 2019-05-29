@@ -10,10 +10,11 @@ import FlashCards from "../FlashCards/FlashCards";
 import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
 import WordPage from "../WordPage/WordPage.js";
+
 import css from "./MainStory.module.scss";
 
-import { UserConfigStore } from "../../Stores/UserConfigStore.js";
-import { words2 } from "../../Stores/WordStore.js";
+// import { UserConfigStore } from "../../Stores/UserConfigStore.js";
+// import { words2 } from "../../Stores/WordStore.js";
 
 const { plot } = mySentences;
 const { wordTypes } = myWords;
@@ -36,6 +37,17 @@ class MainStory extends React.Component {
 
   updateActiveScene = ({ activeScene }) => {
     // TODO - create all random story elements when activeScene is updated.
+
+    // TODO
+    // TODO
+    // TODO
+    // TODO
+    // When scene is updated, generate the following and pack them into the active scene:
+    // sceneOptions
+    // narrative
+    // random narrative components
+
+    // scene vs story vs narrative?
     activeScene.isUsed = true;
 
     const scenes = plot.scenes;
@@ -47,6 +59,9 @@ class MainStory extends React.Component {
     const sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
 
     const story = Utils.getRandomItem({ items: plot.stories });
+
+    activeScene = Utils.generateActiveScene({ activeScene });
+    console.log("activeScene", activeScene); // zzz
 
     this.setState({
       activeScene,
@@ -75,7 +90,7 @@ class MainStory extends React.Component {
 
     const toggleButton = (
       <Button tabIndex={0} className={css.newStoryBtn} onClick={this.newStory}>
-        Toggle
+        Flash Cards
       </Button>
     );
 
