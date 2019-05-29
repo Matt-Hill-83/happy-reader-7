@@ -58,7 +58,7 @@ class MainStory extends React.Component {
     activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
     activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
 
-    activeScene.story = Utils.getRandomItem({ items: plot.stories });
+    activeScene.story = Utils.getRandomItem({ items: plot.narratives });
 
     activeScene = Utils.generateActiveScene({ activeScene });
     console.log("activeScene", activeScene); // zzz

@@ -206,7 +206,7 @@ const createNewFriend = () => {
   };
 };
 
-const newStoryP1 = ({ you, activeScene }) => {
+const newNarrativeP1 = ({ you, activeScene }) => {
   const { location } = activeScene;
   // const { newFriend, location } = activeScene;
 
@@ -241,15 +241,15 @@ const newStoryP1 = ({ you, activeScene }) => {
   };
 };
 
-const stories = [
+const narratives = [
   // argumentStory,
-  newStoryP1
+  newNarrativeP1
   // birthdayPartyStory,
   // lostCreatureStory,
   // lostThingStory
 ];
 
-const plot = { activeScene: startScene, you, scenes, stories };
+const plot = { activeScene: startScene, you, scenes, narratives };
 
 const getNarrative = ({ plot, activeScene }) => {
   const { you } = plot;
