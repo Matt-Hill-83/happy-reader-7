@@ -31,7 +31,7 @@ class WordPage extends React.Component {
   };
 
   renderNarrative = () => {
-    const { activeScene, sceneOptionA, sceneOptionB, story } = this.state;
+    const { activeScene, story } = this.state;
 
     if (!activeScene) {
       return null;
@@ -40,8 +40,6 @@ class WordPage extends React.Component {
     const narrative = getNarrative({
       plot,
       activeScene,
-      sceneOptionA,
-      sceneOptionB,
       story
     });
 
@@ -83,7 +81,7 @@ class WordPage extends React.Component {
   };
 
   renderNarrativeOptions = () => {
-    const { activeScene, sceneOptionA, sceneOptionB, story } = this.state;
+    const { activeScene, story } = this.state;
 
     if (!activeScene) {
       return null;
@@ -92,8 +90,6 @@ class WordPage extends React.Component {
     const narrative = getNarrative({
       plot,
       activeScene,
-      sceneOptionA,
-      sceneOptionB,
       story
     });
 
@@ -139,13 +135,13 @@ class WordPage extends React.Component {
   };
 
   renderButtons = () => {
-    const { activeScene, sceneOptionA, sceneOptionB } = this.state;
+    const { activeScene } = this.state;
 
     if (!activeScene) {
       return null;
     }
 
-    const options = [sceneOptionA, sceneOptionB];
+    const options = [activeScene.sceneOptionA, activeScene.sceneOptionB];
     const buttons = options.map((scene, i) => {
       if (!scene) {
         return null;

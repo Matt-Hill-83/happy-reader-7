@@ -55,8 +55,8 @@ class MainStory extends React.Component {
 
     Utils.unreserveItems({ items: scenesList });
 
-    const sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
-    const sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
+    activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
+    activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
 
     const story = Utils.getRandomItem({ items: plot.stories });
 
@@ -65,8 +65,8 @@ class MainStory extends React.Component {
 
     this.setState({
       activeScene,
-      sceneOptionA,
-      sceneOptionB,
+      // sceneOptionA,
+      // sceneOptionB,
       pageNum: this.state.pageNum + 1,
       story
     });
@@ -110,16 +110,16 @@ class MainStory extends React.Component {
     const {
       activeScene,
       pageNum,
-      sceneOptionA,
-      sceneOptionB,
+      // sceneOptionA,
+      // sceneOptionB,
       story
     } = this.state;
 
     const wordPageProps = {
       activeScene,
       pageNum,
-      sceneOptionA,
-      sceneOptionB,
+      // sceneOptionA,
+      // sceneOptionB,
       story
     };
     console.log("wordPageProps", wordPageProps); // zzz

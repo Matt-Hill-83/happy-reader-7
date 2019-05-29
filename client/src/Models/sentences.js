@@ -3,7 +3,9 @@ import Utils from "../Utils/Utils.js";
 
 const { words, wordTypes } = myWords;
 
-const argumentStory = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
+const argumentStory = ({ you, activeScene }) => {
+  const sceneOptionA = activeScene.sceneOptionA;
+
   const creatures = Utils.getWordsByType({ words, type: wordTypes.animal });
   const animal1 = Utils.getRandomItem({ items: creatures });
   const animal2 = Utils.getRandomItem({ items: creatures });
@@ -204,7 +206,7 @@ const createNewFriend = () => {
   };
 };
 
-const newStoryP1 = ({ you, activeScene, sceneOptionA, sceneOptionB }) => {
+const newStoryP1 = ({ you, activeScene }) => {
   const { location } = activeScene;
   // const { newFriend, location } = activeScene;
 
@@ -254,19 +256,22 @@ const plot = {
   stories
 };
 
-const getNarrative = ({
-  plot,
-  activeScene,
-  sceneOptionA,
-  sceneOptionB,
-  story
-}) => {
+const getNarrative = ({ plot, activeScene, story }) => {
   const { you } = plot;
 
   if (activeScene.narrative) {
-    return activeScene.narrative({ you, activeScene, sceneOptionA });
+    return activeScene.narrative({
+      you,
+      activeScene,
+      sceneOptionA: activeScene.sceneOptionA
+    });
   } else {
-    return story({ you, activeScene, sceneOptionA, sceneOptionB });
+    return story({
+      you,
+      activeScene,
+      sceneOptionA: activeScene.sceneOptionA,
+      sceneOptionB: activeScene.sceneOptionB
+    });
   }
 };
 
