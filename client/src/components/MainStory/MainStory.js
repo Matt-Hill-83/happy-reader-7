@@ -36,8 +36,6 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
-    // TODO - create all random story elements when activeScene is updated.
-
     // TODO
     // TODO
     // TODO

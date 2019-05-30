@@ -1,3 +1,5 @@
+import myWords from "../Models/words.js";
+
 export default class Utils {
   static removeFavorites = words =>
     words.filter(word => {
@@ -43,19 +45,6 @@ export default class Utils {
   static getRandomItem = ({ items }) =>
     items[Math.floor(Math.random() * items.length)];
 
-  static reserveRandomItem = ({ items }) => {
-    const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
-
-    // When all the items are used
-    if (freshItems.length === 0) {
-      return;
-    }
-
-    const item = this.getRandomItem({ items: freshItems });
-    item.isReserved = true;
-    return item;
-  };
-
   static unreserveItems = ({ items }) => {
     items && items.forEach(item => (item.isReserved = false));
   };
@@ -76,5 +65,37 @@ export default class Utils {
     // need to output objects
 
     return this.getRandomItem({ items: output });
+  };
+
+  static reserveRandomItem = ({ items }) => {
+    const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
+
+    // When all the items are used
+    if (freshItems.length === 0) {
+      return;
+    }
+
+    const item = this.getRandomItem({ items: freshItems });
+    item.isReserved = true;
+    return item;
+  };
+
+  // static getRandomItemByTypeAndUse = ({ words, type }) => {
+  static getRandomItemByTypeAndUse = ({ type, returnName = true }) => {
+    const { words } = myWords;
+
+    const items = this.getWordsByType({ words, type });
+
+    const freshItems = items.filter(item => !item.isUsed);
+    // const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
+
+    // When all the items are used
+    if (freshItems.length === 0) {
+      return;
+    }
+
+    const item = this.getRandomItem({ items: freshItems });
+    item.isReserved = true;
+    return returnName ? item.name : item;
   };
 }

@@ -1,3 +1,4 @@
+// TODO: associate colors with word types
 const wordTypes = {
   animal: "animal",
   name: "name",
@@ -19,6 +20,7 @@ const wordFamilies = {
   mad: "mad"
 };
 
+// TODO: wordTypes should be an array of tags.
 const animals = [
   { name: "cat", image: "noun", type: wordTypes.animal },
   { name: "rat", image: "noun", type: wordTypes.animal },

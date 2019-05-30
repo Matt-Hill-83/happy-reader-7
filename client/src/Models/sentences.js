@@ -3,51 +3,70 @@ import Utils from "../Utils/Utils.js";
 
 const { words, wordTypes } = myWords;
 
-const argumentStory = ({ you, activeScene }) => {
-  const sceneOptionA = activeScene.sceneOptionA;
+//////////////////
+//////////////////
+//////////////////
+//////////////////
+//////////////////
 
-  const creatures = Utils.getWordsByType({ words, type: wordTypes.animal });
-  const animal1 = Utils.getRandomItem({ items: creatures });
-  const animal2 = Utils.getRandomItem({ items: creatures });
-  const names = Utils.getWordsByType({ words, type: wordTypes.name });
-  const name1 = Utils.getRandomItem({ items: names });
-  const name2 = Utils.getRandomItem({ items: names });
+const generateYou = () => {
+  // const vehicles = Utils.getWordsByType({ words, type: wordTypes.vehicle });
+  // const locations = Utils.getWordsByType({ words, type: wordTypes.location });
+  // const names = Utils.getWordsByType({ words, type: wordTypes.name });
+  // const creatures = Utils.getWordsByType({ words, type: wordTypes.creature });
 
-  const creature1 = { type: animal1.name, name: name1.name };
-  const creature2 = { type: animal2.name, name: name2.name };
+  // const missionItemLocation = Utils.getRandomItem({ items: locations });
 
-  if (!activeScene || activeScene === undefined) {
-    return [];
-  }
+  // const missionObjectiveLocation = Utils.getRandomItem({ items: locations });
+  // const missionItemRecipientType = Utils.getRandomItem({ items: names });
 
-  return [
-    `You go on your ${you.vehicle} to the ${activeScene &&
-      activeScene.location}.`,
-    `You see a ${creature2.type}`,
-    `At the ${activeScene && activeScene.location}, you see a ${
-      creature2.type
-    }.`,
-    `You also see a ${creature1.type}.`,
-    `They both look mad.`,
-    `The ${creature1.type} says,`,
+  const missionItem = Utils.getRandomItemByTypeAndUse({
+    type: wordTypes.vehicle
+  });
 
-    `"I am ${creature1.name}."`,
-    `"Will you come to the ${sceneOptionA.location} with me?"`
-    // `The ${creature2.type} says,`,
-    // `"I am ${creature2.name}."`
-    // Deal with only 1 scene left, maybe allow user to return to previous scene,
-    //  but set a flag that there is only one scene left.  How should the game
-    // end?
-    // `"Will you come to the ${sceneOptionB.location} with me?"`
-    // `${"Will you come to the ${sceneOptionB.location} with me?"}`
-  ];
+  const missionItemStartLocation = Utils.getRandomItemByTypeAndUse({
+    type: wordTypes.location
+  });
+
+  const missionItemEndLocation = Utils.getRandomItemByTypeAndUse({
+    type: wordTypes.location
+  });
+
+  const missionItemRecipientType = Utils.getRandomItemByTypeAndUse({
+    type: wordTypes.creature
+  });
+
+  const missionItemRecipientName = Utils.getRandomItemByTypeAndUse({
+    type: wordTypes.name
+  });
+
+  console.log("missionItemRecipientName", missionItemRecipientName); // zzz
+
+  return {
+    name: "Charlie",
+    creature: "girl",
+    homeLocation: "forest",
+    vehicle: "scooter",
+    mission: {
+      item: {
+        name: missionItem,
+        startLocation: missionItemStartLocation,
+        endLocation: missionItemEndLocation,
+        recipient: {
+          type: missionItemRecipientType,
+          name: missionItemRecipientName
+        }
+      }
+    },
+    home: {
+      location: "house"
+    },
+    friends: [],
+    pet: { type: "dog", name: "Doggy", withMe: true }
+  };
 };
 
-//////////////////
-//////////////////
-//////////////////
-//////////////////
-//////////////////
+const you = generateYou();
 
 // This cannot be chosen for the next scene.
 const createHomeStory = ({ you }) => {
@@ -55,139 +74,78 @@ const createHomeStory = ({ you }) => {
     story: [
       `Your name is ${you.name}.`,
       `You live in the ${you.homeLocation}.`,
-      `You are happy.`,
+      `You are sooooo happy.`,
 
-      `You have a pet ${you.pet.type}.`,
-      `Your ${you.pet.type}'s name is ${you.pet.name}.`,
-      `${you.pet.name} name is a good ${you.pet.type}.`,
+      `Your friend is ${you.mission.item.recipient.name} the ${
+        you.mission.item.recipient.type
+      }.`,
+      `${you.mission.item.recipient.name} lives at the ${
+        you.mission.item.endLocation
+      }.`,
+      `${you.mission.item.recipient.name} is soooo sad.`,
+      `${you.mission.item.recipient.name} lost her ${
+        you.mission.item.name
+      } in the ${you.mission.item.startLocation}`,
 
-      `You have a ${you.vehicle}.`,
-      `Your ${you.vehicle} is fast.`,
-      `Today, you need to go to the ${
-        you.mission.bringToLocation
-      } to bring your friend ${you.mission.item.recipient}
-      a ${you.mission.item.name}.`,
-      `Where do you go?`
-    ]
+      `Go to the ${you.mission.item.startLocation} and find the ${
+        you.mission.item.name
+      }.`,
+
+      `Bring the ${you.mission.item.name} to the ${
+        you.mission.item.endLocation
+      }.`,
+
+      `Give the ${you.mission.item.name} to ${
+        you.mission.item.recipient.name
+      }.`,
+
+      `${you.mission.item.recipient.name} will be sooooooo happy!`
+    ],
+    proposition: [`Where do you go now?`]
   };
 };
 
-const you = {
-  name: "Charlie",
-  creature: "girl",
-  homeLocation: "forest",
-  vehicle: "scooter",
+const scenes = {
+  meadow: { location: "meadow" },
+  waterfall: { location: "waterfall" },
+  school: { location: "school" },
+  garden: { location: "garden" }
+};
+
+const startScene = {
+  location: "forest",
+  newFriend: {
+    type: undefined,
+    name: "Crystal"
+  },
+  builtInNarrative: createHomeStory({ you }),
+  isHome: true,
   mission: {
     item: {
       name: "blueberries",
       location: "location 2",
-      recipient: "friend 3"
+      recipient: "creature 3"
     },
-    bringToLocation: "birthday party",
+    startLocation: "birthday party",
+    endLocation: "birthday party",
     giveToCreature: "creature 1"
-  },
-  home: {
-    location: "house"
-  },
-  friends: [],
-  pet: { type: "dog", name: "Doggy", withMe: true }
-};
-
-const scenes = {
-  home: {
-    location: "forest",
-    newFriend: {
-      type: undefined,
-      name: "Crystal"
-    },
-    builtInNarrative: createHomeStory,
-    isHome: true,
-    mission: {
-      item: {
-        name: "blueberries",
-        location: "location 2",
-        recipient: "creature 3"
-      },
-      bringToLocation: "birthday party",
-      giveToCreature: "creature 1"
-    }
-  },
-
-  // make scenes not tied to a location, and tie them to a random location.
-  // scenes should be coupled with a narrative.
-  meadow: {
-    location: "meadow"
-    // newFriend: {
-    //   gender: "female",
-    //   type: "elf",
-    //   name: "Elliot",
-    //   mission: {
-    //     item: {
-    //       name: "blueberries",
-    //       location: "location 2",
-    //       recipient: "creature 3"
-    //     },
-    //     bringToLocation: "birthday party",
-    //     giveToCreature: "creature 1"
-    //   }
-    // }
-  },
-  waterfall: {
-    location: "waterfall"
-    // newFriend: {
-    //   gender: "female",
-    //   type: "elf",
-    //   name: "Elliot",
-    //   mission: {
-    //     item: {
-    //       name: "blueberries",
-    //       location: "location 2",
-    //       recipient: "creature 3"
-    //     },
-    //     bringToLocation: "birthday party",
-    //     giveToCreature: "creature 1"
-    //   }
-    // }
-  },
-  school: {
-    location: "school"
-    // newFriend: {
-    //   gender: "female",
-    //   type: "elf",
-    //   name: "Elliot",
-    //   mission: {
-    //     item: {
-    //       name: "blueberries",
-    //       location: "location 2",
-    //       recipient: "creature 3"
-    //     },
-    //     bringToLocation: "birthday party",
-    //     giveToCreature: "creature 1"
-    //   }
-    // }
-  },
-  garden: {
-    location: "garden"
-    // newFriend: {
-    //   gender: "female",
-    //   type: "elf",
-    //   name: "Elliot",
-    //   mission: {
-    //     item: {
-    //       name: "blueberries",
-    //       location: "location 2",
-    //       recipient: "creature 3"
-    //     },
-    //     bringToLocation: "birthday party",
-    //     giveToCreature: "creature 1"
-    //   }
-    // }
   }
 };
 
-const startScene = scenes.home;
-
-/////////////////////////
+const endScene = {
+  location: "castle",
+  builtInNarrative: createHomeStory({ you }),
+  mission: {
+    item: {
+      name: "blueberries",
+      location: "location 2",
+      recipient: "creature 3"
+    },
+    startLocation: "birthday party",
+    endLocation: "birthday party",
+    giveToCreature: "creature 1"
+  }
+};
 
 const createNewFriend = () => {
   return {
@@ -255,13 +213,50 @@ const getNarrative = ({ plot, activeScene }) => {
   const { you } = plot;
 
   if (activeScene.builtInNarrative) {
-    return activeScene.builtInNarrative({
-      you,
-      activeScene
-    });
+    return activeScene.builtInNarrative;
   } else {
     return activeScene.narrative({ you, activeScene });
   }
 };
 
 export default { getNarrative, plot };
+
+const argumentStory = ({ you, activeScene }) => {
+  const sceneOptionA = activeScene.sceneOptionA;
+
+  const creatures = Utils.getWordsByType({ words, type: wordTypes.animal });
+  const animal1 = Utils.getRandomItem({ items: creatures });
+  const animal2 = Utils.getRandomItem({ items: creatures });
+  const names = Utils.getWordsByType({ words, type: wordTypes.name });
+  const name1 = Utils.getRandomItem({ items: names });
+  const name2 = Utils.getRandomItem({ items: names });
+
+  const creature1 = { type: animal1.name, name: name1.name };
+  const creature2 = { type: animal2.name, name: name2.name };
+
+  if (!activeScene || activeScene === undefined) {
+    return [];
+  }
+
+  return [
+    `You go on your ${you.vehicle} to the ${activeScene &&
+      activeScene.location}.`,
+    `You see a ${creature2.type}`,
+    `At the ${activeScene && activeScene.location}, you see a ${
+      creature2.type
+    }.`,
+    `You also see a ${creature1.type}.`,
+    `They both look mad.`,
+    `The ${creature1.type} says,`,
+
+    `"I am ${creature1.name}."`,
+    `"Will you come to the ${sceneOptionA.location} with me?"`
+    // `The ${creature2.type} says,`,
+    // `"I am ${creature2.name}."`
+    // Deal with only 1 scene left, maybe allow user to return to previous scene,
+    //  but set a flag that there is only one scene left.  How should the game
+    // end?
+    // `"Will you come to the ${sceneOptionB.location} with me?"`
+    // `${"Will you come to the ${sceneOptionB.location} with me?"}`
+  ];
+};
