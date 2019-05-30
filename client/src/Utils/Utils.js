@@ -80,13 +80,31 @@ export default class Utils {
     return item;
   };
 
-  // static getRandomItemByTypeAndUse = ({ words, type }) => {
   static getRandomItemByTypeAndUse = ({ type, returnName = true }) => {
     const { words } = myWords;
 
     const items = this.getWordsByType({ words, type });
 
     const freshItems = items.filter(item => !item.isUsed);
+    // const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
+
+    // When all the items are used
+    if (freshItems.length === 0) {
+      return;
+    }
+
+    const item = this.getRandomItem({ items: freshItems });
+    item.isReserved = true;
+    item.isUsed = true;
+    return returnName ? item.name : item;
+  };
+
+  static getRandomItemByTypeAndReserve = ({ type, returnName = true }) => {
+    const { words } = myWords;
+
+    const items = this.getWordsByType({ words, type });
+
+    const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
     // const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
 
     // When all the items are used

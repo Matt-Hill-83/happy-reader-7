@@ -1,25 +1,9 @@
 import myWords from "../Models/words.js";
 import Utils from "../Utils/Utils.js";
 
-const { words, wordTypes } = myWords;
-
-//////////////////
-//////////////////
-//////////////////
-//////////////////
-//////////////////
+const { wordTypes } = myWords;
 
 const generateYou = () => {
-  // const vehicles = Utils.getWordsByType({ words, type: wordTypes.vehicle });
-  // const locations = Utils.getWordsByType({ words, type: wordTypes.location });
-  // const names = Utils.getWordsByType({ words, type: wordTypes.name });
-  // const creatures = Utils.getWordsByType({ words, type: wordTypes.creature });
-
-  // const missionItemLocation = Utils.getRandomItem({ items: locations });
-
-  // const missionObjectiveLocation = Utils.getRandomItem({ items: locations });
-  // const missionItemRecipientType = Utils.getRandomItem({ items: names });
-
   const missionItem = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.vehicle
   });
@@ -76,7 +60,7 @@ const createHomeStory = ({ you }) => {
       `You live in the ${you.homeLocation}.`,
       `You are sooooo happy.`,
 
-      `Your friend is ${you.mission.item.recipient.name} the ${
+      `Your friend ${you.mission.item.recipient.name} is a ${
         you.mission.item.recipient.type
       }.`,
       `${you.mission.item.recipient.name} lives at the ${
@@ -85,11 +69,11 @@ const createHomeStory = ({ you }) => {
       `${you.mission.item.recipient.name} is soooo sad.`,
       `${you.mission.item.recipient.name} lost her ${
         you.mission.item.name
-      } in the ${you.mission.item.startLocation}`,
+      } at the ${you.mission.item.startLocation}`,
 
-      `Go to the ${you.mission.item.startLocation} and find the ${
-        you.mission.item.name
-      }.`,
+      `Go to the ${you.mission.item.startLocation} and find ${
+        you.mission.item.recipient.name
+      }'s ${you.mission.item.name}.`,
 
       `Bring the ${you.mission.item.name} to the ${
         you.mission.item.endLocation
@@ -102,7 +86,7 @@ const createHomeStory = ({ you }) => {
       `${you.mission.item.recipient.name} will be sooooooo happy!`
     ],
     proposition: [`Where do you go now?`],
-    sceneOptions: []
+    sceneOptions: [you.mission.item.startLocation]
   };
 };
 
@@ -218,45 +202,45 @@ const getNarrative = ({ plot, activeScene }) => {
   }
 };
 
-const plot = { activeScene: startScene, you, scenes, narratives };
+const plot = { activeScene: startScene, endScene, you, scenes, narratives };
 export default { getNarrative, plot };
 
-const argumentStory = ({ you, activeScene }) => {
-  const sceneOptionA = activeScene.sceneOptionA;
+// const argumentStory = ({ you, activeScene }) => {
+//   const sceneOptionA = activeScene.sceneOptionA;
 
-  const creatures = Utils.getWordsByType({ words, type: wordTypes.animal });
-  const animal1 = Utils.getRandomItem({ items: creatures });
-  const animal2 = Utils.getRandomItem({ items: creatures });
-  const names = Utils.getWordsByType({ words, type: wordTypes.name });
-  const name1 = Utils.getRandomItem({ items: names });
-  const name2 = Utils.getRandomItem({ items: names });
+//   const creatures = Utils.getWordsByType({ words, type: wordTypes.animal });
+//   const animal1 = Utils.getRandomItem({ items: creatures });
+//   const animal2 = Utils.getRandomItem({ items: creatures });
+//   const names = Utils.getWordsByType({ words, type: wordTypes.name });
+//   const name1 = Utils.getRandomItem({ items: names });
+//   const name2 = Utils.getRandomItem({ items: names });
 
-  const creature1 = { type: animal1.name, name: name1.name };
-  const creature2 = { type: animal2.name, name: name2.name };
+//   const creature1 = { type: animal1.name, name: name1.name };
+//   const creature2 = { type: animal2.name, name: name2.name };
 
-  if (!activeScene || activeScene === undefined) {
-    return [];
-  }
+//   if (!activeScene || activeScene === undefined) {
+//     return [];
+//   }
 
-  return [
-    `You go on your ${you.vehicle} to the ${activeScene &&
-      activeScene.location}.`,
-    `You see a ${creature2.type}`,
-    `At the ${activeScene && activeScene.location}, you see a ${
-      creature2.type
-    }.`,
-    `You also see a ${creature1.type}.`,
-    `They both look mad.`,
-    `The ${creature1.type} says,`,
+//   return [
+//     `You go on your ${you.vehicle} to the ${activeScene &&
+//       activeScene.location}.`,
+//     `You see a ${creature2.type}`,
+//     `At the ${activeScene && activeScene.location}, you see a ${
+//       creature2.type
+//     }.`,
+//     `You also see a ${creature1.type}.`,
+//     `They both look mad.`,
+//     `The ${creature1.type} says,`,
 
-    `"I am ${creature1.name}."`,
-    `"Will you come to the ${sceneOptionA.location} with me?"`
-    // `The ${creature2.type} says,`,
-    // `"I am ${creature2.name}."`
-    // Deal with only 1 scene left, maybe allow user to return to previous scene,
-    //  but set a flag that there is only one scene left.  How should the game
-    // end?
-    // `"Will you come to the ${sceneOptionB.location} with me?"`
-    // `${"Will you come to the ${sceneOptionB.location} with me?"}`
-  ];
-};
+//     `"I am ${creature1.name}."`,
+//     `"Will you come to the ${sceneOptionA.location} with me?"`
+//     // `The ${creature2.type} says,`,
+//     // `"I am ${creature2.name}."`
+//     // Deal with only 1 scene left, maybe allow user to return to previous scene,
+//     //  but set a flag that there is only one scene left.  How should the game
+//     // end?
+//     // `"Will you come to the ${sceneOptionB.location} with me?"`
+//     // `${"Will you come to the ${sceneOptionB.location} with me?"}`
+//   ];
+// };

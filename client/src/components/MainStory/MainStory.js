@@ -14,10 +14,9 @@ import WordPage from "../WordPage/WordPage.js";
 import css from "./MainStory.module.scss";
 
 // import { UserConfigStore } from "../../Stores/UserConfigStore.js";
-// import { words2 } from "../../Stores/WordStore.js";
 
 const { plot } = mySentences;
-const { wordTypes } = myWords;
+const { wordTypes, words } = myWords;
 
 class MainStory extends React.Component {
   state = {
@@ -47,13 +46,21 @@ class MainStory extends React.Component {
 
     activeScene.isUsed = true;
 
-    const scenes = plot.scenes;
-    const scenesList = Object.values(scenes) || [];
+    // const scenes = plot.scenes;
+    const scenesList =
+      Utils.getWordsByType({ words, type: wordTypes.location }) || [];
 
     Utils.unreserveItems({ items: scenesList });
 
-    activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
-    activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
+    const locationA = Utils.reserveRandomItem({ items: scenesList });
+    const locationB = Utils.reserveRandomItem({ items: scenesList });
+
+    // activeScene.sceneOptionA = locationA;
+    // activeScene.sceneOptionB = locationB;
+
+    activeScene.sceneOptionA = { location: locationA.name };
+    activeScene.sceneOptionB = { location: locationB.name };
+
     activeScene.narrative = Utils.getRandomItem({ items: plot.narratives });
 
     activeScene = Utils.generateActiveScene({ activeScene });
@@ -62,9 +69,32 @@ class MainStory extends React.Component {
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 });
   };
 
-  toggleFlashCards = () => {
-    this.setState({ showStory: !this.state.showStory });
-  };
+  render() {
+    const { activeScene, pageNum } = this.state;
+    const wordPageProps = { activeScene, pageNum };
+
+    return (
+      <div className={css.main}>
+        {/* todo - fix this */}
+        {/* <span>{UserConfigStore.docs[0]}</span> */}
+        {this.renderHeader()}
+        <audio src={this.state.sound} autoPlay />
+
+        <div className={css.body}>
+          {!this.state.showStory && <FlashCards />}
+          {this.state.showStory && (
+            <div className={css.storyBox}>
+              <WordPage
+                wordPageProps={wordPageProps}
+                updateActiveScene={this.updateActiveScene}
+              />
+              <PicturePage activeScene={activeScene} pageNum={pageNum} />
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   renderHeader = () => {
     const goodAtList = [
@@ -100,34 +130,8 @@ class MainStory extends React.Component {
     );
   };
 
-  render() {
-    const { activeScene, pageNum } = this.state;
-    const wordPageProps = { activeScene, pageNum };
-
-    return (
-      <div className={css.main}>
-        {/* todo - fix this */}
-        {/* todo - fix this */}
-        {/* todo - fix this */}
-        {/* todo - fix this */}
-        {/* <span>{UserConfigStore.docs[0]}</span> */}
-        {this.renderHeader()}
-        <audio src={this.state.sound} autoPlay />
-
-        <div className={css.body}>
-          {!this.state.showStory && <FlashCards />}
-          {this.state.showStory && (
-            <div className={css.storyBox}>
-              <WordPage
-                wordPageProps={wordPageProps}
-                updateActiveScene={this.updateActiveScene}
-              />
-              <PicturePage activeScene={activeScene} pageNum={pageNum} />
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  }
+  toggleFlashCards = () => {
+    this.setState({ showStory: !this.state.showStory });
+  };
 }
 export default observer(MainStory);
