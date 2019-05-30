@@ -94,53 +94,27 @@ const createStartStory = ({ you }) => {
 
 const startScene = {
   location: "forest",
-  newFriend: {
-    type: undefined,
-    name: "Crystal"
-  },
-  builtInNarrative: createStartStory({ you }),
-  isHome: true,
-  mission: {
-    item: {
-      name: "blueberries",
-      location: "location 2",
-      recipient: "creature 3"
-    },
-    startLocation: "birthday party",
-    endLocation: "birthday party",
-    giveToCreature: "creature 1"
-  }
+  builtInNarrative: createStartStory({ you })
 };
 
 const endScene = {
   location: "castle",
-  builtInNarrative: createStartStory({ you }),
-  mission: {
-    item: {
-      name: "blueberries",
-      location: "location 2",
-      recipient: "creature 3"
-    },
-    startLocation: "birthday party",
-    endLocation: "birthday party",
-    giveToCreature: "creature 1"
-  }
+  builtInNarrative: createStartStory({ you })
 };
 
 const createNewFriend = () => {
+  const type = Utils.getRandomItemByTypeAndUse({
+    type: wordTypes.creature
+  });
+
+  const name = Utils.getRandomItemByTypeAndUse({
+    type: wordTypes.name
+  });
+
   return {
-    gender: "female",
-    type: "elf",
-    name: "Bob",
-    mission: {
-      item: {
-        name: "blueberries",
-        location: "location 2",
-        recipient: "creature 3"
-      },
-      bringToLocation: "birthday party",
-      giveToCreature: "creature 1"
-    }
+    type,
+    name,
+    mission: createMission()
   };
 };
 
@@ -163,13 +137,13 @@ const createNarrative1 = ({ you, activeScene }) => {
       `The ${newFriend.type} says,`,
 
       `"Can you help me?"`,
-      `"I need to go to the ${newFriend.mission.item.location} to get a  ${
+      `"I need to go to the ${newFriend.mission.item.startLocation} to get a  ${
         newFriend.mission.item.name
       }."`,
       `"Will you go with me?"`
     ],
     proposition: [
-      `Do you go to the ${newFriend.mission.item.location} to help ${
+      `Do you go to the ${newFriend.mission.item.startLocation} to help ${
         newFriend.name
       } find a ${newFriend.mission.item.name}?"`,
       `--- OR ---`,
