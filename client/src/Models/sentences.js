@@ -101,7 +101,8 @@ const createHomeStory = ({ you }) => {
 
       `${you.mission.item.recipient.name} will be sooooooo happy!`
     ],
-    proposition: [`Where do you go now?`]
+    proposition: [`Where do you go now?`],
+    sceneOptions: []
   };
 };
 
@@ -207,8 +208,6 @@ const narratives = [
   // lostThingStory
 ];
 
-const plot = { activeScene: startScene, you, scenes, narratives };
-
 const getNarrative = ({ plot, activeScene }) => {
   const { you } = plot;
 
@@ -219,6 +218,7 @@ const getNarrative = ({ plot, activeScene }) => {
   }
 };
 
+const plot = { activeScene: startScene, you, scenes, narratives };
 export default { getNarrative, plot };
 
 const argumentStory = ({ you, activeScene }) => {

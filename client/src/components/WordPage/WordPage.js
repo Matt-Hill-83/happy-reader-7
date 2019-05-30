@@ -163,7 +163,7 @@ class WordPage extends React.Component {
         <audio src={this.state.sound} autoPlay />
         <div className={css.story}>
           {this.renderNarrative()}
-          ---------------------------------------------------------------------------
+          -------------------------------------------------------------------------------------------------------------
           {this.renderNarrativeOptions()}
           {this.renderButtons({ activeScene })}
         </div>
