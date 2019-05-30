@@ -1,5 +1,8 @@
 import myWords from "../Models/words.js";
 
+// These should have getters and setters
+const { words, wordTypes } = myWords;
+
 export default class Utils {
   static removeFavorites = words =>
     words.filter(word => {
@@ -49,20 +52,8 @@ export default class Utils {
     items && items.forEach(item => (item.isReserved = false));
   };
 
-  static generateActiveScene = ({ activeScene }) => {
-    // TODO
-    // TODO
-    // TODO
-    // pack new content into activeScene
-
-    return activeScene;
-  };
-
   static getRandomWordByType = ({ words, type }) => {
     const output = this.getWordsByType({ words, type }).map(word => word.name);
-
-    // output.isUsed = true;
-    // need to output objects
 
     return this.getRandomItem({ items: output });
   };
@@ -105,7 +96,6 @@ export default class Utils {
     const items = this.getWordsByType({ words, type });
 
     const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
-    // const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
 
     // When all the items are used
     if (freshItems.length === 0) {
@@ -115,5 +105,14 @@ export default class Utils {
     const item = this.getRandomItem({ items: freshItems });
     item.isReserved = true;
     return returnName ? item.name : item;
+  };
+
+  static generateScenes = () => {
+    const locationsList =
+      Utils.getWordsByType({ words, type: wordTypes.location }) || [];
+
+    return locationsList.map(location => {
+      return { location: location.name };
+    });
   };
 }

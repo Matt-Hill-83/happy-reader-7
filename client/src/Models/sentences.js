@@ -1,9 +1,9 @@
 import myWords from "../Models/words.js";
 import Utils from "../Utils/Utils.js";
 
-const { wordTypes } = myWords;
+const { words, wordTypes } = myWords;
 
-const generateYou = () => {
+const createMission = () => {
   const missionItem = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.vehicle
   });
@@ -24,24 +24,26 @@ const generateYou = () => {
     type: wordTypes.name
   });
 
-  console.log("missionItemRecipientName", missionItemRecipientName); // zzz
+  return {
+    item: {
+      name: missionItem,
+      startLocation: missionItemStartLocation,
+      endLocation: missionItemEndLocation,
+      recipient: {
+        type: missionItemRecipientType,
+        name: missionItemRecipientName
+      }
+    }
+  };
+};
 
+const generateYou = () => {
   return {
     name: "Charlie",
     creature: "girl",
     homeLocation: "forest",
     vehicle: "scooter",
-    mission: {
-      item: {
-        name: missionItem,
-        startLocation: missionItemStartLocation,
-        endLocation: missionItemEndLocation,
-        recipient: {
-          type: missionItemRecipientType,
-          name: missionItemRecipientName
-        }
-      }
-    },
+    mission: createMission(),
     home: {
       location: "house"
     },
@@ -53,7 +55,7 @@ const generateYou = () => {
 const you = generateYou();
 
 // This cannot be chosen for the next scene.
-const createHomeStory = ({ you }) => {
+const createStartStory = ({ you }) => {
   return {
     story: [
       `Your name is ${you.name}.`,
@@ -90,20 +92,13 @@ const createHomeStory = ({ you }) => {
   };
 };
 
-const scenes = {
-  meadow: { location: "meadow" },
-  waterfall: { location: "waterfall" },
-  school: { location: "school" },
-  garden: { location: "garden" }
-};
-
 const startScene = {
   location: "forest",
   newFriend: {
     type: undefined,
     name: "Crystal"
   },
-  builtInNarrative: createHomeStory({ you }),
+  builtInNarrative: createStartStory({ you }),
   isHome: true,
   mission: {
     item: {
@@ -119,7 +114,7 @@ const startScene = {
 
 const endScene = {
   location: "castle",
-  builtInNarrative: createHomeStory({ you }),
+  builtInNarrative: createStartStory({ you }),
   mission: {
     item: {
       name: "blueberries",
@@ -149,9 +144,8 @@ const createNewFriend = () => {
   };
 };
 
-const newNarrativeP1 = ({ you, activeScene }) => {
+const createNarrative1 = ({ you, activeScene }) => {
   const { location } = activeScene;
-  // const { newFriend, location } = activeScene;
 
   const newFriend = createNewFriend();
 
@@ -186,7 +180,7 @@ const newNarrativeP1 = ({ you, activeScene }) => {
 
 const narratives = [
   // argumentStory,
-  newNarrativeP1
+  createNarrative1
   // birthdayPartyStory,
   // lostCreatureStory,
   // lostThingStory
@@ -202,7 +196,13 @@ const getNarrative = ({ plot, activeScene }) => {
   }
 };
 
-const plot = { activeScene: startScene, endScene, you, scenes, narratives };
+const plot = {
+  activeScene: startScene,
+  endScene,
+  you,
+  scenes: Utils.generateScenes(),
+  narratives
+};
 export default { getNarrative, plot };
 
 // const argumentStory = ({ you, activeScene }) => {

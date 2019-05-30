@@ -35,36 +35,14 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
-    // TODO
-    // TODO
-    // TODO
-    // TODO
-    // When scene is updated, generate the following and pack them into the active scene:
-    // sceneOptions
-    // narrative
-    // random narrative components
-
-    activeScene.isUsed = true;
-
-    // const scenes = plot.scenes;
-    const scenesList =
-      Utils.getWordsByType({ words, type: wordTypes.location }) || [];
+    const scenesList = plot.scenes || [];
 
     Utils.unreserveItems({ items: scenesList });
 
-    const locationA = Utils.reserveRandomItem({ items: scenesList });
-    const locationB = Utils.reserveRandomItem({ items: scenesList });
-
-    // activeScene.sceneOptionA = locationA;
-    // activeScene.sceneOptionB = locationB;
-
-    activeScene.sceneOptionA = { location: locationA.name };
-    activeScene.sceneOptionB = { location: locationB.name };
-
+    activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
+    activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
     activeScene.narrative = Utils.getRandomItem({ items: plot.narratives });
-
-    activeScene = Utils.generateActiveScene({ activeScene });
-    console.log("activeScene", activeScene); // zzz
+    activeScene.isUsed = true;
 
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 });
   };
