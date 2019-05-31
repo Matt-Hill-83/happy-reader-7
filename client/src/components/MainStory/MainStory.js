@@ -15,7 +15,7 @@ import css from "./MainStory.module.scss";
 
 // import { UserConfigStore } from "../../Stores/UserConfigStore.js";
 
-const { plot, generateNarrative } = mySentences;
+const { plot } = mySentences;
 const { wordTypes, words } = myWords;
 
 class MainStory extends React.Component {
@@ -34,6 +34,16 @@ class MainStory extends React.Component {
     this.updateActiveScene({ activeScene });
   }
 
+  generateNarrative = ({ plot, activeScene }) => {
+    const { you } = plot;
+
+    if (activeScene.builtInNarrative) {
+      return activeScene.builtInNarrative;
+    } else {
+      return activeScene.narrative({ you, activeScene });
+    }
+  };
+
   updateActiveScene = ({ activeScene }) => {
     const scenesList = plot.scenes || [];
 
@@ -44,7 +54,7 @@ class MainStory extends React.Component {
     activeScene.narrative = Utils.getRandomItem({ items: plot.narratives });
     activeScene.isUsed = true;
 
-    activeScene.generatedNarrative = generateNarrative({
+    activeScene.generatedNarrative = this.generateNarrative({
       plot,
       activeScene
     });
