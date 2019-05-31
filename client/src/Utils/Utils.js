@@ -77,7 +77,6 @@ export default class Utils {
     const items = this.getWordsByType({ words, type });
 
     const freshItems = items.filter(item => !item.isUsed);
-    // const freshItems = items.filter(item => !item.isUsed && !item.isReserved);
 
     // When all the items are used
     if (freshItems.length === 0) {

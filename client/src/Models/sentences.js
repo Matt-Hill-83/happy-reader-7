@@ -52,10 +52,8 @@ const generateYou = () => {
   };
 };
 
-const you = generateYou();
-
 // This cannot be chosen for the next scene.
-const createStartStory = ({ you }) => {
+const createStartNarrative = ({ you }) => {
   return {
     story: [
       `Your name is ${you.name}.`,
@@ -104,12 +102,12 @@ const createStartStory = ({ you }) => {
 
 const startScene = {
   location: "forest",
-  builtInNarrative: createStartStory
+  builtInNarrative: createStartNarrative
 };
 
 const endScene = {
   location: "castle",
-  builtInNarrative: createStartStory
+  builtInNarrative: createStartNarrative
 };
 
 const createNewFriend = () => {
@@ -163,13 +161,9 @@ const createNarrative1 = ({ you, activeScene }) => {
   };
 };
 
-const narratives = [
-  // argumentStory,
-  createNarrative1
-  // birthdayPartyStory,
-  // lostCreatureStory,
-  // lostThingStory
-];
+const you = generateYou();
+
+const narratives = [createNarrative1];
 
 const plot = {
   activeScene: startScene,
@@ -179,7 +173,6 @@ const plot = {
   narratives
 };
 export default { plot };
-// export default { generateNarrative, plot };
 
 // const argumentStory = ({ you, activeScene }) => {
 //   const sceneOptionA = activeScene.sceneOptionA;
