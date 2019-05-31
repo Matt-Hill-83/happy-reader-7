@@ -109,7 +109,7 @@ const startScene = {
 
 const endScene = {
   location: "castle",
-  builtInNarrative: createStartStory({ you })
+  builtInNarrative: createStartStory
 };
 
 const createNewFriend = () => {

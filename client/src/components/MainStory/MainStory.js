@@ -45,16 +45,17 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
-    const scenesList = plot.scenes || [];
+    const { you, scenes = [], narratives } = plot;
+    const narrative =
+      activeScene.builtInNarrative ||
+      Utils.getRandomItem({ items: narratives });
 
-    Utils.unreserveItems({ items: scenesList });
+    Utils.unreserveItems({ items: scenes });
 
-    activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenesList });
-    activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenesList });
-    activeScene.narrative = Utils.getRandomItem({ items: plot.narratives });
+    activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenes });
+    activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenes });
+    activeScene.generatedNarrative = narrative({ you, activeScene });
     activeScene.isUsed = true;
-
-    activeScene.generatedNarrative = this.generateNarrative({ activeScene });
 
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 });
   };
@@ -90,6 +91,7 @@ class MainStory extends React.Component {
     const goodAtList = [
       "math",
       "reading",
+      "jokes",
       "art",
       "sports",
       "school",
