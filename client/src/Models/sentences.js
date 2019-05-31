@@ -104,7 +104,7 @@ const createStartStory = ({ you }) => {
 
 const startScene = {
   location: "forest",
-  builtInNarrative: createStartStory({ you })
+  builtInNarrative: createStartStory
 };
 
 const endScene = {
@@ -170,16 +170,6 @@ const narratives = [
   // lostCreatureStory,
   // lostThingStory
 ];
-
-// const generateNarrative = ({ plot, activeScene }) => {
-//   const { you } = plot;
-
-//   if (activeScene.builtInNarrative) {
-//     return activeScene.builtInNarrative;
-//   } else {
-//     return activeScene.narrative({ you, activeScene });
-//   }
-// };
 
 const plot = {
   activeScene: startScene,

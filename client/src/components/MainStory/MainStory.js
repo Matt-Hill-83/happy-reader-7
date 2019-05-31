@@ -34,11 +34,11 @@ class MainStory extends React.Component {
     this.updateActiveScene({ activeScene });
   }
 
-  generateNarrative = ({ plot, activeScene }) => {
+  generateNarrative = ({ activeScene }) => {
     const { you } = plot;
 
     if (activeScene.builtInNarrative) {
-      return activeScene.builtInNarrative;
+      return activeScene.builtInNarrative({ you, activeScene });
     } else {
       return activeScene.narrative({ you, activeScene });
     }
@@ -54,10 +54,7 @@ class MainStory extends React.Component {
     activeScene.narrative = Utils.getRandomItem({ items: plot.narratives });
     activeScene.isUsed = true;
 
-    activeScene.generatedNarrative = this.generateNarrative({
-      plot,
-      activeScene
-    });
+    activeScene.generatedNarrative = this.generateNarrative({ activeScene });
 
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 });
   };
