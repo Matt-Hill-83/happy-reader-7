@@ -1,7 +1,22 @@
 import myWords from "../Models/words.js";
 import Utils from "../Utils/Utils.js";
 
-const { words, wordTypes } = myWords;
+const { wordTypes } = myWords;
+
+const generateYou = () => {
+  return {
+    name: "Charlie",
+    creature: "girl",
+    homeLocation: "forest",
+    vehicle: "scooter",
+    mission: generateMission(),
+    home: {
+      location: "house"
+    },
+    friends: [],
+    pet: { type: "dog", name: "Doggy", withMe: true }
+  };
+};
 
 const generateMission = () => {
   const missionItem = Utils.getRandomItemByTypeAndUse({
@@ -37,18 +52,19 @@ const generateMission = () => {
   };
 };
 
-const generateYou = () => {
+const generateNewFriend = () => {
+  const type = Utils.getRandomItemByTypeAndUse({
+    type: wordTypes.creature
+  });
+
+  const name = Utils.getRandomItemByTypeAndUse({
+    type: wordTypes.name
+  });
+
   return {
-    name: "Charlie",
-    creature: "girl",
-    homeLocation: "forest",
-    vehicle: "scooter",
-    mission: generateMission(),
-    home: {
-      location: "house"
-    },
-    friends: [],
-    pet: { type: "dog", name: "Doggy", withMe: true }
+    type,
+    name,
+    mission: generateMission()
   };
 };
 
@@ -97,22 +113,6 @@ const generateStartNarrative = ({ you }) => {
     ],
     proposition: [`Where do you go now?`],
     sceneOptions: [you.mission.item.startLocation]
-  };
-};
-
-const generateNewFriend = () => {
-  const type = Utils.getRandomItemByTypeAndUse({
-    type: wordTypes.creature
-  });
-
-  const name = Utils.getRandomItemByTypeAndUse({
-    type: wordTypes.name
-  });
-
-  return {
-    type,
-    name,
-    mission: generateMission()
   };
 };
 
@@ -172,43 +172,3 @@ const plot = {
 };
 
 export default { plot };
-
-// const argumentStory = ({ you, activeScene }) => {
-//   const sceneOptionA = activeScene.sceneOptionA;
-
-//   const creatures = Utils.getWordsByType({ words, type: wordTypes.animal });
-//   const animal1 = Utils.getRandomItem({ items: creatures });
-//   const animal2 = Utils.getRandomItem({ items: creatures });
-//   const names = Utils.getWordsByType({ words, type: wordTypes.name });
-//   const name1 = Utils.getRandomItem({ items: names });
-//   const name2 = Utils.getRandomItem({ items: names });
-
-//   const creature1 = { type: animal1.name, name: name1.name };
-//   const creature2 = { type: animal2.name, name: name2.name };
-
-//   if (!activeScene || activeScene === undefined) {
-//     return [];
-//   }
-
-//   return [
-//     `You go on your ${you.vehicle} to the ${activeScene &&
-//       activeScene.location}.`,
-//     `You see a ${creature2.type}`,
-//     `At the ${activeScene && activeScene.location}, you see a ${
-//       creature2.type
-//     }.`,
-//     `You also see a ${creature1.type}.`,
-//     `They both look mad.`,
-//     `The ${creature1.type} says,`,
-
-//     `"I am ${creature1.name}."`,
-//     `"Will you come to the ${sceneOptionA.location} with me?"`
-//     // `The ${creature2.type} says,`,
-//     // `"I am ${creature2.name}."`
-//     // Deal with only 1 scene left, maybe allow user to return to previous scene,
-//     //  but set a flag that there is only one scene left.  How should the game
-//     // end?
-//     // `"Will you come to the ${sceneOptionB.location} with me?"`
-//     // `${"Will you come to the ${sceneOptionB.location} with me?"}`
-//   ];
-// };
