@@ -171,7 +171,7 @@ const narratives = [
   // lostThingStory
 ];
 
-const getNarrative = ({ plot, activeScene }) => {
+const generateNarrative = ({ plot, activeScene }) => {
   const { you } = plot;
 
   if (activeScene.builtInNarrative) {
@@ -188,7 +188,7 @@ const plot = {
   scenes: Utils.generateScenes(),
   narratives
 };
-export default { getNarrative, plot };
+export default { generateNarrative, plot };
 
 // const argumentStory = ({ you, activeScene }) => {
 //   const sceneOptionA = activeScene.sceneOptionA;

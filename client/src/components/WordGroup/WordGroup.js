@@ -1,12 +1,9 @@
 import React from "react";
 import { observer } from "mobx-react";
 
-import mySentences from "../../Models/sentences.js";
 import Sounds from "../../Sounds/Sounds";
 
 import css from "./WordGroup.module.scss";
-
-const { getNarrative, plot } = mySentences;
 
 class WordGroup extends React.Component {
   state = {
@@ -16,11 +13,13 @@ class WordGroup extends React.Component {
   };
 
   async componentWillMount() {
-    this.setState({ ...this.props.wordGroupProps });
+    const { story } = this.props;
+    this.setState({ story });
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({ ...newProps.wordGroupProps });
+    const { story } = newProps;
+    this.setState({ story });
   }
 
   playWordSound = (event, { word }) => {
@@ -66,8 +65,6 @@ class WordGroup extends React.Component {
   };
 
   render() {
-    console.log("this.state", this.state); // zzz
-
     return (
       <div className={css.main}>
         <audio src={this.state.sound} autoPlay />
