@@ -32,10 +32,10 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
-    const { you, scenes = [], narratives } = plot;
+    const { you, scenes = [], narrativeGenerators } = plot;
     const narrative =
       activeScene.builtInNarrative ||
-      Utils.getRandomItem({ items: narratives });
+      Utils.getRandomItem({ items: narrativeGenerators });
 
     Utils.unreserveItems({ items: scenes });
 

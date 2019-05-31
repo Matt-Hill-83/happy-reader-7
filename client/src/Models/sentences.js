@@ -100,16 +100,6 @@ const createStartNarrative = ({ you }) => {
   };
 };
 
-const startScene = {
-  location: "forest",
-  builtInNarrative: createStartNarrative
-};
-
-const endScene = {
-  location: "castle",
-  builtInNarrative: createStartNarrative
-};
-
 const createNewFriend = () => {
   const type = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.creature
@@ -161,16 +151,24 @@ const createNarrative1 = ({ you, activeScene }) => {
   };
 };
 
-const you = generateYou();
+const narrativeGenerators = [createNarrative1];
 
-const narratives = [createNarrative1];
+const startScene = {
+  location: "forest",
+  builtInNarrative: createStartNarrative
+};
+
+const endScene = {
+  location: "castle",
+  builtInNarrative: createStartNarrative
+};
 
 const plot = {
   activeScene: startScene,
   endScene,
-  you,
+  you: generateYou(),
   scenes: Utils.generateScenes(),
-  narratives
+  narrativeGenerators
 };
 export default { plot };
 
