@@ -4,6 +4,7 @@ import { Button } from "@blueprintjs/core";
 
 import mySentences from "../../Models/sentences.js";
 import Sounds from "../../Sounds/Sounds";
+import WordGroup from "../WordGroup/WordGroup.js";
 
 import css from "./WordPage.module.scss";
 
@@ -41,6 +42,8 @@ class WordPage extends React.Component {
       activeScene
     });
 
+    const story = (narrative && narrative.story) || [];
+
     const renderedNarrative =
       narrative &&
       narrative.story &&
@@ -75,8 +78,68 @@ class WordPage extends React.Component {
         );
       });
 
+    const wordGroupProps = {
+      activeScene,
+      story
+    };
+    return (
+      <WordGroup
+        activeScene={activeScene}
+        wordGroupProps={wordGroupProps}
+        story={story}
+      />
+    );
     return <div className={css.narrative}>{renderedNarrative}</div>;
   };
+
+  // renderNarrative = () => {
+  //   const { activeScene } = this.state;
+
+  //   if (!activeScene) {
+  //     return null;
+  //   }
+
+  //   const narrative = getNarrative({
+  //     plot,
+  //     activeScene
+  //   });
+
+  //   const renderedNarrative =
+  //     narrative &&
+  //     narrative.story &&
+  //     narrative.story.map((sentence, sentenceIndex) => {
+  //       const parsedSentence = sentence.split(/\s/);
+
+  //       const renderedSentence = parsedSentence.map((word, wordIndex) => {
+  //         const tabIndex = 100 * sentenceIndex + (wordIndex + 1);
+
+  //         // TODO - fix autofocus
+  //         const autofocus = tabIndex === 1 ? { autoFocus: true } : { test: 3 };
+
+  //         return (
+  //           <span
+  //             key={wordIndex}
+  //             {...autofocus}
+  //             autoFocus
+  //             tabIndex={tabIndex}
+  //             className={css.sentenceWord}
+  //             onClick={event => this.playWordSound(event, { word })}
+  //             onFocus={event => this.playWordSound(event, { word })}
+  //           >
+  //             {word}
+  //           </span>
+  //         );
+  //       });
+
+  //       return (
+  //         <span key={sentenceIndex} className={css.sentence}>
+  //           {renderedSentence}
+  //         </span>
+  //       );
+  //     });
+
+  //   return <div className={css.narrative}>{renderedNarrative}</div>;
+  // };
 
   renderNarrativeOptions = () => {
     const { activeScene } = this.state;
@@ -94,6 +157,55 @@ class WordPage extends React.Component {
       narrative &&
       narrative.proposition &&
       narrative.proposition.map((sentence, sentenceIndex) => {
+        const parsedSentence = sentence.split(/\s/);
+
+        const renderedSentence = parsedSentence.map((word, wordIndex) => {
+          const tabIndex = 100 * sentenceIndex + (wordIndex + 1);
+
+          // TODO - fix autofocus
+          const autofocus = tabIndex === 1 ? { autoFocus: true } : { test: 3 };
+
+          return (
+            <span
+              key={wordIndex}
+              {...autofocus}
+              autoFocus
+              tabIndex={tabIndex}
+              className={css.sentenceWord}
+              onClick={event => this.playWordSound(event, { word })}
+              onFocus={event => this.playWordSound(event, { word })}
+            >
+              {word}
+            </span>
+          );
+        });
+
+        return (
+          <span key={sentenceIndex} className={css.sentence}>
+            {renderedSentence}
+          </span>
+        );
+      });
+
+    return <div className={css.narrative}>{renderedNarrative}</div>;
+  };
+
+  renderMission = () => {
+    const { activeScene } = this.state;
+
+    if (!activeScene) {
+      return null;
+    }
+
+    const narrative = getNarrative({
+      plot,
+      activeScene
+    });
+
+    const renderedNarrative =
+      narrative &&
+      narrative.mission &&
+      narrative.mission.map((sentence, sentenceIndex) => {
         const parsedSentence = sentence.split(/\s/);
 
         const renderedSentence = parsedSentence.map((word, wordIndex) => {
@@ -165,6 +277,8 @@ class WordPage extends React.Component {
           {this.renderNarrative()}
           -------------------------------------------------------------------------------------------------------------
           {this.renderNarrativeOptions()}
+          -------------------------------------------------------------------------------------------------------------
+          {this.renderMission()}
           {this.renderButtons({ activeScene })}
         </div>
       </div>

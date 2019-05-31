@@ -87,6 +87,16 @@ const createStartStory = ({ you }) => {
 
       `${you.mission.item.recipient.name} will be sooooooo happy!`
     ],
+    mission: [
+      `Go to the ${you.mission.item.startLocation}`,
+      `Find the ${you.mission.item.name}.`,
+
+      `Bring the ${you.mission.item.name} to the ${
+        you.mission.item.endLocation
+      }.`,
+
+      `Give the ${you.mission.item.name} to ${you.mission.item.recipient.name}.`
+    ],
     proposition: [`Where do you go now?`],
     sceneOptions: [you.mission.item.startLocation]
   };
@@ -142,6 +152,7 @@ const createNarrative1 = ({ you, activeScene }) => {
       }."`,
       `"Will you go with me?"`
     ],
+    mission: [],
     proposition: [
       `Do you go to the ${newFriend.mission.item.startLocation} to help ${
         newFriend.name

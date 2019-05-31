@@ -1,0 +1,36 @@
+.main {
+  border: 1px solid red !important;
+  .narrative {
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+    padding-left: 10px;
+
+    .sentence {
+      display: flex;
+      align-items: center;
+
+      font-size: 30px;
+      flex-wrap: wrap;
+
+      .sentenceWord {
+        border: 1px solid transparent !important;
+        border-radius: 3px;
+
+        margin-left: 0;
+        padding-right: 0.25em;
+        padding-left: 0.25em;
+      }
+
+      .sentenceWord:focus {
+        border: 1px solid blue !important;
+        outline: none;
+      }
+    }
+
+    .sentence:nth-of-type(3n) {
+      margin-bottom: 24px;
+    }
+  }
+}
