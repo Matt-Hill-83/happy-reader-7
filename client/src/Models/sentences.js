@@ -3,7 +3,7 @@ import Utils from "../Utils/Utils.js";
 
 const { words, wordTypes } = myWords;
 
-const createMission = () => {
+const generateMission = () => {
   const missionItem = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.vehicle
   });
@@ -43,7 +43,7 @@ const generateYou = () => {
     creature: "girl",
     homeLocation: "forest",
     vehicle: "scooter",
-    mission: createMission(),
+    mission: generateMission(),
     home: {
       location: "house"
     },
@@ -53,7 +53,7 @@ const generateYou = () => {
 };
 
 // This cannot be chosen for the next scene.
-const createStartNarrative = ({ you }) => {
+const generateStartNarrative = ({ you }) => {
   return {
     story: [
       `Your name is ${you.name}.`,
@@ -100,7 +100,7 @@ const createStartNarrative = ({ you }) => {
   };
 };
 
-const createNewFriend = () => {
+const generateNewFriend = () => {
   const type = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.creature
   });
@@ -112,14 +112,14 @@ const createNewFriend = () => {
   return {
     type,
     name,
-    mission: createMission()
+    mission: generateMission()
   };
 };
 
-const createNarrative1 = ({ you, activeScene }) => {
+const generateNarrative1 = ({ you, activeScene }) => {
   const { location } = activeScene;
 
-  const newFriend = createNewFriend();
+  const newFriend = generateNewFriend();
 
   return {
     story: [
@@ -151,16 +151,16 @@ const createNarrative1 = ({ you, activeScene }) => {
   };
 };
 
-const narrativeGenerators = [createNarrative1];
+const narrativeGenerators = [generateNarrative1];
 
 const startScene = {
   location: "forest",
-  builtInNarrative: createStartNarrative
+  builtInNarrative: generateStartNarrative
 };
 
 const endScene = {
   location: "castle",
-  builtInNarrative: createStartNarrative
+  builtInNarrative: generateStartNarrative
 };
 
 const plot = {
@@ -170,6 +170,7 @@ const plot = {
   scenes: Utils.generateScenes(),
   narrativeGenerators
 };
+
 export default { plot };
 
 // const argumentStory = ({ you, activeScene }) => {
