@@ -24,25 +24,12 @@ class MainStory extends React.Component {
     // showStory: false,
     showStory: true,
     activeScene: undefined,
-    pageNum: 0,
-    sound: null
+    pageNum: 0
   };
 
   async componentWillMount() {
-    const activeScene = plot.activeScene;
-
-    this.updateActiveScene({ activeScene });
+    this.updateActiveScene({ activeScene: plot.activeScene });
   }
-
-  generateNarrative = ({ activeScene }) => {
-    const { you } = plot;
-
-    if (activeScene.builtInNarrative) {
-      return activeScene.builtInNarrative({ you, activeScene });
-    } else {
-      return activeScene.narrative({ you, activeScene });
-    }
-  };
 
   updateActiveScene = ({ activeScene }) => {
     const { you, scenes = [], narratives } = plot;
@@ -69,7 +56,6 @@ class MainStory extends React.Component {
         {/* todo - fix this */}
         {/* <span>{UserConfigStore.docs[0]}</span> */}
         {this.renderHeader()}
-        <audio src={this.state.sound} autoPlay />
 
         <div className={css.body}>
           {!this.state.showStory && <FlashCards />}
