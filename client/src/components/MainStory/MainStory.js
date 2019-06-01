@@ -7,6 +7,7 @@ import myWords from "../../Models/words.js";
 import mySentences from "../../Models/sentences.js";
 
 import FlashCards from "../FlashCards/FlashCards";
+import IntroPage1 from "../IntroPage1/IntroPage1.js";
 import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
 import WordPage from "../WordPage/WordPage.js";
@@ -15,8 +16,8 @@ import css from "./MainStory.module.scss";
 
 // import { UserConfigStore } from "../../Stores/UserConfigStore.js";
 
-const { plot } = mySentences;
-const { wordTypes, words } = myWords;
+const { plot, generateNewFriend } = mySentences;
+const { wordTypes } = myWords;
 
 class MainStory extends React.Component {
   state = {
@@ -34,10 +35,18 @@ class MainStory extends React.Component {
   updateActiveScene = ({ activeScene }) => {
     const { you, scenes = [], narrativeGenerators } = plot;
     const narrative =
-      activeScene.builtInNarrative ||
+      activeScene.builtInNarrativeGenerator ||
       Utils.getRandomItem({ items: narrativeGenerators });
 
     Utils.unreserveItems({ items: scenes });
+
+    // TODO
+    // TODO
+    // TODO
+    // generate the new friend here and pass it to the scene generator,
+    // and attach it to the plot
+    const newFriend = generateNewFriend();
+    activeScene.newFriend = newFriend;
 
     activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenes });
     activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenes });
@@ -48,9 +57,24 @@ class MainStory extends React.Component {
   };
 
   render() {
+    const showIntro = true;
+    // const shoWIntro = false
+
     const { activeScene, pageNum } = this.state;
     const wordPageProps = { activeScene, pageNum };
 
+    console.log("activeScene", activeScene); // zzz
+
+    const params = { cat: 5 };
+
+    if (showIntro) {
+      return (
+        <div className={css.introPage}>
+          <IntroPage1 params={params} />;
+        </div>
+        // return <IntroPage2 params={params} />;
+      );
+    }
     return (
       <div className={css.main}>
         {/* todo - fix this */}
@@ -73,6 +97,7 @@ class MainStory extends React.Component {
     );
   }
 
+  // turn into a Component, it is just in the way.
   renderHeader = () => {
     const goodAtList = [
       "math",
@@ -112,4 +137,5 @@ class MainStory extends React.Component {
     this.setState({ showStory: !this.state.showStory });
   };
 }
+
 export default observer(MainStory);

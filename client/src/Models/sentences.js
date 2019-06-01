@@ -155,20 +155,20 @@ const narrativeGenerators = [generateNarrative1];
 
 const startScene = {
   location: "forest",
-  builtInNarrative: generateStartNarrative
+  builtInNarrativeGenerator: generateStartNarrative
 };
 
 const endScene = {
   location: "castle",
-  builtInNarrative: generateStartNarrative
+  builtInNarrativeGenerator: generateStartNarrative
 };
 
 const plot = {
   activeScene: startScene,
   endScene,
-  you: generateYou(),
+  narrativeGenerators,
   scenes: Utils.generateScenes(),
-  narrativeGenerators
+  you: generateYou()
 };
 
-export default { plot };
+export default { plot, generateNewFriend };
