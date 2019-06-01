@@ -18,8 +18,10 @@ class IntroPage1 extends React.Component {
   }
 
   render() {
+    const { className } = this.props;
+
     return (
-      <div className={css.main}>
+      <div className={`${css.main} ${className}`}>
         <div className={css.content}>hello</div>
         <input
           autoFocus={true}

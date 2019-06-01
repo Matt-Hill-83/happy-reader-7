@@ -37,22 +37,22 @@
 }
 
 .introPage {
-  border: 1px solid red !important;
   display: flex;
   flex-direction: column;
-  // flex: 1;
   height: 100vh;
+  position: relative;
+}
+
+.IntroPage1 {
+  border: 1px solid blue !important;
+  position: absolute;
+  top: 5%;
 }
 
 .characterImage {
   display: flex;
-  width: 500px;
-  height: auto;
   height: 550px;
   width: auto;
-  /* height: 40%; */
-  width: auto;
-  /* flex: 1; */
 }
 
 .backgroundImage1,
@@ -74,9 +74,14 @@
 }
 
 .characters {
-  // border: 1px solid blue !important;
+  border: 1px solid blue !important;
   display: flex;
-  align-self: flex-start;
-  justify-self: flex-end;
-  bottom: 0px;
+
+  position: absolute;
+  bottom: 320px;
+  left: 70px;
+}
+
+.backgrounds {
+  border: 1px solid blue !important;
 }

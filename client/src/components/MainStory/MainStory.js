@@ -75,17 +75,19 @@ class MainStory extends React.Component {
     if (showIntro) {
       return (
         <div className={css.introPage}>
-          <img
-            className={`${css.backgroundImage} ${css.background1}`}
-            src={Images.backgrounds[backgroundImage1]}
-            alt={backgroundImage1}
-          />
-          <img
-            className={`${css.backgroundImage} ${css.background2}`}
-            src={Images.backgrounds[backgroundImage2]}
-            alt={backgroundImage2}
-          />
-          <IntroPage1 params={params} />;
+          <div className={css.backGrounds}>
+            <img
+              className={`${css.backgroundImage} ${css.background1}`}
+              src={Images.backgrounds[backgroundImage1]}
+              alt={backgroundImage1}
+            />
+            <img
+              className={`${css.backgroundImage} ${css.background2}`}
+              src={Images.backgrounds[backgroundImage2]}
+              alt={backgroundImage2}
+            />
+          </div>
+          <IntroPage1 className={css.IntroPage1} params={params} />
           <div className={css.characters}>
             <img
               className={`${css.characterImage} ${css.character1}`}

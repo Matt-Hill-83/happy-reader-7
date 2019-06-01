@@ -1,11 +1,11 @@
 .main {
   display: flex;
   flex-direction: column;
+  align-self: center;
+
   width: 50%;
   position: absolute;
-  bottom: 0px;
   margin-right: 50%;
-  align-self: center;
   margin-left: auto;
   background: white;
   border-radius: 72px;
