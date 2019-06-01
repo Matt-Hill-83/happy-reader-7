@@ -29,7 +29,7 @@ class IntroPage1 extends React.Component {
 
   renderIntroText = () => {
     return (
-      <div className={`${css.main} ${"className"}`}>
+      <div className={css.introText}>
         <div className={css.content}>hello</div>
 
         <TextField
@@ -46,7 +46,6 @@ class IntroPage1 extends React.Component {
         <Button onClick={this.showYou} variant="contained" color="primary">
           CLICK
         </Button>
-        {/* <div className={css.content}>Goblin image</div> */}
       </div>
     );
   };
@@ -72,7 +71,7 @@ class IntroPage1 extends React.Component {
             alt={backgroundImage2}
           />
         </div>
-        <div className={css.IntroPage1}>{this.renderIntroText()}</div>
+        {this.renderIntroText()}
         <div className={css.characters}>
           <img
             className={`${css.characterImage} ${css.character1}`}

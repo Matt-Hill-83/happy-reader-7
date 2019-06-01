@@ -55,8 +55,13 @@
   height: 100%;
 }
 
-.IntroPage1 {
+.introText {
   border: 1px solid blue !important;
+  background: white;
   position: absolute;
+  left: 50%;
   top: 5%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
 }
