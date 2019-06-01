@@ -67,9 +67,9 @@ class MainStory extends React.Component {
     console.log("activeScene", activeScene); // zzz
 
     const params = { cat: 5 };
-
     const youImage = "unicorn";
-    const backgroundImage = "forest";
+    const backgroundImage1 = "forestRight";
+    const backgroundImage2 = "forestLeft";
     const friendImage = "girl";
 
     if (showIntro) {
@@ -77,13 +77,13 @@ class MainStory extends React.Component {
         <div className={css.introPage}>
           <img
             className={`${css.backgroundImage} ${css.background1}`}
-            src={Images[backgroundImage]}
-            alt={backgroundImage}
+            src={Images.backgrounds[backgroundImage1]}
+            alt={backgroundImage1}
           />
           <img
             className={`${css.backgroundImage} ${css.background2}`}
-            src={Images[backgroundImage]}
-            alt={backgroundImage}
+            src={Images.backgrounds[backgroundImage2]}
+            alt={backgroundImage2}
           />
           <IntroPage1 params={params} />;
           <div className={css.characters}>
