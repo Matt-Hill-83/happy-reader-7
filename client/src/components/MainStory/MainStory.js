@@ -68,8 +68,8 @@ class MainStory extends React.Component {
 
     const params = { cat: 5 };
     const youImage = "unicorn";
-    const backgroundImage1 = "forestRight";
-    const backgroundImage2 = "forestLeft";
+    const backgroundImage2 = "forestRight";
+    const backgroundImage1 = "forestLeft";
     const friendImage = "girl";
 
     if (showIntro) {
@@ -77,12 +77,12 @@ class MainStory extends React.Component {
         <div className={css.introPage}>
           <div className={css.backGrounds}>
             <img
-              className={`${css.backgroundImage} ${css.background1}`}
+              className={`${css.backgroundImage} ${css.backgroundImage1}`}
               src={Images.backgrounds[backgroundImage1]}
               alt={backgroundImage1}
             />
             <img
-              className={`${css.backgroundImage} ${css.background2}`}
+              className={`${css.backgroundImage} ${css.backgroundImage2}`}
               src={Images.backgrounds[backgroundImage2]}
               alt={backgroundImage2}
             />
