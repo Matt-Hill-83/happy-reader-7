@@ -11,6 +11,7 @@ import IntroPage1 from "../IntroPage1/IntroPage1.js";
 import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
 import WordPage from "../WordPage/WordPage.js";
+import Images from "../../images/images.js";
 
 import css from "./MainStory.module.scss";
 
@@ -67,10 +68,36 @@ class MainStory extends React.Component {
 
     const params = { cat: 5 };
 
+    const youImage = "unicorn";
+    const backgroundImage = "forest";
+    const friendImage = "girl";
+
     if (showIntro) {
       return (
         <div className={css.introPage}>
+          <img
+            className={`${css.backgroundImage} ${css.background1}`}
+            src={Images[backgroundImage]}
+            alt={backgroundImage}
+          />
+          <img
+            className={`${css.backgroundImage} ${css.background2}`}
+            src={Images[backgroundImage]}
+            alt={backgroundImage}
+          />
           <IntroPage1 params={params} />;
+          <div className={css.characters}>
+            <img
+              className={`${css.characterImage} ${css.character1}`}
+              src={Images[friendImage]}
+              alt={friendImage}
+            />
+            <img
+              className={`${css.characterImage} ${css.character1}`}
+              src={Images[youImage]}
+              alt={youImage}
+            />
+          </div>
         </div>
         // return <IntroPage2 params={params} />;
       );

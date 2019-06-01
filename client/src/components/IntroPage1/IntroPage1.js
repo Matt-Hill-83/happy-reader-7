@@ -20,7 +20,17 @@ class IntroPage1 extends React.Component {
   render() {
     return (
       <div className={css.main}>
-        <div className={css.content}>CATS!</div>
+        <div className={css.content}>hello</div>
+        <input
+          autoFocus={true}
+          type="text"
+          value="CHARLIE"
+          className={css.content}
+        />
+        {/* <div className={css.content}>CLICK</div> */}
+        <div className={css.content}>You are a...</div>
+        <button className={css.content}>CLICK</button>
+        {/* <div className={css.content}>Goblin image</div> */}
       </div>
     );
   }

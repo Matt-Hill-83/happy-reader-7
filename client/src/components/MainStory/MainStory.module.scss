@@ -39,6 +39,44 @@
 .introPage {
   border: 1px solid red !important;
   display: flex;
+  flex-direction: column;
   // flex: 1;
   height: 100vh;
+}
+
+.characterImage {
+  display: flex;
+  width: 500px;
+  height: auto;
+  height: 550px;
+  width: auto;
+  /* height: 40%; */
+  width: auto;
+  /* flex: 1; */
+}
+
+.backgroundImage1,
+.backgroundImage2 {
+  width: 50%;
+}
+
+.backgroundImage2 {
+  left: 50%;
+}
+
+.backgroundImage {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  z-index: -1;
+}
+
+.characters {
+  // border: 1px solid blue !important;
+  display: flex;
+  align-self: flex-start;
+  justify-self: flex-end;
+  bottom: 0px;
 }
