@@ -28,10 +28,6 @@ class WordPage extends React.Component {
   renderButtons = () => {
     const { activeScene } = this.state;
 
-    // if (!activeScene) {
-    //   return null;
-    // }
-
     const options = [activeScene.sceneOptionA, activeScene.sceneOptionB];
     const buttons = options.map((scene, i) => {
       if (!scene) {

@@ -64,46 +64,12 @@ class MainStory extends React.Component {
     const { activeScene, pageNum } = this.state;
     const wordPageProps = { activeScene, pageNum };
 
-    console.log("activeScene", activeScene); // zzz
-
     const params = { cat: 5 };
-    const youImage = "unicorn";
-    const backgroundImage2 = "forestRight";
-    const backgroundImage1 = "forestLeft";
-    const friendImage = "girl";
 
     if (showIntro) {
-      return (
-        <div className={css.introPage}>
-          <div className={css.backGrounds}>
-            <img
-              className={`${css.backgroundImage} ${css.backgroundImage1}`}
-              src={Images.backgrounds[backgroundImage1]}
-              alt={backgroundImage1}
-            />
-            <img
-              className={`${css.backgroundImage} ${css.backgroundImage2}`}
-              src={Images.backgrounds[backgroundImage2]}
-              alt={backgroundImage2}
-            />
-          </div>
-          <IntroPage1 className={css.IntroPage1} params={params} />
-          <div className={css.characters}>
-            <img
-              className={`${css.characterImage} ${css.character1}`}
-              src={Images[friendImage]}
-              alt={friendImage}
-            />
-            <img
-              className={`${css.characterImage} ${css.character1}`}
-              src={Images[youImage]}
-              alt={youImage}
-            />
-          </div>
-        </div>
-        // return <IntroPage2 params={params} />;
-      );
+      return <IntroPage1 className={css.IntroPage1} params={params} />;
     }
+
     return (
       <div className={css.main}>
         {/* todo - fix this */}
