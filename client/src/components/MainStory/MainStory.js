@@ -61,21 +61,21 @@ class MainStory extends React.Component {
   };
 
   render() {
-    const showIntro = true;
+    // const showIntro = true;
     // const shoWIntro = false
 
     console.log("localStateStore.page", localStateStore.page); // zzz
 
     // localStateStore.setPage("zippy");
-    const test = localStateStore.getPage();
-    console.log("test", test); // zzz
+    const page = localStateStore.getPage();
+    console.log("page", page); // zzz
 
     const { activeScene, pageNum } = this.state;
     const wordPageProps = { activeScene, pageNum };
 
     const params = { cat: 5 };
 
-    if (showIntro) {
+    if (page === "intro1") {
       return <IntroPage1 className={css.IntroPage1} params={params} />;
     }
 
