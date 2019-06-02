@@ -22,7 +22,7 @@ import css from "./IntroPage1.module.scss";
 class IntroPage1 extends React.Component {
   state = {
     pageNum: 0,
-    showYou: false
+    value: "girl"
   };
 
   async componentWillMount() {
@@ -34,10 +34,6 @@ class IntroPage1 extends React.Component {
   }
 
   handleChange = ({ event, test }) => {
-    console.log("test", test); // zzz
-
-    console.log("event", event); // zzz
-    // /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
     this.setState({
       youCreature: event.target.value,
       name: event.target.name,
@@ -46,7 +42,7 @@ class IntroPage1 extends React.Component {
   };
 
   createYouPickerOptions = () => {
-    const youOptions = ["fairy", "unicorn", "girl", "elf", "mermaid"];
+    const youOptions = ["fairy", "unicorn", "girl", "elf"];
 
     const renderedMenuItems = youOptions.map(you => (
       <MenuItem value={you}>{you && you.toUpperCase()}</MenuItem>
@@ -55,21 +51,8 @@ class IntroPage1 extends React.Component {
   };
 
   renderIntroText = () => {
-    const { showYou } = this.state;
     const inputLabel = "test";
     const classes = "test";
-
-    // const classes = this.useStyles();
-    // const [values, setValues] = React.useState({
-    //   age: "",
-    //   name: "hai"
-    // });
-
-    // const inputLabel = React.useRef(null);
-    // const [labelWidth, setLabelWidth] = React.useState(0);
-    // React.useEffect(() => {
-    //   setLabelWidth(inputLabel.current.offsetWidth);
-    // }, []);
 
     return (
       <div className={css.introText}>
@@ -101,66 +84,60 @@ class IntroPage1 extends React.Component {
             {this.createYouPickerOptions()}
           </Select>
         </FormControl>
+        {this.renderYouImage()}
       </div>
     );
   };
 
   renderYouImage = () => {
     const { youCreature } = this.state;
-    const friendImage = youCreature && youCreature.toLowerCase();
-    console.log("friendImage", friendImage); // zzz
+    const youImage = youCreature && youCreature.toLowerCase();
 
     return (
       <img
         className={`${css.characterImage} ${css.character1}`}
-        src={Images[friendImage]}
-        alt={friendImage}
+        src={Images[youImage]}
+        alt={youImage}
       />
+    );
+  };
+
+  renderBackground = () => {
+    const backgroundImage2 = "forestRight";
+    const backgroundImage1 = "forestLeft";
+
+    return (
+      <div className={css.backgrounds}>
+        <img
+          className={`${css.backgroundImage} ${css.backgroundImage1}`}
+          src={Images.backgrounds[backgroundImage1]}
+          alt={backgroundImage1}
+        />
+        <img
+          className={`${css.backgroundImage} ${css.backgroundImage2}`}
+          src={Images.backgrounds[backgroundImage2]}
+          alt={backgroundImage2}
+        />
+      </div>
     );
   };
 
   render() {
     const { params } = this.props;
 
-    console.log("this.state", this.state); // zzz
-
-    const youImage = "unicorn";
-    const backgroundImage2 = "forestRight";
-    const backgroundImage1 = "forestLeft";
-
     return (
       <div className={css.introPage}>
-        <div className={css.backgrounds}>
-          <img
-            className={`${css.backgroundImage} ${css.backgroundImage1}`}
-            src={Images.backgrounds[backgroundImage1]}
-            alt={backgroundImage1}
-          />
-          <img
-            className={`${css.backgroundImage} ${css.backgroundImage2}`}
-            src={Images.backgrounds[backgroundImage2]}
-            alt={backgroundImage2}
-          />
-        </div>
+        {this.renderBackground()}
         {this.renderIntroText()}
-        <div className={css.characters}>
-          {this.renderYouImage()}
-          <img
-            className={`${css.characterImage} ${css.character1}`}
-            src={Images[youImage]}
-            alt={youImage}
-          />
-        </div>
-        {true && (
-          <Button
-            className={css.nextButton}
-            onClick={this.showYou}
-            variant="contained"
-            color="primary"
-          >
-            NEXT
-          </Button>
-        )}
+        <div className={css.characters} />
+        <Button
+          className={css.nextButton}
+          onClick={this.showYou}
+          variant="contained"
+          color="primary"
+        >
+          NEXT
+        </Button>
       </div>
     );
   }
