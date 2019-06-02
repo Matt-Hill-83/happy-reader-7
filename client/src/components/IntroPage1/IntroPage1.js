@@ -4,9 +4,6 @@ import _get from "lodash.get";
 
 import Images from "../../images/images.js";
 
-// import Button from "@material-ui/core/Button";
-// import TextField from "@material-ui/core/TextField";
-
 import {
   TextField,
   Button,
@@ -36,6 +33,12 @@ class IntroPage1 extends React.Component {
   }
 
   finishIntro = () => {
+    const you = localStateStore.getYou();
+    you.name = this.state.youName;
+    you.creature = this.state.youCreature;
+
+    localStateStore.setYou(you);
+
     localStateStore.setPage("intro2");
   };
 
@@ -64,6 +67,7 @@ class IntroPage1 extends React.Component {
         {you && you.toUpperCase()}
       </MenuItem>
     ));
+
     return renderedMenuItems;
   };
 
@@ -110,7 +114,7 @@ class IntroPage1 extends React.Component {
 
   renderYouImage = () => {
     const { youCreature } = this.state;
-    const youImage = youCreature && youCreature.toLowerCase();
+    const youImage = youCreature && youCreature;
 
     return (
       <img
