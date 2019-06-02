@@ -55,6 +55,15 @@ class IntroPage1 extends React.Component {
   //   }
   // }));
 
+  handleChange = event => {
+    console.log("event", event); // zzz
+    // /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
+    this.setState({
+      name: event.target.name,
+      value: event.target.value
+    });
+  };
+
   renderIntroText = () => {
     const { showYou } = this.state;
     const inputLabel = "test";
@@ -72,13 +81,6 @@ class IntroPage1 extends React.Component {
     // React.useEffect(() => {
     //   setLabelWidth(inputLabel.current.offsetWidth);
     // }, []);
-
-    // function handleChange(event) {
-    //   setValues(oldValues => ({
-    //     ...oldValues,
-    //     [event.target.name]: event.target.value
-    //   }));
-    // }
 
     return (
       <div className={css.introText}>
@@ -98,15 +100,17 @@ class IntroPage1 extends React.Component {
 
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
-            Age
+            You
           </InputLabel>
           <Select
-            value={values.age}
-            // onChange={handleChange}
+            // value={"test-1"}
+            value={this.state.value}
+            // value={this.state.name}
+            onChange={this.handleChange}
             input={
               <OutlinedInput
                 // labelWidth={labelWidth}
-                name="age"
+                // name="age"
                 id="outlined-age-simple"
               />
             }
@@ -129,6 +133,19 @@ class IntroPage1 extends React.Component {
     );
   };
 
+  renderYouImage = () => {
+    const { name } = this.state;
+    const friendImage = name && name.toLowerCase();
+
+    return (
+      <img
+        className={`${css.characterImage} ${css.character1}`}
+        src={Images[friendImage]}
+        alt={friendImage}
+      />
+    );
+  };
+
   render() {
     const { params } = this.props;
     const { showYou } = this.state;
@@ -136,7 +153,7 @@ class IntroPage1 extends React.Component {
     const youImage = "unicorn";
     const backgroundImage2 = "forestRight";
     const backgroundImage1 = "forestLeft";
-    const friendImage = "girl";
+    // const friendImage = "girl";
 
     return (
       <div className={css.introPage}>
@@ -154,13 +171,7 @@ class IntroPage1 extends React.Component {
         </div>
         {this.renderIntroText()}
         <div className={css.characters}>
-          {showYou && (
-            <img
-              className={`${css.characterImage} ${css.character1}`}
-              src={Images[friendImage]}
-              alt={friendImage}
-            />
-          )}
+          {this.renderYouImage()}
           <img
             className={`${css.characterImage} ${css.character1}`}
             src={Images[youImage]}
