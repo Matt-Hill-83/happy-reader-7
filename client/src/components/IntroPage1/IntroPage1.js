@@ -55,7 +55,9 @@ class IntroPage1 extends React.Component {
   //   }
   // }));
 
-  handleChange = event => {
+  handleChange = ({ event, test }) => {
+    console.log("test", test); // zzz
+
     console.log("event", event); // zzz
     // /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
     this.setState({
@@ -64,11 +66,18 @@ class IntroPage1 extends React.Component {
     });
   };
 
+  createYouPickerOptions = () => {
+    return [
+      <MenuItem value={"girl"}>GIRL</MenuItem>,
+      <MenuItem value={"cat"}>CAT</MenuItem>,
+      <MenuItem value={"unicorn"}>UNICORN</MenuItem>
+    ];
+  };
+
   renderIntroText = () => {
     const { showYou } = this.state;
     const inputLabel = "test";
     const classes = "test";
-    const values = { age: 5 };
 
     // const classes = this.useStyles();
     // const [values, setValues] = React.useState({
@@ -106,7 +115,9 @@ class IntroPage1 extends React.Component {
             // value={"test-1"}
             value={this.state.value}
             // value={this.state.name}
-            onChange={this.handleChange}
+            onChange={event => {
+              this.handleChange({ event, test: { cat: 5 } });
+            }}
             input={
               <OutlinedInput
                 // labelWidth={labelWidth}
@@ -115,12 +126,10 @@ class IntroPage1 extends React.Component {
               />
             }
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>GIRL</MenuItem>
-            <MenuItem value={20}>CAT</MenuItem>
-            <MenuItem value={30}>UNICORN</MenuItem>
+            {this.createYouPickerOptions()}
+            {/* <MenuItem value={"girl"}>GIRL</MenuItem>
+            <MenuItem value={"cat"}>CAT</MenuItem>
+            <MenuItem value={"unicorn"}>UNICORN</MenuItem> */}
           </Select>
         </FormControl>
         {showYou && <span>GIRL</span>}
@@ -136,6 +145,7 @@ class IntroPage1 extends React.Component {
   renderYouImage = () => {
     const { name } = this.state;
     const friendImage = name && name.toLowerCase();
+    console.log("friendImage", friendImage); // zzz
 
     return (
       <img
@@ -148,16 +158,16 @@ class IntroPage1 extends React.Component {
 
   render() {
     const { params } = this.props;
-    const { showYou } = this.state;
+
+    console.log("this.state", this.state); // zzz
 
     const youImage = "unicorn";
     const backgroundImage2 = "forestRight";
     const backgroundImage1 = "forestLeft";
-    // const friendImage = "girl";
 
     return (
       <div className={css.introPage}>
-        <div className={css.backGrounds}>
+        <div className={css.backgrounds}>
           <img
             className={`${css.backgroundImage} ${css.backgroundImage1}`}
             src={Images.backgrounds[backgroundImage1]}
