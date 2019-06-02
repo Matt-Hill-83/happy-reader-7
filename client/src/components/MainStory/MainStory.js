@@ -11,25 +11,28 @@ import IntroPage1 from "../IntroPage1/IntroPage1.js";
 import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
 import WordPage from "../WordPage/WordPage.js";
-import Images from "../../images/images.js";
-
-import css from "./MainStory.module.scss";
+// import Images from "../../images/images.js";
 
 // import { UserConfigStore } from "../../Stores/UserConfigStore.js";
+
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
+
+import css from "./MainStory.module.scss";
 
 const { plot, generateNewFriend } = mySentences;
 const { wordTypes } = myWords;
 
 class MainStory extends React.Component {
   state = {
-    activeTab: wordTypes.name,
     // showStory: false,
     showStory: true,
     activeScene: undefined,
-    pageNum: 0
+    pageNum: 0,
+    pages: {}
   };
 
   async componentWillMount() {
+    localStateStore.setPage("intro1");
     this.updateActiveScene({ activeScene: plot.activeScene });
   }
 
@@ -60,6 +63,12 @@ class MainStory extends React.Component {
   render() {
     const showIntro = true;
     // const shoWIntro = false
+
+    console.log("localStateStore.page", localStateStore.page); // zzz
+
+    // localStateStore.setPage("zippy");
+    const test = localStateStore.getPage();
+    console.log("test", test); // zzz
 
     const { activeScene, pageNum } = this.state;
     const wordPageProps = { activeScene, pageNum };

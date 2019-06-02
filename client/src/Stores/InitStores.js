@@ -12,7 +12,6 @@ firebase.initializeApp({
 
 initFirestorter({ firebase: firebase });
 
-
 // This ensures that the stores are initiated first.
-const test = 4;
-export { test };
+const testStore = 4;
+export { testStore };
