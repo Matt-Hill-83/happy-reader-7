@@ -18,10 +18,14 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 
 import css from "./IntroPage1.module.scss";
 
+const youCreatureOptions = ["fairy", "unicorn", "girl", "elf"];
+const youCreatureDefault = youCreatureOptions[0];
+
 class IntroPage1 extends React.Component {
   state = {
-    value: "girl",
-    youName: "Charlie"
+    value: "unicorn",
+    youName: "Charlie",
+    youCreature: youCreatureDefault
   };
 
   async componentWillMount() {
@@ -60,9 +64,7 @@ class IntroPage1 extends React.Component {
   };
 
   createYouPickerOptions = () => {
-    const youOptions = ["fairy", "unicorn", "girl", "elf"];
-
-    const renderedMenuItems = youOptions.map(you => (
+    const renderedMenuItems = youCreatureOptions.map(you => (
       <MenuItem key={you} value={you}>
         {you && you.toUpperCase()}
       </MenuItem>
@@ -114,7 +116,7 @@ class IntroPage1 extends React.Component {
 
   renderYouImage = () => {
     const { youCreature } = this.state;
-    const youImage = youCreature && youCreature;
+    const youImage = youCreature;
 
     return (
       <img
@@ -146,7 +148,7 @@ class IntroPage1 extends React.Component {
   };
 
   render() {
-    const { params } = this.props;
+    console.log("this.state", this.state); // zzz
 
     return (
       <div className={css.introPage}>
