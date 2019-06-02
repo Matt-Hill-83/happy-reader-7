@@ -166,14 +166,20 @@ const endScene = {
   builtInNarrativeGenerator: generateStartNarrative
 };
 
-generateYou();
+const generatePlot = () => {
+  console.log("generating plot"); // zzz
 
-const plot = {
-  activeScene: startScene,
-  endScene,
-  narrativeGenerators,
-  scenes: Utils.generateScenes(),
-  you: localStateStore.getYou()
+  generateYou();
+
+  const plot = {
+    activeScene: startScene,
+    endScene,
+    narrativeGenerators,
+    scenes: Utils.generateScenes(),
+    you: localStateStore.getYou()
+  };
+
+  localStateStore.setPlot(plot);
 };
 
-export default { plot, generateNewFriend };
+export default { generateNewFriend, generatePlot };

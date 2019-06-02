@@ -4,11 +4,9 @@ import { Icon } from "@blueprintjs/core";
 import { observer } from "mobx-react";
 
 import Images from "../../images/images.js";
-import mySentences from "../../Models/sentences.js";
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 
 import css from "./PicturePage.module.scss";
-
-const { plot } = mySentences;
 
 class PicturePage extends React.Component {
   state = {};
@@ -16,6 +14,7 @@ class PicturePage extends React.Component {
   async componentWillMount() {}
 
   renderSceneList = () => {
+    const plot = localStateStore.getPlot();
     const scenesList = Object.values(plot.scenes);
 
     const renderedScenes = scenesList.map((scene, index) => {
@@ -31,6 +30,8 @@ class PicturePage extends React.Component {
   };
 
   renderPicturePage = () => {
+    const plot = localStateStore.getPlot();
+
     const { activeScene } = this.props;
     const defaultImage = "waterfall";
     const renderedImage = Images[activeScene.location] || Images[defaultImage];

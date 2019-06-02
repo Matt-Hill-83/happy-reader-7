@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import { IconNames } from "@blueprintjs/icons";
 import { Button, Icon, Position, Tooltip } from "@blueprintjs/core";
 
-import myWords from "../../Models/words.js";
+// import myWords from "../../Models/words.js";
 import mySentences from "../../Models/sentences.js";
 
 import FlashCards from "../FlashCards/FlashCards";
@@ -11,16 +11,18 @@ import IntroPage1 from "../IntroPage1/IntroPage1.js";
 import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
 import WordPage from "../WordPage/WordPage.js";
-// import Images from "../../images/images.js";
 
 // import { UserConfigStore } from "../../Stores/UserConfigStore.js";
 
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 
 import css from "./MainStory.module.scss";
+// const { wordTypes } = myWords;
 
-const { plot, generateNewFriend } = mySentences;
-const { wordTypes } = myWords;
+const { generateNewFriend, generatePlot } = mySentences;
+
+generatePlot();
+const plot = localStateStore.getPlot();
 
 class MainStory extends React.Component {
   state = {
@@ -61,7 +63,7 @@ class MainStory extends React.Component {
   };
 
   render() {
-    console.log("localStateStore.you", localStateStore.you); // zzz
+    console.log("localStateStore.plot", localStateStore.plot); // zzz
 
     const page = localStateStore.getPage();
 
