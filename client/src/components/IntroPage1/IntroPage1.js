@@ -17,6 +17,8 @@ import {
   MenuItem
 } from "@material-ui/core";
 
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
+
 import css from "./IntroPage1.module.scss";
 
 class IntroPage1 extends React.Component {
@@ -32,6 +34,10 @@ class IntroPage1 extends React.Component {
   componentWillReceiveProps(newProps) {
     this.setState({ ...newProps.params });
   }
+
+  finishIntro = () => {
+    localStateStore.setPage("intro2");
+  };
 
   handleChange = ({ event, test }) => {
     this.setState({
@@ -132,7 +138,7 @@ class IntroPage1 extends React.Component {
         <div className={css.characters} />
         <Button
           className={css.nextButton}
-          onClick={this.showYou}
+          onClick={this.finishIntro}
           variant="contained"
           color="primary"
         >
