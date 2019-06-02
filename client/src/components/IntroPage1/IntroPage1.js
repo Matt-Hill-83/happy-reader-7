@@ -23,8 +23,8 @@ import css from "./IntroPage1.module.scss";
 
 class IntroPage1 extends React.Component {
   state = {
-    pageNum: 0,
-    value: "girl"
+    value: "girl",
+    youName: "Charlie"
   };
 
   async componentWillMount() {
@@ -39,11 +39,20 @@ class IntroPage1 extends React.Component {
     localStateStore.setPage("intro2");
   };
 
-  handleChange = ({ event, test }) => {
+  changeYouCreature = ({ event, test }) => {
     this.setState({
       youCreature: event.target.value,
       name: event.target.name,
       value: event.target.value
+    });
+  };
+
+  changeYouName = event => {
+    console.log("event", event); // zzz
+    console.log("event.target.value", event.target.value); // zzz
+
+    this.setState({
+      youName: event.target.value
     });
   };
 
@@ -62,17 +71,19 @@ class IntroPage1 extends React.Component {
     const inputLabel = "test";
     const classes = "test";
 
+    const { value, youName } = this.state;
+
     return (
       <div className={css.introText}>
-        <div className={css.content}>hello</div>
+        <div className={css.content}>Hi</div>
 
         <TextField
           id="outlined-name"
           label="Name"
           autoFocus={true}
           // className={classes.textField}
-          value={"Charlie"}
-          // onChange={handleChange("name")}
+          value={youName}
+          onChange={this.changeYouName}
           margin="normal"
           variant="outlined"
         />
@@ -83,9 +94,9 @@ class IntroPage1 extends React.Component {
             You
           </InputLabel>
           <Select
-            value={this.state.value}
+            value={value}
             onChange={event => {
-              this.handleChange({ event, test: { cat: 5 } });
+              this.changeYouCreature({ event, test: { cat: 5 } });
             }}
             input={<OutlinedInput id="outlined-age-simple" />}
           >
