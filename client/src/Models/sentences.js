@@ -1,10 +1,11 @@
 import myWords from "../Models/words.js";
 import Utils from "../Utils/Utils.js";
+import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js";
 
 const { wordTypes } = myWords;
 
 const generateYou = () => {
-  return {
+  const you = {
     name: "Charlie",
     creature: "girl",
     homeLocation: "forest",
@@ -16,6 +17,8 @@ const generateYou = () => {
     friends: [],
     pet: { type: "dog", name: "Doggy", withMe: true }
   };
+
+  localStateStore.setYou(you);
 };
 
 const generateMission = () => {
@@ -163,12 +166,14 @@ const endScene = {
   builtInNarrativeGenerator: generateStartNarrative
 };
 
+generateYou();
+
 const plot = {
   activeScene: startScene,
   endScene,
   narrativeGenerators,
   scenes: Utils.generateScenes(),
-  you: generateYou()
+  you: localStateStore.getYou()
 };
 
 export default { plot, generateNewFriend };

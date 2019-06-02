@@ -1,15 +1,20 @@
 import { observable, computed, action, decorate } from "mobx";
 
 class LocalStateStore {
-  page = "page1";
+  page = "";
+  you = {};
 
   setPage = page => {
     this.page = page;
   };
 
-  getPage = () => {
-    return this.page;
+  getPage = () => this.page;
+
+  setYou = you => {
+    this.you = you;
   };
+
+  getYou = () => this.you;
 }
 
 decorate(LocalStateStore, {

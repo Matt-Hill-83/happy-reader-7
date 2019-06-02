@@ -61,14 +61,9 @@ class MainStory extends React.Component {
   };
 
   render() {
-    // const showIntro = true;
-    // const shoWIntro = false
+    console.log("localStateStore.you", localStateStore.you); // zzz
 
-    console.log("localStateStore.page", localStateStore.page); // zzz
-
-    // localStateStore.setPage("zippy");
     const page = localStateStore.getPage();
-    console.log("page", page); // zzz
 
     const { activeScene, pageNum } = this.state;
     const wordPageProps = { activeScene, pageNum };
