@@ -24,7 +24,8 @@ export default {
     garden,
     forest,
     forestLeft,
-    forestRight
+    forestRight,
+    meadow
   },
   fairy,
   meadow,

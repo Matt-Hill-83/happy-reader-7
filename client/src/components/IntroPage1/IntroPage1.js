@@ -33,45 +33,25 @@ class IntroPage1 extends React.Component {
     this.setState({ ...newProps.params });
   }
 
-  showYou = () => {
-    this.setState({ showYou: true });
-  };
-
-  useStyles = () => {
-    return {};
-  };
-
-  // useStyles = makeStyles(theme => ({
-  //   root: {
-  //     display: "flex",
-  //     flexWrap: "wrap"
-  //   },
-  //   formControl: {
-  //     margin: theme.spacing(1),
-  //     minWidth: 120
-  //   },
-  //   selectEmpty: {
-  //     marginTop: theme.spacing(2)
-  //   }
-  // }));
-
   handleChange = ({ event, test }) => {
     console.log("test", test); // zzz
 
     console.log("event", event); // zzz
     // /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
     this.setState({
+      youCreature: event.target.value,
       name: event.target.name,
       value: event.target.value
     });
   };
 
   createYouPickerOptions = () => {
-    return [
-      <MenuItem value={"girl"}>GIRL</MenuItem>,
-      <MenuItem value={"cat"}>CAT</MenuItem>,
-      <MenuItem value={"unicorn"}>UNICORN</MenuItem>
-    ];
+    const youOptions = ["fairy", "unicorn", "girl", "elf", "mermaid"];
+
+    const renderedMenuItems = youOptions.map(you => (
+      <MenuItem value={you}>{you && you.toUpperCase()}</MenuItem>
+    ));
+    return renderedMenuItems;
   };
 
   renderIntroText = () => {
@@ -112,39 +92,22 @@ class IntroPage1 extends React.Component {
             You
           </InputLabel>
           <Select
-            // value={"test-1"}
             value={this.state.value}
-            // value={this.state.name}
             onChange={event => {
               this.handleChange({ event, test: { cat: 5 } });
             }}
-            input={
-              <OutlinedInput
-                // labelWidth={labelWidth}
-                // name="age"
-                id="outlined-age-simple"
-              />
-            }
+            input={<OutlinedInput id="outlined-age-simple" />}
           >
             {this.createYouPickerOptions()}
-            {/* <MenuItem value={"girl"}>GIRL</MenuItem>
-            <MenuItem value={"cat"}>CAT</MenuItem>
-            <MenuItem value={"unicorn"}>UNICORN</MenuItem> */}
           </Select>
         </FormControl>
-        {showYou && <span>GIRL</span>}
-        {!showYou && (
-          <Button onClick={this.showYou} variant="contained" color="primary">
-            CLICK
-          </Button>
-        )}
       </div>
     );
   };
 
   renderYouImage = () => {
-    const { name } = this.state;
-    const friendImage = name && name.toLowerCase();
+    const { youCreature } = this.state;
+    const friendImage = youCreature && youCreature.toLowerCase();
     console.log("friendImage", friendImage); // zzz
 
     return (
@@ -188,6 +151,16 @@ class IntroPage1 extends React.Component {
             alt={youImage}
           />
         </div>
+        {true && (
+          <Button
+            className={css.nextButton}
+            onClick={this.showYou}
+            variant="contained"
+            color="primary"
+          >
+            NEXT
+          </Button>
+        )}
       </div>
     );
   }
