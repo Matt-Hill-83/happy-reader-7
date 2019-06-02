@@ -51,7 +51,9 @@ class IntroPage1 extends React.Component {
     const youOptions = ["fairy", "unicorn", "girl", "elf"];
 
     const renderedMenuItems = youOptions.map(you => (
-      <MenuItem value={you}>{you && you.toUpperCase()}</MenuItem>
+      <MenuItem key={you} value={you}>
+        {you && you.toUpperCase()}
+      </MenuItem>
     ));
     return renderedMenuItems;
   };
