@@ -1,0 +1,18 @@
+.main {
+  border: 1px solid red !important;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+
+  font-size: 24px;
+  width: 100%;
+  height: 56px;
+  background: #e6c9e6;
+  padding-left: 40px;
+
+  .newStoryBtn {
+    margin-left: 100px;
+  }
+}
