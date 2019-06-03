@@ -4,8 +4,8 @@ import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js";
 
 const { wordTypes } = myWords;
 
-const generateYou = () => {
-  const you = {
+const generateYou = ({ you }) => {
+  const defaultYou = {
     name: "Charlie",
     creature: "girl",
     homeLocation: "forest",
@@ -17,8 +17,9 @@ const generateYou = () => {
     friends: [],
     pet: { type: "dog", name: "Doggy", withMe: true }
   };
+  const modifiedYou = Object.assign({}, defaultYou, you);
 
-  localStateStore.setYou(you);
+  localStateStore.setYou(modifiedYou);
 };
 
 const generateMission = () => {
@@ -75,11 +76,12 @@ const generateNewFriend = () => {
 const generateStartNarrative = ({ you }) => {
   return {
     story: [
-      `Your name is ${you.name}.`,
+      `Your are ${you.name}.`,
+      `You are a ${you.creature}.`,
       `You live in the ${you.homeLocation}.`,
       `You are sooooo happy.`,
 
-      `Your friend ${you.mission.item.recipient.name} is a ${
+      `${you.mission.item.recipient.name} is a ${
         you.mission.item.recipient.type
       }.`,
       `${you.mission.item.recipient.name} lives at the ${
@@ -166,10 +168,10 @@ const endScene = {
   builtInNarrativeGenerator: generateStartNarrative
 };
 
+// generateYou();
+
 const generatePlot = () => {
   console.log("generating plot"); // zzz
-
-  generateYou();
 
   const plot = {
     activeScene: startScene,
@@ -182,4 +184,4 @@ const generatePlot = () => {
   localStateStore.setPlot(plot);
 };
 
-export default { generateNewFriend, generatePlot };
+export default { generateNewFriend, generatePlot, generateYou };

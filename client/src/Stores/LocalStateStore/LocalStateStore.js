@@ -14,11 +14,15 @@ class LocalStateStore {
 
   getYou = () => this.you;
   setYou = you => {
+    console.log("you", you); // zzz
+
     this.you = you;
   };
 
   getPlot = () => this.plot;
   setPlot = plot => {
+    console.log("plot", plot); // zzz
+
     this.plot = plot;
   };
 }

@@ -9,8 +9,7 @@ import css from "./WordPage.module.scss";
 
 class WordPage extends React.Component {
   state = {
-    activeScene: undefined,
-    pageNum: 0
+    activeScene: undefined
   };
 
   async componentWillMount() {

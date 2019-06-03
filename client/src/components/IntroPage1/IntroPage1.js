@@ -19,11 +19,12 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import css from "./IntroPage1.module.scss";
 
 const youCreatureOptions = ["fairy", "unicorn", "girl", "elf"];
-const youCreatureDefault = youCreatureOptions[2];
+const youCreatureDefault = youCreatureOptions[3];
+const youNameDefault = "Dobby";
 
 class IntroPage1 extends React.Component {
   state = {
-    youName: "Charlie",
+    youName: youNameDefault,
     youCreature: youCreatureDefault
   };
 
@@ -36,11 +37,12 @@ class IntroPage1 extends React.Component {
   }
 
   finishIntro = () => {
-    const you = localStateStore.getYou();
-    you.name = this.state.youName;
-    you.creature = this.state.youCreature;
-
-    localStateStore.setYou(you);
+    this.props.onExitIntro({
+      you: {
+        name: this.state.youName,
+        creature: this.state.youCreature
+      }
+    });
 
     localStateStore.setPage("intro2");
   };

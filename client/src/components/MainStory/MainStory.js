@@ -10,13 +10,11 @@ import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
 import WordPage from "../WordPage/WordPage.js";
 
-// import { UserConfigStore } from "../../Stores/UserConfigStore.js";
-
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 
 import css from "./MainStory.module.scss";
 
-const { generateNewFriend, generatePlot } = mySentences;
+const { generateNewFriend, generatePlot, generateYou } = mySentences;
 
 class MainStory extends React.Component {
   state = {
@@ -28,11 +26,15 @@ class MainStory extends React.Component {
   };
 
   async componentWillMount() {
+    localStateStore.setPage("intro1");
+  }
+
+  onExitIntro = ({ you }) => {
+    generateYou({ you });
     generatePlot();
     const plot = localStateStore.getPlot();
-    localStateStore.setPage("intro1");
     this.updateActiveScene({ activeScene: plot.activeScene });
-  }
+  };
 
   updateActiveScene = ({ activeScene }) => {
     const plot = localStateStore.getPlot();
@@ -68,10 +70,17 @@ class MainStory extends React.Component {
     const { activeScene, pageNum } = this.state;
     const wordPageProps = { activeScene, pageNum };
 
-    const params = { cat: 5 };
+    // const params = { cat: 5 };
+    console.log("page", page); // zzz
 
     if (page === "intro1") {
-      return <IntroPage1 className={css.IntroPage1} params={params} />;
+      return (
+        <IntroPage1
+          className={css.IntroPage1}
+          // params={params}
+          onExitIntro={this.onExitIntro}
+        />
+      );
     }
 
     return (
