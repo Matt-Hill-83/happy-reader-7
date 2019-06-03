@@ -41,23 +41,18 @@ class MainStory extends React.Component {
     const plot = localStateStore.getPlot();
 
     const { you, scenes = [], narrativeGenerators } = plot;
-    const narrative =
+    const narrativeGenerator =
       activeScene.builtInNarrativeGenerator ||
       Utils.getRandomItem({ items: narrativeGenerators });
 
     Utils.unreserveItems({ items: scenes });
 
-    // TODO
-    // TODO
-    // TODO
-    // generate the new friend here and pass it to the scene generator,
-    // and attach it to the plot
     const newFriend = generateNewFriend();
     activeScene.newFriend = newFriend;
 
     activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenes });
     activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenes });
-    activeScene.generatedNarrative = narrative({ you, activeScene });
+    activeScene.generatedNarrative = narrativeGenerator({ you, activeScene });
     activeScene.isUsed = true;
 
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 });

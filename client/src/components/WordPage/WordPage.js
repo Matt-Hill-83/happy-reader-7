@@ -9,7 +9,8 @@ import css from "./WordPage.module.scss";
 
 class WordPage extends React.Component {
   state = {
-    activeScene: undefined
+    activeScene: undefined,
+    activeParagraphIndex: 0
   };
 
   async componentWillMount() {
@@ -21,6 +22,7 @@ class WordPage extends React.Component {
   }
 
   changeLocation = ({ scene }) => {
+    this.setState({ activeParagraphIndex: 0 });
     this.props.updateActiveScene({ activeScene: scene });
   };
 
@@ -44,6 +46,12 @@ class WordPage extends React.Component {
     return <div className={css.decisionButtonRow}>{buttons}</div>;
   };
 
+  onClickNext = () => {
+    this.setState({
+      activeParagraphIndex: this.state.activeParagraphIndex + 1
+    });
+  };
+
   render() {
     const generatedNarrative = _get(
       this.state,
@@ -54,17 +62,26 @@ class WordPage extends React.Component {
       return null;
     }
 
+    const paragraphs = generatedNarrative.story;
+    const activeParagraph = paragraphs[this.state.activeParagraphIndex];
+
+    const isLastParagraph =
+      this.state.activeParagraphIndex === generatedNarrative.story.length - 1;
+
     return (
       <div className={css.textPage}>
-        {/* <div className={css.story}> */}
         {/* pass in adder for setting tab order */}
-        <WordGroup story={generatedNarrative.story} />;
-        -------------------------------------------------------------------------------------------------------------
-        <WordGroup story={generatedNarrative.proposition} />;
-        -------------------------------------------------------------------------------------------------------------
-        <WordGroup story={generatedNarrative.mission} />
-        {this.renderButtons()}
-        {/* </div> */}
+        <WordGroup story={activeParagraph} />
+        {!isLastParagraph && (
+          <Button onClick={this.onClickNext} className={css.nextButton}>
+            NEXT
+          </Button>
+        )}
+        {isLastParagraph && (
+          <WordGroup story={generatedNarrative.proposition} />
+        )}
+        {/* <WordGroup story={generatedNarrative.mission} /> */}
+        {isLastParagraph && this.renderButtons()}
       </div>
     );
   }

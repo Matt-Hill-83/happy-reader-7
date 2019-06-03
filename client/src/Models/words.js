@@ -80,7 +80,6 @@ const names = [
   { name: "Charlie", image: "noun", type: wordTypes.name },
   { name: "Bob", image: "noun", type: wordTypes.name },
   { name: "Matt", image: "noun", type: wordTypes.name },
-  { name: "Will", image: "noun", type: wordTypes.name },
   { name: "Zippy", image: "noun", type: wordTypes.name },
   // { name: "Mom", image: "noun", type: wordTypes.name },
   // { name: "Dad", image: "noun", type: wordTypes.name },

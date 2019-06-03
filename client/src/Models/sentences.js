@@ -76,35 +76,41 @@ const generateNewFriend = () => {
 const generateStartNarrative = ({ you }) => {
   return {
     story: [
-      `You are ${you.name}.`,
-      `You are a ${you.creature}.`,
-      `You live in the ${you.homeLocation}.`,
-      `You are sooooo happy.`,
+      [
+        `You are ${you.name}.`,
+        `You are a ${you.creature}.`,
+        `You live in the ${you.homeLocation}.`,
+        `You are sooooo happy.`
+      ],
 
-      `${you.mission.item.recipient.name} is a ${
-        you.mission.item.recipient.type
-      }.`,
-      `${you.mission.item.recipient.name} lives at the ${
-        you.mission.item.endLocation
-      }.`,
-      `${you.mission.item.recipient.name} is soooo sad.`,
-      `${you.mission.item.recipient.name} lost her ${
-        you.mission.item.name
-      } at the ${you.mission.item.startLocation}`,
+      [
+        `${you.mission.item.recipient.name} is a ${
+          you.mission.item.recipient.type
+        }.`,
+        `${you.mission.item.recipient.name} lives at the ${
+          you.mission.item.endLocation
+        }.`,
+        `${you.mission.item.recipient.name} is soooo sad.`,
+        `${you.mission.item.recipient.name} lost her ${
+          you.mission.item.name
+        } at the ${you.mission.item.startLocation}`
+      ],
 
-      `Go to the ${you.mission.item.startLocation} and find ${
-        you.mission.item.recipient.name
-      }'s ${you.mission.item.name}.`,
+      [
+        `Go to the ${you.mission.item.startLocation} and find ${
+          you.mission.item.recipient.name
+        }'s ${you.mission.item.name}.`,
 
-      `Bring the ${you.mission.item.name} to the ${
-        you.mission.item.endLocation
-      }.`,
+        `Bring the ${you.mission.item.name} to the ${
+          you.mission.item.endLocation
+        }.`,
 
-      `Give the ${you.mission.item.name} to ${
-        you.mission.item.recipient.name
-      }.`,
+        `Give the ${you.mission.item.name} to ${
+          you.mission.item.recipient.name
+        }.`,
 
-      `${you.mission.item.recipient.name} will be sooooooo happy!`
+        `${you.mission.item.recipient.name} will be sooooooo happy!`
+      ]
     ],
     mission: [
       `Go to the ${you.mission.item.startLocation}`,
@@ -128,22 +134,26 @@ const generateNarrative1 = ({ you, activeScene }) => {
 
   return {
     story: [
-      `You go to the ${location}.`,
-      `At the ${location}, you see a ${newFriend.type}`,
-      `You say, "Hello ${newFriend.type}, my name is ${you.name}."`,
+      [
+        `You go to the ${location}.`,
+        `At the ${location}, you see a ${newFriend.type}`,
+        `You say, "Hello ${newFriend.type}, my name is ${you.name}."`
+      ],
+      [
+        `The ${newFriend.type} says, "Hello ${you.name}."`,
+        `"My name is ${newFriend.name}."`,
+        `"I am sooooooo sad."`,
+        `The ${newFriend.type} starts to cry.`
+      ],
+      [
+        `The ${newFriend.type} says,`,
 
-      `The ${newFriend.type} says, "Hello ${you.name}."`,
-      `"My name is ${newFriend.name}."`,
-      `"I am sooooooo sad."`,
-
-      `The ${newFriend.type} starts to cry.`,
-      `The ${newFriend.type} says,`,
-
-      `"Can you help me?"`,
-      `"I need to go to the ${newFriend.mission.item.startLocation} to get a  ${
-        newFriend.mission.item.name
-      }."`,
-      `"Will you go with me?"`
+        `"Can you help me?"`,
+        `"I need to go to the ${
+          newFriend.mission.item.startLocation
+        } to get a  ${newFriend.mission.item.name}."`,
+        `"Will you go with me?"`
+      ]
     ],
     mission: [],
     proposition: [
@@ -168,11 +178,7 @@ const endScene = {
   builtInNarrativeGenerator: generateStartNarrative
 };
 
-// generateYou();
-
 const generatePlot = () => {
-  console.log("generating plot"); // zzz
-
   const plot = {
     activeScene: startScene,
     endScene,
