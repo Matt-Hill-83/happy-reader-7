@@ -16,6 +16,9 @@ import elf from "./elf-1.png";
 import girl from "./girl-1.png";
 import unicorn from "./unicorn-1.png";
 
+// backgrounds
+import map02 from "./backgrounds/map-02.jpg";
+
 export default {
   backgrounds: {
     waterfall,
@@ -25,7 +28,8 @@ export default {
     forest,
     forestLeft,
     forestRight,
-    meadow
+    meadow,
+    map02
   },
   fairy,
   meadow,

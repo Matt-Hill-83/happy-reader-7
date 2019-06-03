@@ -29,14 +29,24 @@ class PicturePage extends React.Component {
     return <div className={css.sceneList}>{renderedScenes}</div> || null;
   };
 
-  renderPicturePage = () => {
+  renderYou = () => {
     const plot = localStateStore.getPlot();
+    const youImage = plot.you.creature;
 
+    return (
+      <img
+        className={`${css.characterImage} ${css.character1}`}
+        src={Images[youImage]}
+        alt={youImage}
+      />
+    );
+  };
+
+  renderPicturePage = () => {
     const { activeScene } = this.props;
     const defaultImage = "waterfall";
     const renderedImage = Images[activeScene.location] || Images[defaultImage];
 
-    const youImage = plot.you.creature;
     const friendImage =
       activeScene.newFriend && Images[activeScene.newFriend.type];
 
@@ -50,11 +60,7 @@ class PicturePage extends React.Component {
           alt={"imagex"}
         />
         {this.renderSceneList()}
-        <img
-          className={`${css.characterImage} ${css.character1}`}
-          src={Images[youImage]}
-          alt={youImage}
-        />
+        {this.renderYou()}
         {friendImage && (
           <img
             className={`${css.characterImage} ${css.character2}`}
