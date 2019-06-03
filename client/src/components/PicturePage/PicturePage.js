@@ -5,6 +5,7 @@ import { observer } from "mobx-react";
 
 import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
+import WordPage from "../WordPage/WordPage.js";
 
 import css from "./PicturePage.module.scss";
 
@@ -62,6 +63,10 @@ class PicturePage extends React.Component {
             alt="friend"
           />
         )}
+        <WordPage
+          wordPageProps={this.props.wordPageProps}
+          updateActiveScene={this.props.updateActiveScene}
+        />
       </div>
     );
   };

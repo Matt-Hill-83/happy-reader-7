@@ -56,15 +56,15 @@ class WordPage extends React.Component {
 
     return (
       <div className={css.textPage}>
-        <div className={css.story}>
-          {/* pass in adder for setting tab order */}
-          <WordGroup story={generatedNarrative.story} />;
-          -------------------------------------------------------------------------------------------------------------
-          <WordGroup story={generatedNarrative.proposition} />;
-          -------------------------------------------------------------------------------------------------------------
-          <WordGroup story={generatedNarrative.mission} />
-          {this.renderButtons()}
-        </div>
+        {/* <div className={css.story}> */}
+        {/* pass in adder for setting tab order */}
+        <WordGroup story={generatedNarrative.story} />;
+        -------------------------------------------------------------------------------------------------------------
+        <WordGroup story={generatedNarrative.proposition} />;
+        -------------------------------------------------------------------------------------------------------------
+        <WordGroup story={generatedNarrative.mission} />
+        {this.renderButtons()}
+        {/* </div> */}
       </div>
     );
   }

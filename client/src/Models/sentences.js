@@ -76,7 +76,7 @@ const generateNewFriend = () => {
 const generateStartNarrative = ({ you }) => {
   return {
     story: [
-      `Your are ${you.name}.`,
+      `You are ${you.name}.`,
       `You are a ${you.creature}.`,
       `You live in the ${you.homeLocation}.`,
       `You are sooooo happy.`,

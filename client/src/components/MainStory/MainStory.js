@@ -93,11 +93,16 @@ class MainStory extends React.Component {
           {!this.state.showStory && <FlashCards />}
           {this.state.showStory && (
             <div className={css.storyBox}>
-              <WordPage
+              {/* <WordPage
                 wordPageProps={wordPageProps}
                 updateActiveScene={this.updateActiveScene}
+              /> */}
+              <PicturePage
+                activeScene={activeScene}
+                pageNum={pageNum}
+                updateActiveScene={this.updateActiveScene}
+                wordPageProps={wordPageProps}
               />
-              <PicturePage activeScene={activeScene} pageNum={pageNum} />
             </div>
           )}
         </div>
