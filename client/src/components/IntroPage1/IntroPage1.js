@@ -19,7 +19,7 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import css from "./IntroPage1.module.scss";
 
 const youCreatureOptions = ["fairy", "unicorn", "girl", "elf"];
-const youCreatureDefault = youCreatureOptions[0];
+const youCreatureDefault = youCreatureOptions[2];
 
 class IntroPage1 extends React.Component {
   state = {
@@ -142,20 +142,25 @@ class IntroPage1 extends React.Component {
     );
   };
 
+  renderNextButton = () => {
+    return (
+      <Button
+        className={css.nextButton}
+        onClick={this.finishIntro}
+        variant="contained"
+        color="primary"
+      >
+        NEXT
+      </Button>
+    );
+  };
+
   render() {
     return (
       <div className={css.introPage}>
         {this.renderBackground()}
         {this.renderIntroText()}
-        <div className={css.characters} />
-        <Button
-          className={css.nextButton}
-          onClick={this.finishIntro}
-          variant="contained"
-          color="primary"
-        >
-          NEXT
-        </Button>
+        {this.renderNextButton()}
       </div>
     );
   }
