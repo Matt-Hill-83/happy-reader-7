@@ -23,7 +23,6 @@ const youCreatureDefault = youCreatureOptions[0];
 
 class IntroPage1 extends React.Component {
   state = {
-    value: "unicorn",
     youName: "Charlie",
     youCreature: youCreatureDefault
   };
@@ -49,15 +48,11 @@ class IntroPage1 extends React.Component {
   changeYouCreature = ({ event, test }) => {
     this.setState({
       youCreature: event.target.value,
-      name: event.target.name,
-      value: event.target.value
+      name: event.target.name
     });
   };
 
   changeYouName = event => {
-    console.log("event", event); // zzz
-    console.log("event.target.value", event.target.value); // zzz
-
     this.setState({
       youName: event.target.value
     });
@@ -77,7 +72,7 @@ class IntroPage1 extends React.Component {
     const inputLabel = "test";
     const classes = "test";
 
-    const { value, youName } = this.state;
+    const { youName, youCreature } = this.state;
 
     return (
       <div className={css.introText}>
@@ -100,7 +95,7 @@ class IntroPage1 extends React.Component {
             You
           </InputLabel>
           <Select
-            value={value}
+            value={youCreature}
             onChange={event => {
               this.changeYouCreature({ event, test: { cat: 5 } });
             }}
@@ -148,8 +143,6 @@ class IntroPage1 extends React.Component {
   };
 
   render() {
-    console.log("this.state", this.state); // zzz
-
     return (
       <div className={css.introPage}>
         {this.renderBackground()}
