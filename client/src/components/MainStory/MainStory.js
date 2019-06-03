@@ -9,9 +9,9 @@ import Utils from "../../Utils/Utils.js";
 import WordPage from "../WordPage/WordPage.js";
 
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
+import MainHeader from "../MainHeader/MainHeader.js";
 
 import css from "./MainStory.module.scss";
-import MainHeader from "../MainHeader/MainHeader.js";
 
 const { generateNewFriend, generatePlot, generateYou } = mySentences;
 
@@ -25,9 +25,9 @@ class MainStory extends React.Component {
   };
 
   async componentWillMount() {
-    localStateStore.setPage("intro2");
-    this.onExitIntro({ you: { name: "Luna", creature: "girl" } });
-    // localStateStore.setPage("intro1");
+    // localStateStore.setPage("intro2");
+    // this.onExitIntro({ you: { name: "Luna", creature: "girl" } });
+    localStateStore.setPage("intro1");
   }
 
   onExitIntro = ({ you }) => {
