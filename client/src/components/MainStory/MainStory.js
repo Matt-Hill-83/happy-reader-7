@@ -1,7 +1,5 @@
 import React from "react";
 import { observer } from "mobx-react";
-import { IconNames } from "@blueprintjs/icons";
-import { Button, Icon, Position, Tooltip } from "@blueprintjs/core";
 
 import mySentences from "../../Models/sentences.js";
 import FlashCards from "../FlashCards/FlashCards";
@@ -27,7 +25,9 @@ class MainStory extends React.Component {
   };
 
   async componentWillMount() {
-    localStateStore.setPage("intro1");
+    localStateStore.setPage("intro2");
+    this.onExitIntro({ you: { name: "Luna", creature: "girl" } });
+    // localStateStore.setPage("intro1");
   }
 
   onExitIntro = ({ you }) => {
@@ -92,10 +92,10 @@ class MainStory extends React.Component {
           {this.state.showStory && (
             <div className={css.storyBox}>
               <PicturePage activeScene={activeScene} pageNum={pageNum} />
-              {/* <WordPage
+              <WordPage
                 wordPageProps={wordPageProps}
                 updateActiveScene={this.updateActiveScene}
-              /> */}
+              />
             </div>
           )}
         </div>
