@@ -47,6 +47,8 @@ class PicturePage extends React.Component {
     const defaultImage = "waterfall";
     const renderedImage = Images[activeScene.location] || Images[defaultImage];
 
+    const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
+
     const friendImage =
       activeScene.newFriend && Images[activeScene.newFriend.type];
 
@@ -59,6 +61,7 @@ class PicturePage extends React.Component {
           src={renderedImage}
           alt={"imagex"}
         />
+        <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
         {this.renderSceneList()}
         {this.renderYou()}
         {friendImage && (
