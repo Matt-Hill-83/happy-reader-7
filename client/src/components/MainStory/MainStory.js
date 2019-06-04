@@ -25,9 +25,9 @@ class MainStory extends React.Component {
   };
 
   async componentWillMount() {
-    // localStateStore.setPage("intro2");
-    // this.onExitIntro({ you: { name: "Luna", creature: "girl" } });
-    localStateStore.setPage("intro1");
+    localStateStore.setPage("intro2");
+    this.onExitIntro({ you: { name: "Luna", creature: "girl" } });
+    // localStateStore.setPage("intro1");
   }
 
   onExitIntro = ({ you }) => {
@@ -70,17 +70,13 @@ class MainStory extends React.Component {
 
     if (page === "intro1") {
       return (
-        <IntroPage1
-          className={css.IntroPage1}
-          // params={params}
-          onExitIntro={this.onExitIntro}
-        />
+        <IntroPage1 className={css.IntroPage1} onExitIntro={this.onExitIntro} />
       );
     }
 
     return (
       <div className={css.main}>
-        <MainHeader toggleFlashCards={this.toggleFlashCards} />
+        {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
 
         <div className={css.body}>
           {!this.state.showStory && <FlashCards />}

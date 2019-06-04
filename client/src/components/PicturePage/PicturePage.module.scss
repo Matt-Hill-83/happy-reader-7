@@ -1,3 +1,27 @@
+.miniLocation {
+  display: flex;
+  height: 100px;
+  width: 200px;
+  z-index: 2;
+  position: absolute;
+  border-radius: 50%;
+  top: 36%;
+  left: 20%;
+}
+
+.halfPage {
+  display: flex;
+  position: relative;
+}
+
+.leftHalf {
+  flex: 2;
+}
+
+.rightHalf {
+  flex: 1;
+}
+
 .imageContainer {
   position: relative;
   display: flex;
@@ -67,6 +91,7 @@
     height: auto;
 
     bottom: 0px;
+    z-index: 3;
   }
 
   .character1 {

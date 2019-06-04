@@ -49,28 +49,31 @@ class PicturePage extends React.Component {
 
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
 
-    const friendImage =
-      activeScene.newFriend && Images[activeScene.newFriend.type];
-
     return (
       <div className={css.imageContainer}>
-        <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
-        <div className={css.locationHeader}>{`${activeScene.location}`}</div>
-        <img
-          className={css.backgroundImage}
-          src={renderedImage}
-          alt={"imagex"}
-        />
-        <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
-        {this.renderSceneList()}
-        {this.renderYou()}
-        {friendImage && (
+        <div className={`${css.halfPage} ${css.leftHalf}`}>
           <img
-            className={`${css.characterImage} ${css.character2}`}
-            src={friendImage}
-            alt="friend"
+            className={css.backgroundImage}
+            src={renderedImage}
+            alt={"imagex"}
           />
-        )}
+          <div className={css.locationHeader}>{`${activeScene.location}`}</div>
+          <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
+          {this.renderYou()}
+        </div>
+        <div className={`${css.halfPage} ${css.rightHalf}`}>
+          <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
+          {this.renderSceneList()}
+          <div className={css.miniLocation}>
+            <img
+              className={css.miniLocation}
+              src={renderedImage}
+              alt={"imagex"}
+            />
+            {this.renderYou()}
+            {activeScene.location}
+          </div>
+        </div>
       </div>
     );
   };

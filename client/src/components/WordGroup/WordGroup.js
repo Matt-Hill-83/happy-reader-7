@@ -30,7 +30,6 @@ class WordGroup extends React.Component {
   renderNarrative = () => {
     const { story } = this.state;
 
-    // const renderedNarrative = story[0].map((sentence, sentenceIndex) => {
     const renderedNarrative = story.map((sentence, sentenceIndex) => {
       const parsedSentence = sentence.split(/\s/);
 

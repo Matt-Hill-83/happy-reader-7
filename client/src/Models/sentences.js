@@ -87,30 +87,28 @@ const generateStartNarrative = ({ you }) => {
         `${you.mission.item.recipient.name} is a ${
           you.mission.item.recipient.type
         }.`,
-        `${you.mission.item.recipient.name} lives at the ${
+        `${you.mission.item.recipient.name} is at the ${
           you.mission.item.endLocation
         }.`,
-        `${you.mission.item.recipient.name} is soooo sad.`,
-        `${you.mission.item.recipient.name} lost her ${
-          you.mission.item.name
-        } at the ${you.mission.item.startLocation}`
+        `${you.mission.item.recipient.name} is soooo sad.`
       ],
+      [`${you.mission.item.recipient.name} lost her ${you.mission.item.name}.`]
 
-      [
-        `Go to the ${you.mission.item.startLocation} and find ${
-          you.mission.item.recipient.name
-        }'s ${you.mission.item.name}.`,
+      // [
+      //   `Go to the ${you.mission.item.startLocation} and find ${
+      //     you.mission.item.recipient.name
+      //   }'s ${you.mission.item.name}.`,
 
-        `Bring the ${you.mission.item.name} to the ${
-          you.mission.item.endLocation
-        }.`,
+      //   `Bring the ${you.mission.item.name} to the ${
+      //     you.mission.item.endLocation
+      //   }.`,
 
-        `Give the ${you.mission.item.name} to ${
-          you.mission.item.recipient.name
-        }.`,
+      //   `Give the ${you.mission.item.name} to ${
+      //     you.mission.item.recipient.name
+      //   }.`,
 
-        `${you.mission.item.recipient.name} will be sooooooo happy!`
-      ]
+      //   `${you.mission.item.recipient.name} will be sooooooo happy!`
+      // ]
     ],
     mission: [
       `Go to the ${you.mission.item.startLocation}`,
