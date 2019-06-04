@@ -46,6 +46,7 @@ class PicturePage extends React.Component {
     const { activeScene } = this.props;
     const defaultImage = "waterfall";
     const renderedImage = Images[activeScene.location] || Images[defaultImage];
+    const miniLocation = Images["home"];
 
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
 
@@ -61,6 +62,7 @@ class PicturePage extends React.Component {
           <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
           {this.renderYou()}
         </div>
+
         <div className={`${css.halfPage} ${css.rightHalf}`}>
           <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
           {this.renderSceneList()}
@@ -71,6 +73,14 @@ class PicturePage extends React.Component {
               alt={"imagex"}
             />
             {this.renderYou()}
+            {activeScene.location}
+          </div>
+          <div className={css.miniLocation2}>
+            <img
+              className={css.miniLocation2}
+              src={miniLocation}
+              alt={"imagex"}
+            />
             {activeScene.location}
           </div>
         </div>

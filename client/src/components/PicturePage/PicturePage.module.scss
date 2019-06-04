@@ -9,6 +9,17 @@
   left: 20%;
 }
 
+.miniLocation2 {
+  display: flex;
+  height: 50px;
+  width: 100px;
+  z-index: 2;
+  position: absolute;
+  border-radius: 50%;
+  top: 60%;
+  left: 20%;
+}
+
 .halfPage {
   display: flex;
   position: relative;

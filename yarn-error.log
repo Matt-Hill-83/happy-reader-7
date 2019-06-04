@@ -1,0 +1,32 @@
+Arguments: 
+  /Users/matthill/.nvm/versions/node/v8.10.0/bin/node /Users/matthill/.nvm/versions/node/v8.10.0/bin/yarn start
+
+PATH: 
+  /Users/matthill/google-cloud-sdk/bin:/Users/matthill/projects/protoc-3.7.1-osx-x86_64/bin:/Users/matthill/.nvm/versions/node/v8.10.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.10.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find a package.json file in "/Users/matthill/projects/GCP_stuff/happy-reader-7"
+      at new MessageError (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/yarn/lib/cli.js:186:110)
+      at /Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/yarn/lib/cli.js:40048:15
+      at Generator.next (<anonymous>)
+      at step (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/yarn/lib/cli.js:109:13
+      at <anonymous>
