@@ -6,6 +6,7 @@ import { observer } from "mobx-react";
 import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import MiniLocation from "../MiniLocation/MiniLocation.js";
+import WordPage from "../WordPage/WordPage.js";
 
 import css from "./PicturePage.module.scss";
 
@@ -79,9 +80,9 @@ class PicturePage extends React.Component {
 
   renderMiniLocations = () => {
     const locations = [
-      [{ name: "castle" }, { name: "house" }, { name: "treehouse" }],
-      [{ name: "waterfall" }, { name: "house" }, { name: "treehouse" }],
-      [{ name: "castle" }, { name: "house" }, { name: "waterfall" }]
+      [{ name: "tree" }, { name: "stump" }, { name: "castle" }],
+      [{ name: "waterfall" }, { name: "bees" }, { name: "swamp" }],
+      [{ name: "house" }, { name: "lake" }, { name: "barn" }]
     ];
 
     // Create rows
@@ -126,7 +127,7 @@ class PicturePage extends React.Component {
   };
 
   renderPicturePage = () => {
-    const { activeScene } = this.props;
+    const { activeScene, wordPageProps, updateActiveScene } = this.props;
     const defaultImage = "waterfall";
     const renderedImage = Images[activeScene.location] || Images[defaultImage];
 
@@ -135,6 +136,10 @@ class PicturePage extends React.Component {
     return (
       <div className={css.imageContainer}>
         <div className={`${css.halfPage} ${css.leftHalf}`}>
+          <WordPage
+            wordPageProps={wordPageProps}
+            updateActiveScene={updateActiveScene}
+          />
           <img
             className={css.backgroundImage}
             src={renderedImage}

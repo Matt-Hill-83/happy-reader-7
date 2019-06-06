@@ -4,7 +4,6 @@
 
   z-index: 2;
   height: 100px;
-  width: 200px;
 }
 
 .locationTitle {
@@ -23,10 +22,9 @@
 
 .miniLocationImage {
   display: flex;
-  flex: 1;
 
-  width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
 }
 
 .characters {
