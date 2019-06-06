@@ -79,17 +79,44 @@ class PicturePage extends React.Component {
 
   renderMiniLocations = () => {
     const locations = [
-      { name: "castle", xPct: 10, yPct: 14 },
-      { name: "house", xPct: 20, yPct: 72 },
-      { name: "treehouse", xPct: 14, yPct: 46 },
-      { name: "waterfall", xPct: 54, yPct: 57 }
+      [{ name: "castle" }, { name: "house" }, { name: "treehouse" }],
+      [{ name: "waterfall" }, { name: "house" }, { name: "treehouse" }],
+      [{ name: "castle" }, { name: "house" }, { name: "waterfall" }]
     ];
 
-    return locations.map(location => {
+    // Create rows
+    const numRows = locations.length;
+    return locations.map((locationRow, rowIndex) => {
+      const offset = 100 / (numRows + 1);
+      const yPct = offset * (rowIndex + 1);
+
+      const style = {
+        left: `${0}%`,
+        top: `${yPct}%`
+      };
+
+      return (
+        // positioned absolutely
+        <div className={css.miniLocationsRowContainer} style={style}>
+          {/* positioned relatively */}
+          <div className={css.miniLocationsRow}>
+            {this.createSingleRow({ locationRow, rowIndex })}
+          </div>
+        </div>
+      );
+    });
+  };
+
+  createSingleRow = ({ locationRow, rowIndex }) => {
+    const numLocations = locationRow.length;
+
+    return locationRow.map((location, index) => {
+      const offset = 100 / (numLocations + 1);
+      const xPct = offset * (index + 1);
+
       return (
         <MiniLocation
-          xPct={location.xPct}
-          yPct={location.yPct}
+          xPct={xPct}
           key={location.name}
           location={location.name}
           you={this.renderYouMini()}

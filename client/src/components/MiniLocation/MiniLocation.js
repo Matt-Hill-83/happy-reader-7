@@ -20,17 +20,17 @@ class MiniLocation extends React.Component {
     );
   };
 
-  renderPicturePage = () => {
+  render() {
     const { location, xPct, yPct, you } = this.props;
     const miniLocation = Images.locations.small[location];
 
     const style = {
       left: `${xPct}%`,
-      top: `${yPct}%`
+      top: `${0}%`
     };
 
     return (
-      <div className={css.miniLocation} style={style}>
+      <div className={css.main} style={style}>
         <img
           className={css.miniLocationImage}
           src={miniLocation}
@@ -40,10 +40,6 @@ class MiniLocation extends React.Component {
         <div className={css.characters}>{you}</div>
       </div>
     );
-  };
-
-  render() {
-    return this.renderPicturePage();
   }
 }
 export default observer(MiniLocation);
