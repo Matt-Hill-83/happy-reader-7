@@ -43,6 +43,25 @@ class PicturePage extends React.Component {
     );
   };
 
+  renderMiniLocations = () => {
+    const locations = ["school", "forest", "waterfall", "home"];
+    const numLocations = locations.length;
+
+    return locations.map((location, index) => {
+      const xPct = (100 / numLocations) * index;
+      const yPct = (100 / numLocations) * index;
+
+      return (
+        <MiniLocation
+          xPct={xPct}
+          yPct={yPct}
+          key={location}
+          location={location}
+        />
+      );
+    });
+  };
+
   renderPicturePage = () => {
     const { activeScene } = this.props;
     const defaultImage = "waterfall";
@@ -67,16 +86,7 @@ class PicturePage extends React.Component {
         <div className={`${css.halfPage} ${css.rightHalf}`}>
           <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
           {this.renderSceneList()}
-          <div className={css.miniLocation}>
-            <img
-              className={css.miniLocation}
-              src={renderedImage}
-              alt={"imagex"}
-            />
-            {this.renderYou()}
-            {activeScene.location}
-          </div>
-          <MiniLocation location={"home"} />
+          {this.renderMiniLocations()}
         </div>
       </div>
     );

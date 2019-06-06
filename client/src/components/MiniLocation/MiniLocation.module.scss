@@ -1,10 +1,18 @@
 .miniLocation {
   display: flex;
+  position: absolute;
+  overflow: hidden;
+
+  z-index: 2;
   height: 100px;
   width: 200px;
-  z-index: 2;
-  position: absolute;
   border-radius: 50%;
-  top: 36%;
-  left: 20%;
+}
+
+.miniLocationImage {
+  display: flex;
+  flex: 1;
+
+  width: 100%;
+  height: auto;
 }
