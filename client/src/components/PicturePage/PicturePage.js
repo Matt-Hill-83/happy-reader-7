@@ -44,19 +44,26 @@ class PicturePage extends React.Component {
   };
 
   renderMiniLocations = () => {
-    const locations = ["school", "forest", "waterfall", "home"];
+    const locations = [
+      { name: "castle", xPct: 10, yPct: 14 },
+      { name: "house", xPct: 20, yPct: 72 },
+      { name: "treehouse", xPct: 14, yPct: 46 },
+      { name: "waterfall", xPct: 54, yPct: 57 }
+    ];
+    // const locations = ["school", "forest", "waterfall", "home"];
     const numLocations = locations.length;
 
     return locations.map((location, index) => {
-      const xPct = (100 / numLocations) * index;
-      const yPct = (100 / numLocations) * index;
+      const offset = 100 / (numLocations + 1);
+      // const xPct = offset * (index + 1);
+      // const yPct = offset * (index + 1);
 
       return (
         <MiniLocation
-          xPct={xPct}
-          yPct={yPct}
-          key={location}
-          location={location}
+          xPct={location.xPct}
+          yPct={location.yPct}
+          key={location.name}
+          location={location.name}
         />
       );
     });
@@ -66,7 +73,6 @@ class PicturePage extends React.Component {
     const { activeScene } = this.props;
     const defaultImage = "waterfall";
     const renderedImage = Images[activeScene.location] || Images[defaultImage];
-    const miniLocation = Images["home"];
 
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
 

@@ -50,7 +50,7 @@ class MiniLocation extends React.Component {
 
   renderPicturePage = () => {
     const { location, xPct, yPct } = this.props;
-    const miniLocation = Images[location];
+    const miniLocation = Images.locations.small[location];
 
     const style = {
       left: `${xPct}%`,

@@ -17,7 +17,13 @@ import girl from "./girl-1.png";
 import unicorn from "./unicorn-1.png";
 
 // backgrounds
-import map02 from "./backgrounds/map-02.jpg";
+import map02 from "./backgrounds/map-03.jpg";
+
+//locations - small
+import castleSmall from "./locations-small/castle.png";
+import houseSmall from "./locations-small/house.png";
+import treehouseSmall from "./locations-small/treehouse.png";
+import waterfallSmall from "./locations-small/waterfall.png";
 
 export default {
   backgrounds: {
@@ -30,6 +36,14 @@ export default {
     forestRight,
     meadow,
     map02
+  },
+  locations: {
+    small: {
+      castle: castleSmall,
+      house: houseSmall,
+      treehouse: treehouseSmall,
+      waterfall: waterfallSmall
+    }
   },
   fairy,
   meadow,
