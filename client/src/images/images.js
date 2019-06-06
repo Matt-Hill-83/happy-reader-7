@@ -16,7 +16,7 @@ import girl from "./girl-1.png";
 import unicorn from "./unicorn-1.png";
 
 // backgrounds
-import map02 from "./backgrounds/map-03.jpg";
+import map02 from "./backgrounds/map-04.jpg";
 
 //locations - small
 import castleSmall from "./locations-small/castle.png";
