@@ -5,6 +5,7 @@ import { observer } from "mobx-react";
 
 import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
+import MiniLocation from "../MiniLocation/MiniLocation.js";
 
 import css from "./PicturePage.module.scss";
 
@@ -75,14 +76,7 @@ class PicturePage extends React.Component {
             {this.renderYou()}
             {activeScene.location}
           </div>
-          <div className={css.miniLocation2}>
-            <img
-              className={css.miniLocation2}
-              src={miniLocation}
-              alt={"imagex"}
-            />
-            {activeScene.location}
-          </div>
+          <MiniLocation location={"home"} />
         </div>
       </div>
     );
