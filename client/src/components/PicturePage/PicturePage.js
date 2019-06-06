@@ -64,6 +64,19 @@ class PicturePage extends React.Component {
     );
   };
 
+  renderYouMini = () => {
+    const plot = localStateStore.getPlot();
+    const youImage = plot.you.creature;
+
+    return (
+      <img
+        className={`${css.characterImageMini} ${css.character1Mini}`}
+        src={Images[youImage]}
+        alt={youImage}
+      />
+    );
+  };
+
   renderMiniLocations = () => {
     const locations = [
       { name: "castle", xPct: 10, yPct: 14 },
@@ -79,7 +92,7 @@ class PicturePage extends React.Component {
           yPct={location.yPct}
           key={location.name}
           location={location.name}
-          you={this.renderYou()}
+          you={this.renderYouMini()}
         />
       );
     });
