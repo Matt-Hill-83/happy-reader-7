@@ -88,7 +88,7 @@ class PicturePage extends React.Component {
     const numRows = locations.length;
     return locations.map((locationRow, rowIndex) => {
       const offset = 100 / (numRows + 1);
-      const yPct = offset * (rowIndex + 1);
+      const yPct = offset * (rowIndex + 0.5);
 
       const style = {
         left: `${0}%`,
@@ -112,7 +112,7 @@ class PicturePage extends React.Component {
 
     return locationRow.map((location, index) => {
       const offset = 100 / (numLocations + 1);
-      const xPct = offset * (index + 1);
+      const xPct = offset * (index + 0.5);
 
       return (
         <MiniLocation

@@ -1,3 +1,12 @@
+.main {
+  display: flex;
+  position: absolute;
+
+  z-index: 2;
+  height: 100px;
+  width: 200px;
+}
+
 .locationTitle {
   display: flex;
 
@@ -10,16 +19,6 @@
   border-radius: 3px;
   padding: 0 3px;
   bottom: -8px;
-}
-
-.main {
-  border: 1px solid blue;
-  display: flex;
-  position: absolute;
-
-  z-index: 2;
-  height: 100px;
-  width: 200px;
 }
 
 .miniLocationImage {
