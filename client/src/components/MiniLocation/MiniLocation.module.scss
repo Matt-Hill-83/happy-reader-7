@@ -1,7 +1,20 @@
+.locationTitle {
+  display: flex;
+  position: absolute;
+  bottom: 0px;
+  z-index: 4;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e1d8ea;
+  border-radius: 3px;
+  padding: 0 3px;
+  bottom: -8px;
+}
+
 .miniLocation {
   display: flex;
   position: absolute;
-  overflow: hidden;
+  // overflow: hidden;
 
   z-index: 2;
   height: 100px;
@@ -17,6 +30,10 @@
 }
 
 .characters {
-  border: 1px solid red !important;
+  flex: 1 1;
+  position: absolute;
   display: flex;
+  bottom: 0px;
+  width: 100%;
+  height: 100%;
 }

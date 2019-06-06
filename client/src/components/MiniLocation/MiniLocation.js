@@ -36,7 +36,7 @@ class MiniLocation extends React.Component {
           src={miniLocation}
           alt={"imagex"}
         />
-        {location}
+        <span className={css.locationTitle}>{location}</span>
         <div className={css.characters}>{you}</div>
       </div>
     );
