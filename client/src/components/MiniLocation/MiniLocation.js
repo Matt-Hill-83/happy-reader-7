@@ -21,7 +21,7 @@ class MiniLocation extends React.Component {
   };
 
   renderPicturePage = () => {
-    const { location, xPct, yPct } = this.props;
+    const { location, xPct, yPct, you } = this.props;
     const miniLocation = Images.locations.small[location];
 
     const style = {
@@ -37,6 +37,7 @@ class MiniLocation extends React.Component {
           alt={"imagex"}
         />
         {location}
+        <div className={css.characters}>{you}</div>
       </div>
     );
   };

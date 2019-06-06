@@ -79,6 +79,7 @@ class PicturePage extends React.Component {
           yPct={location.yPct}
           key={location.name}
           location={location.name}
+          you={this.renderYou()}
         />
       );
     });
