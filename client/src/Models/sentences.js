@@ -90,9 +90,9 @@ const generateStartNarrative = ({ you }) => {
         `${you.mission.item.recipient.name} is at the ${
           you.mission.item.endLocation
         }.`,
+        `${you.mission.item.recipient.name} lost her ${you.mission.item.name}.`,
         `${you.mission.item.recipient.name} is soooo sad.`
-      ],
-      [`${you.mission.item.recipient.name} lost her ${you.mission.item.name}.`]
+      ]
 
       // [
       //   `Go to the ${you.mission.item.startLocation} and find ${
@@ -134,11 +134,13 @@ const generateNarrative1 = ({ you, activeScene }) => {
     story: [
       [
         `You go to the ${location}.`,
-        `At the ${location}, you see a ${newFriend.type}`,
-        `You say, "Hello ${newFriend.type}, my name is ${you.name}."`
+        `You see a ${newFriend.type}`,
+        `You say, "Hello ${newFriend.type}"`,
+        `"My name is ${you.name}."`
       ],
       [
-        `The ${newFriend.type} says, "Hello ${you.name}."`,
+        `The ${newFriend.type} says,`,
+        `"Hello ${you.name}."`,
         `"My name is ${newFriend.name}."`,
         `"I am sooooooo sad."`,
         `The ${newFriend.type} starts to cry.`
@@ -147,9 +149,8 @@ const generateNarrative1 = ({ you, activeScene }) => {
         `The ${newFriend.type} says,`,
 
         `"Can you help me?"`,
-        `"I need to go to the ${
-          newFriend.mission.item.startLocation
-        } to get a  ${newFriend.mission.item.name}."`,
+        `"I need to go to the ${newFriend.mission.item.startLocation}`,
+        `to get a  ${newFriend.mission.item.name}."`,
         `"Will you go with me?"`
       ]
     ],

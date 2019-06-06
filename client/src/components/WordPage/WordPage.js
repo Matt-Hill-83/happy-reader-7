@@ -77,9 +77,9 @@ class WordPage extends React.Component {
             NEXT
           </Button>
         )}
-        {isLastParagraph && (
+        {/* {isLastParagraph && (
           <WordGroup story={generatedNarrative.proposition} />
-        )}
+        )} */}
         {/* <WordGroup story={generatedNarrative.mission} /> */}
         {isLastParagraph && this.renderButtons()}
       </div>

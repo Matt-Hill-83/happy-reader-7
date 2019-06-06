@@ -88,10 +88,6 @@ class MainStory extends React.Component {
                 activeScene={activeScene}
                 pageNum={pageNum}
               />
-              {/* <WordPage
-                wordPageProps={wordPageProps}
-                updateActiveScene={this.updateActiveScene}
-              /> */}
             </div>
           )}
         </div>
