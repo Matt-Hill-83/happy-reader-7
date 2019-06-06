@@ -10,9 +10,30 @@ import MiniLocation from "../MiniLocation/MiniLocation.js";
 import css from "./PicturePage.module.scss";
 
 class PicturePage extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.canvasRef = React.createRef();
+  }
 
-  async componentWillMount() {}
+  componentDidMount() {
+    console.log("did update"); // zzz
+
+    // Draws a square in the middle of the canvas rotated
+    // around the centre by this.props.angle
+    // const { angle = 97 } = this.props;
+    // const canvas = this.canvasRef.current;
+    // const ctx = canvas.getContext("2d");
+    // const width = canvas.width;
+    // const height = canvas.height;
+    // ctx.save();
+    // ctx.beginPath();
+    // ctx.clearRect(0, 0, width, height);
+    // ctx.translate(width / 2, height / 2);
+    // ctx.rotate((angle * Math.PI) / 180);
+    // ctx.fillStyle = "#4397AC";
+    // ctx.fillRect(-width / 4, -height / 4, width / 2, height / 2);
+    // ctx.restore();
+  }
 
   renderSceneList = () => {
     const plot = localStateStore.getPlot();
@@ -50,14 +71,8 @@ class PicturePage extends React.Component {
       { name: "treehouse", xPct: 14, yPct: 46 },
       { name: "waterfall", xPct: 54, yPct: 57 }
     ];
-    // const locations = ["school", "forest", "waterfall", "home"];
-    const numLocations = locations.length;
 
-    return locations.map((location, index) => {
-      const offset = 100 / (numLocations + 1);
-      // const xPct = offset * (index + 1);
-      // const yPct = offset * (index + 1);
-
+    return locations.map(location => {
       return (
         <MiniLocation
           xPct={location.xPct}
@@ -88,8 +103,13 @@ class PicturePage extends React.Component {
           <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
           {this.renderYou()}
         </div>
-
         <div className={`${css.halfPage} ${css.rightHalf}`}>
+          {/* <canvas
+            className={css.roadsCanvas}
+            width="300"
+            height="300"
+            ref={this.canvasRef}
+          /> */}
           <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
           {this.renderSceneList()}
           {this.renderMiniLocations()}

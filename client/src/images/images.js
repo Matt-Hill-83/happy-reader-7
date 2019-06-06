@@ -1,5 +1,4 @@
 // locations
-
 import meadow from "./meadow.jpg";
 import waterfall from "./waterfall-1.jpg";
 
@@ -43,6 +42,12 @@ export default {
       house: houseSmall,
       treehouse: treehouseSmall,
       waterfall: waterfallSmall
+    },
+    large: {
+      // castle,
+      house: home,
+      // treehouse,
+      waterfall
     }
   },
   fairy,
