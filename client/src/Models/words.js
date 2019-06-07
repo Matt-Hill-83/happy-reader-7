@@ -224,23 +224,23 @@ const locations = [
 ];
 
 const words = [
-  // ...animals,
-  // ...actions,
-  // ...names,
-  // ...emotions,
-  ...locations
-  // ...garments,
-  // ...foods,
-  // ...vehicles,
-  // ...creatures,
-  // ...other,
-  // ...colors,
-  // ...familyCow,
-  // ...familyCat,
-  // ...familyPig,
-  // ...familyBug,
-  // ...familySnake,
-  // ...familyMad
+  ...animals,
+  ...actions,
+  ...names,
+  ...emotions,
+  ...locations,
+  ...garments,
+  ...foods,
+  ...vehicles,
+  ...creatures,
+  ...other,
+  ...colors,
+  ...familyCow,
+  ...familyCat,
+  ...familyPig,
+  ...familyBug,
+  ...familySnake,
+  ...familyMad
 ];
 
 export default {
