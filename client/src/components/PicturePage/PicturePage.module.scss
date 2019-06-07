@@ -1,7 +1,6 @@
 .miniActiveLocation {
-  border: 1px solid red !important;
+  // border: 1px solid red !important;
   top: 53% !important;
-  transform: translateY(-50%);
   left: 50% !important;
   transform: translateX(-50%);
   height: 34%;
@@ -15,7 +14,6 @@
 }
 
 .miniLocationsRow {
-  // border: 1px solid green !important;
   display: flex;
   position: relative;
 
@@ -39,7 +37,7 @@
 }
 
 .rightHalf {
-  flex: 2;
+  flex: 1;
 }
 
 .imageContainer {

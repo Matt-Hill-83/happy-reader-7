@@ -107,19 +107,19 @@ const emotions = [
   { name: "surprised", image: "noun", type: wordTypes.feeling }
 ];
 
-const locations = [
-  { name: "park", image: "noun", type: wordTypes.location },
-  { name: "lake", image: "noun", type: wordTypes.location },
-  { name: "store", image: "noun", type: wordTypes.location },
-  { name: "school", image: "noun", type: wordTypes.location },
-  { name: "forest", image: "noun", type: wordTypes.location },
-  { name: "library", image: "noun", type: wordTypes.location },
-  { name: "island", image: "noun", type: wordTypes.location },
-  { name: "waterfall", image: "noun", type: wordTypes.location },
-  { name: "home", image: "noun", type: wordTypes.location },
-  { name: "beach", image: "noun", type: wordTypes.location },
-  { name: "playground", image: "noun", type: wordTypes.location }
-];
+// const locations = [
+//   { name: "park", image: "noun", type: wordTypes.location },
+//   { name: "lake", image: "noun", type: wordTypes.location },
+//   { name: "store", image: "noun", type: wordTypes.location },
+//   { name: "school", image: "noun", type: wordTypes.location },
+//   { name: "forest", image: "noun", type: wordTypes.location },
+//   { name: "library", image: "noun", type: wordTypes.location },
+//   { name: "island", image: "noun", type: wordTypes.location },
+//   { name: "waterfall", image: "noun", type: wordTypes.location },
+//   { name: "home", image: "noun", type: wordTypes.location },
+//   { name: "beach", image: "noun", type: wordTypes.location },
+//   { name: "playground", image: "noun", type: wordTypes.location }
+// ];
 
 const garments = [
   { name: "hat", image: "noun", type: wordTypes.garment, family: "cat" },
@@ -211,24 +211,36 @@ const familyMad = [
   { family: "mad", name: "glad", image: "noun", type: "" }
 ];
 
+const locations = [
+  { name: "tree", image: "noun", type: wordTypes.location },
+  { name: "stump", image: "noun", type: wordTypes.location },
+  { name: "castle", image: "noun", type: wordTypes.location },
+  { name: "waterfall", image: "noun", type: wordTypes.location },
+  { name: "bees", image: "noun", type: wordTypes.location },
+  { name: "swamp", image: "noun", type: wordTypes.location },
+  { name: "house", image: "noun", type: wordTypes.location },
+  { name: "lake", image: "noun", type: wordTypes.location },
+  { name: "barn", image: "noun", type: wordTypes.location }
+];
+
 const words = [
-  ...animals,
-  ...actions,
-  ...names,
-  ...emotions,
-  ...locations,
-  ...garments,
-  ...foods,
-  ...vehicles,
-  ...creatures,
-  ...other,
-  ...colors,
-  ...familyCow,
-  ...familyCat,
-  ...familyPig,
-  ...familyBug,
-  ...familySnake,
-  ...familyMad
+  // ...animals,
+  // ...actions,
+  // ...names,
+  // ...emotions,
+  ...locations
+  // ...garments,
+  // ...foods,
+  // ...vehicles,
+  // ...creatures,
+  // ...other,
+  // ...colors,
+  // ...familyCow,
+  // ...familyCat,
+  // ...familyPig,
+  // ...familyBug,
+  // ...familySnake,
+  // ...familyMad
 ];
 
 export default {

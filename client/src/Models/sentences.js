@@ -8,12 +8,12 @@ const generateYou = ({ you }) => {
   const defaultYou = {
     name: "Charlie",
     creature: "girl",
-    homeLocation: "forest",
+    homeLocation: "tree",
     vehicle: "scooter",
     mission: generateMission(),
-    home: {
-      location: "house"
-    },
+    // home: {
+    //   location: "tree"
+    // },
     friends: [],
     pet: { type: "dog", name: "Doggy", withMe: true }
   };
@@ -93,22 +93,6 @@ const generateStartNarrative = ({ you }) => {
         `${you.mission.item.recipient.name} lost her ${you.mission.item.name}.`,
         `${you.mission.item.recipient.name} is soooo sad.`
       ]
-
-      // [
-      //   `Go to the ${you.mission.item.startLocation} and find ${
-      //     you.mission.item.recipient.name
-      //   }'s ${you.mission.item.name}.`,
-
-      //   `Bring the ${you.mission.item.name} to the ${
-      //     you.mission.item.endLocation
-      //   }.`,
-
-      //   `Give the ${you.mission.item.name} to ${
-      //     you.mission.item.recipient.name
-      //   }.`,
-
-      //   `${you.mission.item.recipient.name} will be sooooooo happy!`
-      // ]
     ],
     mission: [
       `Go to the ${you.mission.item.startLocation}`,
@@ -153,22 +137,22 @@ const generateNarrative1 = ({ you, activeScene }) => {
         `to get a  ${newFriend.mission.item.name}."`,
         `"Will you go with me?"`
       ]
-    ],
-    mission: [],
-    proposition: [
-      `Do you go to the ${newFriend.mission.item.startLocation} to help ${
-        newFriend.name
-      } find a ${newFriend.mission.item.name}?"`,
-      `--- OR ---`,
-      `Do you go to the ${you.mission.location}?`
     ]
+    // mission: [],
+    // proposition: [
+    //   `Do you go to the ${newFriend.mission.item.startLocation} to help ${
+    //     newFriend.name
+    //   } find a ${newFriend.mission.item.name}?"`,
+    //   `--- OR ---`,
+    //   `Do you go to the ${you.mission.location}?`
+    // ]
   };
 };
 
 const narrativeGenerators = [generateNarrative1];
 
 const startScene = {
-  location: "forest",
+  location: "house",
   builtInNarrativeGenerator: generateStartNarrative
 };
 
@@ -178,6 +162,8 @@ const endScene = {
 };
 
 const generatePlot = () => {
+  console.log("Utils.generateScenes()", Utils.generateScenes()); // zzz
+
   const plot = {
     activeScene: startScene,
     endScene,

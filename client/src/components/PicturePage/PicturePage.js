@@ -109,18 +109,23 @@ class PicturePage extends React.Component {
   };
 
   createSingleRow = ({ locationRow, rowIndex }) => {
+    const { activeScene } = this.props;
+
     const numLocations = locationRow.length;
 
     return locationRow.map((location, index) => {
       const offset = 100 / (numLocations + 1);
       const xPct = offset * (index + 0.5);
 
+      const you =
+        location.name === activeScene.location ? this.renderYouMini() : null;
+
       return (
         <MiniLocation
           xPct={xPct}
           key={location.name}
           location={location.name}
-          you={this.renderYouMini()}
+          you={you}
         />
       );
     });
@@ -133,7 +138,7 @@ class PicturePage extends React.Component {
     // const renderedImage = Images[activeScene.location] || Images[defaultImage];
 
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
-    const activeLocation = "lake";
+    const activeLocation = activeScene.location;
 
     return (
       <div className={css.imageContainer}>
