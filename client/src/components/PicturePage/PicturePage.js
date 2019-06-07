@@ -169,7 +169,7 @@ class PicturePage extends React.Component {
             ref={this.canvasRef}
           /> */}
           <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
-          {this.renderSceneList()}
+          {/* {this.renderSceneList()} */}
           {this.renderMiniLocations()}
         </div>
       </div>
