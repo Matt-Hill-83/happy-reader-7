@@ -21,7 +21,7 @@ class MiniLocation extends React.Component {
   };
 
   render() {
-    const { location, xPct, yPct, you } = this.props;
+    const { className, location, xPct, yPct, you } = this.props;
     const miniLocation = Images.locations.small[location];
 
     const style = {
@@ -30,7 +30,7 @@ class MiniLocation extends React.Component {
     };
 
     return (
-      <div className={css.main} style={style}>
+      <div className={`${css.main} ${className}`} style={style}>
         <img
           className={css.miniLocationImage}
           src={miniLocation}

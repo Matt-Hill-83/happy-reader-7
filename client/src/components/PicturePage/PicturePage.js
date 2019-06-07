@@ -128,14 +128,21 @@ class PicturePage extends React.Component {
 
   renderPicturePage = () => {
     const { activeScene, wordPageProps, updateActiveScene } = this.props;
-    const defaultImage = "waterfall";
-    const renderedImage = Images[activeScene.location] || Images[defaultImage];
+    const defaultImage = "forest";
+    const renderedImage = Images[defaultImage];
+    // const renderedImage = Images[activeScene.location] || Images[defaultImage];
 
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
+    const activeLocation = "lake";
 
     return (
       <div className={css.imageContainer}>
         <div className={`${css.halfPage} ${css.leftHalf}`}>
+          <MiniLocation
+            xPct={0}
+            location={activeLocation}
+            className={css.miniActiveLocation}
+          />
           <WordPage
             wordPageProps={wordPageProps}
             updateActiveScene={updateActiveScene}

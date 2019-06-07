@@ -5,7 +5,7 @@ import waterfall from "./waterfall-1.jpg";
 import home from "./house-1.png";
 import school from "./school-1.jpg";
 import garden from "./garden-1.jpg";
-import forest from "./forest-1.png";
+import forest from "./forest-3.jpg";
 import forestLeft from "./forest-1-left.png";
 import forestRight from "./forest-1-right.png";
 
