@@ -117,15 +117,16 @@ class PicturePage extends React.Component {
       const offset = 100 / (numLocations + 1);
       const xPct = offset * (index + 0.5);
 
-      const you =
-        location.name === activeScene.location ? this.renderYouMini() : null;
+      const isActive = location.name === activeScene.location;
+      const you = isActive ? this.renderYouMini() : null;
 
       return (
         <MiniLocation
           xPct={xPct}
           key={location.name}
           location={location.name}
-          you={you}
+          characters={[you]}
+          isActive={isActive}
         />
       );
     });

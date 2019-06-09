@@ -4,16 +4,15 @@ import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js";
 
 const { wordTypes } = myWords;
 
+const homeLocation = "house";
+
 const generateYou = ({ you }) => {
   const defaultYou = {
     name: "Charlie",
     creature: "girl",
-    homeLocation: "tree",
+    homeLocation: homeLocation,
     vehicle: "scooter",
     mission: generateMission(),
-    // home: {
-    //   location: "tree"
-    // },
     friends: [],
     pet: { type: "dog", name: "Doggy", withMe: true }
   };
@@ -138,21 +137,13 @@ const generateNarrative1 = ({ you, activeScene }) => {
         `"Will you go with me?"`
       ]
     ]
-    // mission: [],
-    // proposition: [
-    //   `Do you go to the ${newFriend.mission.item.startLocation} to help ${
-    //     newFriend.name
-    //   } find a ${newFriend.mission.item.name}?"`,
-    //   `--- OR ---`,
-    //   `Do you go to the ${you.mission.location}?`
-    // ]
   };
 };
 
 const narrativeGenerators = [generateNarrative1];
 
 const startScene = {
-  location: "house",
+  location: homeLocation,
   builtInNarrativeGenerator: generateStartNarrative
 };
 
@@ -162,8 +153,6 @@ const endScene = {
 };
 
 const generatePlot = () => {
-  console.log("Utils.generateScenes()", Utils.generateScenes()); // zzz
-
   const plot = {
     activeScene: startScene,
     endScene,
