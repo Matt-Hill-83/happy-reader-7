@@ -22,12 +22,12 @@ class MiniLocation extends React.Component {
 
   render() {
     const {
-      className,
       location,
       xPct,
       yPct,
       characters,
-      isActive
+      isActive,
+      className
     } = this.props;
     const miniLocation = Images.locations.small[location];
 
@@ -36,8 +36,10 @@ class MiniLocation extends React.Component {
       top: `${0}%`
     };
 
+    const localClass = isActive ? css.activeClass : "";
+
     return (
-      <div className={`${css.main} ${className}`} style={style}>
+      <div className={`${css.main} ${className} ${localClass}`} style={style}>
         <img
           className={css.miniLocationImage}
           src={miniLocation}
