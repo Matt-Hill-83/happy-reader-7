@@ -202,12 +202,12 @@ class PicturePage extends React.Component {
     const endY = y * scalingFactorY;
 
     const ctx = canvas.getContext("2d");
-    ctx.beginPath();
-    // ctx.moveTo(startX, startY);
-    // ctx.lineTo(endX, endY);
-    ctx.moveTo(0, 0);
-    ctx.lineTo(300, 150);
-    ctx.stroke();
+    // ctx.beginPath();
+    // // ctx.moveTo(startX, startY);
+    // // ctx.lineTo(endX, endY);
+    // ctx.moveTo(0, 0);
+    // ctx.lineTo(300, 150);
+    // ctx.stroke();
   };
 
   createSingleRow = ({ locationRow, rowIndex }) => {
