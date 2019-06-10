@@ -17,7 +17,12 @@ class PicturePage extends React.Component {
   }
 
   componentDidMount() {
-    console.log("did update"); // zzz
+    console.log("did mount"); // zzz
+
+    // console.log(
+    //   "this.input.getBoundingClientRect() ",
+    //   this.input.getBoundingClientRect && this.input.getBoundingClientRect()
+    // ); // zzz
 
     // Draws a square in the middle of the canvas rotated
     // around the centre by this.props.angle
@@ -34,6 +39,10 @@ class PicturePage extends React.Component {
     // ctx.fillStyle = "#4397AC";
     // ctx.fillRect(-width / 4, -height / 4, width / 2, height / 2);
     // ctx.restore();
+  }
+
+  componentDidUpdate() {
+    console.log("did update"); // zzz
   }
 
   renderSceneList = () => {
@@ -127,6 +136,7 @@ class PicturePage extends React.Component {
 
       return (
         <MiniLocation
+          // ref={el => (this.input = el)}
           xPct={xPct}
           key={location.name}
           location={location.name}
