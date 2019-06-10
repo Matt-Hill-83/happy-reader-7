@@ -86,10 +86,11 @@ class PicturePage extends React.Component {
     ];
 
     // Create rows
+    const imageHeight = 1;
     const numRows = locations.length;
-    return locations.map((locationRow, rowIndex) => {
-      const offset = 100 / (numRows + 1);
-      const yPct = offset * (rowIndex + 0.5);
+    const miniLocationsGrid = locations.map((locationRow, rowIndex) => {
+      const offset = 100 / numRows;
+      const yPct = offset * rowIndex * imageHeight;
 
       const style = {
         left: `${0}%`,
@@ -98,7 +99,8 @@ class PicturePage extends React.Component {
 
       return (
         // positioned absolutely
-        <div className={css.miniLocationsRowContainer} style={style}>
+        <div className={css.miniLocationsRowContainer}>
+          {/* <div className={css.miniLocationsRowContainer} style={style}> */}
           {/* positioned relatively */}
           <div className={css.miniLocationsRow}>
             {this.createSingleRow({ locationRow, rowIndex })}
@@ -106,6 +108,8 @@ class PicturePage extends React.Component {
         </div>
       );
     });
+
+    return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
   };
 
   createSingleRow = ({ locationRow, rowIndex }) => {
@@ -114,18 +118,19 @@ class PicturePage extends React.Component {
     const numLocations = locationRow.length;
 
     return locationRow.map((location, index) => {
-      const offset = 100 / (numLocations + 1);
-      const xPct = offset * (index + 0.5);
+      const offset = 100 / numLocations;
+      const xPct = offset * index;
 
       const isActive = location.name === activeScene.location;
       const you = isActive ? this.renderYouMini() : null;
+      const characters = [you];
 
       return (
         <MiniLocation
           xPct={xPct}
           key={location.name}
           location={location.name}
-          characters={[you]}
+          characters={characters}
           isActive={isActive}
         />
       );
