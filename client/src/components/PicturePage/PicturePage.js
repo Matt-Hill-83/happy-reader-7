@@ -11,32 +11,32 @@ import WordPage from "../WordPage/WordPage.js";
 import css from "./PicturePage.module.scss";
 
 const locations = {
-  tree: "tree",
-  stump: "stump",
-  castle: "castle",
-  waterfall: "waterfall",
-  bees: "bees",
-  swamp: "swamp",
-  house: "house",
-  lake: "lake",
-  barn: "barn"
+  tree: { name: "tree", position: {} },
+  stump: { name: "stump", position: {} },
+  castle: { name: "castle", position: {} },
+  waterfall: { name: "waterfall", position: {} },
+  bees: { name: "bees", position: {} },
+  swamp: { name: "swamp", position: {} },
+  house: { name: "house", position: {} },
+  lake: { name: "lake", position: {} },
+  barn: { name: "barn", position: {} }
 };
 
 const locationsMap = [
   [
-    { name: locations.tree },
-    { name: locations.stump },
-    { name: locations.castle }
+    { name: locations.tree.name },
+    { name: locations.stump.name },
+    { name: locations.castle.name }
   ],
   [
-    { name: locations.waterfall },
-    { name: locations.bees },
-    { name: locations.swamp }
+    { name: locations.waterfall.name },
+    { name: locations.bees.name },
+    { name: locations.swamp.name }
   ],
   [
-    { name: locations.house },
-    { name: locations.lake },
-    { name: locations.barn }
+    { name: locations.house.name },
+    { name: locations.lake.name },
+    { name: locations.barn.name }
   ]
 ];
 
@@ -47,28 +47,19 @@ class PicturePage extends React.Component {
   }
 
   componentDidMount() {
-    console.log("did mount"); // zzz
-
-    // console.log(
-    //   "this.input.getBoundingClientRect() ",
-    //   this.input.getBoundingClientRect && this.input.getBoundingClientRect()
-    // ); // zzz
-
-    // Draws a square in the middle of the canvas rotated
-    // around the centre by this.props.angle
-    // const { angle = 97 } = this.props;
+    // console.log("locations", locations); // zzz
+    // const { activeScene } = this.props;
+    // const activeLocation = activeScene.location;
+    // const activeLocationObj = locations[activeLocation];
+    // console.log("activeLocationObj", activeLocationObj); // zzz
+    // const position = activeLocationObj.position;
+    // console.log("position", position); // zzz
     // const canvas = this.canvasRef.current;
     // const ctx = canvas.getContext("2d");
-    // const width = canvas.width;
-    // const height = canvas.height;
-    // ctx.save();
     // ctx.beginPath();
-    // ctx.clearRect(0, 0, width, height);
-    // ctx.translate(width / 2, height / 2);
-    // ctx.rotate((angle * Math.PI) / 180);
-    // ctx.fillStyle = "#4397AC";
-    // ctx.fillRect(-width / 4, -height / 4, width / 2, height / 2);
-    // ctx.restore();
+    // ctx.moveTo(0, 0);
+    // ctx.lineTo(300, 150);
+    // ctx.stroke();
   }
 
   componentDidUpdate() {
@@ -129,13 +120,94 @@ class PicturePage extends React.Component {
       );
     });
 
-    return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
+    return (
+      <div className={css.miniLocationsGrid}>
+        <canvas className={css.roadsCanvas} ref={this.canvasRef} />
+        <div style={{ display: "none" }}>
+          <img
+            id="source"
+            src="https://mdn.mozillademos.org/files/5397/rhino.jpg"
+            width="300"
+            height="227"
+            alt="asfdas"
+          />
+          <img
+            style={{ "z-index": 1000 }}
+            id="frame"
+            src="https://mdn.mozillademos.org/files/242/Canvas_picture_frame.png"
+            width="132"
+            height="150"
+            alt="asfdasdd"
+          />
+        </div>
+        {miniLocationsGrid}
+      </div>
+    );
+  };
+
+  draw = () => {
+    var canvas = document.getElementById("canvas");
+    if (!canvas) {
+      return;
+    }
+    var ctx = canvas.getContext("2d");
+
+    // Draw slice
+    ctx.drawImage(
+      document.getElementById("source"),
+      33,
+      71,
+      104,
+      124,
+      21,
+      20,
+      87,
+      104
+    );
+
+    // Draw frame
+    ctx.drawImage(document.getElementById("frame"), 0, 0);
   };
 
   storeImageLocation = ({ location, x, y }) => {
+    this.draw();
     if (x >= 0 && y >= 0) {
       console.log("{ x, y }", { location, x, y }); // zzz
+      locations[location]["position"] = { x, y };
     }
+
+    // console.log("locations", locations); // zzz
+
+    const { activeScene } = this.props;
+    const activeLocation = activeScene.location;
+
+    const activeLocationObj = locations[activeLocation];
+    // console.log("activeLocationObj", activeLocationObj); // zzz
+
+    const activePosition = activeLocationObj.position;
+    console.log("activePosition", activePosition); // zzz
+
+    const canvas = this.canvasRef.current;
+    if (!canvas) {
+      return;
+    }
+
+    const scalingFactorX = 0.05;
+    const scalingFactorY = 0.2;
+
+    const startX = activePosition.x * scalingFactorX;
+    const startY = activePosition.y * scalingFactorY;
+
+    const endX = x * scalingFactorX;
+    const endY = y * scalingFactorY;
+
+    const ctx = canvas.getContext("2d");
+    ctx.beginPath();
+    // ctx.moveTo(startX, startY);
+    // ctx.lineTo(endX, endY);
+    ctx.moveTo(0, 0);
+    ctx.lineTo(300, 150);
+    ctx.stroke();
   };
 
   createSingleRow = ({ locationRow, rowIndex }) => {
@@ -168,7 +240,6 @@ class PicturePage extends React.Component {
     const { activeScene, wordPageProps, updateActiveScene } = this.props;
     const defaultImage = "forest";
     const renderedImage = Images[defaultImage];
-    // const renderedImage = Images[activeScene.location] || Images[defaultImage];
 
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
     const activeLocation = activeScene.location;
@@ -195,12 +266,6 @@ class PicturePage extends React.Component {
           {this.renderYou()}
         </div>
         <div className={`${css.halfPage} ${css.rightHalf}`}>
-          {/* <canvas
-            className={css.roadsCanvas}
-            width="300"
-            height="300"
-            ref={this.canvasRef}
-          /> */}
           <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
           {/* {this.renderSceneList()} */}
           {this.renderMiniLocations()}

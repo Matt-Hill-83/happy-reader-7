@@ -1,5 +1,14 @@
+.roadsCanvas {
+  display: flex;
+  position: absolute;
+  border: 1px solid green !important;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+}
+
 .miniLocationsGrid {
-  // border: 1px solid red !important;
+  // border: 1px solid blue !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -32,13 +41,6 @@
   position: relative;
 
   width: 100%;
-}
-
-.roadsCanvas {
-  display: flex;
-  position: absolute;
-  border: 1px solid red !important;
-  z-index: 10;
 }
 
 .halfPage {
