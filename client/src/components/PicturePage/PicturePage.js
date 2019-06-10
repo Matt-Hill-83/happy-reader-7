@@ -10,6 +10,36 @@ import WordPage from "../WordPage/WordPage.js";
 
 import css from "./PicturePage.module.scss";
 
+const locations = {
+  tree: "tree",
+  stump: "stump",
+  castle: "castle",
+  waterfall: "waterfall",
+  bees: "bees",
+  swamp: "swamp",
+  house: "house",
+  lake: "lake",
+  barn: "barn"
+};
+
+const locationsMap = [
+  [
+    { name: locations.tree },
+    { name: locations.stump },
+    { name: locations.castle }
+  ],
+  [
+    { name: locations.waterfall },
+    { name: locations.bees },
+    { name: locations.swamp }
+  ],
+  [
+    { name: locations.house },
+    { name: locations.lake },
+    { name: locations.barn }
+  ]
+];
+
 class PicturePage extends React.Component {
   constructor(props) {
     super(props);
@@ -88,29 +118,10 @@ class PicturePage extends React.Component {
   };
 
   renderMiniLocations = () => {
-    const locations = [
-      [{ name: "tree" }, { name: "stump" }, { name: "castle" }],
-      [{ name: "waterfall" }, { name: "bees" }, { name: "swamp" }],
-      [{ name: "house" }, { name: "lake" }, { name: "barn" }]
-    ];
-
     // Create rows
-    const imageHeight = 1;
-    const numRows = locations.length;
-    const miniLocationsGrid = locations.map((locationRow, rowIndex) => {
-      const offset = 100 / numRows;
-      const yPct = offset * rowIndex * imageHeight;
-
-      const style = {
-        left: `${0}%`,
-        top: `${yPct}%`
-      };
-
+    const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
       return (
-        // positioned absolutely
         <div className={css.miniLocationsRowContainer}>
-          {/* <div className={css.miniLocationsRowContainer} style={style}> */}
-          {/* positioned relatively */}
           <div className={css.miniLocationsRow}>
             {this.createSingleRow({ locationRow, rowIndex })}
           </div>
@@ -119,6 +130,12 @@ class PicturePage extends React.Component {
     });
 
     return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
+  };
+
+  storeImageLocation = ({ location, x, y }) => {
+    if (x >= 0 && y >= 0) {
+      console.log("{ x, y }", { location, x, y }); // zzz
+    }
   };
 
   createSingleRow = ({ locationRow, rowIndex }) => {
@@ -136,12 +153,12 @@ class PicturePage extends React.Component {
 
       return (
         <MiniLocation
-          // ref={el => (this.input = el)}
           xPct={xPct}
           key={location.name}
           location={location.name}
           characters={characters}
           isActive={isActive}
+          storeImageLocation={this.storeImageLocation}
         />
       );
     });

@@ -7,10 +7,12 @@ import Images from "../../images/images.js";
 import css from "./MiniLocation.module.scss";
 
 const RenderedImage = props => {
+  const { location, storeImageLocation } = props;
+
   const [ref, { x, y, width }] = useDimensions();
 
-  console.log("x,y", x, y); // zzz
-  const { location } = props;
+  storeImageLocation && storeImageLocation({ x, y, location });
+
   const miniLocation = Images.locations.small[location];
 
   return (
@@ -21,14 +23,17 @@ const RenderedImage = props => {
       alt={"imagex"}
     />
   );
-
-  return <div ref={ref}>This is the element you'll measure</div>;
 };
 
 const MiniLocation = props => {
-  // class MiniLocation extends React.Component {
-  // render() {
-  const { location, xPct, characters, isActive, className } = props;
+  const {
+    location,
+    xPct,
+    characters,
+    isActive,
+    className,
+    storeImageLocation
+  } = props;
 
   const style = {
     left: `${xPct}%`,
@@ -39,12 +44,14 @@ const MiniLocation = props => {
 
   return (
     <div className={`${css.main} ${className} ${localClass}`} style={style}>
-      <RenderedImage location={location} />
+      <RenderedImage
+        location={location}
+        storeImageLocation={storeImageLocation}
+      />
 
       <span className={css.locationTitle}>{location}</span>
       <div className={css.characters}>{characters}</div>
     </div>
   );
-  // }
 };
 export default observer(MiniLocation);
