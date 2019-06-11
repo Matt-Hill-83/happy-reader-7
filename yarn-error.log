@@ -2,7 +2,7 @@ Arguments:
   /Users/matthill/.nvm/versions/node/v8.10.0/bin/node /Users/matthill/.nvm/versions/node/v8.10.0/bin/yarn start
 
 PATH: 
-  /Users/matthill/google-cloud-sdk/bin:/Users/matthill/projects/protoc-3.7.1-osx-x86_64/bin:/Users/matthill/.nvm/versions/node/v8.10.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
+  /Users/matthill/projects/protoc-3.7.1-osx-x86_64/bin:/Users/matthill/.nvm/versions/node/v8.10.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 
 Yarn version: 
   1.5.1

@@ -14,6 +14,7 @@ import mermaid from "./mermaid-1.png";
 import elf from "./elf-1.png";
 import girl from "./girl-1.png";
 import unicorn from "./unicorn-1.png";
+import footsteps from "./footsteps-01.png";
 
 // backgrounds
 import map02 from "./backgrounds/map-04.jpg";
@@ -70,5 +71,6 @@ export default {
   forest,
   girl,
   elf,
+  footsteps,
   mermaid
 };

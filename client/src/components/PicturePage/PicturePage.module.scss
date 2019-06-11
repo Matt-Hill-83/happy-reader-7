@@ -1,8 +1,37 @@
+.lineTo {
+  border: none !important;
+
+  &::after {
+    content: " ";
+
+    content: " ";
+    background-image: url(http://i0.wp.com/clipartportal.com/wp-content/uploads/2018/12/footsteps-clipart-png-1.png);
+    position: absolute;
+    height: 23px;
+    width: 40%;
+    transform: translateX(55.5%) translateY(-50%);
+    border-top: 20px solid transparent;
+
+    height: 15px;
+    background: #ccb8e0;
+  }
+
+  &::before {
+    content: " ";
+    position: absolute;
+
+    left: 58%;
+    transform: translateY(-50%);
+    border-top: 20px solid transparent;
+    border-left: 40px solid #ccb8e0;
+    border-bottom: 20px solid transparent;
+  }
+}
+
 .roadsCanvas {
   display: flex;
   position: absolute;
-  // border: 1px solid green !important;
-  z-index: 10;
+  z-index: 1000;
   height: 100%;
   width: 100%;
 }

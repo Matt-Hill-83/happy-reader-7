@@ -2,6 +2,7 @@ import React from "react";
 import { IconNames } from "@blueprintjs/icons";
 import { Icon } from "@blueprintjs/core";
 import { observer } from "mobx-react";
+import LineTo from "react-lineto";
 
 import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
@@ -62,9 +63,7 @@ class PicturePage extends React.Component {
     // ctx.stroke();
   }
 
-  componentDidUpdate() {
-    console.log("did update"); // zzz
-  }
+  componentDidUpdate() {}
 
   renderSceneList = () => {
     const plot = localStateStore.getPlot();
@@ -122,7 +121,7 @@ class PicturePage extends React.Component {
 
     return (
       <div className={css.miniLocationsGrid}>
-        <canvas className={css.roadsCanvas} ref={this.canvasRef} />
+        {/* <canvas className={css.roadsCanvas} ref={this.canvasRef} /> */}
         <div style={{ display: "none" }}>
           <img
             id="source"
@@ -132,7 +131,7 @@ class PicturePage extends React.Component {
             alt="asfdas"
           />
           <img
-            style={{ "z-index": 1000 }}
+            style={{ zIndex: 1000 }}
             id="frame"
             src="https://mdn.mozillademos.org/files/242/Canvas_picture_frame.png"
             width="132"
@@ -172,7 +171,7 @@ class PicturePage extends React.Component {
   storeImageLocation = ({ location, x, y }) => {
     this.draw();
     if (x >= 0 && y >= 0) {
-      console.log("{ x, y }", { location, x, y }); // zzz
+      // console.log("{ x, y }", { location, x, y }); // zzz
       locations[location]["position"] = { x, y };
     }
 
@@ -185,7 +184,7 @@ class PicturePage extends React.Component {
     // console.log("activeLocationObj", activeLocationObj); // zzz
 
     const activePosition = activeLocationObj.position;
-    console.log("activePosition", activePosition); // zzz
+    // console.log("activePosition", activePosition); // zzz
 
     const canvas = this.canvasRef.current;
     if (!canvas) {
@@ -231,6 +230,7 @@ class PicturePage extends React.Component {
           characters={characters}
           isActive={isActive}
           storeImageLocation={this.storeImageLocation}
+          className={location.name}
         />
       );
     });
@@ -240,9 +240,11 @@ class PicturePage extends React.Component {
     const { activeScene, wordPageProps, updateActiveScene } = this.props;
     const defaultImage = "forest";
     const renderedImage = Images[defaultImage];
+    // const footsteps = Images.footsteps;
 
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
     const activeLocation = activeScene.location;
+    console.log("activeLocation", activeLocation); // zzz
 
     return (
       <div className={css.imageContainer}>
@@ -269,6 +271,9 @@ class PicturePage extends React.Component {
           <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
           {/* {this.renderSceneList()} */}
           {this.renderMiniLocations()}
+          {/* <img className={css.backgroundImage} src={footsteps} alt={"imagex"} /> */}
+          {/* <LineTo from={"house"} to={"lake"} /> */}
+          <LineTo className={css.lineTo} from={activeLocation} to={"lake"} />
         </div>
       </div>
     );
