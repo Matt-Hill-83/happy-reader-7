@@ -40,7 +40,18 @@ class MainStory extends React.Component {
   updateActiveScene = ({ activeScene }) => {
     const plot = localStateStore.getPlot();
 
+    console.log("activeScene", activeScene); // zzz
+    console.log("activeScene.neighbors", activeScene.neighbors); // zzz
+
+    // TODO: figure out the neighbors here and use them to create the butttons
+    // TODO: figure out the neighbors here and use them to create the butttons
+    // TODO: figure out the neighbors here and use them to create the butttons
+    // TODO: figure out the neighbors here and use them to create the butttons
+    // TODO: figure out the neighbors here and use them to create the butttons
+
     const { you, scenes = [], narrativeGenerators } = plot;
+    console.log("scenes", scenes); // zzz
+
     const narrativeGenerator =
       activeScene.builtInNarrativeGenerator ||
       Utils.getRandomItem({ items: narrativeGenerators });
@@ -54,6 +65,8 @@ class MainStory extends React.Component {
     activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenes });
     activeScene.generatedNarrative = narrativeGenerator({ you, activeScene });
     activeScene.isUsed = true;
+
+    console.log("activeScene.sceneOptionA", activeScene.sceneOptionA); // zzz
 
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 });
   };

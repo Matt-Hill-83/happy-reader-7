@@ -107,20 +107,6 @@ const emotions = [
   { name: "surprised", image: "noun", type: wordTypes.feeling }
 ];
 
-// const locations = [
-//   { name: "park", image: "noun", type: wordTypes.location },
-//   { name: "lake", image: "noun", type: wordTypes.location },
-//   { name: "store", image: "noun", type: wordTypes.location },
-//   { name: "school", image: "noun", type: wordTypes.location },
-//   { name: "forest", image: "noun", type: wordTypes.location },
-//   { name: "library", image: "noun", type: wordTypes.location },
-//   { name: "island", image: "noun", type: wordTypes.location },
-//   { name: "waterfall", image: "noun", type: wordTypes.location },
-//   { name: "home", image: "noun", type: wordTypes.location },
-//   { name: "beach", image: "noun", type: wordTypes.location },
-//   { name: "playground", image: "noun", type: wordTypes.location }
-// ];
-
 const garments = [
   { name: "hat", image: "noun", type: wordTypes.garment, family: "cat" },
   { name: "bow", image: "noun", type: wordTypes.garment },
@@ -210,6 +196,20 @@ const familyMad = [
   { family: "mad", name: "bad", image: "noun", type: "" },
   { family: "mad", name: "glad", image: "noun", type: "" }
 ];
+
+// const locations = [
+//   { name: "park", image: "noun", type: wordTypes.location },
+//   { name: "lake", image: "noun", type: wordTypes.location },
+//   { name: "store", image: "noun", type: wordTypes.location },
+//   { name: "school", image: "noun", type: wordTypes.location },
+//   { name: "forest", image: "noun", type: wordTypes.location },
+//   { name: "library", image: "noun", type: wordTypes.location },
+//   { name: "island", image: "noun", type: wordTypes.location },
+//   { name: "waterfall", image: "noun", type: wordTypes.location },
+//   { name: "home", image: "noun", type: wordTypes.location },
+//   { name: "beach", image: "noun", type: wordTypes.location },
+//   { name: "playground", image: "noun", type: wordTypes.location }
+// ];
 
 const locations = [
   { name: "tree", image: "noun", type: wordTypes.location },

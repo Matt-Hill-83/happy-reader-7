@@ -164,4 +164,35 @@ const generatePlot = () => {
   localStateStore.setPlot(plot);
 };
 
-export default { generateNewFriend, generatePlot, generateYou };
+// these should just be scenes
+const locations = {
+  tree: { name: "tree" },
+  stump: { name: "stump" },
+  castle: { name: "castle" },
+  waterfall: { name: "waterfall" },
+  bees: { name: "bees" },
+  swamp: { name: "swamp" },
+  house: { name: "house" },
+  lake: { name: "lake" },
+  barn: { name: "barn" }
+};
+
+const locationsMap = [
+  [
+    { name: locations.tree.name },
+    { name: locations.stump.name },
+    { name: locations.castle.name }
+  ],
+  [
+    { name: locations.waterfall.name },
+    { name: locations.bees.name },
+    { name: locations.swamp.name }
+  ],
+  [
+    { name: locations.house.name },
+    { name: locations.lake.name },
+    { name: locations.barn.name }
+  ]
+];
+
+export default { generateNewFriend, generatePlot, generateYou, locationsMap };

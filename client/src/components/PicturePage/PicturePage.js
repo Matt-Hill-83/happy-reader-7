@@ -10,36 +10,9 @@ import MiniLocation from "../MiniLocation/MiniLocation.js";
 import WordPage from "../WordPage/WordPage.js";
 
 import css from "./PicturePage.module.scss";
+import sentences from "../../Models/sentences.js";
 
-const locations = {
-  tree: { name: "tree", position: {} },
-  stump: { name: "stump", position: {} },
-  castle: { name: "castle", position: {} },
-  waterfall: { name: "waterfall", position: {} },
-  bees: { name: "bees", position: {} },
-  swamp: { name: "swamp", position: {} },
-  house: { name: "house", position: {} },
-  lake: { name: "lake", position: {} },
-  barn: { name: "barn", position: {} }
-};
-
-const locationsMap = [
-  [
-    { name: locations.tree.name },
-    { name: locations.stump.name },
-    { name: locations.castle.name }
-  ],
-  [
-    { name: locations.waterfall.name },
-    { name: locations.bees.name },
-    { name: locations.swamp.name }
-  ],
-  [
-    { name: locations.house.name },
-    { name: locations.lake.name },
-    { name: locations.barn.name }
-  ]
-];
+const { locationsMap } = sentences;
 
 class PicturePage extends React.Component {
   constructor(props) {
@@ -105,21 +78,17 @@ class PicturePage extends React.Component {
   };
 
   storeImageLocation = ({ location, x, y }) => {
-    if (x >= 0 && y >= 0) {
-      locations[location]["position"] = { x, y };
-    }
-
-    const { activeScene } = this.props;
-    const activeLocation = activeScene.location;
-
-    const activeLocationObj = locations[activeLocation];
-
-    const activePosition = activeLocationObj.position;
-
-    const canvas = this.canvasRef.current;
-    if (!canvas) {
-      return;
-    }
+    // if (x >= 0 && y >= 0) {
+    //   locations[location]["position"] = { x, y };
+    // }
+    // const { activeScene } = this.props;
+    // const activeLocation = activeScene.location;
+    // const activeLocationObj = locations[activeLocation];
+    // const activePosition = activeLocationObj.position;
+    // const canvas = this.canvasRef.current;
+    // if (!canvas) {
+    //   return;
+    // }
   };
 
   createSingleRow = ({ locationRow, rowIndex }) => {
@@ -150,6 +119,7 @@ class PicturePage extends React.Component {
   };
 
   createArrows = ({ activeLocation }) => {
+    const { activeScene } = this.props;
     const neighbors = [];
     const neighborsArray = [];
 
@@ -184,7 +154,14 @@ class PicturePage extends React.Component {
       });
     });
 
+    // TODO: make these the options on the buttons.
+    // TODO: make these the options on the buttons.
+    // TODO: make these the options on the buttons.
+    // TODO: make these the options on the buttons.
+    // TODO: make these the options on the buttons.
     console.log("neighborNames", neighborNames); // zzz
+
+    activeScene.neighbors = neighborNames;
 
     const arrows = neighborNames.map(location => {
       return (
