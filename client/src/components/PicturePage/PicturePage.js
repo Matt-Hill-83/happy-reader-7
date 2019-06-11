@@ -47,21 +47,7 @@ class PicturePage extends React.Component {
     this.canvasRef = React.createRef();
   }
 
-  componentDidMount() {
-    // console.log("locations", locations); // zzz
-    // const { activeScene } = this.props;
-    // const activeLocation = activeScene.location;
-    // const activeLocationObj = locations[activeLocation];
-    // console.log("activeLocationObj", activeLocationObj); // zzz
-    // const position = activeLocationObj.position;
-    // console.log("position", position); // zzz
-    // const canvas = this.canvasRef.current;
-    // const ctx = canvas.getContext("2d");
-    // ctx.beginPath();
-    // ctx.moveTo(0, 0);
-    // ctx.lineTo(300, 150);
-    // ctx.stroke();
-  }
+  componentDidMount() {}
 
   componentDidUpdate() {}
 
@@ -171,42 +157,20 @@ class PicturePage extends React.Component {
   storeImageLocation = ({ location, x, y }) => {
     this.draw();
     if (x >= 0 && y >= 0) {
-      // console.log("{ x, y }", { location, x, y }); // zzz
       locations[location]["position"] = { x, y };
     }
-
-    // console.log("locations", locations); // zzz
 
     const { activeScene } = this.props;
     const activeLocation = activeScene.location;
 
     const activeLocationObj = locations[activeLocation];
-    // console.log("activeLocationObj", activeLocationObj); // zzz
 
     const activePosition = activeLocationObj.position;
-    // console.log("activePosition", activePosition); // zzz
 
     const canvas = this.canvasRef.current;
     if (!canvas) {
       return;
     }
-
-    const scalingFactorX = 0.05;
-    const scalingFactorY = 0.2;
-
-    const startX = activePosition.x * scalingFactorX;
-    const startY = activePosition.y * scalingFactorY;
-
-    const endX = x * scalingFactorX;
-    const endY = y * scalingFactorY;
-
-    const ctx = canvas.getContext("2d");
-    // ctx.beginPath();
-    // // ctx.moveTo(startX, startY);
-    // // ctx.lineTo(endX, endY);
-    // ctx.moveTo(0, 0);
-    // ctx.lineTo(300, 150);
-    // ctx.stroke();
   };
 
   createSingleRow = ({ locationRow, rowIndex }) => {
@@ -234,6 +198,18 @@ class PicturePage extends React.Component {
         />
       );
     });
+  };
+
+  createArrows = ({ activeLocation }) => {
+    console.log("Object.keys(locations)", Object.keys(locations)); // zzz
+
+    const arrows = Object.keys(locations).map(location => {
+      return (
+        <LineTo className={css.lineTo} from={activeLocation} to={location} />
+      );
+    });
+
+    return arrows;
   };
 
   renderPicturePage = () => {
@@ -273,7 +249,8 @@ class PicturePage extends React.Component {
           {this.renderMiniLocations()}
           {/* <img className={css.backgroundImage} src={footsteps} alt={"imagex"} /> */}
           {/* <LineTo from={"house"} to={"lake"} /> */}
-          <LineTo className={css.lineTo} from={activeLocation} to={"lake"} />
+          {this.createArrows({ activeLocation })}
+          {/* <LineTo className={css.lineTo} from={activeLocation} to={"lake"} /> */}
         </div>
       </div>
     );
