@@ -77,19 +77,7 @@ class PicturePage extends React.Component {
     return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
   };
 
-  storeImageLocation = ({ location, x, y }) => {
-    // if (x >= 0 && y >= 0) {
-    //   locations[location]["position"] = { x, y };
-    // }
-    // const { activeScene } = this.props;
-    // const activeLocation = activeScene.location;
-    // const activeLocationObj = locations[activeLocation];
-    // const activePosition = activeLocationObj.position;
-    // const canvas = this.canvasRef.current;
-    // if (!canvas) {
-    //   return;
-    // }
-  };
+  storeImageLocation = ({ location, x, y }) => {};
 
   createSingleRow = ({ locationRow, rowIndex }) => {
     const { activeScene } = this.props;
@@ -118,59 +106,14 @@ class PicturePage extends React.Component {
     });
   };
 
-  getNeighbors = () => {
+  createArrows = ({ activeLocation }) => {
     const { activeScene } = this.props;
 
-    const activeLocation = activeScene.location;
+    if (!activeScene) {
+      return null;
+    }
+    const neighborNames = activeScene.neighbors || [];
 
-    const neighbors = [];
-    const neighborsArray = [];
-
-    // create a map of all the locations for future use
-    locationsMap.forEach((row, rowIndex) => {
-      row.forEach((location, locationIndex) => {
-        neighborsArray.push({
-          name: location.name,
-          position: { x: rowIndex, y: locationIndex }
-        });
-      });
-    });
-
-    const currentLocation = neighborsArray.find(item => {
-      return item.name === activeLocation;
-    });
-
-    const currentPosition = currentLocation.position;
-
-    neighbors.push({ x: currentPosition.x - 1, y: currentPosition.y });
-    neighbors.push({ x: currentPosition.x + 1, y: currentPosition.y });
-    neighbors.push({ x: currentPosition.x, y: currentPosition.y + 1 });
-    neighbors.push({ x: currentPosition.x, y: currentPosition.y - 1 });
-
-    const neighborNames = [];
-
-    neighbors.forEach(neighbor => {
-      neighborsArray.forEach(item => {
-        if (item.position.x === neighbor.x && item.position.y === neighbor.y) {
-          neighborNames.push(item.name);
-        }
-      });
-    });
-
-    // TODO: make these the options on the buttons.
-    // TODO: make these the options on the buttons.
-    // TODO: make these the options on the buttons.
-    // TODO: make these the options on the buttons.
-    // TODO: make these the options on the buttons.
-    console.log("neighborNames", neighborNames); // zzz
-
-    activeScene.neighbors = neighborNames;
-
-    return neighborNames;
-  };
-
-  createArrows = ({ activeLocation }) => {
-    const neighborNames = this.getNeighbors();
     const arrows = neighborNames.map(location => {
       return (
         <LineTo className={css.lineTo} from={activeLocation} to={location} />
@@ -182,6 +125,11 @@ class PicturePage extends React.Component {
 
   renderPicturePage = () => {
     const { activeScene, wordPageProps, updateActiveScene } = this.props;
+
+    if (!activeScene) {
+      return null;
+    }
+
     const defaultImage = "forest";
     const renderedImage = Images[defaultImage];
 
