@@ -151,8 +151,6 @@ class PicturePage extends React.Component {
 
   createArrows = ({ activeLocation }) => {
     const neighbors = [];
-    const position = { x: -1, y: -1 };
-
     const neighborsArray = [];
 
     // create a map of all the locations for future use
@@ -165,31 +163,30 @@ class PicturePage extends React.Component {
       });
     });
 
-    console.log("neighborsArray", neighborsArray); // zzz
+    const currentLocation = neighborsArray.find(item => {
+      return item.name === activeLocation;
+    });
 
-    locationsMap.map((row, rowIndex) => {
-      row.map((location, locationIndex) => {
-        if (location.name === activeLocation) {
-          position.x = rowIndex;
-          position.y = locationIndex;
+    const currentPosition = currentLocation.position;
+
+    neighbors.push({ x: currentPosition.x - 1, y: currentPosition.y });
+    neighbors.push({ x: currentPosition.x + 1, y: currentPosition.y });
+    neighbors.push({ x: currentPosition.x, y: currentPosition.y + 1 });
+    neighbors.push({ x: currentPosition.x, y: currentPosition.y - 1 });
+
+    const neighborNames = [];
+
+    neighbors.forEach(neighbor => {
+      neighborsArray.find(item => {
+        if (item.position.x === neighbor.x && item.position.y === neighbor.y) {
+          neighborNames.push(item.name);
         }
       });
     });
-    console.log("position", position); // zzz
 
-    neighbors.push({ x: position.x - 1, y: position.y });
-    neighbors.push({ x: position.x + 1, y: position.y });
-    neighbors.push({ x: position.x, y: position.y + 1 });
-    neighbors.push({ x: position.x, y: position.y - 1 });
+    console.log("neighborNames", neighborNames); // zzz
 
-    const neighborNames = neighbors.map(neighbor => {
-      if (neighbor.x >= 0 && neighbor.y >= 0) {
-      }
-    });
-
-    console.log("neighbors", neighbors); // zzz
-
-    const arrows = Object.keys(locations).map(location => {
+    const arrows = neighborNames.map(location => {
       return (
         <LineTo className={css.lineTo} from={activeLocation} to={location} />
       );
