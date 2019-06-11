@@ -177,6 +177,7 @@ const locations = {
   barn: { name: "barn" }
 };
 
+// these should just be grabbed from the scenes array
 const locationsMap = [
   [
     { name: locations.tree.name },

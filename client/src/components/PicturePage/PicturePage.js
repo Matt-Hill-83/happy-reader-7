@@ -118,8 +118,11 @@ class PicturePage extends React.Component {
     });
   };
 
-  createArrows = ({ activeLocation }) => {
+  getNeighbors = () => {
     const { activeScene } = this.props;
+
+    const activeLocation = activeScene.location;
+
     const neighbors = [];
     const neighborsArray = [];
 
@@ -163,6 +166,11 @@ class PicturePage extends React.Component {
 
     activeScene.neighbors = neighborNames;
 
+    return neighborNames;
+  };
+
+  createArrows = ({ activeLocation }) => {
+    const neighborNames = this.getNeighbors();
     const arrows = neighborNames.map(location => {
       return (
         <LineTo className={css.lineTo} from={activeLocation} to={location} />
