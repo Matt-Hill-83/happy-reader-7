@@ -177,7 +177,7 @@ class PicturePage extends React.Component {
     const neighborNames = [];
 
     neighbors.forEach(neighbor => {
-      neighborsArray.find(item => {
+      neighborsArray.forEach(item => {
         if (item.position.x === neighbor.x && item.position.y === neighbor.y) {
           neighborNames.push(item.name);
         }
