@@ -47,10 +47,6 @@ class PicturePage extends React.Component {
     this.canvasRef = React.createRef();
   }
 
-  componentDidMount() {}
-
-  componentDidUpdate() {}
-
   renderSceneList = () => {
     const plot = localStateStore.getPlot();
     const scenesList = Object.values(plot.scenes);
@@ -105,57 +101,10 @@ class PicturePage extends React.Component {
       );
     });
 
-    return (
-      <div className={css.miniLocationsGrid}>
-        {/* <canvas className={css.roadsCanvas} ref={this.canvasRef} /> */}
-        <div style={{ display: "none" }}>
-          <img
-            id="source"
-            src="https://mdn.mozillademos.org/files/5397/rhino.jpg"
-            width="300"
-            height="227"
-            alt="asfdas"
-          />
-          <img
-            style={{ zIndex: 1000 }}
-            id="frame"
-            src="https://mdn.mozillademos.org/files/242/Canvas_picture_frame.png"
-            width="132"
-            height="150"
-            alt="asfdasdd"
-          />
-        </div>
-        {miniLocationsGrid}
-      </div>
-    );
-  };
-
-  draw = () => {
-    var canvas = document.getElementById("canvas");
-    if (!canvas) {
-      return;
-    }
-    var ctx = canvas.getContext("2d");
-
-    // Draw slice
-    ctx.drawImage(
-      document.getElementById("source"),
-      33,
-      71,
-      104,
-      124,
-      21,
-      20,
-      87,
-      104
-    );
-
-    // Draw frame
-    ctx.drawImage(document.getElementById("frame"), 0, 0);
+    return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
   };
 
   storeImageLocation = ({ location, x, y }) => {
-    this.draw();
     if (x >= 0 && y >= 0) {
       locations[location]["position"] = { x, y };
     }
@@ -201,7 +150,44 @@ class PicturePage extends React.Component {
   };
 
   createArrows = ({ activeLocation }) => {
-    console.log("Object.keys(locations)", Object.keys(locations)); // zzz
+    const neighbors = [];
+    const position = { x: -1, y: -1 };
+
+    const neighborsArray = [];
+
+    // create a map of all the locations for future use
+    locationsMap.forEach((row, rowIndex) => {
+      row.forEach((location, locationIndex) => {
+        neighborsArray.push({
+          name: location.name,
+          position: { x: rowIndex, y: locationIndex }
+        });
+      });
+    });
+
+    console.log("neighborsArray", neighborsArray); // zzz
+
+    locationsMap.map((row, rowIndex) => {
+      row.map((location, locationIndex) => {
+        if (location.name === activeLocation) {
+          position.x = rowIndex;
+          position.y = locationIndex;
+        }
+      });
+    });
+    console.log("position", position); // zzz
+
+    neighbors.push({ x: position.x - 1, y: position.y });
+    neighbors.push({ x: position.x + 1, y: position.y });
+    neighbors.push({ x: position.x, y: position.y + 1 });
+    neighbors.push({ x: position.x, y: position.y - 1 });
+
+    const neighborNames = neighbors.map(neighbor => {
+      if (neighbor.x >= 0 && neighbor.y >= 0) {
+      }
+    });
+
+    console.log("neighbors", neighbors); // zzz
 
     const arrows = Object.keys(locations).map(location => {
       return (
@@ -216,7 +202,6 @@ class PicturePage extends React.Component {
     const { activeScene, wordPageProps, updateActiveScene } = this.props;
     const defaultImage = "forest";
     const renderedImage = Images[defaultImage];
-    // const footsteps = Images.footsteps;
 
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
     const activeLocation = activeScene.location;
@@ -245,12 +230,8 @@ class PicturePage extends React.Component {
         </div>
         <div className={`${css.halfPage} ${css.rightHalf}`}>
           <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
-          {/* {this.renderSceneList()} */}
           {this.renderMiniLocations()}
-          {/* <img className={css.backgroundImage} src={footsteps} alt={"imagex"} /> */}
-          {/* <LineTo from={"house"} to={"lake"} /> */}
           {this.createArrows({ activeLocation })}
-          {/* <LineTo className={css.lineTo} from={activeLocation} to={"lake"} /> */}
         </div>
       </div>
     );
