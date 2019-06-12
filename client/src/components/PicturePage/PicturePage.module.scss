@@ -1,3 +1,10 @@
+.mapScroller {
+  // border: 1px solid red !important;
+  display: flex;
+  // width: 200%;
+  position: relative;
+}
+
 .lineTo {
   border: none !important;
 
@@ -51,7 +58,6 @@
 }
 
 .miniActiveLocation {
-  // border: 1px solid red !important;
   top: 53% !important;
   left: 50% !important;
   transform: translateX(-50%);
@@ -75,6 +81,7 @@
 .halfPage {
   display: flex;
   position: relative;
+  border: 3px solid purple !important;
 }
 
 .leftHalf {
@@ -83,6 +90,7 @@
 
 .rightHalf {
   flex: 1;
+  overflow-y: auto;
 }
 
 .imageContainer {
@@ -124,10 +132,9 @@
   }
 
   .backgroundImage {
-    border: 3px solid purple !important;
     display: flex;
 
-    width: 100%;
+    width: 200%;
     height: auto;
   }
 

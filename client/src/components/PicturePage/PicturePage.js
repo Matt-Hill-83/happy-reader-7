@@ -158,9 +158,15 @@ class PicturePage extends React.Component {
           {this.renderYou()}
         </div>
         <div className={`${css.halfPage} ${css.rightHalf}`}>
-          <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
-          {this.renderMiniLocations()}
-          {this.createArrows({ activeLocation })}
+          <div className={`${css.mapScroller}`}>
+            <img
+              className={css.backgroundImage}
+              src={mapImage}
+              alt={"imagex"}
+            />
+            {this.renderMiniLocations()}
+            {this.createArrows({ activeLocation })}
+          </div>
         </div>
       </div>
     );
