@@ -10,11 +10,20 @@ import forestLeft from "./forest-1-left.png";
 import forestRight from "./forest-1-right.png";
 
 import fairy from "./fairy.png";
-import mermaid from "./mermaid-1.png";
+import mermaid from "./mermaid.png";
 import elf from "./elf-1.png";
 import girl from "./girl-1.png";
 import unicorn from "./unicorn-1.png";
-import footsteps from "./footsteps-01.png";
+
+// bad guys
+import troll from "./bad-guys/troll-01.png";
+import goblin from "./bad-guys/goblin.png";
+import zombie from "./bad-guys/zombie.png";
+
+import monster from "./monster.png";
+import hobbit from "./hobbit.png";
+import wizard from "./wizard.png";
+import dragon from "./dragon.png";
 
 // backgrounds
 import map02 from "./backgrounds/map-05.jpg";
@@ -29,10 +38,6 @@ import beesSmall from "./locations-small/bees.png";
 import swamp from "./locations-small/swamp.png";
 import lake from "./locations-small/lake.png";
 import barn from "./locations-small/barn.png";
-
-import troll from "./bad-guys/troll-01.png";
-import goblin from "./bad-guys/goblin.png";
-import zombie from "./bad-guys/zombie.png";
 
 export default {
   backgrounds: {
@@ -70,7 +75,11 @@ export default {
   goblin,
   zombie,
   meadow,
+  wizard,
+  dragon,
   unicorn,
+  monster,
+  hobbit,
   waterfall,
   home,
   school,
@@ -78,6 +87,5 @@ export default {
   forest,
   girl,
   elf,
-  footsteps,
   mermaid
 };

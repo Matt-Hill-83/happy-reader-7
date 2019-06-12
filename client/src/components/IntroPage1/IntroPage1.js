@@ -18,13 +18,19 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import css from "./IntroPage1.module.scss";
 
 const youCreatureOptions = [
-  "fairy",
-  "unicorn",
-  "girl",
+  "dragon",
   "elf",
+  "fairy",
+  "girl",
+  "goblin",
+  "hobbit",
+  "mermaid",
+  "monster",
   "troll",
-  "goblin"
+  "unicorn",
+  "wizard"
 ];
+
 const youCreatureDefault = youCreatureOptions[3];
 const youNameDefault = "Dobby";
 
