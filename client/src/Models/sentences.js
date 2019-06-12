@@ -152,15 +152,15 @@ const endScene = {
 };
 
 const scenes = [
-  { creatures: ["elf"], location: "tree" },
-  { creatures: ["elf"], location: "stump" },
-  { creatures: ["elf"], location: "castle" },
-  { creatures: ["elf"], location: "waterfall" },
-  { creatures: ["elf"], location: "bees" },
+  { creatures: [], location: "tree" },
+  { creatures: [], location: "stump" },
+  { creatures: ["unicorn"], location: "castle" },
+  { creatures: [], location: "waterfall" },
+  { creatures: [], location: "bees" },
   { creatures: ["elf"], location: "swamp" },
-  { creatures: ["elf"], location: "house" },
-  { creatures: ["elf"], location: "lake" },
-  { creatures: ["elf"], location: "barn" }
+  { creatures: [], location: "house" },
+  { creatures: [], location: "lake" },
+  { creatures: [], location: "barn" }
 ];
 
 const generatePlot = () => {
@@ -178,15 +178,15 @@ const generatePlot = () => {
 
 // these should just be scenes
 const locations = {
-  tree: { creatures: ["elf"], name: "tree" },
-  stump: { creatures: ["elf"], name: "stump" },
-  castle: { creatures: ["elf"], name: "castle" },
-  waterfall: { creatures: ["elf"], name: "waterfall" },
-  bees: { creatures: ["elf"], name: "bees" },
+  tree: { creatures: [], name: "tree" },
+  stump: { creatures: [], name: "stump" },
+  castle: { creatures: ["unicorn"], name: "castle" },
+  waterfall: { creatures: [], name: "waterfall" },
+  bees: { creatures: [], name: "bees" },
   swamp: { creatures: ["elf"], name: "swamp" },
-  house: { creatures: ["elf"], name: "house" },
-  lake: { creatures: ["elf"], name: "lake" },
-  barn: { creatures: ["elf"], name: "barn" }
+  house: { creatures: [], name: "house" },
+  lake: { creatures: [], name: "lake" },
+  barn: { creatures: [], name: "barn" }
 };
 
 // these should just be grabbed from the scenes array

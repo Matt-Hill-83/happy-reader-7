@@ -13,18 +13,14 @@
 }
 
 .imagesBox {
+  border: 1px solid red !important;
   display: flex;
   position: relative;
-  /* flex: 1; */
   height: 100%;
   align-items: center;
   justify-content: center;
-  // border: 1px solid black;
-  // /* margin: 0px auto; */
-  /* min-width: 100px; */
   margin-left: auto;
   margin-right: auto;
-  // flex-shrink: 3;
   display: inline-flex;
 }
 
@@ -66,5 +62,5 @@
   height: 100%;
 
   bottom: 0px;
-  left: 0px;
+  left: -44px;
 }

@@ -78,17 +78,27 @@ class PicturePage extends React.Component {
   createSingleRow = ({ locationRow }) => {
     const {
       activeScene,
-      activeScene: { creatures }
+      activeScene: { newFriend }
     } = this.props;
 
     console.log("activeScene", activeScene); // zzz
 
-    console.log("creatures", creatures); // zzz
+    console.log("newFriend", newFriend); // zzz
+
+    const friendType = "elf";
+
+    const friend = (
+      <img
+        className={`${css.characterImageMini} ${css.character2Mini}`}
+        src={Images[friendType]}
+        alt={friendType}
+      />
+    );
 
     return locationRow.map(location => {
       const isActive = location.name === activeScene.location;
       const you = isActive ? this.renderYouMini() : null;
-      const characters = [you];
+      const characters = [you, friend];
 
       return (
         <MiniLocation

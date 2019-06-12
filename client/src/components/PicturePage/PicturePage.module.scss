@@ -66,7 +66,6 @@
 }
 
 .miniLocationsRow {
-  // border: 3px solid green !important;
   display: flex;
   flex: 1 1;
   justify-content: space-between;
@@ -78,7 +77,7 @@
 .halfPage {
   display: flex;
   position: relative;
-  border: 3px solid purple !important;
+  border: 2px solid purple !important;
 }
 
 .leftHalf {
@@ -160,13 +159,22 @@
   }
 
   .characterImageMini {
-    position: absolute;
+    // position: absolute;
+    display: flex;
     z-index: 3;
+    align-self: flex-end;
   }
 
   .character1Mini {
     bottom: 0px;
-    left: 10%;
+    left: 0%;
+    height: 50px;
+    width: auto;
+  }
+
+  .character2Mini {
+    bottom: 0px;
+    left: 50px;
     height: 50px;
     width: auto;
   }

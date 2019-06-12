@@ -46,6 +46,8 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
+    console.log("activeScene", activeScene); // zzz
+
     const plot = localStateStore.getPlot();
     const { you, scenes = [], narrativeGenerators } = plot;
     const neighborNames = this.getNeighbors({ activeScene });
@@ -67,8 +69,6 @@ class MainStory extends React.Component {
 
     activeScene.neighborObjects = neighborObjects;
 
-    // activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenes });
-    // activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenes });
     activeScene.generatedNarrative = narrativeGenerator({ you, activeScene });
     activeScene.isUsed = true;
 
