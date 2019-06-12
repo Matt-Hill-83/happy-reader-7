@@ -211,19 +211,17 @@ const locations = [
 ];
 
 const creatures = [
+  { name: "dragon", image: "noun", type: wordTypes.creature },
   { name: "elf", image: "noun", type: wordTypes.creature },
   { name: "fairy", image: "noun", type: wordTypes.creature },
   { name: "goblin", image: "noun", type: wordTypes.creature },
-  { name: "zombie", image: "noun", type: wordTypes.creature },
+  { name: "hobbit", image: "noun", type: wordTypes.creature },
+  { name: "mermaid", image: "noun", type: wordTypes.creature },
+  { name: "monster", image: "noun", type: wordTypes.creature },
   { name: "troll", image: "noun", type: wordTypes.creature },
   { name: "unicorn", image: "noun", type: wordTypes.creature },
-  { name: "mermaid", image: "noun", type: wordTypes.creature },
-
-  { name: "monster", image: "noun", type: wordTypes.creature },
-
-  { name: "hobbit", image: "noun", type: wordTypes.creature },
   { name: "wizard", image: "noun", type: wordTypes.creature },
-  { name: "dragon", image: "noun", type: wordTypes.creature }
+  { name: "zombie", image: "noun", type: wordTypes.creature }
   // { name: "giant", image: "noun", type: wordTypes.creature }
 ];
 
