@@ -1,7 +1,5 @@
 .mapScroller {
-  // border: 1px solid red !important;
   display: flex;
-  // width: 200%;
   position: relative;
 }
 
@@ -44,7 +42,6 @@
 }
 
 .miniLocationsGrid {
-  // border: 1px solid blue !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -53,7 +50,7 @@
 
   height: 71%;
   width: 100%;
-  left: 26%;
+  left: 20%;
   top: 15%;
 }
 
@@ -65,16 +62,8 @@
   height: 34%;
 }
 
-// .miniLocationsRowContainer {
-//   border: 1px solid red !important;
-//   display: flex;
-//   flex: 1;
-
-//   width: 200%;
-// }
-
 .miniLocationsRow {
-  border: 3px solid green !important;
+  // border: 3px solid green !important;
   display: flex;
   flex: 1 1;
   justify-content: space-between;
@@ -174,7 +163,7 @@
 
   .character1Mini {
     bottom: 0px;
-    left: 0px;
+    left: 10%;
     height: 50px;
     width: auto;
   }

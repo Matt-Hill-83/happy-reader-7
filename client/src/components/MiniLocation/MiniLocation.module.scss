@@ -1,10 +1,31 @@
 .main {
+  border: 1px solid white !important;
   display: flex;
-  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+
+  overflow: hidden;
+  position: relative;
 
   height: 100%;
-  width: 100%;
-  border: 2px solid white !important;
+  padding: 10px 0px;
+}
+
+.imagesBox {
+  display: flex;
+  position: relative;
+  /* flex: 1; */
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  // /* margin: 0px auto; */
+  /* min-width: 100px; */
+  margin-left: auto;
+  margin-right: auto;
+  // flex-shrink: 3;
+  display: inline-flex;
 }
 
 .activeClass {
@@ -25,11 +46,11 @@
   background: #e1d8ea;
   border-radius: 3px;
   padding: 0 3px;
-  bottom: -8px;
+  bottom: 13px;
 }
 
 .miniLocationImage {
-  border: 1px solid blue !important;
+  // border: 1px solid blue !important;
   display: flex;
 
   height: 100%;
@@ -45,5 +66,5 @@
   height: 100%;
 
   bottom: 0px;
-  left: -18px;
+  left: 0px;
 }

@@ -112,12 +112,6 @@ class MainStory extends React.Component {
       });
     });
 
-    // TODO: make these the options on the buttons.
-    // TODO: make these the options on the buttons.
-    // TODO: make these the options on the buttons.
-    // TODO: make these the options on the buttons.
-    // TODO: make these the options on the buttons.
-
     activeScene.neighbors = neighborNames;
 
     return neighborNames;

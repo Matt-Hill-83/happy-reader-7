@@ -18,13 +18,15 @@ const MiniLocation = props => {
 
   return (
     <div className={`${css.main} ${className} ${localClass}`}>
-      <img
-        className={css.miniLocationImage}
-        src={miniLocation}
-        alt={"imagex"}
-      />
-      <span className={css.locationTitle}>{location}</span>
-      <div className={css.characters}>{characters}</div>
+      <div className={css.imagesBox}>
+        <img
+          className={css.miniLocationImage}
+          src={miniLocation}
+          alt={"imagex"}
+        />
+        <span className={css.locationTitle}>{location}</span>
+        <div className={css.characters}>{characters}</div>
+      </div>
     </div>
   );
 };
