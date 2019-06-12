@@ -17,7 +17,7 @@ import unicorn from "./unicorn-1.png";
 import footsteps from "./footsteps-01.png";
 
 // backgrounds
-import map02 from "./backgrounds/map-04.jpg";
+import map02 from "./backgrounds/map-05.jpg";
 
 //locations - small
 import castleSmall from "./locations-small/castle.png";

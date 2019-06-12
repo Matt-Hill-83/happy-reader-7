@@ -151,16 +151,25 @@ const endScene = {
   builtInNarrativeGenerator: generateStartNarrative
 };
 
-const generatePlot = () => {
-  console.log("Utils.generateScenes()", Utils.generateScenes()); // zzz
+const scenes = [
+  { creatures: ["elf"], location: "tree" },
+  { creatures: ["elf"], location: "stump" },
+  { creatures: ["elf"], location: "castle" },
+  { creatures: ["elf"], location: "waterfall" },
+  { creatures: ["elf"], location: "bees" },
+  { creatures: ["elf"], location: "swamp" },
+  { creatures: ["elf"], location: "house" },
+  { creatures: ["elf"], location: "lake" },
+  { creatures: ["elf"], location: "barn" }
+];
 
-  const test = Utils.generateScenes();
-  /* eslint-disable */ debugger; /* zzz */ /* eslint-ensable */
+const generatePlot = () => {
   const plot = {
     activeScene: startScene,
     endScene,
     narrativeGenerators,
-    scenes: Utils.generateScenes(),
+    scenes,
+    // scenes: Utils.generateScenes(),
     you: localStateStore.getYou()
   };
 
@@ -179,18 +188,6 @@ const locations = {
   lake: { creatures: ["elf"], name: "lake" },
   barn: { creatures: ["elf"], name: "barn" }
 };
-
-const scenes = [
-  { location: "tree" },
-  { location: "stump" },
-  { location: "castle" },
-  { location: "waterfall" },
-  { location: "bees" },
-  { location: "swamp" },
-  { location: "house" },
-  { location: "lake" },
-  { location: "barn" }
-];
 
 // these should just be grabbed from the scenes array
 const locationsMap = [
