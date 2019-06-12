@@ -30,6 +30,8 @@ import swamp from "./locations-small/swamp.png";
 import lake from "./locations-small/lake.png";
 import barn from "./locations-small/barn.png";
 
+import troll from "./bad-guys/troll-01.png";
+
 export default {
   backgrounds: {
     waterfall,
@@ -62,6 +64,7 @@ export default {
     }
   },
   fairy,
+  troll,
   meadow,
   unicorn,
   waterfall,

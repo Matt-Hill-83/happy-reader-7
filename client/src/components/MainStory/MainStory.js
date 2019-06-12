@@ -8,7 +8,8 @@ import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
 
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
-// import MainHeader from "../MainHeader/MainHeader.js";
+import MainHeader from "../MainHeader/MainHeader.js";
+import { Button, Icon, Position, Tooltip } from "@blueprintjs/core";
 
 import css from "./MainStory.module.scss";
 
@@ -121,6 +122,11 @@ class MainStory extends React.Component {
     this.setState({ showStory: !this.state.showStory });
   };
 
+  changeCharacter = () => {
+    localStateStore.setPage("intro1");
+    // this.setState({ showIntro: true });
+  };
+
   render() {
     const page = localStateStore.getPage();
 
@@ -133,10 +139,20 @@ class MainStory extends React.Component {
       );
     }
 
+    const toggleButton = (
+      <Button
+        tabIndex={0}
+        className={css.newStoryBtn}
+        onClick={this.changeCharacter}
+      >
+        <span> Change Character </span>
+      </Button>
+    );
+
     return (
       <div className={css.main}>
         {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
-
+        {toggleButton}
         <div className={css.body}>
           {!this.state.showStory && <FlashCards />}
           {this.state.showStory && (

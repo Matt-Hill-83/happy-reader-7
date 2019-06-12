@@ -18,7 +18,7 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 
 import css from "./IntroPage1.module.scss";
 
-const youCreatureOptions = ["fairy", "unicorn", "girl", "elf"];
+const youCreatureOptions = ["fairy", "unicorn", "girl", "elf", "troll"];
 const youCreatureDefault = youCreatureOptions[3];
 const youNameDefault = "Dobby";
 
@@ -84,7 +84,6 @@ class IntroPage1 extends React.Component {
           id="outlined-name"
           label="Name"
           autoFocus={true}
-          // className={classes.textField}
           value={youName}
           onChange={this.changeYouName}
           margin="normal"
@@ -93,9 +92,7 @@ class IntroPage1 extends React.Component {
         <div className={css.content}>you are a...</div>
 
         <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel ref={inputLabel} htmlFor="outlined-age-simple">
-            You
-          </InputLabel>
+          <InputLabel ref={inputLabel} htmlFor="outlined-age-simple" />
           <Select
             value={youCreature}
             onChange={event => {
