@@ -12,14 +12,20 @@ export default class Utils {
       return !word.isFavorite;
     });
 
-  static getWordsByType = ({ words, type }) => {
-    return words.filter(word => {
+  static getWordsByType = ({ words, type, returnName = false }) => {
+    const items = words.filter(word => {
       if (word.data) {
         return word.data.type === type;
       }
 
       return word.type === type;
     });
+
+    if (returnName) {
+      return items.map(item => item.name);
+    } else {
+      return items;
+    }
   };
 
   static getWordsByFamily = ({ words, family }) => {

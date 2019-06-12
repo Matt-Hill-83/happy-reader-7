@@ -16,20 +16,16 @@ import {
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 
 import css from "./IntroPage1.module.scss";
+import Utils from "../../Utils/Utils.js";
+import myWords from "../../Models/words.js";
 
-const youCreatureOptions = [
-  "dragon",
-  "elf",
-  "fairy",
-  "girl",
-  "goblin",
-  "hobbit",
-  "mermaid",
-  "monster",
-  "troll",
-  "unicorn",
-  "wizard"
-];
+const { words, wordTypes } = myWords;
+
+const youCreatureOptions = Utils.getWordsByType({
+  words: words,
+  type: wordTypes.creature,
+  returnName: true
+});
 
 const youCreatureDefault = youCreatureOptions[3];
 const youNameDefault = "Dobby";
