@@ -69,8 +69,6 @@ class WordPage extends React.Component {
     const isLastParagraph =
       this.state.activeParagraphIndex === generatedNarrative.story.length - 1;
 
-    console.log("isLastParagraph", isLastParagraph); // zzz
-
     return (
       <div className={css.textPage}>
         {/* pass in adder for setting tab order */}

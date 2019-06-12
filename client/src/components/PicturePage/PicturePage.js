@@ -135,7 +135,6 @@ class PicturePage extends React.Component {
 
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
     const activeLocation = activeScene.location;
-    console.log("activeLocation", activeLocation); // zzz
 
     return (
       <div className={css.imageContainer}>
