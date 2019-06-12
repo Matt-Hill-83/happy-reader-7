@@ -53,29 +53,34 @@
 
   height: 71%;
   width: 100%;
-  left: 14%;
-  top: 14%;
+  left: 26%;
+  top: 15%;
 }
 
 .miniActiveLocation {
+  position: absolute;
   top: 53% !important;
   left: 50% !important;
   transform: translateX(-50%);
   height: 34%;
 }
 
-.miniLocationsRowContainer {
-  display: flex;
-  flex: 1;
+// .miniLocationsRowContainer {
+//   border: 1px solid red !important;
+//   display: flex;
+//   flex: 1;
 
-  width: 200%;
-}
+//   width: 200%;
+// }
 
 .miniLocationsRow {
+  border: 3px solid green !important;
   display: flex;
-  position: relative;
+  flex: 1 1;
+  justify-content: space-between;
+  align-items: center;
 
-  width: 100%;
+  position: relative;
 }
 
 .halfPage {

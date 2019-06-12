@@ -66,11 +66,11 @@ class PicturePage extends React.Component {
     // Create rows
     const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
       return (
-        <div className={css.miniLocationsRowContainer}>
-          <div className={css.miniLocationsRow}>
-            {this.createSingleRow({ locationRow, rowIndex })}
-          </div>
+        // <div className={css.miniLocationsRowContainer}>
+        <div className={css.miniLocationsRow}>
+          {this.createSingleRow({ locationRow, rowIndex })}
         </div>
+        // </div>
       );
     });
 
