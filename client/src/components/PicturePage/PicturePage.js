@@ -3,14 +3,15 @@ import { IconNames } from "@blueprintjs/icons";
 import { Icon } from "@blueprintjs/core";
 import { observer } from "mobx-react";
 import LineTo from "react-lineto";
+import _get from "lodash.get";
 
 import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import MiniLocation from "../MiniLocation/MiniLocation.js";
 import WordPage from "../WordPage/WordPage.js";
+import sentences from "../../Models/sentences.js";
 
 import css from "./PicturePage.module.scss";
-import sentences from "../../Models/sentences.js";
 
 const { locationsMap } = sentences;
 
@@ -84,13 +85,18 @@ class PicturePage extends React.Component {
     console.log("activeScene", activeScene); // zzz
 
     console.log("newFriend", newFriend); // zzz
+    const test = _get(activeScene, "newFriend.type");
+    console.log("test", test); // zzz
 
-    const friendType = "elf";
+    const friendType = _get(activeScene, "newFriend.type") || "elf";
+    // const friendType = "elf";
+    const defaultImage = "elf";
+    const image = Images[friendType] || Images[defaultImage];
 
     const friend = (
       <img
         className={`${css.characterImageMini} ${css.character2Mini}`}
-        src={Images[friendType]}
+        src={image}
         alt={friendType}
       />
     );
