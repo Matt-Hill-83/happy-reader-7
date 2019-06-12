@@ -6,10 +6,9 @@ import FlashCards from "../FlashCards/FlashCards";
 import IntroPage1 from "../IntroPage1/IntroPage1.js";
 import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
-import WordPage from "../WordPage/WordPage.js";
 
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
-import MainHeader from "../MainHeader/MainHeader.js";
+// import MainHeader from "../MainHeader/MainHeader.js";
 
 import css from "./MainStory.module.scss";
 
@@ -19,8 +18,6 @@ const {
   generatePlot,
   generateYou
 } = mySentences;
-
-// const { locationsMap } = sentences;
 
 class MainStory extends React.Component {
   state = {
@@ -59,7 +56,8 @@ class MainStory extends React.Component {
     const { you, scenes = [], narrativeGenerators } = plot;
     console.log("scenes", scenes); // zzz
 
-    this.getNeighbors({ activeScene });
+    const neighborNames = this.getNeighbors({ activeScene });
+    console.log("neighborNames", neighborNames); // zzz
 
     const narrativeGenerator =
       activeScene.builtInNarrativeGenerator ||
@@ -69,6 +67,14 @@ class MainStory extends React.Component {
 
     const newFriend = generateNewFriend();
     activeScene.newFriend = newFriend;
+
+    const neighborObjects = neighborNames.map(name => {
+      return {
+        location: name
+      };
+    });
+
+    activeScene.neighborObjects = neighborObjects;
 
     activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenes });
     activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenes });
@@ -128,6 +134,7 @@ class MainStory extends React.Component {
 
     return neighborNames;
   };
+
   toggleFlashCards = () => {
     this.setState({ showStory: !this.state.showStory });
   };

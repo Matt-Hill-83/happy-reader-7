@@ -29,7 +29,8 @@ class WordPage extends React.Component {
   renderButtons = () => {
     const { activeScene } = this.state;
 
-    const options = [activeScene.sceneOptionA, activeScene.sceneOptionB];
+    const options = activeScene.neighborObjects;
+    // const options = [activeScene.sceneOptionA, activeScene.sceneOptionB];
     const buttons = options.map((scene, i) => {
       if (!scene) {
         return null;
@@ -67,6 +68,8 @@ class WordPage extends React.Component {
 
     const isLastParagraph =
       this.state.activeParagraphIndex === generatedNarrative.story.length - 1;
+
+    console.log("isLastParagraph", isLastParagraph); // zzz
 
     return (
       <div className={css.textPage}>

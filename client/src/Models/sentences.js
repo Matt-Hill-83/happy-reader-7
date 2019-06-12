@@ -80,31 +80,30 @@ const generateStartNarrative = ({ you }) => {
         `You are a ${you.creature}.`,
         `You live in the ${you.homeLocation}.`,
         `You are sooooo happy.`
-      ],
-
-      [
-        `${you.mission.item.recipient.name} is a ${
-          you.mission.item.recipient.type
-        }.`,
-        `${you.mission.item.recipient.name} is at the ${
-          you.mission.item.endLocation
-        }.`,
-        `${you.mission.item.recipient.name} lost her ${you.mission.item.name}.`,
-        `${you.mission.item.recipient.name} is soooo sad.`
       ]
-    ],
-    mission: [
-      `Go to the ${you.mission.item.startLocation}`,
-      `Find the ${you.mission.item.name}.`,
 
-      `Bring the ${you.mission.item.name} to the ${
-        you.mission.item.endLocation
-      }.`,
+      // [
+      //   `${you.mission.item.recipient.name} is a ${
+      //     you.mission.item.recipient.type
+      //   }.`,
+      //   `${you.mission.item.recipient.name} is at the ${
+      //     you.mission.item.endLocation
+      //   }.`,
+      //   `${you.mission.item.recipient.name} lost her ${you.mission.item.name}.`,
+      //   `${you.mission.item.recipient.name} is soooo sad.`
+      // ]
+    ]
+    // mission: [
+    //   `Go to the ${you.mission.item.startLocation}`,
+    //   `Find the ${you.mission.item.name}.`,
 
-      `Give the ${you.mission.item.name} to ${you.mission.item.recipient.name}.`
-    ],
-    proposition: [`Where do you go now?`],
-    sceneOptions: [you.mission.item.startLocation]
+    //   `Bring the ${you.mission.item.name} to the ${
+    //     you.mission.item.endLocation
+    //   }.`,
+
+    //   `Give the ${you.mission.item.name} to ${you.mission.item.recipient.name}.`
+    // ],
+    // proposition: [`Where do you go now?`],
   };
 };
 
@@ -127,15 +126,15 @@ const generateNarrative1 = ({ you, activeScene }) => {
         `"My name is ${newFriend.name}."`,
         `"I am sooooooo sad."`,
         `The ${newFriend.type} starts to cry.`
-      ],
-      [
-        `The ${newFriend.type} says,`,
-
-        `"Can you help me?"`,
-        `"I need to go to the ${newFriend.mission.item.startLocation}`,
-        `to get a  ${newFriend.mission.item.name}."`,
-        `"Will you go with me?"`
       ]
+      // [
+      //   `The ${newFriend.type} says,`,
+
+      //   `"Can you help me?"`,
+      //   `"I need to go to the ${newFriend.mission.item.startLocation}`,
+      //   `to get a  ${newFriend.mission.item.name}."`,
+      //   `"Will you go with me?"`
+      // ]
     ]
   };
 };
