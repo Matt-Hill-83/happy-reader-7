@@ -66,40 +66,36 @@ class PicturePage extends React.Component {
     // Create rows
     const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
       return (
-        // <div className={css.miniLocationsRowContainer}>
         <div className={css.miniLocationsRow}>
           {this.createSingleRow({ locationRow, rowIndex })}
         </div>
-        // </div>
       );
     });
 
     return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
   };
 
-  storeImageLocation = ({ location, x, y }) => {};
+  createSingleRow = ({ locationRow }) => {
+    const {
+      activeScene,
+      activeScene: { creatures }
+    } = this.props;
 
-  createSingleRow = ({ locationRow, rowIndex }) => {
-    const { activeScene } = this.props;
+    console.log("activeScene", activeScene); // zzz
 
-    const numLocations = locationRow.length;
+    console.log("creatures", creatures); // zzz
 
-    return locationRow.map((location, index) => {
-      const offset = 100 / numLocations;
-      const xPct = offset * index;
-
+    return locationRow.map(location => {
       const isActive = location.name === activeScene.location;
       const you = isActive ? this.renderYouMini() : null;
       const characters = [you];
 
       return (
         <MiniLocation
-          xPct={xPct}
           key={location.name}
           location={location.name}
           characters={characters}
           isActive={isActive}
-          storeImageLocation={this.storeImageLocation}
           className={location.name}
         />
       );

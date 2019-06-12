@@ -1,5 +1,5 @@
 .main {
-  border: 1px solid white !important;
+  // border: 1px solid white !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,7 +9,7 @@
   position: relative;
 
   height: 100%;
-  padding: 10px 0px;
+  padding: 12px 0px;
 }
 
 .imagesBox {
@@ -19,7 +19,7 @@
   height: 100%;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
+  // border: 1px solid black;
   // /* margin: 0px auto; */
   /* min-width: 100px; */
   margin-left: auto;
@@ -28,7 +28,7 @@
   display: inline-flex;
 }
 
-.activeClass {
+.xxx-activeClass {
   border: 2px solid red !important;
   border-radius: 5px;
   padding: 5px;

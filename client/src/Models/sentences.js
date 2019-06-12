@@ -152,6 +152,10 @@ const endScene = {
 };
 
 const generatePlot = () => {
+  console.log("Utils.generateScenes()", Utils.generateScenes()); // zzz
+
+  const test = Utils.generateScenes();
+  /* eslint-disable */ debugger; /* zzz */ /* eslint-ensable */
   const plot = {
     activeScene: startScene,
     endScene,
@@ -165,16 +169,28 @@ const generatePlot = () => {
 
 // these should just be scenes
 const locations = {
-  tree: { name: "tree" },
-  stump: { name: "stump" },
-  castle: { name: "castle" },
-  waterfall: { name: "waterfall" },
-  bees: { name: "bees" },
-  swamp: { name: "swamp" },
-  house: { name: "house" },
-  lake: { name: "lake" },
-  barn: { name: "barn" }
+  tree: { creatures: ["elf"], name: "tree" },
+  stump: { creatures: ["elf"], name: "stump" },
+  castle: { creatures: ["elf"], name: "castle" },
+  waterfall: { creatures: ["elf"], name: "waterfall" },
+  bees: { creatures: ["elf"], name: "bees" },
+  swamp: { creatures: ["elf"], name: "swamp" },
+  house: { creatures: ["elf"], name: "house" },
+  lake: { creatures: ["elf"], name: "lake" },
+  barn: { creatures: ["elf"], name: "barn" }
 };
+
+const scenes = [
+  { location: "tree" },
+  { location: "stump" },
+  { location: "castle" },
+  { location: "waterfall" },
+  { location: "bees" },
+  { location: "swamp" },
+  { location: "house" },
+  { location: "lake" },
+  { location: "barn" }
+];
 
 // these should just be grabbed from the scenes array
 const locationsMap = [

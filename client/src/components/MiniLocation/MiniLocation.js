@@ -6,12 +6,7 @@ import Images from "../../images/images.js";
 import css from "./MiniLocation.module.scss";
 
 const MiniLocation = props => {
-  const { location, xPct, characters, isActive, className } = props;
-
-  // const style = {
-  //   left: `${xPct}%`,
-  //   top: `${0}%`
-  // };
+  const { location, characters, isActive, className } = props;
 
   const localClass = isActive ? css.activeClass : "";
   const miniLocation = Images.locations.small[location];

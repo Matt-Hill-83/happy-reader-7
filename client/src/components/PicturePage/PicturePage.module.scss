@@ -1,6 +1,8 @@
 .mapScroller {
   display: flex;
   position: relative;
+  border: 10px solid rebeccapurple;
+  min-width: 200%;
 }
 
 .lineTo {
@@ -42,16 +44,17 @@
 }
 
 .miniLocationsGrid {
+  border: 2px solid red;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   position: absolute;
 
-  height: 71%;
-  width: 100%;
-  left: 20%;
-  top: 15%;
+  left: 10%;
+  right: 10%;
+  top: 10%;
+  bottom: 10%;
 }
 
 .miniActiveLocation {

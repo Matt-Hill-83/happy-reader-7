@@ -67,8 +67,8 @@ class MainStory extends React.Component {
 
     activeScene.neighborObjects = neighborObjects;
 
-    activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenes });
-    activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenes });
+    // activeScene.sceneOptionA = Utils.reserveRandomItem({ items: scenes });
+    // activeScene.sceneOptionB = Utils.reserveRandomItem({ items: scenes });
     activeScene.generatedNarrative = narrativeGenerator({ you, activeScene });
     activeScene.isUsed = true;
 

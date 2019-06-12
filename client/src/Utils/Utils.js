@@ -107,6 +107,20 @@ export default class Utils {
   };
 
   static generateScenes = () => {
+    const locations = {
+      tree: { creatures: ["elf"], name: "tree" },
+      stump: { creatures: ["elf"], name: "stump" },
+      castle: { creatures: ["elf"], name: "castle" },
+      waterfall: { creatures: ["elf"], name: "waterfall" },
+      bees: { creatures: ["elf"], name: "bees" },
+      swamp: { creatures: ["elf"], name: "swamp" },
+      house: { creatures: ["elf"], name: "house" },
+      lake: { creatures: ["elf"], name: "lake" },
+      barn: { creatures: ["elf"], name: "barn" }
+    };
+
+    // return locations;
+
     const locationsList =
       Utils.getWordsByType({ words, type: wordTypes.location }) || [];
 
