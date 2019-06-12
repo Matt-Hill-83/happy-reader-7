@@ -25,13 +25,17 @@ class MainStory extends React.Component {
     showStory: true,
     activeScene: undefined,
     pageNum: 0,
-    pages: {}
+    pages: {},
+    showIntro: false
   };
 
   async componentWillMount() {
-    localStateStore.setPage("intro2");
-    this.onExitIntro({ you: { name: "Luna", creature: "girl" } });
-    // localStateStore.setPage("intro1");
+    if (this.state.showIntro) {
+      localStateStore.setPage("intro1");
+    } else {
+      localStateStore.setPage("intro2");
+      this.onExitIntro({ you: { name: "Luna", creature: "girl" } });
+    }
   }
 
   onExitIntro = ({ you }) => {
