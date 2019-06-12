@@ -33,9 +33,8 @@
 
 .characterImage {
   display: flex;
-
-  width: 400px;
-  height: auto;
+  height: 350px;
+  width: auto;
 }
 
 .backgroundImage {
@@ -69,13 +68,19 @@
 }
 
 .introText {
-  border: 1px solid blue !important;
-  background: white;
-  position: absolute;
-  left: 50%;
-  top: 5%;
-  padding: 40px;
   display: flex;
   flex-direction: column;
-  height: 1100px;
+
+  position: absolute;
+  border: 1px solid blue !important;
+  background: #fbe8f3;
+
+  padding: 40px;
+  height: 768px;
+  width: 520px;
+  overflow: hidden;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 20px;
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import { observer } from "mobx-react";
-import _get from "lodash.get";
 
 import Images from "../../images/images.js";
 
@@ -18,7 +17,14 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 
 import css from "./IntroPage1.module.scss";
 
-const youCreatureOptions = ["fairy", "unicorn", "girl", "elf", "troll"];
+const youCreatureOptions = [
+  "fairy",
+  "unicorn",
+  "girl",
+  "elf",
+  "troll",
+  "goblin"
+];
 const youCreatureDefault = youCreatureOptions[3];
 const youNameDefault = "Dobby";
 
