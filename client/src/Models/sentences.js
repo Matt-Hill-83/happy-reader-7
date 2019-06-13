@@ -152,7 +152,7 @@ const generateScenes = () => {
     tree: { creatures: [], name: "tree" },
     stump: { creatures: [], name: "stump" },
     castle: { creatures: ["unicorn"], name: "castle" },
-    waterfall: { creatures: [], name: "waterfall" },
+    waterfall: { creatures: ["unicorn"], name: "waterfall" },
     bees: { creatures: [], name: "bees" },
     swamp: { creatures: ["elf"], name: "swamp" },
     house: { creatures: [], name: "house" },

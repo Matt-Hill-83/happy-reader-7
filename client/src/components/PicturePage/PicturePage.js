@@ -77,26 +77,26 @@ class PicturePage extends React.Component {
   };
 
   createSingleRow = ({ locationRow }) => {
-    const {
-      activeScene,
-      activeScene: { newFriend }
-    } = this.props;
-
-    const friendType = _get(activeScene, "newFriend.type") || "elf";
-    // const friendType = "elf";
-    const defaultImage = "elf";
-    const image = Images[friendType] || Images[defaultImage];
-
-    const friend = (
-      <img
-        className={`${css.characterImageMini} ${css.character2Mini}`}
-        src={image}
-        alt={friendType}
-      />
-    );
+    const { activeScene } = this.props;
 
     return locationRow.map(location => {
+      const creatures = _get(location, "scene.creatures");
+      console.log("creatures", creatures); // zzz
+      console.log("location", location); // zzz
+
+      const friendType = creatures.length > 0 && creatures[0];
+      const image = Images[friendType] || null;
+
+      const friend = (
+        <img
+          className={`${css.characterImageMini} ${css.character2Mini}`}
+          src={image}
+          alt={friendType}
+        />
+      );
+
       const isActive = location.name === activeScene.name;
+
       const you = isActive ? this.renderYouMini() : null;
       const characters = [you, friend];
 
@@ -140,7 +140,7 @@ class PicturePage extends React.Component {
     const renderedImage = Images[defaultImage];
 
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
-    const activeLocation = activeScene.location;
+    const activeLocation = activeScene.name;
 
     return (
       <div className={css.imageContainer}>
