@@ -108,7 +108,10 @@ const generateStartNarrative = ({ you }) => {
 };
 
 const generateNarrative1 = ({ you, activeScene }) => {
-  const { location } = activeScene;
+  const { location, creatures } = activeScene;
+
+  const creature = creatures && creatures.length > 0 && creatures[0];
+  console.log("creature", creature); // zzz
 
   const newFriend = generateNewFriend();
 
@@ -148,15 +151,20 @@ const startScene = {
   builtInNarrativeGenerator: generateStartNarrative
 };
 
+// TODO - creatures should have a name and type
+// TODO - creatures should have a name and type
+// TODO - creatures should have a name and type
+// TODO - creatures should have a name and type
+
 const generateScenes = () => {
   const scenes = {
-    tree: { creatures: ["dragon"], name: "tree" },
+    tree: { creatures: ["hobbit"], name: "tree" },
     stump: { creatures: ["troll"], name: "stump" },
     castle: { creatures: ["unicorn"], name: "castle" },
     waterfall: { creatures: ["dragon"], name: "waterfall" },
     bees: { creatures: ["fairy"], name: "bees" },
     swamp: { creatures: ["elf"], name: "swamp" },
-    house: { creatures: ["goblin"], name: "house" },
+    house: { creatures: [], name: "house" },
     lake: { creatures: ["wizard"], name: "lake" },
     barn: { creatures: ["monster"], name: "barn" }
   };

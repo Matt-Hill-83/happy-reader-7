@@ -59,7 +59,6 @@ class MainStory extends React.Component {
       Utils.getRandomItem({ items: narrativeGenerators });
 
     activeScene.generatedNarrative = narrativeGenerator({ you, activeScene });
-    activeScene.isUsed = true;
 
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 });
   };
