@@ -82,12 +82,6 @@ class PicturePage extends React.Component {
       activeScene: { newFriend }
     } = this.props;
 
-    console.log("activeScene", activeScene); // zzz
-
-    console.log("newFriend", newFriend); // zzz
-    const test = _get(activeScene, "newFriend.type");
-    console.log("test", test); // zzz
-
     const friendType = _get(activeScene, "newFriend.type") || "elf";
     // const friendType = "elf";
     const defaultImage = "elf";

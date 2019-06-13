@@ -8,8 +8,8 @@ import PicturePage from "../PicturePage/PicturePage";
 import Utils from "../../Utils/Utils.js";
 
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
-import MainHeader from "../MainHeader/MainHeader.js";
-import { Button, Icon, Position, Tooltip } from "@blueprintjs/core";
+// import MainHeader from "../MainHeader/MainHeader.js";
+import { Button } from "@blueprintjs/core";
 
 import css from "./MainStory.module.scss";
 
@@ -50,14 +50,16 @@ class MainStory extends React.Component {
     console.log("activeScene", activeScene); // zzz
 
     const plot = localStateStore.getPlot();
-    const { you, scenes = [], narrativeGenerators } = plot;
+    const { you, scenes = {}, narrativeGenerators } = plot;
+    console.log("scenes", scenes); // zzz
+
     const neighborNames = this.getNeighbors({ activeScene });
 
     const narrativeGenerator =
       activeScene.builtInNarrativeGenerator ||
       Utils.getRandomItem({ items: narrativeGenerators });
 
-    Utils.unreserveItems({ items: scenes });
+    // Utils.unreserveItems({ items: scenes });
 
     const newFriend = generateNewFriend();
     activeScene.newFriend = newFriend;
@@ -77,7 +79,8 @@ class MainStory extends React.Component {
   };
 
   getNeighbors = ({ activeScene }) => {
-    const activeLocation = activeScene.location;
+    const activeLocation = activeScene.name;
+    // const activeLocation = activeScene.location;
 
     const neighbors = [];
     const neighborsArray = [];
@@ -86,6 +89,7 @@ class MainStory extends React.Component {
     locationsMap.forEach((row, rowIndex) => {
       row.forEach((location, locationIndex) => {
         neighborsArray.push({
+          // scene: location.scene,
           name: location.name,
           position: { x: rowIndex, y: locationIndex }
         });
@@ -124,7 +128,6 @@ class MainStory extends React.Component {
 
   changeCharacter = () => {
     localStateStore.setPage("intro1");
-    // this.setState({ showIntro: true });
   };
 
   render() {

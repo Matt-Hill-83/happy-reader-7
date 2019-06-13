@@ -143,33 +143,33 @@ const narrativeGenerators = [generateNarrative1];
 
 const startScene = {
   location: homeLocation,
+  name: homeLocation,
   builtInNarrativeGenerator: generateStartNarrative
 };
 
-const endScene = {
-  location: "castle",
-  builtInNarrativeGenerator: generateStartNarrative
+const generateScenes = () => {
+  const scenes = {
+    tree: { creatures: [], name: "tree" },
+    stump: { creatures: [], name: "stump" },
+    castle: { creatures: ["unicorn"], name: "castle" },
+    waterfall: { creatures: [], name: "waterfall" },
+    bees: { creatures: [], name: "bees" },
+    swamp: { creatures: ["elf"], name: "swamp" },
+    house: { creatures: [], name: "house" },
+    lake: { creatures: [], name: "lake" },
+    barn: { creatures: [], name: "barn" }
+  };
+
+  return scenes;
 };
 
-const scenes = [
-  { creatures: [], location: "tree" },
-  { creatures: [], location: "stump" },
-  { creatures: ["unicorn"], location: "castle" },
-  { creatures: [], location: "waterfall" },
-  { creatures: [], location: "bees" },
-  { creatures: ["elf"], location: "swamp" },
-  { creatures: [], location: "house" },
-  { creatures: [], location: "lake" },
-  { creatures: [], location: "barn" }
-];
+const scenes = generateScenes();
 
 const generatePlot = () => {
   const plot = {
     activeScene: startScene,
-    endScene,
     narrativeGenerators,
     scenes,
-    // scenes: Utils.generateScenes(),
     you: localStateStore.getYou()
   };
 
@@ -177,34 +177,39 @@ const generatePlot = () => {
 };
 
 // these should just be scenes
-const locations = {
-  tree: { creatures: [], name: "tree" },
-  stump: { creatures: [], name: "stump" },
-  castle: { creatures: ["unicorn"], name: "castle" },
-  waterfall: { creatures: [], name: "waterfall" },
-  bees: { creatures: [], name: "bees" },
-  swamp: { creatures: ["elf"], name: "swamp" },
-  house: { creatures: [], name: "house" },
-  lake: { creatures: [], name: "lake" },
-  barn: { creatures: [], name: "barn" }
-};
+// const locations = {
+//   tree: { creatures: [], name: "tree" },
+//   stump: { creatures: [], name: "stump" },
+//   castle: { creatures: ["unicorn"], name: "castle" },
+//   waterfall: { creatures: [], name: "waterfall" },
+//   bees: { creatures: [], name: "bees" },
+//   swamp: { creatures: ["elf"], name: "swamp" },
+//   house: { creatures: [], name: "house" },
+//   lake: { creatures: [], name: "lake" },
+//   barn: { creatures: [], name: "barn" }
+// };
 
-// these should just be grabbed from the scenes array
+// TODO
+// TODO
+// TODO
+// TODO
+// TODO
+// these should be the entire scene
 const locationsMap = [
   [
-    { name: locations.tree.name },
-    { name: locations.stump.name },
-    { name: locations.castle.name }
+    { scene: scenes.tree, name: scenes.tree.name },
+    { scene: scenes.stump, name: scenes.stump.name },
+    { scene: scenes.castle, name: scenes.castle.name }
   ],
   [
-    { name: locations.waterfall.name },
-    { name: locations.bees.name },
-    { name: locations.swamp.name }
+    { scene: scenes.waterfall, name: scenes.waterfall.name },
+    { scene: scenes.bees, name: scenes.bees.name },
+    { scene: scenes.swamp, name: scenes.swamp.name }
   ],
   [
-    { name: locations.house.name },
-    { name: locations.lake.name },
-    { name: locations.barn.name }
+    { scene: scenes.house, name: scenes.house.name },
+    { scene: scenes.lake, name: scenes.lake.name },
+    { scene: scenes.barn, name: scenes.barn.name }
   ]
 ];
 
