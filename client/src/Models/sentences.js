@@ -108,34 +108,38 @@ const generateStartNarrative = ({ you }) => {
 };
 
 const generateNarrative1 = ({ you, activeScene }) => {
-  const { location, creatures } = activeScene;
+  const { name, creatures } = activeScene;
 
   const creature = creatures && creatures.length > 0 && creatures[0];
   console.log("creature", creature); // zzz
+  console.log("name", name); // zzz
+  console.log("activeScene", activeScene); // zzz
 
-  const newFriend = generateNewFriend();
+  // const creature = generateNewFriend();
 
   return {
     story: [
       [
-        `You go to the ${location}.`,
-        `You see a ${newFriend.type}`,
-        `You say, "Hello ${newFriend.type}"`,
-        `"My name is ${you.name}."`
+        `You go to the ${name}.`,
+        `You see a ${creature.type}`,
+        `You say, "Hello ${creature.type}"`,
+        `"My name is ${you.name}."`,
+        `The ${creature.type} says:`,
+        `My name is ${creature.name}."`
       ]
       // [
-      //   `The ${newFriend.type} says,`,
+      //   `The ${creature.type} says,`,
       //   `"Hello ${you.name}."`,
-      //   `"My name is ${newFriend.name}."`,
+      //   `"My name is ${creature.name}."`,
       //   `"I am sooooooo sad."`,
-      //   `The ${newFriend.type} starts to cry.`
+      //   `The ${creature.type} starts to cry.`
       // ]
       // [
-      //   `The ${newFriend.type} says,`,
+      //   `The ${creature.type} says,`,
 
       //   `"Can you help me?"`,
-      //   `"I need to go to the ${newFriend.mission.item.startLocation}`,
-      //   `to get a  ${newFriend.mission.item.name}."`,
+      //   `"I need to go to the ${creature.mission.item.startLocation}`,
+      //   `to get a  ${creature.mission.item.name}."`,
       //   `"Will you go with me?"`
       // ]
     ]
@@ -169,9 +173,14 @@ const generateScenes = () => {
     barn: { creatures: [{ type: "monster" }], name: "barn" }
   };
 
-  const missionItemRecipientName = Utils.getRandomItemByTypeAndUse({
-    type: wordTypes.name
-  });
+  for (let scene in scenes) {
+    scenes[scene].creatures.forEach(creature => {
+      const creatureName = Utils.getRandomItemByTypeAndUse({
+        type: wordTypes.name
+      });
+      creature.name = creatureName;
+    });
+  }
 
   return scenes;
 };
