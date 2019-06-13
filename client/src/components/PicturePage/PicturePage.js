@@ -169,7 +169,7 @@ class PicturePage extends React.Component {
               alt={"imagex"}
             />
             {this.renderMiniLocations()}
-            {this.createArrows({ activeLocation })}
+            {/* {this.createArrows({ activeLocation })} */}
           </div>
         </div>
       </div>

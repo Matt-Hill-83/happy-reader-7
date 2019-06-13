@@ -23,11 +23,8 @@
   flex: 0;
 }
 
-.xxx-activeClass {
-  border: 2px solid red !important;
-  border-radius: 5px;
-  padding: 5px;
-  background: antiquewhite;
+.activeClass {
+  background: rgba(250, 235, 215, 0.45);
 }
 
 .locationTitle {
