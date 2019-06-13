@@ -80,14 +80,14 @@ class PicturePage extends React.Component {
     const { activeScene } = this.props;
     const creatures = _get(location, "scene.creatures") || [];
 
-    const friendType = creatures.length > 0 && creatures[0];
-    const image = Images[friendType] || null;
+    const creatureType = creatures.length > 0 && creatures[0].type;
+    const image = Images[creatureType] || null;
 
     const friend = (
       <img
         className={`${css.characterImageMini} ${css.character2Mini}`}
         src={image}
-        alt={friendType}
+        alt={creatureType}
       />
     );
 

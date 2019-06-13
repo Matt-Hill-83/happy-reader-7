@@ -15,7 +15,7 @@ import css from "./MainStory.module.scss";
 
 const {
   locationsMap,
-  generateNewFriend,
+  // generateNewFriend,
   generatePlot,
   generateYou
 } = mySentences;

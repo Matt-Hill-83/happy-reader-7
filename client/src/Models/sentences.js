@@ -122,14 +122,14 @@ const generateNarrative1 = ({ you, activeScene }) => {
         `You see a ${newFriend.type}`,
         `You say, "Hello ${newFriend.type}"`,
         `"My name is ${you.name}."`
-      ],
-      [
-        `The ${newFriend.type} says,`,
-        `"Hello ${you.name}."`,
-        `"My name is ${newFriend.name}."`,
-        `"I am sooooooo sad."`,
-        `The ${newFriend.type} starts to cry.`
       ]
+      // [
+      //   `The ${newFriend.type} says,`,
+      //   `"Hello ${you.name}."`,
+      //   `"My name is ${newFriend.name}."`,
+      //   `"I am sooooooo sad."`,
+      //   `The ${newFriend.type} starts to cry.`
+      // ]
       // [
       //   `The ${newFriend.type} says,`,
 
@@ -158,16 +158,20 @@ const startScene = {
 
 const generateScenes = () => {
   const scenes = {
-    tree: { creatures: ["hobbit"], name: "tree" },
-    stump: { creatures: ["troll"], name: "stump" },
-    castle: { creatures: ["unicorn"], name: "castle" },
-    waterfall: { creatures: ["dragon"], name: "waterfall" },
-    bees: { creatures: ["fairy"], name: "bees" },
-    swamp: { creatures: ["elf"], name: "swamp" },
+    tree: { creatures: [{ type: "hobbit" }], name: "tree" },
+    stump: { creatures: [{ type: "troll" }], name: "stump" },
+    castle: { creatures: [{ type: "unicorn" }], name: "castle" },
+    waterfall: { creatures: [{ type: "dragon" }], name: "waterfall" },
+    bees: { creatures: [{ type: "fairy" }], name: "bees" },
+    swamp: { creatures: [{ type: "elf" }], name: "swamp" },
     house: { creatures: [], name: "house" },
-    lake: { creatures: ["wizard"], name: "lake" },
-    barn: { creatures: ["monster"], name: "barn" }
+    lake: { creatures: [{ type: "wizard" }], name: "lake" },
+    barn: { creatures: [{ type: "monster" }], name: "barn" }
   };
+
+  const missionItemRecipientName = Utils.getRandomItemByTypeAndUse({
+    type: wordTypes.name
+  });
 
   return scenes;
 };
