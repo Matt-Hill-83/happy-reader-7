@@ -13,7 +13,7 @@
 }
 
 .imagesBox {
-  border: 1px solid red !important;
+  // border: 1px solid red !important;
   display: flex;
   position: relative;
   height: 100%;
@@ -45,7 +45,7 @@
 }
 
 .miniLocationImage {
-  border: 1px solid blue !important;
+  // border: 1px solid blue !important;
   display: flex;
 
   height: 100%;
@@ -61,5 +61,5 @@
   height: 100%;
 
   bottom: 0px;
-  // left: -44px;
+  left: -20%;
 }
