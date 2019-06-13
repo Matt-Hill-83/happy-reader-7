@@ -176,19 +176,6 @@ const generatePlot = () => {
   localStateStore.setPlot(plot);
 };
 
-// these should just be scenes
-// const locations = {
-//   tree: { creatures: [], name: "tree" },
-//   stump: { creatures: [], name: "stump" },
-//   castle: { creatures: ["unicorn"], name: "castle" },
-//   waterfall: { creatures: [], name: "waterfall" },
-//   bees: { creatures: [], name: "bees" },
-//   swamp: { creatures: ["elf"], name: "swamp" },
-//   house: { creatures: [], name: "house" },
-//   lake: { creatures: [], name: "lake" },
-//   barn: { creatures: [], name: "barn" }
-// };
-
 // TODO
 // TODO
 // TODO

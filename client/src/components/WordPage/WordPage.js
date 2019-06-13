@@ -27,22 +27,15 @@ class WordPage extends React.Component {
     const plot = localStateStore.getPlot();
     const { scenes = {} } = plot;
 
-    console.log("scenes", scenes); // zzz
-
     const newScene = scenes[sceneName];
-    console.log("newScene", newScene); // zzz
 
     this.props.updateActiveScene({ activeScene: newScene });
   };
 
   renderButtons = () => {
     const { activeScene } = this.state;
-
     const neighborNames = activeScene.neighbors;
-    // const neighborNames = activeScene.neighborObjects;
-    console.log("neighborNames", neighborNames); // zzz
 
-    // const neighborNames = [activeScene.sceneOptionA, activeScene.sceneOptionB];
     const buttons = neighborNames.map((scene, i) => {
       if (!scene) {
         return null;

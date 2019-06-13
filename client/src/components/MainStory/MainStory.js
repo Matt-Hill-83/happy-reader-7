@@ -47,19 +47,14 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
-    console.log("activeScene", activeScene); // zzz
-
     const plot = localStateStore.getPlot();
-    const { you, scenes = {}, narrativeGenerators } = plot;
-    console.log("scenes", scenes); // zzz
+    const { you, narrativeGenerators } = plot;
 
     const neighborNames = this.getNeighbors({ activeScene });
 
     const narrativeGenerator =
       activeScene.builtInNarrativeGenerator ||
       Utils.getRandomItem({ items: narrativeGenerators });
-
-    // Utils.unreserveItems({ items: scenes });
 
     const newFriend = generateNewFriend();
     activeScene.newFriend = newFriend;

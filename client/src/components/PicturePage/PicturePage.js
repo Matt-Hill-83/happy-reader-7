@@ -81,8 +81,6 @@ class PicturePage extends React.Component {
 
     return locationRow.map(location => {
       const creatures = _get(location, "scene.creatures");
-      console.log("creatures", creatures); // zzz
-      console.log("location", location); // zzz
 
       const friendType = creatures.length > 0 && creatures[0];
       const image = Images[friendType] || null;
