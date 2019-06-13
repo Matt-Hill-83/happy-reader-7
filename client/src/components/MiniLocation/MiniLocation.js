@@ -6,7 +6,9 @@ import Images from "../../images/images.js";
 import css from "./MiniLocation.module.scss";
 
 const MiniLocation = props => {
-  const { location, characters, isActive, className } = props;
+  const { location, characters, isActive, className, showLabel } = props;
+  console.log("characters- mini", characters); // zzz
+  console.log("location- mini", location); // zzz
 
   const localClass = isActive ? css.activeClass : "";
   const miniLocation = Images.locations.small[location];
@@ -19,7 +21,7 @@ const MiniLocation = props => {
           src={miniLocation}
           alt={"imagex"}
         />
-        <span className={css.locationTitle}>{location}</span>
+        {showLabel && <span className={css.locationTitle}>{location}</span>}
         <div className={css.characters}>{characters}</div>
       </div>
     </div>

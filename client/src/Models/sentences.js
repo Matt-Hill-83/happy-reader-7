@@ -142,22 +142,23 @@ const generateNarrative1 = ({ you, activeScene }) => {
 const narrativeGenerators = [generateNarrative1];
 
 const startScene = {
-  location: homeLocation,
+  // location: homeLocation,
+  creatures: [],
   name: homeLocation,
   builtInNarrativeGenerator: generateStartNarrative
 };
 
 const generateScenes = () => {
   const scenes = {
-    tree: { creatures: [], name: "tree" },
+    tree: { creatures: ["dragon"], name: "tree" },
     stump: { creatures: ["troll"], name: "stump" },
     castle: { creatures: ["unicorn"], name: "castle" },
     waterfall: { creatures: ["unicorn"], name: "waterfall" },
-    bees: { creatures: [], name: "bees" },
+    bees: { creatures: ["fairy"], name: "bees" },
     swamp: { creatures: ["elf"], name: "swamp" },
-    house: { creatures: [], name: "house" },
-    lake: { creatures: [], name: "lake" },
-    barn: { creatures: [], name: "barn" }
+    house: { creatures: ["goblin"], name: "house" },
+    lake: { creatures: ["troll"], name: "lake" },
+    barn: { creatures: ["monster"], name: "barn" }
   };
 
   return scenes;

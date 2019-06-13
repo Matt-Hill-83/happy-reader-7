@@ -76,39 +76,48 @@ class PicturePage extends React.Component {
     return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
   };
 
-  createSingleRow = ({ locationRow }) => {
+  renderCharacters = ({ location }) => {
     const { activeScene } = this.props;
+    const creatures = _get(location, "scene.creatures") || [];
 
-    return locationRow.map(location => {
-      const creatures = _get(location, "scene.creatures");
+    const friendType = creatures.length > 0 && creatures[0];
+    const image = Images[friendType] || null;
 
-      const friendType = creatures.length > 0 && creatures[0];
-      const image = Images[friendType] || null;
+    const friend = (
+      <img
+        className={`${css.characterImageMini} ${css.character2Mini}`}
+        src={image}
+        alt={friendType}
+      />
+    );
 
-      const friend = (
-        <img
-          className={`${css.characterImageMini} ${css.character2Mini}`}
-          src={image}
-          alt={friendType}
-        />
-      );
+    const isActive = location.name === activeScene.name;
 
-      const isActive = location.name === activeScene.name;
+    const you = isActive ? this.renderYouMini() : null;
+    const characters = [you, friend];
 
-      const you = isActive ? this.renderYouMini() : null;
-      const characters = [you, friend];
-
-      return (
-        <MiniLocation
-          key={location.name}
-          location={location.name}
-          characters={characters}
-          isActive={isActive}
-          className={location.name}
-        />
-      );
-    });
+    return characters;
   };
+
+  renderMiniLocation = ({ location, className = "" }) => {
+    const { activeScene } = this.props;
+    const isActive = location.name === activeScene.name;
+
+    const characters = this.renderCharacters({ location });
+
+    return (
+      <MiniLocation
+        key={location.name}
+        location={location.name}
+        characters={characters}
+        isActive={isActive}
+        className={className}
+      />
+    );
+  };
+
+  createSingleRow = ({ locationRow }) =>
+    locationRow.map(location => this.renderMiniLocation({ location }));
 
   createArrows = ({ activeLocation }) => {
     const { activeScene } = this.props;
@@ -140,13 +149,22 @@ class PicturePage extends React.Component {
     const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
     const activeLocation = activeScene.name;
 
+    // TODO - fix this
+    // TODO - fix this
+    // TODO - fix this
+    // TODO - fix this
+    const test = { scene: activeScene, name: activeLocation };
+
     return (
       <div className={css.imageContainer}>
         <div className={`${css.halfPage} ${css.leftHalf}`}>
+          <div className={css.bigMiniImage}>
+            {this.renderCharacters({ location: test })}
+          </div>
           <MiniLocation
-            xPct={0}
             location={activeLocation}
             className={css.miniActiveLocation}
+            showLabel={false}
           />
           <WordPage
             wordPageProps={wordPageProps}
@@ -159,7 +177,6 @@ class PicturePage extends React.Component {
           />
           <div className={css.locationHeader}>{`${activeScene.name}`}</div>
           <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
-          {this.renderYou()}
         </div>
         <div className={`${css.halfPage} ${css.rightHalf}`}>
           <div className={`${css.mapScroller}`}>

@@ -47,25 +47,16 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
+    console.log("activeScene", activeScene); // zzz
+
     const plot = localStateStore.getPlot();
     const { you, narrativeGenerators } = plot;
 
-    const neighborNames = this.getNeighbors({ activeScene });
+    activeScene.neighborNames = this.getNeighbors({ activeScene });
 
     const narrativeGenerator =
       activeScene.builtInNarrativeGenerator ||
       Utils.getRandomItem({ items: narrativeGenerators });
-
-    const newFriend = generateNewFriend();
-    activeScene.newFriend = newFriend;
-
-    const neighborObjects = neighborNames.map(name => {
-      return {
-        location: name
-      };
-    });
-
-    activeScene.neighborObjects = neighborObjects;
 
     activeScene.generatedNarrative = narrativeGenerator({ you, activeScene });
     activeScene.isUsed = true;
@@ -109,8 +100,6 @@ class MainStory extends React.Component {
         }
       });
     });
-
-    activeScene.neighbors = neighborNames;
 
     return neighborNames;
   };

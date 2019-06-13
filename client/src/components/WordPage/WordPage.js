@@ -34,18 +34,18 @@ class WordPage extends React.Component {
 
   renderButtons = () => {
     const { activeScene } = this.state;
-    const neighborNames = activeScene.neighbors;
+    const neighbors = activeScene.neighborNames;
 
-    const buttons = neighborNames.map((scene, i) => {
-      if (!scene) {
+    const buttons = neighbors.map((neighbor, i) => {
+      if (!neighbor) {
         return null;
       }
 
-      const onClick = () => this.changeLocation({ sceneName: scene });
+      const onClick = () => this.changeLocation({ sceneName: neighbor });
 
       return (
         <Button key={i} onClick={onClick} className={css.choiceButton}>
-          {scene}
+          {neighbor}
         </Button>
       );
     });
