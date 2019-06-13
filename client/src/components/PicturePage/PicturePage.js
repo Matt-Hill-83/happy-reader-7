@@ -96,7 +96,7 @@ class PicturePage extends React.Component {
     );
 
     return locationRow.map(location => {
-      const isActive = location.name === activeScene.location;
+      const isActive = location.name === activeScene.name;
       const you = isActive ? this.renderYouMini() : null;
       const characters = [you, friend];
 
@@ -159,7 +159,7 @@ class PicturePage extends React.Component {
             src={renderedImage}
             alt={"imagex"}
           />
-          <div className={css.locationHeader}>{`${activeScene.location}`}</div>
+          <div className={css.locationHeader}>{`${activeScene.name}`}</div>
           <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
           {this.renderYou()}
         </div>

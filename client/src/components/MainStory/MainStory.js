@@ -80,7 +80,6 @@ class MainStory extends React.Component {
 
   getNeighbors = ({ activeScene }) => {
     const activeLocation = activeScene.name;
-    // const activeLocation = activeScene.location;
 
     const neighbors = [];
     const neighborsArray = [];
@@ -89,7 +88,6 @@ class MainStory extends React.Component {
     locationsMap.forEach((row, rowIndex) => {
       row.forEach((location, locationIndex) => {
         neighborsArray.push({
-          // scene: location.scene,
           name: location.name,
           position: { x: rowIndex, y: locationIndex }
         });
