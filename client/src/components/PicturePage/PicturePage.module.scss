@@ -1,8 +1,8 @@
 .mapScroller {
   display: flex;
   position: relative;
-  border: 10px solid rebeccapurple;
-  min-width: 200%;
+  // border: 10px solid rebeccapurple;
+  min-width: 100%;
 }
 
 .lineTo {
@@ -85,7 +85,7 @@
 }
 
 .rightHalf {
-  flex: 1;
+  flex: 2;
   overflow-y: auto;
 }
 

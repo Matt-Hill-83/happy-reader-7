@@ -150,7 +150,7 @@ const startScene = {
 const generateScenes = () => {
   const scenes = {
     tree: { creatures: [], name: "tree" },
-    stump: { creatures: [], name: "stump" },
+    stump: { creatures: ["troll"], name: "stump" },
     castle: { creatures: ["unicorn"], name: "castle" },
     waterfall: { creatures: ["unicorn"], name: "waterfall" },
     bees: { creatures: [], name: "bees" },
