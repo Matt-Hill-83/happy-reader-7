@@ -27,6 +27,7 @@ import dragon from "./dragon.png";
 
 // backgrounds
 import map02 from "./backgrounds/map-05.jpg";
+import rock from "./backgrounds/rock-2.jpg";
 
 //locations - small
 import castleSmall from "./locations-small/castle.png";
@@ -49,7 +50,8 @@ export default {
     forestLeft,
     forestRight,
     meadow,
-    map02
+    map02,
+    rock
   },
   locations: {
     small: {
