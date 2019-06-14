@@ -1,3 +1,18 @@
+.halfPage {
+  display: flex;
+  position: relative;
+  border: 2px solid purple !important;
+}
+
+.leftHalf {
+  flex: 1;
+}
+
+.rightHalf {
+  flex: 2;
+  overflow-y: auto;
+}
+
 .bigMiniImage {
   position: absolute;
   display: flex;
@@ -6,7 +21,6 @@
 
   :global {
     [class*="PicturePage_character"] {
-      // border: 1px solid red !important;
       height: 250px !important;
     }
   }
@@ -15,51 +29,10 @@
 .mapScroller {
   display: flex;
   position: relative;
-  // border: 10px solid rebeccapurple;
   min-width: 100%;
 }
 
-.lineTo {
-  border: none !important;
-
-  &::after {
-    content: " ";
-
-    content: " ";
-    background-image: url(http://i0.wp.com/clipartportal.com/wp-content/uploads/2018/12/footsteps-clipart-png-1.png);
-    position: absolute;
-    height: 23px;
-    width: 30%;
-    transform: translateX(55.5%) translateY(-50%);
-    border-top: 20px solid transparent;
-
-    height: 15px;
-    background: #ccb8e0;
-  }
-
-  &::before {
-    content: " ";
-    position: absolute;
-
-    left: 44%;
-    transform: translateY(-50%);
-    border-top: 20px solid transparent;
-    border-left: 40px solid #ccb8e0;
-    border-bottom: 20px solid transparent;
-  }
-}
-
-.roadsCanvas {
-  display: flex;
-  position: absolute;
-  z-index: 1000;
-  height: 100%;
-  width: 100%;
-}
-
 .miniLocationsGrid {
-  // border: 2px solid red;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -86,21 +59,6 @@
   align-items: center;
 
   position: relative;
-}
-
-.halfPage {
-  display: flex;
-  position: relative;
-  border: 2px solid purple !important;
-}
-
-.leftHalf {
-  flex: 1;
-}
-
-.rightHalf {
-  flex: 2;
-  overflow-y: auto;
 }
 
 .imageContainer {

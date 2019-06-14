@@ -136,17 +136,13 @@ class PicturePage extends React.Component {
     return arrows;
   };
 
-  renderPicturePage = () => {
+  render() {
     const { activeScene, wordPageProps, updateActiveScene } = this.props;
-
-    if (!activeScene) {
-      return null;
-    }
 
     const defaultImage = "forest";
     const renderedImage = Images[defaultImage];
 
-    const mapImage = Images.backgrounds["map02"] || Images[defaultImage];
+    const mapImage = Images.backgrounds["map02"];
     const activeLocation = activeScene.name;
 
     // TODO - fix this
@@ -154,9 +150,7 @@ class PicturePage extends React.Component {
     // TODO - fix this
     // TODO - fix this
     const test = { scene: activeScene, name: activeLocation };
-
     const showMap = localStateStore.getShowMap();
-    console.log("showMap", showMap); // zzz
 
     return (
       <div className={css.imageContainer}>
@@ -196,10 +190,6 @@ class PicturePage extends React.Component {
         )}
       </div>
     );
-  };
-
-  render() {
-    return this.renderPicturePage();
   }
 }
 export default observer(PicturePage);
