@@ -27,6 +27,7 @@ class MainStory extends React.Component {
   };
 
   async componentWillMount() {
+    localStateStore.setsmallMap(false);
     if (this.state.showIntro) {
       localStateStore.setPage("intro1");
     } else {
