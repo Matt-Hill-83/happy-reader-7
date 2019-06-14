@@ -41,6 +41,10 @@
     flex-direction: row;
   }
 
+  .midCol {
+    padding: 12% 0%;
+  }
+
   .leftCol,
   .rightCol {
     max-width: var(--fence-width);
@@ -50,9 +54,9 @@
 
   .sideDoor {
     display: flex;
-    height: 50%;
-    width: 4px;
-    background: green;
+
+    height: 20%;
+    background: #86c55b;
     border: none;
     width: 100%;
   }
