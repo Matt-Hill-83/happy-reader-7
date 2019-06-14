@@ -23,3 +23,19 @@
     }
   }
 }
+
+.floatingButtons {
+  border: 1px solid red !important;
+  position: absolute;
+  z-index: 5;
+  background: white;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.settingButtons {
+  border: 1px solid red !important;
+  display: flex;
+  flex-direction: column;
+}

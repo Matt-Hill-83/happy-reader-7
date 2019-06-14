@@ -139,9 +139,7 @@ class PicturePage extends React.Component {
   render() {
     const { activeScene, wordPageProps, updateActiveScene } = this.props;
 
-    const defaultImage = "forest";
-    const renderedImage = Images[defaultImage];
-
+    const renderedImage = Images["forest"];
     const mapImage = Images.backgrounds["map02"];
     const activeLocation = activeScene.name;
 
