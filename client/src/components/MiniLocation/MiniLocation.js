@@ -1,5 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
+import { Button } from "@blueprintjs/core";
 
 import Images from "../../images/images.js";
 
@@ -13,15 +14,25 @@ const MiniLocation = props => {
 
   return (
     <div className={`${css.main} ${className} ${localClass}`}>
-      <div className={css.imagesBox}>
-        <img
-          className={css.miniLocationImage}
-          src={miniLocation}
-          alt={"imagex"}
-        />
-        {showLabel && <span className={css.locationTitle}>{location}</span>}
-        <div className={css.characters}>{characters}</div>
+      <div className={css.topRow} />
+      <div className={css.midRow}>
+        <div className={css.leftCol}>
+          <button className={css.sideDoor} />
+        </div>
+        <div className={css.midCol}>
+          <div className={css.imagesBox}>
+            <img
+              className={css.miniLocationImage}
+              src={miniLocation}
+              alt={"imagex"}
+            />
+            {showLabel && <span className={css.locationTitle}>{location}</span>}
+            <div className={css.characters}>{characters}</div>
+          </div>
+        </div>
+        <div className={css.rightCol} />
       </div>
+      <div className={css.bottomRow} />
     </div>
   );
 };

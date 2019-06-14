@@ -1,15 +1,61 @@
 .main {
-  border: 1px solid purple;
+  // border: 1px solid purple;
+
+  --fence-width: 3%;
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 1;
+  flex-direction: column;
 
   overflow: hidden;
   position: relative;
 
   height: 100%;
-  padding: 24px 0px;
+
+  .topRow,
+  .midRow,
+  .bottomRow,
+  .leftCol,
+  .midCol,
+  .rightCol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    // border: 1px solid red !important;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  .topRow,
+  .bottomRow {
+    max-height: var(--fence-width);
+    min-height: var(--fence-width);
+    background: coral;
+  }
+
+  .midRow {
+    flex-direction: row;
+  }
+
+  .leftCol,
+  .rightCol {
+    max-width: var(--fence-width);
+    min-width: var(--fence-width);
+    background: coral;
+  }
+
+  .sideDoor {
+    display: flex;
+    height: 50%;
+    width: 4px;
+    background: green;
+    border: none;
+    width: 100%;
+  }
 
   .imagesBox {
     display: flex;
@@ -18,7 +64,8 @@
     align-items: center;
     justify-content: center;
     display: inline-flex;
-    flex: 0;
+    overflow: hidden;
+    // flex: 0;
   }
 
   .activeClass {
