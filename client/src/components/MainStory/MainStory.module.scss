@@ -25,7 +25,6 @@
 }
 
 .floatingButtons {
-  border: 1px solid red !important;
   position: absolute;
   z-index: 5;
   background: white;
@@ -35,7 +34,6 @@
 }
 
 .settingButtons {
-  border: 1px solid red !important;
   display: flex;
   flex-direction: column;
 }

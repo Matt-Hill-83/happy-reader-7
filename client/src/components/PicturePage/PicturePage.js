@@ -4,6 +4,7 @@ import { Icon } from "@blueprintjs/core";
 import { observer } from "mobx-react";
 import LineTo from "react-lineto";
 import _get from "lodash.get";
+import MediaQuery from "react-responsive";
 
 import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
@@ -150,8 +151,10 @@ class PicturePage extends React.Component {
     const test = { scene: activeScene, name: activeLocation };
     const showMap = localStateStore.getShowMap();
 
+    const storyClass = showMap ? css.storyClass : "";
+
     return (
-      <div className={css.imageContainer}>
+      <div className={`${css.main} ${storyClass}`}>
         <div className={`${css.halfPage} ${css.leftHalf}`}>
           <div className={css.bigMiniImage}>
             {this.renderCharacters({ location: test })}

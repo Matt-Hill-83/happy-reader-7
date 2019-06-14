@@ -13,55 +13,11 @@
   overflow-y: auto;
 }
 
-.bigMiniImage {
-  position: absolute;
-  display: flex;
-  left: 15%;
-  bottom: 0px;
-
-  :global {
-    [class*="PicturePage_character"] {
-      height: 250px !important;
-    }
-  }
+.storyClass {
+  border: 1px solid green !important;
 }
 
-.mapScroller {
-  display: flex;
-  position: relative;
-  min-width: 100%;
-}
-
-.miniLocationsGrid {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: absolute;
-
-  left: 10%;
-  right: 10%;
-  top: 10%;
-  bottom: 10%;
-}
-
-.miniActiveLocation {
-  position: absolute;
-  bottom: 16% !important;
-  left: 50% !important;
-  transform: translateX(-50%);
-  height: 46%;
-}
-
-.miniLocationsRow {
-  display: flex;
-  flex: 1 1;
-  justify-content: space-between;
-  align-items: center;
-
-  position: relative;
-}
-
-.imageContainer {
+.main {
   position: relative;
   display: flex;
   width: 100%;
@@ -131,7 +87,6 @@
   }
 
   .characterImageMini {
-    // position: absolute;
     display: flex;
     z-index: 3;
     align-self: flex-end;
@@ -163,4 +118,52 @@
     left: 400px;
     max-width: 150px;
   }
+}
+
+.bigMiniImage {
+  position: absolute;
+  display: flex;
+  left: 15%;
+  bottom: 0px;
+
+  :global {
+    [class*="PicturePage_character"] {
+      height: 250px !important;
+    }
+  }
+}
+
+.mapScroller {
+  display: flex;
+  position: relative;
+  min-width: 100%;
+}
+
+.miniLocationsGrid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+
+  left: 10%;
+  right: 10%;
+  top: 10%;
+  bottom: 10%;
+}
+
+.miniActiveLocation {
+  position: absolute;
+  bottom: 16% !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+  height: 46%;
+}
+
+.miniLocationsRow {
+  display: flex;
+  flex: 1 1;
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
 }

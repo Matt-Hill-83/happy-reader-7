@@ -122,7 +122,7 @@ class MainStory extends React.Component {
       );
     }
 
-    const toggleButton = (
+    const changeCharacterButton = (
       <Button
         tabIndex={0}
         className={css.newStoryBtn}
@@ -168,7 +168,7 @@ class MainStory extends React.Component {
             </MediaQuery>
           </div>
           <div className={css.settingButtons}>
-            {toggleButton}
+            {changeCharacterButton}
             {toggleMapButton}
           </div>
         </div>
