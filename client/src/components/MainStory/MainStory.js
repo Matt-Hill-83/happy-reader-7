@@ -14,12 +14,7 @@ import { Button } from "@blueprintjs/core";
 
 import css from "./MainStory.module.scss";
 
-const {
-  locationsMap,
-  // generateNewFriend,
-  generatePlot,
-  generateYou
-} = mySentences;
+const { locationsMap, generatePlot, generateYou } = mySentences;
 
 class MainStory extends React.Component {
   state = {
@@ -29,7 +24,6 @@ class MainStory extends React.Component {
     pageNum: 0,
     pages: {},
     showIntro: false
-    // showMap: true
   };
 
   async componentWillMount() {
@@ -49,8 +43,6 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
-    console.log("activeScene", activeScene); // zzz
-
     const plot = localStateStore.getPlot();
     const { you, narrativeGenerators } = plot;
 
@@ -114,13 +106,8 @@ class MainStory extends React.Component {
   };
 
   toggleMap = () => {
-    // this.setState({ showMap: !this.state.showMap });
     const showMap = localStateStore.getShowMap();
-    console.log("showMap", showMap); // zzz
-
     localStateStore.setShowMap(!showMap);
-    const showMap2 = localStateStore.getShowMap();
-    console.log("showMap2", showMap2); // zzz
   };
 
   render() {
