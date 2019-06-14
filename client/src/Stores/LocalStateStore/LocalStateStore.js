@@ -1,9 +1,8 @@
 import { observable, computed, action, decorate } from "mobx";
 
-// generatePlot;
-
 class LocalStateStore {
   page = "";
+  showMap = true;
   you = {};
   plot = {};
 
@@ -21,10 +20,16 @@ class LocalStateStore {
   setPlot = plot => {
     this.plot = plot;
   };
+
+  getShowMap = () => this.showMap;
+  setShowMap = showMap => {
+    this.showMap = showMap;
+  };
 }
 
 decorate(LocalStateStore, {
-  page: observable
+  page: observable,
+  showMap: observable
 });
 
 const localStateStore = new LocalStateStore();

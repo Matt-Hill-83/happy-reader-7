@@ -1,5 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
+import MediaQuery from "react-responsive";
 
 import mySentences from "../../Models/sentences.js";
 import FlashCards from "../FlashCards/FlashCards";
@@ -28,6 +29,7 @@ class MainStory extends React.Component {
     pageNum: 0,
     pages: {},
     showIntro: false
+    // showMap: true
   };
 
   async componentWillMount() {
@@ -111,6 +113,16 @@ class MainStory extends React.Component {
     localStateStore.setPage("intro1");
   };
 
+  toggleMap = () => {
+    // this.setState({ showMap: !this.state.showMap });
+    const showMap = localStateStore.getShowMap();
+    console.log("showMap", showMap); // zzz
+
+    localStateStore.setShowMap(!showMap);
+    const showMap2 = localStateStore.getShowMap();
+    console.log("showMap2", showMap2); // zzz
+  };
+
   render() {
     const page = localStateStore.getPage();
 
@@ -133,10 +145,41 @@ class MainStory extends React.Component {
       </Button>
     );
 
+    const toggleMapButton = (
+      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.toggleMap}>
+        <span> Toggle Map </span>
+      </Button>
+    );
+
     return (
       <div className={css.main}>
         {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
+        <div>
+          <div>Device Test!</div>
+          <MediaQuery minDeviceWidth={1224}>
+            <div>You are a desktop or laptop</div>
+            <MediaQuery minDeviceWidth={1824}>
+              <div>You also have a huge screen</div>
+            </MediaQuery>
+            <MediaQuery maxWidth={1224}>
+              <div>You are sized like a tablet or mobile phone though</div>
+            </MediaQuery>
+          </MediaQuery>
+          <MediaQuery maxDeviceWidth={1224}>
+            <div>You are a tablet or mobile phone</div>
+          </MediaQuery>
+          <MediaQuery orientation="portrait">
+            <div>You are portrait</div>
+          </MediaQuery>
+          <MediaQuery orientation="landscape">
+            <div>You are landscape</div>
+          </MediaQuery>
+          <MediaQuery minResolution="2dppx">
+            <div>You are retina</div>
+          </MediaQuery>
+        </div>
         {toggleButton}
+        {toggleMapButton}
         <div className={css.body}>
           {!this.state.showStory && <FlashCards />}
           {this.state.showStory && (
