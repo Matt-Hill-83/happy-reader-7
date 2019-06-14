@@ -2,7 +2,7 @@ import { observable, computed, action, decorate } from "mobx";
 
 class LocalStateStore {
   page = "";
-  showMap = true;
+  smallMap = true;
   you = {};
   plot = {};
 
@@ -21,15 +21,15 @@ class LocalStateStore {
     this.plot = plot;
   };
 
-  getShowMap = () => this.showMap;
-  setShowMap = showMap => {
-    this.showMap = showMap;
+  getsmallMap = () => this.smallMap;
+  setsmallMap = smallMap => {
+    this.smallMap = smallMap;
   };
 }
 
 decorate(LocalStateStore, {
   page: observable,
-  showMap: observable
+  smallMap: observable
 });
 
 const localStateStore = new LocalStateStore();

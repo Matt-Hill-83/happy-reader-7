@@ -106,8 +106,8 @@ class MainStory extends React.Component {
   };
 
   toggleMap = () => {
-    const showMap = localStateStore.getShowMap();
-    localStateStore.setShowMap(!showMap);
+    const smallMap = localStateStore.getsmallMap();
+    localStateStore.setsmallMap(!smallMap);
   };
 
   render() {
