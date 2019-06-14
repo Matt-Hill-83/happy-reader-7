@@ -1,12 +1,18 @@
-.storyClass {
-  border: 1px solid green !important;
-}
-
 .main {
   position: relative;
   display: flex;
   width: 100%;
   overflow: hidden;
+
+  &.smallMap {
+    .leftHalf {
+      flex: 2;
+    }
+
+    .rightHalf {
+      flex: 1;
+    }
+  }
 
   .halfPage {
     display: flex;
@@ -20,7 +26,6 @@
 
   .rightHalf {
     flex: 2;
-    overflow-y: auto;
   }
 
   .sceneList {

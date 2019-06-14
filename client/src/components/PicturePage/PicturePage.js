@@ -151,7 +151,7 @@ class PicturePage extends React.Component {
     const test = { scene: activeScene, name: activeLocation };
     const showMap = localStateStore.getShowMap();
 
-    const storyClass = showMap ? css.storyClass : "";
+    const storyClass = showMap ? css.smallMap : "";
 
     return (
       <div className={`${css.main} ${storyClass}`}>
@@ -176,19 +176,19 @@ class PicturePage extends React.Component {
           <div className={css.locationHeader}>{`${activeScene.name}`}</div>
           <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
         </div>
-        {showMap && (
-          <div className={`${css.halfPage} ${css.rightHalf}`}>
-            <div className={`${css.mapScroller}`}>
-              <img
-                className={css.backgroundImage}
-                src={mapImage}
-                alt={"imagex"}
-              />
-              {this.renderMiniLocations()}
-              {/* {this.createArrows({ activeLocation })} */}
-            </div>
+        {/* {showMap && ( */}
+        <div className={`${css.halfPage} ${css.rightHalf}`}>
+          <div className={`${css.mapScroller}`}>
+            <img
+              className={css.backgroundImage}
+              src={mapImage}
+              alt={"imagex"}
+            />
+            {this.renderMiniLocations()}
+            {/* {this.createArrows({ activeLocation })} */}
           </div>
-        )}
+        </div>
+        {/* )} */}
       </div>
     );
   }
