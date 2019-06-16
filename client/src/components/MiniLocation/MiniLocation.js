@@ -19,10 +19,12 @@ const MiniLocation = props => {
         <img className={css.rockImage} src={rockImage} alt={"imagex"} />
       </div>
       <div className={css.grassImage} />
-      <div className={css.topRow} />
+      <div className={css.topRow}>
+        <button className={css.topDoor} />
+      </div>
       <div className={css.midRow}>
         <div className={css.leftCol}>
-          <button className={css.sideDoor} />
+          <button className={css.leftSideDoor} />
         </div>
         <div className={css.midCol}>
           <div className={css.imagesBox}>
@@ -36,10 +38,12 @@ const MiniLocation = props => {
           </div>
         </div>
         <div className={css.rightCol}>
-          <button className={css.sideDoor} />
+          <button className={css.rightSideDoor} />
         </div>
       </div>
-      <div className={css.bottomRow} />
+      <div className={css.bottomRow}>
+        <button className={css.bottomDoor} />
+      </div>
     </div>
   );
 };
