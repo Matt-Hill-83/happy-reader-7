@@ -211,21 +211,25 @@ const locationsMap = [
   [
     { scene: scenes.tree, name: scenes.tree.name },
     { scene: scenes.stump, name: scenes.stump.name },
+    { scene: scenes.castle, name: scenes.castle.name },
     { scene: scenes.castle, name: scenes.castle.name }
   ],
   [
     { scene: scenes.waterfall, name: scenes.waterfall.name },
     { scene: scenes.bees, name: scenes.bees.name },
+    { scene: scenes.swamp, name: scenes.swamp.name },
     { scene: scenes.swamp, name: scenes.swamp.name }
   ],
   [
     { scene: scenes.pool, name: scenes.pool.name },
     { scene: scenes.hill, name: scenes.hill.name },
+    { scene: scenes.bog, name: scenes.bog.name },
     { scene: scenes.bog, name: scenes.bog.name }
   ],
   [
     { scene: scenes.house, name: scenes.house.name },
     { scene: scenes.lake, name: scenes.lake.name },
+    { scene: scenes.barn, name: scenes.barn.name },
     { scene: scenes.barn, name: scenes.barn.name }
   ]
 ];
