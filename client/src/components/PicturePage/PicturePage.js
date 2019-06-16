@@ -78,9 +78,6 @@ class PicturePage extends React.Component {
   };
 
   renderCharacters = ({ isActive, creatures }) => {
-    // const { activeScene } = this.props;
-    // const creatures = _get(location, "scene.creatures") || [];
-
     const creatureType = creatures.length > 0 && creatures[0].type;
     const image = Images[creatureType] || null;
 
@@ -123,7 +120,7 @@ class PicturePage extends React.Component {
   createSingleRow = ({ locationRow }) =>
     locationRow.map(location => this.renderMiniLocation({ location }));
 
-  createArrows = ({ activeLocation }) => {
+  createArrows = ({ locationName }) => {
     const { activeScene } = this.props;
 
     if (!activeScene) {
@@ -133,7 +130,7 @@ class PicturePage extends React.Component {
 
     const arrows = neighborNames.map(location => {
       return (
-        <LineTo className={css.lineTo} from={activeLocation} to={location} />
+        <LineTo className={css.lineTo} from={locationName} to={location} />
       );
     });
 
@@ -145,15 +142,15 @@ class PicturePage extends React.Component {
 
     const renderedImage = Images["forest"];
     const mapImage = Images.backgrounds["map02"];
-    const activeLocation = activeScene.name;
+    const locationName = activeScene.name;
 
     const smallMap = localStateStore.getsmallMap();
 
     const storyClass = smallMap ? css.smallMap : "";
 
-    const miniLocation = Images.locations.small[activeLocation];
+    const miniLocation = Images.locations.small[locationName];
 
-    const creatures = _get(activeLocation, "scene.creatures") || [];
+    const creatures = _get(locationName, "scene.creatures") || [];
 
     return (
       <div className={`${css.main} ${storyClass}`}>
@@ -188,7 +185,7 @@ class PicturePage extends React.Component {
               alt={"imagex"}
             />
             {this.renderMiniLocations()}
-            {/* {this.createArrows({ activeLocation })} */}
+            {/* {this.createArrows({ locationName })} */}
           </div>
         </div>
       </div>
