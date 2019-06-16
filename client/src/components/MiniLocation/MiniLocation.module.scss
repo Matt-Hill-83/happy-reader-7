@@ -44,28 +44,28 @@
     height: 100%;
   }
   :global {
+    .right-side-door,
+    .left-side-door,
     .top-door,
     .bottom-door {
       display: flex;
-      width: 40%;
       background: transparent;
       border: none;
-      height: 100%;
       z-index: 5;
-      /* border: 1px solid red !important; */
+      border: 1px solid red !important;
       cursor: pointer;
+    }
+
+    .top-door,
+    .bottom-door {
+      height: 100%;
+      width: 40%;
     }
 
     .right-side-door,
     .left-side-door {
-      display: flex;
-
-      height: 40%;
-      background: transparent;
-      border: none;
       width: 100%;
-      z-index: 5;
-      border: 1px solid red !important;
+      height: 40%;
     }
 
     .door-open {
