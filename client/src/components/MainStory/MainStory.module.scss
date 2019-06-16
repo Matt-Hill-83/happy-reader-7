@@ -1,17 +1,18 @@
 .main {
-  border: 5px solid purple !important;
+  &.test {
+    border: 10px solid red !important;
+  }
+
+  // border: 5px solid purple !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
   background: #f3e4e7;
-
-  // height: 100vh;
-  // height: 100vw;
-  // height: 100%;
-  height: 360px;
-  // padding: 24px;
   overflow: hidden;
+
+  height: 100%;
+  // height: 360px;
 
   .body {
     display: flex;
@@ -40,4 +41,9 @@
 .settingButtons {
   display: flex;
   flex-direction: column;
+}
+
+.main.test {
+  border: 10px solid red !important;
+  height: 40px !important;
 }

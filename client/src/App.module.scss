@@ -1,5 +1,4 @@
 body {
-  border: 5px solid orange !important;
   margin: 0px;
 }
 
@@ -14,8 +13,17 @@ body {
   display: flex;
   flex: 1;
 
-  height: 360px;
   overflow: hidden;
-  // height: 100vw;
-  // height: 100vh;
+
+  :global {
+    [class*="MainStory_main"] {
+      border: 10px solid red !important;
+      width: 3%;
+    }
+  }
+
+  &.test {
+    border: 10px solid red !important;
+    height: 40px !important;
+  }
 }
