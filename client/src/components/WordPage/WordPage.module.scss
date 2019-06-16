@@ -16,7 +16,11 @@
 
   .decisionButtonRow {
     display: flex;
-    margin-top: auto;
+    flex-direction: column;
+
+    // margin-top: auto;
+    position: absolute;
+    right: 0px;
 
     .choiceButton {
       display: flex;
