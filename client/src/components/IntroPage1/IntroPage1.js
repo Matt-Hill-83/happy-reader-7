@@ -55,7 +55,7 @@ class IntroPage1 extends React.Component {
     localStateStore.setPage("intro2");
   };
 
-  changeYouCreature = ({ event, test }) => {
+  changeYouCreature = ({ event }) => {
     this.setState({
       youCreature: event.target.value,
       name: event.target.name
@@ -79,9 +79,6 @@ class IntroPage1 extends React.Component {
   };
 
   renderIntroText = () => {
-    // const inputLabel = "test";
-    // const classes = "test";
-
     const { youName, youCreature } = this.state;
 
     return (
@@ -104,7 +101,7 @@ class IntroPage1 extends React.Component {
           <Select
             value={youCreature}
             onChange={event => {
-              this.changeYouCreature({ event, test: { cat: 5 } });
+              this.changeYouCreature({ event });
             }}
             input={<OutlinedInput id="outlined-age-simple" />}
           >

@@ -77,9 +77,9 @@ class PicturePage extends React.Component {
     return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
   };
 
-  renderCharacters = ({ location }) => {
-    const { activeScene } = this.props;
-    const creatures = _get(location, "scene.creatures") || [];
+  renderCharacters = ({ isActive, creatures }) => {
+    // const { activeScene } = this.props;
+    // const creatures = _get(location, "scene.creatures") || [];
 
     const creatureType = creatures.length > 0 && creatures[0].type;
     const image = Images[creatureType] || null;
@@ -92,8 +92,6 @@ class PicturePage extends React.Component {
       />
     );
 
-    const isActive = location.name === activeScene.name;
-
     const you = isActive ? this.renderYouMini() : null;
     const characters = [you, friend];
 
@@ -104,7 +102,12 @@ class PicturePage extends React.Component {
     const { activeScene } = this.props;
     const isActive = location.name === activeScene.name;
 
-    const characters = this.renderCharacters({ location });
+    const creatures = _get(location, "scene.creatures") || [];
+
+    const characters = this.renderCharacters({
+      creatures,
+      isActive
+    });
 
     return (
       <MiniLocation
@@ -144,34 +147,26 @@ class PicturePage extends React.Component {
     const mapImage = Images.backgrounds["map02"];
     const activeLocation = activeScene.name;
 
-    // TODO - fix this
-    // TODO - fix this
-    // TODO - fix this
-    // TODO - fix this
-    const test = { scene: activeScene, name: activeLocation };
     const smallMap = localStateStore.getsmallMap();
 
     const storyClass = smallMap ? css.smallMap : "";
 
     const miniLocation = Images.locations.small[activeLocation];
 
+    const creatures = _get(activeLocation, "scene.creatures") || [];
+
     return (
       <div className={`${css.main} ${storyClass}`}>
         <div className={`${css.halfPage} ${css.leftHalf}`}>
           <div className={css.bigMiniImage}>
-            {this.renderCharacters({ location: test })}
+            {this.renderCharacters({
+              creatures,
+              isActive: true
+            })}
           </div>
-          {/* <MiniLocation
-            location={activeLocation}
-            className={css.miniActiveLocation}
-            showLabel={false}
-          /> */}
+
           <div className={css.miniLocation}>
-            <img
-              // className={css.miniLocationImage}
-              src={miniLocation}
-              alt={"imagex"}
-            />
+            <img src={miniLocation} alt={"imagex"} />
           </div>
           <WordPage
             wordPageProps={wordPageProps}
