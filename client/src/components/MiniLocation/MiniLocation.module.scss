@@ -10,8 +10,8 @@
 
   position: absolute;
   border-radius: 4%;
-  width: 96%;
-  height: 96%;
+  width: 90%;
+  height: 90%;
   background: #86c55c;
 }
 
@@ -47,24 +47,30 @@
     .top-door,
     .bottom-door {
       display: flex;
-
-      width: 20%;
-      background: #86c55b;
+      width: 40%;
+      background: transparent;
       border: none;
       height: 100%;
       z-index: 5;
+      /* border: 1px solid red !important; */
+      cursor: pointer;
     }
-  }
 
-  .right-side-door,
-  .left-side-door {
-    display: flex;
+    .right-side-door,
+    .left-side-door {
+      display: flex;
 
-    height: 20%;
-    background: #86c55b;
-    border: none;
-    width: 100%;
-    z-index: 5;
+      height: 40%;
+      background: transparent;
+      border: none;
+      width: 100%;
+      z-index: 5;
+      border: 1px solid red !important;
+    }
+
+    .door-open {
+      background: #86c55b;
+    }
   }
 
   .topRow,
@@ -72,6 +78,11 @@
     max-height: var(--fence-width);
     min-height: var(--fence-width);
     background: transparent;
+
+    // border: 1px solid red;
+    z-index: 40;
+    height: 6%;
+    min-height: 11%;
   }
 
   .midRow {

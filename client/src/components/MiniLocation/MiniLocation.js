@@ -6,6 +6,26 @@ import Images from "../../images/images.js";
 import css from "./MiniLocation.module.scss";
 
 class MiniLocation extends React.Component {
+  state = { buttons: { left: false, right: false, top: false, button: true } };
+
+  onButtonClick = ({ location }) => {
+    console.log("location", location); // zzz
+    const buttons = this.state.buttons;
+    buttons[location] = !buttons[location];
+    this.setState({ buttons });
+  };
+
+  renderButton = ({ location }) => {
+    const doorOpen = this.state.buttons[location];
+
+    return (
+      <button
+        onClick={() => this.onButtonClick({ location })}
+        className={`top-door ${doorOpen ? "door-open" : ""}`}
+      />
+    );
+  };
+
   render() {
     const {
       location,
@@ -16,7 +36,7 @@ class MiniLocation extends React.Component {
     } = this.props;
 
     const localClass = isActive ? css.activeClass : "";
-    console.log("isActive", isActive); // zzz
+    console.log("this.state.buttons", this.state.buttons); // zzz
 
     const miniLocation = Images.locations.small[location];
 
@@ -29,7 +49,7 @@ class MiniLocation extends React.Component {
         </div>
         <div className={css.grassImage} />
         <div className={css.topRow}>
-          <button className={"top-door"} />
+          {this.renderButton({ location: "top" })}
         </div>
         <div className={css.midRow}>
           <div className={css.leftCol}>
