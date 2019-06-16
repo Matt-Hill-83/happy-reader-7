@@ -30,15 +30,20 @@ import map02 from "./backgrounds/map-05.jpg";
 import rock from "./backgrounds/rock-2.jpg";
 
 //locations - small
-import castleSmall from "./locations-small/castle.png";
-import houseSmall from "./locations-small/house.png";
+import castle from "./locations-small/castle.png";
+import house from "./locations-small/house.png";
 import tree from "./locations-small/treehouse.png";
 import waterfallSmall from "./locations-small/waterfall.png";
-import stumpSmall from "./locations-small/stump.png";
-import beesSmall from "./locations-small/bees.png";
+import stump from "./locations-small/stump.png";
+import bees from "./locations-small/bees.png";
 import swamp from "./locations-small/swamp.png";
 import lake from "./locations-small/lake.png";
 import barn from "./locations-small/barn.png";
+
+import pond from "./locations-small/pond.png";
+import pool from "./locations-small/pool.png";
+import bog from "./locations-small/bog.png";
+import hill from "./locations-small/hill.png";
 
 export default {
   backgrounds: {
@@ -55,15 +60,19 @@ export default {
   },
   locations: {
     small: {
-      castle: castleSmall,
-      house: houseSmall,
-      tree: tree,
+      castle: castle,
+      house: house,
+      tree,
       waterfall: waterfallSmall,
-      stump: stumpSmall,
-      bees: beesSmall,
-      swamp: swamp,
-      lake: lake,
-      barn: barn
+      stump: stump,
+      bees: bees,
+      swamp,
+      lake,
+      barn,
+      pond,
+      pool,
+      bog,
+      hill
     },
     large: {
       // castle,

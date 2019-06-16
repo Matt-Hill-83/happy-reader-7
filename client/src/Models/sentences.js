@@ -169,7 +169,11 @@ const generateScenes = () => {
     swamp: { creatures: [{ type: "elf" }], name: "swamp" },
     house: { creatures: [], name: "house" },
     lake: { creatures: [{ type: "wizard" }], name: "lake" },
-    barn: { creatures: [{ type: "monster" }], name: "barn" }
+    barn: { creatures: [{ type: "monster" }], name: "barn" },
+    pool: { creatures: [{ type: "monster" }], name: "pool" },
+    hill: { creatures: [{ type: "monster" }], name: "hill" },
+    bog: { creatures: [{ type: "monster" }], name: "bog" },
+    pond: { creatures: [{ type: "monster" }], name: "pond" }
   };
 
   for (let scene in scenes) {
@@ -213,6 +217,11 @@ const locationsMap = [
     { scene: scenes.waterfall, name: scenes.waterfall.name },
     { scene: scenes.bees, name: scenes.bees.name },
     { scene: scenes.swamp, name: scenes.swamp.name }
+  ],
+  [
+    { scene: scenes.pool, name: scenes.pool.name },
+    { scene: scenes.hill, name: scenes.hill.name },
+    { scene: scenes.bog, name: scenes.bog.name }
   ],
   [
     { scene: scenes.house, name: scenes.house.name },

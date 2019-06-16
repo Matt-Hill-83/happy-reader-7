@@ -199,29 +199,39 @@ const familyMad = [
 // ];
 
 const locations = [
-  { name: "tree", image: "noun", type: wordTypes.location },
-  { name: "stump", image: "noun", type: wordTypes.location },
-  { name: "castle", image: "noun", type: wordTypes.location },
-  { name: "waterfall", image: "noun", type: wordTypes.location },
-  { name: "bees", image: "noun", type: wordTypes.location },
-  { name: "swamp", image: "noun", type: wordTypes.location },
-  { name: "house", image: "noun", type: wordTypes.location },
-  { name: "lake", image: "noun", type: wordTypes.location },
-  { name: "barn", image: "noun", type: wordTypes.location }
+  { name: "tree", type: wordTypes.location },
+  { name: "stump", type: wordTypes.location },
+  { name: "castle", type: wordTypes.location },
+  { name: "waterfall", type: wordTypes.location },
+  { name: "bees", type: wordTypes.location },
+  { name: "swamp", type: wordTypes.location },
+  { name: "house", type: wordTypes.location },
+  { name: "lake", type: wordTypes.location },
+  { name: "barn", type: wordTypes.location },
+
+  { name: "woods", type: wordTypes.location },
+  { name: "pool", type: wordTypes.location },
+  { name: "yard", type: wordTypes.location },
+
+  { name: "pond", type: wordTypes.location },
+  { name: "bog", type: wordTypes.location },
+  { name: "pool", type: wordTypes.location },
+
+  { name: "hill", type: wordTypes.location }
 ];
 
 const creatures = [
-  { name: "dragon", image: "noun", type: wordTypes.creature },
-  { name: "elf", image: "noun", type: wordTypes.creature },
-  { name: "fairy", image: "noun", type: wordTypes.creature },
-  { name: "goblin", image: "noun", type: wordTypes.creature },
-  { name: "hobbit", image: "noun", type: wordTypes.creature },
-  { name: "mermaid", image: "noun", type: wordTypes.creature },
-  { name: "monster", image: "noun", type: wordTypes.creature },
-  { name: "troll", image: "noun", type: wordTypes.creature },
-  { name: "unicorn", image: "noun", type: wordTypes.creature },
-  { name: "wizard", image: "noun", type: wordTypes.creature },
-  { name: "zombie", image: "noun", type: wordTypes.creature }
+  { name: "dragon", type: wordTypes.creature },
+  { name: "elf", type: wordTypes.creature },
+  { name: "fairy", type: wordTypes.creature },
+  { name: "goblin", type: wordTypes.creature },
+  { name: "hobbit", type: wordTypes.creature },
+  { name: "mermaid", type: wordTypes.creature },
+  { name: "monster", type: wordTypes.creature },
+  { name: "troll", type: wordTypes.creature },
+  { name: "unicorn", type: wordTypes.creature },
+  { name: "wizard", type: wordTypes.creature },
+  { name: "zombie", type: wordTypes.creature }
   // { name: "giant", image: "noun", type: wordTypes.creature }
 ];
 
