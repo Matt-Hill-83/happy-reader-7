@@ -64,7 +64,7 @@ class PicturePage extends React.Component {
     );
   };
 
-  renderMiniLocations = () => {
+  renderLocationRows = () => {
     // Create rows
     const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
       return (
@@ -137,57 +137,63 @@ class PicturePage extends React.Component {
     return arrows;
   };
 
-  render() {
+  renderStoryPage = ({}) => {
     const { activeScene, wordPageProps, updateActiveScene } = this.props;
 
-    const renderedImage = Images["forest"];
-    const mapImage = Images.backgrounds["map02"];
+    const backgroundImage = Images["forest"];
     const locationName = activeScene.name;
-
-    const smallMap = localStateStore.getsmallMap();
-
-    const storyClass = smallMap ? css.smallMap : "";
-
     const miniLocation = Images.locations.small[locationName];
-
     const creatures = _get(locationName, "scene.creatures") || [];
 
     return (
-      <div className={`${css.main} ${storyClass}`}>
-        <div className={`${css.halfPage} ${css.leftHalf}`}>
-          <div className={css.bigMiniImage}>
-            {this.renderCharacters({
-              creatures,
-              isActive: true
-            })}
-          </div>
+      <div className={`${css.halfPage} ${css.leftHalf}`}>
+        <div className={css.bigMiniImage}>
+          {this.renderCharacters({
+            creatures,
+            isActive: true
+          })}
+        </div>
 
-          <div className={css.miniLocation}>
-            <img src={miniLocation} alt={"imagex"} />
-          </div>
-          <WordPage
-            wordPageProps={wordPageProps}
-            updateActiveScene={updateActiveScene}
-          />
-          <img
-            className={css.backgroundImage}
-            src={renderedImage}
-            alt={"imagex"}
-          />
-          <div className={css.locationHeader}>{`${activeScene.name}`}</div>
-          <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
+        <div className={css.miniLocation}>
+          <img src={miniLocation} alt={"imagex"} />
         </div>
-        <div className={`${css.halfPage} ${css.rightHalf}`}>
-          <div className={`${css.mapScroller}`}>
-            <img
-              className={css.backgroundImage}
-              src={mapImage}
-              alt={"imagex"}
-            />
-            {this.renderMiniLocations()}
-            {/* {this.createArrows({ locationName })} */}
-          </div>
+        <WordPage
+          wordPageProps={wordPageProps}
+          updateActiveScene={updateActiveScene}
+        />
+        <img
+          className={css.backgroundImage}
+          src={backgroundImage}
+          alt={"imagex"}
+        />
+        <div className={css.locationHeader}>{`${activeScene.name}`}</div>
+        <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
+      </div>
+    );
+  };
+
+  renderMapPage = ({}) => {
+    const mapImage = Images.backgrounds["map02"];
+
+    return (
+      <div className={`${css.halfPage} ${css.rightHalf}`}>
+        <div className={`${css.mapScroller}`}>
+          <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
+          {this.renderLocationRows()}
+          {/* {this.createArrows({ locationName })} */}
         </div>
+      </div>
+    );
+  };
+
+  render() {
+    const smallMap = localStateStore.getsmallMap();
+    const storyClass = smallMap ? css.smallMap : "";
+
+    return (
+      <div className={`${css.main} ${storyClass}`}>
+        {this.renderStoryPage({})}
+        {this.renderMapPage({})}
       </div>
     );
   }
