@@ -5,8 +5,7 @@ import { useCookies } from "react-cookie";
 
 import MediaQuery from "react-responsive";
 import MainStory from "./components/MainStory/MainStory";
-import "./App.module.scss";
-// import css from "./App.module.scss";
+import css from "./App.module.scss";
 
 // import this last
 import { UserConfigStore } from "./Stores/UserConfigStore";
@@ -23,19 +22,21 @@ function App() {
 
   return (
     <MuiThemeProvider muiTheme={muiTheme}>
-      <div className="App test">
+      <div className={`${css.App} `}>
         <MediaQuery minDeviceWidth={1224}>
-          <div>You are a desktop</div>
-          <MainStory className="test" />
+          <div className={css.mediaMsg}>You are a desktop</div>
+          {/* set global css vars thru class */}
+          <MainStory className={css.desktop} />
+          {/* <MainStory className={css.mobile} /> */}
         </MediaQuery>
         <MediaQuery maxDeviceWidth={1224}>
-          <MainStory className="mobile" />
-          <div>You are a tablet or mobile phone</div>
+          <MainStory className={css.mobile} />
+          <div className={css.mediaMsg}>You are a tablet or mobile phone</div>
           <MediaQuery orientation="portrait">
-            <div>You are portrait</div>
+            <div className={css.mediaMsg}>You are portrait</div>
           </MediaQuery>
           <MediaQuery orientation="landscape">
-            <div>You are landscape</div>
+            <div className={css.mediaMsg}>You are landscape</div>
           </MediaQuery>
         </MediaQuery>
       </div>

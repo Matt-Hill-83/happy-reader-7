@@ -12,18 +12,24 @@ body {
   text-align: center;
   display: flex;
   flex: 1;
+}
 
-  overflow: hidden;
+.mobile {
+  --window-height: 360px;
+  border: 5px solid red !important;
+  // overflow: hidden;
+}
 
-  :global {
-    [class*="MainStory_main"] {
-      border: 10px solid red !important;
-      width: 3%;
-    }
-  }
+.desktop {
+  --window-height: 100%;
+  border: 5px solid red !important;
+  // overflow: hidden;
+}
 
-  &.test {
-    border: 10px solid red !important;
-    height: 40px !important;
-  }
+.mediaMsg {
+  border: 1px solid red !important;
+  position: absolute;
+  z-index: 5;
+  background: lightpink;
+  right: 0px;
 }

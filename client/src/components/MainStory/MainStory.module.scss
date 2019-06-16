@@ -1,9 +1,4 @@
 .main {
-  &.test {
-    border: 10px solid red !important;
-  }
-
-  // border: 5px solid purple !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,8 +6,8 @@
   background: #f3e4e7;
   overflow: hidden;
 
-  height: 100%;
-  // height: 360px;
+  // height: 100%;
+  height: var(--window-height);
 
   .body {
     display: flex;
@@ -43,7 +38,7 @@
   flex-direction: column;
 }
 
-.main.test {
-  border: 10px solid red !important;
-  height: 40px !important;
-}
+// .test {
+//   border: 10px solid blue !important;
+//   height: var(--window-height);
+// }

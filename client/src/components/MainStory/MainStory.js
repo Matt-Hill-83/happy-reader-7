@@ -140,8 +140,6 @@ class MainStory extends React.Component {
       </Button>
     );
 
-    console.log("className", className); // zzz
-
     return (
       <div className={`${css.main} ${className}`}>
         {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
