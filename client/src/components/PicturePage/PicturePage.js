@@ -38,19 +38,6 @@ class PicturePage extends React.Component {
     return <div className={css.sceneList}>{renderedScenes}</div> || null;
   };
 
-  renderYou = () => {
-    const plot = localStateStore.getPlot();
-    const youImage = plot.you.creature;
-
-    return (
-      <img
-        className={`${css.characterImage} ${css.character1}`}
-        src={Images[youImage]}
-        alt={youImage}
-      />
-    );
-  };
-
   renderYouMini = () => {
     const plot = localStateStore.getPlot();
     const youImage = plot.you.creature;
@@ -83,7 +70,7 @@ class PicturePage extends React.Component {
 
     const friend = (
       <img
-        className={`${css.characterImageMini} ${css.character2Mini}`}
+        className={`${css.characterImageMini} ${css.character1Mini}`}
         src={image}
         alt={creatureType}
       />

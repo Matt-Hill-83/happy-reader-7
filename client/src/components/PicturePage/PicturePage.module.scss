@@ -4,7 +4,6 @@
   width: 100%;
   overflow: hidden;
 
-  // mobile test
   height: 100%;
 
   &.smallMap {
@@ -104,6 +103,10 @@
 
   .characterImage {
     position: absolute;
+    // ???
+    // ???
+    // ???
+    // ???
     max-width: 322px;
     height: auto;
 
@@ -120,7 +123,7 @@
   .character1Mini {
     bottom: 0px;
     left: 0%;
-    height: 50px;
+    height: 100%;
     width: auto;
   }
 
@@ -136,12 +139,6 @@
     left: 50px;
     height: 200px;
     width: auto;
-  }
-
-  .character2 {
-    bottom: 50px;
-    left: 400px;
-    max-width: 150px;
   }
 }
 

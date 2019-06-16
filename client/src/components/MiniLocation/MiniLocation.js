@@ -18,6 +18,7 @@ const MiniLocation = props => {
       <div className={css.rockImage}>
         <img className={css.rockImage} src={rockImage} alt={"imagex"} />
       </div>
+      <div className={css.grassImage} />
       <div className={css.topRow} />
       <div className={css.midRow}>
         <div className={css.leftCol}>
