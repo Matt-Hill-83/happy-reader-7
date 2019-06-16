@@ -147,9 +147,6 @@ class MainStory extends React.Component {
         {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
 
         <div className={css.floatingButtons}>
-          <div>
-            <div>Device Test!</div>
-          </div>
           <div className={css.settingButtons}>
             {changeCharacterButton}
             {toggleMapButton}

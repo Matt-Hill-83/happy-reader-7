@@ -79,8 +79,8 @@ class IntroPage1 extends React.Component {
   };
 
   renderIntroText = () => {
-    const inputLabel = "test";
-    const classes = "test";
+    // const inputLabel = "test";
+    // const classes = "test";
 
     const { youName, youCreature } = this.state;
 
@@ -99,8 +99,8 @@ class IntroPage1 extends React.Component {
         />
         <div className={css.content}>you are a...</div>
 
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel ref={inputLabel} htmlFor="outlined-age-simple" />
+        <FormControl variant="outlined">
+          <InputLabel htmlFor="outlined-age-simple" />
           <Select
             value={youCreature}
             onChange={event => {
