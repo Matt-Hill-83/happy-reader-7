@@ -25,13 +25,13 @@ const MiniLocation = props => {
         </div>
         <div className={css.midCol}>
           <div className={css.imagesBox}>
+            <div className={css.characters}>{characters}</div>
             <img
               className={css.miniLocationImage}
               src={miniLocation}
               alt={"imagex"}
             />
             {showLabel && <span className={css.locationTitle}>{location}</span>}
-            <div className={css.characters}>{characters}</div>
           </div>
         </div>
         <div className={css.rightCol}>
