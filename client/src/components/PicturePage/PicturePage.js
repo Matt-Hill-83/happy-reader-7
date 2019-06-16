@@ -153,17 +153,26 @@ class PicturePage extends React.Component {
 
     const storyClass = smallMap ? css.smallMap : "";
 
+    const miniLocation = Images.locations.small[activeLocation];
+
     return (
       <div className={`${css.main} ${storyClass}`}>
         <div className={`${css.halfPage} ${css.leftHalf}`}>
           <div className={css.bigMiniImage}>
             {this.renderCharacters({ location: test })}
           </div>
-          <MiniLocation
+          {/* <MiniLocation
             location={activeLocation}
             className={css.miniActiveLocation}
             showLabel={false}
-          />
+          /> */}
+          <div className={css.miniLocation}>
+            <img
+              // className={css.miniLocationImage}
+              src={miniLocation}
+              alt={"imagex"}
+            />
+          </div>
           <WordPage
             wordPageProps={wordPageProps}
             updateActiveScene={updateActiveScene}

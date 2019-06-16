@@ -54,6 +54,23 @@
     }
   }
 
+  .miniLocation {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    width: 90%;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15%;
+
+    img {
+      border: 1px solid red !important;
+      width: 100%;
+      height: auto;
+    }
+  }
+
   .pageNumber {
     position: absolute;
     background: aliceblue;
