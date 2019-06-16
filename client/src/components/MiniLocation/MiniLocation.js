@@ -41,30 +41,6 @@ const MiniLocation = props => {
       <div className={css.bottomRow} />
     </div>
   );
-  // return (
-  //   <div className={`${css.main} ${className} ${localClass}`}>
-  //     <div className={css.topRow} />
-  //     <div className={css.midRow}>
-  //       <div className={css.leftCol}>
-  //         <button className={css.sideDoor} />
-  //       </div>
-  //       <div className={css.midCol}>
-  //         <div className={css.imagesBox}>
-  //           <img
-  //             className={css.miniLocationImage}
-  //             src={miniLocation}
-  //             alt={"imagex"}
-  //           />
-  //           {showLabel && <span className={css.locationTitle}>{location}</span>}
-  //           <div className={css.characters}>{characters}</div>
-  //         </div>
-  //       </div>
-  //       <div className={css.rightCol}>
-  //         <button className={css.sideDoor} />
-  //       </div>
-  //     </div>
-  //     <div className={css.bottomRow} />
-  //   </div>
-  // );
 };
+
 export default observer(MiniLocation);
