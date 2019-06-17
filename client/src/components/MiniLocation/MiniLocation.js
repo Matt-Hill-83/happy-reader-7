@@ -51,6 +51,7 @@ class MiniLocation extends React.Component {
     } = this.props;
 
     const localClass = isActive ? css.activeClass : "";
+    console.log("localClass", localClass); // zzz
 
     const miniLocation = Images.locations.small[location];
 

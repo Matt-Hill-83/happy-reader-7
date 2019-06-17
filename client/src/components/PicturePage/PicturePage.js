@@ -44,7 +44,7 @@ class PicturePage extends React.Component {
 
     return (
       <img
-        className={`${css.characterImageMini} ${css.character1Mini}`}
+        className={`${css.characterImageMini} ${css.characterYouMini}`}
         src={Images[youImage]}
         alt={youImage}
       />

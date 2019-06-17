@@ -1,20 +1,3 @@
-.rockImage {
-  position: absolute;
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-.grassImage {
-  display: flex;
-
-  position: absolute;
-  border-radius: 4%;
-  width: 90%;
-  height: 90%;
-  background: #86c55c;
-}
-
 .main {
   --fence-width: 2%;
 
@@ -80,8 +63,8 @@
       transform: translateX(-50%);
 
       &.door-open {
-        border-left: 2px solid white !important;
-        border-right: 2px solid white !important;
+        // border-left: 2px solid #125984 !important;
+        // border-right: 2px solid #125984 !important;
         width: 20%;
       }
 
@@ -100,9 +83,10 @@
       top: 39%;
 
       &.door-open {
-        border-top: 2px solid white !important;
-        border-bottom: 2px solid white !important;
+        // border-top: 2px solid #125984 !important;
+        // border-bottom: 2px solid #125984 !important;
         width: 20%;
+        height: 20%;
       }
 
       img {
@@ -120,25 +104,6 @@
     position: relative;
     height: 100%;
     overflow: hidden;
-  }
-
-  .activeClass {
-    background: rgba(250, 235, 215, 0.45);
-    border-radius: 38%;
-    display: none !important;
-
-    border: 1px solid red !important;
-    :global {
-      .grassImage {
-        display: flex;
-
-        position: absolute;
-        border-radius: 4%;
-        width: 96%;
-        height: 96%;
-        background: blue;
-      }
-    }
   }
 
   .locationTitle {
@@ -167,4 +132,29 @@
     bottom: 8%;
     left: 10%;
   }
+}
+
+.activeClass {
+  :global {
+    [class*="MiniLocation_grassImage"] {
+      // background: rgb(236, 251, 235);
+    }
+  }
+}
+
+.rockImage {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.grassImage {
+  display: flex;
+
+  position: absolute;
+  border-radius: 4%;
+  width: 90%;
+  height: 90%;
+  background: #86c55c;
 }
