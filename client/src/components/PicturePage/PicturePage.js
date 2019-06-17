@@ -97,7 +97,8 @@ class PicturePage extends React.Component {
     return (
       <MiniLocation
         key={locationName}
-        location={locationName}
+        locationName={locationName}
+        location={location}
         characters={characters}
         isActive={isActive}
         className={className}

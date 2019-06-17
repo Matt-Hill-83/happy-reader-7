@@ -168,7 +168,11 @@ const generateScenes = () => {
     bees: { creatures: [{ type: "fairy" }], name: "bees" },
     swamp: { creatures: [{ type: "elf" }], name: "swamp" },
     house: { creatures: [], name: "house" },
-    lake: { creatures: [{ type: "wizard" }], name: "lake" },
+    lake: {
+      creatures: [{ type: "wizard" }],
+      name: "lake",
+      doorsIsOpen: { left: true, right: true, top: true, bottom: true }
+    },
     barn: { creatures: [{ type: "monster" }], name: "barn" },
     pool: { creatures: [{ type: "elf" }], name: "pool" },
     hill: { creatures: [{ type: "elf" }], name: "hill" },

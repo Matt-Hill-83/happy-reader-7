@@ -13,20 +13,23 @@ class MiniLocation extends React.Component {
   onButtonClick = ({ location }) => {
     console.log("location", location); // zzz
 
+    const locationName = location.name;
+
     const doorsIsOpen = this.state.doorsIsOpen;
-    doorsIsOpen[location] = !doorsIsOpen[location];
+    doorsIsOpen[locationName] = !doorsIsOpen[locationName];
     this.setState({ doorsIsOpen });
   };
 
   renderButton = ({ location, className, image }) => {
-    const doorIsOpen = this.state.doorsIsOpen[location];
+    const locationName = location.name;
+    const doorIsOpen = this.state.doorsIsOpen[locationName];
 
     // TODO - set this in scene props
     // TODO - set this in scene props
     // TODO - set this in scene props
     let hasDoor = false;
-    if (location === "bottom" || location === "right") {
-      console.log("location", location); // zzz
+    if (locationName === "bottom" || locationName === "right") {
+      console.log("locationName", locationName); // zzz
 
       hasDoor = true;
     }
@@ -50,10 +53,13 @@ class MiniLocation extends React.Component {
       showLabel = true
     } = this.props;
 
-    const localClass = isActive ? css.activeClass : "";
-    console.log("localClass", localClass); // zzz
+    const locationName = location.name;
 
-    const miniLocation = Images.locations.small[location];
+    console.log("location", location); // zzz
+
+    const localClass = isActive ? css.activeClass : "";
+
+    const miniLocation = Images.locations.small[locationName];
 
     const rockImage = Images.backgrounds["rock"];
     const doorImage = Images.backgrounds["door"];
@@ -84,7 +90,7 @@ class MiniLocation extends React.Component {
           />
         </div>
         <div className={css.characters}>{characters}</div>
-        {showLabel && <span className={css.locationTitle}>{location}</span>}
+        {showLabel && <span className={css.locationTitle}>{locationName}</span>}
       </div>
     );
   }
