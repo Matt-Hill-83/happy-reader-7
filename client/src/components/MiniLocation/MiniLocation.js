@@ -6,8 +6,28 @@ import Images from "../../images/images.js";
 import css from "./MiniLocation.module.scss";
 
 class MiniLocation extends React.Component {
+  defaultDoorIsOpen = { left: false, right: false, top: false, bottom: false };
+
+  async componentWillMount() {
+    const {
+      location: { doorsIsOpen }
+    } = this.props;
+    if (doorsIsOpen) {
+      this.setState({ doorsIsOpen });
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    const {
+      location: { doorsIsOpen }
+    } = newProps;
+    if (doorsIsOpen) {
+      this.setState({ doorsIsOpen });
+    }
+  }
+
   state = {
-    doorsIsOpen: { left: false, right: false, top: false, bottom: false }
+    doorsIsOpen: this.defaultDoorIsOpen
   };
 
   onButtonClick = ({ location }) => {
@@ -16,13 +36,17 @@ class MiniLocation extends React.Component {
     const locationName = location.name;
 
     const doorsIsOpen = this.state.doorsIsOpen;
+
     doorsIsOpen[locationName] = !doorsIsOpen[locationName];
     this.setState({ doorsIsOpen });
   };
 
   renderButton = ({ location, className, image }) => {
-    const locationName = location.name;
+    const locationName = location;
+    console.log("locationName", locationName); // zzz
+
     const doorIsOpen = this.state.doorsIsOpen[locationName];
+    console.log("doorIsOpen", doorIsOpen); // zzz
 
     // TODO - set this in scene props
     // TODO - set this in scene props
