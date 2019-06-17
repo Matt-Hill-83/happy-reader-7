@@ -29,6 +29,7 @@ import dragon from "./dragon.png";
 import map02 from "./backgrounds/map-05.jpg";
 import rock from "./backgrounds/rock-2.jpg";
 import door from "./backgrounds/door.png";
+import gate from "./backgrounds/gate.png";
 
 //locations - small
 import castle from "./locations-small/castle.png";
@@ -47,19 +48,26 @@ import bog from "./locations-small/bog.png";
 import hill from "./locations-small/hill.png";
 import coop from "./locations-small/coop.png";
 
+import cave from "./locations-small/cave.png";
+import slide from "./locations-small/slide.png";
+import swing from "./locations-small/swing.png";
+// import seesaw from "./locations-small/seesaw.png";
+import log from "./locations-small/log.png";
+
 export default {
   backgrounds: {
-    waterfall,
-    home,
-    school,
-    garden,
+    door,
     forest,
     forestLeft,
     forestRight,
-    meadow,
+    garden,
+    gate,
+    home,
     map02,
+    meadow,
     rock,
-    door
+    school,
+    waterfall
   },
   locations: {
     small: {
@@ -67,14 +75,19 @@ export default {
       bees,
       bog,
       castle,
+      cave,
       coop,
       hill,
       house,
       lake,
+      log,
       pond,
       pool,
+      // seesaw,
+      slide,
       stump,
       swamp,
+      swing,
       tree,
       waterfall: waterfallSmall
     },

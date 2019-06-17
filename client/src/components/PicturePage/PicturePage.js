@@ -4,7 +4,6 @@ import { Icon } from "@blueprintjs/core";
 import { observer } from "mobx-react";
 import LineTo from "react-lineto";
 import _get from "lodash.get";
-import MediaQuery from "react-responsive";
 
 import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
@@ -84,7 +83,9 @@ class PicturePage extends React.Component {
 
   renderMiniLocation = ({ location, className = "" }) => {
     const { activeScene } = this.props;
-    const isActive = location.name === activeScene.name;
+    const locationName = location.name;
+
+    const isActive = locationName === activeScene.name;
 
     const creatures = _get(location, "scene.creatures") || [];
 
@@ -95,8 +96,8 @@ class PicturePage extends React.Component {
 
     return (
       <MiniLocation
-        key={location.name}
-        location={location.name}
+        key={locationName}
+        location={locationName}
         characters={characters}
         isActive={isActive}
         className={className}
