@@ -10,49 +10,38 @@ class MiniLocation extends React.Component {
 
   async componentWillMount() {
     const {
-      location: { doorsIsOpen }
+      location: { doorsAreOpen }
     } = this.props;
-    if (doorsIsOpen) {
-      this.setState({ doorsIsOpen });
+    if (doorsAreOpen) {
+      this.setState({ doorsAreOpen });
     }
   }
 
   componentWillReceiveProps(newProps) {
     const {
-      location: { doorsIsOpen }
+      location: { doorsAreOpen }
     } = newProps;
-    if (doorsIsOpen) {
-      this.setState({ doorsIsOpen });
+    if (doorsAreOpen) {
+      this.setState({ doorsAreOpen });
     }
   }
 
   state = {
-    doorsIsOpen: this.defaultDoorIsOpen
+    doorsAreOpen: this.defaultDoorIsOpen
   };
 
   onButtonClick = ({ position }) => {
-    console.log("position", position); // zzz
+    const doorsAreOpen = this.state.doorsAreOpen;
 
-    const doorsIsOpen = this.state.doorsIsOpen;
-
-    doorsIsOpen[position] = !doorsIsOpen[position];
-    this.setState({ doorsIsOpen });
+    doorsAreOpen[position] = !doorsAreOpen[position];
+    this.setState({ doorsAreOpen });
   };
 
   renderButton = ({ position, className, image }) => {
-    const locationName = position;
-    console.log("locationName", locationName); // zzz
+    const doorIsOpen = this.state.doorsAreOpen[position];
 
-    const doorIsOpen = this.state.doorsIsOpen[position];
-    console.log("doorIsOpen", doorIsOpen); // zzz
-
-    // TODO - set this in scene props
-    // TODO - set this in scene props
-    // TODO - set this in scene props
     let hasDoor = false;
     if (position === "bottom" || position === "right") {
-      console.log("position", position); // zzz
-
       hasDoor = true;
     }
 
@@ -76,8 +65,6 @@ class MiniLocation extends React.Component {
     } = this.props;
 
     const locationName = location.name;
-
-    console.log("location", location); // zzz
 
     const localClass = isActive ? css.activeClass : "";
 

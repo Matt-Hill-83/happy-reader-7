@@ -161,27 +161,91 @@ const startScene = {
 
 const generateScenes = () => {
   const scenes = {
-    tree: { creatures: [{ type: "hobbit" }], name: "tree" },
-    stump: { creatures: [{ type: "troll" }], name: "stump" },
-    castle: { creatures: [{ type: "unicorn" }], name: "castle" },
-    waterfall: { creatures: [{ type: "dragon" }], name: "waterfall" },
-    bees: { creatures: [{ type: "fairy" }], name: "bees" },
-    swamp: { creatures: [{ type: "elf" }], name: "swamp" },
-    house: { creatures: [], name: "house" },
+    tree: {
+      creatures: [{ type: "hobbit" }],
+      name: "tree",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    stump: {
+      creatures: [{ type: "troll" }],
+      name: "stump",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    castle: {
+      creatures: [{ type: "unicorn" }],
+      name: "castle",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    waterfall: {
+      creatures: [{ type: "dragon" }],
+      name: "waterfall",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    bees: {
+      creatures: [{ type: "fairy" }],
+      name: "bees",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    swamp: {
+      creatures: [{ type: "elf" }],
+      name: "swamp",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    house: {
+      creatures: [],
+      name: "house",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
     lake: {
       creatures: [{ type: "wizard" }],
       name: "lake",
-      doorsIsOpen: { left: true, right: true, top: true, bottom: true }
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
     },
-    barn: { creatures: [{ type: "monster" }], name: "barn" },
-    pool: { creatures: [{ type: "elf" }], name: "pool" },
-    hill: { creatures: [{ type: "elf" }], name: "hill" },
-    bog: { creatures: [{ type: "elf" }], name: "bog" },
-    pond: { creatures: [{ type: "elf" }], name: "pond" },
-    coop: { creatures: [{ type: "elf" }], name: "coop" },
-    cave: { creatures: [{ type: "elf" }], name: "cave" },
-    slide: { creatures: [{ type: "elf" }], name: "slide" },
-    swing: { creatures: [{ type: "elf" }], name: "swing" }
+    barn: {
+      creatures: [{ type: "monster" }],
+      name: "barn",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    pool: {
+      creatures: [{ type: "elf" }],
+      name: "pool",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    hill: {
+      creatures: [{ type: "elf" }],
+      name: "hill",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    bog: {
+      creatures: [{ type: "elf" }],
+      name: "bog",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    pond: {
+      creatures: [{ type: "elf" }],
+      name: "pond",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    coop: {
+      creatures: [{ type: "elf" }],
+      name: "coop",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    cave: {
+      creatures: [{ type: "elf" }],
+      name: "cave",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    slide: {
+      creatures: [{ type: "elf" }],
+      name: "slide",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    },
+    swing: {
+      creatures: [{ type: "elf" }],
+      name: "swing",
+      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+    }
   };
 
   for (let scene in scenes) {

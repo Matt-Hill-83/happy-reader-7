@@ -74,6 +74,7 @@ class MainStory extends React.Component {
     });
 
     const currentLocation = neighborsArray.find(item => {
+      // return item.scene.name === activeLocation;
       return item.name === activeLocation;
     });
 
