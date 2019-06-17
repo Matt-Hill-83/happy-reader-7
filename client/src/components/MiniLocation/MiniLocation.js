@@ -22,8 +22,6 @@ class MiniLocation extends React.Component {
     const doorIsOpen = this.state.doorsIsOpen[location];
     console.log("doorIsOpen", doorIsOpen); // zzz
 
-    const doorOpen = this.state.doorsIsOpen[location];
-
     // TODO - set this in scene props
     // TODO - set this in scene props
     // TODO - set this in scene props
@@ -32,10 +30,11 @@ class MiniLocation extends React.Component {
     return (
       <button
         onClick={() => this.onButtonClick({ location })}
-        className={`${className} ${doorOpen ? css.doorOpen : ""}`}
+        className={`${className} ${doorIsOpen ? "door-open" : ""}`}
+        // className={`${className} ${doorIsOpen ? css.doorIsOpen : ""}`}
       >
-        {hasDoor && !doorOpen && (
-          <img className={css.doorImage} src={image} alt={"imagex"} />
+        {hasDoor && !doorIsOpen && (
+          <img xxxclassName={css.doorImage} src={image} alt={"imagex"} />
         )}
       </button>
     );
@@ -64,8 +63,8 @@ class MiniLocation extends React.Component {
         </div>
         <div className={css.grassImage} />
         {this.renderButton({
-          location: "left",
-          className: "left-side-door",
+          location: "right",
+          className: "right-side-door",
           image: doorImage
         })}
 
