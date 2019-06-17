@@ -5,13 +5,6 @@
   height: 100%;
 }
 
-// .buttonImageContainer {
-//   position: relative;
-//   border: 1px solid orange !important;
-//   display: flex;
-//   overflow: hidden;
-// }
-
 .grassImage {
   display: flex;
 
@@ -20,6 +13,13 @@
   width: 90%;
   height: 90%;
   background: #86c55c;
+}
+
+.doorOpen {
+  background: #86c55b !important;
+  // border: none !important;
+  border-left: 2px solid white !important;
+  border-right: 2px solid white !important;
 }
 
 .main {
@@ -31,7 +31,6 @@
   flex: 1;
   flex-direction: column;
 
-  // overflow: hidden;
   position: relative;
 
   height: 100%;
@@ -60,38 +59,33 @@
       background: transparent;
       border: none;
       z-index: 5;
-      border: 1px solid red !important;
+      // border: 1px solid red !important;
       cursor: pointer;
     }
 
-    .top-door,
     .bottom-door {
       position: absolute;
-      // justify-self: center;
 
       height: 20%;
-      width: 50%;
+      width: 20%;
 
-      bottom: 0px;
+      bottom: -10%;
       left: 50%;
       transform: translateX(-50%);
 
-      button > img {
+      img {
         position: absolute;
-
         left: 0;
         top: 0;
-
         height: 100%;
-        width: auto;
+        width: 100%;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
 
     .right-side-door,
     .left-side-door {
-      display: flex;
-      flex: 1 1;
-
       position: absolute;
       height: 40%;
       left: -13%;
@@ -101,7 +95,7 @@
 
       :global {
         img {
-          border: 1px solid green !important;
+          // border: 1px solid green !important;
           position: absolute;
 
           left: 0;
@@ -111,11 +105,6 @@
           width: auto;
         }
       }
-    }
-
-    .door-open {
-      background: #86c55b;
-      border: none !important;
     }
   }
 
