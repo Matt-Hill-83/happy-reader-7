@@ -56,6 +56,16 @@
       z-index: 5;
       cursor: pointer;
 
+      img {
+        position: absolute;
+
+        left: 0;
+        top: 0;
+
+        height: 100%;
+        width: auto;
+      }
+
       &.door-open {
         background: #86c55b !important;
       }
@@ -69,10 +79,13 @@
       left: 50%;
       transform: translateX(-50%);
 
+      &.door-open {
+        border-left: 2px solid white !important;
+        border-right: 2px solid white !important;
+        width: 20%;
+      }
+
       img {
-        position: absolute;
-        left: 0;
-        top: 0;
         height: 100%;
         width: 100%;
         left: 50%;
@@ -93,16 +106,9 @@
         width: 20%;
       }
 
-      :global {
-        img {
-          position: absolute;
-
-          left: 0;
-          top: 0;
-
-          height: 100%;
-          width: auto;
-        }
+      img {
+        height: 100%;
+        width: auto;
       }
     }
   }
