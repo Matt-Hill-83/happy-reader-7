@@ -42,7 +42,7 @@ class MiniLocation extends React.Component {
 
     let hasDoor = false;
     if (position === "bottom" || position === "right") {
-      hasDoor = true;
+      hasDoor = this.state.doorsAreOpen[position] !== undefined;
     }
 
     return (

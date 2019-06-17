@@ -162,89 +162,89 @@ const startScene = {
 const generateScenes = () => {
   const scenes = {
     tree: {
-      creatures: [{ type: "hobbit" }],
+      creatures: [{ type: "wizard" }],
       name: "tree",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: false, top: true, bottom: true }
     },
     stump: {
-      creatures: [{ type: "troll" }],
+      creatures: [{ type: "" }],
       name: "stump",
       doorsAreOpen: { left: true, right: true, top: true, bottom: false }
     },
     castle: {
       creatures: [{ type: "unicorn" }],
       name: "castle",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: false, top: true, bottom: false }
     },
     waterfall: {
-      creatures: [{ type: "dragon" }],
+      creatures: [{ type: "" }],
       name: "waterfall",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: false, top: true, bottom: true }
     },
     bees: {
-      creatures: [{ type: "fairy" }],
+      creatures: [{ type: "" }],
       name: "bees",
       doorsAreOpen: { left: true, right: true, top: true, bottom: false }
     },
     swamp: {
-      creatures: [{ type: "elf" }],
+      creatures: [{ type: "" }],
       name: "swamp",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: false, top: true, bottom: false }
     },
     house: {
       creatures: [],
       name: "house",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: true, top: true, bottom: undefined }
     },
     lake: {
-      creatures: [{ type: "wizard" }],
+      creatures: [{ type: "" }],
       name: "lake",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: true, top: true }
     },
     barn: {
-      creatures: [{ type: "monster" }],
+      creatures: [{ type: "" }],
       name: "barn",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: false, top: true, bottom: false }
     },
     pool: {
-      creatures: [{ type: "elf" }],
+      creatures: [{ type: "" }],
       name: "pool",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: false, top: true, bottom: true }
     },
     hill: {
-      creatures: [{ type: "elf" }],
+      creatures: [{ type: "" }],
       name: "hill",
       doorsAreOpen: { left: true, right: true, top: true, bottom: false }
     },
     bog: {
-      creatures: [{ type: "elf" }],
+      creatures: [{ type: "troll" }],
       name: "bog",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: true, top: true, bottom: undefined }
     },
     pond: {
-      creatures: [{ type: "elf" }],
+      creatures: [{ type: "" }],
       name: "pond",
       doorsAreOpen: { left: true, right: true, top: true, bottom: false }
     },
     coop: {
-      creatures: [{ type: "elf" }],
+      creatures: [{ type: "" }],
       name: "coop",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: false, top: true, bottom: false }
     },
     cave: {
-      creatures: [{ type: "elf" }],
+      creatures: [{ type: "" }],
       name: "cave",
       doorsAreOpen: { left: true, right: true, top: true, bottom: false }
     },
     slide: {
-      creatures: [{ type: "elf" }],
+      creatures: [{ type: "" }],
       name: "slide",
       doorsAreOpen: { left: true, right: true, top: true, bottom: false }
     },
     swing: {
-      creatures: [{ type: "elf" }],
+      creatures: [{ type: "" }],
       name: "swing",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: true, top: true }
     }
   };
 
@@ -283,26 +283,26 @@ const locationsMap = [
   [
     { scene: scenes.tree, name: scenes.tree.name },
     { scene: scenes.stump, name: scenes.stump.name },
-    { scene: scenes.castle, name: scenes.cave.name },
+    { scene: scenes.cave, name: scenes.cave.name },
     { scene: scenes.castle, name: scenes.castle.name }
   ],
   [
     { scene: scenes.waterfall, name: scenes.waterfall.name },
     { scene: scenes.bees, name: scenes.bees.name },
-    { scene: scenes.swamp, name: scenes.slide.name },
+    { scene: scenes.slide, name: scenes.slide.name },
     { scene: scenes.swamp, name: scenes.swamp.name }
   ],
   [
     { scene: scenes.pool, name: scenes.pool.name },
     { scene: scenes.hill, name: scenes.hill.name },
-    { scene: scenes.bog, name: scenes.bog.name },
+    { scene: scenes.barn, name: scenes.barn.name },
     { scene: scenes.coop, name: scenes.coop.name }
   ],
   [
     { scene: scenes.house, name: scenes.house.name },
     { scene: scenes.lake, name: scenes.lake.name },
-    { scene: scenes.barn, name: scenes.swing.name },
-    { scene: scenes.barn, name: scenes.barn.name }
+    { scene: scenes.swing, name: scenes.swing.name },
+    { scene: scenes.bog, name: scenes.bog.name }
   ]
 ];
 
