@@ -74,22 +74,15 @@ class MiniLocation extends React.Component {
           image: doorImage
         })}
 
-        <div className={css.midRow}>
-          <div className={css.midCol}>
-            <div className={css.imagesBox}>
-              <div className={css.characters}>{characters}</div>
-              <img
-                className={css.miniLocationImage}
-                src={miniLocation}
-                alt={"imagex"}
-              />
-              {showLabel && (
-                <span className={css.locationTitle}>{location}</span>
-              )}
-            </div>
-          </div>
-          <div className={css.rightCol} />
+        <div className={css.imagesBox}>
+          <img
+            className={css.miniLocationImage}
+            src={miniLocation}
+            alt={"imagex"}
+          />
         </div>
+        <div className={css.characters}>{characters}</div>
+        {showLabel && <span className={css.locationTitle}>{location}</span>}
       </div>
     );
   }
