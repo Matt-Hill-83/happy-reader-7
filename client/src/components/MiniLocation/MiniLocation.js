@@ -24,12 +24,17 @@ class MiniLocation extends React.Component {
 
     const doorOpen = this.state.doorsIsOpen[location];
 
+    // TODO - set this in scene props
+    // TODO - set this in scene props
+    // TODO - set this in scene props
+    const hasDoor = true;
+
     return (
       <button
         onClick={() => this.onButtonClick({ location })}
         className={`${className} ${doorOpen ? css.doorOpen : ""}`}
       >
-        {image && !doorOpen && (
+        {hasDoor && !doorOpen && (
           <img className={css.doorImage} src={image} alt={"imagex"} />
         )}
       </button>
