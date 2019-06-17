@@ -28,6 +28,7 @@ import dragon from "./dragon.png";
 // backgrounds
 import map02 from "./backgrounds/map-05.jpg";
 import rock from "./backgrounds/rock-2.jpg";
+import door from "./backgrounds/door.png";
 
 //locations - small
 import castle from "./locations-small/castle.png";
@@ -44,6 +45,7 @@ import pond from "./locations-small/pond.png";
 import pool from "./locations-small/pool.png";
 import bog from "./locations-small/bog.png";
 import hill from "./locations-small/hill.png";
+import coop from "./locations-small/coop.png";
 
 export default {
   backgrounds: {
@@ -56,23 +58,25 @@ export default {
     forestRight,
     meadow,
     map02,
-    rock
+    rock,
+    door
   },
   locations: {
     small: {
-      castle: castle,
-      house: house,
-      tree,
-      waterfall: waterfallSmall,
-      stump: stump,
-      bees: bees,
-      swamp,
-      lake,
       barn,
+      bees,
+      bog,
+      castle,
+      coop,
+      hill,
+      house,
+      lake,
       pond,
       pool,
-      bog,
-      hill
+      stump,
+      swamp,
+      tree,
+      waterfall: waterfallSmall
     },
     large: {
       // castle,

@@ -173,7 +173,8 @@ const generateScenes = () => {
     pool: { creatures: [{ type: "monster" }], name: "pool" },
     hill: { creatures: [{ type: "monster" }], name: "hill" },
     bog: { creatures: [{ type: "monster" }], name: "bog" },
-    pond: { creatures: [{ type: "monster" }], name: "pond" }
+    pond: { creatures: [{ type: "monster" }], name: "pond" },
+    coop: { creatures: [{ type: "monster" }], name: "coop" }
   };
 
   for (let scene in scenes) {
@@ -224,7 +225,7 @@ const locationsMap = [
     { scene: scenes.pool, name: scenes.pool.name },
     { scene: scenes.hill, name: scenes.hill.name },
     { scene: scenes.bog, name: scenes.bog.name },
-    { scene: scenes.bog, name: scenes.bog.name }
+    { scene: scenes.coop, name: scenes.coop.name }
   ],
   [
     { scene: scenes.house, name: scenes.house.name },

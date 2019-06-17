@@ -9,19 +9,25 @@ class MiniLocation extends React.Component {
   state = { buttons: { left: false, right: false, top: false, button: true } };
 
   onButtonClick = ({ location }) => {
+    console.log("location", location); // zzz
+
     const buttons = this.state.buttons;
     buttons[location] = !buttons[location];
     this.setState({ buttons });
   };
 
-  renderButton = ({ location, className }) => {
+  renderButton = ({ location, className, image }) => {
     const doorOpen = this.state.buttons[location];
 
     return (
       <button
         onClick={() => this.onButtonClick({ location })}
         className={`${className} ${doorOpen ? "door-open" : ""}`}
-      />
+      >
+        {/* <div className={css.buttonImageContainer}> */}
+        {image && <img className={css.doorImage} src={image} alt={"imagex"} />}
+        {/* </div> */}
+      </button>
     );
   };
 
@@ -39,6 +45,7 @@ class MiniLocation extends React.Component {
     const miniLocation = Images.locations.small[location];
 
     const rockImage = Images.backgrounds["rock"];
+    const doorImage = Images.backgrounds["door"];
 
     return (
       <div className={`${css.main} ${className} ${localClass}`}>
@@ -46,16 +53,28 @@ class MiniLocation extends React.Component {
           <img className={css.rockImage} src={rockImage} alt={"imagex"} />
         </div>
         <div className={css.grassImage} />
-        <div className={css.topRow}>
+        {this.renderButton({
+          location: "left",
+          className: "left-side-door",
+          image: doorImage
+        })}
+        {/*
+        {this.renderButton({
+          location: "bottom",
+          className: "bottom-door",
+          image: doorImage
+        })} */}
+        {/* <div className={css.topRow}>
           {this.renderButton({ location: "top", className: "top-door" })}
-        </div>
+        </div> */}
         <div className={css.midRow}>
-          <div className={css.leftCol}>
+          {/* <div className={css.leftCol}>
             {this.renderButton({
               location: "left",
-              className: "left-side-door"
+              className: "left-side-door",
+              image: doorImage
             })}
-          </div>
+          </div> */}
           <div className={css.midCol}>
             <div className={css.imagesBox}>
               <div className={css.characters}>{characters}</div>
@@ -70,15 +89,20 @@ class MiniLocation extends React.Component {
             </div>
           </div>
           <div className={css.rightCol}>
-            {this.renderButton({
+            {/* {this.renderButton({
               location: "right",
-              className: "right-side-door"
-            })}
+              className: "right-side-door",
+              image: doorImage
+            })} */}
           </div>
         </div>
-        <div className={css.bottomRow}>
-          {this.renderButton({ location: "bottom", className: "bottom-door" })}
-        </div>
+        {/* <div className={css.bottomRow}>
+          {this.renderButton({
+            location: "bottom",
+            className: "bottom-door",
+            image: doorImage
+          })}
+        </div> */}
       </div>
     );
   }
