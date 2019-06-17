@@ -30,37 +30,35 @@ class MiniLocation extends React.Component {
     doorsIsOpen: this.defaultDoorIsOpen
   };
 
-  onButtonClick = ({ location }) => {
-    console.log("location", location); // zzz
-
-    const locationName = location.name;
+  onButtonClick = ({ position }) => {
+    console.log("position", position); // zzz
 
     const doorsIsOpen = this.state.doorsIsOpen;
 
-    doorsIsOpen[locationName] = !doorsIsOpen[locationName];
+    doorsIsOpen[position] = !doorsIsOpen[position];
     this.setState({ doorsIsOpen });
   };
 
-  renderButton = ({ location, className, image }) => {
-    const locationName = location;
+  renderButton = ({ position, className, image }) => {
+    const locationName = position;
     console.log("locationName", locationName); // zzz
 
-    const doorIsOpen = this.state.doorsIsOpen[locationName];
+    const doorIsOpen = this.state.doorsIsOpen[position];
     console.log("doorIsOpen", doorIsOpen); // zzz
 
     // TODO - set this in scene props
     // TODO - set this in scene props
     // TODO - set this in scene props
     let hasDoor = false;
-    if (locationName === "bottom" || locationName === "right") {
-      console.log("locationName", locationName); // zzz
+    if (position === "bottom" || position === "right") {
+      console.log("position", position); // zzz
 
       hasDoor = true;
     }
 
     return (
       <button
-        onClick={() => this.onButtonClick({ location })}
+        onClick={() => this.onButtonClick({ position })}
         className={`${className} ${doorIsOpen ? "door-open" : ""}`}
       >
         {hasDoor && !doorIsOpen && <img src={image} alt={"imagex"} />}
@@ -95,13 +93,13 @@ class MiniLocation extends React.Component {
         </div>
         <div className={css.grassImage} />
         {this.renderButton({
-          location: "right",
+          position: "right",
           className: "right-side-door",
           image: doorImage
         })}
 
         {this.renderButton({
-          location: "bottom",
+          position: "bottom",
           className: "bottom-door",
           image: doorImage
         })}
