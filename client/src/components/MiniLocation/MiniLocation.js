@@ -62,8 +62,15 @@ class MiniLocation extends React.Component {
     if (position === "bottom" || position === "right") {
       hasDoor = this.state.doorsAreOpen[position] !== undefined;
     }
+    console.log("doorImage", doorImage); // zzz
+    console.log("image", image); // zzz
 
-    const renderedDoorImage = hasDoor ? Images.doors[doorImage] : null;
+    let renderedDoorImage;
+    if (doorImage) {
+      renderedDoorImage = hasDoor ? Images.doors[doorImage || image] : null;
+    } else {
+      renderedDoorImage = hasDoor ? image : null;
+    }
 
     return (
       <button
