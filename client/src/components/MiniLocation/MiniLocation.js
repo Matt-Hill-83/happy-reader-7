@@ -45,8 +45,9 @@ class MiniLocation extends React.Component {
     this.setState({ doorsAreOpen });
   };
 
-  renderButton = ({ position, className, image }) => {
-    console.log("this.state.doorsAreOpen", this.state.doorsAreOpen); // zzz
+  renderButton = ({ position, className, defaultDoorImage }) => {
+    let hasDoor = false;
+    let renderedDoorImage;
 
     const doorImage =
       this.state.doorsAreOpen[position] &&
@@ -56,20 +57,14 @@ class MiniLocation extends React.Component {
       this.state.doorsAreOpen[position] &&
       this.state.doorsAreOpen[position]["state"];
 
-    console.log("doorIsOpen", doorIsOpen); // zzz
-
-    let hasDoor = false;
     if (position === "bottom" || position === "right") {
       hasDoor = this.state.doorsAreOpen[position] !== undefined;
-    }
-    console.log("doorImage", doorImage); // zzz
-    console.log("image", image); // zzz
 
-    let renderedDoorImage;
-    if (doorImage) {
-      renderedDoorImage = hasDoor ? Images.doors[doorImage || image] : null;
-    } else {
-      renderedDoorImage = hasDoor ? image : null;
+      if (hasDoor) {
+        renderedDoorImage = doorImage
+          ? Images.doors[doorImage]
+          : defaultDoorImage;
+      }
     }
 
     return (
@@ -118,13 +113,13 @@ class MiniLocation extends React.Component {
         {this.renderButton({
           position: "right",
           className: "right-side-door",
-          image: doorImage
+          defaultDoorImage: doorImage
         })}
 
         {this.renderButton({
           position: "bottom",
           className: "bottom-door",
-          image: doorImage
+          defaultDoorImage: doorImage
         })}
 
         <div className={css.imagesBox}>

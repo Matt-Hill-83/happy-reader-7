@@ -156,7 +156,6 @@ const generateNarrative1 = ({ you, activeScene }) => {
 const narrativeGenerators = [generateNarrative1];
 
 const startScene = {
-  // location: homeLocation,
   creatures: [],
   name: homeLocation,
   builtInNarrativeGenerator: generateStartNarrative
