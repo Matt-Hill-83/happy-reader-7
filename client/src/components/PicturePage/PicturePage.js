@@ -175,6 +175,18 @@ class PicturePage extends React.Component {
     );
   };
 
+  renderYourItems = () => {
+    const plot = localStateStore.getPlot();
+    const items = plot.you.items.map(item => <div>{item}</div>);
+
+    return (
+      <div className={css.yourItems}>
+        <span>My Stuff</span>
+        {items}
+      </div>
+    );
+  };
+
   render() {
     const smallMap = localStateStore.getsmallMap();
     const storyClass = smallMap ? css.smallMap : "";
@@ -183,6 +195,7 @@ class PicturePage extends React.Component {
       <div className={`${css.main} ${storyClass}`}>
         {this.renderStoryPage({})}
         {this.renderMapPage({})}
+        {this.renderYourItems({})}
       </div>
     );
   }

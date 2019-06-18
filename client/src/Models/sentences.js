@@ -272,7 +272,8 @@ const generateScenes = () => {
         right: { image: "", state: true },
         top: { image: "", state: true },
         bottom: { image: "", state: true }
-      }
+      },
+      items: ["key"]
     },
     hill: {
       creatures: [{ type: "" }],
