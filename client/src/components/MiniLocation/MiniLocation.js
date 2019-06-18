@@ -63,11 +63,8 @@ class MiniLocation extends React.Component {
       className,
       showLabel = true
     } = this.props;
-    console.log("location", location); // zzz
 
     const { items = [], name: locationName } = location;
-
-    // const locationName = location.name;
 
     const localClass = isActive ? css.activeClass : "";
 

@@ -108,12 +108,16 @@ const generateStartNarrative = ({ you }) => {
 };
 
 const generateNarrative1 = ({ you, activeScene }) => {
-  const { name, creatures } = activeScene;
+  const { name, creatures, items } = activeScene;
+
+  console.log("activeScene", activeScene); // zzz
 
   const creature = creatures && creatures.length > 0 && creatures[0];
+  const item = items && items.length > 0 && items[0];
 
   let creatureDialog = [];
-  if (creature) {
+  let itemDialog = [];
+  if (creature && creature.type) {
     creatureDialog = [
       `You see a ${creature.type}.`,
       `You say, "Hello ${creature.type}."`,
@@ -123,9 +127,13 @@ const generateNarrative1 = ({ you, activeScene }) => {
     ];
   }
 
+  if (item) {
+    itemDialog = [`You see a ${item}.`, `You get the ${item}.`];
+  }
+
   return {
     story: [
-      [`You go to the ${name}.`, ...creatureDialog]
+      [`You go to the ${name}.`, ...creatureDialog, ...itemDialog]
       // [
       //   `The ${creature.type} says,`,
       //   `"Hello ${you.name}."`,
