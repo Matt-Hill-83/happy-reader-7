@@ -209,7 +209,7 @@ const generateScenes = () => {
     pool: {
       creatures: [{ type: "" }],
       name: "pool",
-      doorsAreOpen: { left: true, right: false, top: true, bottom: true }
+      doorsAreOpen: { left: true, right: true, top: true, bottom: true }
     },
     hill: {
       creatures: [{ type: "" }],

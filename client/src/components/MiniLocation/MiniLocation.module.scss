@@ -63,8 +63,6 @@
       transform: translateX(-50%);
 
       &.door-open {
-        // border-left: 2px solid #125984 !important;
-        // border-right: 2px solid #125984 !important;
         width: 20%;
       }
 
@@ -83,8 +81,6 @@
       top: 39%;
 
       &.door-open {
-        // border-top: 2px solid #125984 !important;
-        // border-bottom: 2px solid #125984 !important;
         width: 20%;
         height: 20%;
       }
@@ -112,8 +108,8 @@
     background: #e1d8ea;
     border-radius: 3px;
     padding: 0 3px;
-    right: 7%;
-    bottom: 7%;
+    top: 7%;
+    left: 7%;
   }
 
   .miniLocationImage {
@@ -131,6 +127,17 @@
     height: 41%;
     bottom: 8%;
     left: 10%;
+  }
+
+  .itemImage {
+    display: flex;
+    position: absolute;
+
+    height: 10%;
+    width: auto;
+
+    right: 10%;
+    bottom: 10%;
   }
 }
 

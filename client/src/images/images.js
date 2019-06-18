@@ -31,6 +31,9 @@ import rock from "./backgrounds/rock-2.jpg";
 import door from "./backgrounds/door.png";
 import gate from "./backgrounds/gate.png";
 
+//items
+import key from "./items/key.png";
+
 //locations - small
 import castle from "./locations-small/castle.png";
 import house from "./locations-small/house.png";
@@ -68,6 +71,9 @@ export default {
     rock,
     school,
     waterfall
+  },
+  items: {
+    key
   },
   locations: {
     small: {
