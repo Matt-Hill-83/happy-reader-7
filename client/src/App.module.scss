@@ -20,7 +20,8 @@ body {
 }
 
 .desktop {
-  --window-height: 100%;
+  --window-height: 100vh;
+  // --window-height: 100%;
   overflow: hidden;
 }
 
