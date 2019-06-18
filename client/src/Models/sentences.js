@@ -204,7 +204,8 @@ const generateScenes = () => {
     barn: {
       creatures: [{ type: "" }],
       name: "barn",
-      doorsAreOpen: { left: true, right: false, top: true, bottom: false }
+      doorsAreOpen: { left: true, right: false, top: true, bottom: false },
+      items: ["key"]
     },
     pool: {
       creatures: [{ type: "" }],
