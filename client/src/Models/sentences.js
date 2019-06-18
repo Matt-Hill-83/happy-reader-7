@@ -172,89 +172,172 @@ const generateScenes = () => {
     tree: {
       creatures: [{ type: "wizard" }],
       name: "tree",
-      doorsAreOpen: { left: true, right: false, top: true, bottom: true },
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: false },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: true }
+      },
       items: ["hat"]
     },
     stump: {
       creatures: [{ type: "" }],
       name: "stump",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: false }
+      }
     },
     castle: {
       creatures: [{ type: "unicorn" }],
       name: "castle",
-      doorsAreOpen: { left: true, right: false, top: true, bottom: false }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: false },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: false }
+      }
     },
     waterfall: {
       creatures: [{ type: "" }],
       name: "waterfall",
-      doorsAreOpen: { left: true, right: false, top: true, bottom: true }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: false },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: true }
+      }
     },
     bees: {
       creatures: [{ type: "" }],
       name: "bees",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: false }
+      }
     },
     swamp: {
       creatures: [{ type: "" }],
       name: "swamp",
-      doorsAreOpen: { left: true, right: false, top: true, bottom: false }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: false },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: false }
+      }
     },
     house: {
       creatures: [],
       name: "house",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: undefined }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: undefined }
+      }
     },
     lake: {
       creatures: [{ type: "" }],
       name: "lake",
-      doorsAreOpen: { left: true, right: true, top: true }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true }
+      }
     },
     barn: {
       creatures: [{ type: "" }],
       name: "barn",
-      doorsAreOpen: { left: true, right: false, top: true, bottom: false },
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: false },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: false }
+      },
       items: ["greenKey"]
     },
     pool: {
       creatures: [{ type: "" }],
       name: "pool",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: true }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: true }
+      }
     },
     hill: {
       creatures: [{ type: "" }],
       name: "hill",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: false }
+      }
     },
     bog: {
       creatures: [{ type: "troll" }],
       name: "bog",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: undefined }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: undefined }
+      }
     },
     pond: {
       creatures: [{ type: "" }],
       name: "pond",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: false }
+      }
     },
     coop: {
       creatures: [{ type: "" }],
       name: "coop",
-      doorsAreOpen: { left: true, right: false, top: true, bottom: false }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: false },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: false }
+      }
     },
     cave: {
       creatures: [{ type: "" }],
       name: "cave",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: false }
+      }
     },
     slide: {
       creatures: [{ type: "" }],
       name: "slide",
-      doorsAreOpen: { left: true, right: true, top: true, bottom: false }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true },
+        bottom: { image: "doorGreen", state: false }
+      }
     },
     swing: {
       creatures: [{ type: "" }],
       name: "swing",
-      doorsAreOpen: { left: true, right: true, top: true }
+      doorsAreOpen: {
+        left: { image: "doorGreen", state: true },
+        right: { image: "doorGreen", state: true },
+        top: { image: "doorGreen", state: true }
+      }
     }
   };
 
@@ -297,10 +380,10 @@ const locationsMap = [
     { scene: scenes.castle, name: scenes.castle.name }
   ],
   [
-    { scene: scenes.waterfall, name: scenes.waterfall.name },
+    { scene: scenes.swamp, name: scenes.swamp.name },
     { scene: scenes.bees, name: scenes.bees.name },
     { scene: scenes.slide, name: scenes.slide.name },
-    { scene: scenes.swamp, name: scenes.swamp.name }
+    { scene: scenes.waterfall, name: scenes.waterfall.name }
   ],
   [
     { scene: scenes.pool, name: scenes.pool.name },

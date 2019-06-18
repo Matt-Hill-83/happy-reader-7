@@ -36,6 +36,9 @@ import key from "./items/key.png";
 import hat from "./items/hat.png";
 import greenKey from "./items/green-key.png";
 
+//doors
+import doorGreen from "./doors/doorGreen.png";
+
 //locations - small
 import castle from "./locations-small/castle.png";
 import house from "./locations-small/house.png";
@@ -78,6 +81,9 @@ export default {
     hat,
     key,
     greenKey
+  },
+  doors: {
+    doorGreen
   },
   locations: {
     small: {

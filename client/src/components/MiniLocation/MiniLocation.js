@@ -2,16 +2,23 @@ import React from "react";
 import { observer } from "mobx-react";
 
 import Images from "../../images/images.js";
+import _get from "lodash.get";
 
 import css from "./MiniLocation.module.scss";
 
 class MiniLocation extends React.Component {
-  defaultDoorIsOpen = { left: false, right: false, top: false, bottom: false };
+  defaultDoorIsOpen = {
+    left: { image: "doorGreen", state: true },
+    right: { image: "doorGreen", state: false },
+    top: { image: "doorGreen", state: true },
+    bottom: { image: "doorGreen", state: true }
+  };
 
   async componentWillMount() {
     const {
       location: { doorsAreOpen }
     } = this.props;
+
     if (doorsAreOpen) {
       this.setState({ doorsAreOpen });
     }
@@ -21,6 +28,7 @@ class MiniLocation extends React.Component {
     const {
       location: { doorsAreOpen }
     } = newProps;
+
     if (doorsAreOpen) {
       this.setState({ doorsAreOpen });
     }
@@ -33,24 +41,38 @@ class MiniLocation extends React.Component {
   onButtonClick = ({ position }) => {
     const doorsAreOpen = this.state.doorsAreOpen;
 
-    doorsAreOpen[position] = !doorsAreOpen[position];
+    doorsAreOpen[position]["state"] = !doorsAreOpen[position]["state"];
     this.setState({ doorsAreOpen });
   };
 
   renderButton = ({ position, className, image }) => {
-    const doorIsOpen = this.state.doorsAreOpen[position];
+    console.log("this.state.doorsAreOpen", this.state.doorsAreOpen); // zzz
+
+    const doorImage =
+      this.state.doorsAreOpen[position] &&
+      this.state.doorsAreOpen[position]["image"];
+
+    const doorIsOpen =
+      this.state.doorsAreOpen[position] &&
+      this.state.doorsAreOpen[position]["state"];
+
+    console.log("doorIsOpen", doorIsOpen); // zzz
 
     let hasDoor = false;
     if (position === "bottom" || position === "right") {
       hasDoor = this.state.doorsAreOpen[position] !== undefined;
     }
 
+    const renderedDoorImage = hasDoor ? Images.doors[doorImage] : null;
+
     return (
       <button
         onClick={() => this.onButtonClick({ position })}
         className={`${className} ${doorIsOpen ? "door-open" : ""}`}
       >
-        {hasDoor && !doorIsOpen && <img src={image} alt={"imagex"} />}
+        {hasDoor && !doorIsOpen && (
+          <img src={renderedDoorImage} alt={"imagex"} />
+        )}
       </button>
     );
   };
