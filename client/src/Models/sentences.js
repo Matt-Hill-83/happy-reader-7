@@ -14,7 +14,8 @@ const generateYou = ({ you }) => {
     vehicle: "scooter",
     mission: generateMission(),
     friends: [],
-    pet: { type: "dog", name: "Doggy", withMe: true }
+    pet: { type: "dog", name: "Doggy", withMe: true },
+    items: []
   };
   const modifiedYou = Object.assign({}, defaultYou, you);
 
@@ -108,12 +109,16 @@ const generateStartNarrative = ({ you }) => {
 };
 
 const generateNarrative1 = ({ you, activeScene }) => {
+  console.log("you", you); // zzz
+
   const { name, creatures, items } = activeScene;
 
   console.log("activeScene", activeScene); // zzz
 
   const creature = creatures && creatures.length > 0 && creatures[0];
   const item = items && items.length > 0 && items[0];
+
+  item && you.items.push(item);
 
   let creatureDialog = [];
   let itemDialog = [];
