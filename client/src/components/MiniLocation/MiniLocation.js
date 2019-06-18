@@ -77,7 +77,7 @@ class MiniLocation extends React.Component {
     const doorImage = Images.backgrounds["door"];
 
     const renderedItems = items.map(item => {
-      const renderedItem = Images.items["key"];
+      const renderedItem = Images.items[item];
       return (
         <img className={css.itemImage} src={renderedItem} alt={"imagex"} />
       );

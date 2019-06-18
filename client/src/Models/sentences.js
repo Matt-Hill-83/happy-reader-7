@@ -164,7 +164,8 @@ const generateScenes = () => {
     tree: {
       creatures: [{ type: "wizard" }],
       name: "tree",
-      doorsAreOpen: { left: true, right: false, top: true, bottom: true }
+      doorsAreOpen: { left: true, right: false, top: true, bottom: true },
+      items: ["hat"]
     },
     stump: {
       creatures: [{ type: "" }],
@@ -205,7 +206,7 @@ const generateScenes = () => {
       creatures: [{ type: "" }],
       name: "barn",
       doorsAreOpen: { left: true, right: false, top: true, bottom: false },
-      items: ["key"]
+      items: ["greenKey"]
     },
     pool: {
       creatures: [{ type: "" }],

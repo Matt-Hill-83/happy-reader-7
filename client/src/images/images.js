@@ -33,6 +33,8 @@ import gate from "./backgrounds/gate.png";
 
 //items
 import key from "./items/key.png";
+import hat from "./items/hat.png";
+import greenKey from "./items/green-key.png";
 
 //locations - small
 import castle from "./locations-small/castle.png";
@@ -73,7 +75,9 @@ export default {
     waterfall
   },
   items: {
-    key
+    hat,
+    key,
+    greenKey
   },
   locations: {
     small: {
