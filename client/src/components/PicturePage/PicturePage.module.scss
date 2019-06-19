@@ -101,7 +101,7 @@
 
   .locationHeader {
     position: absolute;
-    z-index: 2;
+    z-index: 10;
     display: flex;
 
     font-size: 24px;
@@ -114,18 +114,14 @@
     padding: 0 6px;
   }
 
-  .characterImage {
-    position: absolute;
-    // ???
-    // ???
-    // ???
-    // ???
-    max-width: 322px;
-    height: auto;
+  // .characterImage {
+  //   position: absolute;
+  //   max-width: 322px;
+  //   height: auto;
 
-    bottom: 0px;
-    z-index: 3;
-  }
+  //   bottom: 0px;
+  //   z-index: 3;
+  // }
 
   .characterImageMini {
     display: flex;
