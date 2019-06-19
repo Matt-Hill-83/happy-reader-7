@@ -219,7 +219,7 @@ const generateScenes = () => {
       name: "bees",
       doorsAreOpen: {
         left: { image: "", state: true },
-        right: { image: "", state: true },
+        right: { image: "doorYellow", state: false },
         top: { image: "", state: true },
         bottom: { image: "", state: false }
       }
@@ -347,12 +347,14 @@ const generateScenes = () => {
   };
 
   for (let scene in scenes) {
-    scenes[scene].creatures.forEach(creature => {
-      const creatureName = Utils.getRandomItemByTypeAndUse({
-        type: wordTypes.name
+    scenes[scene].creatures &&
+      scenes[scene].creatures.length &&
+      scenes[scene].creatures.forEach(creature => {
+        const creatureName = Utils.getRandomItemByTypeAndUse({
+          type: wordTypes.name
+        });
+        creature.name = creatureName;
       });
-      creature.name = creatureName;
-    });
   }
 
   return scenes;

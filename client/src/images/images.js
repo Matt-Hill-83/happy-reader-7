@@ -22,6 +22,7 @@ import zombie from "./bad-guys/zombie.png";
 
 import monster from "./monster.png";
 import hobbit from "./hobbit.png";
+import monsterGreen from "./monsterGreen.png";
 import wizard from "./wizard.png";
 import dragon from "./dragon.png";
 
@@ -38,6 +39,7 @@ import greenKey from "./items/green-key.png";
 
 //doors
 import doorGreen from "./doors/doorGreen.png";
+import doorYellow from "./doors/doorYellow.jpg";
 
 //locations - small
 import castle from "./locations-small/castle.png";
@@ -83,7 +85,8 @@ export default {
     greenKey
   },
   doors: {
-    doorGreen
+    doorGreen,
+    doorYellow
   },
   locations: {
     small: {
@@ -124,6 +127,7 @@ export default {
   unicorn,
   monster,
   hobbit,
+  monsterGreen,
   waterfall,
   home,
   school,

@@ -9,7 +9,7 @@
       display: flex;
       align-items: center;
 
-      font-size: 30px;
+      font-size: var(--story-font-size);
       flex-wrap: wrap;
 
       .sentenceWord {
