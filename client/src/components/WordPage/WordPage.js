@@ -88,7 +88,6 @@ class WordPage extends React.Component {
         )} */}
         {/* <WordGroup story={generatedNarrative.mission} /> */}
         {isLastParagraph && this.renderButtons()}
-        <div className={css.test}>TEST</div>
       </div>
     );
   }
