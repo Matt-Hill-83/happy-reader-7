@@ -1,3 +1,10 @@
+.test {
+  border: 10px solid red !important;
+  position: fixed;
+  right: 100px;
+  z-index: 50;
+}
+
 .textPage {
   display: flex;
   flex-direction: column;
@@ -7,18 +14,19 @@
   top: 0.25rem;
   border: 2px solid purple;
   border-radius: 10px;
-  padding: 1rem;
+  padding: 0.25rem;
   min-height: 20%;
   width: 98%;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
   left: 50%;
+  margin-left: -49%;
 
   .decisionButtonRow {
     display: flex;
     flex-direction: column;
-
-    position: absolute;
+    position: fixed;
     right: 0px;
+    top: 50%;
 
     .choiceButton {
       display: flex;

@@ -27,13 +27,14 @@
 .floatingButtons {
   position: absolute;
   z-index: 5;
-  background: white;
+  background: #f3c2c2;
   right: 0px;
-  top: 50%;
+  top: 10%;
   transform: translateY(-50%);
 }
 
 .settingButtons {
+  background: #f3c2c2;
   display: flex;
   flex-direction: column;
 }
