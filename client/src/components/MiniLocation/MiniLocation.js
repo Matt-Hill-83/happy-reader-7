@@ -8,41 +8,41 @@ import css from "./MiniLocation.module.scss";
 
 class MiniLocation extends React.Component {
   defaultDoorIsOpen = {
-    left: { image: "doorGreen", state: true },
-    right: { image: "doorGreen", state: false },
-    top: { image: "doorGreen", state: true },
-    bottom: { image: "doorGreen", state: true }
+    left: { image: "doorGreen", open: true },
+    right: { image: "doorGreen", open: false },
+    top: { image: "doorGreen", open: true },
+    bottom: { image: "doorGreen", open: true }
   };
 
   async componentWillMount() {
     const {
-      location: { doorsAreOpen }
+      location: { doors }
     } = this.props;
 
-    if (doorsAreOpen) {
-      this.setState({ doorsAreOpen });
+    if (doors) {
+      this.setState({ doors });
     }
   }
 
   componentWillReceiveProps(newProps) {
     const {
-      location: { doorsAreOpen }
+      location: { doors }
     } = newProps;
 
-    if (doorsAreOpen) {
-      this.setState({ doorsAreOpen });
+    if (doors) {
+      this.setState({ doors });
     }
   }
 
   state = {
-    doorsAreOpen: this.defaultDoorIsOpen
+    doors: this.defaultDoorIsOpen
   };
 
   onButtonClick = ({ position }) => {
-    const doorsAreOpen = this.state.doorsAreOpen;
+    const doors = this.state.doors;
 
-    doorsAreOpen[position]["state"] = !doorsAreOpen[position]["state"];
-    this.setState({ doorsAreOpen });
+    doors[position]["open"] = !doors[position]["open"];
+    this.setState({ doors });
   };
 
   renderButton = ({ position, className, defaultDoorImage }) => {
@@ -50,15 +50,13 @@ class MiniLocation extends React.Component {
     let renderedDoorImage;
 
     const doorImage =
-      this.state.doorsAreOpen[position] &&
-      this.state.doorsAreOpen[position]["image"];
+      this.state.doors[position] && this.state.doors[position]["image"];
 
     const doorIsOpen =
-      this.state.doorsAreOpen[position] &&
-      this.state.doorsAreOpen[position]["state"];
+      this.state.doors[position] && this.state.doors[position]["open"];
 
     if (position === "bottom" || position === "right") {
-      hasDoor = this.state.doorsAreOpen[position] !== undefined;
+      hasDoor = this.state.doors[position] !== undefined;
 
       if (hasDoor) {
         renderedDoorImage = doorImage
