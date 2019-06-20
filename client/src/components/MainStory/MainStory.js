@@ -58,6 +58,8 @@ class MainStory extends React.Component {
   };
 
   getNeighbors = ({ activeScene }) => {
+    console.log("activeScene", activeScene); // zzz
+
     const activeLocation = activeScene.name;
 
     const neighbors = [];
