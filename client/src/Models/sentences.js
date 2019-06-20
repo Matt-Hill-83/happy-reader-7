@@ -157,21 +157,14 @@ const generateNarrative1 = ({ you, activeScene }) => {
 const narrativeGenerators = [generateNarrative1];
 
 const startScene = {
-  // creatures: [],
   name: homeLocation,
   builtInNarrativeGenerator: generateStartNarrative
 };
-
-// TODO - creatures should have a name and type
-// TODO - creatures should have a name and type
-// TODO - creatures should have a name and type
-// TODO - creatures should have a name and type
 
 const generateScenes = () => {
   const scenes = {
     tree: {
       name: "tree",
-      // creatures: [],
       doors: {
         right: { open: false },
         bottom: { open: true }
@@ -193,7 +186,6 @@ const generateScenes = () => {
       }
     },
     waterfall: {
-      // creatures: [],
       name: "waterfall",
       doors: {
         right: { open: false },
@@ -201,15 +193,10 @@ const generateScenes = () => {
       }
     },
     bees: {
-      // creatures: [],
       name: "bees",
-      doors: {
-        // bottom: { open: true }
-      },
       items: ["key"]
     },
     swamp: {
-      // creatures: [],
       name: "swamp",
       doors: {
         right: { open: false },
@@ -217,26 +204,21 @@ const generateScenes = () => {
       }
     },
     house: {
-      // creatures: [],
-      name: "house",
-      doors: {}
+      name: "house"
     },
     lake: {
-      // creatures: [],
       name: "lake",
       doors: {
         right: { open: true }
       }
     },
     barn: {
-      // creatures: [],
       name: "barn",
       doors: {
         bottom: { open: true }
       }
     },
     pool: {
-      // creatures: [],
       name: "pool",
       doors: {
         right: { open: true },
@@ -244,7 +226,6 @@ const generateScenes = () => {
       }
     },
     hill: {
-      // creatures: [],
       name: "hill",
       doors: {
         right: { open: true },
@@ -256,21 +237,16 @@ const generateScenes = () => {
       name: "bog",
       doors: {
         right: { image: "doorGreen", open: false }
-        // bottom: { open: true }
       }
-      // items: ["key"]
     },
     pond: {
-      // creatures: [],
       name: "pond",
       doors: {
         right: { image: "doorYellow", open: true },
         bottom: { open: true }
       }
-      // items: ["key"]
     },
     coop: {
-      // creatures: [],
       name: "coop",
       doors: {
         right: { open: false },
@@ -278,15 +254,12 @@ const generateScenes = () => {
       }
     },
     cave: {
-      // creatures: [],
       name: "cave",
       doors: {
-        // right: { open: true },
         bottom: { open: true }
       }
     },
     slide: {
-      // creatures: [],
       name: "slide",
       doors: {
         right: { open: true },
@@ -294,7 +267,6 @@ const generateScenes = () => {
       }
     },
     swing: {
-      // creatures: [],
       name: "swing",
       doors: {
         right: { open: true }
