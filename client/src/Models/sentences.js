@@ -157,7 +157,7 @@ const generateNarrative1 = ({ you, activeScene }) => {
 const narrativeGenerators = [generateNarrative1];
 
 const startScene = {
-  creatures: [],
+  // creatures: [],
   name: homeLocation,
   builtInNarrativeGenerator: generateStartNarrative
 };
@@ -171,7 +171,7 @@ const generateScenes = () => {
   const scenes = {
     tree: {
       name: "tree",
-      creatures: [],
+      // creatures: [],
       doors: {
         right: { open: false },
         bottom: { open: true }
@@ -181,7 +181,7 @@ const generateScenes = () => {
       name: "stump",
       creatures: [{ type: "wizard" }],
       doors: {
-        right: { image: "doorGreen", open: false }
+        right: { image: "doorGreen", open: true }
       },
       items: ["hat"]
     },
@@ -189,11 +189,11 @@ const generateScenes = () => {
       creatures: [{ type: "unicorn" }],
       name: "castle",
       doors: {
-        right: { open: false }
+        right: { image: "doorYellow", open: false }
       }
     },
     waterfall: {
-      creatures: [],
+      // creatures: [],
       name: "waterfall",
       doors: {
         right: { open: false },
@@ -201,14 +201,15 @@ const generateScenes = () => {
       }
     },
     bees: {
-      creatures: [],
+      // creatures: [],
       name: "bees",
       doors: {
-        bottom: { open: true }
-      }
+        // bottom: { open: true }
+      },
+      items: ["key"]
     },
     swamp: {
-      creatures: [],
+      // creatures: [],
       name: "swamp",
       doors: {
         right: { open: false },
@@ -216,30 +217,26 @@ const generateScenes = () => {
       }
     },
     house: {
-      creatures: [],
+      // creatures: [],
       name: "house",
-      doors: {
-        // right: { open: true }
-        // bottom: { open: undefined }
-      }
+      doors: {}
     },
     lake: {
-      creatures: [],
+      // creatures: [],
       name: "lake",
       doors: {
         right: { open: true }
       }
     },
     barn: {
-      creatures: [],
+      // creatures: [],
       name: "barn",
       doors: {
-        right: { image: "doorYellow", open: true }
+        bottom: { open: true }
       }
-      // items: ["greenKey"]
     },
     pool: {
-      creatures: [],
+      // creatures: [],
       name: "pool",
       doors: {
         right: { open: true },
@@ -247,7 +244,7 @@ const generateScenes = () => {
       }
     },
     hill: {
-      creatures: [],
+      // creatures: [],
       name: "hill",
       doors: {
         right: { open: true },
@@ -257,20 +254,23 @@ const generateScenes = () => {
     bog: {
       creatures: [{ type: "troll" }],
       name: "bog",
-      doors: {},
-      items: ["greenKey"]
+      doors: {
+        right: { image: "doorGreen", open: false }
+        // bottom: { open: true }
+      }
+      // items: ["key"]
     },
     pond: {
-      creatures: [],
+      // creatures: [],
       name: "pond",
       doors: {
-        right: { image: "doorYellow", open: false },
+        right: { image: "doorYellow", open: true },
         bottom: { open: true }
-      },
-      items: ["key"]
+      }
+      // items: ["key"]
     },
     coop: {
-      creatures: [],
+      // creatures: [],
       name: "coop",
       doors: {
         right: { open: false },
@@ -278,7 +278,7 @@ const generateScenes = () => {
       }
     },
     cave: {
-      creatures: [],
+      // creatures: [],
       name: "cave",
       doors: {
         // right: { open: true },
@@ -286,7 +286,7 @@ const generateScenes = () => {
       }
     },
     slide: {
-      creatures: [],
+      // creatures: [],
       name: "slide",
       doors: {
         right: { open: true },
@@ -294,7 +294,7 @@ const generateScenes = () => {
       }
     },
     swing: {
-      creatures: [],
+      // creatures: [],
       name: "swing",
       doors: {
         right: { open: true }
@@ -324,8 +324,8 @@ const scenes = generateScenes();
 let locationsMap = [
   [{}, scenes.stump, scenes.pond, scenes.castle],
   [{}, {}, scenes.cave, {}],
-  [scenes.pool, scenes.lake, scenes.barn, scenes.bees],
-  [scenes.house, {}, {}, scenes.bog]
+  [scenes.pool, scenes.lake, scenes.barn, {}],
+  [scenes.house, {}, scenes.bog, scenes.bees]
 ];
 
 // create placeholders for empty rows
