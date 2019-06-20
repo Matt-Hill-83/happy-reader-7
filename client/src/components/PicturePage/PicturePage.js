@@ -65,6 +65,7 @@ class PicturePage extends React.Component {
 
   renderCharacters = ({ isActive, creatures }) => {
     const creatureType = creatures.length > 0 && creatures[0].type;
+
     const image = Images[creatureType] || null;
 
     const friend = (
@@ -81,13 +82,16 @@ class PicturePage extends React.Component {
     return characters;
   };
 
+  createSingleRow = ({ locationRow }) =>
+    locationRow.map(location => this.renderMiniLocation({ location }));
+
   renderMiniLocation = ({ location, className = "" }) => {
     const { activeScene } = this.props;
     const locationName = location.name;
 
     const isActive = locationName === activeScene.name;
 
-    const creatures = _get(location, "scene.creatures") || [];
+    const creatures = _get(location, "creatures") || [];
 
     const characters = this.renderCharacters({
       creatures,
@@ -97,17 +101,13 @@ class PicturePage extends React.Component {
     return (
       <MiniLocation
         key={locationName}
-        locationName={locationName}
-        location={location.scene}
+        location={location}
         characters={characters}
         isActive={isActive}
         className={className}
       />
     );
   };
-
-  createSingleRow = ({ locationRow }) =>
-    locationRow.map(location => this.renderMiniLocation({ location }));
 
   createArrows = ({ locationName }) => {
     const { activeScene } = this.props;
@@ -126,13 +126,18 @@ class PicturePage extends React.Component {
     return arrows;
   };
 
-  renderStoryPage = ({}) => {
-    const { activeScene, wordPageProps, updateActiveScene } = this.props;
+  renderStoryPage = () => {
+    const {
+      activeScene,
+      activeScene: { creatures = [] },
+      wordPageProps,
+      updateActiveScene
+    } = this.props;
 
     const backgroundImage = Images["forest"];
-    const locationName = activeScene.name;
-    const miniLocation = Images.locations.small[locationName];
-    const creatures = _get(locationName, "scene.creatures") || [];
+    const activeLocationName = activeScene.name;
+
+    const miniLocationImage = Images.locations.small[activeLocationName];
 
     return (
       <div className={`${css.halfPage} ${css.leftHalf}`}>
@@ -144,7 +149,7 @@ class PicturePage extends React.Component {
         </div>
 
         <div className={css.miniLocation}>
-          <img src={miniLocation} alt={"imagex"} />
+          <img src={miniLocationImage} alt={"imagex"} />
         </div>
         <WordPage
           wordPageProps={wordPageProps}
@@ -155,7 +160,7 @@ class PicturePage extends React.Component {
           src={backgroundImage}
           alt={"imagex"}
         />
-        <div className={css.locationHeader}>{`${activeScene.name}`}</div>
+        <div className={css.locationHeader}>{`${activeLocationName}`}</div>
         <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
       </div>
     );
@@ -193,7 +198,7 @@ class PicturePage extends React.Component {
 
     return (
       <div className={`${css.main} ${storyClass}`}>
-        {this.renderStoryPage({})}
+        {this.renderStoryPage()}
         {this.renderMapPage({})}
         {this.renderYourItems({})}
       </div>

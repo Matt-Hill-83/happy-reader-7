@@ -175,7 +175,7 @@ const generateScenes = () => {
   const scenes = {
     tree: {
       name: "tree",
-      creatures: [{ type: "" }],
+      creatures: [],
       doorsAreOpen: {
         left: { image: "", state: true },
         right: { image: "doorGreen", state: false },
@@ -205,7 +205,7 @@ const generateScenes = () => {
       }
     },
     waterfall: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "waterfall",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -215,7 +215,7 @@ const generateScenes = () => {
       }
     },
     bees: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "bees",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -225,7 +225,7 @@ const generateScenes = () => {
       }
     },
     swamp: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "swamp",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -245,7 +245,7 @@ const generateScenes = () => {
       }
     },
     lake: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "lake",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -254,7 +254,7 @@ const generateScenes = () => {
       }
     },
     barn: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "barn",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -265,7 +265,7 @@ const generateScenes = () => {
       items: ["greenKey"]
     },
     pool: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "pool",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -276,7 +276,7 @@ const generateScenes = () => {
       items: ["key"]
     },
     hill: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "hill",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -296,7 +296,7 @@ const generateScenes = () => {
       }
     },
     pond: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "pond",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -306,7 +306,7 @@ const generateScenes = () => {
       }
     },
     coop: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "coop",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -316,7 +316,7 @@ const generateScenes = () => {
       }
     },
     cave: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "cave",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -326,7 +326,7 @@ const generateScenes = () => {
       }
     },
     slide: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "slide",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -336,7 +336,7 @@ const generateScenes = () => {
       }
     },
     swing: {
-      creatures: [{ type: "" }],
+      creatures: [],
       name: "swing",
       doorsAreOpen: {
         left: { image: "", state: true },
@@ -397,12 +397,13 @@ const locationsMap = [
   //   null,
   //   { scene: scenes.coop, name: scenes.coop.name }
   // ],
-  [
-    { scene: scenes.house, name: scenes.house.name },
-    { scene: scenes.lake, name: scenes.lake.name },
-    { scene: scenes.bog, name: scenes.bog.name },
-    { scene: scenes.castle, name: scenes.castle.name }
-  ]
+  [scenes.house, scenes.lake, scenes.bog, scenes.castle]
+  // [
+  //   { scene: scenes.house, xxxname: scenes.house.name },
+  //   { scene: scenes.lake, xxxname: scenes.lake.name },
+  //   { scene: scenes.bog, xxxname: scenes.bog.name },
+  //   { scene: scenes.castle, xxxname: scenes.castle.name }
+  // ]
 ];
 
 // const locationsMap = [
