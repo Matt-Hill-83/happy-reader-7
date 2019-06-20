@@ -109,11 +109,7 @@ const generateStartNarrative = ({ you }) => {
 };
 
 const generateNarrative1 = ({ you, activeScene }) => {
-  console.log("you", you); // zzz
-
   const { name, creatures, items } = activeScene;
-
-  console.log("activeScene", activeScene); // zzz
 
   const creature = creatures && creatures.length > 0 && creatures[0];
   const item = items && items.length > 0 && items[0];
@@ -373,64 +369,19 @@ const generatePlot = () => {
   localStateStore.setPlot(plot);
 };
 
-// TODO
-// TODO
-// TODO
-// TODO
-// TODO
-// these should be the entire scene
 const locationsMap = [
-  // [
-  //   { scene: scenes.tree, name: scenes.tree.name },
-  //   { scene: scenes.stump, name: scenes.stump.name },
-  //   { scene: scenes.cave, name: scenes.cave.name },
-  // ],
-  // [
-  //   { scene: scenes.swamp, name: scenes.swamp.name },
-  //   { scene: scenes.bees, name: scenes.bees.name },
-  //   { scene: scenes.slide, name: scenes.slide.name },
-  //   { scene: scenes.waterfall, name: scenes.waterfall.name }
-  // ],
-  // [
-  //   { scene: scenes.pool, name: scenes.pool.name },
-  //   null,
-  //   null,
-  //   { scene: scenes.coop, name: scenes.coop.name }
-  // ],
-  [scenes.house, scenes.lake, scenes.bog, scenes.castle]
-  // [
-  //   { scene: scenes.house, xxxname: scenes.house.name },
-  //   { scene: scenes.lake, xxxname: scenes.lake.name },
-  //   { scene: scenes.bog, xxxname: scenes.bog.name },
-  //   { scene: scenes.castle, xxxname: scenes.castle.name }
-  // ]
+  [{}, {}, {}, {}],
+  [startScene, scenes.lake, scenes.bog, scenes.castle],
+  // [scenes.house, scenes.lake, scenes.bog, scenes.castle],
+  [{}, {}, {}, {}],
+  [{}, {}, {}, {}]
 ];
 
 // const locationsMap = [
-//   [
-//     { scene: scenes.tree, name: scenes.tree.name },
-//     { scene: scenes.stump, name: scenes.stump.name },
-//     { scene: scenes.cave, name: scenes.cave.name },
-//     { scene: scenes.castle, name: scenes.castle.name }
-//   ],
-//   [
-//     { scene: scenes.swamp, name: scenes.swamp.name },
-//     { scene: scenes.bees, name: scenes.bees.name },
-//     { scene: scenes.slide, name: scenes.slide.name },
-//     { scene: scenes.waterfall, name: scenes.waterfall.name }
-//   ],
-//   [
-//     { scene: scenes.pool, name: scenes.pool.name },
-//     { scene: scenes.hill, name: scenes.hill.name },
-//     { scene: scenes.barn, name: scenes.barn.name },
-//     { scene: scenes.coop, name: scenes.coop.name }
-//   ],
-//   [
-//     { scene: scenes.house, name: scenes.house.name },
-//     { scene: scenes.lake, name: scenes.lake.name },
-//     { scene: scenes.swing, name: scenes.swing.name },
-//     { scene: scenes.bog, name: scenes.bog.name }
-//   ]
+//   [{}, scenes.stump, scenes.cave, scenes.castle],
+//   [scenes.swamp, scenes.bees, scenes.slide, scenes.waterfall],
+//   [scenes.pool, scenes.hill, scenes.barn, scenes.coop],
+//   [startScene, {}, scenes.swing, scenes.bog]
 // ];
 
 export default { generateNewFriend, generatePlot, generateYou, locationsMap };

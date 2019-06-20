@@ -104,6 +104,10 @@ class MiniLocation extends React.Component {
       );
     });
 
+    if (!locationName) {
+      return <div className={`${css.main} ${className} ${localClass}`} />;
+    }
+
     return (
       <div className={`${css.main} ${className} ${localClass}`}>
         <div className={css.rockImage}>

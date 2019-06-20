@@ -43,8 +43,6 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
-    console.log("activeScene", activeScene); // zzz
-
     const plot = localStateStore.getPlot();
     const { you, narrativeGenerators } = plot;
 
@@ -60,8 +58,6 @@ class MainStory extends React.Component {
   };
 
   getNeighbors = ({ activeScene }) => {
-    console.log("activeScene - GN", activeScene); // zzz
-
     const activeLocation = activeScene.name;
 
     const neighbors = [];
@@ -70,7 +66,7 @@ class MainStory extends React.Component {
     // create a map of all the locations for future use
     locationsMap.forEach((row, rowIndex) => {
       row.forEach((location, locationIndex) => {
-        console.log("location", location); // zzz
+        location = location || {};
 
         neighborsArray.push({
           name: location.name,
@@ -78,8 +74,6 @@ class MainStory extends React.Component {
         });
       });
     });
-
-    console.log("neighborsArray", neighborsArray); // zzz
 
     const currentLocation = neighborsArray.find(item => {
       // return item.scene.name === activeLocation;
@@ -126,8 +120,6 @@ class MainStory extends React.Component {
     if (!activeScene) {
       return null;
     }
-
-    console.log("activeScene - MS - render", activeScene); // zzz
 
     const page = localStateStore.getPage();
 
