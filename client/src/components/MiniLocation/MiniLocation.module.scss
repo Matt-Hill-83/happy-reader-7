@@ -51,7 +51,7 @@
       }
 
       &.door-open {
-        background: #86c55b !important;
+        background: var(--grass-color) !important;
       }
     }
 
@@ -165,5 +165,5 @@
   border-radius: 4%;
   width: 96%;
   height: 96%;
-  background: #86c55c;
+  background: var(--grass-color);
 }

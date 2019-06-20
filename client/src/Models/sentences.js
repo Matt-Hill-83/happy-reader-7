@@ -173,20 +173,15 @@ const generateScenes = () => {
       name: "tree",
       creatures: [],
       doors: {
-        left: { image: "", open: true },
-        right: { image: "doorGreen", open: false },
-        top: { image: "", open: true },
-        bottom: { image: "", open: true }
+        right: { open: false },
+        bottom: { open: true }
       }
     },
     stump: {
       name: "stump",
       creatures: [{ type: "wizard" }],
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: true },
-        top: { image: "", open: true },
-        bottom: { image: "", open: false }
+        right: { image: "doorGreen", open: false }
       },
       items: ["hat"]
     },
@@ -194,150 +189,115 @@ const generateScenes = () => {
       creatures: [{ type: "unicorn" }],
       name: "castle",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: false },
-        top: { image: "", open: true },
-        bottom: { image: "", open: false }
+        right: { open: false }
       }
     },
     waterfall: {
       creatures: [],
       name: "waterfall",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: false },
-        top: { image: "", open: true },
-        bottom: { image: "", open: true }
+        right: { open: false },
+        bottom: { open: true }
       }
     },
     bees: {
       creatures: [],
       name: "bees",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "doorYellow", open: false },
-        top: { image: "", open: true },
-        bottom: { image: "", open: false }
+        bottom: { open: true }
       }
     },
     swamp: {
       creatures: [],
       name: "swamp",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: false },
-        top: { image: "", open: true },
-        bottom: { image: "", open: true }
+        right: { open: false },
+        bottom: { open: true }
       }
     },
     house: {
       creatures: [],
       name: "house",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: true },
-        top: { image: "", open: true },
-        bottom: { image: "", open: undefined }
+        // right: { open: true }
+        // bottom: { open: undefined }
       }
     },
     lake: {
       creatures: [],
       name: "lake",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: false },
-        top: { image: "", open: true }
+        right: { open: true }
       }
     },
     barn: {
       creatures: [],
       name: "barn",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: false },
-        top: { image: "", open: true },
-        bottom: { image: "", open: false }
-      },
-      items: ["greenKey"]
+        right: { image: "doorYellow", open: true }
+      }
+      // items: ["greenKey"]
     },
     pool: {
       creatures: [],
       name: "pool",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: true },
-        top: { image: "", open: true },
-        bottom: { image: "", open: true }
-      },
-      items: ["key"]
+        right: { open: true },
+        bottom: { open: true }
+      }
     },
     hill: {
       creatures: [],
       name: "hill",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: true },
-        top: { image: "", open: true },
-        bottom: { image: "", open: false }
+        right: { open: true },
+        bottom: { open: false }
       }
     },
     bog: {
       creatures: [{ type: "troll" }],
       name: "bog",
-      doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: true },
-        top: { image: "", open: true },
-        bottom: { image: "", open: undefined }
-      }
+      doors: {},
+      items: ["greenKey"]
     },
     pond: {
       creatures: [],
       name: "pond",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: true },
-        top: { image: "", open: true },
-        bottom: { image: "", open: false }
-      }
+        right: { image: "doorYellow", open: false },
+        bottom: { open: true }
+      },
+      items: ["key"]
     },
     coop: {
       creatures: [],
       name: "coop",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: false },
-        top: { image: "", open: true },
-        bottom: { image: "", open: false }
+        right: { open: false },
+        bottom: { open: false }
       }
     },
     cave: {
       creatures: [],
       name: "cave",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: true },
-        top: { image: "", open: true },
-        bottom: { image: "", open: false }
+        // right: { open: true },
+        bottom: { open: true }
       }
     },
     slide: {
       creatures: [],
       name: "slide",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: true },
-        top: { image: "", open: true },
-        bottom: { image: "", open: false }
+        right: { open: true },
+        bottom: { open: false }
       }
     },
     swing: {
       creatures: [],
       name: "swing",
       doors: {
-        left: { image: "", open: true },
-        right: { image: "", open: true },
-        top: { image: "", open: true }
+        right: { open: true }
       }
     }
   };
@@ -362,18 +322,22 @@ const scenes = generateScenes();
 //  TODO = create locationsMap first, then create scenes list from it.
 //  TODO = create locationsMap first, then create scenes list from it.
 let locationsMap = [
-  [{}, {}, scenes.pond, scenes.castle],
+  [{}, scenes.stump, scenes.pond, scenes.castle],
   [{}, {}, scenes.cave, {}],
-  [{}, {}, scenes.swamp, {}],
-  [scenes.house, scenes.lake, scenes.bog, {}]
+  [scenes.pool, scenes.lake, scenes.barn, scenes.bees],
+  [scenes.house, {}, {}, scenes.bog]
 ];
 
+// create placeholders for empty rows
 locationsMap = locationsMap.map(row => {
   return row || [{}, {}, {}, {}];
 });
 
+console.log("locationsMap", locationsMap); // zzz
+
 // convert locations to 1D array with no empty scenes.
 let newScenes = locationsMap.flat();
+console.log("newScenes", newScenes); // zzz
 newScenes = newScenes.filter(scene => scene.name);
 
 console.log("newScenes", newScenes); // zzz
