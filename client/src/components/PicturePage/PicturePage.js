@@ -87,11 +87,9 @@ class PicturePage extends React.Component {
 
   renderMiniLocation = ({ location, className = "" }) => {
     const { activeScene } = this.props;
-    const locationName = location.name;
+    const { name: locationName, creatures = [] } = location;
 
     const isActive = locationName === activeScene.name;
-
-    const creatures = _get(location, "creatures") || [];
 
     const characters = this.renderCharacters({
       creatures,
