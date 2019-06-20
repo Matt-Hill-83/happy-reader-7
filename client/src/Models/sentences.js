@@ -358,24 +358,25 @@ const generateScenes = () => {
 
 const scenes = generateScenes();
 
-const generatePlot = () => {
-  const plot = {
-    activeScene: startScene,
-    narrativeGenerators,
-    scenes,
-    you: localStateStore.getYou()
-  };
-
-  localStateStore.setPlot(plot);
-};
-
-const locationsMap = [
-  [{}, {}, {}, {}],
-  [scenes.house, scenes.lake, scenes.bog, scenes.castle],
-  // [scenes.house, scenes.lake, scenes.bog, scenes.castle],
-  [{}, {}, {}, {}],
-  [{}, {}, {}, {}]
+//  TODO = create locationsMap first, then create scenes list from it.
+//  TODO = create locationsMap first, then create scenes list from it.
+//  TODO = create locationsMap first, then create scenes list from it.
+let locationsMap = [
+  [{}, {}, scenes.pond, scenes.castle],
+  [{}, {}, scenes.cave, {}],
+  [{}, {}, scenes.swamp, {}],
+  [scenes.house, scenes.lake, scenes.bog, {}]
 ];
+
+locationsMap = locationsMap.map(row => {
+  return row || [{}, {}, {}, {}];
+});
+
+// convert locations to 1D array with no empty scenes.
+let newScenes = locationsMap.flat();
+newScenes = newScenes.filter(scene => scene.name);
+
+console.log("newScenes", newScenes); // zzz
 
 // const locationsMap = [
 //   [{}, scenes.stump, scenes.cave, scenes.castle],
@@ -383,5 +384,16 @@ const locationsMap = [
 //   [scenes.pool, scenes.hill, scenes.barn, scenes.coop],
 //   [scenes.house, {}, scenes.swing, scenes.bog]
 // ];
+
+const generatePlot = () => {
+  const plot = {
+    activeScene: startScene,
+    narrativeGenerators,
+    scenes: newScenes,
+    you: localStateStore.getYou()
+  };
+
+  localStateStore.setPlot(plot);
+};
 
 export default { generateNewFriend, generatePlot, generateYou, locationsMap };
