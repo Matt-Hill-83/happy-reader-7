@@ -153,11 +153,11 @@ export default class DragTest extends Component {
     );
   };
 
-  renderList = ({ droppableId, items }) => {
+  renderList = ({ droppableId, items, className }) => {
     console.log("items", items); // zzz
 
     return (
-      <div className={css.source}>
+      <div className={className}>
         <Droppable droppableId={droppableId}>
           {(provided, snapshot) =>
             this.renderItems1({
@@ -177,32 +177,19 @@ export default class DragTest extends Component {
         <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
           {this.renderList({
             droppableId: "droppable",
-            items: this.state.items
+            items: this.state.items,
+            className: css.source
           })}
-
-          <div className={css.destination}>
-            <Droppable droppableId="droppable2">
-              {(provided, snapshot) =>
-                this.renderItems1({
-                  provided,
-                  snapshot,
-                  items: this.state.selected
-                })
-              }
-            </Droppable>
-          </div>
-
-          <div className={css.destination}>
-            <Droppable droppableId="droppable3">
-              {(provided, snapshot) =>
-                this.renderItems1({
-                  provided,
-                  snapshot,
-                  items: this.state.selected
-                })
-              }
-            </Droppable>
-          </div>
+          {this.renderList({
+            droppableId: "droppable2",
+            items: this.state.selected,
+            className: css.destination
+          })}
+          {this.renderList({
+            droppableId: "droppable3",
+            items: this.state.selected,
+            className: css.destination
+          })}
         </DragDropContext>
       </div>
     );
