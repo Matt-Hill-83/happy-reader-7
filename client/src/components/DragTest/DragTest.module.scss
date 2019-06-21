@@ -28,3 +28,14 @@
   max-height: 150px;
   min-height: 150px;
 }
+
+.targetGrid {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+
+  .targetRow {
+    display: flex;
+    margin: 5px;
+  }
+}

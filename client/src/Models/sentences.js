@@ -311,15 +311,10 @@ locationsMap = locationsMap.map(row => {
   return row || [{}, {}, {}, {}];
 });
 
-console.log("locationsMap", locationsMap); // zzz
-
 // convert locations to 1D array with no empty scenes.
 let newScenes = locationsMap.flat();
-console.log("newScenes", newScenes); // zzz
 // remove empty scenes
 newScenes = newScenes.filter(scene => scene.name);
-
-console.log("newScenes", newScenes); // zzz
 
 // const locationsMap = [
 //   [{}, scenes.stump, scenes.cave, scenes.castle],

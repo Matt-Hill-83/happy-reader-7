@@ -3,12 +3,8 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import css from "./DragTest.module.scss";
 
-// // fake data generator
-// const getItems = (count, offset = 0) =>
-//   Array.from({ length: count }, (v, k) => k).map(k => ({
-//     id: `item-${k + offset}`,
-//     content: `item ${k + offset}`
-//   }));
+const numRows = 2;
+const numTargetsInRow = 3;
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -39,7 +35,8 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   return result;
 };
 
-const grid = 8;
+const grid = 0;
+// const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
@@ -63,7 +60,8 @@ const getListStyle = isDraggingOver => ({
 export default class DragTest extends Component {
   state = {
     items: [],
-    selected: []
+    selected: [],
+    destinationMatrix: {}
   };
 
   /**
@@ -78,18 +76,53 @@ export default class DragTest extends Component {
 
   async componentWillMount() {
     const { items } = this.props;
-    this.setState({ items });
+    const newStateObject = this.preAllocateArrays();
+    this.setState({ items, ...newStateObject });
   }
+
+  preAllocateArrays = () => {
+    const rows = Array(numRows).fill(0);
+    const columns = Array(numTargetsInRow).fill(0);
+    console.log("rows", rows); // zzz
+
+    const newStateObject = {};
+
+    rows.map((row, rowIndex) => {
+      columns.map((col, colIndex) => {
+        const arrayName = this.createStoragePropertyName({
+          rowIndex,
+          colIndex
+        });
+        console.log("arrayName", arrayName); // zzz
+
+        newStateObject[arrayName] = [];
+      });
+    });
+    console.log("newStateObject", newStateObject); // zzz
+    return newStateObject;
+  };
 
   componentWillReceiveProps(newProps) {
     const { items } = newProps;
     this.setState({ items });
   }
 
-  getList = id => this.state[this.id2List[id]];
+  getList = id => {
+    if (id === "droppable") {
+      return this.state[this.id2List[id]];
+    } else {
+      return this.state[id];
+      // return this.state.destinationMatrix[id];
+    }
+  };
 
   onDragEnd = result => {
+    console.log("result", result); // zzz
+
     const { source, destination } = result;
+
+    console.log("source.droppableId", source.droppableId); // zzz
+    console.log("destination.droppableId", destination.droppableId); // zzz
 
     // dropped outside the list
     if (!destination) {
@@ -125,7 +158,7 @@ export default class DragTest extends Component {
     }
   };
 
-  renderItems1 = ({ provided, snapshot, items }) => {
+  renderItems = ({ provided, snapshot, items }) => {
     return (
       <div
         ref={provided.innerRef}
@@ -154,13 +187,11 @@ export default class DragTest extends Component {
   };
 
   renderList = ({ droppableId, items, className }) => {
-    console.log("items", items); // zzz
-
     return (
       <div className={className}>
         <Droppable droppableId={droppableId}>
           {(provided, snapshot) =>
-            this.renderItems1({
+            this.renderItems({
               provided,
               snapshot,
               items
@@ -174,37 +205,47 @@ export default class DragTest extends Component {
   createTargetArrayRows = ({ numTargetsInRow, numRows }) => {
     const targetArraysRows = [];
     for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
-      const newRow = this.createTargetArrays({ numTargetsInRow, rowIndex });
-      targetArraysRows.push(<div>{newRow}</div>);
+      const newRow = this.createTargetArrayRow({ numTargetsInRow, rowIndex });
+      targetArraysRows.push(<div className={css.targetRow}>{newRow}</div>);
     }
-    return targetArraysRows;
+    return <div className={css.targetGrid}>{targetArraysRows}</div>;
   };
 
-  createTargetArrays = ({ numTargetsInRow, rowIndex }) => {
+  createStoragePropertyName = ({ rowIndex, colIndex }) => {
+    return `droppable-${colIndex}-${rowIndex}`;
+  };
+
+  createTargetArrayRow = ({ numTargetsInRow, rowIndex }) => {
     const targetArrays = [];
+    const newStorageNames = [];
     for (let colIndex = 0; colIndex < numTargetsInRow; colIndex++) {
-      const arrayName = `droppable${colIndex}`;
-      console.log("arrayName", arrayName); // zzz
+      const arrayName = this.createStoragePropertyName({ rowIndex, colIndex });
 
-      // TODO - add these to idTable
-      // const arrayName = `droppable${colIndex}-${rowIndex}`;
+      const storageArray = [];
 
+      newStorageNames.push(arrayName);
       const newTargetArray = this.renderList({
         droppableId: arrayName,
-        // items: this.state[arrayName],
-        items: this.state["selected"],
+        items: storageArray,
         className: css.destination
       });
 
       targetArrays.push(newTargetArray);
     }
 
+    const stateObject = {};
+    newStorageNames.map(name => {
+      stateObject[name] = [];
+    });
     return targetArrays;
   };
 
   render() {
-    const numTargetsInRow = 3;
-    const numRows = 1;
+    // const numRows = 2;
+    // const numTargetsInRow = 3;
+
+    console.log("this.state", this.state); // zzz
+    // console.log("this.state.destinationMatrix", this.state.destinationMatrix); // zzz
 
     return (
       <div className={css.main}>
