@@ -61,9 +61,19 @@ export default class DragTest extends Component {
   };
 
   async componentWillMount() {
-    const { items } = this.props;
+    const { locations, creatures } = this.props;
     const preAllocatedArrays = this.preAllocateArrays();
-    this.setState({ sourceItems: items, ...preAllocatedArrays });
+
+    // TODO: put creatures into objects and get images.
+    const creatureObjects = creatures.map((creature, index) => {
+      return { id: `creature-${index}`, content: <div>{creature.name}</div> };
+    });
+
+    this.setState({
+      sourceItems: locations,
+      sourceCreatures: creatureObjects,
+      ...preAllocatedArrays
+    });
   }
 
   preAllocateArrays = () => {
@@ -211,12 +221,20 @@ export default class DragTest extends Component {
   };
 
   render() {
+    const { sourceCreatures } = this.state;
+    console.log("sourceCreatures", sourceCreatures); // zzz
+
     return (
       <div className={css.main}>
         <div className={css.title}>World Builder</div>
         <div className={css.subTitle}>(drag items to create your world...)</div>
         <div className={css.content}>
           <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
+            {this.renderList({
+              droppableId: "sourceCreatures",
+              items: this.state["sourceCreatures"],
+              className: css.source
+            })}
             {this.renderList({
               droppableId: "sourceItems",
               items: this.state["sourceItems"],

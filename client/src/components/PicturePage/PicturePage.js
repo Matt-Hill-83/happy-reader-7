@@ -14,6 +14,10 @@ import WordPage from "../WordPage/WordPage.js";
 
 import css from "./PicturePage.module.scss";
 
+import myWords from "../../Models/words.js";
+import Utils from "../../Utils/Utils.js";
+
+const { words, wordTypes } = myWords;
 const { locationsMap } = sentences;
 
 class PicturePage extends React.Component {
@@ -98,7 +102,7 @@ class PicturePage extends React.Component {
   createSingleRow2 = ({ locationRow, rowIndex }) => {
     return locationRow.map((location, colIndex) => {
       return {
-        id: `item-${colIndex}`,
+        id: `location-${colIndex}`,
         content: this.renderMiniLocation({ location, colIndex, rowIndex })
       };
     });
@@ -216,7 +220,18 @@ class PicturePage extends React.Component {
     const smallMap = localStateStore.getsmallMap();
     const storyClass = smallMap ? css.smallMap : "";
 
-    return <DragTest items={this.getLocationsForDragger()} />;
+    const creatures = Utils.getWordsByType({
+      words: words,
+      type: wordTypes.creature
+      // returnName: true
+    });
+
+    return (
+      <DragTest
+        locations={this.getLocationsForDragger()}
+        creatures={creatures}
+      />
+    );
     return (
       <div className={`${css.main} ${storyClass}`}>
         {this.renderStoryPage()}
