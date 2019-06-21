@@ -13,8 +13,6 @@ const reorder = (list, startIndex, endIndex) => {
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
 
-  console.log("result", result); // zzz
-
   return result;
 };
 
@@ -29,8 +27,6 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   const removedFromDest = destClone.splice(0, destClone.length, removed);
   sourceClone.push(...removedFromDest);
 
-  // destClone.splice(droppableDestination.index, 0, removed);
-
   const result = {};
   result[droppableSource.droppableId] = sourceClone;
   result[droppableDestination.droppableId] = destClone;
@@ -38,13 +34,11 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   return result;
 };
 
-const grid = 0;
-
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
   userSelect: "none",
-  padding: grid * 2,
-  margin: `0 0 ${grid}px 0`,
+  padding: 0,
+  margin: 0,
 
   // change background color if dragging
   background: isDragging ? "lightgreen" : "grey",
@@ -55,7 +49,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 
 const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? "lightblue" : "lightgrey",
-  padding: grid,
+  padding: 0,
   width: COLUMN_WIDTH
 });
 
@@ -69,8 +63,7 @@ export default class DragTest extends Component {
   async componentWillMount() {
     const { items } = this.props;
     const preAllocatedArrays = this.preAllocateArrays();
-    this.setState({ items: items.slice(1, 3), ...preAllocatedArrays });
-    // this.setState({ items, ...preAllocatedArrays });
+    this.setState({ items, ...preAllocatedArrays });
   }
 
   preAllocateArrays = () => {
@@ -102,20 +95,12 @@ export default class DragTest extends Component {
       return this.state.items;
     } else {
       const list = this.state[id];
-      console.log("list", list); // zzz
       return list;
     }
   };
 
   onDragEnd = result => {
-    console.log("result", result); // zzz
-
     const { source, destination } = result;
-
-    console.log("source", source); // zzz
-    console.log("destination", destination); // zzz
-    console.log("source.droppableId", source.droppableId); // zzz
-    console.log("destination.droppableId", destination.droppableId); // zzz
 
     // dropped outside the list
     if (!destination) {
@@ -139,9 +124,6 @@ export default class DragTest extends Component {
         source,
         destination
       );
-
-      console.log("result[source.droppableId]", result[source.droppableId]); // zzz
-      console.log("result[source.droppableId]", result[source.droppableId]); // zzz
 
       this.setState({
         items: result[source.droppableId],
@@ -213,13 +195,10 @@ export default class DragTest extends Component {
     for (let colIndex = 0; colIndex < numTargetsInRow; colIndex++) {
       const arrayName = this.createStoragePropertyName({ rowIndex, colIndex });
 
-      const storageArray = [];
-
       newStorageNames.push(arrayName);
       const newTargetArray = this.renderList({
         droppableId: arrayName,
         items: this.state[arrayName],
-        // items: storageArray,
         className: css.destination
       });
 
@@ -234,8 +213,6 @@ export default class DragTest extends Component {
   };
 
   render() {
-    console.log("this.state", this.state); // zzz
-
     return (
       <div className={css.main}>
         <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
