@@ -63,7 +63,7 @@ export default class DragTest extends Component {
   async componentWillMount() {
     const { items } = this.props;
     const preAllocatedArrays = this.preAllocateArrays();
-    this.setState({ items, ...preAllocatedArrays });
+    this.setState({ sourceItems: items, ...preAllocatedArrays });
   }
 
   preAllocateArrays = () => {
@@ -91,16 +91,8 @@ export default class DragTest extends Component {
   }
 
   getList = id => {
-    // TODO - fix this
-    // TODO - fix this
-    // TODO - fix this
-    // TODO - fix this
-    if (id === "droppable") {
-      return this.state.items;
-    } else {
-      const list = this.state[id];
-      return list;
-    }
+    const list = this.state[id];
+    return list;
   };
 
   onDragEnd = result => {
@@ -112,8 +104,8 @@ export default class DragTest extends Component {
     }
 
     if (source.droppableId === destination.droppableId) {
-      // for dragging within source column
-      if (source.droppableId === "droppable") {
+      // for dragging within a single column
+      if (true || source.droppableId === "droppable") {
         const items = reorder(
           this.getList(source.droppableId),
           source.index,
@@ -132,9 +124,9 @@ export default class DragTest extends Component {
         destination
       );
 
-      // TODO - dragging from destination to destination is broken.
+      // TODO - dragging from grid to main list is broken.
       this.setState({
-        items: result[source.droppableId],
+        [source.droppableId]: result[source.droppableId],
         [destination.droppableId]: result[destination.droppableId]
       });
     }
@@ -225,8 +217,8 @@ export default class DragTest extends Component {
       <div className={css.main}>
         <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
           {this.renderList({
-            droppableId: "droppable",
-            items: this.state.items,
+            droppableId: "sourceItems",
+            items: this.state["sourceItems"],
             className: css.source
           })}
           {this.createTargetArrayRows({ numTargetsInRow, numRows })}
