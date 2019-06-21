@@ -3,8 +3,8 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import css from "./DragTest.module.scss";
 
-const numRows = 2;
-const numTargetsInRow = 3;
+const numRows = 6;
+const numTargetsInRow = 10;
 const COLUMN_WIDTH = 150;
 
 // a little function to help us with reordering the result
@@ -105,17 +105,15 @@ export default class DragTest extends Component {
 
     if (source.droppableId === destination.droppableId) {
       // for dragging within a single column
-      if (true || source.droppableId === "droppable") {
-        const items = reorder(
-          this.getList(source.droppableId),
-          source.index,
-          destination.index
-        );
+      const items = reorder(
+        this.getList(source.droppableId),
+        source.index,
+        destination.index
+      );
 
-        let state = { items };
+      let state = { items };
 
-        this.setState(state);
-      }
+      this.setState(state);
     } else {
       const result = move(
         this.getList(source.droppableId),
@@ -215,14 +213,18 @@ export default class DragTest extends Component {
   render() {
     return (
       <div className={css.main}>
-        <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
-          {this.renderList({
-            droppableId: "sourceItems",
-            items: this.state["sourceItems"],
-            className: css.source
-          })}
-          {this.createTargetArrayRows({ numTargetsInRow, numRows })}
-        </DragDropContext>
+        <div className={css.title}>World Builder</div>
+        <div className={css.subTitle}>(drag items to create your world...)</div>
+        <div className={css.content}>
+          <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
+            {this.renderList({
+              droppableId: "sourceItems",
+              items: this.state["sourceItems"],
+              className: css.source
+            })}
+            {this.createTargetArrayRows({ numTargetsInRow, numRows })}
+          </DragDropContext>
+        </div>
       </div>
     );
   }
