@@ -8,9 +8,7 @@ import Utils from "../../Utils/Utils.js";
 import css from "./MainHeader.module.scss";
 
 class MainHeader extends React.Component {
-  state = {};
-
-  async componentWillMount() {}
+  state = { showStory: true };
 
   renderHeader = () => {
     const goodAtList = [

@@ -182,7 +182,7 @@ const generateScenes = () => {
       creatures: [{ type: "unicorn" }],
       name: "castle",
       doors: {
-        right: { image: "doorYellow", open: false }
+        // right: { image: "doorYellow", open: false }
       }
     },
     waterfall: {
@@ -194,7 +194,10 @@ const generateScenes = () => {
     },
     bees: {
       name: "bees",
-      items: ["key"]
+      items: ["key"],
+      doors: {
+        right: { open: true }
+      }
     },
     swamp: {
       name: "swamp",
@@ -204,7 +207,10 @@ const generateScenes = () => {
       }
     },
     house: {
-      name: "house"
+      name: "house",
+      doors: {
+        // right: { open: false }
+      }
     },
     lake: {
       name: "lake",
@@ -242,7 +248,7 @@ const generateScenes = () => {
     pond: {
       name: "pond",
       doors: {
-        right: { image: "doorYellow", open: true },
+        right: { image: "doorYellow", open: false },
         bottom: { open: true }
       }
     },
