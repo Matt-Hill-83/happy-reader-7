@@ -3,12 +3,12 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import css from "./DragTest.module.scss";
 
-// fake data generator
-const getItems = (count, offset = 0) =>
-  Array.from({ length: count }, (v, k) => k).map(k => ({
-    id: `item-${k + offset}`,
-    content: `item ${k + offset}`
-  }));
+// // fake data generator
+// const getItems = (count, offset = 0) =>
+//   Array.from({ length: count }, (v, k) => k).map(k => ({
+//     id: `item-${k + offset}`,
+//     content: `item ${k + offset}`
+//   }));
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -62,9 +62,8 @@ const getListStyle = isDraggingOver => ({
 
 export default class DragTest extends Component {
   state = {
-    items: getItems(10),
+    items: [],
     selected: []
-    // selected: getItems(5, 10)
   };
 
   /**
@@ -154,42 +153,12 @@ export default class DragTest extends Component {
     );
   };
 
-  renderItems2 = ({ provided, snapshot, items }) => {
-    return (
-      <div
-        ref={provided.innerRef}
-        style={getListStyle(snapshot.isDraggingOver)}
-      >
-        {items.map((item, index) => (
-          <Draggable key={item.id} draggableId={item.id} index={index}>
-            {(provided, snapshot) => (
-              <div
-                ref={provided.innerRef}
-                {...provided.draggableProps}
-                {...provided.dragHandleProps}
-                style={getItemStyle(
-                  snapshot.isDragging,
-                  provided.draggableProps.style
-                )}
-              >
-                {item.content}
-              </div>
-            )}
-          </Draggable>
-        ))}
-        {provided.placeholder}
-      </div>
-    );
-  };
-
-  renderSource = () => {
-    const { items } = this.state;
-
+  renderList = ({ droppableId, items }) => {
     console.log("items", items); // zzz
 
     return (
       <div className={css.source}>
-        <Droppable droppableId="droppable">
+        <Droppable droppableId={droppableId}>
           {(provided, snapshot) =>
             this.renderItems1({
               provided,
@@ -203,17 +172,18 @@ export default class DragTest extends Component {
   };
 
   render() {
-    console.log("getItems(10)", getItems(10)); // zzz
-
     return (
       <div className={css.main}>
         <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
-          {this.renderSource()}
+          {this.renderList({
+            droppableId: "droppable",
+            items: this.state.items
+          })}
 
           <div className={css.destination}>
             <Droppable droppableId="droppable2">
               {(provided, snapshot) =>
-                this.renderItems2({
+                this.renderItems1({
                   provided,
                   snapshot,
                   items: this.state.selected
@@ -225,7 +195,7 @@ export default class DragTest extends Component {
           <div className={css.destination}>
             <Droppable droppableId="droppable3">
               {(provided, snapshot) =>
-                this.renderItems2({
+                this.renderItems1({
                   provided,
                   snapshot,
                   items: this.state.selected
