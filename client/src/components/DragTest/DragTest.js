@@ -91,6 +91,10 @@ export default class DragTest extends Component {
   }
 
   getList = id => {
+    // TODO - fix this
+    // TODO - fix this
+    // TODO - fix this
+    // TODO - fix this
     if (id === "droppable") {
       return this.state.items;
     } else {
@@ -108,15 +112,18 @@ export default class DragTest extends Component {
     }
 
     if (source.droppableId === destination.droppableId) {
-      const items = reorder(
-        this.getList(source.droppableId),
-        source.index,
-        destination.index
-      );
+      // for dragging within source column
+      if (source.droppableId === "droppable") {
+        const items = reorder(
+          this.getList(source.droppableId),
+          source.index,
+          destination.index
+        );
 
-      let state = { items };
+        let state = { items };
 
-      this.setState(state);
+        this.setState(state);
+      }
     } else {
       const result = move(
         this.getList(source.droppableId),
@@ -125,6 +132,7 @@ export default class DragTest extends Component {
         destination
       );
 
+      // TODO - dragging from destination to destination is broken.
       this.setState({
         items: result[source.droppableId],
         [destination.droppableId]: result[destination.droppableId]
