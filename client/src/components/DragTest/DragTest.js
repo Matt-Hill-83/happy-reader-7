@@ -13,6 +13,8 @@ const reorder = (list, startIndex, endIndex) => {
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
 
+  console.log("result", result); // zzz
+
   return result;
 };
 
@@ -44,7 +46,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   padding: grid * 2,
   margin: `0 0 ${grid}px 0`,
 
-  // change background colour if dragging
+  // change background color if dragging
   background: isDragging ? "lightgreen" : "grey",
 
   // styles we need to apply on draggables
@@ -64,20 +66,11 @@ export default class DragTest extends Component {
     destinationMatrix: {}
   };
 
-  /**
-   * A semi-generic way to handle multiple lists. Matches
-   * the IDs of the droppable container to the names of the
-   * source arrays stored in the state.
-   */
-  id2List = {
-    droppable: "items",
-    droppable0: "selected"
-  };
-
   async componentWillMount() {
     const { items } = this.props;
     const preAllocatedArrays = this.preAllocateArrays();
-    this.setState({ items, ...preAllocatedArrays });
+    this.setState({ items: items.slice(1, 3), ...preAllocatedArrays });
+    // this.setState({ items, ...preAllocatedArrays });
   }
 
   preAllocateArrays = () => {
@@ -106,10 +99,11 @@ export default class DragTest extends Component {
 
   getList = id => {
     if (id === "droppable") {
-      return this.state[this.id2List[id]];
+      return this.state.items;
     } else {
-      return this.state[id];
-      // return this.state.destinationMatrix[id];
+      const list = this.state[id];
+      console.log("list", list); // zzz
+      return list;
     }
   };
 
@@ -118,6 +112,8 @@ export default class DragTest extends Component {
 
     const { source, destination } = result;
 
+    console.log("source", source); // zzz
+    console.log("destination", destination); // zzz
     console.log("source.droppableId", source.droppableId); // zzz
     console.log("destination.droppableId", destination.droppableId); // zzz
 
@@ -135,10 +131,6 @@ export default class DragTest extends Component {
 
       let state = { items };
 
-      if (source.droppableId === "droppable0") {
-        state = { selected: items };
-      }
-
       this.setState(state);
     } else {
       const result = move(
@@ -148,9 +140,12 @@ export default class DragTest extends Component {
         destination
       );
 
+      console.log("result[source.droppableId]", result[source.droppableId]); // zzz
+      console.log("result[source.droppableId]", result[source.droppableId]); // zzz
+
       this.setState({
-        items: result.droppable,
-        selected: result.droppable0
+        items: result[source.droppableId],
+        [destination.droppableId]: result[destination.droppableId]
       });
     }
   };
@@ -223,7 +218,8 @@ export default class DragTest extends Component {
       newStorageNames.push(arrayName);
       const newTargetArray = this.renderList({
         droppableId: arrayName,
-        items: storageArray,
+        items: this.state[arrayName],
+        // items: storageArray,
         className: css.destination
       });
 
@@ -238,11 +234,7 @@ export default class DragTest extends Component {
   };
 
   render() {
-    // const numRows = 2;
-    // const numTargetsInRow = 3;
-
     console.log("this.state", this.state); // zzz
-    // console.log("this.state.destinationMatrix", this.state.destinationMatrix); // zzz
 
     return (
       <div className={css.main}>
