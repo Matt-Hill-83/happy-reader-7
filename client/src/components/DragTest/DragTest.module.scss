@@ -4,8 +4,9 @@
 
   :global {
     [data-react-beautiful-dnd-draggable] {
-      border: 1px solid red !important;
       height: 100px;
+      padding: 0px !important;
+      margin: 0px !important;
 
       img[class*="PicturePage_characterImageMini__"] {
         display: none;

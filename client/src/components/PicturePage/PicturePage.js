@@ -216,7 +216,7 @@ class PicturePage extends React.Component {
     const smallMap = localStateStore.getsmallMap();
     const storyClass = smallMap ? css.smallMap : "";
 
-    // return <DragTest items={this.getLocationsForDragger()} />;
+    return <DragTest items={this.getLocationsForDragger()} />;
     return (
       <div className={`${css.main} ${storyClass}`}>
         {this.renderStoryPage()}
