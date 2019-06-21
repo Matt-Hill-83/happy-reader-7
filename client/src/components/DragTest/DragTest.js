@@ -171,7 +171,41 @@ export default class DragTest extends Component {
     );
   };
 
+  createTargetArrayRows = ({ numTargetsInRow, numRows }) => {
+    const targetArraysRows = [];
+    for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
+      const newRow = this.createTargetArrays({ numTargetsInRow, rowIndex });
+      targetArraysRows.push(<div>{newRow}</div>);
+    }
+    return targetArraysRows;
+  };
+
+  createTargetArrays = ({ numTargetsInRow, rowIndex }) => {
+    const targetArrays = [];
+    for (let colIndex = 2; colIndex < numTargetsInRow; colIndex++) {
+      const arrayName = `droppable${colIndex}`;
+      console.log("arrayName", arrayName); // zzz
+
+      // TODO - add these to idTable
+      // const arrayName = `droppable${colIndex}-${rowIndex}`;
+
+      const newTargetArray = this.renderList({
+        droppableId: arrayName,
+        // items: this.state[arrayName],
+        items: this.state["selected"],
+        className: css.destination
+      });
+
+      targetArrays.push(newTargetArray);
+    }
+
+    return targetArrays;
+  };
+
   render() {
+    const numTargetsInRow = 5;
+    const numRows = 5;
+
     return (
       <div className={css.main}>
         <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
@@ -180,16 +214,7 @@ export default class DragTest extends Component {
             items: this.state.items,
             className: css.source
           })}
-          {this.renderList({
-            droppableId: "droppable2",
-            items: this.state.selected,
-            className: css.destination
-          })}
-          {this.renderList({
-            droppableId: "droppable3",
-            items: this.state.selected,
-            className: css.destination
-          })}
+          {this.createTargetArrayRows({ numTargetsInRow, numRows })}
         </DragDropContext>
       </div>
     );

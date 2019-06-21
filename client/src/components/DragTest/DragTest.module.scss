@@ -24,4 +24,7 @@
 .destination {
   border: 1px solid green !important;
   display: flex;
+  flex: 0;
+  max-height: 150px;
+  min-height: 150px;
 }
