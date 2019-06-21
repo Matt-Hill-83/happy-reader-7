@@ -5,11 +5,12 @@ import { observer } from "mobx-react";
 import LineTo from "react-lineto";
 import _get from "lodash.get";
 
+import DragTest from "../DragTest/DragTest.js";
 import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import MiniLocation from "../MiniLocation/MiniLocation.js";
-import WordPage from "../WordPage/WordPage.js";
 import sentences from "../../Models/sentences.js";
+import WordPage from "../WordPage/WordPage.js";
 
 import css from "./PicturePage.module.scss";
 
@@ -61,6 +62,19 @@ class PicturePage extends React.Component {
     });
 
     return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
+  };
+
+  renderLocationRows2 = () => {
+    // Create rows
+    const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
+      return (
+        <div key={rowIndex} className={css.miniLocationsRow}>
+          {this.createSingleRow({ locationRow, rowIndex })}
+        </div>
+      );
+    });
+
+    return miniLocationsGrid[0];
   };
 
   renderCharacters = ({ isActive, creatures }) => {
@@ -194,6 +208,7 @@ class PicturePage extends React.Component {
     const smallMap = localStateStore.getsmallMap();
     const storyClass = smallMap ? css.smallMap : "";
 
+    return <DragTest items={this.renderLocationRows2} />;
     return (
       <div className={`${css.main} ${storyClass}`}>
         {this.renderStoryPage()}
