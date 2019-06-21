@@ -66,15 +66,24 @@ class PicturePage extends React.Component {
 
   renderLocationRows2 = () => {
     // Create rows
-    const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
-      return (
-        <div key={rowIndex} className={css.miniLocationsRow}>
-          {this.createSingleRow({ locationRow, rowIndex })}
-        </div>
-      );
-    });
 
-    return miniLocationsGrid[0];
+    const locationRow = locationsMap[2];
+    return this.createSingleRow2({ locationRow, rowIndex: 1 });
+
+    // const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
+    //   const id = `${"colIndex"}-${rowIndex}`;
+    //   return [
+    //     {
+    //       id,
+    //       content: (
+    //         <div key={rowIndex} className={css.miniLocationsRow}>
+    //         </div>
+    //       )
+    //     }
+    //   ];
+    // });
+
+    // return miniLocationsGrid[0];
   };
 
   renderCharacters = ({ isActive, creatures }) => {
@@ -96,10 +105,23 @@ class PicturePage extends React.Component {
     return characters;
   };
 
-  createSingleRow = ({ locationRow }) =>
-    locationRow.map(location => this.renderMiniLocation({ location }));
+  createSingleRow = ({ locationRow, rowIndex }) => {
+    return locationRow.map((location, colIndex) => {
+      return this.renderMiniLocation({ location, colIndex, rowIndex });
+    });
+  };
 
-  renderMiniLocation = ({ location, className = "" }) => {
+  createSingleRow2 = ({ locationRow, rowIndex }) => {
+    return locationRow.map((location, colIndex) => {
+      return {
+        id: `item-${colIndex}`,
+        // content: "zippy"
+        content: this.renderMiniLocation({ location, colIndex, rowIndex })
+      };
+    });
+  };
+
+  renderMiniLocation = ({ colIndex, rowIndex, location, className = "" }) => {
     const { activeScene } = this.props;
     const { name: locationName, creatures = [] } = location;
 
@@ -110,8 +132,11 @@ class PicturePage extends React.Component {
       isActive
     });
 
+    const id = `${colIndex}-${rowIndex}`;
+
     return (
       <MiniLocation
+        id={id}
         key={locationName}
         location={location}
         characters={characters}
@@ -208,7 +233,9 @@ class PicturePage extends React.Component {
     const smallMap = localStateStore.getsmallMap();
     const storyClass = smallMap ? css.smallMap : "";
 
-    return <DragTest items={this.renderLocationRows2} />;
+    console.log("this.renderLocationRows2()", this.renderLocationRows2()); // zzz
+
+    return <DragTest items={this.renderLocationRows2()} />;
     return (
       <div className={`${css.main} ${storyClass}`}>
         {this.renderStoryPage()}

@@ -83,7 +83,9 @@ class MiniLocation extends React.Component {
       characters,
       isActive,
       className,
-      showLabel = true
+      showLabel = true,
+      key,
+      id
     } = this.props;
 
     const { items = [], name: locationName } = location;
@@ -107,7 +109,11 @@ class MiniLocation extends React.Component {
     }
 
     return (
-      <div className={`${css.main} ${className} ${localClass}`}>
+      <div
+        key={key}
+        id={id}
+        className={`${css.main} ${className} ${localClass}`}
+      >
         <div className={css.rockImage}>
           <img className={css.rockImage} src={rockImage} alt={"imagex"} />
         </div>

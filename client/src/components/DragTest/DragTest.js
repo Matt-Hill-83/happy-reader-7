@@ -60,7 +60,8 @@ const getListStyle = isDraggingOver => ({
 export default class DragTest extends Component {
   state = {
     items: getItems(10),
-    selected: getItems(5, 10)
+    selected: []
+    // selected: getItems(5, 10)
   };
 
   /**
@@ -72,6 +73,16 @@ export default class DragTest extends Component {
     droppable: "items",
     droppable2: "selected"
   };
+
+  async componentWillMount() {
+    const { items } = this.props;
+    this.setState({ items });
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { items } = newProps;
+    this.setState({ items });
+  }
 
   getList = id => this.state[this.id2List[id]];
 
@@ -139,44 +150,88 @@ export default class DragTest extends Component {
       </div>
     );
   };
-  // Normally you would want to split things out into separate components.
-  // But in this example everything is just done in one place for simplicity
-  render() {
+
+  renderItems2 = ({ provided, snapshot, items }) => {
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
+      <div
+        ref={provided.innerRef}
+        style={getListStyle(snapshot.isDraggingOver)}
+      >
+        {items.map((item, index) => (
+          <Draggable key={item.id} draggableId={item.id} index={index}>
+            {(provided, snapshot) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                style={getItemStyle(
+                  snapshot.isDragging,
+                  provided.draggableProps.style
+                )}
+              >
+                {item.content}
+              </div>
+            )}
+          </Draggable>
+        ))}
+        {provided.placeholder}
+      </div>
+    );
+  };
+
+  renderSource = () => {
+    const { items } = this.state;
+
+    console.log("items", items); // zzz
+
+    return (
+      <div className={css.source}>
         <Droppable droppableId="droppable">
           {(provided, snapshot) =>
-            this.renderItems1({ provided, snapshot, items: this.state.items })
+            this.renderItems1({
+              provided,
+              snapshot,
+              items
+            })
           }
         </Droppable>
-        <Droppable droppableId="droppable2">
-          {(provided, snapshot) => (
-            <div
-              ref={provided.innerRef}
-              style={getListStyle(snapshot.isDraggingOver)}
-            >
-              {this.state.selected.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      style={getItemStyle(
-                        snapshot.isDragging,
-                        provided.draggableProps.style
-                      )}
-                    >
-                      {item.content}
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+      </div>
+    );
+  };
+
+  render() {
+    console.log("getItems(10)", getItems(10)); // zzz
+
+    return (
+      <div className={css.main}>
+        <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
+          {this.renderSource()}
+
+          <div className={css.destination}>
+            <Droppable droppableId="droppable2">
+              {(provided, snapshot) =>
+                this.renderItems2({
+                  provided,
+                  snapshot,
+                  items: this.state.selected
+                })
+              }
+            </Droppable>
+          </div>
+
+          <div className={css.destination}>
+            <Droppable droppableId="droppable3">
+              {(provided, snapshot) =>
+                this.renderItems2({
+                  provided,
+                  snapshot,
+                  items: this.state.selected
+                })
+              }
+            </Droppable>
+          </div>
+        </DragDropContext>
+      </div>
     );
   }
 }

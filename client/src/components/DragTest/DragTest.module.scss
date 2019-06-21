@@ -1,3 +1,16 @@
 .main {
   border: 1px solid red !important;
+  display: flex;
+}
+
+.source {
+  border: 1px solid green !important;
+  display: flex;
+  margin-right: 100px;
+}
+
+.destination {
+  border: 1px solid green !important;
+  display: flex;
+  margin-right: 100px;
 }
