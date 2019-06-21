@@ -73,7 +73,7 @@ export default class DragTest extends Component {
    */
   id2List = {
     droppable: "items",
-    droppable2: "selected"
+    droppable0: "selected"
   };
 
   async componentWillMount() {
@@ -105,7 +105,7 @@ export default class DragTest extends Component {
 
       let state = { items };
 
-      if (source.droppableId === "droppable2") {
+      if (source.droppableId === "droppable0") {
         state = { selected: items };
       }
 
@@ -120,7 +120,7 @@ export default class DragTest extends Component {
 
       this.setState({
         items: result.droppable,
-        selected: result.droppable2
+        selected: result.droppable0
       });
     }
   };
@@ -182,7 +182,7 @@ export default class DragTest extends Component {
 
   createTargetArrays = ({ numTargetsInRow, rowIndex }) => {
     const targetArrays = [];
-    for (let colIndex = 2; colIndex < numTargetsInRow; colIndex++) {
+    for (let colIndex = 0; colIndex < numTargetsInRow; colIndex++) {
       const arrayName = `droppable${colIndex}`;
       console.log("arrayName", arrayName); // zzz
 
@@ -203,8 +203,8 @@ export default class DragTest extends Component {
   };
 
   render() {
-    const numTargetsInRow = 5;
-    const numRows = 5;
+    const numTargetsInRow = 3;
+    const numRows = 1;
 
     return (
       <div className={css.main}>
