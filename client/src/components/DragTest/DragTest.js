@@ -27,7 +27,10 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   const destClone = Array.from(destination);
   const [removed] = sourceClone.splice(droppableSource.index, 1);
 
-  destClone.splice(droppableDestination.index, 0, removed);
+  const removedFromDest = destClone.splice(0, destClone.length, removed);
+  sourceClone.push(...removedFromDest);
+
+  // destClone.splice(droppableDestination.index, 0, removed);
 
   const result = {};
   result[droppableSource.droppableId] = sourceClone;

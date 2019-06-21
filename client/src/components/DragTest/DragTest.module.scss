@@ -1,6 +1,17 @@
 .main {
   border: 1px solid red !important;
   display: flex;
+
+  :global {
+    [data-react-beautiful-dnd-draggable] {
+      border: 1px solid red !important;
+      height: 100px;
+
+      img[class*="PicturePage_characterImageMini__"] {
+        display: none;
+      }
+    }
+  }
 }
 
 .source {
@@ -12,5 +23,4 @@
 .destination {
   border: 1px solid green !important;
   display: flex;
-  margin-right: 100px;
 }

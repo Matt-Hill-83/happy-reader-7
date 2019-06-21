@@ -64,26 +64,10 @@ class PicturePage extends React.Component {
     return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
   };
 
-  renderLocationRows2 = () => {
-    // Create rows
+  getLocationsForDragger = () => {
+    const plot = localStateStore.getPlot();
 
-    const locationRow = locationsMap[2];
-    return this.createSingleRow2({ locationRow, rowIndex: 1 });
-
-    // const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
-    //   const id = `${"colIndex"}-${rowIndex}`;
-    //   return [
-    //     {
-    //       id,
-    //       content: (
-    //         <div key={rowIndex} className={css.miniLocationsRow}>
-    //         </div>
-    //       )
-    //     }
-    //   ];
-    // });
-
-    // return miniLocationsGrid[0];
+    return this.createSingleRow2({ locationRow: plot.scenes, rowIndex: 1 });
   };
 
   renderCharacters = ({ isActive, creatures }) => {
@@ -115,7 +99,6 @@ class PicturePage extends React.Component {
     return locationRow.map((location, colIndex) => {
       return {
         id: `item-${colIndex}`,
-        // content: "zippy"
         content: this.renderMiniLocation({ location, colIndex, rowIndex })
       };
     });
@@ -233,9 +216,7 @@ class PicturePage extends React.Component {
     const smallMap = localStateStore.getsmallMap();
     const storyClass = smallMap ? css.smallMap : "";
 
-    console.log("this.renderLocationRows2()", this.renderLocationRows2()); // zzz
-
-    return <DragTest items={this.renderLocationRows2()} />;
+    // return <DragTest items={this.getLocationsForDragger()} />;
     return (
       <div className={`${css.main} ${storyClass}`}>
         {this.renderStoryPage()}
