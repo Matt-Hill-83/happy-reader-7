@@ -5,6 +5,7 @@ import css from "./DragTest.module.scss";
 
 const numRows = 2;
 const numTargetsInRow = 3;
+const COLUMN_WIDTH = 150;
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -36,7 +37,6 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 };
 
 const grid = 0;
-// const grid = 8;
 
 const getItemStyle = (isDragging, draggableStyle) => ({
   // some basic styles to make the items look a bit nicer
@@ -54,7 +54,7 @@ const getItemStyle = (isDragging, draggableStyle) => ({
 const getListStyle = isDraggingOver => ({
   background: isDraggingOver ? "lightblue" : "lightgrey",
   padding: grid,
-  width: 250
+  width: COLUMN_WIDTH
 });
 
 export default class DragTest extends Component {
@@ -76,14 +76,13 @@ export default class DragTest extends Component {
 
   async componentWillMount() {
     const { items } = this.props;
-    const newStateObject = this.preAllocateArrays();
-    this.setState({ items, ...newStateObject });
+    const preAllocatedArrays = this.preAllocateArrays();
+    this.setState({ items, ...preAllocatedArrays });
   }
 
   preAllocateArrays = () => {
     const rows = Array(numRows).fill(0);
     const columns = Array(numTargetsInRow).fill(0);
-    console.log("rows", rows); // zzz
 
     const newStateObject = {};
 
@@ -93,12 +92,10 @@ export default class DragTest extends Component {
           rowIndex,
           colIndex
         });
-        console.log("arrayName", arrayName); // zzz
 
         newStateObject[arrayName] = [];
       });
     });
-    console.log("newStateObject", newStateObject); // zzz
     return newStateObject;
   };
 
