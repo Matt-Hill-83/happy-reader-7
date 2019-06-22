@@ -20,6 +20,8 @@ import Utils from "../../Utils/Utils.js";
 const { words, wordTypes } = myWords;
 const { locationsMap } = sentences;
 
+const WORLD_BUILDER = true;
+
 class PicturePage extends React.Component {
   constructor(props) {
     super(props);
@@ -225,19 +227,22 @@ class PicturePage extends React.Component {
       type: wordTypes.creature
     });
 
-    // return (
-    //   <DragTest
-    //     locations={this.getLocationsForDragger()}
-    //     creatures={creatures}
-    //   />
-    // );
-    return (
-      <div className={`${css.main} ${storyClass}`}>
-        {this.renderStoryPage()}
-        {this.renderMapPage({})}
-        {this.renderYourItems({})}
-      </div>
-    );
+    if (WORLD_BUILDER) {
+      return (
+        <DragTest
+          locations={this.getLocationsForDragger()}
+          creatures={creatures}
+        />
+      );
+    } else {
+      return (
+        <div className={`${css.main} ${storyClass}`}>
+          {this.renderStoryPage()}
+          {this.renderMapPage({})}
+          {this.renderYourItems({})}
+        </div>
+      );
+    }
   }
 }
 export default observer(PicturePage);
