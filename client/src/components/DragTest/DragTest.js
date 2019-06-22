@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Button } from "@blueprintjs/core";
 
-import css from "./DragTest.module.scss";
 import Images from "../../images/images";
 
-const numRows = 6;
-const numTargetsInRow = 10;
+import css from "./DragTest.module.scss";
+import { CssBaseline } from "@material-ui/core";
+
+const numRows = 8;
+const numTargetsInRow = 5;
 const COLUMN_WIDTH = 150;
 
 // a little function to help us with reordering the result
@@ -65,7 +68,8 @@ export default class DragTest extends Component {
     const { locations, creatures } = this.props;
     const preAllocatedArrays = this.preAllocateArrays();
 
-    // TODO: put creatures into objects and get images.
+    // TODO: export and save maps
+    // TODO: allow creature to be dropped into images
     const creatureObjects = creatures.map((creature, index) => {
       const { name } = creature;
       const miniLocationImage = Images.creatures[name];
@@ -231,14 +235,33 @@ export default class DragTest extends Component {
     return targetArrays;
   };
 
+  saveMap = () => {
+    console.log("saving map"); // zzz
+  };
+
+  renderSaveMapButton = () => {
+    return (
+      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
+        <span> Save Map </span>
+      </Button>
+    );
+  };
+
   render() {
     const { sourceCreatures } = this.state;
     console.log("sourceCreatures", sourceCreatures); // zzz
 
     return (
       <div className={css.main}>
-        <div className={css.title}>World Builder</div>
-        <div className={css.subTitle}>(drag items to create your world...)</div>
+        <div className={css.header}>
+          <div className={css.titles}>
+            <div className={css.title}>World Builder</div>
+            <div className={css.subTitle}>
+              (drag items to create your world...)
+              {this.renderSaveMapButton()}
+            </div>
+          </div>
+        </div>
         <div className={css.content}>
           <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
             {this.renderList({

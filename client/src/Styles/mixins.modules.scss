@@ -1,11 +1,11 @@
 @mixin item-label {
   position: absolute;
 
-  background: #e1d8ea;
+  background: var(--light-pink);
   border-radius: 3px;
   padding: 0 3px;
-  top: 7%;
-  left: 7%;
+  top: 2%;
+  left: 2%;
 }
 
 @mixin character-image {
@@ -13,10 +13,13 @@
   min-height: var(--cell-height);
   position: relative;
   overflow: hidden;
-  background: #fbf3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light-pink);
+  border: 1px solid red !important;
 
   & > img {
-    border: 1px solid red !important;
     display: flex;
     height: 150px;
     width: auto;

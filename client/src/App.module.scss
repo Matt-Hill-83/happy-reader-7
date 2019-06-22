@@ -17,9 +17,12 @@ body {
 }
 
 .desktop {
-  --window-height: 100vh;
+  --window-height: 100vw;
   --story-font-size: 30px;
   overflow: hidden;
+
+  // TODO: use this for font size:
+  // font-size: 15vmin;
 }
 
 .mediaMsg {
