@@ -5,11 +5,11 @@ import { Button } from "@blueprintjs/core";
 import Images from "../../images/images";
 
 import css from "./DragTest.module.scss";
-import { CssBaseline } from "@material-ui/core";
 
 const numRows = 8;
 const numTargetsInRow = 5;
 const COLUMN_WIDTH = 150;
+const LOCATIONS_PREFIX = "locations";
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -59,8 +59,6 @@ const getListStyle = isDraggingOver => ({
 
 export default class DragTest extends Component {
   state = {
-    items: [],
-    selected: [],
     destinationMatrix: {}
   };
 
@@ -97,11 +95,14 @@ export default class DragTest extends Component {
 
     const newStateObject = {};
 
+    const prefix = LOCATIONS_PREFIX;
+
     rows.map((row, rowIndex) => {
       columns.map((col, colIndex) => {
         const arrayName = this.createStoragePropertyName({
           rowIndex,
-          colIndex
+          colIndex,
+          prefix
         });
 
         newStateObject[arrayName] = [];
@@ -199,24 +200,32 @@ export default class DragTest extends Component {
     );
   };
 
-  createTargetArrayRows = ({ numTargetsInRow, numRows }) => {
+  createTargetArrayRows = ({ numTargetsInRow, numRows, prefix }) => {
     const targetArraysRows = [];
     for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
-      const newRow = this.createTargetArrayRow({ numTargetsInRow, rowIndex });
+      const newRow = this.createTargetArrayRow({
+        numTargetsInRow,
+        rowIndex,
+        prefix
+      });
       targetArraysRows.push(<div className={css.targetRow}>{newRow}</div>);
     }
     return <div className={css.targetGrid}>{targetArraysRows}</div>;
   };
 
-  createStoragePropertyName = ({ rowIndex, colIndex }) => {
-    return `droppable-${colIndex}-${rowIndex}`;
+  createStoragePropertyName = ({ rowIndex, colIndex, prefix = "item" }) => {
+    return `${prefix}-${colIndex}-${rowIndex}`;
   };
 
-  createTargetArrayRow = ({ numTargetsInRow, rowIndex }) => {
+  createTargetArrayRow = ({ numTargetsInRow, rowIndex, prefix }) => {
     const targetArrays = [];
     const newStorageNames = [];
     for (let colIndex = 0; colIndex < numTargetsInRow; colIndex++) {
-      const arrayName = this.createStoragePropertyName({ rowIndex, colIndex });
+      const arrayName = this.createStoragePropertyName({
+        rowIndex,
+        colIndex,
+        prefix
+      });
 
       newStorageNames.push(arrayName);
       const newTargetArray = this.renderList({
@@ -237,6 +246,7 @@ export default class DragTest extends Component {
 
   saveMap = () => {
     console.log("saving map"); // zzz
+    console.log("this.state", this.state); // zzz
   };
 
   renderSaveMapButton = () => {
@@ -274,7 +284,11 @@ export default class DragTest extends Component {
               items: this.state["sourceItems"],
               className: css.source
             })}
-            {this.createTargetArrayRows({ numTargetsInRow, numRows })}
+            {this.createTargetArrayRows({
+              numTargetsInRow,
+              numRows,
+              prefix: LOCATIONS_PREFIX
+            })}
           </DragDropContext>
         </div>
       </div>
