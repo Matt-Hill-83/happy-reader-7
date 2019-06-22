@@ -20,6 +20,7 @@ import Utils from "../../Utils/Utils.js";
 const { words, wordTypes } = myWords;
 const { locationsMap } = sentences;
 
+// const WORLD_BUILDER = false;
 const WORLD_BUILDER = true;
 
 class PicturePage extends React.Component {

@@ -1,17 +1,39 @@
+@import "../../Styles/mixins.modules.scss";
+
 .main {
+  // --cell-height: var(--cell-height);
+
   border: 1px solid red !important;
   display: flex;
   flex-direction: column;
 
   :global {
     [data-react-beautiful-dnd-draggable] {
-      height: 150px;
-      width: 150px;
+      height: var(--cell-height);
+      width: var(--cell-height);
       padding: 0px !important;
       margin: 0px !important;
 
       img[class*="PicturePage_characterImageMini__"] {
         display: none;
+      }
+    }
+  }
+
+  .characterImage {
+    @include character-image;
+
+    & > img {
+      border: 1px solid red !important;
+      display: flex;
+      height: 150px;
+      width: auto;
+    }
+
+    .characterLabel {
+      :global {
+        position: absolute;
+        @include item-label;
       }
     }
   }
@@ -27,8 +49,8 @@
   border: 1px solid green !important;
   display: flex;
   flex: 0;
-  max-height: 150px;
-  min-height: 150px;
+  max-height: var(--cell-height);
+  min-height: var(--cell-height);
 }
 
 .targetGrid {

@@ -72,9 +72,9 @@ export default class DragTest extends Component {
       return {
         id: `creature-${index}`,
         content: (
-          <div>
+          <div className={css.characterImage}>
             <img src={miniLocationImage} alt={"imagex"} />
-            {name}
+            <span className={css.characterLabel}>{name}</span>
           </div>
         )
       };
