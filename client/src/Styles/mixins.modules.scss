@@ -23,9 +23,7 @@
   }
 
   .characterLabel {
-    :global {
-      position: absolute;
-      @include item-label;
-    }
+    position: absolute;
+    @include item-label;
   }
 }

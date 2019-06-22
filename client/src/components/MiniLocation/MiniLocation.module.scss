@@ -4,10 +4,10 @@
   --fence-width: 2%;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   flex: 1;
-  flex-direction: column;
 
   position: relative;
 
@@ -21,11 +21,12 @@
   .midCol,
   .rightCol {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex: 1;
-    flex-direction: column;
     width: 100%;
+
     height: 100%;
   }
 

@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 
 import Images from "../../images/images.js";
-import _get from "lodash.get";
+// import _get from "lodash.get";
 
 import css from "./MiniLocation.module.scss";
 

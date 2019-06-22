@@ -1,8 +1,6 @@
 @import "../../Styles/mixins.modules.scss";
 
 .main {
-  // --cell-height: var(--cell-height);
-
   border: 1px solid red !important;
   display: flex;
   flex-direction: column;
@@ -22,20 +20,6 @@
 
   .characterImage {
     @include character-image;
-
-    & > img {
-      border: 1px solid red !important;
-      display: flex;
-      height: 150px;
-      width: auto;
-    }
-
-    .characterLabel {
-      :global {
-        position: absolute;
-        @include item-label;
-      }
-    }
   }
 }
 
