@@ -7,9 +7,9 @@
   left: 2%;
   top: 50%;
   z-index: 20;
-  border: 1px solid red !important;
-  color: purple;
-  background: pink;
+  border: 1px solid var(--color-red) !important;
+  color: var(--color-purple);
+  background: var(--color-pink);
 }
 
 .main {
@@ -33,7 +33,7 @@
   .halfPage {
     display: flex;
     position: relative;
-    border: 2px solid purple !important;
+    border: 2px solid var(--color-purple) !important;
   }
 
   .leftHalf {
@@ -85,7 +85,7 @@
 
   .pageNumber {
     position: absolute;
-    background: aliceblue;
+    background: var(--color-blue-light);
     padding: 0 6px;
     border-radius: 0 0 3px 0;
     left: 3px;
@@ -109,7 +109,7 @@
     left: 3px;
 
     text-transform: capitalize;
-    background: pink;
+    background: var(--color-pink);
     border-radius: 4px;
     padding: 0 6px;
   }
