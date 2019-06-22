@@ -75,8 +75,7 @@ export default class DragTest extends Component {
   };
 
   componentWillReceiveProps(newProps) {
-    const { items } = newProps;
-    this.setState({ items });
+    // const { items } = newProps;
   }
 
   getList = ({ id }) => {
@@ -97,9 +96,9 @@ export default class DragTest extends Component {
 
     // TODO - dragging from grid to main list is broken.
     // does not work for dragging back to source
-    // if (test != null && test.groups) {
-    return test.groups;
-    // }
+    if (test != null && test.groups) {
+      return test.groups;
+    }
   };
 
   onDragEnd = result => {
@@ -129,14 +128,12 @@ export default class DragTest extends Component {
         destination
       );
 
-      const regex = /.*(?<row>row-[0-9])-(?<col>col-[0-9])/;
-      const test = destination.droppableId.match(regex);
-
       // TODO - dragging from grid to main list is broken.
-      // does not work for dragging back to source
-      if (test != null && test.groups) {
-        const { row, col } = test.groups;
+      const { row, col } = this.getStorageRowColFromId({
+        id: destination.droppableId
+      });
 
+      if (row) {
         const { locationsMap } = this.state;
         locationsMap[row][col] = result[destination.droppableId];
 
