@@ -13,7 +13,8 @@ const LOCATIONS_PREFIX = "locationsGrid";
 
 export default class DragTest extends Component {
   state = {
-    destinationMatrix: {}
+    sourceCreatures: [],
+    sourceItems: []
   };
 
   async componentWillMount() {
