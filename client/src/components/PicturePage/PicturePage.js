@@ -49,7 +49,7 @@ class PicturePage extends React.Component {
     return (
       <img
         className={`${css.characterImageMini} ${css.characterYouMini}`}
-        src={Images[youImage]}
+        src={Images.creatures[youImage]}
         alt={youImage}
       />
     );
@@ -77,7 +77,7 @@ class PicturePage extends React.Component {
   renderCharacters = ({ isActive, creatures }) => {
     const creatureType = creatures.length > 0 && creatures[0].type;
 
-    const image = Images[creatureType] || null;
+    const image = Images.creatures[creatureType] || null;
 
     const friend = (
       <img
@@ -223,15 +223,14 @@ class PicturePage extends React.Component {
     const creatures = Utils.getWordsByType({
       words: words,
       type: wordTypes.creature
-      // returnName: true
     });
 
-    return (
-      <DragTest
-        locations={this.getLocationsForDragger()}
-        creatures={creatures}
-      />
-    );
+    // return (
+    //   <DragTest
+    //     locations={this.getLocationsForDragger()}
+    //     creatures={creatures}
+    //   />
+    // );
     return (
       <div className={`${css.main} ${storyClass}`}>
         {this.renderStoryPage()}

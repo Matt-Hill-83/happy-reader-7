@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import css from "./DragTest.module.scss";
+import Images from "../../images/images";
 
 const numRows = 6;
 const numTargetsInRow = 10;
@@ -66,7 +67,17 @@ export default class DragTest extends Component {
 
     // TODO: put creatures into objects and get images.
     const creatureObjects = creatures.map((creature, index) => {
-      return { id: `creature-${index}`, content: <div>{creature.name}</div> };
+      const { name } = creature;
+      const miniLocationImage = Images.creatures[name];
+      return {
+        id: `creature-${index}`,
+        content: (
+          <div>
+            <img src={miniLocationImage} alt={"imagex"} />
+            {name}
+          </div>
+        )
+      };
     });
 
     this.setState({
