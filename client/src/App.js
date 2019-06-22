@@ -1,12 +1,12 @@
 import React from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
-import { useCookies } from "react-cookie";
-
 import { FocusStyleManager } from "@blueprintjs/core";
+import { useCookies } from "react-cookie";
 
 import MediaQuery from "react-responsive";
 import MainStory from "./components/MainStory/MainStory";
+
 import css from "./App.module.scss";
 
 // import this last
