@@ -246,8 +246,6 @@ export default class DragTest extends Component {
   };
 
   render() {
-    const { locationsMap } = this.state;
-
     return (
       <div className={css.main}>
         <div className={css.header}>
