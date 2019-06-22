@@ -28,9 +28,11 @@
 }
 
 .source {
-  // border: 1px solid green !important;
+  border: 1px solid green !important;
   display: flex;
   margin-right: 100px;
+  max-height: 90vh;
+  overflow: auto;
 }
 
 .destination {
@@ -61,4 +63,7 @@
 
 .content {
   display: flex;
+  // max-height: 100vh;
+  // border: 1px solid red !important;
+  // overflow: auto;
 }

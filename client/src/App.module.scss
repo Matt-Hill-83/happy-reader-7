@@ -17,9 +17,10 @@ body {
 }
 
 .desktop {
-  --window-height: 100vw;
+  --window-height: 100vh;
+  // --window-height: 1000px;
   --story-font-size: 30px;
-  overflow: hidden;
+  overflow: auto;
 
   // TODO: use this for font size:
   // font-size: 15vmin;
