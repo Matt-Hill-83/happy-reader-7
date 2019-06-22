@@ -6,7 +6,8 @@ import Images from "../../images/images";
 
 import css from "./DragTest.module.scss";
 
-const numRows = 8;
+const NUM_ROWS_LOCATIONS_GRID = 8;
+// const numRows = 8;
 const numTargetsInRow = 5;
 const COLUMN_WIDTH = 150;
 const LOCATIONS_PREFIX = "locationsMap";
@@ -94,7 +95,7 @@ export default class DragTest extends Component {
   });
 
   preAllocateArrays = () => {
-    const rows = Array(numRows).fill(0);
+    const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0);
     const columns = Array(numTargetsInRow).fill(0);
 
     const newStateObject = {};
@@ -282,8 +283,34 @@ export default class DragTest extends Component {
     );
   };
 
+  formatOutput = () => {
+    const { locationsMap } = this.state;
+    console.log("locationsMap", locationsMap); // zzz
+    /* eslint-disable */ debugger; /* eslint-ensable */ /* zzz */
+
+    const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0);
+    const columns = Array(numTargetsInRow).fill(0);
+
+    const newStateObject = {};
+    // const locationsMap = {};
+
+    // rows.map((row, rowIndex) => {
+    //   const rowName = `row-${rowIndex}`;
+    //   locationsMap[rowName] = {};
+    //   columns.map((col, colIndex) => {
+    //     const colName = `col-${colIndex}`;
+
+    //     locationsMap[rowName][colName] = [];
+    //     newStateObject.locationsMap = locationsMap;
+    //   });
+    // });
+
+    return newStateObject;
+  };
+
   render() {
-    console.log("this.state.locationsMap", this.state.locationsMap); // zzz
+    this.formatOutput();
+
     return (
       <div className={css.main}>
         <div className={css.header}>
@@ -309,7 +336,7 @@ export default class DragTest extends Component {
             })}
             {this.createLocationsGridRows({
               numTargetsInRow,
-              numRows,
+              numRows: NUM_ROWS_LOCATIONS_GRID,
               prefix: LOCATIONS_PREFIX
             })}
           </DragDropContext>
@@ -318,17 +345,3 @@ export default class DragTest extends Component {
     );
   }
 }
-
-// functions
-///////////////////////
-///////////////////////
-///////////////////////
-///////////////////////
-// // a little function to help us with reordering the result
-// const reorder = (list, startIndex, endIndex) => {
-//   const result = Array.from(list);
-//   const [removed] = result.splice(startIndex, 1);
-//   result.splice(endIndex, 0, removed);
-
-//   return result;
-// };
