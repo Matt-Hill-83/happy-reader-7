@@ -9,7 +9,7 @@ import css from "./DragTest.module.scss";
 const numRows = 8;
 const numTargetsInRow = 5;
 const COLUMN_WIDTH = 150;
-const LOCATIONS_PREFIX = "locations";
+const LOCATIONS_PREFIX = "locationsGrid";
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
@@ -94,11 +94,28 @@ export default class DragTest extends Component {
     const columns = Array(numTargetsInRow).fill(0);
 
     const newStateObject = {};
+    const locationsMap = {};
 
     const prefix = LOCATIONS_PREFIX;
 
+    const test = {
+      row1: {
+        col1: ["obj1"],
+        col2: ["obj2"]
+      }
+    };
+
     rows.map((row, rowIndex) => {
+      const rowName = `row-${rowIndex}`;
+      locationsMap[rowName] = {};
       columns.map((col, colIndex) => {
+        const colName = `col-${colIndex}`;
+
+        locationsMap[rowName][colName] = {
+          row: rowIndex,
+          col: colIndex,
+          items: [`${rowName} ${colName}`]
+        };
         const arrayName = this.createStoragePropertyName({
           rowIndex,
           colIndex,
@@ -106,8 +123,12 @@ export default class DragTest extends Component {
         });
 
         newStateObject[arrayName] = [];
+        newStateObject.locationsMap = locationsMap;
       });
     });
+
+    console.log("locationsMap", locationsMap); // zzz
+
     return newStateObject;
   };
 
@@ -214,7 +235,7 @@ export default class DragTest extends Component {
   };
 
   createStoragePropertyName = ({ rowIndex, colIndex, prefix = "item" }) => {
-    return `${prefix}-${colIndex}-${rowIndex}`;
+    return `${prefix}-row-${rowIndex}-col-${colIndex}`;
   };
 
   createTargetArrayRow = ({ numTargetsInRow, rowIndex, prefix }) => {
