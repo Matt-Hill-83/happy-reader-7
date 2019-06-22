@@ -47,6 +47,18 @@ export default class DragTest extends Component {
     });
   }
 
+  // a little function to help us with reordering the result
+  reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+  };
+
+  /**
+   * Moves an item from one list to another list.
+   */
   move = (source, destination, droppableSource, droppableDestination) => {
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
@@ -138,7 +150,7 @@ export default class DragTest extends Component {
 
     if (source.droppableId === destination.droppableId) {
       // for dragging within a single column
-      const items = reorder(
+      const items = this.reorder(
         this.getList({ id: source.droppableId }),
         source.index,
         destination.index
@@ -312,48 +324,11 @@ export default class DragTest extends Component {
 ///////////////////////
 ///////////////////////
 ///////////////////////
-// a little function to help us with reordering the result
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
-
-/**
- * Moves an item from one list to another list.
- */
-// const move = (source, destination, droppableSource, droppableDestination) => {
-//   const sourceClone = Array.from(source);
-//   const destClone = Array.from(destination);
-//   const [removed] = sourceClone.splice(droppableSource.index, 1);
-
-//   const removedFromDest = destClone.splice(0, destClone.length, removed);
-//   sourceClone.push(...removedFromDest);
-
-//   const result = {};
-//   result[droppableSource.droppableId] = sourceClone;
-//   result[droppableDestination.droppableId] = destClone;
+// // a little function to help us with reordering the result
+// const reorder = (list, startIndex, endIndex) => {
+//   const result = Array.from(list);
+//   const [removed] = result.splice(startIndex, 1);
+//   result.splice(endIndex, 0, removed);
 
 //   return result;
 // };
-
-// const getItemStyle = (isDragging, draggableStyle) => ({
-//   // some basic styles to make the items look a bit nicer
-//   userSelect: "none",
-//   padding: 0,
-//   margin: 0,
-
-//   // change background color if dragging
-//   background: isDragging ? "lightgreen" : "grey",
-
-//   // styles we need to apply on draggables
-//   ...draggableStyle
-// });
-
-// const getListStyle = isDraggingOver => ({
-//   background: isDraggingOver ? "lightblue" : "lightgrey",
-//   padding: 0,
-//   width: COLUMN_WIDTH
-// });
