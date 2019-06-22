@@ -8,7 +8,7 @@ import css from "./DragTest.module.scss";
 
 const NUM_ROWS_LOCATIONS_GRID = 8;
 // const numRows = 8;
-const numTargetsInRow = 5;
+const NUM_COLS_LOCATIONS_GRID = 5;
 const COLUMN_WIDTH = 150;
 const LOCATIONS_PREFIX = "locationsMap";
 // const LOCATIONS_PREFIX = "locationsGrid";
@@ -96,7 +96,7 @@ export default class DragTest extends Component {
 
   preAllocateArrays = () => {
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0);
-    const columns = Array(numTargetsInRow).fill(0);
+    const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0);
 
     const newStateObject = {};
     const locationsMap = {};
@@ -289,7 +289,7 @@ export default class DragTest extends Component {
     /* eslint-disable */ debugger; /* eslint-ensable */ /* zzz */
 
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0);
-    const columns = Array(numTargetsInRow).fill(0);
+    const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0);
 
     const newStateObject = {};
     // const locationsMap = {};
@@ -335,7 +335,7 @@ export default class DragTest extends Component {
               className: css.source
             })}
             {this.createLocationsGridRows({
-              numTargetsInRow,
+              numTargetsInRow: NUM_COLS_LOCATIONS_GRID,
               numRows: NUM_ROWS_LOCATIONS_GRID,
               prefix: LOCATIONS_PREFIX
             })}
