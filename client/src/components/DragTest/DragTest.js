@@ -70,8 +70,6 @@ export default class DragTest extends Component {
       });
     });
 
-    console.log("locationsMap", locationsMap); // zzz
-
     return newStateObject;
   };
 
@@ -81,29 +79,20 @@ export default class DragTest extends Component {
   }
 
   getList = ({ id }) => {
-    console.log("id", id); // zzz
-
     if (id === "sourceItems") {
-      console.log("id is sourceItems"); // zzz
-
       const list = this.state[id];
       return list;
     } else {
       const { row, col } = this.getStorageRowColFromId({ id });
-      console.log("test2", row, col); // zzz
 
       const list2 = this.state.locationsMap[row][col];
-      console.log("list2", list2); // zzz
       return list2;
     }
   };
 
   getStorageRowColFromId = ({ id }) => {
-    // console.log("id", id); // zzz
-
     const regex = /.*(?<row>row-[0-9])-(?<col>col-[0-9])/;
     const test = id.match(regex);
-    // console.log("test", test); // zzz
 
     // TODO - dragging from grid to main list is broken.
     // does not work for dragging back to source
@@ -141,13 +130,11 @@ export default class DragTest extends Component {
 
       const regex = /.*(?<row>row-[0-9])-(?<col>col-[0-9])/;
       const test = destination.droppableId.match(regex);
-      console.log("test", test); // zzz
 
       // TODO - dragging from grid to main list is broken.
       // does not work for dragging back to source
       if (test != null && test.groups) {
         const { row, col } = test.groups;
-        console.log("row, col", row, col); // zzz
 
         const { locationsMap } = this.state;
         locationsMap[row][col] = result[destination.droppableId];
@@ -155,20 +142,12 @@ export default class DragTest extends Component {
         this.setState({
           [source.droppableId]: result[source.droppableId],
           locationsMap
-          // [destination.droppableId]: result[destination.droppableId]
         });
       }
-
-      // this.setState({
-      //   [source.droppableId]: result[source.droppableId],
-      //   [destination.droppableId]: result[destination.droppableId]
-      // });
     }
   };
 
   renderItems = ({ provided, snapshot, items }) => {
-    console.log("items - render", items); // zzz
-
     return (
       <div
         ref={provided.innerRef}
@@ -198,8 +177,6 @@ export default class DragTest extends Component {
   };
 
   renderList = ({ droppableId, items, className }) => {
-    console.log("renderList", items); // zzz
-
     return (
       <div className={className}>
         <Droppable droppableId={droppableId}>
@@ -234,7 +211,6 @@ export default class DragTest extends Component {
 
   createLocationsGridRow = ({ numTargetsInRow, rowIndex, prefix }) => {
     const targetArrays = [];
-    // const newStorageNames = [];
     for (let colIndex = 0; colIndex < numTargetsInRow; colIndex++) {
       const arrayName = this.createStoragePropertyName({
         rowIndex,
@@ -242,30 +218,17 @@ export default class DragTest extends Component {
         prefix
       });
 
-      // newStorageNames.push(arrayName);
-
       const { row, col } = this.getStorageRowColFromId({ id: arrayName });
-
-      console.log("row,col", row, col); // zzz
-      console.log(
-        "this.state.locationsMap[row][col]",
-        this.state.locationsMap[row][col]
-      ); // zzz
 
       const newTargetArray = this.renderList({
         droppableId: arrayName,
         items: this.state.locationsMap[row][col],
-        // items: this.state[arrayName],
         className: css.destination
       });
 
       targetArrays.push(newTargetArray);
     }
 
-    // const stateObject = {};
-    // newStorageNames.map(name => {
-    //   stateObject[name] = [];
-    // });
     return targetArrays;
   };
 
@@ -284,7 +247,6 @@ export default class DragTest extends Component {
 
   render() {
     const { locationsMap } = this.state;
-    console.log("locationsMap", locationsMap); // zzz
 
     return (
       <div className={css.main}>
@@ -299,11 +261,11 @@ export default class DragTest extends Component {
         </div>
         <div className={css.content}>
           <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
-            {/* {this.renderList({
+            {this.renderList({
               droppableId: "sourceCreatures",
               items: this.state["sourceCreatures"],
               className: css.source
-            })} */}
+            })}
             {this.renderList({
               droppableId: "sourceItems",
               items: this.state["sourceItems"],
