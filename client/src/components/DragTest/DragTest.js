@@ -9,7 +9,8 @@ import css from "./DragTest.module.scss";
 const numRows = 8;
 const numTargetsInRow = 5;
 const COLUMN_WIDTH = 150;
-const LOCATIONS_PREFIX = "locationsGrid";
+const LOCATIONS_PREFIX = "locationsMap";
+// const LOCATIONS_PREFIX = "locationsGrid";
 
 export default class DragTest extends Component {
   state = {
@@ -26,8 +27,10 @@ export default class DragTest extends Component {
     const creatureObjects = creatures.map((creature, index) => {
       const { name } = creature;
       const miniLocationImage = Images.creatures[name];
+      const id = `creature-${index}`;
+
       return {
-        id: `creature-${index}`,
+        id,
         content: (
           <div className={css.characterImage}>
             <img src={miniLocationImage} alt={"imagex"} />
@@ -51,8 +54,6 @@ export default class DragTest extends Component {
     const newStateObject = {};
     const locationsMap = {};
 
-    const prefix = LOCATIONS_PREFIX;
-
     rows.map((row, rowIndex) => {
       const rowName = `row-${rowIndex}`;
       locationsMap[rowName] = {};
@@ -60,13 +61,6 @@ export default class DragTest extends Component {
         const colName = `col-${colIndex}`;
 
         locationsMap[rowName][colName] = [];
-        const arrayName = this.createStoragePropertyName({
-          rowIndex,
-          colIndex,
-          prefix
-        });
-
-        newStateObject[arrayName] = [];
         newStateObject.locationsMap = locationsMap;
       });
     });
@@ -80,24 +74,23 @@ export default class DragTest extends Component {
 
   getList = ({ id }) => {
     if (id === "sourceItems") {
-      const list = this.state[id];
-      return list;
+      return this.state[id];
     } else {
-      const { row, col } = this.getStorageRowColFromId({ id });
+      const { row, col, prefix } = this.getStorageRowColFromId({ id });
 
-      const list2 = this.state.locationsMap[row][col];
-      return list2;
+      console.log("prefix", prefix); // zzz
+      if (prefix === LOCATIONS_PREFIX) {
+        return this.state.locationsMap[row][col];
+      }
     }
   };
 
   getStorageRowColFromId = ({ id }) => {
-    const regex = /.*(?<row>row-[0-9])-(?<col>col-[0-9])/;
-    const test = id.match(regex);
+    const regex = /(?<prefix>.*)-(?<row>row-[0-9])-(?<col>col-[0-9])/;
+    const idMatch = id.match(regex);
 
-    // TODO - dragging from grid to main list is broken.
-    // does not work for dragging back to source
-    if (test != null && test.groups) {
-      return test.groups;
+    if (idMatch != null && idMatch.groups) {
+      return idMatch.groups;
     }
   };
 
@@ -244,6 +237,7 @@ export default class DragTest extends Component {
   };
 
   render() {
+    console.log("this.state.locationsMap", this.state.locationsMap); // zzz
     return (
       <div className={css.main}>
         <div className={css.header}>
