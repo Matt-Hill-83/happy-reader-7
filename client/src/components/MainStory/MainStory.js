@@ -115,9 +115,20 @@ class MainStory extends React.Component {
     localStateStore.setsmallMap(!smallMap);
   };
 
+  toggleWorldBuilder = () => {
+    console.log("toggleWorldBuilder"); // zzz
+
+    const showWorldBuilder = localStateStore.getShowWorldBuilder();
+    console.log("showWorldBuilder", showWorldBuilder); // zzz
+
+    localStateStore.setShowWorldBuilder(!showWorldBuilder);
+  };
+
   render() {
     const { className } = this.props;
     const { activeScene, pageNum } = this.state;
+
+    console.log("localStateStore.getsmallMap()", localStateStore.getsmallMap()); // zzz
 
     if (!activeScene) {
       return null;
@@ -149,6 +160,16 @@ class MainStory extends React.Component {
       </Button>
     );
 
+    const toggleWorldBuilderButton = (
+      <Button
+        tabIndex={0}
+        className={css.newStoryBtn}
+        onClick={this.toggleWorldBuilder}
+      >
+        <span> Toggle World Builder </span>
+      </Button>
+    );
+
     return (
       <div className={`${css.main} ${className}`}>
         {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
@@ -157,6 +178,7 @@ class MainStory extends React.Component {
           <div className={css.settingButtons}>
             {changeCharacterButton}
             {toggleMapButton}
+            {toggleWorldBuilderButton}
           </div>
         </div>
         <div className={css.body}>
