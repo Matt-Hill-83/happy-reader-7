@@ -29,21 +29,21 @@ class PicturePage extends React.Component {
     this.canvasRef = React.createRef();
   }
 
-  renderSceneList = () => {
-    const plot = localStateStore.getPlot();
-    const scenesList = Object.values(plot.scenes);
+  // renderSceneList = () => {
+  //   const plot = localStateStore.getPlot();
+  //   const scenesList = Object.values(plot.scenes);
 
-    const renderedScenes = scenesList.map((scene, index) => {
-      const iconColor = scene.isUsed ? "purple" : "blue";
-      return (
-        <div className={css.scene} key={index}>
-          <Icon color={iconColor} icon={IconNames.WALK} />
-          <span className={css.sceneName}>{scene.location}</span>
-        </div>
-      );
-    });
-    return <div className={css.sceneList}>{renderedScenes}</div> || null;
-  };
+  //   const renderedScenes = scenesList.map((scene, index) => {
+  //     const iconColor = scene.isUsed ? "purple" : "blue";
+  //     return (
+  //       <div className={css.scene} key={index}>
+  //         <Icon color={iconColor} icon={IconNames.WALK} />
+  //         <span className={css.sceneName}>{scene.location}</span>
+  //       </div>
+  //     );
+  //   });
+  //   return <div className={css.sceneList}>{renderedScenes}</div> || null;
+  // };
 
   renderYouMini = () => {
     const plot = localStateStore.getPlot();
@@ -107,15 +107,9 @@ class PicturePage extends React.Component {
     });
   };
 
-  createSingleRow2 = ({ locationRow, rowIndex }) => {
-    return locationRow.map((location, colIndex) => {
-      return {
-        id: `location-${colIndex}`,
-        content: this.renderMiniLocation({ location, colIndex, rowIndex })
-      };
-    });
-  };
-
+  // TODO - make this a component
+  // TODO - make this a component
+  // TODO - make this a component
   renderMiniLocation = ({
     colIndex = 0,
     rowIndex = 0,
@@ -237,8 +231,11 @@ class PicturePage extends React.Component {
       words: words,
       type: wordTypes.creature
     });
+    const showWorldBuilder = localStateStore.getShowWorldBuilder();
+    console.log("showWorldBuilder", showWorldBuilder); // zzz
 
-    if (WORLD_BUILDER) {
+    if (showWorldBuilder) {
+      // if (WORLD_BUILDER) {
       return (
         <DragTest
           locations={this.getLocationsForDragger()}

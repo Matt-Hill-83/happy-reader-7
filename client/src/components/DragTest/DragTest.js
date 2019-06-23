@@ -5,12 +5,13 @@ import { Button } from "@blueprintjs/core";
 import Images from "../../images/images";
 
 import css from "./DragTest.module.scss";
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 
 const NUM_ROWS_LOCATIONS_GRID = 8;
 // const numRows = 8;
 const NUM_COLS_LOCATIONS_GRID = 5;
 const COLUMN_WIDTH = 150;
-const LOCATIONS_PREFIX = "locationsMap";
+const LOCATIONS_PREFIX = "locationsGrid";
 // const LOCATIONS_PREFIX = "locationsGrid";
 
 export default class DragTest extends Component {
@@ -99,25 +100,23 @@ export default class DragTest extends Component {
     const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0);
 
     const newStateObject = {};
-    const locationsMap = {};
+    const locationsGrid = {};
 
     rows.map((row, rowIndex) => {
       const rowName = `row-${rowIndex}`;
-      locationsMap[rowName] = {};
+      locationsGrid[rowName] = {};
       columns.map((col, colIndex) => {
         const colName = `col-${colIndex}`;
 
-        locationsMap[rowName][colName] = [];
-        newStateObject.locationsMap = locationsMap;
+        locationsGrid[rowName][colName] = [];
+        newStateObject.locationsGrid = locationsGrid;
       });
     });
 
     return newStateObject;
   };
 
-  componentWillReceiveProps(newProps) {
-    // const { items } = newProps;
-  }
+  componentWillReceiveProps(newProps) {}
 
   getList = ({ id }) => {
     if (id === "sourceItems") {
@@ -125,9 +124,8 @@ export default class DragTest extends Component {
     } else {
       const { row, col, prefix } = this.getStorageRowColFromId({ id });
 
-      console.log("prefix", prefix); // zzz
       if (prefix === LOCATIONS_PREFIX) {
-        return this.state.locationsMap[row][col];
+        return this.state.locationsGrid[row][col];
       }
     }
   };
@@ -174,12 +172,12 @@ export default class DragTest extends Component {
       });
 
       if (row) {
-        const { locationsMap } = this.state;
-        locationsMap[row][col] = result[destination.droppableId];
+        const { locationsGrid } = this.state;
+        locationsGrid[row][col] = result[destination.droppableId];
 
         this.setState({
           [source.droppableId]: result[source.droppableId],
-          locationsMap
+          locationsGrid
         });
       }
     }
@@ -260,7 +258,7 @@ export default class DragTest extends Component {
 
       const newTargetArray = this.renderList({
         droppableId: arrayName,
-        items: this.state.locationsMap[row][col],
+        items: this.state.locationsGrid[row][col],
         className: css.destination
       });
 
@@ -272,7 +270,12 @@ export default class DragTest extends Component {
 
   saveMap = () => {
     console.log("saving map"); // zzz
-    console.log("this.state", this.state); // zzz
+
+    const plot = localStateStore.getPlot();
+
+    plot.scenes = this.transformLocationsToOutputGrid();
+    localStateStore.setPlot(plot);
+    localStateStore.setShowWorldBuilder(false);
   };
 
   renderSaveMapButton = () => {
@@ -283,8 +286,8 @@ export default class DragTest extends Component {
     );
   };
 
-  formatOutput = () => {
-    const { locationsMap } = this.state;
+  transformLocationsToOutputGrid = () => {
+    const { locationsGrid } = this.state;
     const outputGrid = [];
 
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0);
@@ -297,7 +300,7 @@ export default class DragTest extends Component {
         const rowName = `row-${rowIndex}`;
         const colName = `col-${colIndex}`;
 
-        const newCell = locationsMap[rowName][colName];
+        const newCell = locationsGrid[rowName][colName];
         const criticalData =
           (newCell[0] && newCell[0].content.props.location) || null;
         newRow.push(criticalData);
@@ -310,8 +313,6 @@ export default class DragTest extends Component {
   };
 
   render() {
-    this.formatOutput();
-
     return (
       <div className={css.main}>
         <div className={css.header}>

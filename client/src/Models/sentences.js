@@ -316,19 +316,13 @@ let newScenes = locationsMap.flat();
 // remove empty scenes
 newScenes = newScenes.filter(scene => scene.name);
 
-// const locationsMap = [
-//   [{}, scenes.stump, scenes.cave, scenes.castle],
-//   [scenes.swamp, scenes.bees, scenes.slide, scenes.waterfall],
-//   [scenes.pool, scenes.hill, scenes.barn, scenes.coop],
-//   [scenes.house, {}, scenes.swing, scenes.bog]
-// ];
-
 const generatePlot = () => {
   const plot = {
     activeScene: startScene,
     narrativeGenerators,
     scenes: newScenes,
-    you: localStateStore.getYou()
+    you: localStateStore.getYou(),
+    locationsMap
   };
 
   localStateStore.setPlot(plot);

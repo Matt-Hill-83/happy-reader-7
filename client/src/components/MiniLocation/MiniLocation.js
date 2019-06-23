@@ -84,7 +84,6 @@ class MiniLocation extends React.Component {
       isActive,
       className,
       showLabel = true,
-      key,
       id
     } = this.props;
 
@@ -110,7 +109,7 @@ class MiniLocation extends React.Component {
 
     return (
       <div
-        key={key}
+        key={id}
         id={id}
         className={`${css.main} ${className} ${localClass}`}
       >
