@@ -74,7 +74,12 @@ class PicturePage extends React.Component {
   getLocationsForDragger = () => {
     const plot = localStateStore.getPlot();
 
-    return this.createSingleRow2({ locationRow: plot.scenes, rowIndex: 1 });
+    return plot.scenes.map((location, colIndex) => {
+      return {
+        id: `location-${colIndex}`,
+        content: this.renderMiniLocation({ location })
+      };
+    });
   };
 
   renderCharacters = ({ isActive, creatures }) => {
@@ -111,7 +116,12 @@ class PicturePage extends React.Component {
     });
   };
 
-  renderMiniLocation = ({ colIndex, rowIndex, location, className = "" }) => {
+  renderMiniLocation = ({
+    colIndex = 0,
+    rowIndex = 0,
+    location,
+    className = ""
+  }) => {
     const { activeScene } = this.props;
     const { name: locationName, creatures = [] } = location;
 
