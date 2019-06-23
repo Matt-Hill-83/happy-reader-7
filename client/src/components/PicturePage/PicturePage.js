@@ -1,6 +1,6 @@
 import React from "react";
-import { IconNames } from "@blueprintjs/icons";
-import { Icon } from "@blueprintjs/core";
+// import { IconNames } from "@blueprintjs/icons";
+// import { Icon } from "@blueprintjs/core";
 import { observer } from "mobx-react";
 import LineTo from "react-lineto";
 import _get from "lodash.get";
@@ -18,7 +18,7 @@ import myWords from "../../Models/words.js";
 import Utils from "../../Utils/Utils.js";
 
 const { words, wordTypes } = myWords;
-const { locationsMap } = sentences;
+// const { locationsMap } = sentences;
 
 // const WORLD_BUILDER = false;
 const WORLD_BUILDER = true;
@@ -46,8 +46,9 @@ class PicturePage extends React.Component {
   // };
 
   renderYouMini = () => {
-    const plot = localStateStore.getPlot();
-    const youImage = plot.you.creature;
+    const { you } = localStateStore.getPlot();
+
+    const youImage = you.creature;
 
     return (
       <img
@@ -60,7 +61,13 @@ class PicturePage extends React.Component {
 
   renderLocationRows = () => {
     // Create rows
+    const plot = localStateStore.getPlot();
+
+    const locationsMap = plot.locationsMap;
+    console.log("plot", plot); // zzz
+
     const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
+      /* eslint-disable */ debugger; /* zzz */ /* eslint-ensable */
       return (
         <div key={rowIndex} className={css.miniLocationsRow}>
           {this.createSingleRow({ locationRow, rowIndex })}
