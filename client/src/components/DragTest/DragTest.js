@@ -286,26 +286,29 @@ export default class DragTest extends Component {
   formatOutput = () => {
     const { locationsMap } = this.state;
     console.log("locationsMap", locationsMap); // zzz
-    /* eslint-disable */ debugger; /* eslint-ensable */ /* zzz */
 
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0);
     const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0);
 
-    const newStateObject = {};
+    const outputGrid = [];
     // const locationsMap = {};
 
-    // rows.map((row, rowIndex) => {
-    //   const rowName = `row-${rowIndex}`;
-    //   locationsMap[rowName] = {};
-    //   columns.map((col, colIndex) => {
-    //     const colName = `col-${colIndex}`;
+    rows.map((row, rowIndex) => {
+      const rowName = `row-${rowIndex}`;
+      const newRow = [];
+      // locationsMap[rowName] = {};
 
-    //     locationsMap[rowName][colName] = [];
-    //     newStateObject.locationsMap = locationsMap;
-    //   });
-    // });
+      columns.map((col, colIndex) => {
+        const colName = `col-${colIndex}`;
 
-    return newStateObject;
+        const newCell = locationsMap[rowName][colName];
+        newRow.push((newCell[0] && newCell[0].content.props.location) || null);
+      });
+      outputGrid.push(newRow);
+    });
+    console.log("outputGrid", outputGrid); // zzz
+
+    return outputGrid;
   };
 
   render() {
