@@ -13,7 +13,8 @@ import { Button } from "@blueprintjs/core";
 
 import css from "./MainStory.module.scss";
 
-const { locationsMap, generatePlot, generateYou } = mySentences;
+const { generatePlot, generateYou } = mySentences;
+// const { locationsMap, generatePlot, generateYou } = mySentences;
 
 class MainStory extends React.Component {
   state = {
@@ -43,6 +44,9 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
+    console.log("updateActiveScene"); // zzz
+    console.log("activeScene", activeScene); // zzz
+
     const plot = localStateStore.getPlot();
     const { you, narrativeGenerators } = plot;
 
@@ -59,8 +63,10 @@ class MainStory extends React.Component {
 
   getNeighbors = ({ activeScene }) => {
     console.log("activeScene", activeScene); // zzz
+    const plot = localStateStore.getPlot();
+    const locationsMap = plot.locationsMap;
 
-    const activeLocation = activeScene.name;
+    const activeSceneName = activeScene.name;
 
     const neighbors = [];
     const neighborsArray = [];
@@ -78,8 +84,7 @@ class MainStory extends React.Component {
     });
 
     const currentLocation = neighborsArray.find(item => {
-      // return item.scene.name === activeLocation;
-      return item.name === activeLocation;
+      return item.name === activeSceneName;
     });
 
     const currentPosition = currentLocation.position;
@@ -116,19 +121,20 @@ class MainStory extends React.Component {
   };
 
   toggleWorldBuilder = () => {
-    console.log("toggleWorldBuilder"); // zzz
+    const plot = localStateStore.getPlot();
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder();
-    console.log("showWorldBuilder", showWorldBuilder); // zzz
+    const newShowWorldBuilder = !showWorldBuilder;
 
-    localStateStore.setShowWorldBuilder(!showWorldBuilder);
+    localStateStore.setShowWorldBuilder(newShowWorldBuilder);
+    if (newShowWorldBuilder === false) {
+      this.updateActiveScene({ activeScene: plot.activeScene });
+    }
   };
 
   render() {
     const { className } = this.props;
     const { activeScene, pageNum } = this.state;
-
-    console.log("localStateStore.getsmallMap()", localStateStore.getsmallMap()); // zzz
 
     if (!activeScene) {
       return null;

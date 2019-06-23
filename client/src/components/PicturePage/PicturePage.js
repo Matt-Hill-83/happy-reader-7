@@ -60,14 +60,10 @@ class PicturePage extends React.Component {
   };
 
   renderLocationRows = () => {
-    // Create rows
     const plot = localStateStore.getPlot();
-
     const locationsMap = plot.locationsMap;
-    console.log("plot", plot); // zzz
 
     const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
-      /* eslint-disable */ debugger; /* zzz */ /* eslint-ensable */
       return (
         <div key={rowIndex} className={css.miniLocationsRow}>
           {this.createSingleRow({ locationRow, rowIndex })}
@@ -162,6 +158,15 @@ class PicturePage extends React.Component {
     });
 
     return arrows;
+  };
+
+  changeLocation = ({ sceneName }) => {
+    const plot = localStateStore.getPlot();
+    const { scenes = {} } = plot;
+
+    const newScene = scenes.find(scene => scene.name === sceneName);
+
+    this.props.updateActiveScene({ activeScene: newScene });
   };
 
   renderStoryPage = () => {

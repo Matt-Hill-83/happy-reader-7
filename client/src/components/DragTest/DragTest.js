@@ -181,6 +181,8 @@ export default class DragTest extends Component {
         });
       }
     }
+
+    this.saveMap();
   };
 
   renderItems = ({ provided, snapshot, items }) => {
@@ -275,16 +277,16 @@ export default class DragTest extends Component {
 
     plot.locationsMap = this.transformLocationsGridToLocationsMap();
     localStateStore.setPlot(plot);
-    localStateStore.setShowWorldBuilder(false);
+    // localStateStore.setShowWorldBuilder(false);
   };
 
-  renderSaveMapButton = () => {
-    return (
-      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
-        <span> Save Map </span>
-      </Button>
-    );
-  };
+  // renderSaveMapButton = () => {
+  //   return (
+  //     <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
+  //       <span> Save Map </span>
+  //     </Button>
+  //   );
+  // };
 
   transformLocationsGridToLocationsMap = () => {
     const { locationsGrid } = this.state;
@@ -320,7 +322,7 @@ export default class DragTest extends Component {
             <div className={css.title}>World Builder</div>
             <div className={css.subTitle}>
               (drag items to create your world...)
-              {this.renderSaveMapButton()}
+              {/* {this.renderSaveMapButton()} */}
             </div>
           </div>
         </div>
