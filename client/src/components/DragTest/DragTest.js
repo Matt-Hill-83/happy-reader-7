@@ -285,24 +285,22 @@ export default class DragTest extends Component {
 
   formatOutput = () => {
     const { locationsMap } = this.state;
-    console.log("locationsMap", locationsMap); // zzz
+    const outputGrid = [];
 
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0);
     const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0);
 
-    const outputGrid = [];
-    // const locationsMap = {};
-
     rows.map((row, rowIndex) => {
-      const rowName = `row-${rowIndex}`;
       const newRow = [];
-      // locationsMap[rowName] = {};
 
       columns.map((col, colIndex) => {
+        const rowName = `row-${rowIndex}`;
         const colName = `col-${colIndex}`;
 
         const newCell = locationsMap[rowName][colName];
-        newRow.push((newCell[0] && newCell[0].content.props.location) || null);
+        const criticalData =
+          (newCell[0] && newCell[0].content.props.location) || null;
+        newRow.push(criticalData);
       });
       outputGrid.push(newRow);
     });
