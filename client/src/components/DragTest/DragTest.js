@@ -273,7 +273,7 @@ export default class DragTest extends Component {
 
     const plot = localStateStore.getPlot();
 
-    plot.scenes = this.transformLocationsToOutputGrid();
+    plot.scenes = this.transformLocationsToLocationsMap();
     localStateStore.setPlot(plot);
     localStateStore.setShowWorldBuilder(false);
   };
@@ -286,9 +286,9 @@ export default class DragTest extends Component {
     );
   };
 
-  transformLocationsToOutputGrid = () => {
+  transformLocationsToLocationsMap = () => {
     const { locationsGrid } = this.state;
-    const outputGrid = [];
+    const locationsMap = [];
 
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0);
     const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0);
@@ -305,11 +305,11 @@ export default class DragTest extends Component {
           (newCell[0] && newCell[0].content.props.location) || null;
         newRow.push(criticalData);
       });
-      outputGrid.push(newRow);
+      locationsMap.push(newRow);
     });
-    console.log("outputGrid", outputGrid); // zzz
+    console.log("locationsMap", locationsMap); // zzz
 
-    return outputGrid;
+    return locationsMap;
   };
 
   render() {
