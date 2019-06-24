@@ -43,7 +43,6 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
-    console.log("updateActiveScene"); // zzz
     console.log("activeScene", activeScene); // zzz
 
     const plot = localStateStore.getPlot();
@@ -62,7 +61,6 @@ class MainStory extends React.Component {
 
   getNeighbors = ({ activeScene }) => {
     const locationsMap = localStateStore.getActiveLocationsMap();
-    console.log("locationsMap", locationsMap); // zzz
 
     const activeSceneName = activeScene.name;
 
@@ -70,7 +68,7 @@ class MainStory extends React.Component {
     const neighborsArray = [];
 
     // create a map of all the locations for future use
-    locationsMap.forEach((row, rowIndex) => {
+    locationsMap.grid.forEach((row, rowIndex) => {
       row.forEach((location, locationIndex) => {
         location = location || {};
 

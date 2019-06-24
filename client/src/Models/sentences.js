@@ -286,18 +286,26 @@ const generateScenes = () => {
 const scenes = generateScenes();
 
 let locationsMaps = [
-  [
-    [{}, scenes.stump, scenes.pond, scenes.castle],
-    [{}, {}, scenes.cave, {}],
-    [scenes.pool, scenes.lake, scenes.barn, {}],
-    [scenes.house, {}, scenes.bog, scenes.bees]
-  ],
-  [
-    [{}, scenes.stump, scenes.pond, scenes.castle],
-    [{}, {}, scenes.cave, {}],
-    [{}, {}, {}, {}],
-    [scenes.house, {}, scenes.bog, scenes.bees]
-  ]
+  {
+    startScene: scenes.house,
+    endScene: scenes.stump,
+    grid: [
+      [{}, scenes.stump, scenes.pond, scenes.castle],
+      [{}, {}, scenes.cave, {}],
+      [scenes.pool, scenes.lake, scenes.barn, {}],
+      [scenes.house, {}, scenes.bog, scenes.bees]
+    ]
+  },
+  {
+    startScene: scenes.house,
+    endScene: scenes.stump,
+    grid: [
+      [{}, scenes.stump, scenes.pond, scenes.castle],
+      [{}, {}, scenes.cave, {}],
+      [{}, {}, {}, {}],
+      [scenes.house, {}, scenes.bog, scenes.bees]
+    ]
+  }
 ];
 
 localStateStore.setLocationsMaps(locationsMaps);

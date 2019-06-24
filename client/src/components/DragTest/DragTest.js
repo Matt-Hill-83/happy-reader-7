@@ -274,11 +274,17 @@ export default class DragTest extends Component {
     console.log("saving map"); // zzz
 
     const plot = localStateStore.getPlot();
-
     plot.locationsMap = this.transformLocationsGridToLocationsMap();
+
+    // This is where is should be stored
+    const locationsMap = this.transformLocationsGridToLocationsMap();
+
     localStateStore.setPlot(plot);
+    localStateStore.addNewLocationsMap({ grid: locationsMap });
     // localStateStore.setShowWorldBuilder(false);
   };
+
+  // I need to reinstate this button.
 
   // renderSaveMapButton = () => {
   //   return (

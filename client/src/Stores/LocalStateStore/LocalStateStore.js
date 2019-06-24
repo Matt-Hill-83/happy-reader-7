@@ -50,6 +50,10 @@ class LocalStateStore {
   setActiveLocationsMapIndex = activeLocationsMapIndex => {
     this.activeLocationsMapIndex = activeLocationsMapIndex;
   };
+
+  addNewLocationsMap = newLocationsMap => {
+    this.locationsMaps.push(newLocationsMap);
+  };
 }
 
 decorate(LocalStateStore, {

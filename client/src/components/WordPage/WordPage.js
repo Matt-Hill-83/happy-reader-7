@@ -4,9 +4,9 @@ import { Button } from "@blueprintjs/core";
 import _get from "lodash.get";
 
 import WordGroup from "../WordGroup/WordGroup.js";
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 
 import css from "./WordPage.module.scss";
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 
 class WordPage extends React.Component {
   state = {
