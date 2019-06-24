@@ -3,9 +3,14 @@ import { observable, computed, action, decorate } from "mobx";
 class LocalStateStore {
   page = "";
   smallMap = true;
-  showWorldBuilder = true;
+  showWorldBuilder = false;
+  // showWorldBuilder = true;
   you = {};
   plot = {};
+  locationsMaps = [];
+  activeLocationsMap = [];
+  // activeLocationsMapIndex = 1;
+  activeLocationsMapIndex = 0;
 
   getPage = () => this.page;
   setPage = page => {
@@ -32,13 +37,33 @@ class LocalStateStore {
   setShowWorldBuilder = showWorldBuilder => {
     this.showWorldBuilder = showWorldBuilder;
   };
+
+  getLocationsMaps = () => this.locationsMaps;
+  setLocationsMaps = locationsMaps => {
+    this.locationsMaps = locationsMaps;
+  };
+
+  getActiveLocationsMap = () =>
+    this.locationsMaps[this.activeLocationsMapIndex];
+  // getActiveLocationsMap = () => this.activelocationsMap;
+  // setActiveLocationsMap = activelocationsMap => {
+  //   this.activelocationsMap = activelocationsMap;
+  // };
+
+  getActiveLocationsMapIndex = () => this.activeLocationsMapIndex;
+  setActiveLocationsMapIndex = activeLocationsMapIndex => {
+    this.activeLocationsMapIndex = activeLocationsMapIndex;
+  };
 }
 
 decorate(LocalStateStore, {
   page: observable,
   plot: observable,
   smallMap: observable,
-  showWorldBuilder: observable
+  showWorldBuilder: observable,
+  locationsMaps: observable,
+  activelocationsMap: observable,
+  activeLocationsMapIndex: observable
 });
 
 const localStateStore = new LocalStateStore();

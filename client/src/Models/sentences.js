@@ -321,6 +321,8 @@ let locationsMaps = [
   ]
 ];
 
+localStateStore.setLocationsMaps(locationsMaps);
+
 // create placeholders for empty rows
 locationsMap = locationsMap.map(row => {
   return row || [{}, {}, {}, {}];
@@ -340,7 +342,8 @@ const generatePlot = () => {
     // scenes: newScenes,
     allScenes,
     you: localStateStore.getYou(),
-    locationsMap
+    locationsMap,
+    locationsMaps
   };
 
   localStateStore.setPlot(plot);

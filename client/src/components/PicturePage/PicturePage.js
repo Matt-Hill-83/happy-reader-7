@@ -55,8 +55,9 @@ class PicturePage extends React.Component {
   };
 
   renderLocationRows = () => {
-    const plot = localStateStore.getPlot();
-    const locationsMap = plot.locationsMap;
+    // const plot = localStateStore.getPlot();
+    // const locationsMap = plot.locationsMap;
+    const locationsMap = localStateStore.getActiveLocationsMap();
 
     const miniLocationsGrid = locationsMap.map((locationRow, rowIndex) => {
       return (

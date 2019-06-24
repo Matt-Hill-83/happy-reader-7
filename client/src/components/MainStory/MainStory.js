@@ -61,9 +61,8 @@ class MainStory extends React.Component {
   };
 
   getNeighbors = ({ activeScene }) => {
-    console.log("activeScene", activeScene); // zzz
-    const plot = localStateStore.getPlot();
-    const locationsMap = plot.locationsMap;
+    const locationsMap = localStateStore.getActiveLocationsMap();
+    console.log("locationsMap", locationsMap); // zzz
 
     const activeSceneName = activeScene.name;
 
