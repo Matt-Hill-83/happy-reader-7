@@ -25,9 +25,9 @@ class WordPage extends React.Component {
   changeLocation = ({ sceneName }) => {
     this.setState({ activeParagraphIndex: 0 });
     const plot = localStateStore.getPlot();
-    const { scenes = {} } = plot;
+    const { allScenes = {} } = plot;
 
-    const newScene = scenes.find(scene => scene.name === sceneName);
+    const newScene = allScenes.find(scene => scene.name === sceneName);
 
     this.props.updateActiveScene({ activeScene: newScene });
   };

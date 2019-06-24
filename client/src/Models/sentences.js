@@ -337,7 +337,7 @@ const generatePlot = () => {
   const plot = {
     activeScene: startScene,
     narrativeGenerators,
-    scenes: newScenes,
+    // scenes: newScenes,
     allScenes,
     you: localStateStore.getYou(),
     locationsMap
