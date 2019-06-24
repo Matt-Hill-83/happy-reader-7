@@ -212,6 +212,7 @@ const locations = [
   { name: "woods", type: wordTypes.location },
   { name: "pool", type: wordTypes.location },
   { name: "yard", type: wordTypes.location },
+  { name: "slide", type: wordTypes.location },
 
   { name: "pond", type: wordTypes.location },
   { name: "bog", type: wordTypes.location },

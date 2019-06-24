@@ -14,7 +14,6 @@ import { Button } from "@blueprintjs/core";
 import css from "./MainStory.module.scss";
 
 const { generatePlot, generateYou } = mySentences;
-// const { locationsMap, generatePlot, generateYou } = mySentences;
 
 class MainStory extends React.Component {
   state = {

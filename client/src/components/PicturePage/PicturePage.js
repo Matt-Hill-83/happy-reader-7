@@ -9,7 +9,6 @@ import DragTest from "../DragTest/DragTest.js";
 import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import MiniLocation from "../MiniLocation/MiniLocation.js";
-import sentences from "../../Models/sentences.js";
 import WordPage from "../WordPage/WordPage.js";
 
 import css from "./PicturePage.module.scss";
@@ -18,10 +17,6 @@ import myWords from "../../Models/words.js";
 import Utils from "../../Utils/Utils.js";
 
 const { words, wordTypes } = myWords;
-// const { locationsMap } = sentences;
-
-// const WORLD_BUILDER = false;
-const WORLD_BUILDER = true;
 
 class PicturePage extends React.Component {
   constructor(props) {
@@ -77,7 +72,7 @@ class PicturePage extends React.Component {
   getLocationsForDragger = () => {
     const plot = localStateStore.getPlot();
 
-    return plot.scenes.map((location, colIndex) => {
+    return plot.allScenes.map((location, colIndex) => {
       return {
         id: `location-${colIndex}`,
         content: this.renderMiniLocation({ location })

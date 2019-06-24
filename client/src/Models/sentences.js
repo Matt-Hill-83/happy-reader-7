@@ -306,6 +306,21 @@ let locationsMap = [
   [scenes.house, {}, scenes.bog, scenes.bees]
 ];
 
+let locationsMaps = [
+  [
+    [{}, scenes.stump, scenes.pond, scenes.castle],
+    [{}, {}, scenes.cave, {}],
+    [scenes.pool, scenes.lake, scenes.barn, {}],
+    [scenes.house, {}, scenes.bog, scenes.bees]
+  ],
+  [
+    [{}, scenes.stump, scenes.pond, scenes.castle],
+    [{}, {}, scenes.cave, {}],
+    [{}, {}, {}, {}],
+    [scenes.house, {}, scenes.bog, scenes.bees]
+  ]
+];
+
 // create placeholders for empty rows
 locationsMap = locationsMap.map(row => {
   return row || [{}, {}, {}, {}];
@@ -316,11 +331,14 @@ let newScenes = locationsMap.flat();
 // remove empty scenes
 newScenes = newScenes.filter(scene => scene.name);
 
+const allScenes = Object.values(scenes);
+
 const generatePlot = () => {
   const plot = {
     activeScene: startScene,
     narrativeGenerators,
     scenes: newScenes,
+    allScenes,
     you: localStateStore.getYou(),
     locationsMap
   };
@@ -328,4 +346,4 @@ const generatePlot = () => {
   localStateStore.setPlot(plot);
 };
 
-export default { generateNewFriend, generatePlot, generateYou, locationsMap };
+export default { generateNewFriend, generatePlot, generateYou };
