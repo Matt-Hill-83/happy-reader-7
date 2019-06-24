@@ -45,10 +45,6 @@ class LocalStateStore {
 
   getActiveLocationsMap = () =>
     this.locationsMaps[this.activeLocationsMapIndex];
-  // getActiveLocationsMap = () => this.activelocationsMap;
-  // setActiveLocationsMap = activelocationsMap => {
-  //   this.activelocationsMap = activelocationsMap;
-  // };
 
   getActiveLocationsMapIndex = () => this.activeLocationsMapIndex;
   setActiveLocationsMapIndex = activeLocationsMapIndex => {

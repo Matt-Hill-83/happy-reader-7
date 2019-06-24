@@ -280,31 +280,10 @@ const generateScenes = () => {
     }
   };
 
-  for (let scene in scenes) {
-    scenes[scene].creatures &&
-      scenes[scene].creatures.length &&
-      scenes[scene].creatures.forEach(creature => {
-        const creatureName = Utils.getRandomItemByTypeAndUse({
-          type: wordTypes.name
-        });
-        creature.name = creatureName;
-      });
-  }
-
   return scenes;
 };
 
 const scenes = generateScenes();
-
-//  TODO = create locationsMap first, then create scenes list from it.
-//  TODO = create locationsMap first, then create scenes list from it.
-//  TODO = create locationsMap first, then create scenes list from it.
-let locationsMap = [
-  [{}, scenes.stump, scenes.pond, scenes.castle],
-  [{}, {}, scenes.cave, {}],
-  [scenes.pool, scenes.lake, scenes.barn, {}],
-  [scenes.house, {}, scenes.bog, scenes.bees]
-];
 
 let locationsMaps = [
   [
@@ -324,14 +303,9 @@ let locationsMaps = [
 localStateStore.setLocationsMaps(locationsMaps);
 
 // create placeholders for empty rows
-locationsMap = locationsMap.map(row => {
-  return row || [{}, {}, {}, {}];
-});
-
-// convert locations to 1D array with no empty scenes.
-let newScenes = locationsMap.flat();
-// remove empty scenes
-newScenes = newScenes.filter(scene => scene.name);
+// locationsMap = locationsMap.map(row => {
+//   return row || [{}, {}, {}, {}];
+// });
 
 const allScenes = Object.values(scenes);
 
@@ -339,11 +313,8 @@ const generatePlot = () => {
   const plot = {
     activeScene: startScene,
     narrativeGenerators,
-    // scenes: newScenes,
     allScenes,
-    you: localStateStore.getYou(),
-    locationsMap,
-    locationsMaps
+    you: localStateStore.getYou()
   };
 
   localStateStore.setPlot(plot);
