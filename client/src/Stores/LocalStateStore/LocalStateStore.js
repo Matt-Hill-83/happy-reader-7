@@ -25,7 +25,6 @@ class LocalStateStore {
   getPlot = () => this.plot;
   setPlot = plot => {
     this.plot = plot;
-    console.log("this.plot", this.plot); // zzz
   };
 
   getsmallMap = () => this.smallMap;
@@ -45,6 +44,10 @@ class LocalStateStore {
 
   getActiveLocationsMap = () =>
     this.locationsMaps[this.activeLocationsMapIndex];
+
+  incrementActiveLocationsMapIndex = () => {
+    this.activeLocationsMapIndex = this.activeLocationsMapIndex + 1;
+  };
 
   getActiveLocationsMapIndex = () => this.activeLocationsMapIndex;
   setActiveLocationsMapIndex = activeLocationsMapIndex => {

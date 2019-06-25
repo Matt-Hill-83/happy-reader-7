@@ -288,25 +288,59 @@ const scenes = generateScenes();
 let locationsMaps = [
   {
     startScene: scenes.house,
-    endScene: scenes.stump,
+    endScene: scenes.castle,
     grid: [
-      [{}, scenes.stump, scenes.pond, scenes.castle],
-      [{}, {}, scenes.cave, {}],
-      [scenes.pool, scenes.lake, scenes.barn, {}],
-      [scenes.house, {}, scenes.bog, scenes.bees]
+      [{}, {}, {}, {}],
+      [{}, {}, {}, {}],
+      [scenes.house, scenes.pond, scenes.castle, {}],
+      [{}, {}, {}, {}],
+      [{}, {}, {}, {}]
     ]
   },
   {
     startScene: scenes.house,
-    endScene: scenes.stump,
+    endScene: scenes.castle,
     grid: [
-      [{}, scenes.stump, scenes.pond, scenes.castle],
-      [{}, {}, scenes.cave, {}],
       [{}, {}, {}, {}],
-      [scenes.house, {}, scenes.bog, scenes.bees]
+      [{}, {}, {}, {}],
+      [scenes.house, scenes.bog, scenes.castle, {}],
+      [{}, {}, {}, {}]
+    ]
+  },
+  {
+    startScene: scenes.house,
+    endScene: scenes.castle,
+    grid: [
+      [{}, {}, {}, {}],
+      [{}, {}, {}, {}],
+      [scenes.house, scenes.lake, scenes.castle, {}],
+      [{}, {}, {}, {}]
     ]
   }
 ];
+
+// let locationsMaps = [
+//   {
+//     startScene: scenes.house,
+//     endScene: scenes.pool,
+//     grid: [
+//       [{}, scenes.stump, scenes.pond, scenes.castle],
+//       [{}, {}, scenes.cave, {}],
+//       [scenes.pool, scenes.lake, scenes.barn, {}],
+//       [scenes.house, {}, scenes.bog, scenes.bees]
+//     ]
+//   },
+//   {
+//     startScene: scenes.pond,
+//     endScene: scenes.stump,
+//     grid: [
+//       [{}, scenes.stump, scenes.pond, scenes.castle],
+//       [{}, {}, scenes.cave, {}],
+//       [{}, {}, {}, {}],
+//       [scenes.house, {}, scenes.bog, scenes.bees]
+//     ]
+//   }
+// ];
 
 localStateStore.setLocationsMaps(locationsMaps);
 

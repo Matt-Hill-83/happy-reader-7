@@ -1,6 +1,12 @@
 import React from "react";
 import { observer } from "mobx-react";
 
+import {
+  Dialog,
+  Popover,
+  Position,
+  PopoverInteractionKind
+} from "@blueprintjs/core";
 import mySentences from "../../Models/sentences.js";
 import FlashCards from "../FlashCards/FlashCards";
 import IntroPage1 from "../IntroPage1/IntroPage1.js";
@@ -43,6 +49,8 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
+    console.log("updateActiveScene"); // zzz
+
     console.log("activeScene", activeScene); // zzz
 
     const locationsMap = localStateStore.getActiveLocationsMap();
@@ -54,6 +62,7 @@ class MainStory extends React.Component {
 
     if (activeSceneName === endSceneName) {
       console.log("Yay!  You Win!"); // zzz
+      this.setState({ showYouWin: true });
 
       // TODO - show a popup and update the locationsMap and the active scene.
       // TODO - show a popup and update the locationsMap and the active scene.
@@ -143,6 +152,20 @@ class MainStory extends React.Component {
     }
   };
 
+  closeYouWin = () => {
+    console.log("close you win"); // zzz
+
+    this.setState({ showYouWin: false });
+    localStateStore.incrementActiveLocationsMapIndex();
+    const locationsMap = localStateStore.getActiveLocationsMap();
+    console.log("locationsMap", locationsMap); // zzz
+
+    const { startScene } = locationsMap;
+    console.log("startScene", startScene); // zzz
+
+    this.updateActiveScene({ activeScene: startScene });
+  };
+
   render() {
     const { className } = this.props;
     const { activeScene, pageNum } = this.state;
@@ -211,6 +234,14 @@ class MainStory extends React.Component {
             </div>
           )}
         </div>
+        <Dialog
+          isOpen={this.state.showYouWin}
+          content={"test2"}
+          isCloseButtonShown={true}
+        >
+          You Win!!!
+          <Button onClick={this.closeYouWin}>GO</Button>
+        </Dialog>
       </div>
     );
   }
