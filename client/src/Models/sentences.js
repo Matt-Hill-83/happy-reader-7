@@ -288,32 +288,32 @@ const scenes = generateScenes();
 let locationsMaps = [
   {
     startScene: scenes.house,
-    endScene: scenes.castle,
+    endScene: scenes.tree,
     grid: [
       [{}, {}, {}, {}],
-      [{}, {}, {}, {}],
-      [scenes.house, scenes.pond, scenes.castle, {}],
+      [{}, scenes.bog, {}, {}, {}],
+      [scenes.house, scenes.pond, scenes.bees, scenes.stump, scenes.tree],
       [{}, {}, {}, {}],
       [{}, {}, {}, {}]
     ]
   },
   {
     startScene: scenes.house,
-    endScene: scenes.castle,
+    endScene: scenes.tree,
     grid: [
       [{}, {}, {}, {}],
       [{}, {}, {}, {}],
-      [scenes.house, scenes.bog, scenes.castle, {}],
+      [scenes.house, scenes.bog, scenes.tree, {}],
       [{}, {}, {}, {}]
     ]
   },
   {
     startScene: scenes.house,
-    endScene: scenes.castle,
+    endScene: scenes.tree,
     grid: [
       [{}, {}, {}, {}],
       [{}, {}, {}, {}],
-      [scenes.house, scenes.lake, scenes.castle, {}],
+      [scenes.house, scenes.lake, scenes.tree, {}, {}],
       [{}, {}, {}, {}]
     ]
   }
