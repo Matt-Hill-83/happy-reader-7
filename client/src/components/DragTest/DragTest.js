@@ -143,7 +143,8 @@ export default class DragTest extends Component {
     const {
       source,
       source: { droppableId: sourceId },
-      destination
+      destination,
+      destination: { droppableId: destinationId }
     } = result;
 
     // dropped outside the list
@@ -152,7 +153,7 @@ export default class DragTest extends Component {
     }
 
     // for dragging within a single column
-    if (sourceId === destination.droppableId) {
+    if (sourceId === destinationId) {
       const items = this.reorder(
         this.getList({ id: sourceId }),
         source.index,
@@ -167,19 +168,19 @@ export default class DragTest extends Component {
       // if()
       const result = this.move(
         this.getList({ id: sourceId }),
-        this.getList({ id: destination.droppableId }),
+        this.getList({ id: destinationId }),
         source,
         destination
       );
 
       // TODO - dragging from grid to main list is broken.
       const { row, col } = this.getStorageRowColFromId({
-        id: destination.droppableId
+        id: destinationId
       });
 
       if (row) {
         const { locationsGrid } = this.state;
-        locationsGrid[row][col] = result[destination.droppableId];
+        locationsGrid[row][col] = result[destinationId];
 
         this.setState({
           [sourceId]: result[sourceId],
