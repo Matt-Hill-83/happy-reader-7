@@ -5,7 +5,7 @@ import images from "../images/images.js";
 
 const { wordTypes } = myWords;
 
-const homeLocation = "house";
+const homeLocation = "home";
 
 const generateYou = ({ you }) => {
   const defaultYou = {
@@ -207,8 +207,8 @@ const generateScenes = () => {
         bottom: { open: true }
       }
     },
-    house: {
-      name: "house",
+    home: {
+      name: "home",
       doors: {
         // right: { open: false }
       }
@@ -286,7 +286,7 @@ const generateScenes = () => {
 };
 
 const scenes = generateScenes();
-const scenes2 = Object.keys(images.locations.small);
+const scenes2 = Object.keys(images.locations);
 console.log("scenes2", scenes2); // zzz
 
 const test = scenes2.map(name => {
@@ -297,33 +297,33 @@ console.log("test", test); // zzz
 
 let locationsMaps = [
   {
-    startScene: scenes.house,
+    startScene: scenes.home,
     endScene: scenes.tree,
     grid: [
       [{}, {}, {}, {}],
       [{}, scenes.bog, {}, {}, {}],
-      [scenes.house, scenes.pond, scenes.bees, scenes.stump, scenes.tree],
+      [scenes.home, scenes.pond, scenes.bees, scenes.stump, scenes.tree],
       [{}, {}, {}, {}],
       [{}, {}, {}, {}]
     ]
   },
   {
-    startScene: scenes.house,
+    startScene: scenes.home,
     endScene: scenes.tree,
     grid: [
       [{}, {}, {}, {}],
       [{}, {}, {}, {}],
-      [scenes.house, scenes.bog, scenes.tree, {}],
+      [scenes.home, scenes.bog, scenes.tree, {}],
       [{}, {}, {}, {}]
     ]
   },
   {
-    startScene: scenes.house,
+    startScene: scenes.home,
     endScene: scenes.tree,
     grid: [
       [{}, {}, {}, {}],
       [{}, {}, {}, {}],
-      [scenes.house, scenes.lake, scenes.tree, {}, {}],
+      [scenes.home, scenes.lake, scenes.tree, {}, {}],
       [{}, {}, {}, {}]
     ]
   }
@@ -331,13 +331,13 @@ let locationsMaps = [
 
 // let locationsMaps = [
 //   {
-//     startScene: scenes.house,
+//     startScene: scenes.home,
 //     endScene: scenes.pool,
 //     grid: [
 //       [{}, scenes.stump, scenes.pond, scenes.castle],
 //       [{}, {}, scenes.cave, {}],
 //       [scenes.pool, scenes.lake, scenes.barn, {}],
-//       [scenes.house, {}, scenes.bog, scenes.bees]
+//       [scenes.home, {}, scenes.bog, scenes.bees]
 //     ]
 //   },
 //   {
@@ -347,7 +347,7 @@ let locationsMaps = [
 //       [{}, scenes.stump, scenes.pond, scenes.castle],
 //       [{}, {}, scenes.cave, {}],
 //       [{}, {}, {}, {}],
-//       [scenes.house, {}, scenes.bog, scenes.bees]
+//       [scenes.home, {}, scenes.bog, scenes.bees]
 //     ]
 //   }
 // ];

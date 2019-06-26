@@ -91,7 +91,7 @@ class MiniLocation extends React.Component {
 
     const localClass = isActive ? css.activeClass : "";
 
-    const miniLocation = Images.locations.small[locationName];
+    const miniLocation = Images.locations[locationName];
 
     const rockImage = Images.backgrounds["rock"];
     const doorImage = Images.backgrounds["door"];

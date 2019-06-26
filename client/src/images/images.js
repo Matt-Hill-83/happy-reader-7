@@ -1,35 +1,14 @@
-// locations
-import meadow from "./meadow.jpg";
-
-// import home from "./house-1.png";
-import school from "./school-1.jpg";
-import garden from "./garden-1.jpg";
-import forest from "./forest-3.jpg";
-import forestLeft from "./forest-1-left.png";
-import forestRight from "./forest-1-right.png";
-
-import fairy from "./fairy.png";
-import mermaid from "./mermaid.png";
-import elf from "./elf-1.png";
-import girl from "./girl-1.png";
-import unicorn from "./unicorn-1.png";
-
-// bad guys
-import troll from "./bad-guys/troll-01.png";
-import goblin from "./bad-guys/goblin.png";
-import zombie from "./bad-guys/zombie.png";
-
-import monster from "./monster.png";
-import hobbit from "./hobbit.png";
-import monsterGreen from "./monsterGreen.png";
-import wizard from "./wizard.png";
-import dragon from "./dragon.png";
-
 // backgrounds
-import map02 from "./backgrounds/map-05.jpg";
-import rock from "./backgrounds/rock-2.jpg";
 import door from "./backgrounds/door.png";
+import forest from "./backgrounds/forest-3.jpg";
+import forestLeft from "./backgrounds/forest-1-left.png";
+import forestRight from "./backgrounds/forest-1-right.png";
+import garden from "./backgrounds/garden-1.jpg";
 import gate from "./backgrounds/gate.png";
+import map02 from "./backgrounds/map-05.jpg";
+import meadow from "./backgrounds/meadow.jpg";
+import rock from "./backgrounds/rock-2.jpg";
+import school from "./backgrounds/school-1.jpg";
 
 //items
 import key from "./items/key.png";
@@ -40,31 +19,82 @@ import greenKey from "./items/green-key.png";
 import doorGreen from "./doors/doorGreen.png";
 import doorYellow from "./doors/doorYellow.jpg";
 
-//locations - small
-import castle from "./locations-small/castle.png";
-import house from "./locations-small/house.png";
-import tree from "./locations-small/treehouse.png";
-import waterfall from "./locations-small/waterfall.png";
-import stump from "./locations-small/stump.png";
-import bees from "./locations-small/bees.png";
-import swamp from "./locations-small/swamp.png";
-import lake from "./locations-small/lake.png";
-import barn from "./locations-small/barn.png";
-import bus from "./locations-small/bus.png";
+//locations
+import barn from "./locations/barn.png";
+import bees from "./locations/bees.png";
+import bog from "./locations/bog.png";
+import bus from "./locations/bus.png";
+import castle from "./locations/castle.png";
+import cave from "./locations/cave.png";
+import coop from "./locations/coop.png";
+import hill from "./locations/hill.png";
+import house from "./locations/house.png";
+import lake from "./locations/lake.png";
+import log from "./locations/log.png";
+import pond from "./locations/pond.png";
+import pool from "./locations/pool.png";
+import slide from "./locations/slide.png";
+import stump from "./locations/stump.png";
+import swamp from "./locations/swamp.png";
+import swing from "./locations/swing.png";
+import tree from "./locations/treehouse.png";
+import waterfall from "./locations/waterfall.png";
 
-import pond from "./locations-small/pond.png";
-import pool from "./locations-small/pool.png";
-import bog from "./locations-small/bog.png";
-import hill from "./locations-small/hill.png";
-import coop from "./locations-small/coop.png";
-
-import cave from "./locations-small/cave.png";
-import slide from "./locations-small/slide.png";
-import swing from "./locations-small/swing.png";
-// import seesaw from "./locations-small/seesaw.png";
-import log from "./locations-small/log.png";
+// creatures
+import bug from "./creatures/bug.png";
+import dragon from "./creatures/dragon.png";
+import elf from "./creatures/elf-1.png";
+import fairy from "./creatures/fairy.png";
+import girl from "./creatures/girl-1.png";
+import goblin from "./creatures/goblin.png";
+import hobbit from "./creatures/hobbit.png";
+import mermaid from "./creatures/mermaid.png";
+import monster from "./creatures/monster.png";
+import pig from "./creatures/pig.png";
+import troll from "./creatures/troll-01.png";
+import unicorn from "./creatures/unicorn-1.png";
+import wizard from "./creatures/wizard.png";
+import zombie from "./creatures/zombie.png";
 
 export default {
+  locations: {
+    barn,
+    bees,
+    bog,
+    castle,
+    cave,
+    coop,
+    hill,
+    home: house,
+    lake,
+    log,
+    pond,
+    pool,
+    slide,
+    stump,
+    swamp,
+    swing,
+    tree,
+    bus,
+    waterfall
+  },
+  creatures: {
+    bug,
+    dragon,
+    pig,
+    elf,
+    fairy,
+    girl,
+    goblin,
+    hobbit,
+    mermaid,
+    monster,
+    school,
+    troll,
+    unicorn,
+    wizard,
+    zombie
+  },
   backgrounds: {
     door,
     forest,
@@ -72,7 +102,6 @@ export default {
     forestRight,
     garden,
     gate,
-    // home,
     map02,
     meadow,
     rock,
@@ -86,58 +115,5 @@ export default {
   doors: {
     doorGreen,
     doorYellow
-  },
-  locations: {
-    small: {
-      barn,
-      bees,
-      bog,
-
-      castle,
-      cave,
-      coop,
-      hill,
-      home: house,
-      lake,
-      log,
-      pond,
-      pool,
-      slide,
-      stump,
-      swamp,
-      swing,
-      tree,
-      bus,
-
-      waterfall
-    },
-    large: {
-      // castle,
-      // house: home,
-      // treehouse,
-      waterfall
-    }
-  },
-
-  creatures: {
-    fairy,
-    troll,
-    goblin,
-    zombie,
-    meadow,
-    wizard,
-    dragon,
-    unicorn,
-    monster,
-    hobbit,
-    monsterGreen,
-    waterfall,
-    // home,
-    school,
-    garden,
-    forest,
-    girl,
-    elf,
-    mermaid
   }
 };

@@ -174,7 +174,7 @@ class PicturePage extends React.Component {
     const backgroundImage = Images["forest"];
     const activeLocationName = activeScene.name;
 
-    const miniLocationImage = Images.locations.small[activeLocationName];
+    const miniLocationImage = Images.locations[activeLocationName];
 
     return (
       <div className={`${css.halfPage} ${css.leftHalf}`}>

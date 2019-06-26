@@ -3,8 +3,8 @@ import { observable, computed, action, decorate } from "mobx";
 class LocalStateStore {
   page = "";
   smallMap = true;
-  showWorldBuilder = false;
-  // showWorldBuilder = true;
+  // showWorldBuilder = false;
+  showWorldBuilder = true;
   you = {};
   plot = {};
   locationsMaps = [];
