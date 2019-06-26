@@ -62,7 +62,7 @@ export default class DragTest extends Component {
   /**
    * Moves an item from one list to another list.
    */
-  move = (source, destination, droppableSource, droppableDestination) => {
+  move = ({ source, destination, droppableSource, droppableDestination }) => {
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const [removed] = sourceClone.splice(droppableSource.index, 1);
@@ -177,12 +177,12 @@ export default class DragTest extends Component {
       ) {
         console.log("SOURCE_CREATURES_PROP_NAME"); // zzz
       } else {
-        result = this.move(
-          this.getList({ id: sourceId }),
-          this.getList({ id: destinationId }),
-          source,
-          destination
-        );
+        result = this.move({
+          source: this.getList({ id: sourceId }),
+          destination: this.getList({ id: destinationId }),
+          droppableSource: source,
+          droppableDestination: destination
+        });
 
         // TODO - dragging from grid to main list is broken.
         const { row, col } = this.getStorageRowColFromId({
