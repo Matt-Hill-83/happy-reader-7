@@ -12,11 +12,12 @@ const NUM_ROWS_LOCATIONS_GRID = 8;
 const NUM_COLS_LOCATIONS_GRID = 5;
 const COLUMN_WIDTH = 150;
 const LOCATIONS_PREFIX = "locationsGrid";
+const SOURCE_CREATURES_PROP_NAME = "sourceCreatures";
 // const LOCATIONS_PREFIX = "locationsGrid";
 
 export default class DragTest extends Component {
   state = {
-    sourceCreatures: [],
+    [SOURCE_CREATURES_PROP_NAME]: [],
     sourceItems: []
   };
 
@@ -44,7 +45,7 @@ export default class DragTest extends Component {
 
     this.setState({
       sourceItems: locations,
-      sourceCreatures: creatureObjects,
+      [SOURCE_CREATURES_PROP_NAME]: creatureObjects,
       ...preAllocatedArrays
     });
   }
@@ -119,7 +120,7 @@ export default class DragTest extends Component {
   componentWillReceiveProps(newProps) {}
 
   getList = ({ id }) => {
-    if (id === "sourceItems" || id === "sourceCreatures") {
+    if (id === "sourceItems" || id === SOURCE_CREATURES_PROP_NAME) {
       return this.state[id];
     } else {
       const { row, col, prefix } = this.getStorageRowColFromId({ id });
@@ -165,7 +166,9 @@ export default class DragTest extends Component {
       this.setState(state);
     } else {
       // dragging to a different destination
-      // if()
+      if (sourceId === "SOURCE_CREATURES_PROP_NAME") {
+        console.log("SOURCE_CREATURES_PROP_NAME"); // zzz
+      }
       const result = this.move(
         this.getList({ id: sourceId }),
         this.getList({ id: destinationId }),
@@ -342,8 +345,8 @@ export default class DragTest extends Component {
         <div className={css.content}>
           <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
             {this.renderList({
-              droppableId: "sourceCreatures",
-              items: this.state["sourceCreatures"],
+              droppableId: SOURCE_CREATURES_PROP_NAME,
+              items: this.state[SOURCE_CREATURES_PROP_NAME],
               className: css.source
             })}
             {this.renderList({
