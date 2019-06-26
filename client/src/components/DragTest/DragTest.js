@@ -119,7 +119,7 @@ export default class DragTest extends Component {
   componentWillReceiveProps(newProps) {}
 
   getList = ({ id }) => {
-    if (id === "sourceItems") {
+    if (id === "sourceItems" || id === "sourceCreatures") {
       return this.state[id];
     } else {
       const { row, col, prefix } = this.getStorageRowColFromId({ id });
