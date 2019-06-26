@@ -74,6 +74,8 @@ class PicturePage extends React.Component {
     return plot.allScenes.map((location, colIndex) => {
       return {
         id: `location-${colIndex}`,
+        creatures: [],
+        // This should be rendered in the DragTest component, based on what creatures have been added.
         content: this.renderMiniLocation({ location })
       };
     });

@@ -34,6 +34,7 @@ export default class DragTest extends Component {
 
       return {
         id,
+        name,
         content: (
           <div className={css.characterImage}>
             <img src={miniLocationImage} alt={"imagex"} />
@@ -169,13 +170,49 @@ export default class DragTest extends Component {
       this.setState(state);
     } else {
       // dragging to a different destination
-      let result;
+      let result = {};
       // dragging a creature to a different destination
       if (
         sourceId === SOURCE_CREATURES_PROP_NAME &&
+        // TODO -  should specifically reference locationsGrid
         destinationId !== SOURCE_CREATURES_PROP_NAME
       ) {
         console.log("SOURCE_CREATURES_PROP_NAME"); // zzz
+
+        //////////////
+
+        const sourceList = this.getList({ id: sourceId });
+        const destinationList = this.getList({ id: destinationId });
+        const droppableSource = source;
+        const droppableDestination = destination;
+
+        const sourceListClone = Array.from(sourceList);
+        const destListClone = Array.from(destinationList);
+
+        const [removed] = sourceListClone.splice(droppableSource.index, 1);
+        destListClone[0].content.props.creatures.push(removed.name);
+
+        // TODO - the locations need to be just definitions, not rendered, so I can add creates here and then render them.
+        // TODO - the locations need to be just definitions, not rendered, so I can add creates here and then render them.
+        // TODO - the locations need to be just definitions, not rendered, so I can add creates here and then render them.
+        // TODO - the locations need to be just definitions, not rendered, so I can add creates here and then render them.
+        // destListClone[0].content.props.creatures.push("elf");
+
+        console.log("destListClone", destListClone); // zzz
+        console.log("removed", removed); // zzz
+
+        const removedFromDest = destListClone.splice(
+          0,
+          destListClone.length,
+          removed
+        );
+        // do this different
+        // sourceListClone.push(...removedFromDest);
+
+        result[sourceId] = sourceListClone;
+        result[destinationId] = destListClone;
+
+        //////////////
       } else {
         result = this.move({
           source: this.getList({ id: sourceId }),

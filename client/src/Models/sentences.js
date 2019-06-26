@@ -290,7 +290,7 @@ const scenes2 = Object.keys(images.locations);
 console.log("scenes2", scenes2); // zzz
 
 const test = scenes2.map(name => {
-  return { name, doors: [] };
+  return { name, doors: [], creatures: [] };
 });
 
 console.log("test", test); // zzz
