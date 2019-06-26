@@ -140,17 +140,21 @@ export default class DragTest extends Component {
   };
 
   onDragEnd = result => {
-    const { source, destination } = result;
+    const {
+      source,
+      source: { droppableId: sourceId },
+      destination
+    } = result;
 
     // dropped outside the list
     if (!destination) {
       return;
     }
 
-    if (source.droppableId === destination.droppableId) {
-      // for dragging within a single column
+    // for dragging within a single column
+    if (sourceId === destination.droppableId) {
       const items = this.reorder(
-        this.getList({ id: source.droppableId }),
+        this.getList({ id: sourceId }),
         source.index,
         destination.index
       );
@@ -159,8 +163,10 @@ export default class DragTest extends Component {
 
       this.setState(state);
     } else {
+      // dragging to a different destination
+      // if()
       const result = this.move(
-        this.getList({ id: source.droppableId }),
+        this.getList({ id: sourceId }),
         this.getList({ id: destination.droppableId }),
         source,
         destination
@@ -176,7 +182,7 @@ export default class DragTest extends Component {
         locationsGrid[row][col] = result[destination.droppableId];
 
         this.setState({
-          [source.droppableId]: result[source.droppableId],
+          [sourceId]: result[sourceId],
           locationsGrid
         });
       }
