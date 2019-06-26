@@ -1,8 +1,7 @@
 // locations
 import meadow from "./meadow.jpg";
-import waterfall from "./waterfall-1.jpg";
 
-import home from "./house-1.png";
+// import home from "./house-1.png";
 import school from "./school-1.jpg";
 import garden from "./garden-1.jpg";
 import forest from "./forest-3.jpg";
@@ -45,12 +44,13 @@ import doorYellow from "./doors/doorYellow.jpg";
 import castle from "./locations-small/castle.png";
 import house from "./locations-small/house.png";
 import tree from "./locations-small/treehouse.png";
-import waterfallSmall from "./locations-small/waterfall.png";
+import waterfall from "./locations-small/waterfall.png";
 import stump from "./locations-small/stump.png";
 import bees from "./locations-small/bees.png";
 import swamp from "./locations-small/swamp.png";
 import lake from "./locations-small/lake.png";
 import barn from "./locations-small/barn.png";
+import bus from "./locations-small/bus.png";
 
 import pond from "./locations-small/pond.png";
 import pool from "./locations-small/pool.png";
@@ -72,12 +72,11 @@ export default {
     forestRight,
     garden,
     gate,
-    home,
+    // home,
     map02,
     meadow,
     rock,
-    school,
-    waterfall
+    school
   },
   items: {
     hat,
@@ -93,30 +92,33 @@ export default {
       barn,
       bees,
       bog,
+
       castle,
       cave,
       coop,
       hill,
-      house,
+      home: house,
       lake,
       log,
       pond,
       pool,
-      // seesaw,
       slide,
       stump,
       swamp,
       swing,
       tree,
-      waterfall: waterfallSmall
+      bus,
+
+      waterfall
     },
     large: {
       // castle,
-      house: home,
+      // house: home,
       // treehouse,
       waterfall
     }
   },
+
   creatures: {
     fairy,
     troll,
@@ -130,7 +132,7 @@ export default {
     hobbit,
     monsterGreen,
     waterfall,
-    home,
+    // home,
     school,
     garden,
     forest,

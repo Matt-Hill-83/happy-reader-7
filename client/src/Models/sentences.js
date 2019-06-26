@@ -1,6 +1,7 @@
 import myWords from "../Models/words.js";
 import Utils from "../Utils/Utils.js";
 import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js";
+import images from "../images/images.js";
 
 const { wordTypes } = myWords;
 
@@ -252,6 +253,7 @@ const generateScenes = () => {
         bottom: { open: true }
       }
     },
+
     coop: {
       name: "coop",
       doors: {
@@ -284,6 +286,14 @@ const generateScenes = () => {
 };
 
 const scenes = generateScenes();
+const scenes2 = Object.keys(images.locations.small);
+console.log("scenes2", scenes2); // zzz
+
+const test = scenes2.map(name => {
+  return { name, doors: [] };
+});
+
+console.log("test", test); // zzz
 
 let locationsMaps = [
   {
@@ -355,11 +365,14 @@ const generatePlot = () => {
   const plot = {
     activeScene: startScene,
     narrativeGenerators,
-    allScenes,
+    allScenes: test,
+    // allScenes,
     you: localStateStore.getYou()
   };
 
   localStateStore.setPlot(plot);
 };
+
+console.log("images", images); // zzz
 
 export default { generateNewFriend, generatePlot, generateYou };
