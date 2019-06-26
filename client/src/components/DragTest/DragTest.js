@@ -148,6 +148,9 @@ export default class DragTest extends Component {
       destination: { droppableId: destinationId }
     } = result;
 
+    console.log("sourceId", sourceId); // zzz
+    console.log("destinationId", destinationId); // zzz
+
     // dropped outside the list
     if (!destination) {
       return;
@@ -166,29 +169,35 @@ export default class DragTest extends Component {
       this.setState(state);
     } else {
       // dragging to a different destination
-      if (sourceId === "SOURCE_CREATURES_PROP_NAME") {
+      let result;
+      // dragging a creature to a different destination
+      if (
+        sourceId === SOURCE_CREATURES_PROP_NAME &&
+        destinationId !== SOURCE_CREATURES_PROP_NAME
+      ) {
         console.log("SOURCE_CREATURES_PROP_NAME"); // zzz
-      }
-      const result = this.move(
-        this.getList({ id: sourceId }),
-        this.getList({ id: destinationId }),
-        source,
-        destination
-      );
+      } else {
+        result = this.move(
+          this.getList({ id: sourceId }),
+          this.getList({ id: destinationId }),
+          source,
+          destination
+        );
 
-      // TODO - dragging from grid to main list is broken.
-      const { row, col } = this.getStorageRowColFromId({
-        id: destinationId
-      });
-
-      if (row) {
-        const { locationsGrid } = this.state;
-        locationsGrid[row][col] = result[destinationId];
-
-        this.setState({
-          [sourceId]: result[sourceId],
-          locationsGrid
+        // TODO - dragging from grid to main list is broken.
+        const { row, col } = this.getStorageRowColFromId({
+          id: destinationId
         });
+
+        if (row) {
+          const { locationsGrid } = this.state;
+          locationsGrid[row][col] = result[destinationId];
+
+          this.setState({
+            [sourceId]: result[sourceId],
+            locationsGrid
+          });
+        }
       }
     }
 
