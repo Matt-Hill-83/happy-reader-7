@@ -327,6 +327,7 @@ export default class DragTest extends Component {
   // };
 
   transformLocationsGridToLocationsMap = () => {
+    return [];
     const { locationsGrid } = this.state;
     const locationsMap = [];
 
