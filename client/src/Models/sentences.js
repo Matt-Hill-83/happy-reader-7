@@ -334,6 +334,9 @@ const creaturesFromImages = Object.keys(images.creatures);
 const allScenes = locationsFromImages.map(name => {
   return { name, doors: [], creatures: [] };
 });
+const allCreatures = creaturesFromImages.map(name => {
+  return { name };
+});
 
 console.log("allScenes", allScenes); // zzz
 
@@ -342,7 +345,7 @@ const generatePlot = () => {
     activeScene: startScene,
     narrativeGenerators,
     allScenes,
-    allCreatures: creaturesFromImages,
+    allCreatures,
     you: localStateStore.getYou()
   };
 

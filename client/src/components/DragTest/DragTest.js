@@ -26,55 +26,41 @@ export default class DragTest extends Component {
   };
 
   async componentWillMount() {
-    const { creatures } = this.props;
-
-    // const creatures = Utils.getWordsByType({
-    //   words: words,
-    //   type: wordTypes.creature
-    // });
-
     const plot = localStateStore.getPlot();
 
-    const { allScenes, allCreatuures } = plot;
+    const { allScenes, allCreatures } = plot;
 
-    const locations = allScenes.map((scene, index) => {
+    const locations = allScenes.map((item, index) => {
       return {
         id: `${LOCATIONS_TAG}-${index}`,
-        // content: <span>test</span>,
-        scene
+        scene: item
       };
     });
 
-    // const creatures = allScenes.map((scene, index) => {
-    //   return {
-    //     id: `${CREATURES_TAG}-${index}`,
-    //     // content: <span>test</span>,
-    //     scene
-    //   };
-    // });
-
-    console.log("locations", locations); // zzz
-
+    // generate placeholders for output grid in state
     const preAllocatedArrays = this.preAllocateArrays();
 
-    // TODO: export and save maps
-    // TODO: allow creature to be dropped into images
-    const creatureObjects = creatures.map((creature, index) => {
+    const creatureObjects = allCreatures.map((creature, index) => {
       const { name } = creature;
-      const miniLocationImage = Images.creatures[name];
-      const id = `creature-${index}`;
+      console.log("name", name); // zzz
+
+      const image = Images.creatures[name];
+      const id = `${CREATURES_TAG}-${index}`;
 
       return {
         id,
         name,
         content: (
           <div className={css.characterImage}>
-            <img src={miniLocationImage} alt={"imagex"} />
+            <img src={image} alt={"creature image"} />
             <span className={css.characterLabel}>{name}</span>
           </div>
         )
       };
     });
+
+    console.log("creatureObjects", creatureObjects); // zzz
+    console.log("locations", locations); // zzz
 
     this.setState({
       [SOURCE_LOCATIONS_PROP_NAME]: locations,
@@ -391,11 +377,9 @@ export default class DragTest extends Component {
         {items &&
           items.map((item, index) => {
             const { scene, id, characters, name = "" } = item;
-            let content = item.content;
+            let content = <span>no image</span>;
 
             if (id.includes(LOCATIONS_TAG)) {
-              console.log("id", id); // zzz
-
               content = (
                 <MiniLocation
                   id={id}
@@ -404,6 +388,10 @@ export default class DragTest extends Component {
                   characters={characters}
                 />
               );
+            } else {
+              content = item.content;
+              // content = <div>mydiv</div>;
+              console.log("content", content); // zzz
             }
 
             return (

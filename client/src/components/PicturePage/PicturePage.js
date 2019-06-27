@@ -235,19 +235,14 @@ class PicturePage extends React.Component {
     const smallMap = localStateStore.getsmallMap();
     const storyClass = smallMap ? css.smallMap : "";
 
-    const creatures = Utils.getWordsByType({
-      words: words,
-      type: wordTypes.creature
-    });
+    // const creatures = Utils.getWordsByType({
+    //   words: words,
+    //   type: wordTypes.creature
+    // });
     const showWorldBuilder = localStateStore.getShowWorldBuilder();
 
     if (showWorldBuilder) {
-      return (
-        <DragTest
-          // locations={this.getLocationsForDragger()}
-          creatures={creatures}
-        />
-      );
+      return <DragTest />;
     } else {
       return (
         <div className={`${css.main} ${storyClass}`}>
