@@ -3,17 +3,17 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Button } from "@blueprintjs/core";
 
 import Images from "../../images/images";
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
+import MiniLocation from "../MiniLocation/MiniLocation";
 
 import css from "./DragTest.module.scss";
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 
 const NUM_ROWS_LOCATIONS_GRID = 8;
-// const numRows = 8;
 const NUM_COLS_LOCATIONS_GRID = 5;
 const COLUMN_WIDTH = 150;
 const LOCATIONS_PREFIX = "locationsGrid";
+const LOCATIONS_TAG = "location";
 const SOURCE_CREATURES_PROP_NAME = "sourceCreatures";
-// const LOCATIONS_PREFIX = "locationsGrid";
 
 export default class DragTest extends Component {
   state = {
@@ -22,7 +22,25 @@ export default class DragTest extends Component {
   };
 
   async componentWillMount() {
-    const { locations, creatures } = this.props;
+    const { creatures } = this.props;
+
+    // const creatures = Utils.getWordsByType({
+    //   words: words,
+    //   type: wordTypes.creature
+    // });
+
+    const plot = localStateStore.getPlot();
+
+    const locations = plot.allScenes.map((scene, index) => {
+      return {
+        id: `${LOCATIONS_TAG}-${index}`,
+        content: <span>test</span>,
+        scene
+      };
+    });
+
+    console.log("locations", locations); // zzz
+
     const preAllocatedArrays = this.preAllocateArrays();
 
     // TODO: export and save maps
@@ -241,51 +259,6 @@ export default class DragTest extends Component {
     this.saveMap();
   };
 
-  renderItems = ({ provided, snapshot, items }) => {
-    return (
-      <div
-        ref={provided.innerRef}
-        style={this.getListStyle(snapshot.isDraggingOver)}
-      >
-        {items &&
-          items.map((item, index) => (
-            <Draggable key={item.id} draggableId={item.id} index={index}>
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                  style={this.getItemStyle(
-                    snapshot.isDragging,
-                    provided.draggableProps.style
-                  )}
-                >
-                  {item.content}
-                </div>
-              )}
-            </Draggable>
-          ))}
-        {provided.placeholder}
-      </div>
-    );
-  };
-
-  renderList = ({ droppableId, items, className }) => {
-    return (
-      <div className={className}>
-        <Droppable droppableId={droppableId}>
-          {(provided, snapshot) =>
-            this.renderItems({
-              provided,
-              snapshot,
-              items
-            })
-          }
-        </Droppable>
-      </div>
-    );
-  };
-
   createLocationsGridRows = ({ numTargetsInRow, numRows, prefix }) => {
     const targetArraysRows = [];
     for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
@@ -376,6 +349,69 @@ export default class DragTest extends Component {
     return locationsMap;
   };
 
+  renderList = ({ droppableId, items, className }) => {
+    return (
+      <div className={className}>
+        <Droppable droppableId={droppableId}>
+          {(provided, snapshot) =>
+            this.renderItems({
+              provided,
+              snapshot,
+              items
+            })
+          }
+        </Droppable>
+      </div>
+    );
+  };
+
+  renderItems = ({ provided, snapshot, items }) => {
+    return (
+      <div
+        ref={provided.innerRef}
+        style={this.getListStyle(snapshot.isDraggingOver)}
+      >
+        {items &&
+          items.map((item, index) => {
+            const { scene, id, characters, name = "" } = item;
+            let content = item.content;
+
+            if (id.includes(LOCATIONS_TAG)) {
+              console.log("id", id); // zzz
+
+              content = (
+                <MiniLocation
+                  id={id}
+                  key={name}
+                  location={scene}
+                  characters={characters}
+                />
+              );
+            }
+
+            return (
+              <Draggable key={item.id} draggableId={item.id} index={index}>
+                {(provided, snapshot) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    style={this.getItemStyle(
+                      snapshot.isDragging,
+                      provided.draggableProps.style
+                    )}
+                  >
+                    {content}
+                  </div>
+                )}
+              </Draggable>
+            );
+          })}
+        {provided.placeholder}
+      </div>
+    );
+  };
+
   render() {
     return (
       <div className={css.main}>
@@ -400,11 +436,11 @@ export default class DragTest extends Component {
               items: this.state["sourceItems"],
               className: css.source
             })}
-            {this.createLocationsGridRows({
+            {/* {this.createLocationsGridRows({
               numTargetsInRow: NUM_COLS_LOCATIONS_GRID,
               numRows: NUM_ROWS_LOCATIONS_GRID,
               prefix: LOCATIONS_PREFIX
-            })}
+            })} */}
           </DragDropContext>
         </div>
       </div>

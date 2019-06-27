@@ -244,7 +244,7 @@ class PicturePage extends React.Component {
     if (showWorldBuilder) {
       return (
         <DragTest
-          locations={this.getLocationsForDragger()}
+          // locations={this.getLocationsForDragger()}
           creatures={creatures}
         />
       );
