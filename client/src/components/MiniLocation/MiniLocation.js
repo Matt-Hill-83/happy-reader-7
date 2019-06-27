@@ -1,6 +1,6 @@
 import React from "react";
 import { observer } from "mobx-react";
-
+import { toJS } from "mobx";
 import Images from "../../images/images.js";
 // import _get from "lodash.get";
 
@@ -77,15 +77,40 @@ class MiniLocation extends React.Component {
     );
   };
 
+  renderCharacters = ({ isActive, characters: creatures }) => {
+    const creatureType = creatures.length > 0 && creatures[0].type;
+
+    const image = Images.creatures[creatureType] || null;
+
+    const friend = (
+      <img
+        className={`${css.characterImageMini} ${css.character1Mini}`}
+        src={image}
+        alt={creatureType}
+      />
+    );
+
+    const you = isActive ? this.renderYouMini() : null;
+    const characters = [you, friend];
+
+    return characters;
+  };
+
   render() {
     const {
       location,
-      characters,
+      characters = ["bug"],
       isActive,
       className,
       showLabel = true,
       id
     } = this.props;
+
+    // // console.log("characters", characters); // zzz
+    // console.log("toJS", toJS); // zzz
+
+    const data = toJS(characters);
+    console.log("data", data); // zzz
 
     const { items = [], name: locationName } = location;
 
@@ -137,7 +162,9 @@ class MiniLocation extends React.Component {
           />
         </div>
         {renderedItems || null}
-        <div className={css.characters}>{characters}</div>
+        <div className={css.characters}>
+          {this.renderCharacters({ characters })}
+        </div>
         {showLabel && <span className={css.locationTitle}>{locationName}</span>}
       </div>
     );

@@ -207,6 +207,9 @@ export default class DragTest extends Component {
         const destListClone = Array.from(destinationList);
 
         const [removed] = sourceListClone.splice(droppableSource.index, 1);
+        if (!destListClone[0]) {
+          return;
+        }
         destListClone[0].scene.creatures.push(removed.name);
 
         console.log("destListClone", destListClone); // zzz
@@ -384,16 +387,21 @@ export default class DragTest extends Component {
       >
         {items &&
           items.map((item, index) => {
-            const { scene, id, characters, name = "" } = item;
+            const { scene, id, name = "" } = item;
             let content = <span>content missing</span>;
+            // console.log("item", item); // zzz
 
             if (id.includes(LOCATIONS_TAG)) {
+              const creatures = scene && scene.creatures;
+              console.log("creatures", creatures); // zzz
+
               content = (
                 <MiniLocation
                   id={id}
                   key={name}
                   location={scene}
-                  characters={characters}
+                  characters={creatures}
+                  // characters={characters}
                 />
               );
             } else {
@@ -424,6 +432,8 @@ export default class DragTest extends Component {
   };
 
   render() {
+    console.log("this.state", this.state); // zzz
+
     return (
       <div className={css.main}>
         <div className={css.header}>
