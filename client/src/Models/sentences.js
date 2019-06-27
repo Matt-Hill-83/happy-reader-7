@@ -286,14 +286,6 @@ const generateScenes = () => {
 };
 
 const scenes = generateScenes();
-const scenes2 = Object.keys(images.locations);
-console.log("scenes2", scenes2); // zzz
-
-const test = scenes2.map(name => {
-  return { name, doors: [], creatures: [] };
-});
-
-console.log("test", test); // zzz
 
 let locationsMaps = [
   {
@@ -329,29 +321,6 @@ let locationsMaps = [
   }
 ];
 
-// let locationsMaps = [
-//   {
-//     startScene: scenes.home,
-//     endScene: scenes.pool,
-//     grid: [
-//       [{}, scenes.stump, scenes.pond, scenes.castle],
-//       [{}, {}, scenes.cave, {}],
-//       [scenes.pool, scenes.lake, scenes.barn, {}],
-//       [scenes.home, {}, scenes.bog, scenes.bees]
-//     ]
-//   },
-//   {
-//     startScene: scenes.pond,
-//     endScene: scenes.stump,
-//     grid: [
-//       [{}, scenes.stump, scenes.pond, scenes.castle],
-//       [{}, {}, scenes.cave, {}],
-//       [{}, {}, {}, {}],
-//       [scenes.home, {}, scenes.bog, scenes.bees]
-//     ]
-//   }
-// ];
-
 localStateStore.setLocationsMaps(locationsMaps);
 
 // create placeholders for empty rows
@@ -359,14 +328,21 @@ localStateStore.setLocationsMaps(locationsMaps);
 //   return row || [{}, {}, {}, {}];
 // });
 
-const allScenes = Object.values(scenes);
+const locationsFromImages = Object.keys(images.locations);
+const creaturesFromImages = Object.keys(images.creatures);
+
+const allScenes = locationsFromImages.map(name => {
+  return { name, doors: [], creatures: [] };
+});
+
+console.log("allScenes", allScenes); // zzz
 
 const generatePlot = () => {
   const plot = {
     activeScene: startScene,
     narrativeGenerators,
-    allScenes: test,
-    // allScenes,
+    allScenes,
+    allCreatures: creaturesFromImages,
     you: localStateStore.getYou()
   };
 

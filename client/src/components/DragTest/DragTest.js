@@ -14,6 +14,7 @@ const COLUMN_WIDTH = 150;
 
 const LOCATIONS_PREFIX = "locationsGrid";
 const LOCATIONS_TAG = "location";
+const CREATURES_TAG = "creature";
 
 const SOURCE_CREATURES_PROP_NAME = "sourceCreatures";
 const SOURCE_LOCATIONS_PROP_NAME = "sourceLocations";
@@ -34,13 +35,23 @@ export default class DragTest extends Component {
 
     const plot = localStateStore.getPlot();
 
-    const locations = plot.allScenes.map((scene, index) => {
+    const { allScenes, allCreatuures } = plot;
+
+    const locations = allScenes.map((scene, index) => {
       return {
         id: `${LOCATIONS_TAG}-${index}`,
-        content: <span>test</span>,
+        // content: <span>test</span>,
         scene
       };
     });
+
+    // const creatures = allScenes.map((scene, index) => {
+    //   return {
+    //     id: `${CREATURES_TAG}-${index}`,
+    //     // content: <span>test</span>,
+    //     scene
+    //   };
+    // });
 
     console.log("locations", locations); // zzz
 
