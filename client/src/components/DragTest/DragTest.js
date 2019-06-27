@@ -11,14 +11,17 @@ import css from "./DragTest.module.scss";
 const NUM_ROWS_LOCATIONS_GRID = 8;
 const NUM_COLS_LOCATIONS_GRID = 5;
 const COLUMN_WIDTH = 150;
+
 const LOCATIONS_PREFIX = "locationsGrid";
 const LOCATIONS_TAG = "location";
+
 const SOURCE_CREATURES_PROP_NAME = "sourceCreatures";
+const SOURCE_LOCATIONS_PROP_NAME = "sourceLocations";
 
 export default class DragTest extends Component {
   state = {
     [SOURCE_CREATURES_PROP_NAME]: [],
-    sourceItems: []
+    [SOURCE_LOCATIONS_PROP_NAME]: []
   };
 
   async componentWillMount() {
@@ -63,7 +66,7 @@ export default class DragTest extends Component {
     });
 
     this.setState({
-      sourceItems: locations,
+      [SOURCE_LOCATIONS_PROP_NAME]: locations,
       [SOURCE_CREATURES_PROP_NAME]: creatureObjects,
       ...preAllocatedArrays
     });
@@ -139,7 +142,10 @@ export default class DragTest extends Component {
   componentWillReceiveProps(newProps) {}
 
   getList = ({ id }) => {
-    if (id === "sourceItems" || id === SOURCE_CREATURES_PROP_NAME) {
+    if (
+      id === SOURCE_LOCATIONS_PROP_NAME ||
+      id === SOURCE_CREATURES_PROP_NAME
+    ) {
       return this.state[id];
     } else {
       const { row, col, prefix } = this.getStorageRowColFromId({ id });
@@ -432,15 +438,15 @@ export default class DragTest extends Component {
               className: css.source
             })}
             {this.renderList({
-              droppableId: "sourceItems",
-              items: this.state["sourceItems"],
+              droppableId: SOURCE_LOCATIONS_PROP_NAME,
+              items: this.state[SOURCE_LOCATIONS_PROP_NAME],
               className: css.source
             })}
-            {/* {this.createLocationsGridRows({
+            {this.createLocationsGridRows({
               numTargetsInRow: NUM_COLS_LOCATIONS_GRID,
               numRows: NUM_ROWS_LOCATIONS_GRID,
               prefix: LOCATIONS_PREFIX
-            })} */}
+            })}
           </DragDropContext>
         </div>
       </div>
