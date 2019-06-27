@@ -10,13 +10,9 @@ import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import MiniLocation from "../MiniLocation/MiniLocation.js";
 import WordPage from "../WordPage/WordPage.js";
+import myWords from "../../Models/words.js";
 
 import css from "./PicturePage.module.scss";
-
-import myWords from "../../Models/words.js";
-import Utils from "../../Utils/Utils.js";
-
-const { words, wordTypes } = myWords;
 
 class PicturePage extends React.Component {
   constructor(props) {
@@ -235,10 +231,6 @@ class PicturePage extends React.Component {
     const smallMap = localStateStore.getsmallMap();
     const storyClass = smallMap ? css.smallMap : "";
 
-    // const creatures = Utils.getWordsByType({
-    //   words: words,
-    //   type: wordTypes.creature
-    // });
     const showWorldBuilder = localStateStore.getShowWorldBuilder();
 
     if (showWorldBuilder) {

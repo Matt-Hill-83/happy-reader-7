@@ -49,24 +49,15 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
-    console.log("updateActiveScene"); // zzz
-
     console.log("activeScene", activeScene); // zzz
 
     const locationsMap = localStateStore.getActiveLocationsMap();
 
     const activeSceneName = activeScene.name;
     const endSceneName = locationsMap.endScene.name;
-    console.log("endSceneName", endSceneName); // zzz
-    console.log("activeSceneName", activeSceneName); // zzz
 
     if (activeSceneName === endSceneName) {
-      console.log("Yay!  You Win!"); // zzz
       this.setState({ showYouWin: true });
-
-      // TODO - show a popup and update the locationsMap and the active scene.
-      // TODO - show a popup and update the locationsMap and the active scene.
-      // TODO - show a popup and update the locationsMap and the active scene.
     }
 
     const plot = localStateStore.getPlot();

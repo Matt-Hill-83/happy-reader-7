@@ -42,7 +42,6 @@ export default class DragTest extends Component {
 
     const creatureObjects = allCreatures.map((creature, index) => {
       const { name } = creature;
-      console.log("name", name); // zzz
 
       const image = Images.creatures[name];
       const id = `${CREATURES_TAG}-${index}`;
@@ -58,9 +57,6 @@ export default class DragTest extends Component {
         )
       };
     });
-
-    console.log("creatureObjects", creatureObjects); // zzz
-    console.log("locations", locations); // zzz
 
     this.setState({
       [SOURCE_LOCATIONS_PROP_NAME]: locations,
@@ -211,27 +207,38 @@ export default class DragTest extends Component {
         const destListClone = Array.from(destinationList);
 
         const [removed] = sourceListClone.splice(droppableSource.index, 1);
-        destListClone[0].content.props.creatures.push(removed.name);
-
-        // TODO - the locations need to be just definitions, not rendered, so I can add creates here and then render them.
-        // TODO - the locations need to be just definitions, not rendered, so I can add creates here and then render them.
-        // TODO - the locations need to be just definitions, not rendered, so I can add creates here and then render them.
-        // TODO - the locations need to be just definitions, not rendered, so I can add creates here and then render them.
-        // destListClone[0].content.props.creatures.push("elf");
+        destListClone[0].scene.creatures.push(removed.name);
 
         console.log("destListClone", destListClone); // zzz
         console.log("removed", removed); // zzz
 
-        const removedFromDest = destListClone.splice(
-          0,
-          destListClone.length,
-          removed
-        );
+        // const removedFromDest = destListClone.splice(
+        //   0,
+        //   destListClone.length,
+        //   removed
+        // );
         // do this different
         // sourceListClone.push(...removedFromDest);
 
         result[sourceId] = sourceListClone;
         result[destinationId] = destListClone;
+
+        // ????
+        // ????
+        // ????
+        // ????
+
+        const { row, col } = this.getStorageRowColFromId({
+          id: destinationId
+        });
+
+        const { locationsGrid } = this.state;
+        locationsGrid[row][col] = result[destinationId];
+
+        this.setState({
+          [sourceId]: result[sourceId],
+          locationsGrid
+        });
 
         //////////////
       } else {
@@ -378,7 +385,7 @@ export default class DragTest extends Component {
         {items &&
           items.map((item, index) => {
             const { scene, id, characters, name = "" } = item;
-            let content = <span>no image</span>;
+            let content = <span>content missing</span>;
 
             if (id.includes(LOCATIONS_TAG)) {
               content = (
@@ -391,8 +398,6 @@ export default class DragTest extends Component {
               );
             } else {
               content = item.content;
-              // content = <div>mydiv</div>;
-              console.log("content", content); // zzz
             }
 
             return (
