@@ -1,5 +1,18 @@
 @import "../../Styles/mixins.modules.scss";
 
+.characterImageMini {
+  display: flex;
+  z-index: 3;
+  align-self: flex-end;
+}
+
+.character1Mini {
+  bottom: 0px;
+  left: 0%;
+  height: 100%;
+  width: auto;
+}
+
 .main {
   --fence-width: 2%;
 
@@ -12,7 +25,6 @@
   position: relative;
 
   height: 100%;
-  // min-width: 25%;
 
   .topRow,
   .midRow,
