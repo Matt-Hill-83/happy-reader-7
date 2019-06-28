@@ -77,16 +77,9 @@ class MiniLocation extends React.Component {
     );
   };
 
-  // renderCharacters = ({ isActive }) => {
   renderCharacters = ({ isActive, characters: creatures }) => {
-    // const creatures = ["bug"];
-    console.log("creatures", creatures); // zzz
-
-    const output = creatures.map(creature => {
-      // const creatureType = creatures.length > 0 && creatures[0];
-
+    const renderedCharacters = creatures.map(creature => {
       const image = Images.creatures[creature] || null;
-      console.log("image", image); // zzz
 
       const friend = (
         <img
@@ -99,11 +92,12 @@ class MiniLocation extends React.Component {
       return friend;
     });
 
-    return output;
-    // const you = isActive ? this.renderYouMini() : null;
-    // const characters = [you, friend];
+    if (isActive) {
+      const you = this.renderYouMini();
+      renderedCharacters.unshift(you);
+    }
 
-    // return characters;
+    return renderedCharacters;
   };
 
   render() {
