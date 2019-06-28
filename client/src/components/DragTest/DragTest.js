@@ -50,19 +50,24 @@ export default class DragTest extends Component {
     // generate placeholders for output grid in state
     const preAllocatedArrays = this.preAllocateArrays();
 
-    const creatureObjects = allCreatures.map((creature, index) => {
-      const { type, name } = creature;
+    // Instead of making different containers, why not dump all items together and sort them by tag?
+    // And instead of removing from the list, just mark them as not visible.
+    // And don't generate the content here, generate the content at render time.
+    const creatureObjects = allCreatures.map((item, index) => {
+      const { type, name } = item;
 
       const image = Images.creatures[type];
       const id = `${CREATURES_TAG}-${index}`;
 
       return {
         id,
+        // save an object here, that stores all the object properties, separate from the content
+        properties: item,
         type,
         name,
         content: (
           <div className={css.characterImage}>
-            <img src={image} alt={"creature image"} />
+            <img src={image} alt={`${CREATURES_TAG} image`} />
             <span className={css.characterLabel}>{type}</span>
           </div>
         )
@@ -418,6 +423,7 @@ export default class DragTest extends Component {
             const { scene, id, name = "" } = item;
             let content = <span>content missing</span>;
 
+            // define a render function in each item type
             if (id.includes(LOCATIONS_TAG)) {
               const creatures = scene && scene.creatures;
 
@@ -438,6 +444,7 @@ export default class DragTest extends Component {
                 </div>
               );
             } else {
+              // this content should be generated on the fly.
               content = item.content;
             }
 
@@ -478,6 +485,7 @@ export default class DragTest extends Component {
         </div>
         <div className={css.content}>
           <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
+            {/* Create these with .map() */}
             {this.renderList({
               droppableId: SOURCE_CREATURES_PROP_NAME,
               items: this.state[SOURCE_CREATURES_PROP_NAME],

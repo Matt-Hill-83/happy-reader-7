@@ -333,7 +333,14 @@ const creaturesFromImages = Object.keys(images.creatures);
 const itemsFromImages = Object.keys(images.items);
 
 const allScenes = locationsFromImages.map(name => {
-  return { name, doors: [], creatures: [] };
+  return {
+    name,
+    doors: {
+      right: { open: true },
+      bottom: { open: false }
+    },
+    creatures: []
+  };
 });
 
 const allCreatures = creaturesFromImages.map(type => {
