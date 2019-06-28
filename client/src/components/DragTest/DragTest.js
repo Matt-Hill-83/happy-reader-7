@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Button } from "@blueprintjs/core";
+import { toJS } from "mobx";
 
 import Images from "../../images/images";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
@@ -39,20 +40,22 @@ export default class DragTest extends Component {
 
     // generate placeholders for output grid in state
     const preAllocatedArrays = this.preAllocateArrays();
+    console.log("allCreatures", toJS(allCreatures)); // zzz
 
     const creatureObjects = allCreatures.map((creature, index) => {
-      const { name } = creature;
+      const { type, name } = creature;
 
-      const image = Images.creatures[name];
+      const image = Images.creatures[type];
       const id = `${CREATURES_TAG}-${index}`;
 
       return {
         id,
+        type,
         name,
         content: (
           <div className={css.characterImage}>
             <img src={image} alt={"creature image"} />
-            <span className={css.characterLabel}>{name}</span>
+            <span className={css.characterLabel}>{type}</span>
           </div>
         )
       };
@@ -210,7 +213,7 @@ export default class DragTest extends Component {
         if (!destListClone[0]) {
           return;
         }
-        destListClone[0].scene.creatures.push(removed.name);
+        destListClone[0].scene.creatures.push({ type: removed.type });
 
         console.log("destListClone", destListClone); // zzz
         console.log("removed", removed); // zzz
@@ -225,6 +228,8 @@ export default class DragTest extends Component {
 
         result[sourceId] = sourceListClone;
         result[destinationId] = destListClone;
+
+        console.log("result", result); // zzz
 
         // ????
         // ????
@@ -389,11 +394,10 @@ export default class DragTest extends Component {
           items.map((item, index) => {
             const { scene, id, name = "" } = item;
             let content = <span>content missing</span>;
-            // console.log("item", item); // zzz
 
             if (id.includes(LOCATIONS_TAG)) {
               const creatures = scene && scene.creatures;
-              console.log("creatures", creatures); // zzz
+              console.log("creatures", toJS(creatures)); // zzz
 
               content = (
                 <MiniLocation
@@ -401,7 +405,6 @@ export default class DragTest extends Component {
                   key={name}
                   location={scene}
                   characters={creatures}
-                  // characters={characters}
                 />
               );
             } else {

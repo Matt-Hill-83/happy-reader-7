@@ -334,11 +334,9 @@ const creaturesFromImages = Object.keys(images.creatures);
 const allScenes = locationsFromImages.map(name => {
   return { name, doors: [], creatures: [] };
 });
-const allCreatures = creaturesFromImages.map(name => {
-  return { name };
+const allCreatures = creaturesFromImages.map(type => {
+  return { type, name: "" };
 });
-
-console.log("allScenes", allScenes); // zzz
 
 const generatePlot = () => {
   const plot = {
@@ -351,7 +349,5 @@ const generatePlot = () => {
 
   localStateStore.setPlot(plot);
 };
-
-console.log("images", images); // zzz
 
 export default { generateNewFriend, generatePlot, generateYou };
