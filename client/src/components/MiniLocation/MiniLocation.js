@@ -81,24 +81,29 @@ class MiniLocation extends React.Component {
   renderCharacters = ({ isActive, characters: creatures }) => {
     // const creatures = ["bug"];
     console.log("creatures", creatures); // zzz
-    const creatureType = creatures.length > 0 && creatures[0];
 
-    const image = Images.creatures[creatureType] || null;
-    console.log("image", image); // zzz
+    const output = creatures.map(creature => {
+      // const creatureType = creatures.length > 0 && creatures[0];
 
-    const friend = (
-      <img
-        className={`${css.characterImageMini} ${css.character1Mini}`}
-        src={image}
-        alt={creatureType}
-      />
-    );
+      const image = Images.creatures[creature] || null;
+      console.log("image", image); // zzz
 
-    return friend;
-    const you = isActive ? this.renderYouMini() : null;
-    const characters = [you, friend];
+      const friend = (
+        <img
+          className={`${css.characterImageMini} ${css.character1Mini}`}
+          src={image}
+          alt={creature}
+        />
+      );
 
-    return characters;
+      return friend;
+    });
+
+    return output;
+    // const you = isActive ? this.renderYouMini() : null;
+    // const characters = [you, friend];
+
+    // return characters;
   };
 
   render() {
