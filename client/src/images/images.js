@@ -3,12 +3,8 @@ import door from "./backgrounds/door.png";
 import forest from "./backgrounds/forest-3.jpg";
 import forestLeft from "./backgrounds/forest-1-left.png";
 import forestRight from "./backgrounds/forest-1-right.png";
-import garden from "./backgrounds/garden-1.jpg";
-import gate from "./backgrounds/gate.png";
 import map02 from "./backgrounds/map-05.jpg";
-import meadow from "./backgrounds/meadow.jpg";
 import rock from "./backgrounds/rock-2.jpg";
-import school from "./backgrounds/school-1.jpg";
 
 //items
 import key from "./items/key.png";
@@ -82,6 +78,7 @@ export default {
     bug,
     dragon,
     pig,
+    hog: pig,
     elf,
     fairy,
     girl,
@@ -89,7 +86,6 @@ export default {
     hobbit,
     mermaid,
     monster,
-    school,
     troll,
     unicorn,
     wizard,
@@ -100,12 +96,8 @@ export default {
     forest,
     forestLeft,
     forestRight,
-    garden,
-    gate,
     map02,
-    meadow,
-    rock,
-    school
+    rock
   },
   items: {
     hat,

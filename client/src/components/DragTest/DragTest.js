@@ -27,9 +27,7 @@ export default class DragTest extends Component {
   };
 
   async componentWillMount() {
-    const plot = localStateStore.getPlot();
-
-    const { allScenes, allCreatures } = plot;
+    const { allItems, allScenes, allCreatures } = localStateStore.getPlot();
 
     const locations = allScenes.map((item, index) => {
       return {
@@ -213,6 +211,9 @@ export default class DragTest extends Component {
         if (!destListClone[0]) {
           return;
         }
+
+        // There should be a separate object in the draggable object that preserves all the item props
+        // separate from the renderd content
         destListClone[0].scene.creatures.push({ type: removed.type });
 
         console.log("destListClone", destListClone); // zzz

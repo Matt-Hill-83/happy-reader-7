@@ -330,11 +330,17 @@ localStateStore.setLocationsMaps(locationsMaps);
 
 const locationsFromImages = Object.keys(images.locations);
 const creaturesFromImages = Object.keys(images.creatures);
+const itemsFromImages = Object.keys(images.items);
 
 const allScenes = locationsFromImages.map(name => {
   return { name, doors: [], creatures: [] };
 });
+
 const allCreatures = creaturesFromImages.map(type => {
+  return { type, name: "" };
+});
+
+const allItems = itemsFromImages.map(type => {
   return { type, name: "" };
 });
 
@@ -344,6 +350,7 @@ const generatePlot = () => {
     narrativeGenerators,
     allScenes,
     allCreatures,
+    allItems,
     you: localStateStore.getYou()
   };
 
