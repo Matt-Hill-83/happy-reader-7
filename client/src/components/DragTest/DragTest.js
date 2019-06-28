@@ -14,14 +14,18 @@ const NUM_COLS_LOCATIONS_GRID = 5;
 const COLUMN_WIDTH = 150;
 
 const LOCATIONS_PREFIX = "locationsGrid";
+
 const LOCATIONS_TAG = "location";
 const CREATURES_TAG = "creature";
+const ITEMS_TAG = "item";
 
 const SOURCE_CREATURES_PROP_NAME = "sourceCreatures";
 const SOURCE_LOCATIONS_PROP_NAME = "sourceLocations";
+const SOURCE_ITEMS_PROP_NAME = "sourceItems";
 
 export default class DragTest extends Component {
   state = {
+    [SOURCE_ITEMS_PROP_NAME]: [],
     [SOURCE_CREATURES_PROP_NAME]: [],
     [SOURCE_LOCATIONS_PROP_NAME]: []
   };
@@ -36,9 +40,15 @@ export default class DragTest extends Component {
       };
     });
 
+    const items = allItems.map((item, index) => {
+      return {
+        id: `${ITEMS_TAG}-${index}`,
+        scene: item
+      };
+    });
+
     // generate placeholders for output grid in state
     const preAllocatedArrays = this.preAllocateArrays();
-    console.log("allCreatures", toJS(allCreatures)); // zzz
 
     const creatureObjects = allCreatures.map((creature, index) => {
       const { type, name } = creature;
@@ -59,7 +69,27 @@ export default class DragTest extends Component {
       };
     });
 
+    const itemObjects = allItems.map((item, index) => {
+      const { type, name } = item;
+
+      const image = Images.items[type];
+      const id = `${ITEMS_TAG}-${index}`;
+
+      return {
+        id,
+        type,
+        name,
+        content: (
+          <div className={css.characterImage}>
+            <img src={image} alt={"item image"} />
+            <span className={css.characterLabel}>{type}</span>
+          </div>
+        )
+      };
+    });
+
     this.setState({
+      [SOURCE_ITEMS_PROP_NAME]: itemObjects,
       [SOURCE_LOCATIONS_PROP_NAME]: locations,
       [SOURCE_CREATURES_PROP_NAME]: creatureObjects,
       ...preAllocatedArrays
@@ -137,6 +167,7 @@ export default class DragTest extends Component {
 
   getList = ({ id }) => {
     if (
+      id === SOURCE_ITEMS_PROP_NAME ||
       id === SOURCE_LOCATIONS_PROP_NAME ||
       id === SOURCE_CREATURES_PROP_NAME
     ) {
@@ -167,9 +198,6 @@ export default class DragTest extends Component {
       destination: { droppableId: destinationId }
     } = result;
 
-    console.log("sourceId", sourceId); // zzz
-    console.log("destinationId", destinationId); // zzz
-
     // dropped outside the list
     if (!destination) {
       return;
@@ -195,8 +223,6 @@ export default class DragTest extends Component {
         // TODO -  should specifically reference locationsGrid
         destinationId !== SOURCE_CREATURES_PROP_NAME
       ) {
-        console.log("SOURCE_CREATURES_PROP_NAME"); // zzz
-
         //////////////
 
         const sourceList = this.getList({ id: sourceId });
@@ -216,9 +242,6 @@ export default class DragTest extends Component {
         // separate from the renderd content
         destListClone[0].scene.creatures.push({ type: removed.type });
 
-        console.log("destListClone", destListClone); // zzz
-        console.log("removed", removed); // zzz
-
         // const removedFromDest = destListClone.splice(
         //   0,
         //   destListClone.length,
@@ -229,8 +252,6 @@ export default class DragTest extends Component {
 
         result[sourceId] = sourceListClone;
         result[destinationId] = destListClone;
-
-        console.log("result", result); // zzz
 
         // ????
         // ????
@@ -319,8 +340,6 @@ export default class DragTest extends Component {
   };
 
   saveMap = () => {
-    console.log("saving map"); // zzz
-
     const plot = localStateStore.getPlot();
     plot.locationsMap = this.transformLocationsGridToLocationsMap();
 
@@ -364,7 +383,6 @@ export default class DragTest extends Component {
       });
       locationsMap.push(newRow);
     });
-    console.log("locationsMap", locationsMap); // zzz
 
     return locationsMap;
   };
@@ -385,6 +403,10 @@ export default class DragTest extends Component {
     );
   };
 
+  editLocation = ({ id }) => {
+    console.log("id", id); // zzz
+  };
+
   renderItems = ({ provided, snapshot, items }) => {
     return (
       <div
@@ -398,15 +420,22 @@ export default class DragTest extends Component {
 
             if (id.includes(LOCATIONS_TAG)) {
               const creatures = scene && scene.creatures;
-              console.log("creatures", toJS(creatures)); // zzz
 
               content = (
-                <MiniLocation
-                  id={id}
-                  key={name}
-                  location={scene}
-                  characters={creatures}
-                />
+                <div className={css.locationGridContainer}>
+                  <MiniLocation
+                    id={id}
+                    key={name}
+                    location={scene}
+                    characters={creatures}
+                  />
+                  <Button
+                    className={css.scenePropsButton}
+                    onClick={() => this.editLocation({ id })}
+                  >
+                    Edit
+                  </Button>
+                </div>
               );
             } else {
               content = item.content;
@@ -436,8 +465,6 @@ export default class DragTest extends Component {
   };
 
   render() {
-    console.log("this.state", this.state); // zzz
-
     return (
       <div className={css.main}>
         <div className={css.header}>
@@ -459,6 +486,11 @@ export default class DragTest extends Component {
             {this.renderList({
               droppableId: SOURCE_LOCATIONS_PROP_NAME,
               items: this.state[SOURCE_LOCATIONS_PROP_NAME],
+              className: css.source
+            })}
+            {this.renderList({
+              droppableId: SOURCE_ITEMS_PROP_NAME,
+              items: this.state[SOURCE_ITEMS_PROP_NAME],
               className: css.source
             })}
             {this.createLocationsGridRows({

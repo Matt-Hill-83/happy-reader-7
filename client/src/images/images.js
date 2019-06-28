@@ -1,5 +1,4 @@
 // backgrounds
-import door from "./backgrounds/door.png";
 import forest from "./backgrounds/forest-3.jpg";
 import forestLeft from "./backgrounds/forest-1-left.png";
 import forestRight from "./backgrounds/forest-1-right.png";
@@ -12,6 +11,7 @@ import hat from "./items/hat.png";
 import greenKey from "./items/green-key.png";
 
 //doors
+import door from "./backgrounds/door.png";
 import doorGreen from "./doors/doorGreen.png";
 import doorYellow from "./doors/doorYellow.jpg";
 
