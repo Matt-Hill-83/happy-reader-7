@@ -98,7 +98,7 @@ class MiniLocation extends React.Component {
   };
 
   renderButton = ({ position, className, defaultDoorImage }) => {
-    const { youName, youCreature } = this.state;
+    // const { youName, youCreature } = this.state;
     let hasDoor = false;
     let renderedDoorImage;
 
@@ -125,8 +125,10 @@ class MiniLocation extends React.Component {
       }
     }
 
+    const defaultDoorName = "door";
+
     return (
-      <div>
+      <div className={css.doorPickerContainer}>
         <button
           onClick={() => this.onButtonClick({ position })}
           className={`${className} ${doorIsOpen ? "door-open" : ""}`}
@@ -139,7 +141,7 @@ class MiniLocation extends React.Component {
         <FormControl variant="outlined">
           <Select
             className={css.doorPickerDropdown}
-            value={youCreature}
+            value={defaultDoorName}
             onChange={event => {
               this.changeDoor({ event });
             }}
@@ -186,7 +188,7 @@ class MiniLocation extends React.Component {
       id
     } = this.props;
 
-    const charJs = toJS(characters);
+    // const charJs = toJS(characters);
 
     const { items = [], name: locationName } = location;
 
