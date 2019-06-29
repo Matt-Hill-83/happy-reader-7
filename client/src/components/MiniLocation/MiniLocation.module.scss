@@ -1,14 +1,60 @@
 @import "../../Styles/mixins.modules.scss";
 
+.doorPickerDropdown {
+  // border: 1px solid green !important;
+
+  :global {
+    // MuiInputBase-root fieldset
+    fieldset {
+      border: none;
+      padding: 0px !important;
+
+      legend {
+        display: none;
+      }
+    }
+
+    // Show empty box when no item is selected, or there is no image
+    [class*="MuiSelect-select"] {
+      width: 60px;
+      height: 60px;
+      border: 1px solid red;
+    }
+
+    [class*="MuiFormControl-root"] {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    [class*="MuiInputBase-input"] {
+      // border: 1px solid blue !important;
+      padding: 0;
+    }
+
+    // hide dropdown caret
+    svg[class*="MuiSelect-icon"] {
+      border: 1px solid purple !important;
+      display: none;
+    }
+  }
+}
+
 .doorPickerItem {
-  border: 1px solid red !important;
+  // border: 1px solid red !important;
   display: flex;
+  justify-self: center;
+  justify-content: center;
+
   height: 50px;
   width: 50px;
 
+  min-height: 50px;
+  min-width: 50px;
+
   img {
     height: 100%;
-    border: 1px solid blue !important;
+    // border: 1px solid blue !important;
   }
 }
 

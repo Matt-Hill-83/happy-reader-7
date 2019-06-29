@@ -37,11 +37,14 @@ class MiniLocation extends React.Component {
     bottom: { image: "doorGreen", open: true }
   };
 
-  changeYouCreature = ({ event }) => {
+  changeDoor = ({ event }) => {
     this.setState({
       youCreature: event.target.value,
       name: event.target.name
     });
+
+    console.log("event.target.name", event.target.name); // zzz
+    console.log("event.target.value", event.target.value); // zzz
   };
 
   async componentWillMount() {
@@ -78,12 +81,6 @@ class MiniLocation extends React.Component {
   };
 
   createDoorPickerOptions = () => {
-    // const renderedMenuItems = youCreatureOptions.map(you => (
-    //   <MenuItem key={you} value={you}>
-    //     {you && you.toUpperCase()}
-    //   </MenuItem>
-    // ));
-
     const doors = ["doorYellow", "door", "doorGreen"];
     const renderedMenuItems = doors.map((door, index) => {
       const doorImage = Images.doors[door];
@@ -92,7 +89,7 @@ class MiniLocation extends React.Component {
           <div className={css.doorPickerItem}>
             <img src={doorImage} alt={"imagex"} />
           </div>
-          {door && door.toUpperCase()}
+          {/* {door && door.toUpperCase()} */}
         </MenuItem>
       );
     });
@@ -141,41 +138,16 @@ class MiniLocation extends React.Component {
 
         <FormControl variant="outlined">
           <Select
+            className={css.doorPickerDropdown}
             value={youCreature}
             onChange={event => {
-              this.changeYouCreature({ event });
+              this.changeDoor({ event });
             }}
             input={<OutlinedInput id="outlined-age-simple" />}
           >
             {this.createDoorPickerOptions()}
           </Select>
         </FormControl>
-        {/* <FormControl variant="outlined">
-          <Select
-            value={10}
-            onChange={this.handleChange}
-            input={
-              <OutlinedInput
-                labelWidth={300}
-                name="age"
-                id="outlined-age-simple"
-              />
-            }
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={10}>
-              <div className={css.doorPickerItem}>
-                <img src={renderedDoorImage} alt={"imagex"} />
-              </div>
-            </MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl> */}
-
-        {/* </FormControl> */}
       </div>
     );
   };
