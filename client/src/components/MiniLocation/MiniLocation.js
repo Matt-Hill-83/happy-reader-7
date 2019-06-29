@@ -136,7 +136,11 @@ class MiniLocation extends React.Component {
           className={`${doorIsOpen ? "door-open" : ""}`}
         >
           {hasDoor && !doorIsOpen && (
-            <img src={renderedDoorImage} alt={"imagex"} />
+            <img
+              className={css.doorImage}
+              src={renderedDoorImage}
+              alt={"imagex"}
+            />
           )}
         </Button>
 

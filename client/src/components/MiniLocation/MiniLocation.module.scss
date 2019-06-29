@@ -18,9 +18,9 @@
       height: 20%;
     }
 
-    img {
-      width: 100%;
-      height: auto;
+    .doorImage {
+      // width: 100%;
+      // height: auto;
     }
   }
 }
@@ -44,9 +44,40 @@
     width: 20%;
   }
 
-  img {
+  .doorImage {
+    border: 1px solid red !important;
     height: 100%;
     width: 100%;
+  }
+}
+
+.rightDoor {
+  width: 20%;
+  display: flex;
+  border: none;
+  border: 1px solid orange !important;
+  z-index: 5;
+  cursor: pointer;
+  height: 23%;
+  width: 50%;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  height: auto;
+
+  width: 20%;
+  right: -10%;
+  height: auto;
+  top: 39%;
+
+  &.door-open {
+    width: 20%;
+    height: 20%;
+  }
+
+  .doorImage {
+    width: 100%;
+    height: auto;
   }
 }
 
