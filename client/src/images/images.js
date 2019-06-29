@@ -106,6 +106,7 @@ export default {
   },
   doors: {
     doorGreen,
-    doorYellow
+    doorYellow,
+    door
   }
 };

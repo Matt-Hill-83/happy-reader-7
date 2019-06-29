@@ -77,12 +77,25 @@ class MiniLocation extends React.Component {
     this.setState({ doors });
   };
 
-  createYouPickerOptions = () => {
-    const renderedMenuItems = youCreatureOptions.map(you => (
-      <MenuItem key={you} value={you}>
-        {you && you.toUpperCase()}
-      </MenuItem>
-    ));
+  createDoorPickerOptions = () => {
+    // const renderedMenuItems = youCreatureOptions.map(you => (
+    //   <MenuItem key={you} value={you}>
+    //     {you && you.toUpperCase()}
+    //   </MenuItem>
+    // ));
+
+    const doors = ["doorYellow", "door", "doorGreen"];
+    const renderedMenuItems = doors.map((door, index) => {
+      const doorImage = Images.doors[door];
+      return (
+        <MenuItem key={index} value={door}>
+          <div className={css.doorPickerItem}>
+            <img src={doorImage} alt={"imagex"} />
+          </div>
+          {door && door.toUpperCase()}
+        </MenuItem>
+      );
+    });
 
     return renderedMenuItems;
   };
@@ -91,6 +104,13 @@ class MiniLocation extends React.Component {
     const { youName, youCreature } = this.state;
     let hasDoor = false;
     let renderedDoorImage;
+
+    // const doors = [
+    //   {
+    //     right: { image: "doorYellow", open: true },
+    //     bottom: { image: "doorYellow", open: false }
+    //   }
+    // ];
 
     const doorImage =
       this.state.doors[position] && this.state.doors[position]["image"];
@@ -119,19 +139,18 @@ class MiniLocation extends React.Component {
           )}
         </button>
 
-        {/* <FormControl variant="outlined"> */}
-        {/* <InputLabel htmlFor="outlined-age-simple" /> */}
-        {/* <Select
-          value={youCreature}
-          onChange={event => {
-            this.changeYouCreature({ event });
-          }}
-          input={<OutlinedInput id="outlined-age-simple" />}
-        >
-          {this.createYouPickerOptions()}
-        </Select> */}
-
         <FormControl variant="outlined">
+          <Select
+            value={youCreature}
+            onChange={event => {
+              this.changeYouCreature({ event });
+            }}
+            input={<OutlinedInput id="outlined-age-simple" />}
+          >
+            {this.createDoorPickerOptions()}
+          </Select>
+        </FormControl>
+        {/* <FormControl variant="outlined">
           <Select
             value={10}
             onChange={this.handleChange}
@@ -154,7 +173,7 @@ class MiniLocation extends React.Component {
             <MenuItem value={20}>Twenty</MenuItem>
             <MenuItem value={30}>Thirty</MenuItem>
           </Select>
-        </FormControl>
+        </FormControl> */}
 
         {/* </FormControl> */}
       </div>
