@@ -2,6 +2,12 @@
 
 .doorPickerContainer {
   border: 1px solid blue !important;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translatey(-50%);
+  right: -20%;
+  z-index: 10000;
 }
 
 .doorPickerDropdown {
@@ -26,9 +32,9 @@
     }
 
     [class*="MuiFormControl-root"] {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+      // position: absolute;
+      // left: 50%;
+      // transform: translateX(-50%);
     }
 
     [class*="MuiInputBase-input"] {
