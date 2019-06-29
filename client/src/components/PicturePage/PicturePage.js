@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 import LineTo from "react-lineto";
 import _get from "lodash.get";
 
-import DragTest from "../DragTest/DragTest.js";
+import WorldBuilder from "../WorldBuilder/WorldBuilder.js";
 import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import MiniLocation from "../MiniLocation/MiniLocation.js";
@@ -71,7 +71,7 @@ class PicturePage extends React.Component {
       return {
         id: `location-${colIndex}`,
         creatures: [],
-        // This should be rendered in the DragTest component, based on what creatures have been added.
+        // This should be rendered in the WorldBuilder component, based on what creatures have been added.
         content: this.renderMiniLocation({ location })
       };
     });
@@ -234,7 +234,7 @@ class PicturePage extends React.Component {
     const showWorldBuilder = localStateStore.getShowWorldBuilder();
 
     if (showWorldBuilder) {
-      return <DragTest />;
+      return <WorldBuilder />;
     } else {
       return (
         <div className={`${css.main} ${storyClass}`}>

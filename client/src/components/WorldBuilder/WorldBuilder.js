@@ -9,7 +9,7 @@ import Images from "../../images/images";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 import MiniLocation from "../MiniLocation/MiniLocation";
 
-import css from "./DragTest.module.scss";
+import css from "./WorldBuilder.module.scss";
 
 const NUM_ROWS_LOCATIONS_GRID = 8;
 const NUM_COLS_LOCATIONS_GRID = 5;
@@ -25,7 +25,7 @@ const SOURCE_CREATURES_PROP_NAME = "sourceCreatures";
 const SOURCE_LOCATIONS_PROP_NAME = "sourceLocations";
 const SOURCE_ITEMS_PROP_NAME = "sourceItems";
 
-export default class DragTest extends Component {
+export default class WorldBuilder extends Component {
   state = {
     [SOURCE_ITEMS_PROP_NAME]: [],
     [SOURCE_CREATURES_PROP_NAME]: [],
