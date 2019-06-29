@@ -3,8 +3,31 @@ import { observer } from "mobx-react";
 import { toJS } from "mobx";
 import Images from "../../images/images.js";
 // import _get from "lodash.get";
+import {
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  OutlinedInput,
+  MenuItem
+} from "@material-ui/core";
+
+import Utils from "../../Utils/Utils.js";
+import myWords from "../../Models/words.js";
 
 import css from "./MiniLocation.module.scss";
+
+const { words, wordTypes } = myWords;
+
+const youCreatureOptions = Utils.getWordsByType({
+  words: words,
+  type: wordTypes.creature,
+  returnName: true
+});
+
+const youCreatureDefault = youCreatureOptions[3];
+const youNameDefault = "Dobby";
 
 class MiniLocation extends React.Component {
   defaultDoorIsOpen = {
@@ -12,6 +35,13 @@ class MiniLocation extends React.Component {
     right: { image: "doorGreen", open: false },
     top: { image: "doorGreen", open: true },
     bottom: { image: "doorGreen", open: true }
+  };
+
+  changeYouCreature = ({ event }) => {
+    this.setState({
+      youCreature: event.target.value,
+      name: event.target.name
+    });
   };
 
   async componentWillMount() {
@@ -35,7 +65,9 @@ class MiniLocation extends React.Component {
   }
 
   state = {
-    doors: this.defaultDoorIsOpen
+    doors: this.defaultDoorIsOpen,
+    youName: youNameDefault,
+    youCreature: youCreatureDefault
   };
 
   onButtonClick = ({ position }) => {
@@ -45,7 +77,18 @@ class MiniLocation extends React.Component {
     this.setState({ doors });
   };
 
+  createYouPickerOptions = () => {
+    const renderedMenuItems = youCreatureOptions.map(you => (
+      <MenuItem key={you} value={you}>
+        {you && you.toUpperCase()}
+      </MenuItem>
+    ));
+
+    return renderedMenuItems;
+  };
+
   renderButton = ({ position, className, defaultDoorImage }) => {
+    const { youName, youCreature } = this.state;
     let hasDoor = false;
     let renderedDoorImage;
 
@@ -66,14 +109,55 @@ class MiniLocation extends React.Component {
     }
 
     return (
-      <button
-        onClick={() => this.onButtonClick({ position })}
-        className={`${className} ${doorIsOpen ? "door-open" : ""}`}
-      >
-        {hasDoor && !doorIsOpen && (
-          <img src={renderedDoorImage} alt={"imagex"} />
-        )}
-      </button>
+      <div>
+        <button
+          onClick={() => this.onButtonClick({ position })}
+          className={`${className} ${doorIsOpen ? "door-open" : ""}`}
+        >
+          {hasDoor && !doorIsOpen && (
+            <img src={renderedDoorImage} alt={"imagex"} />
+          )}
+        </button>
+
+        {/* <FormControl variant="outlined"> */}
+        {/* <InputLabel htmlFor="outlined-age-simple" /> */}
+        {/* <Select
+          value={youCreature}
+          onChange={event => {
+            this.changeYouCreature({ event });
+          }}
+          input={<OutlinedInput id="outlined-age-simple" />}
+        >
+          {this.createYouPickerOptions()}
+        </Select> */}
+
+        <FormControl variant="outlined">
+          <Select
+            value={10}
+            onChange={this.handleChange}
+            input={
+              <OutlinedInput
+                labelWidth={300}
+                name="age"
+                id="outlined-age-simple"
+              />
+            }
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>
+              <div className={css.doorPickerItem}>
+                <img src={renderedDoorImage} alt={"imagex"} />
+              </div>
+            </MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
+
+        {/* </FormControl> */}
+      </div>
     );
   };
 
@@ -149,11 +233,11 @@ class MiniLocation extends React.Component {
           defaultDoorImage: doorImage
         })}
 
-        {this.renderButton({
+        {/* {this.renderButton({
           position: "bottom",
           className: "bottom-door",
           defaultDoorImage: doorImage
-        })}
+        })} */}
 
         <div className={css.imagesBox}>
           <img

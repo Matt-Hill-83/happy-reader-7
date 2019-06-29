@@ -1,5 +1,17 @@
 @import "../../Styles/mixins.modules.scss";
 
+.doorPickerItem {
+  border: 1px solid red !important;
+  display: flex;
+  height: 50px;
+  width: 50px;
+
+  img {
+    height: 100%;
+    border: 1px solid blue !important;
+  }
+}
+
 .characterImageMini {
   display: flex;
   z-index: 3;
