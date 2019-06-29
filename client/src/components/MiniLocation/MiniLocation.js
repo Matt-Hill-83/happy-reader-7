@@ -5,13 +5,16 @@ import Images from "../../images/images.js";
 // import _get from "lodash.get";
 import {
   TextField,
-  Button,
+  // Button,
   FormControl,
   InputLabel,
   Select,
   OutlinedInput,
   MenuItem
 } from "@material-ui/core";
+
+import { IconNames } from "@blueprintjs/icons";
+import { Button, Icon, Position, Tooltip } from "@blueprintjs/core";
 
 import Utils from "../../Utils/Utils.js";
 import myWords from "../../Models/words.js";
@@ -98,9 +101,6 @@ class MiniLocation extends React.Component {
   };
 
   renderButton = ({ position, className, defaultDoorImage }) => {
-    console.log("className", className); // zzz
-
-    // const { youName, youCreature } = this.state;
     let hasDoor = false;
     let renderedDoorImage;
 

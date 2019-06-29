@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { Button } from "@blueprintjs/core";
 import { toJS } from "mobx";
+
+import { IconNames } from "@blueprintjs/icons";
+import { Button, Icon, Position } from "@blueprintjs/core";
 
 import Images from "../../images/images";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
@@ -439,7 +441,7 @@ export default class DragTest extends Component {
                     className={css.scenePropsButton}
                     onClick={() => this.editLocation({ id })}
                   >
-                    Edit
+                    <Icon xx-color={"purple"} icon={IconNames.SETTINGS} />
                   </Button>
                 </div>
               );
