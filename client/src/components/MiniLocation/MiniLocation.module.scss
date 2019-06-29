@@ -1,74 +1,22 @@
 @import "../../Styles/mixins.modules.scss";
 
 .doorPickerContainer {
-  border: 1px solid blue !important;
+  // border: 1px solid blue !important;
   display: flex;
+
   position: absolute;
-  // z-index: 10000;
-  background: transparent;
-
-  &.right-side-door {
-    width: 20%;
-    right: -10%;
-    height: auto;
-    top: 39%;
-
-    &.door-open {
-      width: 20%;
-      height: 20%;
-    }
-
-    .doorImage {
-      // width: 100%;
-      // height: auto;
-    }
-  }
-}
-
-.bottomDoor {
-  width: 20%;
-  display: flex;
-  border: none;
-  border: 1px solid orange !important;
   z-index: 5;
+  background: transparent;
   cursor: pointer;
-  height: 23%;
-  width: 50%;
-  bottom: 0px;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  height: auto;
-
-  &.door-open {
-    background: var(--grass-color) !important;
-    width: 20%;
-  }
-
-  .doorImage {
-    border: 1px solid red !important;
-    height: 100%;
-    width: 100%;
-  }
 }
 
 .rightDoor {
-  width: 20%;
+  // border: 1px solid orange !important;
   display: flex;
-  border: none;
-  border: 1px solid orange !important;
-  z-index: 5;
-  cursor: pointer;
-  height: 23%;
-  width: 50%;
-  bottom: 0px;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  height: auto;
-
-  width: 20%;
-  right: -10%;
-  height: auto;
-  top: 39%;
+  right: -20px;
+  right: -20%;
+  top: 50%;
+  transform: translate(0, -50%);
 
   &.door-open {
     width: 20%;
@@ -76,52 +24,64 @@
   }
 
   .doorImage {
+    // border: 1px solid green !important;
     width: 100%;
     height: auto;
+  }
+}
+
+.bottomDoor {
+  // border: 1px solid blue !important;
+  display: flex;
+  bottom: 0px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+
+  &.door-open {
+    background: var(--grass-color) !important;
+    width: 20%;
+  }
+
+  .doorImage {
+    // border: 1px solid red !important;
+    height: 100%;
+    width: 100%;
   }
 }
 
 .doorPickerDropdown {
   :global {
     // MuiInputBase-root fieldset
+
+    // hide dropdown caret
+    svg[class*="MuiSelect-icon"] {
+      display: none;
+    }
+
     fieldset {
       border: none;
       padding: 0px !important;
+      height: 100%;
+      top: unset;
 
       legend {
         display: none;
       }
     }
 
-    // Show empty box when no item is selected, or there is no image
-    [class*="MuiSelect-select"] {
-      // border: 1px solid red;
-    }
-
-    [class*="MuiFormControl-root"] {
-      // position: absolute;
-      // left: 50%;
-      // transform: translateX(-50%);
-    }
-
     [class*="MuiInputBase-input"] {
       padding: 0;
-    }
-
-    // hide dropdown caret
-    svg[class*="MuiSelect-icon"] {
-      display: none;
     }
   }
 }
 
 .doorPickerItem {
   display: flex;
+
   justify-self: center;
   justify-content: center;
 
   height: 50px;
-  width: 50px;
 
   min-height: 50px;
   min-width: 50px;
