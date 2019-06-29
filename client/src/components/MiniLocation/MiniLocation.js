@@ -98,6 +98,8 @@ class MiniLocation extends React.Component {
   };
 
   renderButton = ({ position, className, defaultDoorImage }) => {
+    console.log("className", className); // zzz
+
     // const { youName, youCreature } = this.state;
     let hasDoor = false;
     let renderedDoorImage;
@@ -128,15 +130,15 @@ class MiniLocation extends React.Component {
     const defaultDoorName = "door";
 
     return (
-      <div className={css.doorPickerContainer}>
-        <button
+      <div className={`${className} ${css.doorPickerContainer}`}>
+        <Button
           onClick={() => this.onButtonClick({ position })}
-          className={`${className} ${doorIsOpen ? "door-open" : ""}`}
+          className={`${doorIsOpen ? "door-open" : ""}`}
         >
           {hasDoor && !doorIsOpen && (
             <img src={renderedDoorImage} alt={"imagex"} />
           )}
-        </button>
+        </Button>
 
         <FormControl variant="outlined">
           <Select
@@ -220,17 +222,17 @@ class MiniLocation extends React.Component {
           <img className={css.rockImage} src={rockImage} alt={"imagex"} />
         </div>
         <div className={css.grassImage} />
-        {this.renderButton({
-          position: "right",
-          className: "right-side-door",
-          defaultDoorImage: doorImage
-        })}
-
         {/* {this.renderButton({
-          position: "bottom",
-          className: "bottom-door",
+          position: "right",
+          className: css.rightDoor,
           defaultDoorImage: doorImage
         })} */}
+
+        {this.renderButton({
+          position: "bottom",
+          className: css.bottomDoor,
+          defaultDoorImage: doorImage
+        })}
 
         <div className={css.imagesBox}>
           <img
