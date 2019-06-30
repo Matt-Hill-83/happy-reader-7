@@ -479,15 +479,6 @@ class WorldBuilder extends Component {
     );
   };
 
-  addTodo = () => {
-    const newTodo = {
-      test: "matt"
-      // text: "matt"
-    };
-
-    maps.add(newTodo);
-  };
-
   render() {
     // these need to be rendered, or else the store won't populate from the firestore db
     const values = maps.docs.map(todo => <div>{todo.data.text}</div>);
