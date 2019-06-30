@@ -350,18 +350,17 @@ class WorldBuilder extends Component {
   };
 
   saveMap = () => {
-    const plot = localStateStore.getPlot();
+    // const plot = localStateStore.getPlot();
 
-    console.log("plot", plot); // zzz
-    console.log("this.state", this.state); // zzz
+    // console.log("plot", plot); // zzz
+    // console.log("this.state", this.state); // zzz
 
     const test = this.transformLocationsGridToLocationsMap();
 
     const test2 = toJS(test);
-    console.log("test2", test2); // zzz
+    // console.log("test2", test2); // zzz
     // console.log("test2-item", test2[0][0]); // zzz
     const myString = JSON.stringify(test2);
-    console.log("myString", myString); // zzz
 
     const newMap = {
       name: "test",
@@ -500,7 +499,6 @@ class WorldBuilder extends Component {
     return (
       <div className={css.main}>
         <div>{values}</div>
-        <Button onClick={this.addTodo}>test</Button>
 
         <div className={css.header}>
           <div className={css.titles}>
