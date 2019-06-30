@@ -8,8 +8,10 @@ import { Button, Icon, Position } from "@blueprintjs/core";
 import Images from "../../images/images";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 import MiniLocation from "../MiniLocation/MiniLocation";
+import { todos } from "../../Stores/InitStores";
 
 import css from "./WorldBuilder.module.scss";
+import Todos from "../Todos/Todos";
 
 const NUM_ROWS_LOCATIONS_GRID = 8;
 const NUM_COLS_LOCATIONS_GRID = 5;
@@ -482,6 +484,7 @@ export default class WorldBuilder extends Component {
   render() {
     return (
       <div className={css.main}>
+        <Todos>test</Todos>
         <div className={css.header}>
           <div className={css.titles}>
             <div className={css.title}>World Builder</div>
