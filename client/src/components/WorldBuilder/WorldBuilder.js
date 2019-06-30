@@ -1,15 +1,14 @@
-import React, { Component } from "react";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { toJS } from "mobx";
-import { observer } from "mobx-react";
-
-import { IconNames } from "@blueprintjs/icons";
 import { Button, Icon, Position } from "@blueprintjs/core";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { IconNames } from "@blueprintjs/icons";
+import { observer } from "mobx-react";
+import { toJS } from "mobx";
+import React, { Component } from "react";
 
+import { maps } from "../../Stores/InitStores";
 import Images from "../../images/images";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 import MiniLocation from "../MiniLocation/MiniLocation";
-import { maps } from "../../Stores/InitStores";
 
 import css from "./WorldBuilder.module.scss";
 
@@ -301,8 +300,6 @@ class WorldBuilder extends Component {
     } else {
       this.dropInNewList({ source, destination, destinationId, sourceId });
     }
-
-    this.saveMap();
   };
 
   createLocationsGridRows = ({ numTargetsInRow, numRows, prefix }) => {
@@ -351,7 +348,9 @@ class WorldBuilder extends Component {
 
     const newMap = {
       name: "name",
-      grid: myString
+      grid: myString,
+      startScene: "home",
+      endScene: "bog"
     };
 
     maps.add(newMap);
@@ -472,11 +471,12 @@ class WorldBuilder extends Component {
 
   render() {
     // these need to be rendered, or else the store won't populate from the firestore db
-    const values = maps.docs.map(todo => <div>{todo.data.text}</div>);
+    const test = maps.docs.map(map => <div>{map.data.name}</div>);
+    // console.log("test", test); // zzz
 
     return (
       <div className={css.main}>
-        <div>{values}</div>
+        <div>{test}</div>
 
         <div className={css.header}>
           <div className={css.titles}>
@@ -510,6 +510,11 @@ class WorldBuilder extends Component {
               numRows: NUM_ROWS_LOCATIONS_GRID,
               prefix: LOCATIONS_PREFIX
             })}
+            {/* {this.createLocationsGridRows({
+              numTargetsInRow: NUM_COLS_LOCATIONS_GRID,
+              numRows: NUM_ROWS_LOCATIONS_GRID,
+              prefix: LOCATIONS_PREFIX
+            })} */}
           </DragDropContext>
         </div>
       </div>

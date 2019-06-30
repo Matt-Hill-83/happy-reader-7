@@ -18,6 +18,7 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import { Button } from "@blueprintjs/core";
 
 import css from "./MainStory.module.scss";
+import { maps } from "../../Stores/InitStores.js";
 
 const { generatePlot, generateYou } = mySentences;
 
@@ -51,10 +52,19 @@ class MainStory extends React.Component {
   updateActiveScene = ({ activeScene }) => {
     // console.log("activeScene", activeScene); // zzz
 
+    // TODO - import locationsMap from db
+    // TODO - import locationsMap from db
+    // TODO - import locationsMap from db
+    // TODO - import locationsMap from db
+
+    // const savedMaps = maps.docs.map(map => toJS(map.data.grid));
+    // const testGrid = JSON.parse(savedMaps[0]);
+    // console.log("testGrid - main", testGrid); // zzz
+
     const locationsMap = localStateStore.getActiveLocationsMap();
 
     const activeSceneName = activeScene.name;
-    const endSceneName = locationsMap.endScene.name;
+    const endSceneName = locationsMap.endScene && locationsMap.endScene.name;
 
     if (activeSceneName === endSceneName) {
       this.setState({ showYouWin: true });

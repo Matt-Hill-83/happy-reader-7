@@ -15,12 +15,12 @@ initFirestorter({ firebase: firebase });
 class Map extends Document {
   constructor(source, options) {
     super(source, {
-      ...(options || {}),
-      schema: struct({
-        name: "string?",
-        grid: "string?",
-        finished: "boolean?"
-      })
+      ...(options || {})
+      // schema: struct({
+      //   name: "string?",
+      //   grid: "string?",
+      //   finished: "boolean?"
+      // })
     });
   }
 }

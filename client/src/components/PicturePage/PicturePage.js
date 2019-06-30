@@ -10,9 +10,10 @@ import Images from "../../images/images.js";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
 import MiniLocation from "../MiniLocation/MiniLocation.js";
 import WordPage from "../WordPage/WordPage.js";
-import myWords from "../../Models/words.js";
+import { maps } from "../../Stores/InitStores";
 
 import css from "./PicturePage.module.scss";
+import { toJS } from "mobx";
 
 class PicturePage extends React.Component {
   constructor(props) {
@@ -53,7 +54,17 @@ class PicturePage extends React.Component {
   renderLocationRows = () => {
     const locationsMap = localStateStore.getActiveLocationsMap();
 
-    const miniLocationsGrid = locationsMap.grid.map((locationRow, rowIndex) => {
+    console.log("locationsMap", toJS(locationsMap)); // zzz
+
+    const savedMaps = maps.docs.map(map => toJS(map.data.grid));
+    const testGrid = JSON.parse(savedMaps[0]);
+    console.log("testGrid", testGrid); // zzz
+
+    if (!testGrid) {
+      return null;
+    }
+    const miniLocationsGrid = testGrid.map((locationRow, rowIndex) => {
+      // const miniLocationsGrid = locationsMap.grid.map((locationRow, rowIndex) => {
       return (
         <div key={rowIndex} className={css.miniLocationsRow}>
           {this.createSingleRow({ locationRow, rowIndex })}
@@ -102,9 +113,6 @@ class PicturePage extends React.Component {
     });
   };
 
-  // TODO - make this a component
-  // TODO - make this a component
-  // TODO - make this a component
   renderMiniLocation = ({
     colIndex = 0,
     rowIndex = 0,
@@ -209,7 +217,6 @@ class PicturePage extends React.Component {
         <div className={`${css.mapScroller}`}>
           <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
           {this.renderLocationRows()}
-          {/* {this.createArrows({ locationName })} */}
         </div>
       </div>
     );
