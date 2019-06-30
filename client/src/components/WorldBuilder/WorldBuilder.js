@@ -13,8 +13,8 @@ import { maps } from "../../Stores/InitStores";
 
 import css from "./WorldBuilder.module.scss";
 
-const NUM_ROWS_LOCATIONS_GRID = 8;
-const NUM_COLS_LOCATIONS_GRID = 5;
+const NUM_ROWS_LOCATIONS_GRID = 3;
+const NUM_COLS_LOCATIONS_GRID = 3;
 const COLUMN_WIDTH = 150;
 
 const LOCATIONS_PREFIX = "locationsGrid";
@@ -28,7 +28,6 @@ const SOURCE_LOCATIONS_PROP_NAME = "sourceLocations";
 const SOURCE_ITEMS_PROP_NAME = "sourceItems";
 
 class WorldBuilder extends Component {
-  // export default class WorldBuilder extends Component {
   state = {
     [SOURCE_ITEMS_PROP_NAME]: [],
     [SOURCE_CREATURES_PROP_NAME]: [],
@@ -250,8 +249,6 @@ class WorldBuilder extends Component {
         [sourceId]: result[sourceId],
         locationsGrid
       });
-
-      //////////////
     } else {
       result = this.move({
         source: this.getList({ id: sourceId }),
