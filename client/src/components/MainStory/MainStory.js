@@ -49,7 +49,7 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
-    console.log("activeScene", activeScene); // zzz
+    // console.log("activeScene", activeScene); // zzz
 
     const locationsMap = localStateStore.getActiveLocationsMap();
 

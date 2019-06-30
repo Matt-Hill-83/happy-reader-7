@@ -9,10 +9,10 @@ import { Button, Icon, Position } from "@blueprintjs/core";
 import Images from "../../images/images";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 import MiniLocation from "../MiniLocation/MiniLocation";
-import { todos } from "../../Stores/InitStores";
+import { todos, maps } from "../../Stores/InitStores";
 
 import css from "./WorldBuilder.module.scss";
-import Todos from "../Todos/Todos";
+// import Todos from "../Todos/Todos";
 
 const NUM_ROWS_LOCATIONS_GRID = 8;
 const NUM_COLS_LOCATIONS_GRID = 5;
@@ -38,8 +38,6 @@ class WorldBuilder extends Component {
 
   async componentWillMount() {
     const { allItems, allScenes, allCreatures } = localStateStore.getPlot();
-
-    console.log("allCreatures", allCreatures); // zzz
 
     const locations = allScenes.map((item, index) => {
       return {
@@ -360,14 +358,17 @@ class WorldBuilder extends Component {
     const test = this.transformLocationsGridToLocationsMap();
 
     const test2 = toJS(test);
-    console.log("test2", test2[0][0]); // zzz
+    console.log("test2", test2); // zzz
+    // console.log("test2-item", test2[0][0]); // zzz
+    const myString = JSON.stringify(test2);
+    console.log("myString", myString); // zzz
 
-    // This is where is should be stored
-    // const locationsMap = this.transformLocationsGridToLocationsMap();
+    const newMap = {
+      name: "test",
+      grid: myString
+    };
 
-    // localStateStore.setPlot(plot);
-    // localStateStore.addNewLocationsMap({ grid: locationsMap });
-    // localStateStore.setShowWorldBuilder(false);
+    maps.add(newMap);
   };
 
   renderSaveMapButton = () => {
@@ -485,15 +486,16 @@ class WorldBuilder extends Component {
 
   addTodo = () => {
     const newTodo = {
-      text: "matt"
+      test: "matt"
+      // text: "matt"
     };
 
-    todos.add(newTodo);
+    maps.add(newTodo);
   };
 
   render() {
     // these need to be rendered, or else the store won't populate from the firestore db
-    const values = todos.docs.map(todo => <div>{todo.data.text}</div>);
+    const values = maps.docs.map(todo => <div>{todo.data.text}</div>);
 
     return (
       <div className={css.main}>

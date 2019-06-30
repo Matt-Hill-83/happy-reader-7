@@ -12,12 +12,13 @@ firestore.settings({ timestampsInSnapshots: true });
 
 initFirestorter({ firebase: firebase });
 
-class Todo extends Document {
+class Map extends Document {
   constructor(source, options) {
     super(source, {
       ...(options || {}),
       schema: struct({
-        text: "string",
+        name: "string?",
+        grid: "string?",
         finished: "boolean?"
       })
     });
@@ -25,7 +26,11 @@ class Todo extends Document {
 }
 
 const todos = new Collection("todos", {
-  DocumentClass: Todo
+  DocumentClass: Map
 });
-console.log({ todos });
-export { todos };
+
+const maps = new Collection("maps", {
+  DocumentClass: Map
+});
+
+export { todos, maps };
