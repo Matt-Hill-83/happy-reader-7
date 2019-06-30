@@ -11,10 +11,8 @@ import css from "./App.module.scss";
 
 // import this last
 import { UserConfigStore } from "./Stores/UserConfigStore";
-import Todos from "./components/Todos/Todos";
 
 function App() {
-  // return <Todos>test</Todos>;
   // Disable accessibility focus
   FocusStyleManager.onlyShowFocusOnTabs();
   const muiTheme = getMuiTheme();

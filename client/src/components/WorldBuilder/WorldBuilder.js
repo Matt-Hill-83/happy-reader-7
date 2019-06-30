@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { toJS } from "mobx";
+import { observer } from "mobx-react";
 
 import { IconNames } from "@blueprintjs/icons";
 import { Button, Icon, Position } from "@blueprintjs/core";
@@ -27,7 +28,8 @@ const SOURCE_CREATURES_PROP_NAME = "sourceCreatures";
 const SOURCE_LOCATIONS_PROP_NAME = "sourceLocations";
 const SOURCE_ITEMS_PROP_NAME = "sourceItems";
 
-export default class WorldBuilder extends Component {
+class WorldBuilder extends Component {
+  // export default class WorldBuilder extends Component {
   state = {
     [SOURCE_ITEMS_PROP_NAME]: [],
     [SOURCE_CREATURES_PROP_NAME]: [],
@@ -482,9 +484,13 @@ export default class WorldBuilder extends Component {
   };
 
   render() {
+    // these need to be rendered, or else the store won't populate from the firestore db
+    const values = todos.docs.map(todo => <div>{todo.data.text}</div>);
+
     return (
       <div className={css.main}>
-        <Todos>test</Todos>
+        <div>{values}</div>
+
         <div className={css.header}>
           <div className={css.titles}>
             <div className={css.title}>World Builder</div>
@@ -523,3 +529,4 @@ export default class WorldBuilder extends Component {
     );
   }
 }
+export default observer(WorldBuilder);
