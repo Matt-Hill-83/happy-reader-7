@@ -483,6 +483,14 @@ class WorldBuilder extends Component {
     );
   };
 
+  addTodo = () => {
+    const newTodo = {
+      text: "matt"
+    };
+
+    todos.add(newTodo);
+  };
+
   render() {
     // these need to be rendered, or else the store won't populate from the firestore db
     const values = todos.docs.map(todo => <div>{todo.data.text}</div>);
@@ -490,6 +498,7 @@ class WorldBuilder extends Component {
     return (
       <div className={css.main}>
         <div>{values}</div>
+        <Button onClick={this.addTodo}>test</Button>
 
         <div className={css.header}>
           <div className={css.titles}>
