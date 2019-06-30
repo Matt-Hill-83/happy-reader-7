@@ -25,12 +25,8 @@ class Map extends Document {
   }
 }
 
-const todos = new Collection("todos", {
-  DocumentClass: Map
-});
-
 const maps = new Collection("maps", {
   DocumentClass: Map
 });
 
-export { todos, maps };
+export { maps };

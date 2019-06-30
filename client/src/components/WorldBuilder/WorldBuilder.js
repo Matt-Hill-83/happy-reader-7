@@ -9,10 +9,9 @@ import { Button, Icon, Position } from "@blueprintjs/core";
 import Images from "../../images/images";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 import MiniLocation from "../MiniLocation/MiniLocation";
-import { todos, maps } from "../../Stores/InitStores";
+import { maps } from "../../Stores/InitStores";
 
 import css from "./WorldBuilder.module.scss";
-// import Todos from "../Todos/Todos";
 
 const NUM_ROWS_LOCATIONS_GRID = 8;
 const NUM_COLS_LOCATIONS_GRID = 5;
