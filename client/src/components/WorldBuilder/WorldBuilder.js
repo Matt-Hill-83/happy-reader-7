@@ -391,9 +391,6 @@ export default class WorldBuilder extends Component {
 
         const newCell = locationsGrid[rowName][colName];
         const criticalData = (newCell[0] && toJS(newCell[0].scene)) || {};
-        if (criticalData.name) {
-          console.log("criticalData", criticalData); // zzz
-        }
 
         newRow.push(criticalData);
       });
