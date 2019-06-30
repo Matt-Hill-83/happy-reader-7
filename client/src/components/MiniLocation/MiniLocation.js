@@ -163,6 +163,8 @@ class MiniLocation extends React.Component {
   renderCharacters = ({ isActive, characters: creatures }) => {
     const renderedCharacters = creatures.map(creature => {
       const creatureType = creature && creature.type;
+      console.log("creature - mini", toJS(creature)); // zzz
+
       const image = Images.creatures[creatureType] || null;
 
       const friend = (

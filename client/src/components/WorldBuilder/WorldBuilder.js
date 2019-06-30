@@ -35,6 +35,8 @@ export default class WorldBuilder extends Component {
   async componentWillMount() {
     const { allItems, allScenes, allCreatures } = localStateStore.getPlot();
 
+    console.log("allCreatures", allCreatures); // zzz
+
     const locations = allScenes.map((item, index) => {
       return {
         id: `${LOCATIONS_TAG}-${index}`,
@@ -197,6 +199,83 @@ export default class WorldBuilder extends Component {
     }
   };
 
+  dropInNewList = ({ source, destination, destinationId, sourceId }) => {
+    let result = {};
+    // dragging a creature to a different destination
+    // TODO -  should specifically reference locationsGrid
+    if (
+      sourceId === SOURCE_CREATURES_PROP_NAME &&
+      destinationId !== SOURCE_CREATURES_PROP_NAME
+    ) {
+      const sourceList = this.getList({ id: sourceId });
+      const destinationList = this.getList({ id: destinationId });
+      const droppableSource = source;
+      // const droppableDestination = destination;
+
+      const sourceListClone = Array.from(sourceList);
+      const destListClone = Array.from(destinationList);
+
+      const [removed] = sourceListClone.splice(droppableSource.index, 1);
+      if (!destListClone[0]) {
+        return;
+      }
+
+      console.log("removed", removed); // zzz
+
+      // There should be a separate object in the draggable object that preserves all the item props
+      // separate from the renderd content
+      destListClone[0].scene.creatures.push({ ...removed.properties });
+      // destListClone[0].scene.creatures.push({ type: removed.type });
+
+      // const removedFromDest = destListClone.splice(
+      //   0,
+      //   destListClone.length,
+      //   removed
+      // );
+      // do this different
+      // sourceListClone.push(...removedFromDest);
+
+      result[sourceId] = sourceListClone;
+      result[destinationId] = destListClone;
+
+      const { row, col } = this.getStorageRowColFromId({
+        id: destinationId
+      });
+
+      const { locationsGrid } = this.state;
+      locationsGrid[row][col] = result[destinationId];
+
+      this.setState({
+        [sourceId]: result[sourceId],
+        locationsGrid
+      });
+
+      //////////////
+    } else {
+      result = this.move({
+        source: this.getList({ id: sourceId }),
+        destination: this.getList({ id: destinationId }),
+        droppableSource: source,
+        droppableDestination: destination
+      });
+
+      // TODO - dragging from grid to main list is broken.
+      const { row, col } = this.getStorageRowColFromId({
+        id: destinationId
+      });
+
+      if (row) {
+        const { locationsGrid } = this.state;
+        locationsGrid[row][col] = result[destinationId];
+
+        this.setState({
+          [sourceId]: result[sourceId],
+          locationsGrid
+        });
+      }
+    }
+  };
+
   onDragEnd = result => {
     const {
       source,
@@ -222,85 +301,7 @@ export default class WorldBuilder extends Component {
 
       this.setState(state);
     } else {
-      // dragging to a different destination
-      let result = {};
-      // dragging a creature to a different destination
-      if (
-        sourceId === SOURCE_CREATURES_PROP_NAME &&
-        // TODO -  should specifically reference locationsGrid
-        destinationId !== SOURCE_CREATURES_PROP_NAME
-      ) {
-        //////////////
-
-        const sourceList = this.getList({ id: sourceId });
-        const destinationList = this.getList({ id: destinationId });
-        const droppableSource = source;
-        const droppableDestination = destination;
-
-        const sourceListClone = Array.from(sourceList);
-        const destListClone = Array.from(destinationList);
-
-        const [removed] = sourceListClone.splice(droppableSource.index, 1);
-        if (!destListClone[0]) {
-          return;
-        }
-
-        // There should be a separate object in the draggable object that preserves all the item props
-        // separate from the renderd content
-        destListClone[0].scene.creatures.push({ type: removed.type });
-
-        // const removedFromDest = destListClone.splice(
-        //   0,
-        //   destListClone.length,
-        //   removed
-        // );
-        // do this different
-        // sourceListClone.push(...removedFromDest);
-
-        result[sourceId] = sourceListClone;
-        result[destinationId] = destListClone;
-
-        // ????
-        // ????
-        // ????
-        // ????
-
-        const { row, col } = this.getStorageRowColFromId({
-          id: destinationId
-        });
-
-        const { locationsGrid } = this.state;
-        locationsGrid[row][col] = result[destinationId];
-
-        this.setState({
-          [sourceId]: result[sourceId],
-          locationsGrid
-        });
-
-        //////////////
-      } else {
-        result = this.move({
-          source: this.getList({ id: sourceId }),
-          destination: this.getList({ id: destinationId }),
-          droppableSource: source,
-          droppableDestination: destination
-        });
-
-        // TODO - dragging from grid to main list is broken.
-        const { row, col } = this.getStorageRowColFromId({
-          id: destinationId
-        });
-
-        if (row) {
-          const { locationsGrid } = this.state;
-          locationsGrid[row][col] = result[destinationId];
-
-          this.setState({
-            [sourceId]: result[sourceId],
-            locationsGrid
-          });
-        }
-      }
+      this.dropInNewList({ source, destination, destinationId, sourceId });
     }
 
     this.saveMap();
@@ -348,28 +349,33 @@ export default class WorldBuilder extends Component {
 
   saveMap = () => {
     const plot = localStateStore.getPlot();
-    plot.locationsMap = this.transformLocationsGridToLocationsMap();
+
+    console.log("plot", plot); // zzz
+    console.log("this.state", this.state); // zzz
+
+    const test = this.transformLocationsGridToLocationsMap();
+
+    const test2 = toJS(test);
+    console.log("test2", test2[0][0]); // zzz
 
     // This is where is should be stored
-    const locationsMap = this.transformLocationsGridToLocationsMap();
+    // const locationsMap = this.transformLocationsGridToLocationsMap();
 
-    localStateStore.setPlot(plot);
-    localStateStore.addNewLocationsMap({ grid: locationsMap });
+    // localStateStore.setPlot(plot);
+    // localStateStore.addNewLocationsMap({ grid: locationsMap });
     // localStateStore.setShowWorldBuilder(false);
   };
 
-  // I need to reinstate this button.
-
-  // renderSaveMapButton = () => {
-  //   return (
-  //     <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
-  //       <span> Save Map </span>
-  //     </Button>
-  //   );
-  // };
+  renderSaveMapButton = () => {
+    return (
+      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
+        <span> Save Map </span>
+        <Icon color={"purple"} icon={IconNames.SAVED} />
+      </Button>
+    );
+  };
 
   transformLocationsGridToLocationsMap = () => {
-    return [];
     const { locationsGrid } = this.state;
     const locationsMap = [];
 
@@ -384,8 +390,11 @@ export default class WorldBuilder extends Component {
         const colName = `col-${colIndex}`;
 
         const newCell = locationsGrid[rowName][colName];
-        const criticalData =
-          (newCell[0] && newCell[0].content.props.location) || {};
+        const criticalData = (newCell[0] && toJS(newCell[0].scene)) || {};
+        if (criticalData.name) {
+          console.log("criticalData", criticalData); // zzz
+        }
+
         newRow.push(criticalData);
       });
       locationsMap.push(newRow);
@@ -441,7 +450,7 @@ export default class WorldBuilder extends Component {
                     className={css.scenePropsButton}
                     onClick={() => this.editLocation({ id })}
                   >
-                    <Icon xx-color={"purple"} icon={IconNames.SETTINGS} />
+                    <Icon icon={IconNames.SETTINGS} />
                   </Button>
                 </div>
               );
@@ -481,7 +490,7 @@ export default class WorldBuilder extends Component {
             <div className={css.title}>World Builder</div>
             <div className={css.subTitle}>
               (drag items to create your world...)
-              {/* {this.renderSaveMapButton()} */}
+              {this.renderSaveMapButton()}
             </div>
           </div>
         </div>

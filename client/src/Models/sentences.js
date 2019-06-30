@@ -344,7 +344,7 @@ const allScenes = locationsFromImages.map(name => {
 });
 
 const allCreatures = creaturesFromImages.map(type => {
-  return { type, name: "" };
+  return { type, name: `${type}-creature` };
 });
 
 const allItems = itemsFromImages.map(type => {
