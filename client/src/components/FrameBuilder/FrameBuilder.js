@@ -112,6 +112,7 @@ class FrameBuilder extends Component {
 
   render() {
     const { girlImages } = this.props;
+    console.log("girlImages", girlImages); // zzz
 
     const yourName = "amber";
     const friendName = "jan";

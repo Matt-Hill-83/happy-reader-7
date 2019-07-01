@@ -83,6 +83,32 @@ import janNormal from "./rigged-girls/jan/jan-02-normal.png";
 import janScared from "./rigged-girls/jan/jan-01-scared.png";
 import janBody from "./rigged-girls/jan/jan-body.png";
 
+// rigged girl - kat
+import katBlissful from "./rigged-girls/kat/kat-blissful.png";
+import katCringing from "./rigged-girls/kat/kat-cringing.png";
+import katCrying from "./rigged-girls/kat/kat-crying.png";
+import katDisgusted from "./rigged-girls/kat/kat-disgusted.png";
+import katDismayed from "./rigged-girls/kat/kat-dismayed.png";
+import katExpectant from "./rigged-girls/kat/kat-expectant.png";
+import katFunny from "./rigged-girls/kat/kat-funny.png";
+import katHappy from "./rigged-girls/kat/kat-happy.png";
+import katHurt from "./rigged-girls/kat/kat-hurt.png";
+import katKissing from "./rigged-girls/kat/kat-kissing.png";
+import katLauging from "./rigged-girls/kat/kat-lauging.png";
+import katLoad from "./rigged-girls/kat/kat-load.png";
+import katMad from "./rigged-girls/kat/kat-mad.png";
+import katOptimistic from "./rigged-girls/kat/kat-optimistic.png";
+import katSad from "./rigged-girls/kat/kat-sad.png";
+import katScared from "./rigged-girls/kat/kat-scared.png";
+import katSilly from "./rigged-girls/kat/kat-silly.png";
+import katSinister from "./rigged-girls/kat/kat-sinister.png";
+import katSmiling from "./rigged-girls/kat/kat-smiling.png";
+import katSurprised from "./rigged-girls/kat/kat-surprised.png";
+import katTired from "./rigged-girls/kat/kat-tired.png";
+import katUnsure from "./rigged-girls/kat/kat-unsure.png";
+import katWinking from "./rigged-girls/kat/kat-winking.png";
+import katBody from "./rigged-girls/jan/jan-body.png";
+
 // scene view
 import sceneViewBook from "./scene-view/book01.png";
 import sceneViewNotebook from "./scene-view/notebook-01.png";
@@ -175,48 +201,39 @@ export default {
         heads: [
           {
             image: janBlissful,
-            mood: MOODS.blissful,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.blissful
           },
           {
             image: janRepulsed,
-            mood: MOODS.repulsed,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.repulsed
           },
           {
             image: janHappy,
-            mood: MOODS.happy,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.happy
           },
           {
             image: janSneaky,
-            mood: MOODS.sneaky,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.sneaky
           },
           {
             image: janSorry,
-            mood: MOODS.sorry,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.sorry
           },
           {
             image: janMad,
-            mood: MOODS.mad,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.mad
           },
           {
             image: janSurprised,
-            mood: MOODS.surprised,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.surprised
           },
           {
             image: janNormal,
-            mood: MOODS.normal,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.normal
           },
           {
             image: janScared,
-            mood: MOODS.scared,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.scared
           }
         ],
         body: { image: janBody }
@@ -229,81 +246,145 @@ export default {
         heads: [
           {
             image: amberNormal,
-            mood: MOODS.normal,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.normal
           },
           {
             image: amberSneaky,
-            mood: MOODS.sneaky,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.sneaky
           },
           {
             image: amberBlissful,
-            mood: MOODS.blissful,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.blissful
           },
           {
             image: amberFrustrated,
-            mood: MOODS.frustrated,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.frustrated
           },
           {
             image: amberGlad,
-            mood: MOODS.glad,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.glad
           },
           {
             image: amberSurprised,
-            mood: MOODS.surprised,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.surprised
           },
           {
             image: amberScared,
-            mood: MOODS.scared,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.scared
           },
           {
             image: amberMad,
-            mood: MOODS.mad,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.mad
           },
           {
             image: amberShocked,
-            mood: MOODS.shocked,
-            offset: { x: 0, y: 0 }
+            mood: MOODS.shocked
           }
         ],
         body: { image: amberBody }
       }
+    },
+    {
+      name: "kat",
+      mood: "frustrated",
+      images: {
+        heads: [
+          {
+            image: katBlissful,
+            mood: "blissful"
+          },
+          {
+            image: katCringing,
+            mood: "cringing"
+          },
+          {
+            image: katCrying,
+            mood: "crying"
+          },
+          {
+            image: katDisgusted,
+            mood: "disgusted"
+          },
+          {
+            image: katDismayed,
+            mood: "dismayed"
+          },
+          {
+            image: katExpectant,
+            mood: "expectant"
+          },
+          {
+            image: katFunny,
+            mood: "funny"
+          },
+          {
+            image: katHappy,
+            mood: "happy"
+          },
+          {
+            image: katHurt,
+            mood: "hurt"
+          },
+          {
+            image: katKissing,
+            mood: "kissing"
+          },
+          {
+            image: katLauging,
+            mood: "lauging"
+          },
+          {
+            image: katLoad,
+            mood: "load"
+          },
+          {
+            image: katMad,
+            mood: "optimistic"
+          },
+          {
+            image: katOptimistic,
+            mood: "sad"
+          },
+          {
+            image: katSad,
+            mood: "scared"
+          },
+          {
+            image: katScared,
+            mood: "silly"
+          },
+          {
+            image: katSilly,
+            mood: "sinister"
+          },
+          {
+            image: katSinister,
+            mood: "smiling"
+          },
+          {
+            image: katSmiling,
+            mood: "surprised"
+          },
+          {
+            image: katSurprised,
+            mood: "tired"
+          },
+          {
+            image: katTired,
+            mood: "unsure"
+          },
+          {
+            image: katUnsure,
+            mood: "upset"
+          },
+          {
+            image: katWinking,
+            mood: "winking"
+          }
+        ],
+        body: { image: katBody }
+      }
     }
-    // {
-    //   name: "ruby",
-    //   images: {
-    //     heads: [
-    //       {
-    //         image: rubyHappy,
-    //         mood: MOODS.happy,
-    //         offset: { x: 0, y: 0 }
-    //       },
-    //       {
-    //         image: rubyMad,
-    //         mood: MOODS.mad,
-    //         offset: { x: 0, y: 0 }
-    //       },
-    //       {
-    //         image: rubySad,
-    //         mood: MOODS.sad,
-    //         offset: { x: 0, y: 0 }
-    //       },
-    //       {
-    //         image: rubySly,
-    //         mood: MOODS.sly,
-    //         offset: { x: 0, y: 0 }
-    //       }
-    //     ],
-    //     body: { image: "asdf" }
-    //   }
-    // }
   ],
   sceneView: {
     book: sceneViewBook,
