@@ -4,10 +4,9 @@ import { IconNames } from "@blueprintjs/icons";
 import { observer } from "mobx-react";
 import { toJS } from "mobx";
 import React, { Component } from "react";
+import Images from "../../images/images";
 
 import css from "./FrameBuilder.module.scss";
-import MiniLocation from "../MiniLocation/MiniLocation";
-import Images from "../../images/images";
 
 class FrameBuilder extends Component {
   state = {};
@@ -25,9 +24,6 @@ class FrameBuilder extends Component {
       name,
       mood
     } = character;
-    console.log("mood", mood); // zzz
-
-    // const selectedMood = "mad";
 
     const head = heads.find(head => head.mood === mood);
 
@@ -60,22 +56,38 @@ class FrameBuilder extends Component {
     );
   };
 
+  renderGirlPicker = ({ girl }) => {
+    const {
+      images: { heads }
+    } = girl;
+
+    const headImages = heads.map(head => {
+      return this.renderHead({ head });
+    });
+
+    return (
+      <div className={css.girlPickerContainer}>
+        <div className={css.girlPicker}>{headImages}</div>
+      </div>
+    );
+  };
+
   render() {
     const { girlImages, girlName, sceneToEdit } = this.props;
     console.log("girlName", girlName); // zzz
     console.log("sceneToEdit", sceneToEdit); // zzz
 
     const backgroundImage = Images.backgrounds["hill01"];
-    const you = girlImages[0];
+    const you = girlImages[1];
     console.log("you", you); // zzz
 
-    const {
-      images: { heads }
-    } = you;
+    // const {
+    //   images: { heads }
+    // } = you;
 
-    const headImages = heads.map(head => {
-      return this.renderHead({ head });
-    });
+    // const headImages = heads.map(head => {
+    //   return this.renderHead({ head });
+    // });
 
     const locationImage = Images.locations[sceneToEdit.name];
     const bookImage = Images.sceneView.book;
@@ -83,9 +95,8 @@ class FrameBuilder extends Component {
 
     return (
       <div className={css.main}>
-        <div className={css.girlPickerContainer}>
-          <div className={css.girlPicker}>{headImages}</div>
-        </div>
+        {this.renderGirlPicker({ girl: you })}
+
         <div className={css.scene}>
           <div className={css.backgroundImageContainer}>
             <div className={css.locationImageContainer}>
@@ -125,9 +136,9 @@ class FrameBuilder extends Component {
         </div>
 
         {/* <MiniLocation location={sceneToEdit} /> */}
-        <div className={css.girlPickerContainer}>
+        {/* <div className={css.girlPickerContainer}>
           <div className={css.girlPicker}>{headImages}</div>
-        </div>
+        </div> */}
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
           <Icon icon={IconNames.CROSS} />
