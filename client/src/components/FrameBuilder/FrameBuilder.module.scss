@@ -15,6 +15,21 @@
   }
 }
 
+.bookImageContainer {
+  // height: 23%;
+  // width: 90%;
+  position: absolute;
+  border: 1px solid red !important;
+  bottom: 0px;
+  // right: 10px;
+
+  .bookImage {
+    border: 1px solid blue !important;
+    height: auto;
+    width: 100%;
+  }
+}
+
 .backgroundSky {
   .backgroundSkyImage {
     border: 1px solid green !important;
@@ -66,7 +81,7 @@
 .scene {
   display: flex;
   // width: 50%;
-  height: 50%;
+  height: 90%;
   border: 1px solid green !important;
 }
 

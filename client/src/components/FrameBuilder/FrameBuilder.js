@@ -26,7 +26,7 @@ class FrameBuilder extends Component {
 
     const backgroundImage = Images.backgrounds["hill01"];
 
-    const images = girlImages[0].images.heads.map(head => {
+    const headImages = girlImages[0].images.heads.map(head => {
       const { image, mood } = head;
 
       return (
@@ -42,11 +42,12 @@ class FrameBuilder extends Component {
     });
 
     const locationImage = Images.locations[sceneToEdit.name];
+    const bookImage = Images.sceneView.book;
 
     return (
       <div className={css.main}>
         <div className={css.girlPickerContainer}>
-          <div className={css.girlPicker}>{images}</div>
+          <div className={css.girlPicker}>{headImages}</div>
         </div>
         <div className={css.scene}>
           <div className={css.backgroundImageContainer}>
@@ -56,6 +57,9 @@ class FrameBuilder extends Component {
                 src={locationImage}
                 alt={"imagex"}
               />
+            </div>
+            <div className={css.bookImageContainer}>
+              <img className={css.bookImage} src={bookImage} alt={"imagex"} />
             </div>
             {/* <div className={css.backgroundSky}>
               <img
@@ -76,7 +80,7 @@ class FrameBuilder extends Component {
 
         {/* <MiniLocation location={sceneToEdit} /> */}
         <div className={css.girlPickerContainer}>
-          <div className={css.girlPicker}>{images}</div>
+          <div className={css.girlPicker}>{headImages}</div>
         </div>
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
