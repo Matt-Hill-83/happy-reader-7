@@ -5,10 +5,10 @@ import { toJS } from "mobx";
 import React, { Component } from "react";
 import Images from "../../images/images";
 import WordGroup from "../WordGroup/WordGroup";
-
-import css from "./FrameBuilder.module.scss";
 import Character from "../Character/Character";
 import Head from "../Head/Head";
+
+import css from "./FrameBuilder.module.scss";
 
 class FrameBuilder extends Component {
   state = {};
