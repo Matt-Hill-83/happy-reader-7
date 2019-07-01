@@ -29,12 +29,11 @@ class Character extends Component {
   };
 
   render() {
-    const { name } = this.props;
+    const { name, mood } = this.props;
     const youImages = girlImages.find(girl => girl.name === name);
 
     const {
-      images: { heads, body },
-      mood
+      images: { heads, body }
     } = youImages;
 
     const head = heads.find(head => head.mood === mood);

@@ -58,9 +58,7 @@ class FrameBuilder extends Component {
   renderScene = ({ you, friend }) => {
     const { sceneToEdit } = this.props;
 
-    // const girlImages = Images.posableGirls;
-    // const youImages = girlImages.find(girl => girl.name === you);
-    // const friendImages = girlImages.find(girl => girl.name === friend);
+    const yourName = you.creature;
 
     const backgroundImage = Images.backgrounds["hill01"];
 
@@ -69,10 +67,9 @@ class FrameBuilder extends Component {
     const notebookImage = Images.sceneView.notebook;
 
     const activeParagraph = [
-      `Girls play.`,
-      `You are a $-{you.creature}.`,
-      `You live in the $-{you.homeLocation}.`,
-      `You are sooooo happy.`
+      `Liz and Kat are girls.`,
+      `Liz and Kat play.`,
+      `Liz and Kat are so sweet.`
     ];
 
     return (
@@ -118,9 +115,9 @@ class FrameBuilder extends Component {
 
           <div className={css.charactersContainer}>
             <div className={css.youContainer}>
-              <Character name={you} />
+              <Character name={yourName} mood={you.mood} />
             </div>
-            <Character name={friend} />
+            {/* <Character name={friend} /> */}
           </div>
         </div>
       </div>
@@ -154,7 +151,7 @@ class FrameBuilder extends Component {
           {/* {this.renderGirlPicker({ girl: friendImages })} */}
         </div>
         <div className={css.scenesContainer}>
-          {this.renderScene({ you: yourName, friend: friendName })}
+          {this.renderScene({ you, friend: friendName })}
           {/* {this.renderScene({ you: youImages, friend: friendImages })} */}
           {/* {this.renderScene({ you: youImages, friend: friendImages })} */}
         </div>
