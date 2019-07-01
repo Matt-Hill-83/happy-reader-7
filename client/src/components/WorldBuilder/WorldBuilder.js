@@ -29,6 +29,7 @@ const SOURCE_ITEMS_PROP_NAME = "sourceItems";
 
 class WorldBuilder extends Component {
   state = {
+    showFrameBuilder: false,
     [SOURCE_ITEMS_PROP_NAME]: [],
     [SOURCE_CREATURES_PROP_NAME]: [],
     [SOURCE_LOCATIONS_PROP_NAME]: []
@@ -407,9 +408,15 @@ class WorldBuilder extends Component {
     );
   };
 
-  editLocation = ({ item }) => {
-    this.setState({ sceneToEdit: item });
-    console.log("item", item); // zzz
+  editFrame = ({ scene }) => {};
+
+  editFrame = ({ scene }) => {
+    this.setState({ sceneToEdit: scene.name, showFrameBuilder: true });
+    console.log("scene", toJS(scene)); // zzz
+  };
+
+  onExitFrameBuilder = () => {
+    this.setState({ sceneToEdit: "", showFrameBuilder: false });
   };
 
   renderItems = ({ provided, snapshot, items }) => {
@@ -437,7 +444,7 @@ class WorldBuilder extends Component {
                   />
                   <Button
                     className={css.scenePropsButton}
-                    onClick={() => this.editLocation({ item })}
+                    onClick={() => this.editFrame({ scene })}
                   >
                     <Icon icon={IconNames.SETTINGS} />
                   </Button>
@@ -479,17 +486,20 @@ class WorldBuilder extends Component {
     const girlImages = Images.posableGirls;
     const girlName = "amber";
 
-    const { sceneToEdit } = this.state;
+    const { sceneToEdit, showFrameBuilder } = this.state;
 
     return (
       <div className={css.main}>
         {/* <div>{test}</div> */}
 
-        <FrameBuilder
-          girlImages={girlImages}
-          girlName={girlName}
-          sceneToEdit={sceneToEdit}
-        />
+        {showFrameBuilder && (
+          <FrameBuilder
+            girlImages={girlImages}
+            girlName={girlName}
+            sceneToEdit={sceneToEdit}
+            onExitFrameBuilder={this.onExitFrameBuilder}
+          />
+        )}
         <div className={css.header}>
           <div className={css.titles}>
             <div className={css.title}>World Builder</div>
@@ -512,11 +522,11 @@ class WorldBuilder extends Component {
               items: this.state[SOURCE_LOCATIONS_PROP_NAME],
               className: css.source
             })}
-            {this.renderList({
+            {/* {this.renderList({
               droppableId: SOURCE_ITEMS_PROP_NAME,
               items: this.state[SOURCE_ITEMS_PROP_NAME],
               className: css.source
-            })}
+            })} */}
             {this.createLocationsGridRows({
               numTargetsInRow: NUM_COLS_LOCATIONS_GRID,
               numRows: NUM_ROWS_LOCATIONS_GRID,

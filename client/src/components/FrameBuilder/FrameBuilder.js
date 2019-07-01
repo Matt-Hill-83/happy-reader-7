@@ -41,6 +41,11 @@ class FrameBuilder extends Component {
     // );
   };
 
+  onExitFrameBuilder = () => {
+    const { onExitFrameBuilder } = this.props;
+    onExitFrameBuilder && onExitFrameBuilder();
+  };
+
   render() {
     const { girlImages, girlName, sceneToEdit } = this.props;
     console.log("girlName", girlName); // zzz
@@ -67,6 +72,9 @@ class FrameBuilder extends Component {
 
     return (
       <div className={css.main}>
+        <Button onClick={this.onExitFrameBuilder}>
+          <Icon icon={IconNames.CROSS} />
+        </Button>
         <div className={css.girlPickerContainer}>
           <div className={css.girlPicker}>{images}</div>
         </div>
