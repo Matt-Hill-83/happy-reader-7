@@ -117,10 +117,18 @@
   height: 50%;
 }
 
-.characterLabel {
-  @include item-label;
+.charactersContainer {
+  height: 38%;
+  display: flex;
   position: absolute;
+  bottom: 9%;
+  left: 3%;
 }
+
+// .characterLabel {
+//   @include item-label;
+//   position: absolute;
+// }
 
 .moodLabel {
   @include item-label;
