@@ -65,8 +65,10 @@ class WordGroup extends React.Component {
   };
 
   render() {
+    const { className } = this.props;
+
     return (
-      <div className={css.main}>
+      <div className={`${css.main} ${className}`}>
         <audio src={this.state.sound} autoPlay />
         {this.renderNarrative()}
       </div>

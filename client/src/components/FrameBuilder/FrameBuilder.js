@@ -109,7 +109,10 @@ class FrameBuilder extends Component {
           </div>
           <div className={css.bookImageContainer}>
             <div className={css.narrative}>
-              <WordGroup story={activeParagraph} />
+              <WordGroup
+                story={activeParagraph}
+                className={css.narrativeClass}
+              />
             </div>
             <img className={css.bookImage} src={bookImage} alt={"imagex"} />
           </div>
