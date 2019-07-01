@@ -10,15 +10,20 @@
   border: none !important;
 }
 
-.girlBodyContainer {
+.charactersContainer {
   height: 23%;
+  display: flex;
   position: absolute;
-
+  // flex-direction: column;
   bottom: 30%;
   left: 3%;
+}
+
+.girlBodyContainer {
+  height: 100%;
+  position: relative;
 
   .girlBodyImage {
-    // border: 1px solid blue !important;
     height: 100%;
     width: auto;
   }

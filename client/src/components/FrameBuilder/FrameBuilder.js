@@ -78,16 +78,11 @@ class FrameBuilder extends Component {
     console.log("sceneToEdit", sceneToEdit); // zzz
 
     const backgroundImage = Images.backgrounds["hill01"];
-    const you = girlImages[1];
-    console.log("you", you); // zzz
+    const yourName = "amber";
+    const friendName = "jan";
 
-    // const {
-    //   images: { heads }
-    // } = you;
-
-    // const headImages = heads.map(head => {
-    //   return this.renderHead({ head });
-    // });
+    const you = girlImages.find(girl => girl.name === yourName);
+    const friend = girlImages.find(girl => girl.name === friendName);
 
     const locationImage = Images.locations[sceneToEdit.name];
     const bookImage = Images.sceneView.book;
@@ -131,14 +126,14 @@ class FrameBuilder extends Component {
               />
             </div>
 
-            {this.renderCharacter({ character: you })}
+            <div className={css.charactersContainer}>
+              {this.renderCharacter({ character: you })}
+              {this.renderCharacter({ character: friend })}
+            </div>
           </div>
         </div>
 
-        {/* <MiniLocation location={sceneToEdit} /> */}
-        {/* <div className={css.girlPickerContainer}>
-          <div className={css.girlPicker}>{headImages}</div>
-        </div> */}
+        {this.renderGirlPicker({ girl: friend })}
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
           <Icon icon={IconNames.CROSS} />
