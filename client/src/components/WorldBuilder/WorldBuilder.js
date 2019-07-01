@@ -407,8 +407,9 @@ class WorldBuilder extends Component {
     );
   };
 
-  editLocation = ({ id }) => {
-    console.log("id", id); // zzz
+  editLocation = ({ item }) => {
+    this.setState({ sceneToEdit: item });
+    console.log("item", item); // zzz
   };
 
   renderItems = ({ provided, snapshot, items }) => {
@@ -436,7 +437,7 @@ class WorldBuilder extends Component {
                   />
                   <Button
                     className={css.scenePropsButton}
-                    onClick={() => this.editLocation({ id })}
+                    onClick={() => this.editLocation({ item })}
                   >
                     <Icon icon={IconNames.SETTINGS} />
                   </Button>
@@ -470,29 +471,6 @@ class WorldBuilder extends Component {
     );
   };
 
-  // renderGirlPicker = () => {
-  //   const images = Images.posableGirls[0].images.heads.map(head => {
-  //     const { image, mood } = head;
-
-  //     return (
-  //       <div className={css.girlHeadContainer}>
-  //         <img
-  //           className={`${css.girlHead} ${css.girlHeadAmber}`}
-  //           src={image}
-  //           alt={`${"amber-head"}-image`}
-  //         />
-  //         <span className={css.characterLabel}>{mood}</span>
-  //       </div>
-  //     );
-  //   });
-
-  //   return (
-  //     <div className={css.girlPickerContainer}>
-  //       <div className={css.girlPicker}>{images}</div>
-  //     </div>
-  //   );
-  // };
-
   render() {
     // these need to be rendered, or else the store won't populate from the firestore db
     const test = maps.docs.map(map => <div>{map.data.name}</div>);
@@ -501,12 +479,17 @@ class WorldBuilder extends Component {
     const girlImages = Images.posableGirls;
     const girlName = "amber";
 
+    const { sceneToEdit } = this.state;
+
     return (
       <div className={css.main}>
         {/* <div>{test}</div> */}
 
-        <FrameBuilder girlImages={girlImages} girlName={girlName} />
-        {/* {this.renderGirlPicker()} */}
+        <FrameBuilder
+          girlImages={girlImages}
+          girlName={girlName}
+          sceneToEdit={sceneToEdit}
+        />
         <div className={css.header}>
           <div className={css.titles}>
             <div className={css.title}>World Builder</div>

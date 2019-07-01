@@ -15,7 +15,37 @@ class FrameBuilder extends Component {
   renderGirlPicker = () => {
     const { girlImages, girlName } = this.props;
 
-    /* eslint-disable */ debugger; /* eslint-ensable */ /* zzz */
+    if (!girlImages.length && girlImages.length > 0) {
+      return null;
+    }
+
+    const images = girlImages[0].images.heads.map(head => {
+      const { image, mood } = head;
+
+      return (
+        <div className={css.girlHeadContainer}>
+          <img
+            className={`${css.girlHead} ${css.girlHeadAmber}`}
+            src={image}
+            alt={`${"amber-head"}-image`}
+          />
+          <span className={css.characterLabel}>{mood}</span>
+        </div>
+      );
+    });
+
+    // return (
+    //   <div className={css.girlPickerContainer}>
+    //     <div className={css.girlPicker}>{images}</div>
+    //   </div>
+    // );
+  };
+
+  render() {
+    const { girlImages, girlName, sceneToEdit } = this.props;
+    console.log("girlName", girlName); // zzz
+    console.log("sceneToEdit", sceneToEdit); // zzz
+
     if (!girlImages.length && girlImages.length > 0) {
       return null;
     }
@@ -36,16 +66,12 @@ class FrameBuilder extends Component {
     });
 
     return (
-      <div className={css.girlPickerContainer}>
-        <div className={css.girlPicker}>{images}</div>
+      <div className={css.main}>
+        <div className={css.girlPickerContainer}>
+          <div className={css.girlPicker}>{images}</div>
+        </div>
       </div>
     );
-  };
-
-  render() {
-    const { girlName } = this.props;
-
-    return <div className={css.main}>{this.renderGirlPicker()}</div>;
   }
 }
 
