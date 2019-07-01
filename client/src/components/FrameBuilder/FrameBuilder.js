@@ -58,9 +58,9 @@ class FrameBuilder extends Component {
   renderScene = ({ you, friend }) => {
     const { sceneToEdit } = this.props;
 
-    const girlImages = Images.posableGirls;
-    const youImages = girlImages.find(girl => girl.name === you);
-    const friendImages = girlImages.find(girl => girl.name === friend);
+    // const girlImages = Images.posableGirls;
+    // const youImages = girlImages.find(girl => girl.name === you);
+    // const friendImages = girlImages.find(girl => girl.name === friend);
 
     const backgroundImage = Images.backgrounds["hill01"];
 

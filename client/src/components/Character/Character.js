@@ -34,7 +34,6 @@ class Character extends Component {
 
     const {
       images: { heads, body },
-      // name,
       mood
     } = youImages;
 
