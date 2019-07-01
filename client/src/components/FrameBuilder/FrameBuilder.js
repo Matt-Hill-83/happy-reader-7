@@ -19,7 +19,9 @@ class FrameBuilder extends Component {
 
   onExitFrameBuilder = () => {
     const { onExitFrameBuilder } = this.props;
-    onExitFrameBuilder && onExitFrameBuilder();
+
+    const frame = { test: 5 };
+    onExitFrameBuilder && onExitFrameBuilder({ frame });
   };
 
   selectHead = ({ name, head }) => {
@@ -28,8 +30,6 @@ class FrameBuilder extends Component {
 
     // TODO - I should push the store here.
     creature.mood = head.mood;
-
-    // this.forceUpdate();
   };
 
   renderGirlPicker = ({ name }) => {

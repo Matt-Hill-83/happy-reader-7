@@ -413,7 +413,9 @@ class WorldBuilder extends Component {
     this.setState({ sceneToEdit: scene, showFrameBuilder: true });
   };
 
-  onExitFrameBuilder = () => {
+  onExitFrameBuilder = ({ frame }) => {
+    console.log("frame", frame); // zzz
+
     this.setState({ sceneToEdit: "", showFrameBuilder: false });
   };
 
@@ -482,11 +484,13 @@ class WorldBuilder extends Component {
     // these need to be rendered, or else the store won't populate from the firestore db
     // these need to be rendered, or else the store won't populate from the firestore db
     const dummy = maps.docs.map(map => <div>{map.data.name}</div>);
-    console.log("dummy", dummy); // zzz
+    console.log("dummy", toJS(dummy)); //
     // these need to be rendered, or else the store won't populate from the firestore db
     // these need to be rendered, or else the store won't populate from the firestore db
 
     const { sceneToEdit, showFrameBuilder } = this.state;
+
+    console.log("sceneToEdit - world builder", toJS(sceneToEdit)); // zzz
 
     return (
       <div className={css.main}>
@@ -532,7 +536,7 @@ class WorldBuilder extends Component {
         {showFrameBuilder && (
           <FrameBuilder
             sceneToEdit={sceneToEdit}
-            onExitFrameBuilder={this.onExitFrameBuilder}
+            onExitFrameBuilder={frame => this.onExitFrameBuilder({ frame })}
           />
         )}
       </div>
