@@ -43,7 +43,7 @@ class MainStory extends React.Component {
   }
 
   onExitIntro = ({ you }) => {
-    generateYou({ you });
+    // generateYou({ you });
     generatePlot();
     const plot = localStateStore.getPlot();
     this.updateActiveScene({ activeScene: plot.activeScene });

@@ -7,23 +7,6 @@ const { wordTypes } = myWords;
 
 const homeLocation = "home";
 
-const generateYou = ({ you }) => {
-  const defaultYou = {
-    name: "jan",
-    creature: "girl",
-    homeLocation: homeLocation,
-    vehicle: "scooter",
-    mission: generateMission(),
-    friends: [],
-    pet: { type: "dog", name: "Doggy", withMe: true },
-    items: [],
-    mood: "normal"
-  };
-  const modifiedYou = Object.assign({}, defaultYou, you);
-
-  localStateStore.setYou(modifiedYou);
-};
-
 const generateMission = () => {
   const missionItem = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.vehicle
@@ -335,6 +318,7 @@ const itemsFromImages = Object.keys(images.items);
 
 // zzz - this is where you set the friend
 const testFriend = "jan";
+const yourName = "kat";
 
 const allScenes = locationsFromImages.map(name => {
   return {
@@ -351,11 +335,18 @@ const allCreatures = creaturesFromImages.map(type => {
   return { type, name: `${type}-creature` };
 });
 
+const posableGirls = images.posableGirls;
+
+// Add posableGirls to the creatures list, because they are a different type of object
+allCreatures.push(...posableGirls);
+
 const allItems = itemsFromImages.map(type => {
   return { type, name: "" };
 });
 
 const generatePlot = () => {
+  console.log("generating plot"); // zzz
+
   const plot = {
     activeScene: startScene,
     narrativeGenerators,
@@ -368,4 +359,32 @@ const generatePlot = () => {
   localStateStore.setPlot(plot);
 };
 
-export default { generateNewFriend, generatePlot, generateYou };
+console.log("posableGirls", posableGirls); // zzz
+
+const generateYou = ({}) => {
+  console.log("allCreatures", allCreatures); // zzz
+
+  const you = allCreatures.find(creature => creature.type === yourName);
+  console.log("you", you); // zzz
+
+  // localStateStore.setYou(newYou);
+  // return;
+  const defaultYou = {
+    name: "jan",
+    creature: you.type,
+    homeLocation: homeLocation,
+    vehicle: "scooter",
+    mission: generateMission(),
+    friends: [],
+    pet: { type: "dog", name: "Doggy", withMe: true },
+    items: [],
+    mood: "normal"
+  };
+  const modifiedYou = Object.assign({}, defaultYou, you);
+
+  // localStateStore.setYou(you);
+  localStateStore.setYou(modifiedYou);
+};
+generateYou({});
+
+export default { generatePlot, generateYou };

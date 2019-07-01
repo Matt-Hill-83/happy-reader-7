@@ -196,6 +196,7 @@ export default {
   posableGirls: [
     {
       name: "jan",
+      type: "jan",
       mood: "mad",
       images: {
         heads: [
@@ -241,6 +242,7 @@ export default {
     },
     {
       name: "amber",
+      type: "amber",
       mood: "frustrated",
       images: {
         heads: [
@@ -286,6 +288,7 @@ export default {
     },
     {
       name: "kat",
+      type: "kat",
       mood: "hurt",
       images: {
         heads: [

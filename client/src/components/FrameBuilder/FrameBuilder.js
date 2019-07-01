@@ -21,17 +21,15 @@ class FrameBuilder extends Component {
     onExitFrameBuilder && onExitFrameBuilder();
   };
 
-  selectHead = ({ girl, head }) => {
+  selectHead = ({ name, head }) => {
     // TODO - need to persist this change.
 
-    // girl.mood = head.mood;
+    console.log("name", name); // zzz
+    const { allCreatures } = localStateStore.getPlot();
+    const creature = allCreatures.find(creature => creature.type === name);
+    creature.mood = head.mood;
 
-    const plot = localStateStore.getPlot();
-    console.log("plot.allCreatures", plot.allCreatures); // zzz
-
-    const you = localStateStore.getYou();
-    you.mood = head.mood;
-    localStateStore.setYou(you);
+    console.log("creature", toJS(creature)); // zzz
   };
 
   renderGirlPicker = ({ name }) => {
@@ -75,7 +73,12 @@ class FrameBuilder extends Component {
     ];
 
     const renderedFriends = friends.map(friend => {
-      return <Character name={friend} mood={"normal"} />;
+      const { allCreatures } = localStateStore.getPlot();
+      const creature = allCreatures.find(creature => creature.type === friend);
+
+      console.log("creature.mood", creature.mood); // zzz
+
+      return <Character name={friend} mood={creature.mood} />;
     });
 
     return (
@@ -121,7 +124,7 @@ class FrameBuilder extends Component {
 
           <div className={css.charactersContainer}>
             <div className={css.youContainer}>
-              <Character name={yourName} mood={you.mood} />
+              <Character name={yourName} mood={you.creature.mood} />
             </div>
             {renderedFriends}
           </div>
@@ -154,7 +157,7 @@ class FrameBuilder extends Component {
         </div>
         <div className={css.scenesContainer}>
           {this.renderScene({ you, friends: friendNames })}
-          {/* {this.renderScene({ you, friends: [friendName] })} */}
+          {this.renderScene({ you, friends: friendNames })}
         </div>
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
