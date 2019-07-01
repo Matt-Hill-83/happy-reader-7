@@ -2,9 +2,9 @@ import { observer } from "mobx-react";
 import { toJS } from "mobx";
 import React, { Component } from "react";
 import Head from "../Head/Head";
+import Images from "../../images/images";
 
 import css from "./Character.module.scss";
-import Images from "../../images/images";
 
 const girlImages = Images.posableGirls;
 
@@ -13,28 +13,13 @@ class Character extends Component {
 
   async componentWillMount() {}
 
-  renderHead = ({ head, className = "" }) => {
-    const { image, mood } = head;
-
-    return (
-      <div className={`${css.girlHeadContainer} ${className}`}>
-        <img
-          className={`${css.girlHead} ${css.girlHeadAmber}`}
-          src={image}
-          alt={`${"amber-head"}-image`}
-        />
-        <span className={css.moodLabel}>{mood}</span>
-      </div>
-    );
-  };
-
   render() {
     const { name, mood } = this.props;
-    const youImages = girlImages.find(girl => girl.name === name);
+    const images = girlImages.find(girl => girl.name === name);
 
     const {
       images: { heads, body }
-    } = youImages;
+    } = images;
 
     const head = heads.find(head => head.mood === mood);
 
