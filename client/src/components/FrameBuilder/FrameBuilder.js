@@ -22,6 +22,8 @@ class FrameBuilder extends Component {
 
   selectHead = ({ girl, head }) => {
     // TODO - need to persist this change.
+    console.log("girl, head", girl, head); // zzz
+
     girl.mood = head.mood;
   };
 
@@ -114,7 +116,8 @@ class FrameBuilder extends Component {
     const { girlImages } = this.props;
     console.log("girlImages", girlImages); // zzz
 
-    const yourName = "amber";
+    const yourName = "jan";
+    // const yourName = "amber";
     const friendName = "kat";
 
     const you = girlImages.find(girl => girl.name === yourName);

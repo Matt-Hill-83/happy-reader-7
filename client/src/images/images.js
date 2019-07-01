@@ -335,7 +335,7 @@ export default {
           },
           {
             image: katLoad,
-            mood: "load"
+            mood: "loud"
           },
           {
             image: katMad,
