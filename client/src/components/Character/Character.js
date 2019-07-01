@@ -6,36 +6,12 @@ import Head from "../Head/Head";
 import css from "./Character.module.scss";
 import Images from "../../images/images";
 
+const girlImages = Images.posableGirls;
+
 class Character extends Component {
   state = {};
 
   async componentWillMount() {}
-
-  // renderCharacter = ({ character }) => {
-  //   const girlImages = Images.posableGirls;
-  //   const youImages = girlImages.find(girl => girl.name === you);
-
-  //   const {
-  //     images: { heads, body },
-  //     name,
-  //     mood
-  //   } = character;
-
-  //   const head = heads.find(head => head.mood === mood);
-
-  //   const className = css.headForBody;
-  //   return (
-  //     <div className={css.girlBodyContainer}>
-  //       <img
-  //         className={`${css.girlBodyImage}`}
-  //         src={body.image}
-  //         alt={`${"amber-body"}-image`}
-  //       />
-  //       <span className={`${css.bodyLabel}`}>{name}</span>
-  //       <Head head={head} className={className} />
-  //     </div>
-  //   );
-  // };
 
   renderHead = ({ head, className = "" }) => {
     const { image, mood } = head;
@@ -53,13 +29,12 @@ class Character extends Component {
   };
 
   render() {
-    const { character } = this.props;
-    const girlImages = Images.posableGirls;
-    const youImages = girlImages.find(girl => girl.name === character);
+    const { name } = this.props;
+    const youImages = girlImages.find(girl => girl.name === name);
 
     const {
       images: { heads, body },
-      name,
+      // name,
       mood
     } = youImages;
 

@@ -118,9 +118,9 @@ class FrameBuilder extends Component {
 
           <div className={css.charactersContainer}>
             <div className={css.youContainer}>
-              <Character character={you} />
+              <Character name={you} />
             </div>
-            <Character character={friend} />
+            <Character name={friend} />
           </div>
         </div>
       </div>
