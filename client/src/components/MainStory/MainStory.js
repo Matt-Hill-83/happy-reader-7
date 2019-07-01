@@ -154,15 +154,11 @@ class MainStory extends React.Component {
   };
 
   closeYouWin = () => {
-    console.log("close you win"); // zzz
-
     this.setState({ showYouWin: false });
     localStateStore.incrementActiveLocationsMapIndex();
     const locationsMap = localStateStore.getActiveLocationsMap();
-    console.log("locationsMap", locationsMap); // zzz
 
     const { startScene } = locationsMap;
-    console.log("startScene", startScene); // zzz
 
     this.updateActiveScene({ activeScene: startScene });
   };

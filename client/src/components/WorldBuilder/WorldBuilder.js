@@ -222,7 +222,7 @@ class WorldBuilder extends Component {
         return;
       }
 
-      console.log("removed", removed); // zzz
+      // console.log("removed", removed); // zzz
 
       // There should be a separate object in the draggable object that preserves all the item props
       // separate from the renderd content
@@ -411,7 +411,6 @@ class WorldBuilder extends Component {
 
   editFrame = ({ scene }) => {
     this.setState({ sceneToEdit: scene, showFrameBuilder: true });
-    console.log("scene", toJS(scene)); // zzz
   };
 
   onExitFrameBuilder = () => {
