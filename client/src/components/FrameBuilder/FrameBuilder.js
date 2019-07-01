@@ -13,15 +13,37 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 import Utils from "../../Utils/Utils";
 
 class FrameBuilder extends Component {
-  state = {};
+  state = { frames: [] };
 
-  async componentWillMount() {}
+  componentWillMount() {
+    this.setInitialFrames();
+  }
+
+  setInitialFrames = () => {
+    const {
+      sceneToEdit: { frames, creatures = [] }
+    } = this.props;
+
+    let newFrames = [
+      {
+        creatures: ["jan"],
+        story: ["the girl talks"],
+        dialog: [{ character: "default", text: "Oh my gosh I can talk!" }]
+      }
+    ];
+
+    if (frames) {
+      newFrames = frames;
+    }
+
+    this.setState({ frames: newFrames });
+  };
 
   onExitFrameBuilder = () => {
     const { onExitFrameBuilder } = this.props;
 
-    const frame = { test: 5 };
-    onExitFrameBuilder && onExitFrameBuilder({ frame });
+    const frames = [{ test: 5 }];
+    onExitFrameBuilder && onExitFrameBuilder({ frames });
   };
 
   selectHead = ({ name, head }) => {
@@ -55,7 +77,7 @@ class FrameBuilder extends Component {
     );
   };
 
-  renderScene = ({ you, friends = [] }) => {
+  renderFrame = ({ you, friends = [] }) => {
     const { sceneToEdit } = this.props;
 
     const yourName = you.name;
@@ -146,6 +168,8 @@ class FrameBuilder extends Component {
     // const yourName = "amber";
     const friendName = "jan";
 
+    const frames = [{ name: 1, characters: creatures }];
+
     return (
       <div className={css.main}>
         <div className={css.girlPickersContainer}>
@@ -153,8 +177,8 @@ class FrameBuilder extends Component {
           {this.renderGirlPicker({ name: friendName })}
         </div>
         <div className={css.scenesContainer}>
-          {this.renderScene({ you, friends: friendNames })}
-          {this.renderScene({ you, friends: friendNames })}
+          {this.renderFrame({ you, friends: friendNames })}
+          {this.renderFrame({ you, friends: friendNames })}
         </div>
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>

@@ -413,8 +413,10 @@ class WorldBuilder extends Component {
     this.setState({ sceneToEdit: scene, showFrameBuilder: true });
   };
 
-  onExitFrameBuilder = ({ frame }) => {
-    console.log("frame", frame); // zzz
+  onExitFrameBuilder = ({ frames }) => {
+    console.log("frames", frames); // zzz
+    const sceneToEdit = this.state.sceneToEdit;
+    console.log("sceneToEdit", sceneToEdit); // zzz
 
     this.setState({ sceneToEdit: "", showFrameBuilder: false });
   };
