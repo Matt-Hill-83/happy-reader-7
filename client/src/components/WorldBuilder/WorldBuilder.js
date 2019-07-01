@@ -486,7 +486,7 @@ class WorldBuilder extends Component {
     // these need to be rendered, or else the store won't populate from the firestore db
     // these need to be rendered, or else the store won't populate from the firestore db
 
-    const girlImages = Images.posableGirls;
+    // const girlImages = Images.posableGirls;
     // const girlName = "amber";
     const girlName = "jan";
 
@@ -535,8 +535,8 @@ class WorldBuilder extends Component {
         </div>
         {showFrameBuilder && (
           <FrameBuilder
-            girlImages={girlImages}
-            girlName={girlName}
+            // girlImages={girlImages}
+            // girlName={girlName}
             sceneToEdit={sceneToEdit}
             onExitFrameBuilder={this.onExitFrameBuilder}
           />

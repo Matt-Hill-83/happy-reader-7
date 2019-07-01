@@ -113,8 +113,12 @@ class FrameBuilder extends Component {
   };
 
   render() {
-    const { girlImages } = this.props;
-    console.log("girlImages", girlImages); // zzz
+    const girlImages = Images.posableGirls;
+    const { sceneToEdit } = this.props;
+
+    console.log("sceneToEdit", sceneToEdit); // zzz
+
+    // console.log("girlImages", girlImages); // zzz
 
     const yourName = "jan";
     // const yourName = "amber";
@@ -122,6 +126,8 @@ class FrameBuilder extends Component {
 
     const you = girlImages.find(girl => girl.name === yourName);
     const friend = girlImages.find(girl => girl.name === friendName);
+
+    console.log("you.mood", you.mood); // zzz
 
     return (
       <div className={css.main}>
