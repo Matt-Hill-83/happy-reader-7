@@ -483,7 +483,11 @@ class WorldBuilder extends Component {
       );
     });
 
-    return <div className={css.girlPicker}>{images}</div>;
+    return (
+      <div className={css.girlPickerContainer}>
+        <div className={css.girlPicker}>{images}</div>
+      </div>
+    );
   };
 
   render() {
