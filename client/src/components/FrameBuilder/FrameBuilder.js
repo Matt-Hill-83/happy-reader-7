@@ -22,12 +22,14 @@ class FrameBuilder extends Component {
   renderCharacter = ({ character }) => {
     const {
       images: { heads, body },
-      name
+      name,
+      mood
     } = character;
+    console.log("mood", mood); // zzz
 
-    const selectedMood = "mad";
+    // const selectedMood = "mad";
 
-    const head = heads.find(head => head.mood === selectedMood);
+    const head = heads.find(head => head.mood === mood);
 
     const className = css.headForBody;
     return (

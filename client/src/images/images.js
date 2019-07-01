@@ -59,6 +59,7 @@ import rubyMad from "./rigged-girls/ruby/ruby-mad-01.png";
 import rubySad from "./rigged-girls/ruby/ruby-sad-01.png";
 import rubySly from "./rigged-girls/ruby/ruby-sly-01.png";
 
+// rigged girl - amber
 import amberNormal from "./rigged-girls/amber/amber-01-normal.png";
 import amberSneaky from "./rigged-girls/amber/amber-02-sneaky.png";
 import amberBlissful from "./rigged-girls/amber/amber-03-blissful.png";
@@ -69,6 +70,28 @@ import amberScared from "./rigged-girls/amber/amber-07-scared.png";
 import amberMad from "./rigged-girls/amber/amber-08-mad.png";
 import amberShocked from "./rigged-girls/amber/amber-09-shocked.png";
 import amberBody from "./rigged-girls/amber/amber-body.png";
+
+// rigged girl - amber
+import janBlissful from "./rigged-girls/jan/jan-09-blissful.png";
+import janRepulsed from "./rigged-girls/jan/jan-08-repulsed.png";
+import janScared from "./rigged-girls/jan/jan-07-scared.png";
+import janSneaky from "./rigged-girls/jan/jan-06-sneaky.png";
+import janSorry from "./rigged-girls/jan/jan-05-sorry.png";
+import janMad from "./rigged-girls/jan/jan-04-mad.png";
+import janSurprised from "./rigged-girls/jan/jan-03-surprised.png";
+import janNormal from "./rigged-girls/jan/jan-02-normal.png";
+import janScared from "./rigged-girls/jan/jan-01-scared.png";
+import janBody from "./rigged-girls/jan/jan-body.png";
+
+jan - 09 - blissful.png;
+jan - 08 - repulsed.png;
+jan - 07 - scared.png;
+jan - 06 - sneaky.png;
+jan - 05 - sorry.png;
+jan - 04 - mad.png;
+jan - 03 - surprised.png;
+jan - 02 - normal.png;
+jan - 01 - scared.png;
 
 // scene view
 import sceneViewBook from "./scene-view/book01.png";
@@ -156,8 +179,62 @@ export default {
   },
   posableGirls: [
     {
+      name: "jan",
+      mood: "mad",
+      images: {
+        heads: [
+          {
+            image: janBlissful,
+            mood: MOODS.blissful,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: janRepulsed,
+            mood: MOODS.repulsed,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: janScared,
+            mood: MOODS.scared,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: janSneaky,
+            mood: MOODS.sneaky,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: janSorry,
+            mood: MOODS.sorry,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: janMad,
+            mood: MOODS.mad,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: janSurprised,
+            mood: MOODS.surprised,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: janNormal,
+            mood: MOODS.normal,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: janScared,
+            mood: MOODS.scared,
+            offset: { x: 0, y: 0 }
+          }
+        ],
+        body: { image: amberBody }
+      }
+    },
+    {
       name: "amber",
-
+      mood: "frustrated",
       images: {
         heads: [
           {
