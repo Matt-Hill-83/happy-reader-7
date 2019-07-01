@@ -471,14 +471,16 @@ class WorldBuilder extends Component {
 
   renderGirlPicker = () => {
     const images = Images.posableGirls[0].images.heads.map(head => {
+      const { image, mood } = head;
+
       return (
         <div className={css.girlHeadContainer}>
           <img
-            className={css.girlHead}
-            src={head}
+            className={`${css.girlHead} ${css.girlHeadAmber}`}
+            src={image}
             alt={`${"amber-head"}-image`}
           />
-          {/* <span className={css.characterLabel}>{head}</span> */}
+          <span className={css.characterLabel}>{mood}</span>
         </div>
       );
     });

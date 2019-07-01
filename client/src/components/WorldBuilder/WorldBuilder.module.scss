@@ -1,5 +1,9 @@
 @import "../../Styles/mixins.modules.scss";
 
+.characterLabel {
+  @include item-label;
+}
+
 .girlPickerContainer {
   border: 1px solid var(--color-purple-dark) !important;
   display: flex;
@@ -48,7 +52,11 @@
 .girlHead {
   width: 100%;
   height: auto;
-  // border: 1px solid blue !important;
+}
+
+.girlHeadAmber {
+  width: 170%;
+  height: auto;
 }
 
 .locationGridContainer {

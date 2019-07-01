@@ -59,38 +59,49 @@ import rubySad from "./rigged-girls/ruby/ruby-sad-01.png";
 import rubySly from "./rigged-girls/ruby/ruby-sly-01.png";
 
 // import amber01 from "/Users/matthill/projects/GCP_stuff/happy-reader-7/client/src/images/rigged-girls/amber/amber-01.png";
-import amber01 from "./rigged-girls/amber/amber-01.png";
-import amber02 from "./rigged-girls/amber/amber-02.png";
-import amber03 from "./rigged-girls/amber/amber-03.png";
-import amber04 from "./rigged-girls/amber/amber-04.png";
-import amber05 from "./rigged-girls/amber/amber-05.png";
-import amber06 from "./rigged-girls/amber/amber-06.png";
-import amber07 from "./rigged-girls/amber/amber-07.png";
-import amber08 from "./rigged-girls/amber/amber-08.png";
-import amber09 from "./rigged-girls/amber/amber-09.png";
+import amberNormal from "./rigged-girls/amber/amber-01-normal.png";
+import amberSneaky from "./rigged-girls/amber/amber-02-sneaky.png";
+import amberBlissful from "./rigged-girls/amber/amber-03-blissful.png";
+import amberFrustrated from "./rigged-girls/amber/amber-04-frustrated.png";
+import amberGlad from "./rigged-girls/amber/amber-05-glad.png";
+import amberSurprised from "./rigged-girls/amber/amber-06-surprised.png";
+import amberScared from "./rigged-girls/amber/amber-07-scared.png";
+import amberMad from "./rigged-girls/amber/amber-08-mad.png";
+import amberShocked from "./rigged-girls/amber/amber-09-shocked.png";
 import amberBody from "./rigged-girls/amber/amber-body.png";
 
 const amberHeads = [
-  amber01,
-  amber02,
-  amber03,
-  amber04,
-  amber05,
-  amber06,
-  amber07,
-  amber08,
-  amber09
+  amberNormal,
+  amberSneaky,
+  amberBlissful,
+  amberFrustrated,
+  amberGlad,
+  amberSurprised,
+  amberScared,
+  amberMad,
+  amberShocked
 ];
 
 const MOODS = {
+  blissful: "blissful",
+  frustrated: "frustrated",
   glad: "glad",
   happy: "happy",
   lonely: "lonely",
   mad: "mad",
+  mad: "mad",
+  normal: "normal",
   sad: "sad",
   scared: "scared",
+  shocked: "shocked",
   sly: "sly",
-  surprised: "surprised"
+  sneaky: "sneaky",
+  surprised: "surprised",
+  stunned: "stunned",
+  apprehensive: "apprehensive",
+  resolute: "resolute",
+  determined: "determined",
+  amazed: "amazed"
 };
 
 export default {
@@ -153,8 +164,55 @@ export default {
   posableGirls: [
     {
       name: "amber",
+
       images: {
-        heads: amberHeads,
+        heads: [
+          {
+            image: amberNormal,
+            mood: MOODS.normal,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: amberSneaky,
+            mood: MOODS.sneaky,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: amberBlissful,
+            mood: MOODS.blissful,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: amberFrustrated,
+            mood: MOODS.frustrated,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: amberGlad,
+            mood: MOODS.glad,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: amberSurprised,
+            mood: MOODS.surprised,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: amberScared,
+            mood: MOODS.scared,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: amberMad,
+            mood: MOODS.mad,
+            offset: { x: 0, y: 0 }
+          },
+          {
+            image: amberShocked,
+            mood: MOODS.shocked,
+            offset: { x: 0, y: 0 }
+          }
+        ],
         body: { image: amberBody }
       }
     }

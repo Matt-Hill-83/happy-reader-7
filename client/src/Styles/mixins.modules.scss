@@ -1,6 +1,6 @@
 @mixin item-label {
   position: absolute;
-
+  border: 1px solid red !important;
   background: var(--light-pink);
   border-radius: 3px;
   padding: 0 3px;
@@ -26,7 +26,6 @@
   }
 
   .characterLabel {
-    position: absolute;
     @include item-label;
   }
 }
