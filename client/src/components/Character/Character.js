@@ -28,8 +28,7 @@ class Character extends Component {
           alt={`${"amber-body"}-image`}
         />
         <span className={`${css.bodyLabel}`}>{name}</span>
-        <Head head={head} />
-        {/* {this.renderHead({ head, className })} */}
+        <Head head={head} className={className} />
       </div>
     );
   };

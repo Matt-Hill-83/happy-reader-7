@@ -14,7 +14,6 @@ class Head extends Component {
       head: { image, mood },
       className = ""
     } = this.props;
-    // const { image, mood } = head;
 
     return (
       <div className={`${css.girlHeadContainer} ${className}`}>
