@@ -8,46 +8,19 @@ import WordGroup from "../WordGroup/WordGroup";
 import Character from "../Character/Character";
 import Head from "../Head/Head";
 
-import css from "./FrameBuilder.module.scss";
+import css from "./Frame.module.scss";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 import Utils from "../../Utils/Utils";
-import Frame from "../Frame/Frame";
 
-class FrameBuilder extends Component {
+class Frame extends Component {
   state = { frames: [] };
 
-  componentWillMount() {
-    this.setInitialFrames();
-  }
+  componentWillMount() {}
 
-  setInitialFrames = () => {
-    // if (!this.props.sceneToEdit) {
-    //   return null;
-    // }
-    const {
-      sceneToEdit: { frames, creatures = [] }
-    } = this.props;
+  deleteFrame = () => {
+    const { deleteFrame } = this.props;
 
-    let newFrames = [
-      {
-        creatures: ["jan"],
-        story: ["the girl talks"],
-        dialog: [{ character: "default", text: "Oh my gosh I can talk!" }]
-      }
-    ];
-
-    if (frames) {
-      newFrames = frames;
-    }
-
-    this.setState({ frames: newFrames });
-  };
-
-  onExitFrameBuilder = () => {
-    const { onExitFrameBuilder } = this.props;
-
-    const frames = [{ test: 5 }];
-    onExitFrameBuilder && onExitFrameBuilder({ frames });
+    deleteFrame && deleteFrame({ frame: "id" });
   };
 
   selectHead = ({ name, head }) => {
@@ -100,6 +73,8 @@ class FrameBuilder extends Component {
     ];
 
     const renderedFriends = friends.map(friend => {
+      console.log("friend", friend); // zzz
+
       const creature = Utils.getCreatureByType({ type: friend });
 
       return <Character name={friend} mood={creature.mood} />;
@@ -161,43 +136,35 @@ class FrameBuilder extends Component {
 
   render() {
     const {
-      sceneToEdit,
-      sceneToEdit: { creatures = [] }
+      frame,
+      frame: { creatures }
     } = this.props;
+
+    console.log("creatures", toJS(creatures)); // zzz
 
     const friendNames = creatures.map(creature => creature.type);
     const you = localStateStore.getYou();
-
     const yourName = you.name;
-    // const yourName = "amber";
-    const friendName = "jan";
+    const friendName = creatures[0] && creatures[0].type;
 
-    const frames = [
-      {
-        creatures,
-        story: [["the girl talks"]],
-        dialog: [{ character: "default", text: "Oh my gosh I can talk!" }]
-      }
-    ];
-
-    const frame = frames[0];
-
+    /* eslint-disable */ debugger; /* zzz */ /* eslint-ensable */
     return (
-      <div className={css.main}>
-        {/* <div className={css.girlPickersContainer}>
+      <>
+        <div className={css.girlPickersContainer}>
           {this.renderGirlPicker({ name: yourName })}
           {this.renderGirlPicker({ name: friendName })}
         </div>
         <div className={css.scenesContainer}>
           {this.renderFrame({ you, friends: friendNames })}
-        </div> */}
-        <Frame frame={frame} sceneToEdit={sceneToEdit} />
-        <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
+          {this.renderFrame({ you, friends: friendNames })}
+        </div>
+
+        <Button className={css.closeButton} onClick={this.deleteFrame}>
           <Icon icon={IconNames.CROSS} />
         </Button>
-      </div>
+      </>
     );
   }
 }
 
-export default observer(FrameBuilder);
+export default observer(Frame);

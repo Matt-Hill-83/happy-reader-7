@@ -128,20 +128,20 @@
   left: 3%;
 }
 
-.girlPickerContainer {
-  border: 1px solid var(--color-purple-dark);
-  display: flex;
-  height: auto;
-}
+// .girlPickerContainer {
+//   border: 1px solid var(--color-purple-dark);
+//   display: flex;
+//   height: auto;
+// }
 
-.girlPicker {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+// .girlPicker {
+//   display: flex;
+//   align-items: flex-start;
+//   justify-content: flex-start;
 
-  overflow: hidden;
-  flex-wrap: wrap;
+//   overflow: hidden;
+//   flex-wrap: wrap;
 
-  height: calc(5 * var(--cell-height-small));
-  width: calc(5 * var(--cell-height-small));
-}
+//   height: calc(5 * var(--cell-height-small));
+//   width: calc(5 * var(--cell-height-small));
+// }
