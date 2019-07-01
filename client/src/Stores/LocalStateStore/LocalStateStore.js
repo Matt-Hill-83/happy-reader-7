@@ -8,6 +8,7 @@ class LocalStateStore {
   you = {};
   plot = {};
   locationsMaps = [];
+  creatures = [];
   activeLocationsMap = [];
   // activeLocationsMapIndex = 1;
   activeLocationsMapIndex = 0;
@@ -42,6 +43,11 @@ class LocalStateStore {
     this.locationsMaps = locationsMaps;
   };
 
+  getCreatures = () => this.creatures;
+  setCreatures = creatures => {
+    this.creatures = creatures;
+  };
+
   getActiveLocationsMap = () =>
     this.locationsMaps[this.activeLocationsMapIndex];
 
@@ -62,6 +68,7 @@ class LocalStateStore {
 decorate(LocalStateStore, {
   activelocationsMap: observable,
   activeLocationsMapIndex: observable,
+  creatures: observable,
   locationsMaps: observable,
   page: observable,
   plot: observable,

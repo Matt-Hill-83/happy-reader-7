@@ -36,7 +36,8 @@ class WorldBuilder extends Component {
   };
 
   async componentWillMount() {
-    const { allItems, allScenes, allCreatures } = localStateStore.getPlot();
+    const { allItems, allScenes } = localStateStore.getPlot();
+    const allCreatures = localStateStore.getCreatures();
 
     const locations = allScenes.map((item, index) => {
       return {

@@ -1,9 +1,16 @@
 import myWords from "../Models/words.js";
+import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js";
 
 // These should have getters and setters
 const { words, wordTypes } = myWords;
 
 export default class Utils {
+  static getCreatureByName = ({ type }) => {
+    const allCreatures = localStateStore.getCreatures();
+
+    return allCreatures.find(creature => creature.type === type);
+  };
+
   static removeFavorites = words =>
     words.filter(word => {
       if (word.data) {

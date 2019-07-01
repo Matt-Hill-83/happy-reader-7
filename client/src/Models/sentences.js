@@ -339,19 +339,17 @@ const posableGirls = images.posableGirls;
 
 // Add posableGirls to the creatures list, because they are a different type of object
 allCreatures.push(...posableGirls);
+localStateStore.setCreatures(allCreatures);
 
 const allItems = itemsFromImages.map(type => {
   return { type, name: "" };
 });
 
 const generatePlot = () => {
-  console.log("generating plot"); // zzz
-
   const plot = {
     activeScene: startScene,
     narrativeGenerators,
     allScenes,
-    allCreatures,
     allItems,
     you: localStateStore.getYou()
   };
@@ -359,19 +357,14 @@ const generatePlot = () => {
   localStateStore.setPlot(plot);
 };
 
-console.log("posableGirls", posableGirls); // zzz
+const generateYou = ({ you = {} }) => {
+  const yourCreature = allCreatures.find(
+    creature => creature.type === yourName
+  );
 
-const generateYou = ({}) => {
-  console.log("allCreatures", allCreatures); // zzz
-
-  const you = allCreatures.find(creature => creature.type === yourName);
-  console.log("you", you); // zzz
-
-  // localStateStore.setYou(newYou);
-  // return;
   const defaultYou = {
-    name: "jan",
-    creature: you.type,
+    name: yourName,
+    // creature: yourCreature,
     homeLocation: homeLocation,
     vehicle: "scooter",
     mission: generateMission(),
@@ -380,9 +373,9 @@ const generateYou = ({}) => {
     items: [],
     mood: "normal"
   };
-  const modifiedYou = Object.assign({}, defaultYou, you);
+  const modifiedYou = Object.assign(defaultYou, you);
 
-  // localStateStore.setYou(you);
+  modifiedYou.creature = yourCreature;
   localStateStore.setYou(modifiedYou);
 };
 generateYou({});

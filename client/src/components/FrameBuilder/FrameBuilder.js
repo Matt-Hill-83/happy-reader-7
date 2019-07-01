@@ -25,11 +25,14 @@ class FrameBuilder extends Component {
     // TODO - need to persist this change.
 
     console.log("name", name); // zzz
-    const { allCreatures } = localStateStore.getPlot();
+    const allCreatures = localStateStore.getCreatures();
     const creature = allCreatures.find(creature => creature.type === name);
+    console.log("head.mood", head.mood); // zzz
+
     creature.mood = head.mood;
 
     console.log("creature", toJS(creature)); // zzz
+    this.forceUpdate();
   };
 
   renderGirlPicker = ({ name }) => {
@@ -58,7 +61,8 @@ class FrameBuilder extends Component {
   renderScene = ({ you, friends = [] }) => {
     const { sceneToEdit } = this.props;
 
-    const yourName = you.creature;
+    const yourName = you.name;
+    console.log("you", toJS(you)); // zzz
 
     const backgroundImage = Images.backgrounds["hill01"];
 
@@ -73,13 +77,16 @@ class FrameBuilder extends Component {
     ];
 
     const renderedFriends = friends.map(friend => {
-      const { allCreatures } = localStateStore.getPlot();
+      const allCreatures = localStateStore.getCreatures();
       const creature = allCreatures.find(creature => creature.type === friend);
 
       console.log("creature.mood", creature.mood); // zzz
 
       return <Character name={friend} mood={creature.mood} />;
     });
+
+    const yourMood = you.creature.mood;
+    console.log("yourMood", yourMood); // zzz
 
     return (
       <div className={css.scene}>
@@ -126,7 +133,7 @@ class FrameBuilder extends Component {
             <div className={css.youContainer}>
               <Character name={yourName} mood={you.creature.mood} />
             </div>
-            {renderedFriends}
+            {/* {renderedFriends} */}
           </div>
         </div>
       </div>
@@ -135,17 +142,14 @@ class FrameBuilder extends Component {
 
   render() {
     const {
-      sceneToEdit,
       sceneToEdit: { creatures = [] }
     } = this.props;
 
-    console.log("sceneToEdit", toJS(sceneToEdit)); // zzz
     const friendNames = creatures.map(creature => creature.type);
-    console.log("friendNames", friendNames); // zzz
 
     const you = localStateStore.getYou();
 
-    const yourName = you.creature;
+    const yourName = you.name;
     // const yourName = "amber";
     const friendName = "jan";
 
@@ -153,7 +157,7 @@ class FrameBuilder extends Component {
       <div className={css.main}>
         <div className={css.girlPickersContainer}>
           {this.renderGirlPicker({ name: yourName })}
-          {this.renderGirlPicker({ name: friendName })}
+          {/* {this.renderGirlPicker({ name: friendName })} */}
         </div>
         <div className={css.scenesContainer}>
           {this.renderScene({ you, friends: friendNames })}
