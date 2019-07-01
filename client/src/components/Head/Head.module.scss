@@ -1,3 +1,5 @@
+@import "../../Styles/mixins.modules.scss";
+
 .girlHeadContainer {
   display: flex;
   align-items: center;
@@ -27,4 +29,18 @@
 .girlHeadAmber {
   width: 170%;
   height: auto;
+}
+
+.moodLabel {
+  @include item-label;
+  border: 1px solid blue !important;
+  background: var(--light-pink);
+  border-radius: 3px;
+  padding: 0 3px;
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1%;
+  top: unset;
 }

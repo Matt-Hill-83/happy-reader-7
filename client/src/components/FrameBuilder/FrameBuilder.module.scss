@@ -110,7 +110,6 @@
 
 .scene {
   display: flex;
-  /* height: 86%; */
   margin-right: 10px;
   border: 3px solid green !important;
   width: 30%;
@@ -125,24 +124,19 @@
   left: 3%;
 }
 
-// .characterLabel {
+// .moodLabel {
 //   @include item-label;
+//   border: 1px solid blue !important;
+//   background: var(--light-pink);
+//   border-radius: 3px;
+//   padding: 0 3px;
 //   position: absolute;
+//   z-index: 10;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   bottom: 1%;
+//   top: unset;
 // }
-
-.moodLabel {
-  @include item-label;
-  border: 1px solid blue !important;
-  background: var(--light-pink);
-  border-radius: 3px;
-  padding: 0 3px;
-  position: absolute;
-  z-index: 10;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 1%;
-  top: unset;
-}
 
 .girlPickerContainer {
   border: 1px solid var(--color-purple-dark);
