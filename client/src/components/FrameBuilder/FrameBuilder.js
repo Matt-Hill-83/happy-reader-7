@@ -12,35 +12,6 @@ class FrameBuilder extends Component {
 
   async componentWillMount() {}
 
-  renderGirlPicker = () => {
-    const { girlImages, girlName } = this.props;
-
-    if (!girlImages.length && girlImages.length > 0) {
-      return null;
-    }
-
-    const images = girlImages[0].images.heads.map(head => {
-      const { image, mood } = head;
-
-      return (
-        <div className={css.girlHeadContainer}>
-          <img
-            className={`${css.girlHead} ${css.girlHeadAmber}`}
-            src={image}
-            alt={`${"amber-head"}-image`}
-          />
-          <span className={css.characterLabel}>{mood}</span>
-        </div>
-      );
-    });
-
-    // return (
-    //   <div className={css.girlPickerContainer}>
-    //     <div className={css.girlPicker}>{images}</div>
-    //   </div>
-    // );
-  };
-
   onExitFrameBuilder = () => {
     const { onExitFrameBuilder } = this.props;
     onExitFrameBuilder && onExitFrameBuilder();
@@ -72,7 +43,7 @@ class FrameBuilder extends Component {
 
     return (
       <div className={css.main}>
-        <Button onClick={this.onExitFrameBuilder}>
+        <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
           <Icon icon={IconNames.CROSS} />
         </Button>
         <div className={css.girlPickerContainer}>
