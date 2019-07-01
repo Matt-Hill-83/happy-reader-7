@@ -10,11 +10,10 @@
   bottom: 10%;
   align-items: center;
   margin: auto;
-  // flex-direction: column;
 }
 
 .narrativeClass {
-  border: 1px solid red !important;
+  // border: 1px solid red !important;
 
   :global {
     [class*="WordGroup_sentenceWord__"] {
