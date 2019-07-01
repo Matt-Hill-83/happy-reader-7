@@ -201,19 +201,19 @@ export default {
         heads: [
           {
             image: janBlissful,
-            mood: MOODS.blissful
+            mood: "blissful"
           },
           {
             image: janRepulsed,
-            mood: MOODS.repulsed
+            mood: "repulsed"
           },
           {
             image: janHappy,
-            mood: MOODS.happy
+            mood: "happy"
           },
           {
             image: janSneaky,
-            mood: MOODS.sneaky
+            mood: "sneaky"
           },
           {
             image: janSorry,
@@ -221,19 +221,19 @@ export default {
           },
           {
             image: janMad,
-            mood: MOODS.mad
+            mood: "mad"
           },
           {
             image: janSurprised,
-            mood: MOODS.surprised
+            mood: "surprised"
           },
           {
             image: janNormal,
-            mood: MOODS.normal
+            mood: "normal"
           },
           {
             image: janScared,
-            mood: MOODS.scared
+            mood: "scared"
           }
         ],
         body: { image: janBody }
@@ -246,39 +246,39 @@ export default {
         heads: [
           {
             image: amberNormal,
-            mood: MOODS.normal
+            mood: "normal"
           },
           {
             image: amberSneaky,
-            mood: MOODS.sneaky
+            mood: "sneaky"
           },
           {
             image: amberBlissful,
-            mood: MOODS.blissful
+            mood: "blissful"
           },
           {
             image: amberFrustrated,
-            mood: MOODS.frustrated
+            mood: "frustrated"
           },
           {
             image: amberGlad,
-            mood: MOODS.glad
+            mood: "glad"
           },
           {
             image: amberSurprised,
-            mood: MOODS.surprised
+            mood: "surprised"
           },
           {
             image: amberScared,
-            mood: MOODS.scared
+            mood: "scared"
           },
           {
             image: amberMad,
-            mood: MOODS.mad
+            mood: "mad"
           },
           {
             image: amberShocked,
-            mood: MOODS.shocked
+            mood: "shocked"
           }
         ],
         body: { image: amberBody }
