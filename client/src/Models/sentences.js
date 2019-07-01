@@ -9,14 +9,15 @@ const homeLocation = "home";
 
 const generateYou = ({ you }) => {
   const defaultYou = {
-    name: "Charlie",
+    name: "jan",
     creature: "girl",
     homeLocation: homeLocation,
     vehicle: "scooter",
     mission: generateMission(),
     friends: [],
     pet: { type: "dog", name: "Doggy", withMe: true },
-    items: []
+    items: [],
+    mood: "normal"
   };
   const modifiedYou = Object.assign({}, defaultYou, you);
 

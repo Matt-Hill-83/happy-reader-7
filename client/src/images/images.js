@@ -311,7 +311,7 @@ export default {
           },
           {
             image: katExpectant,
-            mood: "expectant"
+            mood: "curious"
           },
           {
             image: katFunny,

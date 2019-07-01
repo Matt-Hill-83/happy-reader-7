@@ -9,6 +9,7 @@ import Character from "../Character/Character";
 import Head from "../Head/Head";
 
 import css from "./FrameBuilder.module.scss";
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 
 class FrameBuilder extends Component {
   state = {};
@@ -24,17 +25,24 @@ class FrameBuilder extends Component {
     // TODO - need to persist this change.
     console.log("girl, head", girl, head); // zzz
 
-    girl.mood = head.mood;
+    // girl.mood = head.mood;
+
+    const you = localStateStore.getYou();
+    you.mood = head.mood;
+    localStateStore.setYou(you);
   };
 
-  renderGirlPicker = ({ girl }) => {
+  renderGirlPicker = ({ name }) => {
+    const girlImages = Images.posableGirls;
+    const images = girlImages.find(girl => girl.name === name);
+
     const {
       images: { heads }
-    } = girl;
+    } = images;
 
     const headImages = heads.map(head => {
       return (
-        <div onClick={() => this.selectHead({ head, girl })}>
+        <div onClick={() => this.selectHead({ head, name })}>
           <Head head={head} />
         </div>
       );
@@ -49,6 +57,11 @@ class FrameBuilder extends Component {
 
   renderScene = ({ you, friend }) => {
     const { sceneToEdit } = this.props;
+
+    const girlImages = Images.posableGirls;
+    const youImages = girlImages.find(girl => girl.name === you);
+    const friendImages = girlImages.find(girl => girl.name === friend);
+
     const backgroundImage = Images.backgrounds["hill01"];
 
     const locationImage = Images.locations[sceneToEdit.name];
@@ -104,7 +117,9 @@ class FrameBuilder extends Component {
           </div>
 
           <div className={css.charactersContainer}>
-            <Character character={you} />
+            <div className={css.youContainer}>
+              <Character character={you} />
+            </div>
             <Character character={friend} />
           </div>
         </div>
@@ -113,31 +128,35 @@ class FrameBuilder extends Component {
   };
 
   render() {
-    const girlImages = Images.posableGirls;
+    // const girlImages = Images.posableGirls;
     const { sceneToEdit } = this.props;
+
+    const you = localStateStore.getYou();
+    console.log("you", you); // zzz
 
     console.log("sceneToEdit", sceneToEdit); // zzz
 
-    // console.log("girlImages", girlImages); // zzz
-
-    const yourName = "jan";
+    const yourName = you.creature;
     // const yourName = "amber";
     const friendName = "kat";
 
-    const you = girlImages.find(girl => girl.name === yourName);
-    const friend = girlImages.find(girl => girl.name === friendName);
+    // const youImages = girlImages.find(girl => girl.name === yourName);
+    // const friendImages = girlImages.find(girl => girl.name === friendName);
 
-    console.log("you.mood", you.mood); // zzz
+    // console.log("youImages.mood", youImages.mood); // zzz
 
     return (
       <div className={css.main}>
         <div className={css.girlPickersContainer}>
-          {this.renderGirlPicker({ girl: you })}
-          {this.renderGirlPicker({ girl: friend })}
+          {this.renderGirlPicker({ name: yourName })}
+          {this.renderGirlPicker({ name: friendName })}
+          {/* {this.renderGirlPicker({ girl: youImages })} */}
+          {/* {this.renderGirlPicker({ girl: friendImages })} */}
         </div>
         <div className={css.scenesContainer}>
-          {this.renderScene({ you, friend })}
-          {this.renderScene({ you, friend })}
+          {this.renderScene({ you: yourName, friend: friendName })}
+          {/* {this.renderScene({ you: youImages, friend: friendImages })} */}
+          {/* {this.renderScene({ you: youImages, friend: friendImages })} */}
         </div>
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>

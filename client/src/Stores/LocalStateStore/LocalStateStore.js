@@ -61,6 +61,7 @@ class LocalStateStore {
 
 decorate(LocalStateStore, {
   page: observable,
+  you: observable,
   plot: observable,
   smallMap: observable,
   showWorldBuilder: observable,

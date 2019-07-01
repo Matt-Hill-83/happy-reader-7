@@ -12,6 +12,10 @@
   margin: auto;
 }
 
+.youContainer {
+  border: 1px solid blue !important;
+}
+
 .narrativeClass {
   :global {
     [class*="WordGroup_sentenceWord__"] {
