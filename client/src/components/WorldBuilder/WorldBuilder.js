@@ -451,7 +451,7 @@ class WorldBuilder extends Component {
       >
         {items &&
           items.map((item, index) => {
-            const { scene, id, name = "" } = item;
+            const { id } = item;
             let content = <span>content missing</span>;
 
             // define a render function in each item type

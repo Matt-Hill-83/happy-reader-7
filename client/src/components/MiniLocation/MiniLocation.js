@@ -189,12 +189,14 @@ class MiniLocation extends React.Component {
   render() {
     const {
       location,
-      characters,
+      // characters,
       isActive,
       className,
       showLabel = true,
       id
     } = this.props;
+
+    const characters = location.creatures;
 
     // const charJs = toJS(characters);
 

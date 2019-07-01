@@ -6,6 +6,7 @@ import { toJS } from "mobx";
 import React, { Component } from "react";
 
 import css from "./FrameBuilder.module.scss";
+import MiniLocation from "../MiniLocation/MiniLocation";
 
 class FrameBuilder extends Component {
   state = {};
@@ -49,7 +50,14 @@ class FrameBuilder extends Component {
         <div className={css.girlPickerContainer}>
           <div className={css.girlPicker}>{images}</div>
         </div>
-        <div className={css.scene}>test</div>
+        <div className={css.scene}>
+          {/* <MiniLocation
+            id={id}
+            key={name}
+            location={scene}
+            characters={creatures}
+          /> */}
+        </div>
         <div className={css.girlPickerContainer}>
           <div className={css.girlPicker}>{images}</div>
         </div>
