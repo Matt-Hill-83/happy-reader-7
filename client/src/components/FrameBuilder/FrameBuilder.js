@@ -115,7 +115,7 @@ class FrameBuilder extends Component {
     console.log("girlImages", girlImages); // zzz
 
     const yourName = "amber";
-    const friendName = "jan";
+    const friendName = "kat";
 
     const you = girlImages.find(girl => girl.name === yourName);
     const friend = girlImages.find(girl => girl.name === friendName);

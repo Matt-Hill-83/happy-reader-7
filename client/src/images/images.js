@@ -286,7 +286,7 @@ export default {
     },
     {
       name: "kat",
-      mood: "frustrated",
+      mood: "hurt",
       images: {
         heads: [
           {
