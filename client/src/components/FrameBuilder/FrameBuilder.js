@@ -25,8 +25,9 @@ class FrameBuilder extends Component {
       name
     } = character;
 
-    console.log("body", body); // zzz
-    const head = heads[0];
+    const selectedMood = "mad";
+
+    const head = heads.find(head => head.mood === selectedMood);
 
     const className = css.headForBody;
     return (
