@@ -9,19 +9,20 @@ import css from "./Character.module.scss";
 const girlImages = Images.posableGirls;
 
 class Character extends Component {
-  state = {};
-
-  async componentWillMount() {}
-
   render() {
-    const { name, mood } = this.props;
+    const { name, mood = "normal" } = this.props;
+
+    console.log("name", name); // zzz
+    console.log("girlImages", girlImages); // zzz
+
     const images = girlImages.find(girl => girl.name === name);
+    console.log("images", images); // zzz
 
     const {
       images: { heads, body }
     } = images;
 
-    const head = heads.find(head => head.mood === mood);
+    const head = heads.find(head => head.mood === mood) || "normal";
 
     const className = css.headForBody;
     return (
@@ -29,7 +30,7 @@ class Character extends Component {
         <img
           className={`${css.girlBodyImage}`}
           src={body.image}
-          alt={`${"amber-body"}-image`}
+          alt={`${name}-image`}
         />
         <span className={`${css.bodyLabel}`}>{name}</span>
         <Head head={head} className={className} />

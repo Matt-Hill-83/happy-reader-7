@@ -89,13 +89,13 @@ import katCringing from "./rigged-girls/kat/kat-cringing.png";
 import katCrying from "./rigged-girls/kat/kat-crying.png";
 import katDisgusted from "./rigged-girls/kat/kat-disgusted.png";
 import katDismayed from "./rigged-girls/kat/kat-dismayed.png";
-import katExpectant from "./rigged-girls/kat/kat-expectant.png";
+import katNormal from "./rigged-girls/kat/kat-normal.png";
 import katFunny from "./rigged-girls/kat/kat-funny.png";
 import katHappy from "./rigged-girls/kat/kat-happy.png";
 import katHurt from "./rigged-girls/kat/kat-hurt.png";
 import katKissing from "./rigged-girls/kat/kat-kissing.png";
 import katLauging from "./rigged-girls/kat/kat-lauging.png";
-import katLoad from "./rigged-girls/kat/kat-load.png";
+import katLoud from "./rigged-girls/kat/kat-loud.png";
 import katMad from "./rigged-girls/kat/kat-mad.png";
 import katOptimistic from "./rigged-girls/kat/kat-optimistic.png";
 import katSad from "./rigged-girls/kat/kat-sad.png";
@@ -217,7 +217,7 @@ export default {
           },
           {
             image: janSorry,
-            mood: MOODS.sorry
+            mood: "sorry"
           },
           {
             image: janMad,
@@ -310,8 +310,8 @@ export default {
             mood: "dismayed"
           },
           {
-            image: katExpectant,
-            mood: "curious"
+            image: katNormal,
+            mood: "normal"
           },
           {
             image: katFunny,
@@ -334,7 +334,7 @@ export default {
             mood: "lauging"
           },
           {
-            image: katLoad,
+            image: katLoud,
             mood: "loud"
           },
           {

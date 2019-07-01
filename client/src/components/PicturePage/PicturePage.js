@@ -52,19 +52,15 @@ class PicturePage extends React.Component {
   };
 
   renderLocationRows = () => {
-    const locationsMap = localStateStore.getActiveLocationsMap();
-
-    console.log("locationsMap", toJS(locationsMap)); // zzz
+    // const locationsMap = localStateStore.getActiveLocationsMap();
 
     const savedMaps = maps.docs.map(map => toJS(map.data.grid));
     const testGrid = JSON.parse(savedMaps[0]);
-    console.log("testGrid", testGrid); // zzz
 
     if (!testGrid) {
       return null;
     }
     const miniLocationsGrid = testGrid.map((locationRow, rowIndex) => {
-      // const miniLocationsGrid = locationsMap.grid.map((locationRow, rowIndex) => {
       return (
         <div key={rowIndex} className={css.miniLocationsRow}>
           {this.createSingleRow({ locationRow, rowIndex })}

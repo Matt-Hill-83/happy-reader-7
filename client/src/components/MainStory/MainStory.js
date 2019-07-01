@@ -50,17 +50,6 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
-    // console.log("activeScene", activeScene); // zzz
-
-    // TODO - import locationsMap from db
-    // TODO - import locationsMap from db
-    // TODO - import locationsMap from db
-    // TODO - import locationsMap from db
-
-    // const savedMaps = maps.docs.map(map => toJS(map.data.grid));
-    // const testGrid = JSON.parse(savedMaps[0]);
-    // console.log("testGrid - main", testGrid); // zzz
-
     const locationsMap = localStateStore.getActiveLocationsMap();
 
     const activeSceneName = activeScene.name;

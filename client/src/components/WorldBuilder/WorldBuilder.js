@@ -481,8 +481,8 @@ class WorldBuilder extends Component {
   render() {
     // these need to be rendered, or else the store won't populate from the firestore db
     // these need to be rendered, or else the store won't populate from the firestore db
-    const test = maps.docs.map(map => <div>{map.data.name}</div>);
-    console.log("test", test); // zzz
+    const dummy = maps.docs.map(map => <div>{map.data.name}</div>);
+    console.log("dummy", dummy); // zzz
     // these need to be rendered, or else the store won't populate from the firestore db
     // these need to be rendered, or else the store won't populate from the firestore db
 

@@ -5,11 +5,9 @@ import React, { Component } from "react";
 import css from "./Head.module.scss";
 
 class Head extends Component {
-  state = {};
-
-  async componentWillMount() {}
-
   render() {
+    console.log("this.props", this.props); // zzz
+
     const {
       head: { image, mood },
       className = ""
@@ -20,7 +18,7 @@ class Head extends Component {
         <img
           className={`${css.girlHead} ${css.girlHeadAmber}`}
           src={image}
-          alt={`${"amber-head"}-image`}
+          alt={`${"mood"}-image`}
         />
         <span className={css.moodLabel}>{mood}</span>
       </div>

@@ -55,7 +55,7 @@ class FrameBuilder extends Component {
     );
   };
 
-  renderScene = ({ you, friend }) => {
+  renderScene = ({ you, friends = [] }) => {
     const { sceneToEdit } = this.props;
 
     const yourName = you.creature;
@@ -71,6 +71,12 @@ class FrameBuilder extends Component {
       `Liz and Kat play.`,
       `Liz and Kat are so sweet.`
     ];
+
+    const renderedFriends = friends.map(friend => {
+      console.log("friend", friend); // zzz
+
+      return <Character name={friend} mood={"normal"} />;
+    });
 
     return (
       <div className={css.scene}>
@@ -117,7 +123,7 @@ class FrameBuilder extends Component {
             <div className={css.youContainer}>
               <Character name={yourName} mood={you.mood} />
             </div>
-            {/* <Character name={friend} /> */}
+            {renderedFriends}
           </div>
         </div>
       </div>
@@ -125,7 +131,6 @@ class FrameBuilder extends Component {
   };
 
   render() {
-    // const girlImages = Images.posableGirls;
     const { sceneToEdit } = this.props;
 
     const you = localStateStore.getYou();
@@ -137,23 +142,14 @@ class FrameBuilder extends Component {
     // const yourName = "amber";
     const friendName = "kat";
 
-    // const youImages = girlImages.find(girl => girl.name === yourName);
-    // const friendImages = girlImages.find(girl => girl.name === friendName);
-
-    // console.log("youImages.mood", youImages.mood); // zzz
-
     return (
       <div className={css.main}>
         <div className={css.girlPickersContainer}>
           {this.renderGirlPicker({ name: yourName })}
           {this.renderGirlPicker({ name: friendName })}
-          {/* {this.renderGirlPicker({ girl: youImages })} */}
-          {/* {this.renderGirlPicker({ girl: friendImages })} */}
         </div>
         <div className={css.scenesContainer}>
-          {this.renderScene({ you, friend: friendName })}
-          {/* {this.renderScene({ you: youImages, friend: friendImages })} */}
-          {/* {this.renderScene({ you: youImages, friend: friendImages })} */}
+          {this.renderScene({ you, friends: [friendName] })}
         </div>
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
