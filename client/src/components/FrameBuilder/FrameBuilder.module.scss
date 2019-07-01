@@ -1,0 +1,65 @@
+@import "../../Styles/mixins.modules.scss";
+
+.main {
+  border: 1px solid red !important;
+  display: flex;
+}
+
+.characterLabel {
+  @include item-label;
+}
+
+.girlPickerContainer {
+  border: 1px solid var(--color-purple-dark) !important;
+  display: flex;
+  height: auto;
+  position: absolute;
+
+  z-index: 30;
+
+  top: 10%;
+  left: 10%;
+}
+
+.girlPicker {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  overflow: hidden;
+  flex-wrap: wrap;
+
+  height: calc(3 * var(--cell-height));
+  width: calc(3 * var(--cell-height));
+}
+
+.girlHeadContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  background: var(--light-pink);
+
+  border: 1px solid var(--color-purple-dark) !important;
+  top: 0px;
+  left: 0px;
+
+  max-height: var(--cell-height);
+  min-height: var(--cell-height);
+
+  min-width: var(--cell-height);
+  max-width: var(--cell-height);
+}
+
+.girlHead {
+  width: 100%;
+  height: auto;
+}
+
+.girlHeadAmber {
+  width: 170%;
+  height: auto;
+}

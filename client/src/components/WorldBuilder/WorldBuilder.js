@@ -11,6 +11,7 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 import MiniLocation from "../MiniLocation/MiniLocation";
 
 import css from "./WorldBuilder.module.scss";
+import FrameBuilder from "../FrameBuilder/FrameBuilder";
 
 const NUM_ROWS_LOCATIONS_GRID = 3;
 const NUM_COLS_LOCATIONS_GRID = 3;
@@ -469,39 +470,43 @@ class WorldBuilder extends Component {
     );
   };
 
-  renderGirlPicker = () => {
-    const images = Images.posableGirls[0].images.heads.map(head => {
-      const { image, mood } = head;
+  // renderGirlPicker = () => {
+  //   const images = Images.posableGirls[0].images.heads.map(head => {
+  //     const { image, mood } = head;
 
-      return (
-        <div className={css.girlHeadContainer}>
-          <img
-            className={`${css.girlHead} ${css.girlHeadAmber}`}
-            src={image}
-            alt={`${"amber-head"}-image`}
-          />
-          <span className={css.characterLabel}>{mood}</span>
-        </div>
-      );
-    });
+  //     return (
+  //       <div className={css.girlHeadContainer}>
+  //         <img
+  //           className={`${css.girlHead} ${css.girlHeadAmber}`}
+  //           src={image}
+  //           alt={`${"amber-head"}-image`}
+  //         />
+  //         <span className={css.characterLabel}>{mood}</span>
+  //       </div>
+  //     );
+  //   });
 
-    return (
-      <div className={css.girlPickerContainer}>
-        <div className={css.girlPicker}>{images}</div>
-      </div>
-    );
-  };
+  //   return (
+  //     <div className={css.girlPickerContainer}>
+  //       <div className={css.girlPicker}>{images}</div>
+  //     </div>
+  //   );
+  // };
 
   render() {
     // these need to be rendered, or else the store won't populate from the firestore db
     const test = maps.docs.map(map => <div>{map.data.name}</div>);
     console.log("test", test); // zzz
 
+    const girlImages = Images.posableGirls;
+    const girlName = "amber";
+
     return (
       <div className={css.main}>
         {/* <div>{test}</div> */}
 
-        {this.renderGirlPicker()}
+        <FrameBuilder girlImages={girlImages} girlName={girlName} />
+        {/* {this.renderGirlPicker()} */}
         <div className={css.header}>
           <div className={css.titles}>
             <div className={css.title}>World Builder</div>

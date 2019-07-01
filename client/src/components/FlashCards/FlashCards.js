@@ -6,7 +6,7 @@ import { observer } from "mobx-react";
 import myWords from "../../Models/words.js";
 import Utils from "../../Utils/Utils.js";
 
-import css from "./FlashCards.module.css";
+import css from "./FlashCards.module.scss";
 
 import { words2 } from "../../Stores/WordStore";
 const { wordTypes, wordFamilies } = myWords;
