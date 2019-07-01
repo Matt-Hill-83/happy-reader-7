@@ -49,6 +49,10 @@ class FrameBuilder extends Component {
         <div className={css.girlPickerContainer}>
           <div className={css.girlPicker}>{images}</div>
         </div>
+        <div className={css.scene}>test</div>
+        <div className={css.girlPickerContainer}>
+          <div className={css.girlPicker}>{images}</div>
+        </div>
       </div>
     );
   }

@@ -13,14 +13,21 @@
   position: absolute;
   overflow: hidden;
   width: 80vw;
-  height: 50vh;
-  flex-direction: column;
+  height: 80vh;
+  // flex-direction: column;
   background: pink;
   z-index: 10;
   bottom: 10%;
   align-items: center;
   left: 10%;
   margin: auto;
+}
+
+.scene {
+  display: flex;
+  width: 50%;
+  height: 50%;
+  border: 1px solid green !important;
 }
 
 .characterLabel {
