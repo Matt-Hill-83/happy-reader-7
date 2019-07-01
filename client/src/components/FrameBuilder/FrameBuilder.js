@@ -23,7 +23,6 @@ class FrameBuilder extends Component {
 
   selectHead = ({ girl, head }) => {
     // TODO - need to persist this change.
-    console.log("girl, head", girl, head); // zzz
 
     // girl.mood = head.mood;
 
@@ -73,8 +72,6 @@ class FrameBuilder extends Component {
     ];
 
     const renderedFriends = friends.map(friend => {
-      console.log("friend", friend); // zzz
-
       return <Character name={friend} mood={"normal"} />;
     });
 
@@ -134,13 +131,10 @@ class FrameBuilder extends Component {
     const { sceneToEdit } = this.props;
 
     const you = localStateStore.getYou();
-    console.log("you", you); // zzz
-
-    console.log("sceneToEdit", sceneToEdit); // zzz
 
     const yourName = you.creature;
     // const yourName = "amber";
-    const friendName = "kat";
+    const friendName = "jan";
 
     return (
       <div className={css.main}>

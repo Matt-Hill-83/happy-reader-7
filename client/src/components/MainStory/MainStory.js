@@ -38,7 +38,8 @@ class MainStory extends React.Component {
       localStateStore.setPage("intro1");
     } else {
       localStateStore.setPage("intro2");
-      this.onExitIntro({ you: { name: "Luna", creature: "jan" } });
+      // zzz - this is where you set the character
+      this.onExitIntro({ you: { name: "Luna", creature: "kat" } });
     }
   }
 
