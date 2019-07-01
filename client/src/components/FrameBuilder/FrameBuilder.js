@@ -58,10 +58,6 @@ class FrameBuilder extends Component {
   };
 
   selectHead = ({ girl, head }) => {
-    console.log("girl.head", girl.head); // zzz
-    console.log("head", head); // zzz
-    console.log("girl", girl); // zzz
-
     // TODO - need to persist this change.
     girl.mood = head.mood;
   };
@@ -163,7 +159,10 @@ class FrameBuilder extends Component {
           {this.renderGirlPicker({ girl: you })}
           {this.renderGirlPicker({ girl: friend })}
         </div>
-        {this.renderScene({ you, friend })}
+        <div className={css.scenesContainer}>
+          {this.renderScene({ you, friend })}
+          {this.renderScene({ you, friend })}
+        </div>
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
           <Icon icon={IconNames.CROSS} />
