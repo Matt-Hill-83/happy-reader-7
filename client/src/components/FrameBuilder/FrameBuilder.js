@@ -26,6 +26,9 @@ class FrameBuilder extends Component {
 
     // girl.mood = head.mood;
 
+    const plot = localStateStore.getPlot();
+    console.log("plot.allCreatures", plot.allCreatures); // zzz
+
     const you = localStateStore.getYou();
     you.mood = head.mood;
     localStateStore.setYou(you);
@@ -128,7 +131,14 @@ class FrameBuilder extends Component {
   };
 
   render() {
-    const { sceneToEdit } = this.props;
+    const {
+      sceneToEdit,
+      sceneToEdit: { creatures = [] }
+    } = this.props;
+
+    console.log("sceneToEdit", toJS(sceneToEdit)); // zzz
+    const friendNames = creatures.map(creature => creature.type);
+    console.log("friendNames", friendNames); // zzz
 
     const you = localStateStore.getYou();
 
@@ -143,7 +153,8 @@ class FrameBuilder extends Component {
           {this.renderGirlPicker({ name: friendName })}
         </div>
         <div className={css.scenesContainer}>
-          {this.renderScene({ you, friends: [friendName] })}
+          {this.renderScene({ you, friends: friendNames })}
+          {/* {this.renderScene({ you, friends: [friendName] })} */}
         </div>
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>

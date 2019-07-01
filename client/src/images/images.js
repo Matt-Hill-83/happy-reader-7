@@ -343,39 +343,39 @@ export default {
           },
           {
             image: katOptimistic,
-            mood: "sad"
+            mood: "mad"
           },
           {
             image: katSad,
-            mood: "scared"
+            mood: "sad"
           },
           {
             image: katScared,
-            mood: "silly"
+            mood: "scared"
           },
           {
             image: katSilly,
-            mood: "sinister"
+            mood: "silly"
           },
           {
             image: katSinister,
-            mood: "smiling"
+            mood: "sinister"
           },
           {
             image: katSmiling,
-            mood: "surprised"
+            mood: "smiling"
           },
           {
             image: katSurprised,
-            mood: "tired"
+            mood: "surprised"
           },
           {
             image: katTired,
-            mood: "unsure"
+            mood: "tired"
           },
           {
             image: katUnsure,
-            mood: "upset"
+            mood: "unsure"
           },
           {
             image: katWinking,

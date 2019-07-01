@@ -38,7 +38,6 @@ class MainStory extends React.Component {
       localStateStore.setPage("intro1");
     } else {
       localStateStore.setPage("intro2");
-      // zzz - this is where you set the character
       this.onExitIntro({ you: { name: "Luna", creature: "kat" } });
     }
   }
@@ -51,6 +50,17 @@ class MainStory extends React.Component {
   };
 
   updateActiveScene = ({ activeScene }) => {
+    // console.log("activeScene", activeScene); // zzz
+
+    // TODO - import locationsMap from db
+    // TODO - import locationsMap from db
+    // TODO - import locationsMap from db
+    // TODO - import locationsMap from db
+
+    // const savedMaps = maps.docs.map(map => toJS(map.data.grid));
+    // const testGrid = JSON.parse(savedMaps[0]);
+    // console.log("testGrid - main", testGrid); // zzz
+
     const locationsMap = localStateStore.getActiveLocationsMap();
 
     const activeSceneName = activeScene.name;

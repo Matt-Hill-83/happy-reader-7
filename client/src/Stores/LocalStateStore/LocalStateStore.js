@@ -60,14 +60,14 @@ class LocalStateStore {
 }
 
 decorate(LocalStateStore, {
-  page: observable,
-  you: observable,
-  plot: observable,
-  smallMap: observable,
-  showWorldBuilder: observable,
-  locationsMaps: observable,
   activelocationsMap: observable,
-  activeLocationsMapIndex: observable
+  activeLocationsMapIndex: observable,
+  locationsMaps: observable,
+  page: observable,
+  plot: observable,
+  showWorldBuilder: observable,
+  smallMap: observable,
+  you: observable
 });
 
 const localStateStore = new LocalStateStore();

@@ -333,6 +333,9 @@ const locationsFromImages = Object.keys(images.locations);
 const creaturesFromImages = Object.keys(images.creatures);
 const itemsFromImages = Object.keys(images.items);
 
+// zzz - this is where you set the friend
+const testFriend = "jan";
+
 const allScenes = locationsFromImages.map(name => {
   return {
     name,
@@ -340,7 +343,7 @@ const allScenes = locationsFromImages.map(name => {
       right: { open: true },
       bottom: { open: false }
     },
-    creatures: []
+    creatures: [{ name: "KAT", type: testFriend }]
   };
 });
 
