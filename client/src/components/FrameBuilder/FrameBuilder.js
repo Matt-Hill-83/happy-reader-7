@@ -7,6 +7,7 @@ import React, { Component } from "react";
 import Images from "../../images/images";
 
 import css from "./FrameBuilder.module.scss";
+import WordGroup from "../WordGroup/WordGroup";
 
 class FrameBuilder extends Component {
   state = {};
@@ -56,13 +57,26 @@ class FrameBuilder extends Component {
     );
   };
 
+  selectHead = ({ girl, head }) => {
+    console.log("girl.head", girl.head); // zzz
+    console.log("head", head); // zzz
+    console.log("girl", girl); // zzz
+
+    // TODO - need to persist this change.
+    girl.mood = head.mood;
+  };
+
   renderGirlPicker = ({ girl }) => {
     const {
       images: { heads }
     } = girl;
 
     const headImages = heads.map(head => {
-      return this.renderHead({ head });
+      return (
+        <div onClick={() => this.selectHead({ head, girl })}>
+          {this.renderHead({ head })}
+        </div>
+      );
     });
 
     return (
@@ -72,68 +86,84 @@ class FrameBuilder extends Component {
     );
   };
 
-  render() {
-    const { girlImages, girlName, sceneToEdit } = this.props;
-    console.log("girlName", girlName); // zzz
-    console.log("sceneToEdit", sceneToEdit); // zzz
-
+  renderScene = ({ you, friend }) => {
+    const { sceneToEdit } = this.props;
     const backgroundImage = Images.backgrounds["hill01"];
+
+    const locationImage = Images.locations[sceneToEdit.name];
+    const bookImage = Images.sceneView.book;
+    const notebookImage = Images.sceneView.notebook;
+
+    const activeParagraph = [
+      `Girls play.`,
+      `You are a $-{you.creature}.`,
+      `You live in the $-{you.homeLocation}.`,
+      `You are sooooo happy.`
+    ];
+
+    return (
+      <div className={css.scene}>
+        <div className={css.backgroundImageContainer}>
+          <div className={css.locationImageContainer}>
+            <img
+              className={css.locationImage}
+              src={locationImage}
+              alt={"imagex"}
+            />
+          </div>
+          <div className={css.bookImageContainer}>
+            <div className={css.narrative}>
+              <WordGroup story={activeParagraph} />
+            </div>
+            <img className={css.bookImage} src={bookImage} alt={"imagex"} />
+          </div>
+          <div className={css.notebookImageContainer}>
+            <img
+              className={css.notebookImage}
+              src={notebookImage}
+              alt={"imagex"}
+            />
+          </div>
+          {/* <div className={css.backgroundSky}>
+          <img
+          className={`${css.backgroundSkyImage} `}
+          src={backgroundImage}
+          alt={`${"amber-head"}-image`}
+          />
+        </div> */}
+          <div className={css.backgroundGrass}>
+            <img
+              className={`${css.backgroundGrassImage} `}
+              src={backgroundImage}
+              alt={`${"amber-head"}-image`}
+            />
+          </div>
+
+          <div className={css.charactersContainer}>
+            {this.renderCharacter({ character: you })}
+            {this.renderCharacter({ character: friend })}
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  render() {
+    const { girlImages } = this.props;
+
     const yourName = "amber";
     const friendName = "jan";
 
     const you = girlImages.find(girl => girl.name === yourName);
     const friend = girlImages.find(girl => girl.name === friendName);
 
-    const locationImage = Images.locations[sceneToEdit.name];
-    const bookImage = Images.sceneView.book;
-    const notebookImage = Images.sceneView.notebook;
-
     return (
       <div className={css.main}>
-        {this.renderGirlPicker({ girl: you })}
-
-        <div className={css.scene}>
-          <div className={css.backgroundImageContainer}>
-            <div className={css.locationImageContainer}>
-              <img
-                className={css.locationImage}
-                src={locationImage}
-                alt={"imagex"}
-              />
-            </div>
-            <div className={css.bookImageContainer}>
-              <img className={css.bookImage} src={bookImage} alt={"imagex"} />
-            </div>
-            <div className={css.notebookImageContainer}>
-              <img
-                className={css.notebookImage}
-                src={notebookImage}
-                alt={"imagex"}
-              />
-            </div>
-            {/* <div className={css.backgroundSky}>
-              <img
-              className={`${css.backgroundSkyImage} `}
-              src={backgroundImage}
-              alt={`${"amber-head"}-image`}
-              />
-            </div> */}
-            <div className={css.backgroundGrass}>
-              <img
-                className={`${css.backgroundGrassImage} `}
-                src={backgroundImage}
-                alt={`${"amber-head"}-image`}
-              />
-            </div>
-
-            <div className={css.charactersContainer}>
-              {this.renderCharacter({ character: you })}
-              {this.renderCharacter({ character: friend })}
-            </div>
-          </div>
+        <div className={css.girlPickersContainer}>
+          {this.renderGirlPicker({ girl: you })}
+          {this.renderGirlPicker({ girl: friend })}
         </div>
-
-        {this.renderGirlPicker({ girl: friend })}
+        {this.renderScene({ you, friend })}
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
           <Icon icon={IconNames.CROSS} />

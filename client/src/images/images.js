@@ -81,11 +81,11 @@ import janMad from "./rigged-girls/jan/jan-04-mad.png";
 import janSurprised from "./rigged-girls/jan/jan-03-surprised.png";
 import janNormal from "./rigged-girls/jan/jan-02-normal.png";
 import janScared from "./rigged-girls/jan/jan-01-scared.png";
+import janBody from "./rigged-girls/jan/jan-body.png";
 
 // scene view
 import sceneViewBook from "./scene-view/book01.png";
 import sceneViewNotebook from "./scene-view/notebook-01.png";
-const janBody = amberBody;
 
 const MOODS = {
   blissful: "blissful",
