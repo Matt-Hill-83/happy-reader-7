@@ -25,8 +25,13 @@ class FrameBuilder extends Component {
     console.log("sceneToEdit", sceneToEdit); // zzz
 
     const backgroundImage = Images.backgrounds["hill01"];
+    const you = girlImages[0];
 
-    const headImages = girlImages[0].images.heads.map(head => {
+    const {
+      images: { heads, body }
+    } = you;
+
+    const headImages = heads.map(head => {
       const { image, mood } = head;
 
       return (
