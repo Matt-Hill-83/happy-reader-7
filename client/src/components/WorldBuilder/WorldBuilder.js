@@ -408,10 +408,8 @@ class WorldBuilder extends Component {
     );
   };
 
-  editFrame = ({ scene }) => {};
-
   editFrame = ({ scene }) => {
-    this.setState({ sceneToEdit: scene.name, showFrameBuilder: true });
+    this.setState({ sceneToEdit: scene, showFrameBuilder: true });
     console.log("scene", toJS(scene)); // zzz
   };
 
@@ -482,8 +480,11 @@ class WorldBuilder extends Component {
 
   render() {
     // these need to be rendered, or else the store won't populate from the firestore db
+    // these need to be rendered, or else the store won't populate from the firestore db
     const test = maps.docs.map(map => <div>{map.data.name}</div>);
     console.log("test", test); // zzz
+    // these need to be rendered, or else the store won't populate from the firestore db
+    // these need to be rendered, or else the store won't populate from the firestore db
 
     const girlImages = Images.posableGirls;
     const girlName = "amber";
@@ -492,16 +493,6 @@ class WorldBuilder extends Component {
 
     return (
       <div className={css.main}>
-        {/* <div>{test}</div> */}
-
-        {showFrameBuilder && (
-          <FrameBuilder
-            girlImages={girlImages}
-            girlName={girlName}
-            sceneToEdit={sceneToEdit}
-            onExitFrameBuilder={this.onExitFrameBuilder}
-          />
-        )}
         <div className={css.header}>
           <div className={css.titles}>
             <div className={css.title}>World Builder</div>
@@ -541,6 +532,14 @@ class WorldBuilder extends Component {
             })} */}
           </DragDropContext>
         </div>
+        {showFrameBuilder && (
+          <FrameBuilder
+            girlImages={girlImages}
+            girlName={girlName}
+            sceneToEdit={sceneToEdit}
+            onExitFrameBuilder={this.onExitFrameBuilder}
+          />
+        )}
       </div>
     );
   }

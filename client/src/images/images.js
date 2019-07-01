@@ -2,8 +2,9 @@
 import forest from "./backgrounds/forest-3.jpg";
 import forestLeft from "./backgrounds/forest-1-left.png";
 import forestRight from "./backgrounds/forest-1-right.png";
-import map02 from "./backgrounds/map-05.jpg";
+import map from "./backgrounds/map-05.jpg";
 import rock from "./backgrounds/rock-2.jpg";
+import hill01 from "./backgrounds/hill-01.png";
 
 //items
 import key from "./items/key.png";
@@ -58,7 +59,6 @@ import rubyMad from "./rigged-girls/ruby/ruby-mad-01.png";
 import rubySad from "./rigged-girls/ruby/ruby-sad-01.png";
 import rubySly from "./rigged-girls/ruby/ruby-sly-01.png";
 
-// import amber01 from "/Users/matthill/projects/GCP_stuff/happy-reader-7/client/src/images/rigged-girls/amber/amber-01.png";
 import amberNormal from "./rigged-girls/amber/amber-01-normal.png";
 import amberSneaky from "./rigged-girls/amber/amber-02-sneaky.png";
 import amberBlissful from "./rigged-girls/amber/amber-03-blissful.png";
@@ -70,17 +70,7 @@ import amberMad from "./rigged-girls/amber/amber-08-mad.png";
 import amberShocked from "./rigged-girls/amber/amber-09-shocked.png";
 import amberBody from "./rigged-girls/amber/amber-body.png";
 
-const amberHeads = [
-  amberNormal,
-  amberSneaky,
-  amberBlissful,
-  amberFrustrated,
-  amberGlad,
-  amberSurprised,
-  amberScared,
-  amberMad,
-  amberShocked
-];
+import sceneViewBook from "./scene-view/book01.png";
 
 const MOODS = {
   blissful: "blissful",
@@ -148,8 +138,9 @@ export default {
     forest,
     forestLeft,
     forestRight,
-    map02,
-    rock
+    map,
+    rock,
+    hill01
   },
   items: {
     hat,
@@ -245,11 +236,7 @@ export default {
     //   }
     // }
   ],
-  frames: {
-    name: "mad girl",
-    characters: [{}],
-    // narrative,
-    // scene,
-    isVisited: false
+  sceneView: {
+    book: sceneViewBook
   }
 };

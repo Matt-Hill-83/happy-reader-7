@@ -7,6 +7,7 @@ import React, { Component } from "react";
 
 import css from "./FrameBuilder.module.scss";
 import MiniLocation from "../MiniLocation/MiniLocation";
+import Images from "../../images/images";
 
 class FrameBuilder extends Component {
   state = {};
@@ -23,9 +24,7 @@ class FrameBuilder extends Component {
     console.log("girlName", girlName); // zzz
     console.log("sceneToEdit", sceneToEdit); // zzz
 
-    if (!girlImages.length && girlImages.length > 0) {
-      return null;
-    }
+    const backgroundImage = Images.backgrounds["hill01"];
 
     const images = girlImages[0].images.heads.map(head => {
       const { image, mood } = head;
@@ -42,25 +41,47 @@ class FrameBuilder extends Component {
       );
     });
 
+    const locationImage = Images.locations[sceneToEdit.name];
+
     return (
       <div className={css.main}>
-        <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
-          <Icon icon={IconNames.CROSS} />
-        </Button>
         <div className={css.girlPickerContainer}>
           <div className={css.girlPicker}>{images}</div>
         </div>
         <div className={css.scene}>
-          {/* <MiniLocation
-            id={id}
-            key={name}
-            location={scene}
-            characters={creatures}
-          /> */}
+          <div className={css.backgroundImageContainer}>
+            <div className={css.locationImageContainer}>
+              <img
+                className={css.locationImage}
+                src={locationImage}
+                alt={"imagex"}
+              />
+            </div>
+            {/* <div className={css.backgroundSky}>
+              <img
+              className={`${css.backgroundSkyImage} `}
+              src={backgroundImage}
+              alt={`${"amber-head"}-image`}
+              />
+            </div> */}
+            <div className={css.backgroundGrass}>
+              <img
+                className={`${css.backgroundGrassImage} `}
+                src={backgroundImage}
+                alt={`${"amber-head"}-image`}
+              />
+            </div>
+          </div>
         </div>
+
+        {/* <MiniLocation location={sceneToEdit} /> */}
         <div className={css.girlPickerContainer}>
           <div className={css.girlPicker}>{images}</div>
         </div>
+
+        <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
+          <Icon icon={IconNames.CROSS} />
+        </Button>
       </div>
     );
   }

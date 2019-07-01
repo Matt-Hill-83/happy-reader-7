@@ -189,11 +189,9 @@ class MiniLocation extends React.Component {
   render() {
     const { location, isActive, className, showLabel = true, id } = this.props;
 
-    const creatures = location.creatures;
-
     // const charJs = toJS(creatures);
 
-    const { items = [], name: locationName } = location;
+    const { items = [], name: locationName, creatures = [] } = location;
 
     const localClass = isActive ? css.activeClass : "";
 

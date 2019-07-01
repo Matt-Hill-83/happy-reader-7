@@ -1,5 +1,46 @@
 @import "../../Styles/mixins.modules.scss";
 
+.locationImageContainer {
+  height: 23%;
+  width: 40%;
+  position: absolute;
+  border: 1px solid red !important;
+  bottom: 58%;
+  right: 10px;
+
+  .locationImage {
+    border: 1px solid blue !important;
+    height: 100%;
+    width: auto;
+  }
+}
+
+.backgroundSky {
+  .backgroundSkyImage {
+    border: 1px solid green !important;
+    display: flex;
+  }
+}
+
+.backgroundImageContainer {
+  border: 1px solid green !important;
+  display: flex;
+  position: relative;
+}
+
+.backgroundGrass {
+  border: 1px solid green !important;
+  display: flex;
+
+  .backgroundGrassImage {
+    border: 1px solid blue !important;
+    display: flex;
+    width: 100%;
+    height: auto;
+    max-width: 730px;
+  }
+}
+
 .closeButton {
   border: 1px solid red !important;
   position: absolute;
@@ -12,20 +53,19 @@
   display: flex;
   position: absolute;
   overflow: hidden;
-  width: 80vw;
+  /* width: 80vw; */
   height: 80vh;
-  // flex-direction: column;
   background: pink;
   z-index: 10;
   bottom: 10%;
   align-items: center;
-  left: 10%;
+  /* left: 10%; */
   margin: auto;
 }
 
 .scene {
   display: flex;
-  width: 50%;
+  // width: 50%;
   height: 50%;
   border: 1px solid green !important;
 }
