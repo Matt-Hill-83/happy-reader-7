@@ -1,5 +1,43 @@
 @import "../../Styles/mixins.modules.scss";
 
+.girlPicker {
+  border: 1px solid blue !important;
+
+  display: flex;
+  position: absolute;
+  z-index: 30;
+
+  width: 50%;
+  height: 50%;
+
+  top: 0px;
+  left: 0px;
+}
+
+.girlHeadContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  background: var(--light-pink);
+
+  border: 1px solid red !important;
+  top: 0px;
+  left: 0px;
+
+  max-height: var(--cell-height);
+  min-height: var(--cell-height);
+  min-width: var(--cell-height);
+}
+.girlHead {
+  width: 100%;
+  height: auto;
+  // border: 1px solid blue !important;
+}
+
 .locationGridContainer {
   display: flex;
   width: 100%;

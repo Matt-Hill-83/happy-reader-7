@@ -469,14 +469,33 @@ class WorldBuilder extends Component {
     );
   };
 
+  renderGirlPicker = () => {
+    const images = Images.posableGirls[0].images.heads.map(head => {
+      return (
+        <div className={css.girlHeadContainer}>
+          <img
+            className={css.girlHead}
+            src={head}
+            alt={`${"amber-head"}-image`}
+          />
+          {/* <span className={css.characterLabel}>{head}</span> */}
+        </div>
+      );
+    });
+
+    return <div className={css.girlPicker}>{images}</div>;
+  };
+
   render() {
     // these need to be rendered, or else the store won't populate from the firestore db
     const test = maps.docs.map(map => <div>{map.data.name}</div>);
+    console.log("test", test); // zzz
 
     return (
       <div className={css.main}>
-        <div>{test}</div>
+        {/* <div>{test}</div> */}
 
+        {this.renderGirlPicker()}
         <div className={css.header}>
           <div className={css.titles}>
             <div className={css.title}>World Builder</div>

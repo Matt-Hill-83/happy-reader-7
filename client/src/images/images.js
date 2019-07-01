@@ -52,6 +52,47 @@ import unicorn from "./creatures/unicorn-1.png";
 import wizard from "./creatures/wizard.png";
 import zombie from "./creatures/zombie.png";
 
+// poseable girl
+import rubyHappy from "./rigged-girls/ruby/ruby-happy-01.png";
+import rubyMad from "./rigged-girls/ruby/ruby-mad-01.png";
+import rubySad from "./rigged-girls/ruby/ruby-sad-01.png";
+import rubySly from "./rigged-girls/ruby/ruby-sly-01.png";
+
+// import amber01 from "/Users/matthill/projects/GCP_stuff/happy-reader-7/client/src/images/rigged-girls/amber/amber-01.png";
+import amber01 from "./rigged-girls/amber/amber-01.png";
+import amber02 from "./rigged-girls/amber/amber-02.png";
+import amber03 from "./rigged-girls/amber/amber-03.png";
+import amber04 from "./rigged-girls/amber/amber-04.png";
+import amber05 from "./rigged-girls/amber/amber-05.png";
+import amber06 from "./rigged-girls/amber/amber-06.png";
+import amber07 from "./rigged-girls/amber/amber-07.png";
+import amber08 from "./rigged-girls/amber/amber-08.png";
+import amber09 from "./rigged-girls/amber/amber-09.png";
+import amberBody from "./rigged-girls/amber/amber-body.png";
+
+const amberHeads = [
+  amber01,
+  amber02,
+  amber03,
+  amber04,
+  amber05,
+  amber06,
+  amber07,
+  amber08,
+  amber09
+];
+
+const MOODS = {
+  glad: "glad",
+  happy: "happy",
+  lonely: "lonely",
+  mad: "mad",
+  sad: "sad",
+  scared: "scared",
+  sly: "sly",
+  surprised: "surprised"
+};
+
 export default {
   locations: {
     barn,
@@ -108,5 +149,49 @@ export default {
     doorGreen,
     doorYellow,
     door
+  },
+  posableGirls: [
+    {
+      name: "amber",
+      images: {
+        heads: amberHeads,
+        body: { image: amberBody }
+      }
+    }
+    // {
+    //   name: "ruby",
+    //   images: {
+    //     heads: [
+    //       {
+    //         image: rubyHappy,
+    //         mood: MOODS.happy,
+    //         offset: { x: 0, y: 0 }
+    //       },
+    //       {
+    //         image: rubyMad,
+    //         mood: MOODS.mad,
+    //         offset: { x: 0, y: 0 }
+    //       },
+    //       {
+    //         image: rubySad,
+    //         mood: MOODS.sad,
+    //         offset: { x: 0, y: 0 }
+    //       },
+    //       {
+    //         image: rubySly,
+    //         mood: MOODS.sly,
+    //         offset: { x: 0, y: 0 }
+    //       }
+    //     ],
+    //     body: { image: "asdf" }
+    //   }
+    // }
+  ],
+  frames: {
+    name: "mad girl",
+    characters: [{}],
+    // narrative,
+    // scene,
+    isVisited: false
   }
 };
