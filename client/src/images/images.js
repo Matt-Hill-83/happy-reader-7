@@ -4,7 +4,7 @@ import forestLeft from "./backgrounds/forest-1-left.png";
 import forestRight from "./backgrounds/forest-1-right.png";
 import map from "./backgrounds/map-05.jpg";
 import rock from "./backgrounds/rock-2.jpg";
-import hill01 from "./backgrounds/hill-01.png";
+import hill01 from "./backgrounds/hill-02.png";
 
 //items
 import key from "./items/key.png";
@@ -70,7 +70,9 @@ import amberMad from "./rigged-girls/amber/amber-08-mad.png";
 import amberShocked from "./rigged-girls/amber/amber-09-shocked.png";
 import amberBody from "./rigged-girls/amber/amber-body.png";
 
+// scene view
 import sceneViewBook from "./scene-view/book01.png";
+import sceneViewNotebook from "./scene-view/notebook-01.png";
 
 const MOODS = {
   blissful: "blissful",
@@ -237,6 +239,7 @@ export default {
     // }
   ],
   sceneView: {
-    book: sceneViewBook
+    book: sceneViewBook,
+    notebook: sceneViewNotebook
   }
 };

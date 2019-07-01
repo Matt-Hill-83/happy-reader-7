@@ -19,6 +19,44 @@ class FrameBuilder extends Component {
     onExitFrameBuilder && onExitFrameBuilder();
   };
 
+  renderCharacter = ({ character }) => {
+    const {
+      images: { heads, body },
+      name
+    } = character;
+
+    console.log("body", body); // zzz
+    const head = heads[0];
+
+    const className = css.headForBody;
+    return (
+      <div className={css.girlBodyContainer}>
+        <img
+          className={`${css.girlBodyImage}`}
+          src={body.image}
+          alt={`${"amber-body"}-image`}
+        />
+        <span className={`${css.bodyLabel}`}>{name}</span>
+        {this.renderHead({ head, className })}
+      </div>
+    );
+  };
+
+  renderHead = ({ head, className = "" }) => {
+    const { image, mood } = head;
+
+    return (
+      <div className={`${css.girlHeadContainer} ${className}`}>
+        <img
+          className={`${css.girlHead} ${css.girlHeadAmber}`}
+          src={image}
+          alt={`${"amber-head"}-image`}
+        />
+        <span className={css.moodLabel}>{mood}</span>
+      </div>
+    );
+  };
+
   render() {
     const { girlImages, girlName, sceneToEdit } = this.props;
     console.log("girlName", girlName); // zzz
@@ -26,28 +64,19 @@ class FrameBuilder extends Component {
 
     const backgroundImage = Images.backgrounds["hill01"];
     const you = girlImages[0];
+    console.log("you", you); // zzz
 
     const {
-      images: { heads, body }
+      images: { heads }
     } = you;
 
     const headImages = heads.map(head => {
-      const { image, mood } = head;
-
-      return (
-        <div className={css.girlHeadContainer}>
-          <img
-            className={`${css.girlHead} ${css.girlHeadAmber}`}
-            src={image}
-            alt={`${"amber-head"}-image`}
-          />
-          <span className={css.characterLabel}>{mood}</span>
-        </div>
-      );
+      return this.renderHead({ head });
     });
 
     const locationImage = Images.locations[sceneToEdit.name];
     const bookImage = Images.sceneView.book;
+    const notebookImage = Images.sceneView.notebook;
 
     return (
       <div className={css.main}>
@@ -66,6 +95,13 @@ class FrameBuilder extends Component {
             <div className={css.bookImageContainer}>
               <img className={css.bookImage} src={bookImage} alt={"imagex"} />
             </div>
+            <div className={css.notebookImageContainer}>
+              <img
+                className={css.notebookImage}
+                src={notebookImage}
+                alt={"imagex"}
+              />
+            </div>
             {/* <div className={css.backgroundSky}>
               <img
               className={`${css.backgroundSkyImage} `}
@@ -80,6 +116,8 @@ class FrameBuilder extends Component {
                 alt={`${"amber-head"}-image`}
               />
             </div>
+
+            {this.renderCharacter({ character: you })}
           </div>
         </div>
 
