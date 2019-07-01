@@ -11,7 +11,6 @@ const girlImages = Images.posableGirls;
 class Character extends Component {
   render() {
     const { name, mood } = this.props;
-    console.log("mood", mood); // zzz
 
     const images = girlImages.find(girl => girl.name === name);
 

@@ -23,17 +23,13 @@ class FrameBuilder extends Component {
   };
 
   selectHead = ({ name, head }) => {
-    // TODO - need to persist this change.
-
-    console.log("name", name); // zzz
     const allCreatures = localStateStore.getCreatures();
     const creature = allCreatures.find(creature => creature.type === name);
-    console.log("head.mood", head.mood); // zzz
 
+    // TODO - I should push the store here.
     creature.mood = head.mood;
 
-    console.log("creature", toJS(creature)); // zzz
-    this.forceUpdate();
+    // this.forceUpdate();
   };
 
   renderGirlPicker = ({ name }) => {
@@ -65,9 +61,6 @@ class FrameBuilder extends Component {
     const yourName = you.name;
 
     const yourCreature = Utils.getCreatureByType({ type: yourName });
-    console.log("yourCreature", toJS(yourCreature)); // zzz
-
-    console.log("you", toJS(you)); // zzz
 
     const backgroundImage = Images.backgrounds["hill01"];
     const locationImage = Images.locations[sceneToEdit.name];
@@ -82,16 +75,11 @@ class FrameBuilder extends Component {
 
     const renderedFriends = friends.map(friend => {
       const creature = Utils.getCreatureByType({ type: friend });
-      // const allCreatures = localStateStore.getCreatures();
-      // const creature = allCreatures.find(creature => creature.type === friend);
-
-      console.log("creature.mood", creature.mood); // zzz
 
       return <Character name={friend} mood={creature.mood} />;
     });
 
     const yourMood = yourCreature.mood;
-    console.log("yourMood", yourMood); // zzz
 
     return (
       <div className={css.scene}>
@@ -138,7 +126,7 @@ class FrameBuilder extends Component {
             <div className={css.youContainer}>
               <Character name={yourName} mood={yourMood} />
             </div>
-            {/* {renderedFriends} */}
+            {renderedFriends}
           </div>
         </div>
       </div>
@@ -162,11 +150,11 @@ class FrameBuilder extends Component {
       <div className={css.main}>
         <div className={css.girlPickersContainer}>
           {this.renderGirlPicker({ name: yourName })}
-          {/* {this.renderGirlPicker({ name: friendName })} */}
+          {this.renderGirlPicker({ name: friendName })}
         </div>
         <div className={css.scenesContainer}>
           {this.renderScene({ you, friends: friendNames })}
-          {/* {this.renderScene({ you, friends: friendNames })} */}
+          {this.renderScene({ you, friends: friendNames })}
         </div>
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
