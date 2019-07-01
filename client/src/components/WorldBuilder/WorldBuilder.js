@@ -419,6 +419,30 @@ class WorldBuilder extends Component {
     this.setState({ sceneToEdit: "", showFrameBuilder: false });
   };
 
+  renderLocation = ({ item }) => {
+    const { scene, id, name = "" } = item;
+    const creatures = scene && scene.creatures;
+
+    const content = (
+      <div className={css.locationGridContainer}>
+        <MiniLocation
+          id={id}
+          key={name}
+          location={scene}
+          characters={creatures}
+        />
+        <Button
+          className={css.scenePropsButton}
+          onClick={() => this.editFrame({ scene })}
+        >
+          <Icon icon={IconNames.SETTINGS} />
+        </Button>
+      </div>
+    );
+
+    return content;
+  };
+
   renderItems = ({ provided, snapshot, items }) => {
     return (
       <div
@@ -432,24 +456,7 @@ class WorldBuilder extends Component {
 
             // define a render function in each item type
             if (id.includes(LOCATIONS_TAG)) {
-              const creatures = scene && scene.creatures;
-
-              content = (
-                <div className={css.locationGridContainer}>
-                  <MiniLocation
-                    id={id}
-                    key={name}
-                    location={scene}
-                    characters={creatures}
-                  />
-                  <Button
-                    className={css.scenePropsButton}
-                    onClick={() => this.editFrame({ scene })}
-                  >
-                    <Icon icon={IconNames.SETTINGS} />
-                  </Button>
-                </div>
-              );
+              content = this.renderLocation({ item });
             } else {
               // this content should be generated on the fly.
               content = item.content;
