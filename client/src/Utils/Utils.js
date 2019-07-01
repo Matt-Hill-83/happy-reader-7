@@ -5,7 +5,7 @@ import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js";
 const { words, wordTypes } = myWords;
 
 export default class Utils {
-  static getCreatureByName = ({ type }) => {
+  static getCreatureByType = ({ type }) => {
     const allCreatures = localStateStore.getCreatures();
 
     return allCreatures.find(creature => creature.type === type);
@@ -119,26 +119,26 @@ export default class Utils {
     return returnName ? item.name : item;
   };
 
-  static generateScenes = () => {
-    const locations = {
-      tree: { creatures: ["elf"], name: "tree" },
-      stump: { creatures: ["elf"], name: "stump" },
-      castle: { creatures: ["elf"], name: "castle" },
-      waterfall: { creatures: ["elf"], name: "waterfall" },
-      bees: { creatures: ["elf"], name: "bees" },
-      swamp: { creatures: ["elf"], name: "swamp" },
-      house: { creatures: ["elf"], name: "house" },
-      lake: { creatures: ["elf"], name: "lake" },
-      barn: { creatures: ["elf"], name: "barn" }
-    };
+  // static generateScenes = () => {
+  //   const locations = {
+  //     tree: { creatures: ["elf"], name: "tree" },
+  //     stump: { creatures: ["elf"], name: "stump" },
+  //     castle: { creatures: ["elf"], name: "castle" },
+  //     waterfall: { creatures: ["elf"], name: "waterfall" },
+  //     bees: { creatures: ["elf"], name: "bees" },
+  //     swamp: { creatures: ["elf"], name: "swamp" },
+  //     house: { creatures: ["elf"], name: "house" },
+  //     lake: { creatures: ["elf"], name: "lake" },
+  //     barn: { creatures: ["elf"], name: "barn" }
+  //   };
 
-    // return locations;
+  //   // return locations;
 
-    const locationsList =
-      Utils.getWordsByType({ words, type: wordTypes.location }) || [];
+  //   const locationsList =
+  //     Utils.getWordsByType({ words, type: wordTypes.location }) || [];
 
-    return locationsList.map(location => {
-      return { location: location.name };
-    });
-  };
+  //   return locationsList.map(location => {
+  //     return { location: location.name };
+  //   });
+  // };
 }

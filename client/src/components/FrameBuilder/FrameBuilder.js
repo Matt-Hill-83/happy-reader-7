@@ -10,6 +10,7 @@ import Head from "../Head/Head";
 
 import css from "./FrameBuilder.module.scss";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
+import Utils from "../../Utils/Utils";
 
 class FrameBuilder extends Component {
   state = {};
@@ -62,10 +63,13 @@ class FrameBuilder extends Component {
     const { sceneToEdit } = this.props;
 
     const yourName = you.name;
+
+    const yourCreature = Utils.getCreatureByType({ type: yourName });
+    console.log("yourCreature", toJS(yourCreature)); // zzz
+
     console.log("you", toJS(you)); // zzz
 
     const backgroundImage = Images.backgrounds["hill01"];
-
     const locationImage = Images.locations[sceneToEdit.name];
     const bookImage = Images.sceneView.book;
     const notebookImage = Images.sceneView.notebook;
@@ -77,15 +81,16 @@ class FrameBuilder extends Component {
     ];
 
     const renderedFriends = friends.map(friend => {
-      const allCreatures = localStateStore.getCreatures();
-      const creature = allCreatures.find(creature => creature.type === friend);
+      const creature = Utils.getCreatureByType({ type: friend });
+      // const allCreatures = localStateStore.getCreatures();
+      // const creature = allCreatures.find(creature => creature.type === friend);
 
       console.log("creature.mood", creature.mood); // zzz
 
       return <Character name={friend} mood={creature.mood} />;
     });
 
-    const yourMood = you.creature.mood;
+    const yourMood = yourCreature.mood;
     console.log("yourMood", yourMood); // zzz
 
     return (
@@ -131,7 +136,7 @@ class FrameBuilder extends Component {
 
           <div className={css.charactersContainer}>
             <div className={css.youContainer}>
-              <Character name={yourName} mood={you.creature.mood} />
+              <Character name={yourName} mood={yourMood} />
             </div>
             {/* {renderedFriends} */}
           </div>
@@ -161,7 +166,7 @@ class FrameBuilder extends Component {
         </div>
         <div className={css.scenesContainer}>
           {this.renderScene({ you, friends: friendNames })}
-          {this.renderScene({ you, friends: friendNames })}
+          {/* {this.renderScene({ you, friends: friendNames })} */}
         </div>
 
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>

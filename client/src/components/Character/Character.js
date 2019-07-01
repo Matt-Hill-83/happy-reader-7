@@ -10,19 +10,16 @@ const girlImages = Images.posableGirls;
 
 class Character extends Component {
   render() {
-    const { name, mood = "normal" } = this.props;
-
-    console.log("name", name); // zzz
-    console.log("girlImages", girlImages); // zzz
+    const { name, mood } = this.props;
+    console.log("mood", mood); // zzz
 
     const images = girlImages.find(girl => girl.name === name);
-    console.log("images", images); // zzz
 
     const {
       images: { heads, body }
     } = images;
 
-    const head = heads.find(head => head.mood === mood) || "normal";
+    const head = heads.find(head => head.mood === mood);
 
     const className = css.headForBody;
     return (

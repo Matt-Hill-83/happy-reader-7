@@ -62,9 +62,9 @@ const generateStartNarrative = ({ you }) => {
   return {
     story: [
       [
-        `You are ${you.name}.`,
-        `You are a ${you.creature}.`,
-        `You live in the ${you.homeLocation}.`,
+        `You are $-{you.name}.`,
+        `You are a $-{you.creature}.`,
+        `You live in the $-{you.homeLocation}.`,
         `You are sooooo happy.`
       ]
 
@@ -327,7 +327,7 @@ const allScenes = locationsFromImages.map(name => {
       right: { open: true },
       bottom: { open: false }
     },
-    creatures: [{ name: "KAT", type: testFriend }]
+    creatures: [{ name: "JAN", type: testFriend }]
   };
 });
 
@@ -350,21 +350,16 @@ const generatePlot = () => {
     activeScene: startScene,
     narrativeGenerators,
     allScenes,
-    allItems,
-    you: localStateStore.getYou()
+    allItems
   };
 
   localStateStore.setPlot(plot);
 };
 
 const generateYou = ({ you = {} }) => {
-  const yourCreature = allCreatures.find(
-    creature => creature.type === yourName
-  );
-
   const defaultYou = {
     name: yourName,
-    // creature: yourCreature,
+    creature: yourName,
     homeLocation: homeLocation,
     vehicle: "scooter",
     mission: generateMission(),
@@ -375,9 +370,10 @@ const generateYou = ({ you = {} }) => {
   };
   const modifiedYou = Object.assign(defaultYou, you);
 
-  modifiedYou.creature = yourCreature;
   localStateStore.setYou(modifiedYou);
 };
+
 generateYou({});
+generatePlot({});
 
 export default { generatePlot, generateYou };

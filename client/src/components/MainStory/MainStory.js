@@ -20,7 +20,7 @@ import { Button } from "@blueprintjs/core";
 import css from "./MainStory.module.scss";
 import { maps } from "../../Stores/InitStores.js";
 
-const { generatePlot, generateYou } = mySentences;
+const { generatePlot } = mySentences;
 
 class MainStory extends React.Component {
   state = {
@@ -44,7 +44,7 @@ class MainStory extends React.Component {
 
   onExitIntro = ({ you }) => {
     // generateYou({ you });
-    generatePlot();
+    // generatePlot();
     const plot = localStateStore.getPlot();
     this.updateActiveScene({ activeScene: plot.activeScene });
   };

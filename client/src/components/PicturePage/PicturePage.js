@@ -219,8 +219,8 @@ class PicturePage extends React.Component {
   };
 
   renderYourItems = () => {
-    const plot = localStateStore.getPlot();
-    const items = plot.you.items.map(item => <div>{item}</div>);
+    const you = localStateStore.getYou();
+    const items = you.items.map(item => <div>{item}</div>);
 
     return (
       <div className={css.yourItems}>
