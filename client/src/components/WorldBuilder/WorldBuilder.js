@@ -425,12 +425,7 @@ class WorldBuilder extends Component {
 
     const content = (
       <div className={css.locationGridContainer}>
-        <MiniLocation
-          id={id}
-          key={name}
-          location={scene}
-          characters={creatures}
-        />
+        <MiniLocation id={id} key={name} location={scene} />
         <Button
           className={css.scenePropsButton}
           onClick={() => this.editFrame({ scene })}

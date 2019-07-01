@@ -160,7 +160,7 @@ class MiniLocation extends React.Component {
     );
   };
 
-  renderCharacters = ({ isActive, characters: creatures }) => {
+  renderCharacters = ({ isActive, creatures }) => {
     const renderedCharacters = creatures.map(creature => {
       const creatureType = creature && creature.type;
       // console.log("creature - mini", toJS(creature)); // zzz
@@ -187,18 +187,11 @@ class MiniLocation extends React.Component {
   };
 
   render() {
-    const {
-      location,
-      // characters,
-      isActive,
-      className,
-      showLabel = true,
-      id
-    } = this.props;
+    const { location, isActive, className, showLabel = true, id } = this.props;
 
-    const characters = location.creatures;
+    const creatures = location.creatures;
 
-    // const charJs = toJS(characters);
+    // const charJs = toJS(creatures);
 
     const { items = [], name: locationName } = location;
 
@@ -251,7 +244,7 @@ class MiniLocation extends React.Component {
         </div>
         {renderedItems || null}
         <div className={css.characters}>
-          {this.renderCharacters({ characters })}
+          {this.renderCharacters({ creatures })}
         </div>
         {showLabel && <span className={css.locationTitle}>{locationName}</span>}
       </div>
