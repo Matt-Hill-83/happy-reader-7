@@ -472,7 +472,6 @@ class WorldBuilder extends Component {
   render() {
     // these need to be rendered, or else the store won't populate from the firestore db
     const test = maps.docs.map(map => <div>{map.data.name}</div>);
-    // console.log("test", test); // zzz
 
     return (
       <div className={css.main}>
