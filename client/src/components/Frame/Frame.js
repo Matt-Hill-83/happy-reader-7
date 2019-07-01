@@ -8,12 +8,13 @@ import WordGroup from "../WordGroup/WordGroup";
 import Character from "../Character/Character";
 import Head from "../Head/Head";
 
-import css from "./Frame.module.scss";
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
 import Utils from "../../Utils/Utils";
 
+import css from "./Frame.module.scss";
+
 class Frame extends Component {
-  state = { frames: [] };
+  state = { frames: [], showFacePicker: false };
 
   componentWillMount() {}
 
@@ -55,7 +56,7 @@ class Frame extends Component {
   };
 
   renderFrame = ({ you, friends = [] }) => {
-    const { sceneToEdit } = this.props;
+    const { sceneToEdit, frame } = this.props;
 
     const yourName = you.name;
 
@@ -66,11 +67,12 @@ class Frame extends Component {
     const bookImage = Images.sceneView.book;
     const notebookImage = Images.sceneView.notebook;
 
-    const activeParagraph = [
-      `Liz and Kat are girls.`,
-      `Liz and Kat play.`,
-      `Liz and Kat are so sweet.`
-    ];
+    const activeParagraph = frame.story;
+    // const activeParagraph = [
+    //   `Liz and Kat are girls.`,
+    //   `Liz and Kat play.`,
+    //   `Liz and Kat are so sweet.`
+    // ];
 
     const renderedFriends = friends.map(friend => {
       console.log("friend", friend); // zzz
@@ -147,7 +149,7 @@ class Frame extends Component {
     const yourName = you.name;
     const friendName = creatures[0] && creatures[0].type;
 
-    /* eslint-disable */ debugger; /* zzz */ /* eslint-ensable */
+    /* eslint-disable */ debugger; /* eslint-ensable */ /* zzz */
     return (
       <>
         <div className={css.girlPickersContainer}>

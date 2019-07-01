@@ -21,9 +21,6 @@ class FrameBuilder extends Component {
   }
 
   setInitialFrames = () => {
-    // if (!this.props.sceneToEdit) {
-    //   return null;
-    // }
     const {
       sceneToEdit: { frames, creatures = [] }
     } = this.props;
@@ -50,148 +47,36 @@ class FrameBuilder extends Component {
     onExitFrameBuilder && onExitFrameBuilder({ frames });
   };
 
-  selectHead = ({ name, head }) => {
-    const allCreatures = localStateStore.getCreatures();
-    const creature = allCreatures.find(creature => creature.type === name);
-
-    // TODO - I should push the store here.
-    creature.mood = head.mood;
-  };
-
-  renderGirlPicker = ({ name }) => {
-    const girlImages = Images.posableGirls;
-    const images = girlImages.find(girl => girl.name === name);
-
-    const {
-      images: { heads }
-    } = images;
-
-    const headImages = heads.map(head => {
-      return (
-        <div onClick={() => this.selectHead({ head, name })}>
-          <Head head={head} />
-        </div>
-      );
-    });
-
-    return (
-      <div className={css.girlPickerContainer}>
-        <div className={css.girlPicker}>{headImages}</div>
-      </div>
-    );
-  };
-
-  renderFrame = ({ you, friends = [] }) => {
-    const { sceneToEdit } = this.props;
-
-    const yourName = you.name;
-
-    const yourCreature = Utils.getCreatureByType({ type: yourName });
-
-    const backgroundImage = Images.backgrounds["hill01"];
-    const locationImage = Images.locations[sceneToEdit.name];
-    const bookImage = Images.sceneView.book;
-    const notebookImage = Images.sceneView.notebook;
-
-    const activeParagraph = [
-      `Liz and Kat are girls.`,
-      `Liz and Kat play.`,
-      `Liz and Kat are so sweet.`
-    ];
-
-    const renderedFriends = friends.map(friend => {
-      const creature = Utils.getCreatureByType({ type: friend });
-
-      return <Character name={friend} mood={creature.mood} />;
-    });
-
-    const yourMood = yourCreature.mood;
-
-    return (
-      <div className={css.scene}>
-        <div className={css.backgroundImageContainer}>
-          <div className={css.locationImageContainer}>
-            <img
-              className={css.locationImage}
-              src={locationImage}
-              alt={"imagex"}
-            />
-          </div>
-          <div className={css.bookImageContainer}>
-            <div className={css.narrative}>
-              <WordGroup
-                story={activeParagraph}
-                className={css.narrativeClass}
-              />
-            </div>
-            <img className={css.bookImage} src={bookImage} alt={"imagex"} />
-          </div>
-          <div className={css.notebookImageContainer}>
-            <img
-              className={css.notebookImage}
-              src={notebookImage}
-              alt={"imagex"}
-            />
-          </div>
-          {/* <div className={css.backgroundSky}>
-          <img
-          className={`${css.backgroundSkyImage} `}
-          src={backgroundImage}
-          alt={`${"amber-head"}-image`}
-          />
-        </div> */}
-          <div className={css.backgroundGrass}>
-            <img
-              className={`${css.backgroundGrassImage} `}
-              src={backgroundImage}
-              alt={`${"amber-head"}-image`}
-            />
-          </div>
-
-          <div className={css.charactersContainer}>
-            <div className={css.youContainer}>
-              <Character name={yourName} mood={yourMood} />
-            </div>
-            {renderedFriends}
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   render() {
     const {
       sceneToEdit,
       sceneToEdit: { creatures = [] }
     } = this.props;
 
-    const friendNames = creatures.map(creature => creature.type);
-    const you = localStateStore.getYou();
+    const story1 = [`Liz and Kat are girls.`];
 
-    const yourName = you.name;
-    // const yourName = "amber";
-    const friendName = "jan";
+    const story2 = [`Now Liz is sad.`];
 
     const frames = [
       {
         creatures,
-        story: [["the girl talks"]],
+        story: story1,
+        dialog: [{ character: "default", text: "Oh my gosh I can talk!" }]
+      },
+      {
+        creatures,
+        story: story2,
         dialog: [{ character: "default", text: "Oh my gosh I can talk!" }]
       }
     ];
 
-    const frame = frames[0];
+    const renderedFrames = frames.map(frame => {
+      return <Frame frame={frame} sceneToEdit={sceneToEdit} />;
+    });
 
     return (
       <div className={css.main}>
-        {/* <div className={css.girlPickersContainer}>
-          {this.renderGirlPicker({ name: yourName })}
-          {this.renderGirlPicker({ name: friendName })}
-        </div>
-        <div className={css.scenesContainer}>
-          {this.renderFrame({ you, friends: friendNames })}
-        </div> */}
-        <Frame frame={frame} sceneToEdit={sceneToEdit} />
+        {renderedFrames}
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
           <Icon icon={IconNames.CROSS} />
         </Button>
