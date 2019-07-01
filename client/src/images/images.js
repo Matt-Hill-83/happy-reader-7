@@ -74,28 +74,18 @@ import amberBody from "./rigged-girls/amber/amber-body.png";
 // rigged girl - amber
 import janBlissful from "./rigged-girls/jan/jan-09-blissful.png";
 import janRepulsed from "./rigged-girls/jan/jan-08-repulsed.png";
-import janScared from "./rigged-girls/jan/jan-07-scared.png";
+import janHappy from "./rigged-girls/jan/jan-07-happy.png";
 import janSneaky from "./rigged-girls/jan/jan-06-sneaky.png";
 import janSorry from "./rigged-girls/jan/jan-05-sorry.png";
 import janMad from "./rigged-girls/jan/jan-04-mad.png";
 import janSurprised from "./rigged-girls/jan/jan-03-surprised.png";
 import janNormal from "./rigged-girls/jan/jan-02-normal.png";
 import janScared from "./rigged-girls/jan/jan-01-scared.png";
-import janBody from "./rigged-girls/jan/jan-body.png";
-
-jan - 09 - blissful.png;
-jan - 08 - repulsed.png;
-jan - 07 - scared.png;
-jan - 06 - sneaky.png;
-jan - 05 - sorry.png;
-jan - 04 - mad.png;
-jan - 03 - surprised.png;
-jan - 02 - normal.png;
-jan - 01 - scared.png;
 
 // scene view
 import sceneViewBook from "./scene-view/book01.png";
 import sceneViewNotebook from "./scene-view/notebook-01.png";
+const janBody = amberBody;
 
 const MOODS = {
   blissful: "blissful",
@@ -103,7 +93,6 @@ const MOODS = {
   glad: "glad",
   happy: "happy",
   lonely: "lonely",
-  mad: "mad",
   mad: "mad",
   normal: "normal",
   sad: "sad",
@@ -115,6 +104,7 @@ const MOODS = {
   stunned: "stunned",
   apprehensive: "apprehensive",
   resolute: "resolute",
+  repulsed: "repulsed",
   determined: "determined",
   amazed: "amazed"
 };
@@ -194,8 +184,8 @@ export default {
             offset: { x: 0, y: 0 }
           },
           {
-            image: janScared,
-            mood: MOODS.scared,
+            image: janHappy,
+            mood: MOODS.happy,
             offset: { x: 0, y: 0 }
           },
           {
@@ -229,7 +219,7 @@ export default {
             offset: { x: 0, y: 0 }
           }
         ],
-        body: { image: amberBody }
+        body: { image: janBody }
       }
     },
     {

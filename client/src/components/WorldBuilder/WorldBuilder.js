@@ -487,7 +487,8 @@ class WorldBuilder extends Component {
     // these need to be rendered, or else the store won't populate from the firestore db
 
     const girlImages = Images.posableGirls;
-    const girlName = "amber";
+    // const girlName = "amber";
+    const girlName = "jan";
 
     const { sceneToEdit, showFrameBuilder } = this.state;
 

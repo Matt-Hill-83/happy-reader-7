@@ -125,7 +125,8 @@
   z-index: 10;
   left: 50%;
   transform: translate(-50%, 25%);
-  top: 50%;
+  top: unset;
+  bottom: 12%;
 }
 
 .moodLabel {
