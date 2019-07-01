@@ -1,13 +1,14 @@
 import { Button, Icon, Position } from "@blueprintjs/core";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { IconNames } from "@blueprintjs/icons";
 import { observer } from "mobx-react";
 import { toJS } from "mobx";
 import React, { Component } from "react";
 import Images from "../../images/images";
+import WordGroup from "../WordGroup/WordGroup";
 
 import css from "./FrameBuilder.module.scss";
-import WordGroup from "../WordGroup/WordGroup";
+import Character from "../Character/Character";
+import Head from "../Head/Head";
 
 class FrameBuilder extends Component {
   state = {};
@@ -17,44 +18,6 @@ class FrameBuilder extends Component {
   onExitFrameBuilder = () => {
     const { onExitFrameBuilder } = this.props;
     onExitFrameBuilder && onExitFrameBuilder();
-  };
-
-  renderCharacter = ({ character }) => {
-    const {
-      images: { heads, body },
-      name,
-      mood
-    } = character;
-
-    const head = heads.find(head => head.mood === mood);
-
-    const className = css.headForBody;
-    return (
-      <div className={css.girlBodyContainer}>
-        <img
-          className={`${css.girlBodyImage}`}
-          src={body.image}
-          alt={`${"amber-body"}-image`}
-        />
-        <span className={`${css.bodyLabel}`}>{name}</span>
-        {this.renderHead({ head, className })}
-      </div>
-    );
-  };
-
-  renderHead = ({ head, className = "" }) => {
-    const { image, mood } = head;
-
-    return (
-      <div className={`${css.girlHeadContainer} ${className}`}>
-        <img
-          className={`${css.girlHead} ${css.girlHeadAmber}`}
-          src={image}
-          alt={`${"amber-head"}-image`}
-        />
-        <span className={css.moodLabel}>{mood}</span>
-      </div>
-    );
   };
 
   selectHead = ({ girl, head }) => {
@@ -70,7 +33,7 @@ class FrameBuilder extends Component {
     const headImages = heads.map(head => {
       return (
         <div onClick={() => this.selectHead({ head, girl })}>
-          {this.renderHead({ head })}
+          <Head head={head} />
         </div>
       );
     });
@@ -139,8 +102,8 @@ class FrameBuilder extends Component {
           </div>
 
           <div className={css.charactersContainer}>
-            {this.renderCharacter({ character: you })}
-            {this.renderCharacter({ character: friend })}
+            <Character character={you} />
+            <Character character={friend} />
           </div>
         </div>
       </div>

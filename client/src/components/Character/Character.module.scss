@@ -1,0 +1,47 @@
+@import "../../Styles/mixins.modules.scss";
+
+.main {
+  border: 10px solid red !important;
+}
+
+.charactersContainer {
+  height: 38%;
+  display: flex;
+  position: absolute;
+  bottom: 9%;
+  left: 3%;
+}
+
+.girlBodyContainer {
+  height: 100%;
+  position: relative;
+
+  .girlBodyImage {
+    height: 100%;
+    width: auto;
+  }
+}
+
+.headForBody {
+  background: transparent !important;
+  position: absolute !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+  bottom: 58%;
+  top: unset !important;
+  border: none !important;
+}
+
+.bodyLabel {
+  @include item-label;
+  border: 1px solid blue !important;
+  background: var(--light-pink);
+  border-radius: 3px;
+  padding: 0 3px;
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  transform: translate(-50%, 25%);
+  top: -25%;
+  bottom: unset;
+}
