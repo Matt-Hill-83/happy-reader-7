@@ -1,7 +1,3 @@
-// .main {
-//   border: 1px solid red !important;
-// }
-
 .girlHeadKat {
   width: 114%;
   height: auto;
@@ -11,7 +7,10 @@
   border: 1px solid var(--color-purple-dark);
   display: flex;
   height: auto;
-  padding: 30px;
+  padding: 8px;
+  margin: 0.6rem;
+  background: #ff85a5;
+  border-radius: 0.3rem;
 }
 
 .girlPicker {
@@ -142,6 +141,17 @@
 .toggleFacePickerButton {
   border: 1px solid purple !important;
   position: absolute;
+  height: 4%;
+  width: 4%;
+}
+
+.toggleFacePickerButton2 {
+  border: 1px solid purple !important;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 16%;
+  width: 4%;
 }
 
 .scene {

@@ -160,7 +160,7 @@ class Frame extends Component {
         {showFacePicker && (
           <div className={css.girlPickersContainer}>
             <Button
-              className={css.toggleFacePickerButton}
+              className={css.toggleFacePickerButton2}
               onClick={this.toggleFacePicker}
             >
               <Icon icon={IconNames.DATABASE} />
