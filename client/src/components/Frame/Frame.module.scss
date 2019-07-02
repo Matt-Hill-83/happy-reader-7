@@ -64,18 +64,17 @@
   z-index: 20;
   height: auto;
   background: #a1a1ff;
-  // padding: 24px;
   margin: 24px;
 
   border-radius: 5px;
 }
 
 .locationImageContainer {
-  height: 23%;
-  width: 40%;
+  height: 22%;
+  /* width: 46%; */
   position: absolute;
   bottom: 41%;
-  right: 10px;
+  right: 2%;
 
   .locationImage {
     height: 100%;
