@@ -91,7 +91,11 @@ class Frame extends Component {
     const renderedFriends = friends.map(friend => {
       const creature = Utils.getCreatureByType({ type: friend })
 
-      return <Character name={friend} mood={creature.mood} />
+      return (
+        <div onClick={this.toggleFacePicker}>
+          <Character name={friend} mood={creature.mood} />
+        </div>
+      )
     })
 
     const yourMood = yourCreature.mood
@@ -136,7 +140,7 @@ class Frame extends Component {
           </div>
 
           <div className={css.charactersContainer}>
-            <div className={css.youContainer}>
+            <div className={css.youContainer} onClick={this.toggleFacePicker}>
               <Character name={yourName} mood={yourMood} />
             </div>
             {renderedFriends}

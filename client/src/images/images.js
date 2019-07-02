@@ -197,7 +197,7 @@ export default {
     {
       name: "liz",
       type: "liz",
-      mood: "joy",
+      mood: "scared",
       images: {
         heads: [
           {
@@ -289,7 +289,7 @@ export default {
     {
       name: "kat",
       type: "kat",
-      mood: "joy",
+      mood: "yuck",
       images: {
         heads: [
           {
