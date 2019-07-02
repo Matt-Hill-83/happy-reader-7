@@ -4,9 +4,6 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import React, { Component } from "react"
 import Images from "../../images/images"
-import WordGroup from "../WordGroup/WordGroup"
-import Character from "../Character/Character"
-import Head from "../Head/Head"
 
 import css from "./FrameBuilder.module.scss"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
@@ -27,7 +24,7 @@ class FrameBuilder extends Component {
 
     let newFrames = [
       {
-        creatures: ["jan"],
+        creatures: ["liz"],
         story: ["the girl talks"],
         dialog: [{ character: "default", text: "Oh my gosh I can talk!" }]
       }

@@ -1,32 +1,32 @@
-import myWords from "../Models/words.js";
-import Utils from "../Utils/Utils.js";
-import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js";
-import images from "../images/images.js";
+import myWords from "../Models/words.js"
+import Utils from "../Utils/Utils.js"
+import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js"
+import images from "../images/images.js"
 
-const { wordTypes } = myWords;
+const { wordTypes } = myWords
 
-const homeLocation = "home";
+const homeLocation = "home"
 
 const generateMission = () => {
   const missionItem = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.vehicle
-  });
+  })
 
   const missionItemStartLocation = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.location
-  });
+  })
 
   const missionItemEndLocation = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.location
-  });
+  })
 
   const missionItemRecipientType = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.creature
-  });
+  })
 
   const missionItemRecipientName = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.name
-  });
+  })
 
   return {
     item: {
@@ -38,24 +38,24 @@ const generateMission = () => {
         name: missionItemRecipientName
       }
     }
-  };
-};
+  }
+}
 
 const generateNewFriend = () => {
   const type = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.creature
-  });
+  })
 
   const name = Utils.getRandomItemByTypeAndUse({
     type: wordTypes.name
-  });
+  })
 
   return {
     type,
     name,
     mission: generateMission()
-  };
-};
+  }
+}
 
 // This cannot be chosen for the next scene.
 const generateStartNarrative = ({ you }) => {
@@ -90,19 +90,19 @@ const generateStartNarrative = ({ you }) => {
     //   `Give the ${you.mission.item.name} to ${you.mission.item.recipient.name}.`
     // ],
     // proposition: [`Where do you go now?`],
-  };
-};
+  }
+}
 
 const generateNarrative1 = ({ you, activeScene }) => {
-  const { name, creatures, items } = activeScene;
+  const { name, creatures, items } = activeScene
 
-  const creature = creatures && creatures.length > 0 && creatures[0];
-  const item = items && items.length > 0 && items[0];
+  const creature = creatures && creatures.length > 0 && creatures[0]
+  const item = items && items.length > 0 && items[0]
 
-  item && you.items.push(item);
+  item && you.items.push(item)
 
-  let creatureDialog = [];
-  let itemDialog = [];
+  let creatureDialog = []
+  let itemDialog = []
   if (creature && creature.type) {
     creatureDialog = [
       `You see a ${creature.type}.`,
@@ -110,11 +110,11 @@ const generateNarrative1 = ({ you, activeScene }) => {
       `"My name is ${you.name}."`,
       `The ${creature.type} says:`,
       `My name is ${creature.name}."`
-    ];
+    ]
   }
 
   if (item) {
-    itemDialog = [`You see a ${item}.`, `You get the ${item}.`];
+    itemDialog = [`You see a ${item}.`, `You get the ${item}.`]
   }
 
   return {
@@ -136,15 +136,15 @@ const generateNarrative1 = ({ you, activeScene }) => {
       //   `"Will you go with me?"`
       // ]
     ]
-  };
-};
+  }
+}
 
-const narrativeGenerators = [generateNarrative1];
+const narrativeGenerators = [generateNarrative1]
 
 const startScene = {
   name: homeLocation,
   builtInNarrativeGenerator: generateStartNarrative
-};
+}
 
 const generateScenes = () => {
   const scenes = {
@@ -264,12 +264,12 @@ const generateScenes = () => {
         right: { open: true }
       }
     }
-  };
+  }
 
-  return scenes;
-};
+  return scenes
+}
 
-const scenes = generateScenes();
+const scenes = generateScenes()
 
 let locationsMaps = [
   {
@@ -303,22 +303,22 @@ let locationsMaps = [
       [{}, {}, {}, {}]
     ]
   }
-];
+]
 
-localStateStore.setLocationsMaps(locationsMaps);
+localStateStore.setLocationsMaps(locationsMaps)
 
 // create placeholders for empty rows
 // locationsMap = locationsMap.map(row => {
 //   return row || [{}, {}, {}, {}];
 // });
 
-const locationsFromImages = Object.keys(images.locations);
-const creaturesFromImages = Object.keys(images.creatures);
-const itemsFromImages = Object.keys(images.items);
+const locationsFromImages = Object.keys(images.locations)
+const creaturesFromImages = Object.keys(images.creatures)
+const itemsFromImages = Object.keys(images.items)
 
 // zzz - this is where you set the friend
-const testFriend = "jan";
-const yourName = "kat";
+const testFriend = "liz"
+const yourName = "kat"
 
 const allScenes = locationsFromImages.map(name => {
   return {
@@ -327,23 +327,23 @@ const allScenes = locationsFromImages.map(name => {
       right: { open: true },
       bottom: { open: false }
     },
-    creatures: [{ name: "JAN", type: testFriend }]
-  };
-});
+    creatures: [{ name: testFriend, type: testFriend }]
+  }
+})
 
 const allCreatures = creaturesFromImages.map(type => {
-  return { type, name: `${type}-creature` };
-});
+  return { type, name: `${type}-creature` }
+})
 
-const posableGirls = images.posableGirls;
+const posableGirls = images.posableGirls
 
 // Add posableGirls to the creatures list, because they are a different type of object
-allCreatures.push(...posableGirls);
-localStateStore.setCreatures(allCreatures);
+allCreatures.push(...posableGirls)
+localStateStore.setCreatures(allCreatures)
 
 const allItems = itemsFromImages.map(type => {
-  return { type, name: "" };
-});
+  return { type, name: "" }
+})
 
 const generatePlot = () => {
   const plot = {
@@ -351,10 +351,10 @@ const generatePlot = () => {
     narrativeGenerators,
     allScenes,
     allItems
-  };
+  }
 
-  localStateStore.setPlot(plot);
-};
+  localStateStore.setPlot(plot)
+}
 
 const generateYou = ({ you = {} }) => {
   const defaultYou = {
@@ -367,13 +367,13 @@ const generateYou = ({ you = {} }) => {
     pet: { type: "dog", name: "Doggy", withMe: true },
     items: [],
     mood: "normal"
-  };
-  const modifiedYou = Object.assign(defaultYou, you);
+  }
+  const modifiedYou = Object.assign(defaultYou, you)
 
-  localStateStore.setYou(modifiedYou);
-};
+  localStateStore.setYou(modifiedYou)
+}
 
-generateYou({});
-generatePlot({});
+generateYou({})
+generatePlot({})
 
-export default { generatePlot, generateYou };
+export default { generatePlot, generateYou }
