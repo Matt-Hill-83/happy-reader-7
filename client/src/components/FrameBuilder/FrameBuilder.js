@@ -67,7 +67,7 @@ class FrameBuilder extends Component {
         creatures,
         story: [`Liz lost Piggy.`, `Kat is sad.`],
         faces: [
-          { character: "liz", face: "sad" },
+          { character: "liz", face: "scared" },
           { character: "kat", face: "cry" }
         ],
         dialog: [
