@@ -197,7 +197,7 @@ export default {
     {
       name: "liz",
       type: "liz",
-      mood: "mad",
+      mood: "joy",
       images: {
         heads: [
           {
@@ -210,7 +210,7 @@ export default {
           },
           {
             image: janHappy,
-            mood: "happy"
+            mood: "joy"
           },
           {
             image: janSneaky,
@@ -289,20 +289,29 @@ export default {
     {
       name: "kat",
       type: "kat",
-      mood: "hurt",
+      mood: "joy",
       images: {
         heads: [
           {
             image: katHurt,
             mood: "hurt"
           },
+
           {
-            image: katOptimistic,
+            image: katLoud,
+            mood: "hey!"
+          },
+          {
+            image: katMad,
             mood: "mad"
           },
           {
             image: katSad,
             mood: "sad"
+          },
+          {
+            image: katCrying,
+            mood: "cry"
           },
           {
             image: katScared,
@@ -313,24 +322,24 @@ export default {
             mood: "kiss"
           },
           {
-            image: katCrying,
-            mood: "cry"
-          },
-          {
             image: katDisgusted,
             mood: "gross"
+          },
+          {
+            image: katCringing,
+            mood: "yuck"
           },
           {
             image: katBlissful,
             mood: "blissful"
           },
           {
-            image: katCringing,
-            mood: "cringing"
-          },
-          {
             image: katDismayed,
             mood: "left out"
+          },
+          {
+            image: katOptimistic,
+            mood: "joy"
           },
           {
             image: katNormal,
@@ -348,14 +357,6 @@ export default {
           {
             image: katLauging,
             mood: "lauging"
-          },
-          {
-            image: katLoud,
-            mood: "hey!"
-          },
-          {
-            image: katMad,
-            mood: "mad"
           },
 
           {
