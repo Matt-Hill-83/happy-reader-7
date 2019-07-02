@@ -59,7 +59,7 @@ class FrameBuilder extends Component {
           { character: "kat", face: "ok" }
         ],
         dialog: [
-          { character: "liz", text: "Let's play!" },
+          { character: "liz", text: "We can play!" },
           { character: "kat", text: "OK" }
         ]
       },
