@@ -76,9 +76,16 @@ class Frame extends Component {
     return <div className={css.dialog}>{chats}</div>
   }
 
+  getMood = ({ name, faces }) => {
+    let mood = "ok"
+    const newMood = faces.find(face => face.character === name)
+    mood = (newMood && newMood.face) || mood
+    return mood
+  }
+
   renderFrame = ({ you, friends = [] }) => {
     const { sceneToEdit, frame } = this.props
-    const { story } = frame
+    const { story, faces } = frame
 
     const yourName = you.name
     const yourCreature = Utils.getCreatureByType({ type: yourName })
@@ -98,7 +105,10 @@ class Frame extends Component {
       )
     })
 
-    const yourMood = yourCreature.mood
+    // const yourMood = mood
+    const yourMood = this.getMood({ name: yourName, faces })
+
+    console.log("yourMood", yourMood) // zzz
 
     return (
       <div className={css.scene}>
