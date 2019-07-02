@@ -32,7 +32,7 @@ class Frame extends Component {
     creature.mood = head.mood
   }
 
-  renderGirlPicker = ({ name }) => {
+  renderFacePicker = ({ name }) => {
     const girlImages = Images.posableGirls
     const images = girlImages.find(girl => girl.name === name)
 
@@ -40,10 +40,15 @@ class Frame extends Component {
       images: { heads }
     } = images
 
+    let imageClassName = ""
+    if (name === "kat") {
+      imageClassName = css.girlHeadKat
+    }
+
     const headImages = heads.map(head => {
       return (
         <div onClick={() => this.selectHead({ head, name })}>
-          <Head head={head} />
+          <Head head={head} imageClassName={imageClassName} />
         </div>
       )
     })
@@ -140,27 +145,27 @@ class Frame extends Component {
 
     const { showFacePicker } = this.state
 
-    console.log("creatures", toJS(creatures)) // zzz
-
     const friendNames = creatures.map(creature => creature.type)
     const you = localStateStore.getYou()
     const yourName = you.name
-    const friendName = creatures[0] && creatures[0].type
 
     const allCharacters = [yourName, ...friendNames]
-    console.log("allCharacters", allCharacters) // zzz
 
     const renderedFacePickers = allCharacters.map(name => {
-      return this.renderGirlPicker({ name })
+      return this.renderFacePicker({ name })
     })
 
     return (
       <>
         {showFacePicker && (
           <div className={css.girlPickersContainer}>
+            <Button
+              className={css.toggleFacePickerButton}
+              onClick={this.toggleFacePicker}
+            >
+              <Icon icon={IconNames.DATABASE} />
+            </Button>
             {renderedFacePickers}
-            {/* {this.renderGirlPicker({ name: yourName })}
-            {this.renderGirlPicker({ name: friendName })} */}
           </div>
         )}
         <div className={css.scenesContainer}>

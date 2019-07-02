@@ -1,11 +1,17 @@
-.main {
-  border: 1px solid red !important;
+// .main {
+//   border: 1px solid red !important;
+// }
+
+.girlHeadKat {
+  width: 114%;
+  height: auto;
 }
 
 .girlPickerContainer {
   border: 1px solid var(--color-purple-dark);
   display: flex;
   height: auto;
+  padding: 30px;
 }
 
 .girlPicker {
@@ -16,8 +22,9 @@
   overflow: hidden;
   flex-wrap: wrap;
 
-  height: calc(5 * var(--cell-height-small));
-  width: calc(5 * var(--cell-height-small));
+  height: auto;
+  width: 100%;
+  // width: calc(5 * var(--cell-height-small));
 }
 
 .youContainer {
@@ -46,10 +53,22 @@
 }
 
 .girlPickersContainer {
+  border: 2px solid purple;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 14% 0;
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  z-index: 20;
+  height: auto;
+  background: #a1a1ff;
+  // padding: 24px;
+  margin: 24px;
+
+  border-radius: 5px;
 }
 
 .locationImageContainer {
@@ -123,14 +142,13 @@
 .toggleFacePickerButton {
   border: 1px solid purple !important;
   position: absolute;
-  top: 24px;
-  left: 24px;
 }
 
 .scene {
   display: flex;
   margin-right: 10px;
   border: 1px solid green !important;
+  position: relative;
 }
 
 .charactersContainer {

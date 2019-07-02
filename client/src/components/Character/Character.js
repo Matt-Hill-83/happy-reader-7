@@ -1,26 +1,26 @@
-import { observer } from "mobx-react";
-import { toJS } from "mobx";
-import React, { Component } from "react";
-import Head from "../Head/Head";
-import Images from "../../images/images";
+import { observer } from "mobx-react"
+import { toJS } from "mobx"
+import React, { Component } from "react"
+import Head from "../Head/Head"
+import Images from "../../images/images"
 
-import css from "./Character.module.scss";
+import css from "./Character.module.scss"
 
-const girlImages = Images.posableGirls;
+const girlImages = Images.posableGirls
 
 class Character extends Component {
   render() {
-    const { name, mood } = this.props;
+    const { name, mood } = this.props
 
-    const images = girlImages.find(girl => girl.name === name);
+    const images = girlImages.find(girl => girl.name === name)
 
     const {
       images: { heads, body }
-    } = images;
+    } = images
 
-    const head = heads.find(head => head.mood === mood);
+    const head = heads.find(head => head.mood === mood)
 
-    const className = css.headForBody;
+    const className = css.headForBody
     return (
       <div className={css.girlBodyContainer}>
         <img
@@ -31,8 +31,8 @@ class Character extends Component {
         <span className={`${css.bodyLabel}`}>{name}</span>
         <Head head={head} className={className} />
       </div>
-    );
+    )
   }
 }
 
-export default observer(Character);
+export default observer(Character)
