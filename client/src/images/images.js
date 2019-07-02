@@ -230,7 +230,7 @@ export default {
           },
           {
             image: janNormal,
-            mood: "normal"
+            mood: "ok"
           },
           {
             image: janScared,
@@ -248,7 +248,7 @@ export default {
         heads: [
           {
             image: amberNormal,
-            mood: "normal"
+            mood: "ok"
           },
           {
             image: amberSneaky,
@@ -293,56 +293,8 @@ export default {
       images: {
         heads: [
           {
-            image: katBlissful,
-            mood: "blissful"
-          },
-          {
-            image: katCringing,
-            mood: "cringing"
-          },
-          {
-            image: katCrying,
-            mood: "crying"
-          },
-          {
-            image: katDisgusted,
-            mood: "disgusted"
-          },
-          {
-            image: katDismayed,
-            mood: "dismayed"
-          },
-          {
-            image: katNormal,
-            mood: "normal"
-          },
-          {
-            image: katFunny,
-            mood: "funny"
-          },
-          {
-            image: katHappy,
-            mood: "happy"
-          },
-          {
             image: katHurt,
             mood: "hurt"
-          },
-          {
-            image: katKissing,
-            mood: "kissing"
-          },
-          {
-            image: katLauging,
-            mood: "lauging"
-          },
-          {
-            image: katLoud,
-            mood: "loud"
-          },
-          {
-            image: katMad,
-            mood: "optimistic"
           },
           {
             image: katOptimistic,
@@ -356,6 +308,56 @@ export default {
             image: katScared,
             mood: "scared"
           },
+          {
+            image: katKissing,
+            mood: "kiss"
+          },
+          {
+            image: katCrying,
+            mood: "crying"
+          },
+          {
+            image: katDisgusted,
+            mood: "disgusted"
+          },
+          {
+            image: katBlissful,
+            mood: "blissful"
+          },
+          {
+            image: katCringing,
+            mood: "cringing"
+          },
+          {
+            image: katDismayed,
+            mood: "dismayed"
+          },
+          {
+            image: katNormal,
+            mood: "ok"
+          },
+          {
+            image: katFunny,
+            mood: "funny"
+          },
+          {
+            image: katHappy,
+            mood: "happy"
+          },
+
+          {
+            image: katLauging,
+            mood: "lauging"
+          },
+          {
+            image: katLoud,
+            mood: "loud"
+          },
+          {
+            image: katMad,
+            mood: "optimistic"
+          },
+
           {
             image: katSilly,
             mood: "silly"
@@ -374,7 +376,7 @@ export default {
           },
           {
             image: katTired,
-            mood: "tired"
+            mood: "sleepy"
           },
           {
             image: katUnsure,
@@ -382,7 +384,7 @@ export default {
           },
           {
             image: katWinking,
-            mood: "winking"
+            mood: "wink"
           }
         ],
         body: { image: katBody }

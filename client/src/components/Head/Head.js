@@ -7,10 +7,16 @@ import css from "./Head.module.scss"
 class Head extends Component {
   render() {
     const {
+      name,
       head: { image, mood },
-      className = "",
-      imageClassName = ""
+      className = ""
+      // imageClassName = ""
     } = this.props
+
+    let imageClassName = ""
+    if (name === "kat") {
+      imageClassName = css.girlHeadKat
+    }
 
     const imageClass = imageClassName || css.girlHeadAmber
 

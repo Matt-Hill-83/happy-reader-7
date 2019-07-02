@@ -29,7 +29,7 @@ class Character extends Component {
           alt={`${name}-image`}
         />
         <span className={`${css.bodyLabel}`}>{name}</span>
-        <Head head={head} className={className} />
+        <Head name={name} head={head} className={className} />
       </div>
     )
   }

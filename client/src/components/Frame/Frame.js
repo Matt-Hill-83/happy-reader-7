@@ -41,14 +41,14 @@ class Frame extends Component {
     } = images
 
     let imageClassName = ""
-    if (name === "kat") {
-      imageClassName = css.girlHeadKat
-    }
+    // if (name === "kat") {
+    //   imageClassName = css.girlHeadKat
+    // }
 
     const headImages = heads.map(head => {
       return (
         <div onClick={() => this.selectHead({ head, name })}>
-          <Head head={head} imageClassName={imageClassName} />
+          <Head name={name} head={head} imageClassName={imageClassName} />
         </div>
       )
     })
