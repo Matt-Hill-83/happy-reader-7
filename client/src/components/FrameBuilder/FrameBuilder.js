@@ -71,7 +71,7 @@ class FrameBuilder extends Component {
           { character: "kat", face: "cry" }
         ],
         dialog: [
-          { character: "kat", text: "oh no-oo-oo-oo-oo!" },
+          { character: "kat", text: "oh noooo!" },
           { character: "liz", text: "I can help!" }
         ]
       },
@@ -83,9 +83,8 @@ class FrameBuilder extends Component {
           { character: "liz", face: "joy" }
         ],
         dialog: [
-          { character: "liz", text: "Oh my gosh I can talk!" },
-          { character: "kat", text: "Oh my gosh I can talk!" },
-          { character: "liz", text: "Oh my gosh I can talk!" }
+          { character: "kat", text: "I love you Liz!" },
+          { character: "liz", text: "I love you Kat!" }
         ]
       }
     ]

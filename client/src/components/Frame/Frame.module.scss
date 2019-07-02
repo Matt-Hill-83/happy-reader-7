@@ -5,6 +5,40 @@
   top: 5%;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 10;
+  flex-direction: column;
+  width: 100%;
+  padding: 5%;
+  top: 0px;
+  padding-top: 3%;
+  padding-left: 12%;
+
+  .line {
+    font-family: monospace;
+    font-weight: bold;
+    margin-bottom: 2%;
+    border-radius: 30px;
+    width: fit-content;
+  }
+
+  .kat {
+    border: 3px solid orange !important;
+    color: #8610ff;
+    background: #f7e59a;
+    margin-left: auto;
+  }
+
+  .liz {
+    border: 3px solid #ff005c !important;
+    background: #ffcee6;
+    color: #b900ff;
+
+    :global {
+      [class*="WordGroup_sentence__1"] {
+        justify-content: flex-end;
+      }
+    }
+  }
 }
 
 .girlPickerContainer {

@@ -66,14 +66,14 @@ class Frame extends Component {
     const { dialog } = frame
 
     const chats = dialog.map(line => {
+      const { text, character } = line
+
       return (
-        <div className={css.dialog}>
-          <WordGroup story={[line.text]} className={css.narrativeClass} />
-        </div>
+        <WordGroup story={[text]} className={`${css.line} ${css[character]}`} />
       )
     })
 
-    return chats
+    return <div className={css.dialog}>{chats}</div>
   }
 
   renderFrame = ({ you, friends = [] }) => {
@@ -99,6 +99,7 @@ class Frame extends Component {
     return (
       <div className={css.scene}>
         <div className={css.backgroundImageContainer}>
+          {this.renderedDialog({})}
           <div className={css.locationImageContainer}>
             <img
               className={css.locationImage}
@@ -107,8 +108,6 @@ class Frame extends Component {
             />
           </div>
           <div className={css.bookImageContainer}>
-            {this.renderedDialog({})}
-
             <div className={css.narrative}>
               <WordGroup story={story} className={css.narrativeClass} />
             </div>
