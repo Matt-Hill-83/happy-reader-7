@@ -42,12 +42,12 @@
 }
 
 .girlPickerContainer {
-  border: 1px solid var(--color-purple-dark);
+  border: 1px solid var(--set1-purple-brdr);
   display: flex;
   height: auto;
   padding: 8px;
   margin: 0.6rem;
-  background: #ff85a5;
+  background: var(--set1-pink-bk);
   border-radius: 0.3rem;
 }
 
@@ -79,7 +79,7 @@
 
 .scenesContainer {
   display: flex;
-  height: 90%;
+  height: 100%;
 }
 
 .narrative {
@@ -90,7 +90,7 @@
 }
 
 .girlPickersContainer {
-  border: 2px solid purple;
+  border: 2px solid var(--set1-purple-brdr);
   display: flex;
   flex-direction: column;
 
@@ -101,7 +101,7 @@
 
   z-index: 20;
   height: auto;
-  background: #a1a1ff;
+  background: var(--set1-lav-bk);
   margin: 24px;
 
   border-radius: 5px;
@@ -167,15 +167,8 @@
   }
 }
 
-.closeButton {
-  border: 1px solid red !important;
-  position: absolute;
-  right: 24px;
-  top: 24px;
-}
-
 .toggleFacePickerButton {
-  border: 1px solid purple !important;
+  border: 1px solid var(--set1-purple-brdr) !important;
   position: absolute;
   height: 4%;
   width: 4%;
@@ -183,7 +176,7 @@
 }
 
 .toggleFacePickerButton2 {
-  border: 1px solid purple !important;
+  border: 1px solid var(--set1-purple-brdr) !important;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -195,8 +188,10 @@
 .scene {
   display: flex;
   margin-right: 10px;
-  border: 1px solid green !important;
+  border: 2px solid var(--set1-purple-brdr);
   position: relative;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .charactersContainer {

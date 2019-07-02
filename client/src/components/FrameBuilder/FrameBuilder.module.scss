@@ -11,4 +11,13 @@
   z-index: 10;
   align-items: center;
   margin: auto;
+  padding: 2%;
+}
+
+.closeButton {
+  @include set-1;
+  // border: 1px solid red !important;
+  position: absolute;
+  right: 24px;
+  top: 24px;
 }
