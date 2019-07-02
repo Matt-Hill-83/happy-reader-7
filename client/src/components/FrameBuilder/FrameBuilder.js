@@ -50,26 +50,43 @@ class FrameBuilder extends Component {
       sceneToEdit: { creatures = [] }
     } = this.props
 
-    const story1 = [`Liz and Kat are girls.`]
-
-    const story2 = [`Now Liz is sad.`]
-
     const frames = [
       {
         creatures,
-        story: story1,
+        story: [`Kat meets Liz.`, `Kat and Liz play.`],
+        faces: [
+          { character: "liz", face: "ok" },
+          { character: "kat", face: "ok" }
+        ],
         dialog: [
-          {
-            character: "default",
-            text: "Oh my gosh I can talk!",
-            faces: [{ character: "kat", face: "sad" }]
-          }
+          { character: "liz", text: "Let's play!" },
+          { character: "kat", text: "OK" }
         ]
       },
       {
         creatures,
-        story: story2,
-        dialog: [{ character: "default", text: "Oh my gosh I can talk!" }]
+        story: [`Liz lost Piggy.`, `Kat is sad.`],
+        faces: [
+          { character: "liz", face: "sad" },
+          { character: "kat", face: "cry" }
+        ],
+        dialog: [
+          { character: "kat", text: "oh no-oo-oo-oo-oo!" },
+          { character: "liz", text: "I can help!" }
+        ]
+      },
+      {
+        creatures,
+        story: [`Liz finds Piggy.`, `Liz is happy!`],
+        faces: [
+          { character: "kat", face: "joy" },
+          { character: "liz", face: "joy" }
+        ],
+        dialog: [
+          { character: "liz", text: "Oh my gosh I can talk!" },
+          { character: "kat", text: "Oh my gosh I can talk!" },
+          { character: "liz", text: "Oh my gosh I can talk!" }
+        ]
       }
     ]
 

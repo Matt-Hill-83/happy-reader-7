@@ -20,6 +20,7 @@ class Frame extends Component {
 
   deleteFrame = () => {
     const { deleteFrame } = this.props
+    console.log("delete frame") // zzz
 
     deleteFrame && deleteFrame({ frame: "id" })
   }
@@ -60,9 +61,24 @@ class Frame extends Component {
     this.setState({ showFacePicker })
   }
 
+  renderedDialog = ({}) => {
+    const { frame } = this.props
+    const { dialog } = frame
+
+    const chats = dialog.map(line => {
+      return (
+        <div className={css.dialog}>
+          <WordGroup story={[line.text]} className={css.narrativeClass} />
+        </div>
+      )
+    })
+
+    return chats
+  }
+
   renderFrame = ({ you, friends = [] }) => {
     const { sceneToEdit, frame } = this.props
-    const activeParagraph = frame.story
+    const { story } = frame
 
     const yourName = you.name
     const yourCreature = Utils.getCreatureByType({ type: yourName })
@@ -91,11 +107,10 @@ class Frame extends Component {
             />
           </div>
           <div className={css.bookImageContainer}>
+            {this.renderedDialog({})}
+
             <div className={css.narrative}>
-              <WordGroup
-                story={activeParagraph}
-                className={css.narrativeClass}
-              />
+              <WordGroup story={story} className={css.narrativeClass} />
             </div>
             <img className={css.bookImage} src={bookImage} alt={"imagex"} />
           </div>
