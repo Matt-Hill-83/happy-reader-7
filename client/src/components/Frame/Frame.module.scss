@@ -120,12 +120,17 @@
   top: 24px;
 }
 
+.toggleFacePickerButton {
+  border: 1px solid purple !important;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+}
+
 .scene {
   display: flex;
   margin-right: 10px;
-  border: 3px solid green !important;
-  width: 30%;
-  height: 50%;
+  border: 1px solid green !important;
 }
 
 .charactersContainer {

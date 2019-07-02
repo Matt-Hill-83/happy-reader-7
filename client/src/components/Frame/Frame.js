@@ -147,25 +147,35 @@ class Frame extends Component {
     const yourName = you.name
     const friendName = creatures[0] && creatures[0].type
 
+    const allCharacters = [yourName, ...friendNames]
+    console.log("allCharacters", allCharacters) // zzz
+
+    const renderedFacePickers = allCharacters.map(name => {
+      return this.renderGirlPicker({ name })
+    })
+
     return (
       <>
         {showFacePicker && (
           <div className={css.girlPickersContainer}>
-            {this.renderGirlPicker({ name: yourName })}
-            {this.renderGirlPicker({ name: friendName })}
+            {renderedFacePickers}
+            {/* {this.renderGirlPicker({ name: yourName })}
+            {this.renderGirlPicker({ name: friendName })} */}
           </div>
         )}
         <div className={css.scenesContainer}>
           {this.renderFrame({ you, friends: friendNames })}
-          {this.renderFrame({ you, friends: friendNames })}
+          <Button
+            className={css.toggleFacePickerButton}
+            onClick={this.toggleFacePicker}
+          >
+            <Icon icon={IconNames.DATABASE} />
+          </Button>
         </div>
 
-        <Button className={css.closeButton} onClick={this.deleteFrame}>
+        {/* <Button className={css.closeButton} onClick={this.deleteFrame}>
           <Icon icon={IconNames.CROSS} />
-        </Button>
-        <Button className={css.closeButton} onClick={this.toggleFacePicker}>
-          <Icon icon={IconNames.DATABASE} />
-        </Button>
+        </Button> */}
       </>
     )
   }
