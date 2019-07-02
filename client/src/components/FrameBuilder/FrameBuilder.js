@@ -1,29 +1,29 @@
-import { Button, Icon, Position } from "@blueprintjs/core";
-import { IconNames } from "@blueprintjs/icons";
-import { observer } from "mobx-react";
-import { toJS } from "mobx";
-import React, { Component } from "react";
-import Images from "../../images/images";
-import WordGroup from "../WordGroup/WordGroup";
-import Character from "../Character/Character";
-import Head from "../Head/Head";
+import { Button, Icon, Position } from "@blueprintjs/core"
+import { IconNames } from "@blueprintjs/icons"
+import { observer } from "mobx-react"
+import { toJS } from "mobx"
+import React, { Component } from "react"
+import Images from "../../images/images"
+import WordGroup from "../WordGroup/WordGroup"
+import Character from "../Character/Character"
+import Head from "../Head/Head"
 
-import css from "./FrameBuilder.module.scss";
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore";
-import Utils from "../../Utils/Utils";
-import Frame from "../Frame/Frame";
+import css from "./FrameBuilder.module.scss"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
+import Utils from "../../Utils/Utils"
+import Frame from "../Frame/Frame"
 
 class FrameBuilder extends Component {
-  state = { frames: [] };
+  state = { frames: [] }
 
   componentWillMount() {
-    this.setInitialFrames();
+    this.setInitialFrames()
   }
 
   setInitialFrames = () => {
     const {
       sceneToEdit: { frames, creatures = [] }
-    } = this.props;
+    } = this.props
 
     let newFrames = [
       {
@@ -31,48 +31,54 @@ class FrameBuilder extends Component {
         story: ["the girl talks"],
         dialog: [{ character: "default", text: "Oh my gosh I can talk!" }]
       }
-    ];
+    ]
 
     if (frames) {
-      newFrames = frames;
+      newFrames = frames
     }
 
-    this.setState({ frames: newFrames });
-  };
+    this.setState({ frames: newFrames })
+  }
 
   onExitFrameBuilder = () => {
-    const { onExitFrameBuilder } = this.props;
+    const { onExitFrameBuilder } = this.props
 
-    const frames = [{ test: 5 }];
-    onExitFrameBuilder && onExitFrameBuilder({ frames });
-  };
+    const frames = [{ test: 5 }]
+    onExitFrameBuilder && onExitFrameBuilder({ frames })
+  }
 
   render() {
     const {
       sceneToEdit,
       sceneToEdit: { creatures = [] }
-    } = this.props;
+    } = this.props
 
-    const story1 = [`Liz and Kat are girls.`];
+    const story1 = [`Liz and Kat are girls.`]
 
-    const story2 = [`Now Liz is sad.`];
+    const story2 = [`Now Liz is sad.`]
 
     const frames = [
       {
         creatures,
         story: story1,
-        dialog: [{ character: "default", text: "Oh my gosh I can talk!" }]
+        dialog: [
+          {
+            character: "default",
+            text: "Oh my gosh I can talk!",
+            faces: [{ character: "kat", face: "sad" }]
+          }
+        ]
       },
       {
         creatures,
         story: story2,
         dialog: [{ character: "default", text: "Oh my gosh I can talk!" }]
       }
-    ];
+    ]
 
     const renderedFrames = frames.map(frame => {
-      return <Frame frame={frame} sceneToEdit={sceneToEdit} />;
-    });
+      return <Frame frame={frame} sceneToEdit={sceneToEdit} />
+    })
 
     return (
       <div className={css.main}>
@@ -81,8 +87,8 @@ class FrameBuilder extends Component {
           <Icon icon={IconNames.CROSS} />
         </Button>
       </div>
-    );
+    )
   }
 }
 
-export default observer(FrameBuilder);
+export default observer(FrameBuilder)
