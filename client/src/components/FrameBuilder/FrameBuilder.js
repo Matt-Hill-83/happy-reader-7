@@ -45,7 +45,9 @@ class FrameBuilder extends Component {
     onExitFrameBuilder && onExitFrameBuilder({ frames })
   }
 
-  saveFrameSet = ({ frameSet = { test: 5 } }) => {}
+  saveFrameSet = ({ frameSet = { name: 5 } }) => {
+    frameSetStore.add(frameSet)
+  }
 
   getFrameSets = () => {
     const frameSets = frameSetStore.docs.map(frameSet =>
@@ -119,10 +121,14 @@ class FrameBuilder extends Component {
     return (
       <div className={css.main}>
         {this.renderFrameSets()}
-        {/* {renderedFrames}
+        {/* {renderedFrames} */}
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
+          <Icon icon={IconNames.CLOSE} />
+        </Button>
+        <Button className={css.addButton} onClick={this.saveFrameSet}>
           <Icon icon={IconNames.ADD} />
-        </Button> */}
+          Save
+        </Button>
       </div>
     )
   }
