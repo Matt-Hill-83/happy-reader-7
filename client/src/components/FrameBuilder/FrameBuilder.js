@@ -12,7 +12,7 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
 class FrameBuilder extends Component {
-  state = { frames: [] }
+  state = { frames: [], activeFrameSet: "small" }
 
   componentWillMount() {
     this.setInitialFrames()
@@ -22,11 +22,7 @@ class FrameBuilder extends Component {
     this.setInitialFrames()
   }
 
-  setInitialFrames = () => {
-    const frameSets = this.getFrameSets()
-
-    this.setState({ frameSets })
-  }
+  setInitialFrames = () => {}
 
   onExitFrameBuilder = () => {
     const { onExitFrameBuilder } = this.props
@@ -44,17 +40,46 @@ class FrameBuilder extends Component {
     return frameSetStore.docs.map(frameSet => frameSet.data && frameSet.data)
   }
 
+  updateActiveFrameSet = ({ name }) => {
+    console.log("name - update", name) // zzz
+
+    this.setState({ activeFrameSet: name })
+  }
+
   renderFrameSets = () => {
     const frameSets = this.getFrameSets()
-    const renderedFrames = frameSets.map(frameSet => (
-      <span className={css.frameSetName}>{frameSet.name}</span>
-    ))
+    const renderedFrames = frameSets.map(frameSet => {
+      console.log("toJS(frameSet)", toJS(frameSet)) // zzz
+
+      const name = frameSet.name
+      console.log("name-render", name) // zzz
+
+      return (
+        <span
+          onClick={() => this.updateActiveFrameSet({ name })}
+          className={css.frameSetName}
+        >
+          {name}
+        </span>
+      )
+    })
     return <div className={css.frameSetsList}>{renderedFrames}</div>
   }
 
-  render() {
-    // const frameSets = this.getFrameSets()
+  getActiveFrameSet = () => {
+    const frameSets = this.getFrameSets()
 
+    const activeFrameSet = frameSets.find(
+      frameSet => frameSet.name === this.state.activeFrameSet
+    )
+
+    if (!activeFrameSet) {
+      return null
+    }
+    return activeFrameSet
+  }
+
+  render() {
     const {
       sceneToEdit,
       sceneToEdit: { creatures = [] }
@@ -119,17 +144,34 @@ class FrameBuilder extends Component {
     //   }
     // ]
 
+    console.log("this.state.activeFrameSet", this.state.activeFrameSet) // zzz
+    console.log("this.getActiveFrameSet()", this.getActiveFrameSet()) // zzz
+
     this.test = frames
-    const renderedFrames = frames.map(frame => {
+
+    const testFrameSet = this.getActiveFrameSet()
+    if (!testFrameSet) {
+      return null
+    }
+
+    // const renderedFrames = frames.map(frame => {
+    const renderedFrames = testFrameSet.frames.map(frame => {
       return <Frame frame={frame} sceneToEdit={sceneToEdit} />
     })
 
-    console.log("this.state.frameSets", this.state.frameSets) // zzz
+    // TODO - let user click on the activeframeset name and make that change the
+    // activenameset name in state.
+    // TODO - let user click on the activeframeset name and make that change the
+    // activenameset name in state.
+    // TODO - let user click on the activeframeset name and make that change the
+    // activenameset name in state.
+    // TODO - let user click on the activeframeset name and make that change the
+    // activenameset name in state.
 
     return (
       <div className={css.main}>
         {this.renderFrameSets()}
-        {/* {renderedFrames} */}
+        {renderedFrames}
 
         <div className={css.buttonContainer}>
           <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
