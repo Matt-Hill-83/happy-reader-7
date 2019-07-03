@@ -45,7 +45,10 @@ class FrameBuilder extends Component {
     onExitFrameBuilder && onExitFrameBuilder({ frames })
   }
 
-  saveFrameSet = ({ frameSet = { name: 5 } }) => {
+  saveFrameSet = ({}) => {
+    // saveFrameSet = ({ frameSet = { name: 5 } }) => {
+
+    const frameSet = { name: "test", frames: this.test }
     frameSetStore.add(frameSet)
   }
 
@@ -114,6 +117,7 @@ class FrameBuilder extends Component {
       }
     ]
 
+    this.test = frames
     const renderedFrames = frames.map(frame => {
       return <Frame frame={frame} sceneToEdit={sceneToEdit} />
     })
