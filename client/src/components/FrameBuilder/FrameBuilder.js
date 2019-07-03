@@ -102,7 +102,7 @@ class FrameBuilder extends Component {
       <div className={css.main}>
         {renderedFrames}
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
-          <Icon icon={IconNames.CROSS} />
+          <Icon icon={IconNames.ADD} />
         </Button>
       </div>
     )

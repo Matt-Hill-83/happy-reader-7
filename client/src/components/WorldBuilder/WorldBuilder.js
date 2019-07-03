@@ -5,7 +5,7 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import React, { Component } from "react"
 
-import { maps } from "../../Stores/InitStores"
+import { maps, frames } from "../../Stores/InitStores"
 import Images from "../../images/images"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import MiniLocation from "../MiniLocation/MiniLocation"
@@ -486,7 +486,10 @@ class WorldBuilder extends Component {
     // these need to be rendered, or else the store won't populate from the firestore db
     // these need to be rendered, or else the store won't populate from the firestore db
     const dummy = maps.docs.map(map => <div>{map.data.name}</div>)
+    const frameSets = frames.docs.map(frame => toJS(frame.data))
+
     console.log("dummy", toJS(dummy)) //
+    console.log("frameSets", toJS(frameSets)) //
     // these need to be rendered, or else the store won't populate from the firestore db
     // these need to be rendered, or else the store won't populate from the firestore db
 

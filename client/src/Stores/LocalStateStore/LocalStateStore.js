@@ -1,68 +1,73 @@
-import { observable, computed, action, decorate } from "mobx";
+import { observable, computed, action, decorate } from "mobx"
 
 class LocalStateStore {
-  page = "";
-  smallMap = true;
+  page = ""
+  smallMap = true
   // showWorldBuilder = false;
-  showWorldBuilder = true;
-  you = {};
-  plot = {};
-  locationsMaps = [];
-  creatures = [];
-  activeLocationsMap = [];
+  showWorldBuilder = true
+  you = {}
+  plot = {}
+  locationsMaps = []
+  frameSet = {}
+  creatures = []
+  activeLocationsMap = []
   // activeLocationsMapIndex = 1;
-  activeLocationsMapIndex = 0;
+  activeLocationsMapIndex = 0
 
-  getPage = () => this.page;
+  getPage = () => this.page
   setPage = page => {
-    this.page = page;
-  };
+    this.page = page
+  }
 
-  getYou = () => this.you;
+  getFrameSet = () => this.frameSet
+  setFrameSet = frameSet => {
+    this.frameSet = frameSet
+  }
+
+  getYou = () => this.you
   setYou = you => {
-    this.you = you;
-  };
+    this.you = you
+  }
 
-  getPlot = () => this.plot;
+  getPlot = () => this.plot
   setPlot = plot => {
-    this.plot = plot;
-  };
+    this.plot = plot
+  }
 
-  getsmallMap = () => this.smallMap;
+  getsmallMap = () => this.smallMap
   setsmallMap = smallMap => {
-    this.smallMap = smallMap;
-  };
+    this.smallMap = smallMap
+  }
 
-  getShowWorldBuilder = () => this.showWorldBuilder;
+  getShowWorldBuilder = () => this.showWorldBuilder
   setShowWorldBuilder = showWorldBuilder => {
-    this.showWorldBuilder = showWorldBuilder;
-  };
+    this.showWorldBuilder = showWorldBuilder
+  }
 
-  getLocationsMaps = () => this.locationsMaps;
+  getLocationsMaps = () => this.locationsMaps
   setLocationsMaps = locationsMaps => {
-    this.locationsMaps = locationsMaps;
-  };
+    this.locationsMaps = locationsMaps
+  }
 
-  getCreatures = () => this.creatures;
+  getCreatures = () => this.creatures
   setCreatures = creatures => {
-    this.creatures = creatures;
-  };
+    this.creatures = creatures
+  }
 
-  getActiveLocationsMap = () =>
-    this.locationsMaps[this.activeLocationsMapIndex];
+  getActiveLocationsMap = () => this.locationsMaps[this.activeLocationsMapIndex]
 
   incrementActiveLocationsMapIndex = () => {
-    this.activeLocationsMapIndex = this.activeLocationsMapIndex + 1;
-  };
+    this.activeLocationsMapIndex = this.activeLocationsMapIndex + 1
+  }
 
-  getActiveLocationsMapIndex = () => this.activeLocationsMapIndex;
+  getActiveLocationsMapIndex = () => this.activeLocationsMapIndex
   setActiveLocationsMapIndex = activeLocationsMapIndex => {
-    this.activeLocationsMapIndex = activeLocationsMapIndex;
-  };
+    this.activeLocationsMapIndex = activeLocationsMapIndex
+  }
 
   addNewLocationsMap = newLocationsMap => {
-    this.locationsMaps.push(newLocationsMap);
-  };
+    this.locationsMaps.push(newLocationsMap)
+  }
 }
 
 decorate(LocalStateStore, {
@@ -72,10 +77,11 @@ decorate(LocalStateStore, {
   locationsMaps: observable,
   page: observable,
   plot: observable,
+  frameSet: observable,
   showWorldBuilder: observable,
   smallMap: observable,
   you: observable
-});
+})
 
-const localStateStore = new LocalStateStore();
-export default localStateStore;
+const localStateStore = new LocalStateStore()
+export default localStateStore
