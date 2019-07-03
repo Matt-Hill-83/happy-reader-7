@@ -98,24 +98,16 @@ class Frame extends Component {
     const renderedFriends = friends.map(friend => {
       const creature = Utils.getCreatureByType({ type: friend })
 
-      // console.log("friend", friend) // zzz
       const mood = this.getMood({ name: friend, faces })
-      console.log("mood", mood) // zzz
-      console.log("creature.mood", creature.mood) // zzz
 
       return (
         <div onClick={this.toggleFacePicker}>
           <Character name={friend} mood={mood} />
-          {/* <Character name={friend} mood={creature.mood} /> */}
         </div>
       )
     })
 
-    // console.log("faces", faces) // zzz
-
     const yourMood = this.getMood({ name: yourName, faces })
-
-    // console.log("yourMood", yourMood) // zzz
 
     return (
       <div className={css.scene}>

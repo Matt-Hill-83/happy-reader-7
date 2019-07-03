@@ -1,6 +1,8 @@
-import firebase from "@firebase/app"
 import "@firebase/firestore"
-import { initFirestorter, Collection, Document } from "firestorter"
+
+import { Collection, Document, initFirestorter } from "firestorter"
+
+import firebase from "@firebase/app"
 import { struct } from "superstruct"
 
 firebase.initializeApp({
@@ -28,21 +30,23 @@ class Map extends Document {
 const maps = new Collection("maps", {
   DocumentClass: Map
 })
-class Frames extends Document {
-  constructor(source, options) {
-    super(source, {
-      ...(options || {})
-      // schema: struct({
-      //   name: "string?",
-      //   grid: "string?",
-      //   finished: "boolean?"
-      // })
-    })
-  }
-}
 
-const frames = new Collection("frames", {
-  DocumentClass: Frames
-})
+// class Frames extends Document {
+//   constructor(source, options) {
+//     super(source, {
+//       ...(options || {})
+//       // schema: struct({
+//       //   name: "string?",
+//       //   grid: "string?",
+//       //   finished: "boolean?"
+//       // })
+//     })
+//   }
+// }
 
-export { maps, frames }
+// const frames = new Collection("frames", {
+//   DocumentClass: Frames
+// })
+
+export { maps }
+// export { maps, frames }

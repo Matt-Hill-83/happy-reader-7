@@ -10,7 +10,6 @@ class Head extends Component {
       name,
       head: { image, mood },
       className = ""
-      // imageClassName = ""
     } = this.props
 
     let imageClassName = ""

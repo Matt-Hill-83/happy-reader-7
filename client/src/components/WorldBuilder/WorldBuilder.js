@@ -1,17 +1,17 @@
 import { Button, Icon, Position } from "@blueprintjs/core"
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
+import React, { Component } from "react"
+import { frames, maps } from "../../Stores/InitStores"
+
+import FrameBuilder from "../FrameBuilder/FrameBuilder"
 import { IconNames } from "@blueprintjs/icons"
+import Images from "../../images/images"
+import MiniLocation from "../MiniLocation/MiniLocation"
+import css from "./WorldBuilder.module.scss"
+import { frameSetStore } from "../../Stores/FrameSetStore"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
-import React, { Component } from "react"
-
-import { maps, frames } from "../../Stores/InitStores"
-import Images from "../../images/images"
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
-import MiniLocation from "../MiniLocation/MiniLocation"
-
-import css from "./WorldBuilder.module.scss"
-import FrameBuilder from "../FrameBuilder/FrameBuilder"
 
 const NUM_ROWS_LOCATIONS_GRID = 3
 const NUM_COLS_LOCATIONS_GRID = 3
@@ -486,10 +486,12 @@ class WorldBuilder extends Component {
     // these need to be rendered, or else the store won't populate from the firestore db
     // these need to be rendered, or else the store won't populate from the firestore db
     const dummy = maps.docs.map(map => <div>{map.data.name}</div>)
-    const frameSets = frames.docs.map(frame => toJS(frame.data))
+    // const test = frames.docs.map(frame => toJS(frame.data))
+    const frameSet = frameSetStore.docs.map(frameSet => toJS(frameSet.data))
 
     console.log("dummy", toJS(dummy)) //
-    console.log("frameSets", toJS(frameSets)) //
+    // console.log("test", toJS(test)) //
+    console.log("frameSet", toJS(frameSet)) //
     // these need to be rendered, or else the store won't populate from the firestore db
     // these need to be rendered, or else the store won't populate from the firestore db
 

@@ -1,4 +1,4 @@
-import { observable, computed, action, decorate } from "mobx"
+import { action, computed, decorate, observable } from "mobx"
 
 class LocalStateStore {
   page = ""
@@ -8,20 +8,13 @@ class LocalStateStore {
   you = {}
   plot = {}
   locationsMaps = []
-  frameSet = {}
   creatures = []
   activeLocationsMap = []
-  // activeLocationsMapIndex = 1;
   activeLocationsMapIndex = 0
 
   getPage = () => this.page
   setPage = page => {
     this.page = page
-  }
-
-  getFrameSet = () => this.frameSet
-  setFrameSet = frameSet => {
-    this.frameSet = frameSet
   }
 
   getYou = () => this.you
@@ -77,7 +70,6 @@ decorate(LocalStateStore, {
   locationsMaps: observable,
   page: observable,
   plot: observable,
-  frameSet: observable,
   showWorldBuilder: observable,
   smallMap: observable,
   you: observable
