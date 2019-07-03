@@ -1,14 +1,15 @@
 import { Button, Icon, Position } from "@blueprintjs/core"
+import React, { Component } from "react"
+
+import Frame from "../Frame/Frame"
 import { IconNames } from "@blueprintjs/icons"
+import Images from "../../images/images"
+import Utils from "../../Utils/Utils"
+import css from "./FrameBuilder.module.scss"
+import { frameSetStore } from "../../Stores/FrameSetStore"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
-import React, { Component } from "react"
-import Images from "../../images/images"
-
-import css from "./FrameBuilder.module.scss"
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
-import Utils from "../../Utils/Utils"
-import Frame from "../Frame/Frame"
 
 class FrameBuilder extends Component {
   state = { frames: [] }
@@ -44,7 +45,24 @@ class FrameBuilder extends Component {
     onExitFrameBuilder && onExitFrameBuilder({ frames })
   }
 
+  saveFrameSet = ({ frameSet = { test: 5 } }) => {}
+
+  getFrameSets = () => {
+    const frameSets = frameSetStore.docs.map(frameSet =>
+      toJS(frameSet.data && frameSet.data.name)
+    )
+    console.log("frameSets", toJS(frameSets)) //
+    return frameSets
+  }
+
+  renderFrameSets = () => {
+    const frameSets = this.getFrameSets()
+    return <div>test{frameSets}</div>
+  }
+
   render() {
+    const frameSets = this.getFrameSets()
+
     const {
       sceneToEdit,
       sceneToEdit: { creatures = [] }
@@ -100,10 +118,11 @@ class FrameBuilder extends Component {
 
     return (
       <div className={css.main}>
-        {renderedFrames}
+        {this.renderFrameSets()}
+        {/* {renderedFrames}
         <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
           <Icon icon={IconNames.ADD} />
-        </Button>
+        </Button> */}
       </div>
     )
   }

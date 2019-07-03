@@ -1,7 +1,6 @@
 import { Button, Icon, Position } from "@blueprintjs/core"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import React, { Component } from "react"
-import { frames, maps } from "../../Stores/InitStores"
 
 import FrameBuilder from "../FrameBuilder/FrameBuilder"
 import { IconNames } from "@blueprintjs/icons"
@@ -10,6 +9,7 @@ import MiniLocation from "../MiniLocation/MiniLocation"
 import css from "./WorldBuilder.module.scss"
 import { frameSetStore } from "../../Stores/FrameSetStore"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
+import { maps } from "../../Stores/InitStores"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
@@ -487,11 +487,11 @@ class WorldBuilder extends Component {
     // these need to be rendered, or else the store won't populate from the firestore db
     const dummy = maps.docs.map(map => <div>{map.data.name}</div>)
     // const test = frames.docs.map(frame => toJS(frame.data))
-    const frameSet = frameSetStore.docs.map(frameSet => toJS(frameSet.data))
+    // const frameSet = frameSetStore.docs.map(frameSet => toJS(frameSet.data))
 
     console.log("dummy", toJS(dummy)) //
     // console.log("test", toJS(test)) //
-    console.log("frameSet", toJS(frameSet)) //
+    // console.log("frameSet", toJS(frameSet)) //
     // these need to be rendered, or else the store won't populate from the firestore db
     // these need to be rendered, or else the store won't populate from the firestore db
 
