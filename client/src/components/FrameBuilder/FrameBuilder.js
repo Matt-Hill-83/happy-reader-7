@@ -45,24 +45,25 @@ class FrameBuilder extends Component {
     onExitFrameBuilder && onExitFrameBuilder({ frames })
   }
 
-  saveFrameSet = ({}) => {
-    // saveFrameSet = ({ frameSet = { name: 5 } }) => {
+  addFrameSet = ({}) => {
+    // addFrameSet = ({ frameSet = { name: 5 } }) => {
 
     const frameSet = { name: "test", frames: this.test }
     frameSetStore.add(frameSet)
   }
 
   getFrameSets = () => {
-    const frameSets = frameSetStore.docs.map(frameSet =>
-      toJS(frameSet.data && frameSet.data.name)
+    return frameSetStore.docs.map(frameSet =>
+      toJS(frameSet.data && frameSet.data)
     )
-    console.log("frameSets", toJS(frameSets)) //
-    return frameSets
   }
 
   renderFrameSets = () => {
     const frameSets = this.getFrameSets()
-    return <div>test{frameSets}</div>
+    const renderedFrames = frameSets.map(frameSet => (
+      <span className={css.frameSetName}>{frameSet.name}</span>
+    ))
+    return <div className={css.frameSetsList}>{renderedFrames}</div>
   }
 
   render() {
@@ -126,13 +127,17 @@ class FrameBuilder extends Component {
       <div className={css.main}>
         {this.renderFrameSets()}
         {/* {renderedFrames} */}
-        <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
-          <Icon icon={IconNames.CLOSE} />
-        </Button>
-        <Button className={css.addButton} onClick={this.saveFrameSet}>
-          <Icon icon={IconNames.ADD} />
-          Save
-        </Button>
+
+        <div className={css.buttonContainer}>
+          <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
+            <Icon icon={IconNames.CLOSE} />
+            Close
+          </Button>
+          <Button className={css.addButton} onClick={this.addFrameSet}>
+            Add
+            <Icon icon={IconNames.SAVED} />
+          </Button>
+        </div>
       </div>
     )
   }
