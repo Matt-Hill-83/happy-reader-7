@@ -7,11 +7,10 @@
   z-index: 10;
   flex-direction: column;
   width: 100%;
-  /* padding-top: 7%; */
   top: 0px;
   padding-top: 3%;
   padding-left: 7%;
-  height: 31%;
+  // height: 31%;
   justify-content: flex-end;
   padding-bottom: 0px;
   padding-right: 7%;
@@ -20,13 +19,14 @@
     font-family: monospace;
     font-weight: bold;
     margin-bottom: 2%;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     width: fit-content;
     min-width: 73%;
 
     [class*="WordGroup_sentence__"] {
       padding-right: 0.5rem;
       padding-left: 0.5rem;
+      font-size: 18px;
     }
   }
 

@@ -55,12 +55,17 @@ class FrameBuilder extends Component {
         creatures,
         story: [`Kat meets Liz.`, `Kat and Liz play.`],
         faces: [
-          { character: "liz", face: "ok" },
-          { character: "kat", face: "ok" }
+          { character: "liz", face: "scared" },
+          { character: "kat", face: "cry" }
         ],
         dialog: [
-          { character: "liz", text: "We can play!" },
-          { character: "kat", text: "OK" }
+          { character: "liz", text: "Liz! Liz!!" },
+          { character: "kat", text: "Hi Kat." },
+          { character: "liz", text: "Do you want to play?" },
+          { character: "kat", text: "No, I can not play." },
+          { character: "kat", text: "I lost Piggy!." },
+          { character: "liz", text: "You lost Piggy?" },
+          { character: "liz", text: "Nooooooooo!" }
         ]
       },
       {
