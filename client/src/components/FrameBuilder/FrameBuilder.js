@@ -78,7 +78,15 @@ class FrameBuilder extends Component {
         </div>
       )
     })
-    return <div className={css.frameSetsList}>{renderedFrames}</div>
+    return (
+      <div className={css.frameSetsList}>
+        <Button className={css.addButton} onClick={this.addFrameSet}>
+          + New
+          {/* <Icon icon={IconNames.SAVED} /> */}
+        </Button>
+        {renderedFrames}
+      </div>
+    )
   }
 
   onPressDelete = async ({ item }) => {
@@ -115,21 +123,6 @@ class FrameBuilder extends Component {
       sceneToEdit: { creatures = [] }
     } = this.props
 
-    const frames = [
-      {
-        creatures,
-        story: [`Kat meets Liz.`, `Kat and Liz play.`],
-        faces: [
-          { character: "liz", face: "scared" },
-          { character: "kat", face: "cry" }
-        ],
-        dialog: [
-          { character: "liz", text: "TEST" },
-          { character: "kat", text: "TEST" }
-        ]
-      }
-    ]
-
     // const frames = [
     //   {
     //     creatures,
@@ -139,40 +132,55 @@ class FrameBuilder extends Component {
     //       { character: "kat", face: "cry" }
     //     ],
     //     dialog: [
-    //       { character: "liz", text: "Liz! Liz!!" },
-    //       { character: "kat", text: "Hi Kat." },
-    //       { character: "liz", text: "Do you want to play?" },
-    //       { character: "kat", text: "No, I can not play." },
-    //       { character: "kat", text: "I lost Piggy!." },
-    //       { character: "liz", text: "You lost Piggy?" },
-    //       { character: "liz", text: "Nooooooooo!" }
-    //     ]
-    //   },
-    //   {
-    //     creatures,
-    //     story: [`Liz lost Piggy.`, `Kat is sad.`],
-    //     faces: [
-    //       { character: "liz", face: "scared" },
-    //       { character: "kat", face: "cry" }
-    //     ],
-    //     dialog: [
-    //       { character: "kat", text: "oh noooo!" },
-    //       { character: "liz", text: "I can help!" }
-    //     ]
-    //   },
-    //   {
-    //     creatures,
-    //     story: [`Liz finds Piggy.`, `Liz is happy!`],
-    //     faces: [
-    //       { character: "kat", face: "joy" },
-    //       { character: "liz", face: "joy" }
-    //     ],
-    //     dialog: [
-    //       { character: "kat", text: "I love you Liz!" },
-    //       { character: "liz", text: "I love you Kat!" }
+    //       { character: "liz", text: "TEST" },
+    //       { character: "kat", text: "TEST" }
     //     ]
     //   }
     // ]
+
+    const frames = [
+      {
+        creatures,
+        story: [`Kat meets Liz.`, `Kat and Liz play.`],
+        faces: [
+          { character: "liz", face: "scared" },
+          { character: "kat", face: "cry" }
+        ],
+        dialog: [
+          { character: "liz", text: "Liz! Liz!!" },
+          { character: "kat", text: "Hi Kat." },
+          { character: "liz", text: "Do you want to play?" },
+          { character: "kat", text: "No, I can not play." },
+          { character: "kat", text: "I lost Piggy!." },
+          { character: "liz", text: "You lost Piggy?" },
+          { character: "liz", text: "Nooooooooo!" }
+        ]
+      },
+      {
+        creatures,
+        story: [`Liz lost Piggy.`, `Kat is sad.`],
+        faces: [
+          { character: "liz", face: "scared" },
+          { character: "kat", face: "cry" }
+        ],
+        dialog: [
+          { character: "kat", text: "oh noooo!" },
+          { character: "liz", text: "I can help!" }
+        ]
+      },
+      {
+        creatures,
+        story: [`Liz finds Piggy.`, `Liz is happy!`],
+        faces: [
+          { character: "kat", face: "joy" },
+          { character: "liz", face: "joy" }
+        ],
+        dialog: [
+          { character: "kat", text: "I love you Liz!" },
+          { character: "liz", text: "I love you Kat!" }
+        ]
+      }
+    ]
 
     console.log("this.state.activeFrameSet", this.state.activeFrameSet) // zzz
     console.log("this.getActiveFrameSet()", this.getActiveFrameSet()) // zzz
@@ -210,10 +218,6 @@ class FrameBuilder extends Component {
           <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
             <Icon icon={IconNames.CLOSE} />
             Close
-          </Button>
-          <Button className={css.addButton} onClick={this.addFrameSet}>
-            Add
-            <Icon icon={IconNames.SAVED} />
           </Button>
         </div>
       </div>
