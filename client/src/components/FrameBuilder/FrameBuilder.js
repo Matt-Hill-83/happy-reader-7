@@ -20,15 +20,7 @@ import { toJS } from "mobx"
 class FrameBuilder extends Component {
   state = { frames: [], activeFrameSet: "small" }
 
-  componentWillMount() {
-    this.setInitialFrames()
-  }
-
-  componentDidMount() {
-    this.setInitialFrames()
-  }
-
-  setInitialFrames = () => {}
+  componentWillMount() {}
 
   onExitFrameBuilder = () => {
     const { onExitFrameBuilder } = this.props
@@ -38,7 +30,7 @@ class FrameBuilder extends Component {
   }
 
   addFrameSet = ({}) => {
-    const frameSet = { name: "small 2", frames: this.test }
+    const frameSet = { name: "small 2", frames: this.newFrames }
     frameSetStore.add(frameSet)
   }
 
@@ -182,13 +174,9 @@ class FrameBuilder extends Component {
       }
     ]
 
-    console.log("this.state.activeFrameSet", this.state.activeFrameSet) // zzz
-    console.log("this.getActiveFrameSet()", this.getActiveFrameSet()) // zzz
-
-    this.test = frames
+    this.newFrames = frames
 
     const testFrameSet = this.getActiveFrameSet()
-    console.log("testFrameSet", testFrameSet) // zzz
 
     if (!testFrameSet) {
       return null
