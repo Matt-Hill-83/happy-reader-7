@@ -43,7 +43,8 @@ class FrameBuilder extends Component {
   }
 
   getFrameSets = () => {
-    return frameSetStore.docs.map(frameSet => frameSet.data && frameSet.data)
+    return frameSetStore.docs
+    // return frameSetStore.docs.map(frameSet => frameSet.data && frameSet.data)
   }
 
   updateActiveFrameSet = ({ name }) => {
@@ -55,9 +56,9 @@ class FrameBuilder extends Component {
   renderFrameSets = () => {
     const frameSets = this.getFrameSets()
     const renderedFrames = frameSets.map(frameSet => {
-      console.log("toJS(frameSet)", toJS(frameSet)) // zzz
+      console.log("toJS(frameSet)", toJS(frameSet.data)) // zzz
 
-      const name = frameSet.name
+      const { name } = frameSet.data
       console.log("name-render", name) // zzz
 
       return (
@@ -71,28 +72,26 @@ class FrameBuilder extends Component {
           </Button>
           <Button
             icon="cross"
-            onClick={() => this.updateActiveFrameSet({ name })}
+            onClick={() => this.onPressDelete({ item: frameSet })}
             className={css.xxx}
           />
         </div>
       )
     })
-    return (
-      <div className={css.frameSetsList}>
-        {renderedFrames}
-        {/* <ButtonGroup>{renderedFrames}</ButtonGroup> */}
-      </div>
-    )
+    return <div className={css.frameSetsList}>{renderedFrames}</div>
   }
 
-  onPressDelete = async () => {
-    const { todo } = this.props
+  onPressDelete = async ({ item }) => {
     if (this._deleting) return
     this._deleting = true
     try {
-      await todo.delete()
+      console.log("item", item) // zzz
+
+      await item.delete()
       this._deleting = false
     } catch (err) {
+      console.log("err", err) // zzz
+
       this._deleting = false
     }
   }
@@ -101,7 +100,7 @@ class FrameBuilder extends Component {
     const frameSets = this.getFrameSets()
 
     const activeFrameSet = frameSets.find(
-      frameSet => frameSet.name === this.state.activeFrameSet
+      frameSet => frameSet.data.name === this.state.activeFrameSet
     )
 
     if (!activeFrameSet) {
@@ -181,12 +180,14 @@ class FrameBuilder extends Component {
     this.test = frames
 
     const testFrameSet = this.getActiveFrameSet()
+    console.log("testFrameSet", testFrameSet) // zzz
+
     if (!testFrameSet) {
       return null
     }
 
     // const renderedFrames = frames.map(frame => {
-    const renderedFrames = testFrameSet.frames.map(frame => {
+    const renderedFrames = testFrameSet.data.frames.map(frame => {
       return <Frame frame={frame} sceneToEdit={sceneToEdit} />
     })
 
