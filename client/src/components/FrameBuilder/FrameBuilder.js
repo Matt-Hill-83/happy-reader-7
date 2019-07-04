@@ -60,23 +60,41 @@ class FrameBuilder extends Component {
       const name = frameSet.name
       console.log("name-render", name) // zzz
 
-      // return (
-      //   <ButtonGroup minimal={true}>
-      //     <Button icon="database">Queries</Button>
-      //     <Button icon="function">Functions</Button>
-      //   </ButtonGroup>
-      // )
       return (
-        <Button
-          icon="database"
-          onClick={() => this.updateActiveFrameSet({ name })}
-          className={css.frameSetName}
-        >
-          {name}
-        </Button>
+        <div className={css.itemRow}>
+          <Button
+            icon="database"
+            onClick={() => this.updateActiveFrameSet({ name })}
+            className={css.frameSetName}
+          >
+            {name}
+          </Button>
+          <Button
+            icon="cross"
+            onClick={() => this.updateActiveFrameSet({ name })}
+            className={css.xxx}
+          />
+        </div>
       )
     })
-    return <div className={css.frameSetsList}>{renderedFrames}</div>
+    return (
+      <div className={css.frameSetsList}>
+        {renderedFrames}
+        {/* <ButtonGroup>{renderedFrames}</ButtonGroup> */}
+      </div>
+    )
+  }
+
+  onPressDelete = async () => {
+    const { todo } = this.props
+    if (this._deleting) return
+    this._deleting = true
+    try {
+      await todo.delete()
+      this._deleting = false
+    } catch (err) {
+      this._deleting = false
+    }
   }
 
   getActiveFrameSet = () => {
