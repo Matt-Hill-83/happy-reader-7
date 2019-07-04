@@ -1,4 +1,10 @@
-import { Button, Icon, Position } from "@blueprintjs/core"
+import {
+  AnchorButton,
+  Button,
+  ButtonGroup,
+  Icon,
+  Position
+} from "@blueprintjs/core"
 import React, { Component } from "react"
 
 import Frame from "../Frame/Frame"
@@ -54,13 +60,20 @@ class FrameBuilder extends Component {
       const name = frameSet.name
       console.log("name-render", name) // zzz
 
+      // return (
+      //   <ButtonGroup minimal={true}>
+      //     <Button icon="database">Queries</Button>
+      //     <Button icon="function">Functions</Button>
+      //   </ButtonGroup>
+      // )
       return (
-        <span
+        <Button
+          icon="database"
           onClick={() => this.updateActiveFrameSet({ name })}
           className={css.frameSetName}
         >
           {name}
-        </span>
+        </Button>
       )
     })
     return <div className={css.frameSetsList}>{renderedFrames}</div>
@@ -171,6 +184,7 @@ class FrameBuilder extends Component {
     return (
       <div className={css.main}>
         {this.renderFrameSets()}
+
         {renderedFrames}
 
         <div className={css.buttonContainer}>
