@@ -52,9 +52,9 @@ class FrameBuilder extends Component {
   }
 
   onBlurFrameSetTitle = async ({ frameSet, event }) => {
-    // await frameSet.update({
-    //   title: event.target.value
-    // })
+    await frameSet.update({
+      title: event.target.value
+    })
   }
 
   renderActiveFrameSetName = () => {
