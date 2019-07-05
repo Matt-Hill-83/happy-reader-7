@@ -21,7 +21,6 @@ import { toJS } from "mobx"
 
 class FrameBuilder extends Component {
   state = { frames: [], activeFrameSet: "new Name" }
-  // state = { frames: [], activeFrameSet: "small" }
 
   componentWillMount() {}
 
@@ -42,19 +41,23 @@ class FrameBuilder extends Component {
   }
 
   updateActiveFrameSet = ({ name }) => {
-    console.log("name - update", name) // zzz
-
     this.setState({ activeFrameSet: name })
   }
 
-  onChangeFrameSetTitle = event => {
-    console.log("event.target.value ", event.target.value) // zzz
+  onChangeFrameSetTitle = async ({ frameSet, event }) => {
+    const newTitle = event.target.value
+    frameSet.data.title = newTitle
+    console.log("frameSet.data.title", frameSet.data.title) // zzz
   }
 
-  onBlurFrameSetTitle = event => {
+  onBlurFrameSetTitle = async ({ frameSet, event }) => {
     console.log("on blur") // zzz
 
     console.log("event.target.value ", event.target.value) // zzz
+
+    await frameSet.update({
+      title: event.target.value
+    })
   }
 
   renderActiveFrameSetName = () => {
@@ -66,16 +69,21 @@ class FrameBuilder extends Component {
       <div className={css.frameSetNameContainer}>
         <FormGroup
           // helperText="Helper text with details..."
-          label="Label A"
+          label="Title"
           labelFor="text-input"
-          labelInfo="(required)"
+          // labelInfo="(required)"
         >
           <InputGroup
             value={title}
             id="text-input"
             placeholder="Placeholder text"
-            onChange={this.onChangeFrameSetTitle}
-            onBlur={this.onBlurFrameSetTitle}
+            onChange={event =>
+              this.onChangeFrameSetTitle({ frameSet: activeFrameSet, event })
+            }
+            onBlur={event =>
+              this.onBlurFrameSetTitle({ frameSet: activeFrameSet, event })
+            }
+            // onBlur={this.onBlurFrameSetTitle}
           />
         </FormGroup>
       </div>
@@ -87,7 +95,7 @@ class FrameBuilder extends Component {
     const renderedFrames = frameSets.map(frameSet => {
       console.log("toJS(frameSet)", toJS(frameSet.data)) // zzz
 
-      const { name } = frameSet.data
+      const { name, title } = frameSet.data
       console.log("name-render", name) // zzz
 
       return (
@@ -97,7 +105,8 @@ class FrameBuilder extends Component {
             onClick={() => this.updateActiveFrameSet({ name })}
             className={css.frameSetName}
           >
-            {name}
+            name - {name}
+            title - {title}
           </Button>
           <Button
             icon="cross"
@@ -227,7 +236,6 @@ class FrameBuilder extends Component {
     this.newFrameSet = { name: "new Name", title: "new title", frames }
 
     const activeFrameSet = this.getActiveFrameSet()
-    /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
     if (!activeFrameSet) {
       return null
     }
