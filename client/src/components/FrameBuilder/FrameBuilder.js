@@ -20,9 +20,11 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
 class FrameBuilder extends Component {
-  state = { frames: [], activeFrameSet: "new Name" }
+  state = { frames: [], activeFrameSet: "" }
 
-  componentWillMount() {}
+  componentWillMount() {
+    console.log("frameSetStore.docs", frameSetStore.docs) // zzz
+  }
 
   onExitFrameBuilder = () => {
     const { onExitFrameBuilder } = this.props
@@ -47,32 +49,22 @@ class FrameBuilder extends Component {
   onChangeFrameSetTitle = async ({ frameSet, event }) => {
     const newTitle = event.target.value
     frameSet.data.title = newTitle
-    console.log("frameSet.data.title", frameSet.data.title) // zzz
   }
 
   onBlurFrameSetTitle = async ({ frameSet, event }) => {
-    console.log("on blur") // zzz
-
-    console.log("event.target.value ", event.target.value) // zzz
-
-    await frameSet.update({
-      title: event.target.value
-    })
+    // await frameSet.update({
+    //   title: event.target.value
+    // })
   }
 
   renderActiveFrameSetName = () => {
     const activeFrameSet = this.getActiveFrameSet()
-    const title = activeFrameSet.data.title
-    console.log("title", title) // zzz
+    const title =
+      activeFrameSet && activeFrameSet.data && activeFrameSet.data.title
 
     return (
       <div className={css.frameSetNameContainer}>
-        <FormGroup
-          // helperText="Helper text with details..."
-          label="Title"
-          labelFor="text-input"
-          // labelInfo="(required)"
-        >
+        <FormGroup label="Title" labelFor="text-input">
           <InputGroup
             value={title}
             id="text-input"
@@ -83,7 +75,6 @@ class FrameBuilder extends Component {
             onBlur={event =>
               this.onBlurFrameSetTitle({ frameSet: activeFrameSet, event })
             }
-            // onBlur={this.onBlurFrameSetTitle}
           />
         </FormGroup>
       </div>
@@ -93,10 +84,7 @@ class FrameBuilder extends Component {
   renderFrameSetPicker = () => {
     const frameSets = this.getFrameSets()
     const renderedFrames = frameSets.map(frameSet => {
-      console.log("toJS(frameSet)", toJS(frameSet.data)) // zzz
-
       const { name, title } = frameSet.data
-      console.log("name-render", name) // zzz
 
       return (
         <div className={css.itemRow}>
@@ -142,28 +130,32 @@ class FrameBuilder extends Component {
 
   getActiveFrameSet = () => {
     const frameSets = this.getFrameSets()
-    console.log("frameSets", frameSets) // zzz
-    // this.state.activeFrameSet
 
     let activeFrameSet = null
 
     console.log("this.state.activeFrameSet", this.state.activeFrameSet) // zzz
 
     // TODO - if there is no frameset selected, choose the first one
-    if (!this.state.activeFrameSet) {
-      console.log("no active frameset") // zzz
-
-      activeFrameSet = frameSets[0].data.name
-    } else {
+    if (this.state.activeFrameSet) {
       console.log("yes active frameset") // zzz
       activeFrameSet = frameSets.find(
         frameSet => frameSet.data.name === this.state.activeFrameSet
       )
+    } else {
+      if (!frameSets[0] || !frameSets[0].data) {
+        return null
+      }
+      console.log("no active frameset") // zzz
+      activeFrameSet = frameSets[0]
+      const activeFrameSetName = activeFrameSet.data.name
+
+      this.updateActiveFrameSet({ name: activeFrameSetName })
     }
 
     if (!activeFrameSet) {
       return null
     }
+    console.log("---------------------------activeFrameSet", activeFrameSet) // zzz
     return activeFrameSet
   }
 
@@ -236,13 +228,17 @@ class FrameBuilder extends Component {
     this.newFrameSet = { name: "new Name", title: "new title", frames }
 
     const activeFrameSet = this.getActiveFrameSet()
-    if (!activeFrameSet) {
-      return null
-    }
+    // if (!activeFrameSet) {
+    //   return null
+    // }
 
-    const renderedFrames = activeFrameSet.data.frames.map(frame => {
-      return <Frame frame={frame} sceneToEdit={sceneToEdit} />
-    })
+    const renderedFrames =
+      activeFrameSet &&
+      activeFrameSet.data &&
+      activeFrameSet.data.frames &&
+      activeFrameSet.data.frames.map(frame => {
+        return <Frame frame={frame} sceneToEdit={sceneToEdit} />
+      })
 
     return (
       <div className={css.main}>
