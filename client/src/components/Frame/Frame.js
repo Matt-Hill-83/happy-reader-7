@@ -1,17 +1,16 @@
 import { Button, Icon, Position } from "@blueprintjs/core"
-import { IconNames } from "@blueprintjs/icons"
-import { observer } from "mobx-react"
-import { toJS } from "mobx"
 import React, { Component } from "react"
-import Images from "../../images/images"
-import WordGroup from "../WordGroup/WordGroup"
+
 import Character from "../Character/Character"
 import Head from "../Head/Head"
-
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
+import { IconNames } from "@blueprintjs/icons"
+import Images from "../../images/images"
 import Utils from "../../Utils/Utils"
-
+import WordGroup from "../WordGroup/WordGroup"
 import css from "./Frame.module.scss"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
+import { observer } from "mobx-react"
+import { toJS } from "mobx"
 
 class Frame extends Component {
   state = { frames: [], showFacePicker: false }
@@ -88,7 +87,7 @@ class Frame extends Component {
     const { story, faces } = frame
 
     const yourName = you.name
-    const yourCreature = Utils.getCreatureByType({ type: yourName })
+    // const yourCreature = Utils.getCreatureByType({ type: yourName })
 
     const backgroundImage = Images.backgrounds["hill01"]
     const locationImage = Images.locations[sceneToEdit.name]
@@ -96,7 +95,7 @@ class Frame extends Component {
     const notebookImage = Images.sceneView.notebook
 
     const renderedFriends = friends.map(friend => {
-      const creature = Utils.getCreatureByType({ type: friend })
+      // const creature = Utils.getCreatureByType({ type: friend })
 
       const mood = this.getMood({ name: friend, faces })
 
@@ -161,7 +160,7 @@ class Frame extends Component {
 
   render() {
     const {
-      frame,
+      // frame,
       frame: { creatures }
     } = this.props
 
@@ -200,9 +199,9 @@ class Frame extends Component {
           </Button>
         </div>
 
-        {/* <Button className={css.closeButton} onClick={this.deleteFrame}>
+        <Button className={css.closeButton} onClick={this.deleteFrame}>
           <Icon icon={IconNames.CROSS} />
-        </Button> */}
+        </Button>
       </>
     )
   }

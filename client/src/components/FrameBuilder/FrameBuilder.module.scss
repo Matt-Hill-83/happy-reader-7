@@ -14,7 +14,7 @@
   padding: 2%;
 }
 
-.frameSetName {
+.frameSetName2 {
   display: flex;
   flex: 1;
   justify-content: flex-start;
@@ -54,6 +54,21 @@
   padding: 10px;
   border-radius: 4px;
   background: #fbfbae;
+  position: absolute;
+  z-index: 100;
+
+  bottom: 0;
+  right: 0;
+}
+
+.frameSetName2 {
+  font-size: 36px;
+}
+
+.frameSetNameContainer {
+  display: flex;
+  border: 1px solid blue !important;
+  background: white;
   position: absolute;
   z-index: 100;
 }

@@ -9,8 +9,8 @@ firebase.initializeApp({
   projectId: "happy-reader-4"
 })
 
-const firestore = firebase.firestore()
-firestore.settings({ timestampsInSnapshots: true })
+// const firestore = firebase.firestore()
+// firestore.settings({ timestampsInSnapshots: true })
 
 initFirestorter({ firebase: firebase })
 
@@ -31,22 +31,4 @@ const maps = new Collection("maps", {
   DocumentClass: Map
 })
 
-// class Frames extends Document {
-//   constructor(source, options) {
-//     super(source, {
-//       ...(options || {})
-//       // schema: struct({
-//       //   name: "string?",
-//       //   grid: "string?",
-//       //   finished: "boolean?"
-//       // })
-//     })
-//   }
-// }
-
-// const frames = new Collection("frames", {
-//   DocumentClass: Frames
-// })
-
 export { maps }
-// export { maps, frames }

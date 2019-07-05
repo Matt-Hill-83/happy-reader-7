@@ -2,7 +2,9 @@ import {
   AnchorButton,
   Button,
   ButtonGroup,
+  FormGroup,
   Icon,
+  InputGroup,
   Position
 } from "@blueprintjs/core"
 import React, { Component } from "react"
@@ -18,7 +20,8 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
 class FrameBuilder extends Component {
-  state = { frames: [], activeFrameSet: "small" }
+  state = { frames: [], activeFrameSet: "new Name" }
+  // state = { frames: [], activeFrameSet: "small" }
 
   componentWillMount() {}
 
@@ -30,13 +33,12 @@ class FrameBuilder extends Component {
   }
 
   addFrameSet = ({}) => {
-    const frameSet = { name: "small 2", frames: this.newFrames }
+    const frameSet = this.newFrameSet
     frameSetStore.add(frameSet)
   }
 
   getFrameSets = () => {
     return frameSetStore.docs
-    // return frameSetStore.docs.map(frameSet => frameSet.data && frameSet.data)
   }
 
   updateActiveFrameSet = ({ name }) => {
@@ -45,7 +47,42 @@ class FrameBuilder extends Component {
     this.setState({ activeFrameSet: name })
   }
 
-  renderFrameSets = () => {
+  onChangeFrameSetTitle = event => {
+    console.log("event.target.value ", event.target.value) // zzz
+  }
+
+  onBlurFrameSetTitle = event => {
+    console.log("on blur") // zzz
+
+    console.log("event.target.value ", event.target.value) // zzz
+  }
+
+  renderActiveFrameSetName = () => {
+    const activeFrameSet = this.getActiveFrameSet()
+    const title = activeFrameSet.data.title
+    console.log("title", title) // zzz
+
+    return (
+      <div className={css.frameSetNameContainer}>
+        <FormGroup
+          // helperText="Helper text with details..."
+          label="Label A"
+          labelFor="text-input"
+          labelInfo="(required)"
+        >
+          <InputGroup
+            value={title}
+            id="text-input"
+            placeholder="Placeholder text"
+            onChange={this.onChangeFrameSetTitle}
+            onBlur={this.onBlurFrameSetTitle}
+          />
+        </FormGroup>
+      </div>
+    )
+  }
+
+  renderFrameSetPicker = () => {
     const frameSets = this.getFrameSets()
     const renderedFrames = frameSets.map(frameSet => {
       console.log("toJS(frameSet)", toJS(frameSet.data)) // zzz
@@ -85,8 +122,6 @@ class FrameBuilder extends Component {
     if (this._deleting) return
     this._deleting = true
     try {
-      console.log("item", item) // zzz
-
       await item.delete()
       this._deleting = false
     } catch (err) {
@@ -98,10 +133,24 @@ class FrameBuilder extends Component {
 
   getActiveFrameSet = () => {
     const frameSets = this.getFrameSets()
+    console.log("frameSets", frameSets) // zzz
+    // this.state.activeFrameSet
 
-    const activeFrameSet = frameSets.find(
-      frameSet => frameSet.data.name === this.state.activeFrameSet
-    )
+    let activeFrameSet = null
+
+    console.log("this.state.activeFrameSet", this.state.activeFrameSet) // zzz
+
+    // TODO - if there is no frameset selected, choose the first one
+    if (!this.state.activeFrameSet) {
+      console.log("no active frameset") // zzz
+
+      activeFrameSet = frameSets[0].data.name
+    } else {
+      console.log("yes active frameset") // zzz
+      activeFrameSet = frameSets.find(
+        frameSet => frameSet.data.name === this.state.activeFrameSet
+      )
+    }
 
     if (!activeFrameSet) {
       return null
@@ -175,30 +224,22 @@ class FrameBuilder extends Component {
     ]
 
     this.newFrames = frames
+    this.newFrameSet = { name: "new Name", title: "new title", frames }
 
-    const testFrameSet = this.getActiveFrameSet()
-
-    if (!testFrameSet) {
+    const activeFrameSet = this.getActiveFrameSet()
+    /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
+    if (!activeFrameSet) {
       return null
     }
 
-    // const renderedFrames = frames.map(frame => {
-    const renderedFrames = testFrameSet.data.frames.map(frame => {
+    const renderedFrames = activeFrameSet.data.frames.map(frame => {
       return <Frame frame={frame} sceneToEdit={sceneToEdit} />
     })
 
-    // TODO - let user click on the activeframeset name and make that change the
-    // activenameset name in state.
-    // TODO - let user click on the activeframeset name and make that change the
-    // activenameset name in state.
-    // TODO - let user click on the activeframeset name and make that change the
-    // activenameset name in state.
-    // TODO - let user click on the activeframeset name and make that change the
-    // activenameset name in state.
-
     return (
       <div className={css.main}>
-        {this.renderFrameSets()}
+        {this.renderFrameSetPicker()}
+        {this.renderActiveFrameSetName()}
 
         {renderedFrames}
 
