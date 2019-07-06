@@ -125,7 +125,7 @@ class Frame extends Component {
     return (
       <div className={css.scene}>
         <div className={css.backgroundImageContainer}>
-          {/* {this.renderedDialog({})} */}
+          {this.renderedDialog({})}
           <div className={css.locationImageContainer}>
             <img
               className={css.locationImage}
