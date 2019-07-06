@@ -46,8 +46,25 @@ class MainStory extends React.Component {
   onExitIntro = ({ you }) => {
     // generateYou({ you });
     // generatePlot();
-    const plot = localStateStore.getPlot()
-    this.updateActiveScene({ activeScene: plot.activeScene })
+
+    // while (!savedMaps.length) {
+    // setTimeout(function() {
+    //   console.log("THIS IS")
+    // }, 200)
+    // }
+
+    // console.log("mapList", mapList) // zzz
+
+    setTimeout(() => {
+      const savedMaps = maps.docs.map(map => toJS(map.data.grid))
+      console.log("savedMaps - main", savedMaps) // zzz
+      const plot = localStateStore.getPlot()
+
+      console.log("plot.activeScene", toJS(plot.activeScene)) // zzz
+
+      this.updateActiveScene({ activeScene: plot.activeScene })
+      console.log("next line") // zzz
+    }, 2000)
   }
 
   updateActiveScene = ({ activeScene }) => {

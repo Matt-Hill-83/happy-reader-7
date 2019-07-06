@@ -46,24 +46,6 @@ class PicturePage extends React.Component {
 
     const testGrid = JSON.parse(savedMaps[0].grid)
 
-    const mapList = savedMaps.map(map => {
-      return <MenuItem text={map.name} />
-    })
-
-    console.log("mapList", mapList) // zzz
-
-    const renderedMapList = <Menu>{mapList}</Menu>
-
-    const worldPicker = (
-      <Popover
-        className={css.worldPickerDropdown}
-        content={renderedMapList}
-        position={Position.RIGHT_TOP}
-      >
-        <Button icon="share" text="Load Map" />
-      </Popover>
-    )
-
     const miniLocationsGrid = testGrid.map((locationRow, rowIndex) => {
       return (
         <div key={rowIndex} className={css.miniLocationsRow}>
@@ -72,12 +54,7 @@ class PicturePage extends React.Component {
       )
     })
 
-    return (
-      <div className={css.miniLocationsGrid}>
-        {/* {worldPicker} */}
-        {miniLocationsGrid}
-      </div>
-    )
+    return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>
   }
 
   getLocationsForDragger = () => {
