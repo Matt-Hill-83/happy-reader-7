@@ -1,46 +1,28 @@
-import React from "react";
+import Images from "../../images/images.js"
+import LineTo from "react-lineto"
+import MiniLocation from "../MiniLocation/MiniLocation.js"
+import React from "react"
+import WordPage from "../WordPage/WordPage.js"
+import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
+import _get from "lodash.get"
+import css from "./PicturePage.module.scss"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
+import { maps } from "../../Stores/InitStores"
 // import { IconNames } from "@blueprintjs/icons";
 // import { Icon } from "@blueprintjs/core";
-import { observer } from "mobx-react";
-import LineTo from "react-lineto";
-import _get from "lodash.get";
-
-import WorldBuilder from "../WorldBuilder/WorldBuilder.js";
-import Images from "../../images/images.js";
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
-import MiniLocation from "../MiniLocation/MiniLocation.js";
-import WordPage from "../WordPage/WordPage.js";
-import { maps } from "../../Stores/InitStores";
-
-import css from "./PicturePage.module.scss";
-import { toJS } from "mobx";
+import { observer } from "mobx-react"
+import { toJS } from "mobx"
 
 class PicturePage extends React.Component {
   constructor(props) {
-    super(props);
-    this.canvasRef = React.createRef();
+    super(props)
+    this.canvasRef = React.createRef()
   }
 
-  // renderSceneList = () => {
-  //   const plot = localStateStore.getPlot();
-  //   const scenesList = Object.values(plot.scenes);
-
-  //   const renderedScenes = scenesList.map((scene, index) => {
-  //     const iconColor = scene.isUsed ? "purple" : "blue";
-  //     return (
-  //       <div className={css.scene} key={index}>
-  //         <Icon color={iconColor} icon={IconNames.WALK} />
-  //         <span className={css.sceneName}>{scene.location}</span>
-  //       </div>
-  //     );
-  //   });
-  //   return <div className={css.sceneList}>{renderedScenes}</div> || null;
-  // };
-
   renderYouMini = () => {
-    const { you } = localStateStore.getPlot();
+    const { you } = localStateStore.getPlot()
 
-    const youImage = you.creature;
+    const youImage = you.creature
 
     return (
       <img
@@ -48,31 +30,32 @@ class PicturePage extends React.Component {
         src={Images.creatures[youImage]}
         alt={youImage}
       />
-    );
-  };
+    )
+  }
 
   renderLocationRows = () => {
-    // const locationsMap = localStateStore.getActiveLocationsMap();
+    const savedMaps = maps.docs.map(map => toJS(map.data.grid))
 
-    const savedMaps = maps.docs.map(map => toJS(map.data.grid));
-    const testGrid = JSON.parse(savedMaps[0]);
-
-    if (!testGrid) {
-      return null;
+    if (!savedMaps[0]) {
+      return null
     }
+
+    const testGrid = JSON.parse(savedMaps[0])
+    console.log("testGrid", testGrid) // zzz
+
     const miniLocationsGrid = testGrid.map((locationRow, rowIndex) => {
       return (
         <div key={rowIndex} className={css.miniLocationsRow}>
           {this.createSingleRow({ locationRow, rowIndex })}
         </div>
-      );
-    });
+      )
+    })
 
-    return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>;
-  };
+    return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>
+  }
 
   getLocationsForDragger = () => {
-    const plot = localStateStore.getPlot();
+    const plot = localStateStore.getPlot()
 
     return plot.allScenes.map((location, colIndex) => {
       return {
@@ -80,14 +63,14 @@ class PicturePage extends React.Component {
         creatures: [],
         // This should be rendered in the WorldBuilder component, based on what creatures have been added.
         content: this.renderMiniLocation({ location })
-      };
-    });
-  };
+      }
+    })
+  }
 
   renderCharacters = ({ isActive, creatures }) => {
-    const creatureType = creatures.length > 0 && creatures[0].type;
+    const creatureType = creatures.length > 0 && creatures[0].type
 
-    const image = Images.creatures[creatureType] || null;
+    const image = Images.creatures[creatureType] || null
 
     const friend = (
       <img
@@ -95,19 +78,19 @@ class PicturePage extends React.Component {
         src={image}
         alt={creatureType}
       />
-    );
+    )
 
-    const you = isActive ? this.renderYouMini() : null;
-    const characters = [you, friend];
+    const you = isActive ? this.renderYouMini() : null
+    const characters = [you, friend]
 
-    return characters;
-  };
+    return characters
+  }
 
   createSingleRow = ({ locationRow, rowIndex }) => {
     return locationRow.map((location, colIndex) => {
-      return this.renderMiniLocation({ location, colIndex, rowIndex });
-    });
-  };
+      return this.renderMiniLocation({ location, colIndex, rowIndex })
+    })
+  }
 
   renderMiniLocation = ({
     colIndex = 0,
@@ -115,17 +98,17 @@ class PicturePage extends React.Component {
     location,
     className = ""
   }) => {
-    const { activeScene } = this.props;
-    const { name: locationName, creatures = [] } = location;
+    const { activeScene } = this.props
+    const { name: locationName, creatures = [] } = location
 
-    const isActive = locationName === activeScene.name;
+    const isActive = locationName === activeScene.name
 
     const characters = this.renderCharacters({
       creatures,
       isActive
-    });
+    })
 
-    const id = `${colIndex}-${rowIndex}`;
+    const id = `${colIndex}-${rowIndex}`
 
     return (
       <MiniLocation
@@ -136,34 +119,32 @@ class PicturePage extends React.Component {
         isActive={isActive}
         className={className}
       />
-    );
-  };
+    )
+  }
 
   createArrows = ({ locationName }) => {
-    const { activeScene } = this.props;
+    const { activeScene } = this.props
 
     if (!activeScene) {
-      return null;
+      return null
     }
-    const neighborNames = activeScene.neighbors || [];
+    const neighborNames = activeScene.neighbors || []
 
     const arrows = neighborNames.map(location => {
-      return (
-        <LineTo className={css.lineTo} from={locationName} to={location} />
-      );
-    });
+      return <LineTo className={css.lineTo} from={locationName} to={location} />
+    })
 
-    return arrows;
-  };
+    return arrows
+  }
 
   changeLocation = ({ sceneName }) => {
-    const plot = localStateStore.getPlot();
-    const { scenes = {} } = plot;
+    const plot = localStateStore.getPlot()
+    const { scenes = {} } = plot
 
-    const newScene = scenes.find(scene => scene.name === sceneName);
+    const newScene = scenes.find(scene => scene.name === sceneName)
 
-    this.props.updateActiveScene({ activeScene: newScene });
-  };
+    this.props.updateActiveScene({ activeScene: newScene })
+  }
 
   renderStoryPage = () => {
     const {
@@ -171,12 +152,12 @@ class PicturePage extends React.Component {
       activeScene: { creatures = [] },
       wordPageProps,
       updateActiveScene
-    } = this.props;
+    } = this.props
 
-    const backgroundImage = Images["forest"];
-    const activeLocationName = activeScene.name;
+    const backgroundImage = Images["forest"]
+    const activeLocationName = activeScene.name
 
-    const miniLocationImage = Images.locations[activeLocationName];
+    const miniLocationImage = Images.locations[activeLocationName]
 
     return (
       <div className={`${css.halfPage} ${css.leftHalf}`}>
@@ -202,11 +183,11 @@ class PicturePage extends React.Component {
         <div className={css.locationHeader}>{`${activeLocationName}`}</div>
         <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
       </div>
-    );
-  };
+    )
+  }
 
   renderMapPage = ({}) => {
-    const mapImage = Images.backgrounds["map02"];
+    const mapImage = Images.backgrounds["map02"]
 
     return (
       <div className={`${css.halfPage} ${css.rightHalf}`}>
@@ -215,38 +196,39 @@ class PicturePage extends React.Component {
           {this.renderLocationRows()}
         </div>
       </div>
-    );
-  };
+    )
+  }
 
   renderYourItems = () => {
-    const you = localStateStore.getYou();
-    const items = you.items.map(item => <div>{item}</div>);
+    const you = localStateStore.getYou()
+    const items = you.items.map(item => <div>{item}</div>)
 
     return (
       <div className={css.yourItems}>
         <span>My Stuff</span>
         {items}
       </div>
-    );
-  };
+    )
+  }
 
   render() {
-    const smallMap = localStateStore.getsmallMap();
-    const storyClass = smallMap ? css.smallMap : "";
+    const smallMap = localStateStore.getsmallMap()
+    const storyClass = smallMap ? css.smallMap : ""
 
-    const showWorldBuilder = localStateStore.getShowWorldBuilder();
+    const showWorldBuilder = localStateStore.getShowWorldBuilder()
+    console.log("showWorldBuilder", showWorldBuilder) // zzz
 
     if (showWorldBuilder) {
-      return <WorldBuilder />;
+      return <WorldBuilder />
     } else {
       return (
         <div className={`${css.main} ${storyClass}`}>
-          {this.renderStoryPage()}
+          {/* {this.renderStoryPage()} */}
           {this.renderMapPage({})}
-          {this.renderYourItems({})}
+          {/* {this.renderYourItems({})} */}
         </div>
-      );
+      )
     }
   }
 }
-export default observer(PicturePage);
+export default observer(PicturePage)
