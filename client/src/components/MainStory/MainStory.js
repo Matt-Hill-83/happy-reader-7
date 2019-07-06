@@ -22,8 +22,6 @@ import mySentences from "../../Models/sentences.js"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
-// const { generatePlot } = mySentences
-
 class MainStory extends React.Component {
   state = {
     // showStory: false,
@@ -61,10 +59,7 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
-    console.log("activeScene", activeScene) // zzz
-
     const savedMaps = maps.docs.map(map => toJS(map.data))
-    console.log("savedMaps - main", savedMaps) // zzz
 
     const locationsMap = savedMaps
     // const locationsMap = localStateStore.getActiveLocationsMap()
@@ -76,16 +71,7 @@ class MainStory extends React.Component {
       this.setState({ showYouWin: true })
     }
 
-    // const plot = localStateStore.getPlot()
-    // const { you, narrativeGenerators } = plot
-
     activeScene.neighborNames = this.getNeighbors({ activeScene })
-
-    // const narrativeGenerator =
-    //   activeScene.builtInNarrativeGenerator ||
-    //   Utils.getRandomItem({ items: narrativeGenerators })
-
-    // activeScene.generatedNarrative = narrativeGenerator({ you, activeScene })
 
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 })
   }
@@ -171,7 +157,6 @@ class MainStory extends React.Component {
 
   renderWorldPicker = () => {
     const savedMaps = maps.docs.map(map => toJS(map.data))
-    console.log("savedMaps", savedMaps) // zzz
 
     if (!savedMaps[0]) {
       return null
@@ -182,8 +167,6 @@ class MainStory extends React.Component {
         <MenuItem text={map.name} onClick={() => this.changeMap({ index })} />
       )
     })
-
-    console.log("mapList", mapList) // zzz
 
     const renderedMapList = <Menu>{mapList}</Menu>
 
