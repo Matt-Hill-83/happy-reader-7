@@ -13,7 +13,7 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
 class Frame extends Component {
-  state = { frames: [], showFacePicker: false }
+  state = { showFacePicker: false }
 
   componentWillMount() {}
 
@@ -26,10 +26,26 @@ class Frame extends Component {
 
   selectHead = ({ name, head }) => {
     const allCreatures = localStateStore.getCreatures()
-    const creature = allCreatures.find(creature => creature.type === name)
+    // const creature = allCreatures.find(creature => creature.type === name)
+    const faces = this.props.frame.faces
+    console.log("faces", faces) // zzz
 
+    const thisFace = faces.find(face => face.character === name)
+
+    console.log("thisFace", thisFace) // zzz
+    console.log("thisFace.mood", thisFace.face) // zzz
+    console.log("head", head) // zzz
+
+    thisFace.mood = head.mood
+    thisFace.face = head.mood
+
+    this.props.updateFrameSetFrame({})
+
+    // this.props.frame.characters
+    // frame.charactes[name]
     // TODO - I should push the store here.
-    creature.mood = head.mood
+    // creature.mood = head.mood
+    // console.log("creature", toJS(creature)) // zzz
   }
 
   renderFacePicker = ({ name }) => {
@@ -87,7 +103,6 @@ class Frame extends Component {
     const { story, faces } = frame
 
     const yourName = you.name
-    // const yourCreature = Utils.getCreatureByType({ type: yourName })
 
     const backgroundImage = Images.backgrounds["hill01"]
     const locationImage = Images.locations[sceneToEdit.name]
@@ -95,8 +110,6 @@ class Frame extends Component {
     const notebookImage = Images.sceneView.notebook
 
     const renderedFriends = friends.map(friend => {
-      // const creature = Utils.getCreatureByType({ type: friend })
-
       const mood = this.getMood({ name: friend, faces })
 
       return (
@@ -121,6 +134,12 @@ class Frame extends Component {
           </div>
           <div className={css.bookImageContainer}>
             <div className={css.narrative}>
+              <Button
+                className={css.xxxtoggleFacePickerButton2}
+                onClick={this.editNarrative}
+              >
+                edit
+              </Button>
               <WordGroup story={story} className={css.narrativeClass} />
             </div>
             <img className={css.bookImage} src={bookImage} alt={"imagex"} />
@@ -190,7 +209,8 @@ class Frame extends Component {
           </div>
         )}
         <div className={css.scenesContainer}>
-          {this.renderFrame({ you, friends: friendNames })}
+          {/* {this.renderFrame({ you, friends: friendNames })} */}
+          {this.renderFrame({ you, friends: allCharacters })}
           <Button
             className={css.toggleFacePickerButton}
             onClick={this.toggleFacePicker}

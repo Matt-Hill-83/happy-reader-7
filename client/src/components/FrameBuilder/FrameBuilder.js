@@ -42,7 +42,7 @@ class FrameBuilder extends Component {
     return frameSetStore.docs
   }
 
-  updateActiveFrameSet = ({ name }) => {
+  setActiveFrameSet = ({ name }) => {
     this.setState({ activeFrameSet: name })
   }
 
@@ -51,9 +51,23 @@ class FrameBuilder extends Component {
     frameSet.data.title = newTitle
   }
 
-  onBlurFrameSetTitle = async ({ frameSet, event }) => {
+  updateFrameSetTitle = async ({ frameSet, event }) => {
+    console.log("frameSet", toJS(frameSet)) // zzz
+
     await frameSet.update({
       title: event.target.value
+    })
+  }
+
+  updateFrameSetFrame = async ({ frame, event }) => {
+    const frameSet = this.getActiveFrameSet()
+    console.log("activeFrameSet --- before update", toJS(frameSet)) // zzz
+
+    const frames = frameSet.data.frames
+    console.log("toJS(frames)", toJS(frames)) // zzz
+
+    await frameSet.update({
+      frames: frames
     })
   }
 
@@ -73,7 +87,7 @@ class FrameBuilder extends Component {
               this.onChangeFrameSetTitle({ frameSet: activeFrameSet, event })
             }
             onBlur={event =>
-              this.onBlurFrameSetTitle({ frameSet: activeFrameSet, event })
+              this.updateFrameSetTitle({ frameSet: activeFrameSet, event })
             }
           />
         </FormGroup>
@@ -90,7 +104,7 @@ class FrameBuilder extends Component {
         <div className={css.itemRow}>
           <Button
             icon="database"
-            onClick={() => this.updateActiveFrameSet({ name })}
+            onClick={() => this.setActiveFrameSet({ name })}
             className={css.frameSetName}
           >
             name - {name}
@@ -149,7 +163,7 @@ class FrameBuilder extends Component {
       activeFrameSet = frameSets[0]
       const activeFrameSetName = activeFrameSet.data.name
 
-      this.updateActiveFrameSet({ name: activeFrameSetName })
+      this.setActiveFrameSet({ name: activeFrameSetName })
     }
 
     if (!activeFrameSet) {
@@ -179,6 +193,8 @@ class FrameBuilder extends Component {
     //     ]
     //   }
     // ]
+
+    console.log("creaturesn-nfrbuilder", creatures) // zzz
 
     const frames = [
       {
@@ -237,7 +253,14 @@ class FrameBuilder extends Component {
       activeFrameSet.data &&
       activeFrameSet.data.frames &&
       activeFrameSet.data.frames.map(frame => {
-        return <Frame frame={frame} sceneToEdit={sceneToEdit} />
+        console.log("frame", frame) // zzz
+        return (
+          <Frame
+            frame={frame}
+            sceneToEdit={sceneToEdit}
+            updateFrameSetFrame={this.updateFrameSetFrame}
+          />
+        )
       })
 
     return (
