@@ -165,7 +165,7 @@ class Frame extends Component {
             {/* <div className={css.youContainer} onClick={this.toggleFacePicker}>
               <Character name={yourName} mood={yourMood} />
             </div> */}
-            {/* {renderedFriends} */}
+            {renderedFriends}
           </div>
         </div>
       </div>
@@ -185,13 +185,13 @@ class Frame extends Component {
 
     const allCharacters = [yourName, ...friendNames]
 
-    // const renderedFacePickers = allCharacters.map(name => {
-    //   return this.renderFacePicker({ name })
-    // })
+    const renderedFacePickers = allCharacters.map(name => {
+      return this.renderFacePicker({ name })
+    })
 
     return (
       <>
-        {false && showFacePicker && (
+        {showFacePicker && (
           <div className={css.girlPickersContainer}>
             <Button
               className={css.toggleFacePickerButton2}
@@ -199,7 +199,7 @@ class Frame extends Component {
             >
               <Icon icon={IconNames.DATABASE} />
             </Button>
-            {/* {renderedFacePickers} */}
+            {renderedFacePickers}
           </div>
         )}
         <div className={css.scenesContainer}>
