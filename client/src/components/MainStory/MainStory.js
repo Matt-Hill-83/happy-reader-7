@@ -15,6 +15,7 @@ import PicturePage from "../PicturePage/PicturePage"
 import React from "react"
 import Utils from "../../Utils/Utils.js"
 import css from "./MainStory.module.scss"
+import { frameSetStore } from "../../Stores/FrameSetStore"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import { maps } from "../../Stores/InitStores.js"
 import mySentences from "../../Models/sentences.js"
@@ -44,19 +45,11 @@ class MainStory extends React.Component {
   }
 
   onExitIntro = ({ you }) => {
-    // generateYou({ you });
-    // generatePlot();
-
-    // while (!savedMaps.length) {
-    // setTimeout(function() {
-    //   console.log("THIS IS")
-    // }, 200)
-    // }
-
-    // console.log("mapList", mapList) // zzz
-
     setTimeout(() => {
-      const savedMaps = maps.docs.map(map => toJS(map.data.grid))
+      const savedMaps = maps.docs.map(map => toJS(map.data))
+      const frameSets = frameSetStore.docs
+      console.log("frameSets", toJS(frameSets)) // zzz
+
       console.log("savedMaps - main", savedMaps) // zzz
       const plot = localStateStore.getPlot()
 
@@ -68,17 +61,12 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
-    // console.log("activeScene", activeScene); // zzz
+    console.log("activeScene", activeScene) // zzz
 
-    // TODO - import locationsMap from db
-    // TODO - import locationsMap from db
-    // TODO - import locationsMap from db
-    // TODO - import locationsMap from db
+    const savedMaps = maps.docs.map(map => toJS(map.data))
+    console.log("savedMaps - main", savedMaps) // zzz
 
-    // const savedMaps = maps.docs.map(map => toJS(map.data.grid));
-    // const testGrid = JSON.parse(savedMaps[0]);
-    // console.log("testGrid - main", testGrid); // zzz
-
+    // const locationsMap = savedMaps
     const locationsMap = localStateStore.getActiveLocationsMap()
 
     const activeSceneName = activeScene.name
@@ -189,8 +177,10 @@ class MainStory extends React.Component {
       return null
     }
 
-    const mapList = savedMaps.map(map => {
-      return <MenuItem text={map.name} />
+    const mapList = savedMaps.map((map, index) => {
+      return (
+        <MenuItem text={map.name} onClick={() => this.changeMap({ index })} />
+      )
     })
 
     console.log("mapList", mapList) // zzz
@@ -210,9 +200,17 @@ class MainStory extends React.Component {
     return worldPicker
   }
 
+  changeMap = ({ index }) => {
+    console.log("index", index) // zzz
+    localStateStore.setActiveLocationsMapIndex(index)
+  }
+
   render() {
     const { className } = this.props
     const { activeScene, pageNum } = this.state
+
+    const index = localStateStore.getActiveLocationsMapIndex()
+    console.log("index", index) // zzz
 
     if (!activeScene) {
       return null
