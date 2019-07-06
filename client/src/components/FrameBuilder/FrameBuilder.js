@@ -121,6 +121,10 @@ class FrameBuilder extends Component {
     )
   }
 
+  deleteFrame = ({ id }) => {
+    console.log("deleting Frame") // zzz
+  }
+
   onPressDelete = async ({ item }) => {
     if (this._deleting) return
     this._deleting = true

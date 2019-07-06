@@ -24,6 +24,13 @@ class Frame extends Component {
     deleteFrame && deleteFrame({ frame: "id" })
   }
 
+  cloneFrame = () => {
+    const { cloneFrame } = this.props
+    console.log("delete frame") // zzz
+
+    cloneFrame && cloneFrame({ frame: "id" })
+  }
+
   selectHead = ({ name, head }) => {
     const {
       updateFrameSet,
@@ -31,10 +38,11 @@ class Frame extends Component {
     } = this.props
 
     const thisFace = faces.find(face => face.character === name)
-
     thisFace.face = head.mood
 
     updateFrameSet({})
+
+    this.toggleFacePicker()
   }
 
   renderFacePicker = ({ name }) => {
@@ -187,7 +195,6 @@ class Frame extends Component {
           </div>
         )}
         <div className={css.scenesContainer}>
-          {/* {this.renderFrame({ you, friends: friendNames })} */}
           {this.renderFrame({ you, allCharacters })}
           <Button
             className={css.toggleFacePickerButton}
