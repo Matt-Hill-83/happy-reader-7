@@ -1,7 +1,7 @@
-import myWords from "../Models/words.js"
 import Utils from "../Utils/Utils.js"
-import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js"
 import images from "../images/images.js"
+import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js"
+import myWords from "../Models/words.js"
 
 const { wordTypes } = myWords
 
@@ -371,6 +371,7 @@ const generateYou = ({ you = {} }) => {
   const modifiedYou = Object.assign(defaultYou, you)
 
   localStateStore.setYou(modifiedYou)
+  console.log("modifiedYou", modifiedYou) // zzz
 }
 
 generateYou({})

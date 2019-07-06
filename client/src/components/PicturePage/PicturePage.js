@@ -20,7 +20,9 @@ class PicturePage extends React.Component {
   }
 
   renderYouMini = () => {
-    const { you } = localStateStore.getPlot()
+    const you = localStateStore.getYou()
+
+    console.log("you", you) // zzz
 
     const youImage = you.creature
 
@@ -223,9 +225,9 @@ class PicturePage extends React.Component {
     } else {
       return (
         <div className={`${css.main} ${storyClass}`}>
-          {/* {this.renderStoryPage()} */}
+          {this.renderStoryPage()}
           {this.renderMapPage({})}
-          {/* {this.renderYourItems({})} */}
+          {this.renderYourItems({})}
         </div>
       )
     }
