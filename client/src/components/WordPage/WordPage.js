@@ -76,16 +76,18 @@ class WordPage extends React.Component {
     const isLastParagraph =
       this.state.activeParagraphIndex === generatedNarrative.story.length - 1
 
-    const frames = frameSetStore.docs
+    const frameSets = frameSetStore.docs
 
-    if (!frames.length) {
+    if (!frameSets.length) {
       return null
     }
 
-    const frame = frames[0].data
-    frame.creatures = ["kat", "liz"]
+    const myFrameSet = frameSets[0].data
+    console.log("myFrameSet", myFrameSet) // zzz
+    const frame = myFrameSet.frames[0]
+    // frame.creatures = ["kat", "liz"]
 
-    console.log("frames", frames) // zzz
+    console.log("frame", frame) // zzz
 
     return (
       <div className={css.textPage}>

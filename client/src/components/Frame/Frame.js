@@ -105,6 +105,7 @@ class Frame extends Component {
 
     const { sceneToEdit, frame } = this.props
     const { story, faces } = frame
+    console.log("frame", frame) // zzz
 
     const backgroundImage = Images.backgrounds["hill01"]
     const locationImage = Images.locations[sceneToEdit.name]
@@ -140,7 +141,7 @@ class Frame extends Component {
               >
                 edit
               </Button>
-              {/* <WordGroup story={story} className={css.narrativeClass} /> */}
+              <WordGroup story={story} className={css.narrativeClass} />
             </div>
             <img className={css.bookImage} src={bookImage} alt={"imagex"} />
           </div>
