@@ -66,8 +66,8 @@ class MainStory extends React.Component {
     const savedMaps = maps.docs.map(map => toJS(map.data))
     console.log("savedMaps - main", savedMaps) // zzz
 
-    // const locationsMap = savedMaps
-    const locationsMap = localStateStore.getActiveLocationsMap()
+    const locationsMap = savedMaps
+    // const locationsMap = localStateStore.getActiveLocationsMap()
 
     const activeSceneName = activeScene.name
     const endSceneName = locationsMap.endScene && locationsMap.endScene.name
@@ -76,16 +76,16 @@ class MainStory extends React.Component {
       this.setState({ showYouWin: true })
     }
 
-    const plot = localStateStore.getPlot()
-    const { you, narrativeGenerators } = plot
+    // const plot = localStateStore.getPlot()
+    // const { you, narrativeGenerators } = plot
 
     activeScene.neighborNames = this.getNeighbors({ activeScene })
 
-    const narrativeGenerator =
-      activeScene.builtInNarrativeGenerator ||
-      Utils.getRandomItem({ items: narrativeGenerators })
+    // const narrativeGenerator =
+    //   activeScene.builtInNarrativeGenerator ||
+    //   Utils.getRandomItem({ items: narrativeGenerators })
 
-    activeScene.generatedNarrative = narrativeGenerator({ you, activeScene })
+    // activeScene.generatedNarrative = narrativeGenerator({ you, activeScene })
 
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 })
   }
