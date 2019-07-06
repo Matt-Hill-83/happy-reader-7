@@ -11,7 +11,7 @@ import { observer } from "mobx-react"
 class WordPage extends React.Component {
   state = {
     activeScene: undefined,
-    activeParagraphIndex: 0
+    frameIndex: 0
   }
 
   async componentWillMount() {
@@ -23,7 +23,7 @@ class WordPage extends React.Component {
   }
 
   changeLocation = ({ sceneName }) => {
-    this.setState({ activeParagraphIndex: 0 })
+    this.setState({ frameIndex: 0 })
     const plot = localStateStore.getPlot()
     const { allScenes = {} } = plot
 
@@ -54,74 +54,39 @@ class WordPage extends React.Component {
 
   onClickNext = () => {
     this.setState({
-      activeParagraphIndex: this.state.activeParagraphIndex + 1
+      frameIndex: this.state.frameIndex + 1
     })
   }
 
   render() {
-    const generatedNarrative = _get(
-      this.state,
-      "activeScene.generatedNarrative"
-    )
-
-    const { activeScene } = this.state
-
-    if (!generatedNarrative) {
-      return null
-    }
-
-    const paragraphs = generatedNarrative.story
-    const activeParagraph = paragraphs[this.state.activeParagraphIndex]
-
-    const isLastParagraph =
-      this.state.activeParagraphIndex === generatedNarrative.story.length - 1
-
     const frameSets = frameSetStore.docs
-
     if (!frameSets.length) {
       return null
     }
 
+    // TODO = generate narrative is breaking after dialog is finished.
+    // TODO = generate narrative is breaking after dialog is finished.
+    // TODO = generate narrative is breaking after dialog is finished.
+    // TODO = generate narrative is breaking after dialog is finished.
     const myFrameSet = frameSets[0].data
-    console.log("myFrameSet", myFrameSet) // zzz
-    const frame = myFrameSet.frames[0]
-    // frame.creatures = ["kat", "liz"]
+
+    const { activeScene, frameIndex } = this.state
+
+    const isLastFrame = frameIndex === myFrameSet.frames.length - 1
+
+    const frame = myFrameSet.frames[frameIndex]
 
     console.log("frame", frame) // zzz
+    console.log("isLastFrame", isLastFrame) // zzz
 
     return (
       <div className={css.textPage}>
-        <Frame
-          frame={frame}
-          sceneToEdit={activeScene}
-          // updateFrameSet={this.updateFrameSet}
-        />
-        {/* pass in adder for setting tab order */}
-        {/* <WordGroup story={activeParagraph} /> */}
-        {!isLastParagraph && (
-          <Button onClick={this.onClickNext} className={css.nextButton}>
-            NEXT
-          </Button>
-        )}
+        <Frame frame={frame} sceneToEdit={activeScene} isEditMode={false} />
+        <Button onClick={this.onClickNext} className={css.nextButton}>
+          NEXT
+        </Button>
 
-        {isLastParagraph && this.renderButtons()}
-      </div>
-    )
-
-    return (
-      <div className={css.textPage}>
-        {/* pass in adder for setting tab order */}
-        <WordGroup story={activeParagraph} />
-        {!isLastParagraph && (
-          <Button onClick={this.onClickNext} className={css.nextButton}>
-            NEXT
-          </Button>
-        )}
-        {/* {isLastParagraph && (
-          <WordGroup story={generatedNarrative.proposition} />
-        )} */}
-        {/* <WordGroup story={generatedNarrative.mission} /> */}
-        {isLastParagraph && this.renderButtons()}
+        {isLastFrame && this.renderButtons()}
       </div>
     )
   }

@@ -152,41 +152,16 @@ class PicturePage extends React.Component {
   }
 
   renderStoryPage = () => {
-    const {
-      activeScene,
-      activeScene: { creatures = [] },
-      wordPageProps,
-      updateActiveScene
-    } = this.props
+    const { activeScene, wordPageProps, updateActiveScene } = this.props
 
-    const backgroundImage = Images["forest"]
     const activeLocationName = activeScene.name
-
-    const miniLocationImage = Images.locations[activeLocationName]
-
-    const sceneToEdit = activeScene
 
     return (
       <div className={`${css.halfPage} ${css.leftHalf}`}>
-        {/* <div className={css.bigMiniImage}>
-          {this.renderCharacters({
-            creatures,
-            isActive: true
-          })}
-        </div>
-
-        <div className={css.miniLocation}>
-          <img src={miniLocationImage} alt={"imagex"} />
-        </div> */}
         <WordPage
           wordPageProps={wordPageProps}
           updateActiveScene={updateActiveScene}
         />
-        {/* <img
-          className={css.backgroundImage}
-          src={backgroundImage}
-          alt={"imagex"}
-        /> */}
         <div className={css.locationHeader}>{`${activeLocationName}`}</div>
         <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
       </div>

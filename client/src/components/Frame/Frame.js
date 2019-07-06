@@ -161,12 +161,7 @@ class Frame extends Component {
             />
           </div>
 
-          <div className={css.charactersContainer}>
-            {/* <div className={css.youContainer} onClick={this.toggleFacePicker}>
-              <Character name={yourName} mood={yourMood} />
-            </div> */}
-            {renderedFriends}
-          </div>
+          <div className={css.charactersContainer}>{renderedFriends}</div>
         </div>
       </div>
     )
@@ -174,7 +169,8 @@ class Frame extends Component {
 
   render() {
     const {
-      frame: { creatures }
+      frame: { creatures },
+      isEditMode = true
     } = this.props
 
     const { showFacePicker } = this.state
@@ -185,13 +181,15 @@ class Frame extends Component {
 
     const allCharacters = [yourName, ...friendNames]
 
-    const renderedFacePickers = allCharacters.map(name => {
-      return this.renderFacePicker({ name })
-    })
+    const renderedFacePickers =
+      isEditMode &&
+      allCharacters.map(name => {
+        return this.renderFacePicker({ name })
+      })
 
     return (
       <>
-        {showFacePicker && (
+        {isEditMode && showFacePicker && (
           <div className={css.girlPickersContainer}>
             <Button
               className={css.toggleFacePickerButton2}
@@ -204,17 +202,21 @@ class Frame extends Component {
         )}
         <div className={css.scenesContainer}>
           {this.renderFrame({ you, allCharacters })}
-          <Button
-            className={css.toggleFacePickerButton}
-            onClick={this.toggleFacePicker}
-          >
-            <Icon icon={IconNames.DATABASE} />
-          </Button>
+          {isEditMode && (
+            <Button
+              className={css.toggleFacePickerButton}
+              onClick={this.toggleFacePicker}
+            >
+              <Icon icon={IconNames.DATABASE} />
+            </Button>
+          )}
         </div>
 
-        <Button className={css.closeButton} onClick={this.deleteFrame}>
-          <Icon icon={IconNames.CROSS} />
-        </Button>
+        {isEditMode && (
+          <Button className={css.closeButton} onClick={this.deleteFrame}>
+            <Icon icon={IconNames.CROSS} />
+          </Button>
+        )}
       </>
     )
   }
