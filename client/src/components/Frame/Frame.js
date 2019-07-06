@@ -77,25 +77,32 @@ class Frame extends Component {
     const { frame } = this.props
     const { dialog } = frame
 
-    const chats = dialog.map(line => {
-      const { text, character } = line
+    const chats =
+      dialog &&
+      dialog.map(line => {
+        const { text, character } = line
 
-      return (
-        <WordGroup story={[text]} className={`${css.line} ${css[character]}`} />
-      )
-    })
+        return (
+          <WordGroup
+            story={[text]}
+            className={`${css.line} ${css[character]}`}
+          />
+        )
+      })
 
     return <div className={css.dialog}>{chats}</div>
   }
 
   getMood = ({ name, faces }) => {
     let mood = "ok"
-    const newMood = faces.find(face => face.character === name)
+    const newMood = faces && faces.find(face => face.character === name)
     mood = (newMood && newMood.face) || mood
     return mood
   }
 
   renderFrame = ({ allCharacters = [] }) => {
+    console.log("this.props", this.props) // zzz
+
     const { sceneToEdit, frame } = this.props
     const { story, faces } = frame
 
@@ -117,7 +124,7 @@ class Frame extends Component {
     return (
       <div className={css.scene}>
         <div className={css.backgroundImageContainer}>
-          {this.renderedDialog({})}
+          {/* {this.renderedDialog({})} */}
           <div className={css.locationImageContainer}>
             <img
               className={css.locationImage}
@@ -133,7 +140,7 @@ class Frame extends Component {
               >
                 edit
               </Button>
-              <WordGroup story={story} className={css.narrativeClass} />
+              {/* <WordGroup story={story} className={css.narrativeClass} /> */}
             </div>
             <img className={css.bookImage} src={bookImage} alt={"imagex"} />
           </div>
@@ -157,7 +164,7 @@ class Frame extends Component {
             {/* <div className={css.youContainer} onClick={this.toggleFacePicker}>
               <Character name={yourName} mood={yourMood} />
             </div> */}
-            {renderedFriends}
+            {/* {renderedFriends} */}
           </div>
         </div>
       </div>
@@ -177,13 +184,13 @@ class Frame extends Component {
 
     const allCharacters = [yourName, ...friendNames]
 
-    const renderedFacePickers = allCharacters.map(name => {
-      return this.renderFacePicker({ name })
-    })
+    // const renderedFacePickers = allCharacters.map(name => {
+    //   return this.renderFacePicker({ name })
+    // })
 
     return (
       <>
-        {showFacePicker && (
+        {false && showFacePicker && (
           <div className={css.girlPickersContainer}>
             <Button
               className={css.toggleFacePickerButton2}
@@ -191,7 +198,7 @@ class Frame extends Component {
             >
               <Icon icon={IconNames.DATABASE} />
             </Button>
-            {renderedFacePickers}
+            {/* {renderedFacePickers} */}
           </div>
         )}
         <div className={css.scenesContainer}>

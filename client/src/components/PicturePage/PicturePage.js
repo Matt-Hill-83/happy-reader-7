@@ -1,5 +1,7 @@
 import { Button, Menu, MenuItem, Popover, Position } from "@blueprintjs/core"
 
+import Frame from "../Frame/Frame.js"
+import FrameBuilder from "../FrameBuilder/FrameBuilder.js"
 import Images from "../../images/images.js"
 import LineTo from "react-lineto"
 import MiniLocation from "../MiniLocation/MiniLocation.js"
@@ -162,9 +164,11 @@ class PicturePage extends React.Component {
 
     const miniLocationImage = Images.locations[activeLocationName]
 
+    const sceneToEdit = activeScene
+
     return (
       <div className={`${css.halfPage} ${css.leftHalf}`}>
-        <div className={css.bigMiniImage}>
+        {/* <div className={css.bigMiniImage}>
           {this.renderCharacters({
             creatures,
             isActive: true
@@ -173,16 +177,16 @@ class PicturePage extends React.Component {
 
         <div className={css.miniLocation}>
           <img src={miniLocationImage} alt={"imagex"} />
-        </div>
+        </div> */}
         <WordPage
           wordPageProps={wordPageProps}
           updateActiveScene={updateActiveScene}
         />
-        <img
+        {/* <img
           className={css.backgroundImage}
           src={backgroundImage}
           alt={"imagex"}
-        />
+        /> */}
         <div className={css.locationHeader}>{`${activeLocationName}`}</div>
         <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
       </div>
@@ -227,6 +231,7 @@ class PicturePage extends React.Component {
       return (
         <div className={`${css.main} ${storyClass}`}>
           {this.renderStoryPage()}
+
           {this.renderMapPage({})}
           {this.renderYourItems({})}
         </div>
