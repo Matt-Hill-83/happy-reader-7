@@ -52,22 +52,18 @@ class FrameBuilder extends Component {
   }
 
   updateFrameSetTitle = async ({ frameSet, event }) => {
-    console.log("frameSet", toJS(frameSet)) // zzz
+    console.log("frameSet", toJS(frameSet.data)) // zzz
 
     await frameSet.update({
       title: event.target.value
     })
   }
 
-  updateFrameSetFrame = async ({ frame, event }) => {
+  updateFrameSetFrame = async () => {
     const frameSet = this.getActiveFrameSet()
-    console.log("activeFrameSet --- before update", toJS(frameSet)) // zzz
-
-    const frames = frameSet.data.frames
-    console.log("toJS(frames)", toJS(frames)) // zzz
 
     await frameSet.update({
-      frames: frames
+      ...frameSet.data
     })
   }
 

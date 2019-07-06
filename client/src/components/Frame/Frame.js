@@ -25,27 +25,14 @@ class Frame extends Component {
   }
 
   selectHead = ({ name, head }) => {
-    const allCreatures = localStateStore.getCreatures()
-    // const creature = allCreatures.find(creature => creature.type === name)
     const faces = this.props.frame.faces
-    console.log("faces", faces) // zzz
 
     const thisFace = faces.find(face => face.character === name)
-
-    console.log("thisFace", thisFace) // zzz
-    console.log("thisFace.mood", thisFace.face) // zzz
-    console.log("head", head) // zzz
 
     thisFace.mood = head.mood
     thisFace.face = head.mood
 
     this.props.updateFrameSetFrame({})
-
-    // this.props.frame.characters
-    // frame.charactes[name]
-    // TODO - I should push the store here.
-    // creature.mood = head.mood
-    // console.log("creature", toJS(creature)) // zzz
   }
 
   renderFacePicker = ({ name }) => {
@@ -98,18 +85,18 @@ class Frame extends Component {
     return mood
   }
 
-  renderFrame = ({ you, friends = [] }) => {
+  renderFrame = ({ allCharacters = [] }) => {
     const { sceneToEdit, frame } = this.props
     const { story, faces } = frame
 
-    const yourName = you.name
+    // const yourName = you.name
 
     const backgroundImage = Images.backgrounds["hill01"]
     const locationImage = Images.locations[sceneToEdit.name]
     const bookImage = Images.sceneView.book
     const notebookImage = Images.sceneView.notebook
 
-    const renderedFriends = friends.map(friend => {
+    const renderedFriends = allCharacters.map(friend => {
       const mood = this.getMood({ name: friend, faces })
 
       return (
@@ -119,7 +106,7 @@ class Frame extends Component {
       )
     })
 
-    const yourMood = this.getMood({ name: yourName, faces })
+    // const yourMood = this.getMood({ name: yourName, faces })
 
     return (
       <div className={css.scene}>
@@ -151,13 +138,7 @@ class Frame extends Component {
               alt={"imagex"}
             />
           </div>
-          {/* <div className={css.backgroundSky}>
-          <img
-          className={`${css.backgroundSkyImage} `}
-          src={backgroundImage}
-          alt={`${"amber-head"}-image`}
-          />
-        </div> */}
+
           <div className={css.backgroundGrass}>
             <img
               className={`${css.backgroundGrassImage} `}
@@ -167,9 +148,9 @@ class Frame extends Component {
           </div>
 
           <div className={css.charactersContainer}>
-            <div className={css.youContainer} onClick={this.toggleFacePicker}>
+            {/* <div className={css.youContainer} onClick={this.toggleFacePicker}>
               <Character name={yourName} mood={yourMood} />
-            </div>
+            </div> */}
             {renderedFriends}
           </div>
         </div>
@@ -179,7 +160,6 @@ class Frame extends Component {
 
   render() {
     const {
-      // frame,
       frame: { creatures }
     } = this.props
 
@@ -210,7 +190,7 @@ class Frame extends Component {
         )}
         <div className={css.scenesContainer}>
           {/* {this.renderFrame({ you, friends: friendNames })} */}
-          {this.renderFrame({ you, friends: allCharacters })}
+          {this.renderFrame({ you, allCharacters })}
           <Button
             className={css.toggleFacePickerButton}
             onClick={this.toggleFacePicker}
