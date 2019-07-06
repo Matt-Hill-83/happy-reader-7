@@ -1,3 +1,5 @@
+import { Button, Menu, MenuItem, Popover, Position } from "@blueprintjs/core"
+
 import Images from "../../images/images.js"
 import LineTo from "react-lineto"
 import MiniLocation from "../MiniLocation/MiniLocation.js"
@@ -8,8 +10,6 @@ import _get from "lodash.get"
 import css from "./PicturePage.module.scss"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import { maps } from "../../Stores/InitStores"
-// import { IconNames } from "@blueprintjs/icons";
-// import { Icon } from "@blueprintjs/core";
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
@@ -21,8 +21,6 @@ class PicturePage extends React.Component {
 
   renderYouMini = () => {
     const you = localStateStore.getYou()
-
-    console.log("you", you) // zzz
 
     const youImage = you.creature
 
@@ -36,14 +34,35 @@ class PicturePage extends React.Component {
   }
 
   renderLocationRows = () => {
-    const savedMaps = maps.docs.map(map => toJS(map.data.grid))
+    const savedMaps = maps.docs.map(map => toJS(map.data))
+    console.log("savedMaps", savedMaps) // zzz
+
+    // localStateStore.setLocationsMaps(savedMaps)
+    // localStateStore.setActiveLocationsMap(0)
 
     if (!savedMaps[0]) {
       return null
     }
 
-    const testGrid = JSON.parse(savedMaps[0])
-    console.log("testGrid", testGrid) // zzz
+    const testGrid = JSON.parse(savedMaps[0].grid)
+
+    const mapList = savedMaps.map(map => {
+      return <MenuItem text={map.name} />
+    })
+
+    console.log("mapList", mapList) // zzz
+
+    const renderedMapList = <Menu>{mapList}</Menu>
+
+    const worldPicker = (
+      <Popover
+        className={css.worldPickerDropdown}
+        content={renderedMapList}
+        position={Position.RIGHT_TOP}
+      >
+        <Button icon="share" text="Load Map" />
+      </Popover>
+    )
 
     const miniLocationsGrid = testGrid.map((locationRow, rowIndex) => {
       return (
@@ -53,7 +72,12 @@ class PicturePage extends React.Component {
       )
     })
 
-    return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>
+    return (
+      <div className={css.miniLocationsGrid}>
+        {/* {worldPicker} */}
+        {miniLocationsGrid}
+      </div>
+    )
   }
 
   getLocationsForDragger = () => {
