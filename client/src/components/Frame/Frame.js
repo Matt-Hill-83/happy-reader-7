@@ -25,14 +25,16 @@ class Frame extends Component {
   }
 
   selectHead = ({ name, head }) => {
-    const faces = this.props.frame.faces
+    const {
+      updateFrameSet,
+      frame: { faces }
+    } = this.props
 
     const thisFace = faces.find(face => face.character === name)
 
-    thisFace.mood = head.mood
     thisFace.face = head.mood
 
-    this.props.updateFrameSetFrame({})
+    updateFrameSet({})
   }
 
   renderFacePicker = ({ name }) => {
@@ -89,8 +91,6 @@ class Frame extends Component {
     const { sceneToEdit, frame } = this.props
     const { story, faces } = frame
 
-    // const yourName = you.name
-
     const backgroundImage = Images.backgrounds["hill01"]
     const locationImage = Images.locations[sceneToEdit.name]
     const bookImage = Images.sceneView.book
@@ -105,8 +105,6 @@ class Frame extends Component {
         </div>
       )
     })
-
-    // const yourMood = this.getMood({ name: yourName, faces })
 
     return (
       <div className={css.scene}>

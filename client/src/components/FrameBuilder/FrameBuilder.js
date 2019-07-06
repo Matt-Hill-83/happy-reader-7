@@ -22,9 +22,7 @@ import { toJS } from "mobx"
 class FrameBuilder extends Component {
   state = { frames: [], activeFrameSet: "" }
 
-  componentWillMount() {
-    console.log("frameSetStore.docs", frameSetStore.docs) // zzz
-  }
+  componentWillMount() {}
 
   onExitFrameBuilder = () => {
     const { onExitFrameBuilder } = this.props
@@ -52,14 +50,12 @@ class FrameBuilder extends Component {
   }
 
   updateFrameSetTitle = async ({ frameSet, event }) => {
-    console.log("frameSet", toJS(frameSet.data)) // zzz
-
     await frameSet.update({
       title: event.target.value
     })
   }
 
-  updateFrameSetFrame = async () => {
+  updateFrameSet = async () => {
     const frameSet = this.getActiveFrameSet()
 
     await frameSet.update({
@@ -132,8 +128,6 @@ class FrameBuilder extends Component {
       await item.delete()
       this._deleting = false
     } catch (err) {
-      console.log("err", err) // zzz
-
       this._deleting = false
     }
   }
@@ -143,11 +137,8 @@ class FrameBuilder extends Component {
 
     let activeFrameSet = null
 
-    console.log("this.state.activeFrameSet", this.state.activeFrameSet) // zzz
-
     // TODO - if there is no frameset selected, choose the first one
     if (this.state.activeFrameSet) {
-      console.log("yes active frameset") // zzz
       activeFrameSet = frameSets.find(
         frameSet => frameSet.data.name === this.state.activeFrameSet
       )
@@ -155,7 +146,6 @@ class FrameBuilder extends Component {
       if (!frameSets[0] || !frameSets[0].data) {
         return null
       }
-      console.log("no active frameset") // zzz
       activeFrameSet = frameSets[0]
       const activeFrameSetName = activeFrameSet.data.name
 
@@ -165,7 +155,6 @@ class FrameBuilder extends Component {
     if (!activeFrameSet) {
       return null
     }
-    console.log("---------------------------activeFrameSet", activeFrameSet) // zzz
     return activeFrameSet
   }
 
@@ -189,8 +178,6 @@ class FrameBuilder extends Component {
     //     ]
     //   }
     // ]
-
-    console.log("creaturesn-nfrbuilder", creatures) // zzz
 
     const frames = [
       {
@@ -249,12 +236,11 @@ class FrameBuilder extends Component {
       activeFrameSet.data &&
       activeFrameSet.data.frames &&
       activeFrameSet.data.frames.map(frame => {
-        console.log("frame", frame) // zzz
         return (
           <Frame
             frame={frame}
             sceneToEdit={sceneToEdit}
-            updateFrameSetFrame={this.updateFrameSetFrame}
+            updateFrameSet={this.updateFrameSet}
           />
         )
       })
