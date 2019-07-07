@@ -1,7 +1,7 @@
 import { Button } from "@blueprintjs/core"
 import Frame from "../Frame/Frame.js"
 import React from "react"
-import WordGroup from "../WordGroup/WordGroup.js"
+// import WordGroup from "../WordGroup/WordGroup.js"
 import _get from "lodash.get"
 import css from "./WordPage.module.scss"
 import { frameSetStore } from "../../Stores/FrameSetStore.js"

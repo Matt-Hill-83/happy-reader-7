@@ -33,7 +33,7 @@ class MainStory extends React.Component {
   }
 
   async componentWillMount() {
-    console.log("mySentences", mySentences) // zzz
+    // console.log("mySentences", mySentences) // zzz
     mySentences.generateYou({})
     mySentences.generatePlot({})
 
@@ -50,30 +50,20 @@ class MainStory extends React.Component {
     maps.fetch().then(({ docs }) => {
       this.setState({ test: "got data" })
 
-      const savedMaps = maps.docs.map(map => toJS(map.data))
-
-      console.log("savedMaps - main", savedMaps) // zzz
-      const plot = localStateStore.getPlot()
-
-      // console.log("plot.activeScene", toJS(plot.activeScene)) // zzz
-
+      const savedMaps = docs.map(map => toJS(map.data))
       localStateStore.setLocationsMaps(savedMaps)
-      this.updateActiveScene({ activeScene: plot.activeScene })
 
-      // docs.forEach(
-      //   doc => console.log("doc", toJS(doc)) // zzz
-      // )
+      const plot = localStateStore.getPlot()
+      this.updateActiveScene({ activeScene: plot.activeScene })
     })
   }
 
   updateActiveScene = ({ activeScene }) => {
     const locationsMap = localStateStore.getActiveLocationsMap()
-    // console.log("locationsMap", locationsMap) // zzz
 
     const activeSceneName = activeScene.name
     const endSceneName = locationsMap && locationsMap.endScene
-    console.log("endSceneName", endSceneName) // zzz
-    console.log("activeSceneName", activeSceneName) // zzz
+    console.log("activeScene", activeScene) // zzz
 
     if (activeSceneName === endSceneName) {
       this.setState({ showYouWin: true })
@@ -85,18 +75,13 @@ class MainStory extends React.Component {
   }
 
   getNeighbors = ({ activeScene }) => {
-    // console.log("activeScene", activeScene) // zzz
-
     const locationsMap = localStateStore.getActiveLocationsMap()
-
     const activeSceneName = activeScene.name
 
     const neighbors = []
     const neighborsArray = []
 
     // create a map of all the locations for future use
-    // console.log("locationsMap", toJS(locationsMap)) // zzz
-
     const grid = JSON.parse(locationsMap.grid)
 
     grid.forEach((row, rowIndex) => {
@@ -209,7 +194,6 @@ class MainStory extends React.Component {
     const index = localStateStore.getActiveLocationsMapIndex()
     console.log("index", index) // zzz
     console.log("render main") // zzz
-    // console.log("test", test) // zzz
 
     if (!activeScene) {
       return null

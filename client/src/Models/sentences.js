@@ -140,8 +140,6 @@ const homeLocation = "home"
 //   }
 // }
 
-// const narrativeGenerators = [generateNarrative1]
-
 const startScene = {
   name: homeLocation
 }
@@ -185,7 +183,6 @@ const allItems = itemsFromImages.map(type => {
 const generatePlot = () => {
   const plot = {
     activeScene: startScene,
-    // narrativeGenerators,
     allScenes,
     allItems
   }
@@ -197,11 +194,6 @@ const generateYou = ({ you = {} }) => {
   const defaultYou = {
     name: yourName,
     creature: yourName,
-    // homeLocation: homeLocation,
-    // vehicle: "scooter",
-    // mission: generateMission(),
-    friends: [],
-    pet: { type: "dog", name: "Doggy", withMe: true },
     items: [],
     mood: "normal"
   }
@@ -209,8 +201,5 @@ const generateYou = ({ you = {} }) => {
 
   localStateStore.setYou(modifiedYou)
 }
-
-// generateYou({})
-// generatePlot({})
 
 export default { generatePlot, generateYou }
