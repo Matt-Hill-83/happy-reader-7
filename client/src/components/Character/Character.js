@@ -21,9 +21,6 @@ class Character extends Component {
     const head = heads.find(head => head.mood === mood)
 
     const className = `${css.headForBody} ${isEditMode ? "" : css.noBorder}`
-    console.log("className", className) // zzz
-
-    console.log("isEditMode", isEditMode) // zzz
 
     return (
       <div className={css.girlBodyContainer}>
