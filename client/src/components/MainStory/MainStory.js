@@ -45,40 +45,39 @@ class MainStory extends React.Component {
   }
 
   onExitIntro = async ({ you }) => {
-    console.log("maps.isLoading", maps.isLoading) // zzz
-    await maps.ready() // wait for fetch to complete
+    // console.log("maps.isLoading", maps.isLoading) // zzz
+    // await maps.ready() // wait for fetch to complete
 
-    await maps.fetch()
+    // await maps.fetch()
 
     maps.fetch().then(({ docs }) => {
+      this.setState({ test: "got data" })
+
+      // console.log("maps.isLoading", maps.isLoading) // zzz
+
+      const savedMaps = maps.docs.map(map => toJS(map.data))
+      // const frameSets = frameSetStore.docs
+      // console.log("frameSets", toJS(frameSets)) // zzz
+
+      console.log("savedMaps - main", savedMaps) // zzz
+      const plot = localStateStore.getPlot()
+
+      console.log("plot.activeScene", toJS(plot.activeScene)) // zzz
+
+      localStateStore.setLocationsMaps(savedMaps)
+      this.updateActiveScene({ activeScene: plot.activeScene })
+
       docs.forEach(
-        doc => console.log("doc", doc) // zzz
+        doc => console.log("doc", toJS(doc)) // zzz
       )
     })
-    console.log("maps.isLoading", maps.isLoading) // zzz
-
-    // setTimeout(() => {
-    const savedMaps = maps.docs.map(map => toJS(map.data))
-    const frameSets = frameSetStore.docs
-    console.log("frameSets", toJS(frameSets)) // zzz
-
-    console.log("savedMaps - main", savedMaps) // zzz
-    const plot = localStateStore.getPlot()
-
-    console.log("plot.activeScene", toJS(plot.activeScene)) // zzz
-
-    this.updateActiveScene({ activeScene: plot.activeScene })
-
-    localStateStore.setLocationsMaps(savedMaps)
-    console.log("next line") // zzz
-    // }, 5000)
   }
 
   updateActiveScene = ({ activeScene }) => {
     const savedMaps = maps.docs.map(map => toJS(map.data))
 
-    const locationsMap = savedMaps[0]
-    // const locationsMap = localStateStore.getActiveLocationsMap()
+    // const locationsMap = savedMaps[0]
+    const locationsMap = localStateStore.getActiveLocationsMap()
 
     const activeSceneName = activeScene.name
     const endSceneName =
@@ -88,12 +87,14 @@ class MainStory extends React.Component {
       this.setState({ showYouWin: true })
     }
 
-    // activeScene.neighborNames = this.getNeighbors({ activeScene })
+    activeScene.neighborNames = this.getNeighbors({ activeScene })
 
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 })
   }
 
   getNeighbors = ({ activeScene }) => {
+    console.log("activeScene", activeScene) // zzz
+
     const locationsMap = localStateStore.getActiveLocationsMap()
 
     const activeSceneName = activeScene.name
@@ -102,19 +103,20 @@ class MainStory extends React.Component {
     const neighborsArray = []
 
     // create a map of all the locations for future use
-    console.log("locationsMap", locationsMap) // zzz
+    console.log("locationsMap", toJS(locationsMap)) // zzz
 
-    locationsMap &&
-      locationsMap.grid.forEach((row, rowIndex) => {
-        row.forEach((location, locationIndex) => {
-          location = location || {}
+    const grid = JSON.parse(locationsMap.grid)
 
-          neighborsArray.push({
-            name: location.name,
-            position: { x: rowIndex, y: locationIndex }
-          })
+    grid.forEach((row, rowIndex) => {
+      row.forEach((location, locationIndex) => {
+        location = location || {}
+
+        neighborsArray.push({
+          name: location.name,
+          position: { x: rowIndex, y: locationIndex }
         })
       })
+    })
 
     const currentLocation = neighborsArray.find(item => {
       return item.name === activeSceneName
@@ -210,10 +212,12 @@ class MainStory extends React.Component {
 
   render() {
     const { className } = this.props
-    const { activeScene, pageNum } = this.state
+    const { activeScene, pageNum, test } = this.state
 
     const index = localStateStore.getActiveLocationsMapIndex()
     console.log("index", index) // zzz
+    console.log("render main") // zzz
+    console.log("test", test) // zzz
 
     if (!activeScene) {
       return null
@@ -258,6 +262,7 @@ class MainStory extends React.Component {
     return (
       <div className={`${css.main} ${className}`}>
         {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
+        {test}
         {this.renderWorldPicker()}
         <div className={css.floatingButtons}>
           <div className={css.settingButtons}>
