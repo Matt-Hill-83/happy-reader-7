@@ -50,9 +50,9 @@ class PicturePage extends React.Component {
     const scene = savedMaps[0]
     console.log("scene render loc", scene) // zzz
 
-    const grid = JSON.parse(scene.grid)
+    const scenesGrid = JSON.parse(scene.grid)
 
-    const miniLocationsGrid = grid.map((locationRow, rowIndex) => {
+    const miniLocationsGrid = scenesGrid.map((locationRow, rowIndex) => {
       return (
         <div key={rowIndex} className={css.miniLocationsRow}>
           {this.createSingleRow({ locationRow, rowIndex })}
