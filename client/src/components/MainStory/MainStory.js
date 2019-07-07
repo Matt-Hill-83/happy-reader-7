@@ -147,11 +147,20 @@ class MainStory extends React.Component {
     localStateStore.incrementActiveLocationsMapIndex()
     const locationsMap = localStateStore.getActiveLocationsMap()
 
+    const grid = JSON.parse(locationsMap.grid)
     const { startScene } = locationsMap
+
+    const test = grid.flat()
+    console.log("test", test) // zzz
+    const testScene = test.find(scene => (scene.name = startScene))
+    console.log("testScene", testScene) // zzz
+
+    console.log("locationsMap", toJS(locationsMap)) // zzz
 
     console.log("startScene", startScene) // zzz
 
-    this.updateActiveScene({ activeScene: startScene })
+    this.updateActiveScene({ activeScene: testScene })
+    // this.updateActiveScene({ activeScene: startScene })
   }
 
   renderWorldPicker = () => {
