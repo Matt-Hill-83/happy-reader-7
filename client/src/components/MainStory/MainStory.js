@@ -48,8 +48,6 @@ class MainStory extends React.Component {
 
   onExitIntro = async ({ you }) => {
     maps.fetch().then(({ docs }) => {
-      // this.setState({ test: "got data" })
-
       const savedMaps = docs.map(map => toJS(map.data))
       localStateStore.setLocationsMaps(savedMaps)
 
@@ -63,7 +61,7 @@ class MainStory extends React.Component {
 
     const activeSceneName = activeScene.name
     const endSceneName = locationsMap && locationsMap.endScene
-    console.log("activeScene", activeScene) // zzz
+    console.log("activeScene", toJS(activeScene)) // zzz
 
     if (activeSceneName === endSceneName) {
       this.setState({ showYouWin: true })

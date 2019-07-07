@@ -202,7 +202,6 @@ class PicturePage extends React.Component {
     const storyClass = smallMap ? css.smallMap : ""
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
-    console.log("showWorldBuilder", showWorldBuilder) // zzz
 
     if (showWorldBuilder) {
       return <WorldBuilder />
