@@ -80,7 +80,7 @@ class MainStory extends React.Component {
     const neighborsArray = []
 
     // create a map of all the locations for future use
-    const scenesGrid = JSON.parse(locationsMap.grid)
+    const scenesGrid = JSON.parse(locationsMap.scenesGrid)
 
     scenesGrid.forEach((row, rowIndex) => {
       row.forEach((location, locationIndex) => {
@@ -147,7 +147,7 @@ class MainStory extends React.Component {
     localStateStore.incrementActiveLocationsMapIndex()
     const locationsMap = localStateStore.getActiveLocationsMap()
 
-    const scenesGrid = JSON.parse(locationsMap.grid)
+    const scenesGrid = JSON.parse(locationsMap.scenesGrid)
     const { startScene } = locationsMap
 
     const nextScene = scenesGrid.flat().find(scene => (scene.name = startScene))

@@ -351,7 +351,7 @@ class WorldBuilder extends Component {
 
     const newMap = {
       name: "name",
-      grid: myString,
+      scenesGrid: myString,
       startScene: "home",
       endScene: "bog"
     }
