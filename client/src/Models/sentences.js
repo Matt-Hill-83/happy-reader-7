@@ -144,9 +144,6 @@ const startScene = {
   name: homeLocation
 }
 
-console.log("maps", maps) // zzz
-console.log("maps.test", maps.test) // zzz
-
 const locationsFromImages = Object.keys(images.locations)
 const creaturesFromImages = Object.keys(images.creatures)
 const itemsFromImages = Object.keys(images.items)

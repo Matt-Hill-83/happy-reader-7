@@ -151,6 +151,8 @@ class MainStory extends React.Component {
 
     const { startScene } = locationsMap
 
+    console.log("startScene", startScene) // zzz
+
     this.updateActiveScene({ activeScene: startScene })
   }
 
@@ -190,11 +192,8 @@ class MainStory extends React.Component {
   render() {
     const { className } = this.props
     const { activeScene, pageNum } = this.state
-    // const { activeScene, pageNum, test } = this.state
 
     const index = localStateStore.getActiveLocationsMapIndex()
-    console.log("index", index) // zzz
-    console.log("render main") // zzz
 
     if (!activeScene) {
       return null
