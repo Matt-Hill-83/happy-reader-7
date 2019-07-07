@@ -42,7 +42,10 @@ class PicturePage extends React.Component {
     if (!savedMaps[0]) {
       return null
     }
-
+    // TODO
+    // TODO
+    // TODO
+    // TODO
     const testGrid = JSON.parse(savedMaps[0].grid)
 
     const miniLocationsGrid = testGrid.map((locationRow, rowIndex) => {
