@@ -156,6 +156,9 @@ class MainStory extends React.Component {
   }
 
   renderWorldPicker = () => {
+    // this is not used now.
+    // worlds proceed from start 2 finish.
+    // We need a Game Picker instead.
     const savedMaps = maps.docs.map(map => toJS(map.data))
 
     if (!savedMaps[0]) {
@@ -184,7 +187,7 @@ class MainStory extends React.Component {
   }
 
   changeMap = ({ index }) => {
-    console.log("index", index) // zzz
+    console.log("map index", index) // zzz
     localStateStore.setActiveLocationsMapIndex(index)
   }
 
@@ -237,7 +240,7 @@ class MainStory extends React.Component {
     return (
       <div className={`${css.main} ${className}`}>
         {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
-        {this.renderWorldPicker()}
+        {/* {this.renderWorldPicker()} */}
         <div className={css.floatingButtons}>
           <div className={css.settingButtons}>
             {changeCharacterButton}

@@ -111,15 +111,15 @@
     position: absolute;
     z-index: 10;
     display: flex;
-
     font-size: 24px;
-    bottom: 3px;
-    left: 3px;
-
+    /* bottom: 3px; */
+    /* left: 3px; */
     text-transform: capitalize;
     background: var(--color-pink);
     border-radius: 4px;
     padding: 0 6px;
+    right: 3px;
+    top: 3px;
   }
 
   .characterImageMini {
