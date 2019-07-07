@@ -47,6 +47,7 @@ import troll from "./creatures/troll-01.png"
 import unicorn from "./creatures/unicorn-1.png"
 import wizard from "./creatures/wizard.png"
 import zombie from "./creatures/zombie.png"
+import liz from "./creatures/jan-02-normal.png"
 
 //doors
 import doorGreen from "./doors/doorGreen.png"
@@ -152,7 +153,8 @@ export default {
     troll,
     unicorn,
     wizard,
-    zombie
+    zombie,
+    liz
   },
   backgrounds: {
     door,
