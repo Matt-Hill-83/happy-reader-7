@@ -39,9 +39,6 @@ class PicturePage extends React.Component {
     const savedMaps = maps.docs.map(map => toJS(map.data))
     console.log("savedMaps", savedMaps) // zzz
 
-    // localStateStore.setLocationsMaps(savedMaps)
-    // localStateStore.setActiveLocationsMap(0)
-
     if (!savedMaps[0]) {
       return null
     }

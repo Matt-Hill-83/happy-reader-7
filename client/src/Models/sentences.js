@@ -1,6 +1,7 @@
 import Utils from "../Utils/Utils.js"
 import images from "../images/images.js"
 import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js"
+import { maps } from "../Stores/InitStores.js"
 import myWords from "../Models/words.js"
 
 const { wordTypes } = myWords
@@ -142,175 +143,11 @@ const generateNarrative1 = ({ you, activeScene }) => {
 const narrativeGenerators = [generateNarrative1]
 
 const startScene = {
-  name: homeLocation,
-  builtInNarrativeGenerator: generateStartNarrative
+  name: homeLocation
 }
 
-const generateScenes = () => {
-  const scenes = {
-    tree: {
-      name: "tree",
-      doors: {
-        right: { open: false },
-        bottom: { open: true }
-      }
-    },
-    stump: {
-      name: "stump",
-      creatures: [{ type: "wizard" }],
-      doors: {
-        right: { image: "doorGreen", open: true }
-      },
-      items: ["hat"]
-    },
-    castle: {
-      creatures: [{ type: "unicorn" }],
-      name: "castle",
-      doors: {
-        // right: { image: "doorYellow", open: false }
-      }
-    },
-    waterfall: {
-      name: "waterfall",
-      doors: {
-        right: { open: false },
-        bottom: { open: true }
-      }
-    },
-    bees: {
-      name: "bees",
-      items: ["key"],
-      doors: {
-        right: { open: true }
-      }
-    },
-    swamp: {
-      name: "swamp",
-      doors: {
-        right: { open: false },
-        bottom: { open: true }
-      }
-    },
-    home: {
-      name: "home",
-      doors: {
-        // right: { open: false }
-      }
-    },
-    lake: {
-      name: "lake",
-      doors: {
-        right: { open: true }
-      }
-    },
-    barn: {
-      name: "barn",
-      doors: {
-        bottom: { open: true }
-      }
-    },
-    pool: {
-      name: "pool",
-      doors: {
-        right: { open: true },
-        bottom: { open: true }
-      }
-    },
-    hill: {
-      name: "hill",
-      doors: {
-        right: { open: true },
-        bottom: { open: false }
-      }
-    },
-    bog: {
-      creatures: [{ type: "troll" }],
-      name: "bog",
-      doors: {
-        right: { image: "doorGreen", open: false }
-      }
-    },
-    pond: {
-      name: "pond",
-      doors: {
-        right: { image: "doorYellow", open: false },
-        bottom: { open: true }
-      }
-    },
-
-    coop: {
-      name: "coop",
-      doors: {
-        right: { open: false },
-        bottom: { open: false }
-      }
-    },
-    cave: {
-      name: "cave",
-      doors: {
-        bottom: { open: true }
-      }
-    },
-    slide: {
-      name: "slide",
-      doors: {
-        right: { open: true },
-        bottom: { open: false }
-      }
-    },
-    swing: {
-      name: "swing",
-      doors: {
-        right: { open: true }
-      }
-    }
-  }
-
-  return scenes
-}
-
-const scenes = generateScenes()
-
-let locationsMaps = [
-  {
-    startScene: scenes.home,
-    endScene: scenes.tree,
-    grid: [
-      [{}, {}, {}, {}],
-      [{}, scenes.bog, {}, {}, {}],
-      [scenes.home, scenes.pond, scenes.bees, scenes.stump, scenes.tree],
-      [{}, {}, {}, {}],
-      [{}, {}, {}, {}]
-    ]
-  },
-  {
-    startScene: scenes.home,
-    endScene: scenes.tree,
-    grid: [
-      [{}, {}, {}, {}],
-      [{}, {}, {}, {}],
-      [scenes.home, scenes.bog, scenes.tree, {}],
-      [{}, {}, {}, {}]
-    ]
-  },
-  {
-    startScene: scenes.home,
-    endScene: scenes.tree,
-    grid: [
-      [{}, {}, {}, {}],
-      [{}, {}, {}, {}],
-      [scenes.home, scenes.lake, scenes.tree, {}, {}],
-      [{}, {}, {}, {}]
-    ]
-  }
-]
-
-localStateStore.setLocationsMaps(locationsMaps)
-
-// create placeholders for empty rows
-// locationsMap = locationsMap.map(row => {
-//   return row || [{}, {}, {}, {}];
-// });
+console.log("maps", maps) // zzz
+console.log("maps.test", maps.test) // zzz
 
 const locationsFromImages = Object.keys(images.locations)
 const creaturesFromImages = Object.keys(images.creatures)
@@ -371,7 +208,6 @@ const generateYou = ({ you = {} }) => {
   const modifiedYou = Object.assign(defaultYou, you)
 
   localStateStore.setYou(modifiedYou)
-  console.log("modifiedYou", modifiedYou) // zzz
 }
 
 generateYou({})

@@ -37,8 +37,10 @@ class LocalStateStore {
     this.showWorldBuilder = showWorldBuilder
   }
 
-  getLocationsMaps = () => this.locationsMaps
+  // getLocationsMaps = () => this.locationsMaps
   setLocationsMaps = locationsMaps => {
+    console.log("locationsMaps - set", locationsMaps) // zzz
+
     this.locationsMaps = locationsMaps
   }
 
