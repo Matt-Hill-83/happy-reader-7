@@ -1,14 +1,14 @@
-import { observer } from "mobx-react"
-import { toJS } from "mobx"
 import React, { Component } from "react"
 
 import css from "./Head.module.scss"
+import { observer } from "mobx-react"
+import { toJS } from "mobx"
 
 class Head extends Component {
   render() {
     const {
       name,
-      head: { image, mood },
+      head: { image, mood, isEditMode },
       className = ""
     } = this.props
 
@@ -26,7 +26,7 @@ class Head extends Component {
           src={image}
           alt={`${"mood"}-image`}
         />
-        <span className={css.moodLabel}>{mood}</span>
+        {isEditMode && <span className={css.moodLabel}>{mood}</span>}
       </div>
     )
   }
