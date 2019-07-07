@@ -1,36 +1,33 @@
-import React from "react";
-import { observer } from "mobx-react";
-import { toJS } from "mobx";
-import Images from "../../images/images.js";
+import { Button, Icon, Position, Tooltip } from "@blueprintjs/core"
 // import _get from "lodash.get";
 import {
-  TextField,
-  // Button,
   FormControl,
   InputLabel,
-  Select,
+  MenuItem,
   OutlinedInput,
-  MenuItem
-} from "@material-ui/core";
+  Select,
+  TextField
+} from "@material-ui/core"
 
-import { IconNames } from "@blueprintjs/icons";
-import { Button, Icon, Position, Tooltip } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons"
+import Images from "../../images/images.js"
+import React from "react"
+import Utils from "../../Utils/Utils.js"
+import css from "./MiniLocation.module.scss"
+import myWords from "../../Models/words.js"
+import { observer } from "mobx-react"
+import { toJS } from "mobx"
 
-import Utils from "../../Utils/Utils.js";
-import myWords from "../../Models/words.js";
-
-import css from "./MiniLocation.module.scss";
-
-const { words, wordTypes } = myWords;
+const { words, wordTypes } = myWords
 
 const youCreatureOptions = Utils.getWordsByType({
   words: words,
   type: wordTypes.creature,
   returnName: true
-});
+})
 
-const youCreatureDefault = youCreatureOptions[3];
-const youNameDefault = "Dobby";
+const youCreatureDefault = youCreatureOptions[3]
+const youNameDefault = "Dobby"
 
 class MiniLocation extends React.Component {
   defaultDoorIsOpen = {
@@ -38,35 +35,35 @@ class MiniLocation extends React.Component {
     right: { image: "doorGreen", open: false },
     top: { image: "doorGreen", open: true },
     bottom: { image: "doorGreen", open: true }
-  };
+  }
 
   changeDoor = ({ event }) => {
     this.setState({
       youCreature: event.target.value,
       name: event.target.name
-    });
+    })
 
-    console.log("event.target.name", event.target.name); // zzz
-    console.log("event.target.value", event.target.value); // zzz
-  };
+    console.log("event.target.name", event.target.name) // zzz
+    console.log("event.target.value", event.target.value) // zzz
+  }
 
   async componentWillMount() {
     const {
       location: { doors }
-    } = this.props;
+    } = this.props
 
     if (doors) {
-      this.setState({ doors });
+      this.setState({ doors })
     }
   }
 
   componentWillReceiveProps(newProps) {
     const {
       location: { doors }
-    } = newProps;
+    } = newProps
 
     if (doors) {
-      this.setState({ doors });
+      this.setState({ doors })
     }
   }
 
@@ -74,19 +71,19 @@ class MiniLocation extends React.Component {
     doors: this.defaultDoorIsOpen,
     youName: youNameDefault,
     youCreature: youCreatureDefault
-  };
+  }
 
   onButtonClick = ({ position }) => {
-    const doors = this.state.doors;
+    const doors = this.state.doors
 
-    doors[position]["open"] = !doors[position]["open"];
-    this.setState({ doors });
-  };
+    doors[position]["open"] = !doors[position]["open"]
+    this.setState({ doors })
+  }
 
   createDoorPickerOptions = () => {
-    const doors = ["doorYellow", "door", "doorGreen"];
+    const doors = ["doorYellow", "door", "doorGreen"]
     const renderedMenuItems = doors.map((door, index) => {
-      const doorImage = Images.doors[door];
+      const doorImage = Images.doors[door]
       return (
         <MenuItem key={index} value={door}>
           <div className={css.doorPickerItem}>
@@ -94,15 +91,15 @@ class MiniLocation extends React.Component {
           </div>
           {/* {door && door.toUpperCase()} */}
         </MenuItem>
-      );
-    });
+      )
+    })
 
-    return renderedMenuItems;
-  };
+    return renderedMenuItems
+  }
 
   renderButton = ({ position, className, defaultDoorImage }) => {
-    let hasDoor = false;
-    let renderedDoorImage;
+    let hasDoor = false
+    let renderedDoorImage
 
     // const doors = [
     //   {
@@ -112,22 +109,22 @@ class MiniLocation extends React.Component {
     // ];
 
     const doorImage =
-      this.state.doors[position] && this.state.doors[position]["image"];
+      this.state.doors[position] && this.state.doors[position]["image"]
 
     const doorIsOpen =
-      this.state.doors[position] && this.state.doors[position]["open"];
+      this.state.doors[position] && this.state.doors[position]["open"]
 
     if (position === "bottom" || position === "right") {
-      hasDoor = this.state.doors[position] !== undefined;
+      hasDoor = this.state.doors[position] !== undefined
 
       if (hasDoor) {
         renderedDoorImage = doorImage
           ? Images.doors[doorImage]
-          : defaultDoorImage;
+          : defaultDoorImage
       }
     }
 
-    const defaultDoorName = "door";
+    const defaultDoorName = "door"
 
     return (
       <div className={`${className} ${css.doorPickerContainer}`}>
@@ -149,7 +146,7 @@ class MiniLocation extends React.Component {
             className={css.doorPickerDropdown}
             value={defaultDoorName}
             onChange={event => {
-              this.changeDoor({ event });
+              this.changeDoor({ event })
             }}
             input={<OutlinedInput id="outlined-age-simple" />}
           >
@@ -157,15 +154,15 @@ class MiniLocation extends React.Component {
           </Select>
         </FormControl>
       </div>
-    );
-  };
+    )
+  }
 
   renderCharacters = ({ isActive, creatures }) => {
     const renderedCharacters = creatures.map(creature => {
-      const creatureType = creature && creature.type;
-      // console.log("creature - mini", toJS(creature)); // zzz
+      const creatureType = creature && creature.type
+      console.log("creature - mini", toJS(creature)) // zzz
 
-      const image = Images.creatures[creatureType] || null;
+      const image = Images.creatures[creatureType] || null
 
       const friend = (
         <img
@@ -173,42 +170,40 @@ class MiniLocation extends React.Component {
           src={image}
           alt={creatureType}
         />
-      );
+      )
 
-      return friend;
-    });
+      return friend
+    })
 
     if (isActive) {
-      const you = this.renderYouMini();
-      renderedCharacters.unshift(you);
+      const you = this.renderYouMini()
+      renderedCharacters.unshift(you)
     }
 
-    return renderedCharacters;
-  };
+    return renderedCharacters
+  }
 
   render() {
-    const { location, isActive, className, showLabel = true, id } = this.props;
+    const { location, isActive, className, showLabel = true, id } = this.props
 
     // const charJs = toJS(creatures);
 
-    const { items = [], name: locationName, creatures = [] } = location;
+    const { items = [], name: locationName, creatures = [] } = location
 
-    const localClass = isActive ? css.activeClass : "";
+    const localClass = isActive ? css.activeClass : ""
 
-    const locationImage = Images.locations[locationName];
+    const locationImage = Images.locations[locationName]
 
-    const rockImage = Images.backgrounds["rock"];
-    const defaultDoorImage = Images.backgrounds["door"];
+    const rockImage = Images.backgrounds["rock"]
+    const defaultDoorImage = Images.backgrounds["door"]
 
     const renderedItems = items.map(item => {
-      const renderedItem = Images.items[item];
-      return (
-        <img className={css.itemImage} src={renderedItem} alt={"imagex"} />
-      );
-    });
+      const renderedItem = Images.items[item]
+      return <img className={css.itemImage} src={renderedItem} alt={"imagex"} />
+    })
 
     if (!locationName) {
-      return <div className={`${css.main} ${className} ${localClass}`} />;
+      return <div className={`${css.main} ${className} ${localClass}`} />
     }
 
     return (
@@ -246,8 +241,8 @@ class MiniLocation extends React.Component {
         </div>
         {showLabel && <span className={css.locationTitle}>{locationName}</span>}
       </div>
-    );
+    )
   }
 }
 
-export default observer(MiniLocation);
+export default observer(MiniLocation)
