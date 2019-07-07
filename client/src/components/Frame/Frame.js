@@ -19,14 +19,12 @@ class Frame extends Component {
 
   deleteFrame = () => {
     const { deleteFrame } = this.props
-    console.log("delete frame") // zzz
 
     deleteFrame && deleteFrame({ frame: "id" })
   }
 
   cloneFrame = () => {
     const { cloneFrame } = this.props
-    console.log("delete frame") // zzz
 
     cloneFrame && cloneFrame({ frame: "id" })
   }
@@ -101,11 +99,8 @@ class Frame extends Component {
   }
 
   renderFrame = ({ allCharacters = [] }) => {
-    console.log("this.props", this.props) // zzz
-
     const { sceneToEdit, frame } = this.props
     const { story, faces } = frame
-    console.log("frame", frame) // zzz
 
     const backgroundImage = Images.backgrounds["hill01"]
     const locationImage = Images.locations[sceneToEdit.name]

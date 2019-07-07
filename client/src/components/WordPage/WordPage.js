@@ -64,20 +64,11 @@ class WordPage extends React.Component {
       return null
     }
 
-    // TODO = generate narrative is breaking after dialog is finished.
-    // TODO = generate narrative is breaking after dialog is finished.
-    // TODO = generate narrative is breaking after dialog is finished.
-    // TODO = generate narrative is breaking after dialog is finished.
     const myFrameSet = frameSets[0].data
-
     const { activeScene, frameIndex } = this.state
 
     const isLastFrame = frameIndex === myFrameSet.frames.length - 1
-
     const frame = myFrameSet.frames[frameIndex]
-
-    console.log("frame", frame) // zzz
-    console.log("isLastFrame", isLastFrame) // zzz
 
     return (
       <div className={css.textPage}>
