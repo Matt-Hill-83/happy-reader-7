@@ -194,7 +194,7 @@ class FrameBuilder extends Component {
         dialog: [
           { character: "liz", text: "Liz! Liz!!" },
           { character: "kat", text: "Hi Kat." },
-          { character: "liz", text: "Do you want to play?" },
+          { character: "liz", text: "Can you play?" },
           { character: "kat", text: "No, I can not play." },
           { character: "kat", text: "I lost Piggy!." },
           { character: "liz", text: "You lost Piggy?" },

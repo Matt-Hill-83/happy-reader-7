@@ -4,143 +4,143 @@ import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js"
 import { maps } from "../Stores/InitStores.js"
 import myWords from "../Models/words.js"
 
-const { wordTypes } = myWords
+// const { wordTypes } = myWords
 
 const homeLocation = "home"
 
-const generateMission = () => {
-  const missionItem = Utils.getRandomItemByTypeAndUse({
-    type: wordTypes.vehicle
-  })
+// const generateMission = () => {
+//   const missionItem = Utils.getRandomItemByTypeAndUse({
+//     type: wordTypes.vehicle
+//   })
 
-  const missionItemStartLocation = Utils.getRandomItemByTypeAndUse({
-    type: wordTypes.location
-  })
+//   const missionItemStartLocation = Utils.getRandomItemByTypeAndUse({
+//     type: wordTypes.location
+//   })
 
-  const missionItemEndLocation = Utils.getRandomItemByTypeAndUse({
-    type: wordTypes.location
-  })
+//   const missionItemEndLocation = Utils.getRandomItemByTypeAndUse({
+//     type: wordTypes.location
+//   })
 
-  const missionItemRecipientType = Utils.getRandomItemByTypeAndUse({
-    type: wordTypes.creature
-  })
+//   const missionItemRecipientType = Utils.getRandomItemByTypeAndUse({
+//     type: wordTypes.creature
+//   })
 
-  const missionItemRecipientName = Utils.getRandomItemByTypeAndUse({
-    type: wordTypes.name
-  })
+//   const missionItemRecipientName = Utils.getRandomItemByTypeAndUse({
+//     type: wordTypes.name
+//   })
 
-  return {
-    item: {
-      name: missionItem,
-      startLocation: missionItemStartLocation,
-      endLocation: missionItemEndLocation,
-      recipient: {
-        type: missionItemRecipientType,
-        name: missionItemRecipientName
-      }
-    }
-  }
-}
+//   return {
+//     item: {
+//       name: missionItem,
+//       startLocation: missionItemStartLocation,
+//       endLocation: missionItemEndLocation,
+//       recipient: {
+//         type: missionItemRecipientType,
+//         name: missionItemRecipientName
+//       }
+//     }
+//   }
+// }
 
-const generateNewFriend = () => {
-  const type = Utils.getRandomItemByTypeAndUse({
-    type: wordTypes.creature
-  })
+// const generateNewFriend = () => {
+//   const type = Utils.getRandomItemByTypeAndUse({
+//     type: wordTypes.creature
+//   })
 
-  const name = Utils.getRandomItemByTypeAndUse({
-    type: wordTypes.name
-  })
+//   const name = Utils.getRandomItemByTypeAndUse({
+//     type: wordTypes.name
+//   })
 
-  return {
-    type,
-    name,
-    mission: generateMission()
-  }
-}
+//   return {
+//     type,
+//     name,
+//     mission: generateMission()
+//   }
+// }
 
-// This cannot be chosen for the next scene.
-const generateStartNarrative = ({ you }) => {
-  return {
-    story: [
-      [
-        `You are $-{you.name}.`,
-        `You are a $-{you.creature}.`,
-        `You live in the $-{you.homeLocation}.`,
-        `You are sooooo happy.`
-      ]
+// // This cannot be chosen for the next scene.
+// const generateStartNarrative = ({ you }) => {
+//   return {
+//     story: [
+//       [
+//         `You are $-{you.name}.`,
+//         `You are a $-{you.creature}.`,
+//         `You live in the $-{you.homeLocation}.`,
+//         `You are sooooo happy.`
+//       ]
 
-      // [
-      //   `${you.mission.item.recipient.name} is a ${
-      //     you.mission.item.recipient.type
-      //   }.`,
-      //   `${you.mission.item.recipient.name} is at the ${
-      //     you.mission.item.endLocation
-      //   }.`,
-      //   `${you.mission.item.recipient.name} lost her ${you.mission.item.name}.`,
-      //   `${you.mission.item.recipient.name} is soooo sad.`
-      // ]
-    ]
-    // mission: [
-    //   `Go to the ${you.mission.item.startLocation}`,
-    //   `Find the ${you.mission.item.name}.`,
+//       // [
+//       //   `${you.mission.item.recipient.name} is a ${
+//       //     you.mission.item.recipient.type
+//       //   }.`,
+//       //   `${you.mission.item.recipient.name} is at the ${
+//       //     you.mission.item.endLocation
+//       //   }.`,
+//       //   `${you.mission.item.recipient.name} lost her ${you.mission.item.name}.`,
+//       //   `${you.mission.item.recipient.name} is soooo sad.`
+//       // ]
+//     ]
+//     // mission: [
+//     //   `Go to the ${you.mission.item.startLocation}`,
+//     //   `Find the ${you.mission.item.name}.`,
 
-    //   `Bring the ${you.mission.item.name} to the ${
-    //     you.mission.item.endLocation
-    //   }.`,
+//     //   `Bring the ${you.mission.item.name} to the ${
+//     //     you.mission.item.endLocation
+//     //   }.`,
 
-    //   `Give the ${you.mission.item.name} to ${you.mission.item.recipient.name}.`
-    // ],
-    // proposition: [`Where do you go now?`],
-  }
-}
+//     //   `Give the ${you.mission.item.name} to ${you.mission.item.recipient.name}.`
+//     // ],
+//     // proposition: [`Where do you go now?`],
+//   }
+// }
 
-const generateNarrative1 = ({ you, activeScene }) => {
-  const { name, creatures, items } = activeScene
+// const generateNarrative1 = ({ you, activeScene }) => {
+//   const { name, creatures, items } = activeScene
 
-  const creature = creatures && creatures.length > 0 && creatures[0]
-  const item = items && items.length > 0 && items[0]
+//   const creature = creatures && creatures.length > 0 && creatures[0]
+//   const item = items && items.length > 0 && items[0]
 
-  item && you.items.push(item)
+//   item && you.items.push(item)
 
-  let creatureDialog = []
-  let itemDialog = []
-  if (creature && creature.type) {
-    creatureDialog = [
-      `You see a ${creature.type}.`,
-      `You say, "Hello ${creature.type}."`,
-      `"My name is ${you.name}."`,
-      `The ${creature.type} says:`,
-      `My name is ${creature.name}."`
-    ]
-  }
+//   let creatureDialog = []
+//   let itemDialog = []
+//   if (creature && creature.type) {
+//     creatureDialog = [
+//       `You see a ${creature.type}.`,
+//       `You say, "Hello ${creature.type}."`,
+//       `"My name is ${you.name}."`,
+//       `The ${creature.type} says:`,
+//       `My name is ${creature.name}."`
+//     ]
+//   }
 
-  if (item) {
-    itemDialog = [`You see a ${item}.`, `You get the ${item}.`]
-  }
+//   if (item) {
+//     itemDialog = [`You see a ${item}.`, `You get the ${item}.`]
+//   }
 
-  return {
-    story: [
-      [`You go to the ${name}.`, ...creatureDialog, ...itemDialog]
-      // [
-      //   `The ${creature.type} says,`,
-      //   `"Hello ${you.name}."`,
-      //   `"My name is ${creature.name}."`,
-      //   `"I am sooooooo sad."`,
-      //   `The ${creature.type} starts to cry.`
-      // ]
-      // [
-      //   `The ${creature.type} says,`,
+//   return {
+//     story: [
+//       [`You go to the ${name}.`, ...creatureDialog, ...itemDialog]
+//       // [
+//       //   `The ${creature.type} says,`,
+//       //   `"Hello ${you.name}."`,
+//       //   `"My name is ${creature.name}."`,
+//       //   `"I am sooooooo sad."`,
+//       //   `The ${creature.type} starts to cry.`
+//       // ]
+//       // [
+//       //   `The ${creature.type} says,`,
 
-      //   `"Can you help me?"`,
-      //   `"I need to go to the ${creature.mission.item.startLocation}`,
-      //   `to get a  ${creature.mission.item.name}."`,
-      //   `"Will you go with me?"`
-      // ]
-    ]
-  }
-}
+//       //   `"Can you help me?"`,
+//       //   `"I need to go to the ${creature.mission.item.startLocation}`,
+//       //   `to get a  ${creature.mission.item.name}."`,
+//       //   `"Will you go with me?"`
+//       // ]
+//     ]
+//   }
+// }
 
-const narrativeGenerators = [generateNarrative1]
+// const narrativeGenerators = [generateNarrative1]
 
 const startScene = {
   name: homeLocation
@@ -185,7 +185,7 @@ const allItems = itemsFromImages.map(type => {
 const generatePlot = () => {
   const plot = {
     activeScene: startScene,
-    narrativeGenerators,
+    // narrativeGenerators,
     allScenes,
     allItems
   }
@@ -197,9 +197,9 @@ const generateYou = ({ you = {} }) => {
   const defaultYou = {
     name: yourName,
     creature: yourName,
-    homeLocation: homeLocation,
-    vehicle: "scooter",
-    mission: generateMission(),
+    // homeLocation: homeLocation,
+    // vehicle: "scooter",
+    // mission: generateMission(),
     friends: [],
     pet: { type: "dog", name: "Doggy", withMe: true },
     items: [],
