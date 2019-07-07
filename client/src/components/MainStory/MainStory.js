@@ -15,7 +15,7 @@ import PicturePage from "../PicturePage/PicturePage"
 import React from "react"
 import Utils from "../../Utils/Utils.js"
 import css from "./MainStory.module.scss"
-import { frameSetStore } from "../../Stores/FrameSetStore"
+// import { frameSetStore } from "../../Stores/FrameSetStore"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import { maps } from "../../Stores/InitStores.js"
 import mySentences from "../../Models/sentences.js"
@@ -34,6 +34,8 @@ class MainStory extends React.Component {
 
   async componentWillMount() {
     console.log("mySentences", mySentences) // zzz
+    mySentences.generateYou({})
+    mySentences.generatePlot({})
 
     localStateStore.setsmallMap(false)
     if (this.state.showIntro) {

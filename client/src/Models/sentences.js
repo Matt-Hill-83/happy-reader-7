@@ -210,7 +210,7 @@ const generateYou = ({ you = {} }) => {
   localStateStore.setYou(modifiedYou)
 }
 
-generateYou({})
-generatePlot({})
+// generateYou({})
+// generatePlot({})
 
 export default { generatePlot, generateYou }
