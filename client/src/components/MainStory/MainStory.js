@@ -48,7 +48,7 @@ class MainStory extends React.Component {
 
   onExitIntro = async ({ you }) => {
     maps.fetch().then(({ docs }) => {
-      this.setState({ test: "got data" })
+      // this.setState({ test: "got data" })
 
       const savedMaps = docs.map(map => toJS(map.data))
       localStateStore.setLocationsMaps(savedMaps)
@@ -189,7 +189,8 @@ class MainStory extends React.Component {
 
   render() {
     const { className } = this.props
-    const { activeScene, pageNum, test } = this.state
+    const { activeScene, pageNum } = this.state
+    // const { activeScene, pageNum, test } = this.state
 
     const index = localStateStore.getActiveLocationsMapIndex()
     console.log("index", index) // zzz
@@ -238,7 +239,6 @@ class MainStory extends React.Component {
     return (
       <div className={`${css.main} ${className}`}>
         {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
-        {test}
         {this.renderWorldPicker()}
         <div className={css.floatingButtons}>
           <div className={css.settingButtons}>

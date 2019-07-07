@@ -169,12 +169,16 @@ class PicturePage extends React.Component {
   }
 
   renderMapPage = ({}) => {
-    const mapImage = Images.backgrounds["map02"]
+    const mapImage = Images.backgrounds["map"]
 
     return (
       <div className={`${css.halfPage} ${css.rightHalf}`}>
         <div className={`${css.mapScroller}`}>
-          <img className={css.backgroundImage} src={mapImage} alt={"imagex"} />
+          <img
+            className={css.backgroundImage}
+            src={mapImage}
+            alt={"bk image"}
+          />
           {this.renderLocationRows()}
         </div>
       </div>

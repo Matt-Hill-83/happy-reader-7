@@ -1,16 +1,16 @@
-import { observer } from "mobx-react"
-import { toJS } from "mobx"
 import React, { Component } from "react"
+
 import Head from "../Head/Head"
 import Images from "../../images/images"
-
 import css from "./Character.module.scss"
+import { observer } from "mobx-react"
+import { toJS } from "mobx"
 
 const girlImages = Images.posableGirls
 
 class Character extends Component {
   render() {
-    const { name, mood } = this.props
+    const { name, mood, isEditMode } = this.props
 
     const images = girlImages.find(girl => girl.name === name)
 
@@ -20,7 +20,11 @@ class Character extends Component {
 
     const head = heads.find(head => head.mood === mood)
 
-    const className = css.headForBody
+    const className = `${css.headForBody} ${isEditMode ? "" : css.noBorder}`
+    console.log("className", className) // zzz
+
+    console.log("isEditMode", isEditMode) // zzz
+
     return (
       <div className={css.girlBodyContainer}>
         <img

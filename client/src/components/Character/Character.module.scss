@@ -24,6 +24,12 @@
   border-radius: 45px;
 }
 
+.noBorder {
+  border: none !important;
+  background: none !important;
+  border-radius: 0px !important;
+}
+
 .bodyLabel {
   @include item-label;
   border: 1px solid blue !important;
@@ -34,10 +40,9 @@
   z-index: 10;
   left: 50%;
   transform: translate(-50%, 25%);
-  /* top: -25%; */
-  bottom: -15px;
-  top: unset;
   width: 72%;
+  bottom: unset;
+  top: -50%;
 }
 
 .moodLabel {

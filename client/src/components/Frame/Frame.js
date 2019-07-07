@@ -99,7 +99,7 @@ class Frame extends Component {
   }
 
   renderFrame = ({ allCharacters = [] }) => {
-    const { sceneToEdit, frame } = this.props
+    const { sceneToEdit, frame, isEditMode } = this.props
     const { story, faces } = frame
 
     const backgroundImage = Images.backgrounds["hill01"]
@@ -112,7 +112,7 @@ class Frame extends Component {
 
       return (
         <div onClick={this.toggleFacePicker}>
-          <Character name={friend} mood={mood} />
+          <Character name={friend} mood={mood} isEditMode={isEditMode} />
         </div>
       )
     })
@@ -130,12 +130,14 @@ class Frame extends Component {
           </div>
           <div className={css.bookImageContainer}>
             <div className={css.narrative}>
-              <Button
-                className={css.xxxtoggleFacePickerButton2}
-                onClick={this.editNarrative}
-              >
-                edit
-              </Button>
+              {isEditMode && (
+                <Button
+                  className={css.xxxtoggleFacePickerButton2}
+                  onClick={this.editNarrative}
+                >
+                  edit
+                </Button>
+              )}
               <WordGroup story={story} className={css.narrativeClass} />
             </div>
             <img className={css.bookImage} src={bookImage} alt={"imagex"} />
