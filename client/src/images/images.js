@@ -48,6 +48,8 @@ import unicorn from "./creatures/unicorn-1.png"
 import wizard from "./creatures/wizard.png"
 import zombie from "./creatures/zombie.png"
 import liz from "./creatures/jan-02-normal.png"
+import end from "./creatures/star.png"
+import start from "./creatures/start.png"
 
 //doors
 import doorGreen from "./doors/doorGreen.png"
@@ -152,6 +154,8 @@ export default {
     monster,
     troll,
     unicorn,
+    end,
+    start,
     wizard,
     zombie,
     liz
