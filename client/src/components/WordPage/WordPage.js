@@ -73,6 +73,9 @@ class WordPage extends React.Component {
       // console.log("fs", toJS(fs)) // zzz
 
       const match = fs.data.title.match(regex)
+      if (!match) {
+        return false
+      }
       // console.log("match", toJS(match)) // zzz
       const map = match[1]
       const scene = match[2]

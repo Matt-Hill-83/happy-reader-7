@@ -49,16 +49,20 @@ class MainStory extends React.Component {
 
     const scenesGrid = JSON.parse(locationsMap.scenesGrid)
 
-    const terminalScene = scenesGrid.flat().find(scene => {
+    const allScenes = scenesGrid.flat()
+    const terminalScene = allScenes.find(scene => {
       if (!scene.creatures) {
         return false
       }
       const creatureTypes = scene.creatures.map(char => char.type)
+      console.log("creatureTypes", toJS(creatureTypes)) // zzz
 
       return creatureTypes.includes(`${start ? "start" : "end"}`)
     })
 
+    // If no start and finish scenes are marked, choose some, so the program doesn't break
     return terminalScene
+    // return terminalScene || start ? allScenes[0] : allScenes[1]
   }
 
   onExitIntro = async ({}) => {
