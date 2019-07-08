@@ -64,8 +64,6 @@ class MainStory extends React.Component {
 
   onExitIntro = async ({}) => {
     const { docs } = await maps.fetch()
-    const test = toJS(docs)
-    const test2 = docs.map(doc => doc.data)
 
     const savedMaps = docs.map(map => toJS(map.data))
     localStateStore.setLocationsMaps(savedMaps)
@@ -77,12 +75,6 @@ class MainStory extends React.Component {
 
   updateActiveScene = ({ activeScene }) => {
     const locationsMap = localStateStore.getActiveLocationsMap()
-
-    console.log("activeScene", toJS(activeScene)) // zzz
-    console.log("locationsMap", toJS(locationsMap)) // zzz
-    const scenesGrid = JSON.parse(locationsMap.scenesGrid)
-
-    console.log("scenesGrid", scenesGrid.flat()) // zzz
 
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false })
