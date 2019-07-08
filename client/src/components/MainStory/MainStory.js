@@ -241,13 +241,19 @@ class MainStory extends React.Component {
         tabIndex={0}
         className={css.newStoryBtn}
         onClick={this.changeCharacter}
+        disabled={true}
       >
         <span> Change Character </span>
       </Button>
     )
 
     const toggleMapButton = (
-      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.toggleMap}>
+      <Button
+        tabIndex={0}
+        className={css.newStoryBtn}
+        onClick={this.toggleMap}
+        disabled={true}
+      >
         <span>Toggle Map</span>
       </Button>
     )
