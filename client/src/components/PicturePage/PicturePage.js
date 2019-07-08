@@ -201,8 +201,8 @@ class PicturePage extends React.Component {
   }
 
   render() {
-    const smallMap = localStateStore.getsmallMap()
-    const storyClass = smallMap ? css.smallMap : ""
+    // const smallMap = localStateStore.getsmallMap()
+    // const storyClass = smallMap ? css.smallMap : ""
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
 
@@ -210,7 +210,8 @@ class PicturePage extends React.Component {
       return <WorldBuilder />
     } else {
       return (
-        <div className={`${css.main} ${storyClass}`}>
+        <div className={`${css.main}`}>
+          {/* <div className={`${css.main} ${storyClass}`}> */}
           {this.renderStoryPage()}
 
           {this.renderMapPage({})}

@@ -24,6 +24,11 @@ body {
 
   [class*="PicturePage_main"] {
     border: 10px solid green !important;
+    flex-direction: column;
+  }
+  [class*="PicturePage_leftHalf"] {
+    border: 10px solid purple !important;
+    width: 100%;
   }
 }
 
