@@ -14,10 +14,10 @@
     width: 84%;
     bottom: 0;
     z-index: 10;
-    background: pink;
+    background: var(--set1-pink-bk);
     left: 50%;
     transform: translateX(-50%);
-    border: 2px solid purple;
+    border: 2px solid var(--set1-purple-brdr);
     border-radius: 9px;
 
     .choiceButton {
@@ -42,7 +42,7 @@
 
   padding-top: 24px;
   height: 100%;
-  border: 3px solid purple;
+  border: 2px solid var(--set1-purple-brdr);
 }
 
 .nextButton {
@@ -54,7 +54,7 @@
 
   height: 50px;
   font-size: 36px !important;
-  background-color: pink !important;
+  background-color: var(--set1-pink-bk) !important;
   color: purple !important;
   font-weight: bold !important;
 }
