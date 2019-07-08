@@ -156,8 +156,6 @@ class Frame extends Component {
               className={`${css.backgroundGrassImage} ${
                 isEditMode ? css.isEditMode : ""
               }`}
-              // isedit={this.isEditMode ? "true" : "false"}
-              // isedit={isEditMode ? "false " : "true"}
               src={backgroundImage}
               alt={`backgroundImage-image`}
             />
