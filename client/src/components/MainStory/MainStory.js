@@ -33,7 +33,6 @@ class MainStory extends React.Component {
   }
 
   async componentWillMount() {
-    // console.log("mySentences", mySentences) // zzz
     mySentences.generateYou({})
     mySentences.generatePlot({})
 
@@ -46,34 +45,66 @@ class MainStory extends React.Component {
     }
   }
 
-  onExitIntro = async ({ you }) => {
-    maps.fetch().then(({ docs }) => {
-      const savedMaps = docs.map(map => toJS(map.data))
-      localStateStore.setLocationsMaps(savedMaps)
+  getTerminalScene = ({ start = true }) => {
+    const locationsMap = localStateStore.getActiveLocationsMap()
 
-      const plot = localStateStore.getPlot()
-      this.updateActiveScene({ activeScene: plot.activeScene })
+    const scenesGrid = JSON.parse(locationsMap.scenesGrid)
+
+    const terminalScene = scenesGrid.flat().find(scene => {
+      if (!scene.creatures) {
+        return false
+      }
+      const creatureTypes = scene.creatures.map(char => char.type)
+
+      return creatureTypes.includes(`${start ? "start" : "end"}`)
     })
+
+    return terminalScene
+  }
+
+  onExitIntro = async ({}) => {
+    const { docs } = await maps.fetch()
+    const test = toJS(docs)
+    const test2 = docs.map(doc => doc.data)
+
+    const savedMaps = docs.map(map => toJS(map.data))
+    localStateStore.setLocationsMaps(savedMaps)
+    const startScene = this.getTerminalScene({ savedMaps })
+    console.log("startScene", startScene) // zzz
+
+    this.updateActiveScene({ activeScene: toJS(startScene) })
   }
 
   updateActiveScene = ({ activeScene }) => {
     const locationsMap = localStateStore.getActiveLocationsMap()
 
+    console.log("activeScene", toJS(activeScene)) // zzz
+    console.log("locationsMap", toJS(locationsMap)) // zzz
+    const scenesGrid = JSON.parse(locationsMap.scenesGrid)
+
+    console.log("scenesGrid", scenesGrid.flat()) // zzz
+
     const activeSceneName = activeScene.name
-    const endSceneName = locationsMap && locationsMap.endScene
+    const endScene = this.getTerminalScene({ start: false })
+    console.log("endScene", endScene) // zzz
+
+    // const endSceneName = locationsMap && locationsMap.endScene
     console.log("activeScene", toJS(activeScene)) // zzz
 
-    if (activeSceneName === endSceneName) {
+    console.log("endScene.name", endScene.name) // zzz
+    console.log("activeSceneName", activeSceneName) // zzz
+
+    if (activeSceneName === endScene.name) {
       this.setState({ showYouWin: true })
     }
 
-    activeScene.neighborNames = this.getNeighbors({ activeScene })
+    activeScene.neighborNames = this.getNeighbors({ activeScene, locationsMap })
 
     this.setState({ activeScene, pageNum: this.state.pageNum + 1 })
   }
 
-  getNeighbors = ({ activeScene }) => {
-    const locationsMap = localStateStore.getActiveLocationsMap()
+  getNeighbors = ({ activeScene, locationsMap }) => {
+    // const locationsMap = localStateStore.getActiveLocationsMap()
     const activeSceneName = activeScene.name
 
     const neighbors = []
@@ -145,14 +176,9 @@ class MainStory extends React.Component {
   closeYouWin = () => {
     this.setState({ showYouWin: false })
     localStateStore.incrementActiveLocationsMapIndex()
-    const locationsMap = localStateStore.getActiveLocationsMap()
+    const startScene = this.getTerminalScene({})
 
-    const scenesGrid = JSON.parse(locationsMap.scenesGrid)
-    const { startScene } = locationsMap
-
-    const nextScene = scenesGrid.flat().find(scene => (scene.name = startScene))
-
-    this.updateActiveScene({ activeScene: nextScene })
+    this.updateActiveScene({ activeScene: startScene })
   }
 
   renderWorldPicker = () => {
@@ -223,7 +249,7 @@ class MainStory extends React.Component {
 
     const toggleMapButton = (
       <Button tabIndex={0} className={css.newStoryBtn} onClick={this.toggleMap}>
-        <span> Toggle Map </span>
+        <span>Toggle Map</span>
       </Button>
     )
 
