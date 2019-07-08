@@ -7,19 +7,19 @@ import React from "react"
 import { UserConfigStore } from "./Stores/UserConfigStore"
 import css from "./App.module.scss"
 import getMuiTheme from "material-ui/styles/getMuiTheme"
-import { useCookies } from "react-cookie"
+// import { useCookies } from "react-cookie"
 
 function App() {
   // Disable accessibility focus
   FocusStyleManager.onlyShowFocusOnTabs()
   const muiTheme = getMuiTheme()
 
-  const [cookies, setCookie] = useCookies(["name"])
-  const newName = Math.floor(Math.random() * 1000 + 1)
+  // const [cookies, setCookie] = useCookies(["name"])
+  // const newName = Math.floor(Math.random() * 1000 + 1)
 
-  if (!cookies.name) {
-    setCookie("name", newName, { path: "/" })
-  }
+  // if (!cookies.name) {
+  //   setCookie("name", newName, { path: "/" })
+  // }
 
   return (
     <MuiThemeProvider muiTheme={muiTheme}>
