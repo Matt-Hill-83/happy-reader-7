@@ -1,0 +1,83 @@
+[debug] [2019-07-08T05:05:27.262Z] ----------------------------------------------------------------------
+[debug] [2019-07-08T05:05:27.264Z] Command:       /Users/matthill/.nvm/versions/node/v8.10.0/bin/node /Users/matthill/.nvm/versions/node/v8.10.0/bin/firebase deploy
+[debug] [2019-07-08T05:05:27.264Z] CLI Version:   6.10.0
+[debug] [2019-07-08T05:05:27.264Z] Platform:      darwin
+[debug] [2019-07-08T05:05:27.264Z] Node Version:  v8.10.0
+[debug] [2019-07-08T05:05:27.265Z] Time:          Sun Jul 07 2019 22:05:27 GMT-0700 (PDT)
+[debug] [2019-07-08T05:05:27.265Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-08T05:05:27.279Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-08T05:05:27.280Z] > authorizing via signed-in user
+[debug] [2019-07-08T05:05:27.280Z] [iam] checking project happy-reader-7 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-07-08T05:05:27.281Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-07-08T05:05:27.282Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-07-08T05:05:27.498Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T05:05:27.515Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/happy-reader-7:testIamPermissions  
+
+[debug] [2019-07-08T05:05:28.244Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T05:05:28.245Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/happy-reader-7  
+ 
+[debug] [2019-07-08T05:05:28.465Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'happy-reader-7'...
+[info] 
+[info] i  deploying firestore, hosting
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-07-08T05:05:28.470Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/happy-reader-7:test  
+
+[debug] [2019-07-08T05:05:29.136Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-07-08T05:05:29.137Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/happy-reader-7/versions  
+
+[debug] [2019-07-08T05:05:30.365Z] <<< HTTP RESPONSE 200
+[info] i  firestore: uploading rules firestore.rules...
+[debug] [2019-07-08T05:05:30.367Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/happy-reader-7/rulesets  
+
+[debug] [2019-07-08T05:05:30.368Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/happy-reader-7/databases/(default)/collectionGroups/-/indexes  
+ 
+[debug] [2019-07-08T05:05:30.980Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T05:05:30.981Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1beta2/projects/happy-reader-7/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false  
+ 
+[debug] [2019-07-08T05:05:30.983Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T05:05:30.983Z] [rules] created ruleset projects/happy-reader-7/rulesets/039ee1fe-9443-4713-a26d-162aa2028f15
+[debug] [2019-07-08T05:05:31.593Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: deployed indexes in firestore.indexes.json successfully
+[info] i  hosting[happy-reader-7]: beginning deploy...
+[info] i  hosting[happy-reader-7]: found 123 files in build
+[debug] [2019-07-08T05:05:31.641Z] [hosting] hash cache [YnVpbGQ] load error: lines is not defined
+[debug] [2019-07-08T05:05:32.668Z] [hosting] hash cache [YnVpbGQ] stored for 123 files
+[debug] [2019-07-08T05:05:32.668Z] [hosting][hash queue][FINAL]
+[debug] [2019-07-08T05:05:32.668Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/happy-reader-7/versions/a97401bc59a39afb:populateFiles  
+ <request body omitted>
+[debug] [2019-07-08T05:05:50.561Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T05:05:50.576Z] [hosting][populate queue][FINAL]
+[debug] [2019-07-08T05:05:50.576Z] [hosting] uploads queued: 14
+[debug] [2019-07-08T05:05:59.558Z] [hosting][upload queue][FINAL]
+[info] ✔  hosting[happy-reader-7]: file upload complete
+[debug] [2019-07-08T05:05:59.559Z] [hosting] deploy completed after 27964ms
+[debug] [2019-07-08T05:05:59.676Z] [rules] releasing cloud.firestore with ruleset projects/happy-reader-7/rulesets/039ee1fe-9443-4713-a26d-162aa2028f15
+[debug] [2019-07-08T05:05:59.677Z] >>> HTTP REQUEST PATCH https://firebaserules.googleapis.com/v1/projects/happy-reader-7/releases/cloud.firestore  
+
+[debug] [2019-07-08T05:06:00.173Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-08T05:06:00.173Z] [rules] updated release projects/happy-reader-7/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore
+[debug] [2019-07-08T05:06:00.174Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "site": "happy-reader-7"
+    },
+    "site": "happy-reader-7",
+    "version": "sites/happy-reader-7/versions/a97401bc59a39afb"
+  }
+]
+[info] i  hosting[happy-reader-7]: finalizing version...
+[debug] [2019-07-08T05:06:00.175Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/happy-reader-7/versions/a97401bc59a39afb?updateMask=status  
+

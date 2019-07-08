@@ -25,7 +25,7 @@ function App() {
     <MuiThemeProvider muiTheme={muiTheme}>
       <div className={`${css.App} `}>
         <MediaQuery minDeviceWidth={1224}>
-          <div className={css.mediaMsg}>You are a desktop</div>
+          {/* <div className={css.mediaMsg}>You are a desktop</div> */}
           {/* set global css vars thru class */}
           <MainStory className={css.desktop} />
           {/* <MainStory className={css.mobile} /> */}
