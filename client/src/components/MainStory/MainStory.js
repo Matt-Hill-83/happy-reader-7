@@ -80,12 +80,6 @@ class MainStory extends React.Component {
     const endScene = this.getTerminalScene({ start: false })
     console.log("endScene", endScene) // zzz
 
-    // const endSceneName = locationsMap && locationsMap.endScene
-    console.log("activeScene", toJS(activeScene)) // zzz
-
-    console.log("endScene.name", endScene.name) // zzz
-    console.log("activeSceneName", activeSceneName) // zzz
-
     if (activeSceneName === endScene.name) {
       this.setState({ showYouWin: true })
     }
@@ -96,7 +90,6 @@ class MainStory extends React.Component {
   }
 
   getNeighbors = ({ activeScene, locationsMap }) => {
-    // const locationsMap = localStateStore.getActiveLocationsMap()
     const activeSceneName = activeScene.name
 
     const neighbors = []
@@ -219,6 +212,9 @@ class MainStory extends React.Component {
       return null
     }
 
+    const { name } = localStateStore.getActiveLocationsMap()
+    console.log("locationsMap - update as", toJS(name)) // zzz
+
     const page = localStateStore.getPage()
 
     const wordPageProps = { activeScene, pageNum }
@@ -228,6 +224,13 @@ class MainStory extends React.Component {
         <IntroPage1 className={css.IntroPage1} onExitIntro={this.onExitIntro} />
       )
     }
+
+    const renderedMapTitle = (
+      <div className={css.mapTitle}>
+        <span>{`map: ${index}  `}</span>
+        <span>{`name: ${name}`}</span>
+      </div>
+    )
 
     const changeCharacterButton = (
       <Button
@@ -260,6 +263,7 @@ class MainStory extends React.Component {
         {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
         {/* {this.renderWorldPicker()} */}
         <div className={css.floatingButtons}>
+          {renderedMapTitle}
           <div className={css.settingButtons}>
             {changeCharacterButton}
             {toggleMapButton}
