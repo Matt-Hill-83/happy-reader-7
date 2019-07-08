@@ -99,8 +99,7 @@ class FrameBuilder extends Component {
             onClick={() => this.setActiveFrameSet({ name })}
             className={css.frameSetName}
           >
-            name - {name}
-            title - {title}
+            {`name - ${name} title -   ${title}`}
           </Button>
           <Button
             icon="cross"

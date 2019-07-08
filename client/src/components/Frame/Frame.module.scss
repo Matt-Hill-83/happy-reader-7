@@ -177,7 +177,12 @@
     display: flex;
     width: 100%;
     height: auto;
-    max-width: 730px;
+    max-width: unset;
+
+    &.isEditMode {
+      // border: 10px solid red !important;
+      max-width: 730px;
+    }
   }
 }
 
@@ -201,10 +206,7 @@
 
 .scene {
   display: flex;
-  // margin-right: 10px;
-  // border: 2px solid var(--set1-purple-brdr);
   position: relative;
-  // border-radius: 5px;
   overflow: hidden;
 }
 

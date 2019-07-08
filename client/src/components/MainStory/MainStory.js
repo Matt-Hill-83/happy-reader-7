@@ -213,11 +213,14 @@ class MainStory extends React.Component {
     }
 
     const { name } = localStateStore.getActiveLocationsMap()
-    console.log("locationsMap - update as", toJS(name)) // zzz
+    const { name: activeSceneName } = activeScene
 
     const page = localStateStore.getPage()
 
     const wordPageProps = { activeScene, pageNum }
+
+    const sceneIndex = localStateStore.getActiveLocationsMapIndex()
+    console.log("sceneIndex", toJS(sceneIndex)) // zzz
 
     if (page === "intro1") {
       return (
@@ -229,6 +232,7 @@ class MainStory extends React.Component {
       <div className={css.mapTitle}>
         <span>{`map: ${index}  `}</span>
         <span>{`name: ${name}`}</span>
+        <div>{`scene: ${activeSceneName}`}</div>
       </div>
     )
 

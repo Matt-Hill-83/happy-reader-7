@@ -99,7 +99,7 @@ class Frame extends Component {
   }
 
   renderFrame = ({ allCharacters = [] }) => {
-    const { sceneToEdit, frame, isEditMode } = this.props
+    const { sceneToEdit, frame, isEditMode = true } = this.props
     const { story, faces } = frame
 
     const backgroundImage = Images.backgrounds["hill01"]
@@ -116,6 +116,7 @@ class Frame extends Component {
         </div>
       )
     })
+    console.log("isEditMode", isEditMode) // zzz
 
     return (
       <div className={css.scene}>
@@ -152,9 +153,13 @@ class Frame extends Component {
 
           <div className={css.backgroundGrass}>
             <img
-              className={`${css.backgroundGrassImage} `}
+              className={`${css.backgroundGrassImage} ${
+                isEditMode ? css.isEditMode : ""
+              }`}
+              // isedit={this.isEditMode ? "true" : "false"}
+              // isedit={isEditMode ? "false " : "true"}
               src={backgroundImage}
-              alt={`${"amber-head"}-image`}
+              alt={`backgroundImage-image`}
             />
           </div>
 

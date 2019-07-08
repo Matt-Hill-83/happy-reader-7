@@ -42,13 +42,12 @@ class PicturePage extends React.Component {
     if (!savedMaps[0]) {
       return null
     }
-    // TODO - get the map associated with the scene (?)
+    // TODO - get the frames map associated with the scene (?)
     // TODO
     // TODO
     // TODO
 
     const scene = savedMaps[0]
-    console.log("scene render loc", scene) // zzz
 
     const scenesGrid = JSON.parse(scene.scenesGrid)
 
