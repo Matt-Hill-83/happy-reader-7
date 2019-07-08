@@ -1,3 +1,7 @@
+import React from "react"
+import { observer } from "mobx-react"
+import { toJS } from "mobx"
+
 import {
   Button,
   Dialog,
@@ -8,14 +12,9 @@ import {
   Position
 } from "@blueprintjs/core"
 
-import { observer } from "mobx-react"
-import { toJS } from "mobx"
-
 import FlashCards from "../FlashCards/FlashCards"
 import IntroPage1 from "../IntroPage1/IntroPage1.js"
 import PicturePage from "../PicturePage/PicturePage"
-import React from "react"
-// import { frameSetStore } from "../../Stores/FrameSetStore"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import { maps } from "../../Stores/InitStores.js"
 import mySentences from "../../Models/sentences.js"
@@ -331,6 +330,7 @@ class MainStory extends React.Component {
           isOpen={this.state.showYouWin}
           content={"test2"}
           isCloseButtonShown={true}
+          className={css.levelCompleteDialog}
         >
           {youWinMessage}
           <Button onClick={this.closeYouWin}>GO</Button>

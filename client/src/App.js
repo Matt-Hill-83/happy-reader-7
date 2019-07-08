@@ -31,14 +31,15 @@ function App() {
           {/* <MainStory className={css.mobile} /> */}
         </MediaQuery>
         <MediaQuery maxDeviceWidth={1224}>
-          <MainStory className={css.mobile} />
           <div className={css.mediaMsg}>You are a tablet or mobile phone</div>
           <MediaQuery orientation="portrait">
+            <MainStory className={css.mobilePortrait} />
             <div className={css.mediaMsg}>
               You are in portrait view. Please Rotate Screen.
             </div>
           </MediaQuery>
           <MediaQuery orientation="landscape">
+            <MainStory className={css.mobileLandscape} />
             <div className={css.mediaMsg}>You are landscape</div>
           </MediaQuery>
         </MediaQuery>

@@ -1,3 +1,5 @@
+@import "../../Styles/mixins.modules.scss";
+
 .main {
   display: flex;
   flex-direction: column;
@@ -36,4 +38,18 @@
   background: var(--color-pink);
   display: flex;
   flex-direction: column;
+}
+
+.levelCompleteDialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red !important;
+
+  font-size: 24px;
+  color: var(--color-blue);
+
+  min-height: 25%;
+  min-width: 40%;
+  @include set-2;
 }

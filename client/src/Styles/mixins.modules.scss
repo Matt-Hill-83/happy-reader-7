@@ -34,3 +34,8 @@
   border: 2px solid var(--set1-purple-brdr);
   background: var(--set1-lav-bk);
 }
+
+@mixin set-2 {
+  border: 2px solid var(--set1-purple-brdr);
+  background: var(--light-pink);
+}

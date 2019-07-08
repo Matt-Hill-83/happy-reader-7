@@ -1,5 +1,6 @@
 @import "./Styles/colors.modules.scss";
 @import "./Styles/sizes.modules.scss";
+@import "./Styles/mixins.modules.scss";
 
 body {
   margin: 0px;
@@ -16,9 +17,20 @@ body {
   --story-font-size: 16px;
 }
 
+.mobilePortrait {
+  border: 10px solid red !important;
+  --window-height: 90vh;
+  --story-font-size: 16px;
+}
+
+.mobilePortrait {
+  border: 10px solid blue !important;
+  --window-height: 360px;
+  --story-font-size: 16px;
+}
+
 .desktop {
   --window-height: 100vh;
-  // --window-height: 1000px;
   --story-font-size: 30px;
   overflow: auto;
 
