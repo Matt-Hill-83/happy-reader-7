@@ -21,6 +21,10 @@ body {
   border: 10px solid red !important;
   --window-height: 90vh;
   --story-font-size: 16px;
+
+  [class*="PicturePage_main"] {
+    border: 10px solid green !important;
+  }
 }
 
 .mobilePortrait {
