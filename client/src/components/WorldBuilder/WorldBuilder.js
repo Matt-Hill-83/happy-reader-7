@@ -351,7 +351,8 @@ class WorldBuilder extends Component {
 
     const newMap = {
       name: "name",
-      scenesGrid: myString
+      scenesGrid: myString,
+      order: 0
       // These should be calculated dynamically, based on where the stars are placed.
       // startScene: "home",
       // endScene: "bog"
