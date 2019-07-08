@@ -7,7 +7,7 @@
   height: 100%;
 
   width: 100%;
-  background: pink;
+  background: var(--color-pink);
   z-index: 10;
   align-items: center;
   margin: auto;
@@ -72,6 +72,5 @@
   position: absolute;
   z-index: 100;
   right: 0px;
-  /* top: 0px; */
   bottom: 0px;
 }

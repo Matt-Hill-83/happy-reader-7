@@ -75,6 +75,7 @@ class MainStory extends React.Component {
 
   updateActiveScene = ({ activeScene }) => {
     const locationsMap = localStateStore.getActiveLocationsMap()
+    console.log("activeScene", toJS(activeScene)) // zzz
 
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false })
