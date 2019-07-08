@@ -9,8 +9,14 @@ class LocalStateStore {
   plot = {}
   locationsMaps = []
   creatures = []
+  locationDetails = {}
   activeLocationsMap = []
   activeLocationsMapIndex = 0
+
+  getLocationDetails = () => this.locationDetails
+  setLocationDetails = locationDetails => {
+    this.locationDetails = locationDetails
+  }
 
   getPage = () => this.page
   setPage = page => {
@@ -76,7 +82,8 @@ decorate(LocalStateStore, {
   plot: observable,
   showWorldBuilder: observable,
   smallMap: observable,
-  you: observable
+  you: observable,
+  locationDetails: observable
 })
 
 const localStateStore = new LocalStateStore()

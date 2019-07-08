@@ -80,6 +80,22 @@ class MainStory extends React.Component {
     const endScene = this.getTerminalScene({ start: false })
     console.log("endScene", endScene) // zzz
 
+    //////////////////////
+    //////////////////////
+    //////////////////////
+
+    const activeLocationsMap = localStateStore.getActiveLocationsMap()
+
+    // todo, move this to where the scene is updated
+    localStateStore.setLocationDetails({
+      mapName: activeLocationsMap.name,
+      sceneName: activeSceneName
+    })
+
+    ////////////////
+    ////////////////
+    ////////////////
+
     if (activeSceneName === endScene.name) {
       this.setState({ showYouWin: true })
     }
@@ -219,9 +235,6 @@ class MainStory extends React.Component {
     }
 
     const activeLocationsMap = localStateStore.getActiveLocationsMap()
-    if (!activeLocationsMap) {
-      // you win!  All done!
-    }
 
     // const { name } = localStateStore.getActiveLocationsMap()
     const { name: activeSceneName } = activeScene
@@ -236,6 +249,12 @@ class MainStory extends React.Component {
         <IntroPage1 className={css.IntroPage1} onExitIntro={this.onExitIntro} />
       )
     }
+
+    // // todo, move this to where the scene is updated
+    // localStateStore.setLocationDetails({
+    //   mapName: activeLocationsMap.name,
+    //   sceneName: activeSceneName
+    // })
 
     const renderedMapTitle = (
       <div className={css.mapTitle}>

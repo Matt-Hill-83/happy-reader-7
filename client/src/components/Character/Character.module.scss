@@ -32,6 +32,13 @@
 
 .bodyLabel {
   @include item-label;
+  position: absolute;
+  border: 1px solid red !important;
+  background: var(--light-pink);
+  border-radius: 3px;
+  padding: 0 3px;
+  top: 2%;
+  left: 2%;
   border: 1px solid blue !important;
   background: var(--light-pink);
   border-radius: 3px;
@@ -41,8 +48,8 @@
   left: 50%;
   transform: translate(-50%, 25%);
   width: 72%;
-  bottom: unset;
-  top: -50%;
+  top: unset;
+  bottom: -15px;
 }
 
 .moodLabel {

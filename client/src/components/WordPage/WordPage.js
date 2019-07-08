@@ -1,12 +1,13 @@
 import { Button } from "@blueprintjs/core"
 import Frame from "../Frame/Frame.js"
 import React from "react"
-// import WordGroup from "../WordGroup/WordGroup.js"
 import _get from "lodash.get"
-import css from "./WordPage.module.scss"
 import { frameSetStore } from "../../Stores/FrameSetStore.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import { observer } from "mobx-react"
+import { toJS } from "mobx"
+
+import css from "./WordPage.module.scss"
 
 class WordPage extends React.Component {
   state = {
@@ -64,13 +65,35 @@ class WordPage extends React.Component {
       return null
     }
 
-    // TODO
-    // TODO
-    // TODO
-    const myFrameSet = frameSets[0].data
+    const locationDetails = localStateStore.getLocationDetails()
+
+    const regex = `(.+)-(.+)`
+
+    const foundFrameSet = frameSets.find(fs => {
+      // console.log("fs", toJS(fs)) // zzz
+
+      const match = fs.data.title.match(regex)
+      // console.log("match", toJS(match)) // zzz
+      const map = match[1]
+      const scene = match[2]
+
+      return (
+        map === locationDetails.mapName && scene === locationDetails.sceneName
+      )
+    })
+
+    console.log("foundFrameSet", toJS(foundFrameSet && foundFrameSet.data)) // zzz
+
+    const myFrameSet = (foundFrameSet && foundFrameSet.data) || { frames: [] }
+    console.log("myFrameSet", toJS(myFrameSet)) // zzz
+
     const { activeScene, frameIndex } = this.state
 
-    const isLastFrame = frameIndex === myFrameSet.frames.length - 1
+    let isLastFrame = frameIndex === myFrameSet.frames.length - 1
+    if (!foundFrameSet) {
+      isLastFrame = true
+    }
+
     const frame = myFrameSet.frames[frameIndex]
 
     return (

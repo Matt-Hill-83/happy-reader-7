@@ -73,7 +73,7 @@ class Frame extends Component {
 
   renderedDialog = ({}) => {
     const { frame } = this.props
-    const { dialog } = frame
+    const dialog = (frame && frame.dialog) || []
 
     const chats =
       dialog &&
@@ -99,8 +99,8 @@ class Frame extends Component {
   }
 
   renderFrame = ({ allCharacters = [] }) => {
-    const { sceneToEdit, frame, isEditMode = true } = this.props
-    const { story, faces } = frame
+    const { sceneToEdit, frame = {}, isEditMode = true } = this.props
+    const { story = [], faces = [] } = frame
 
     const backgroundImage = Images.backgrounds["hill01"]
     const locationImage = Images.locations[sceneToEdit.name]
@@ -168,11 +168,9 @@ class Frame extends Component {
   }
 
   render() {
-    const {
-      frame: { creatures },
-      isEditMode = true
-    } = this.props
+    const { frame, isEditMode = true } = this.props
 
+    const creatures = (frame && frame.creatures) || []
     const { showFacePicker } = this.state
 
     const friendNames = creatures.map(creature => creature.type)
