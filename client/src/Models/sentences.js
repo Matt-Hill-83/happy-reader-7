@@ -160,7 +160,8 @@ const allScenes = locationsFromImages.map(name => {
       right: { open: true },
       bottom: { open: false }
     },
-    creatures: [{ name: testFriend, type: testFriend }]
+    // creatures: [{ name: testFriend, type: testFriend }]
+    creatures: []
   }
 })
 
