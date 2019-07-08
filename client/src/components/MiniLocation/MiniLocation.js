@@ -216,17 +216,19 @@ class MiniLocation extends React.Component {
           <img className={css.rockImage} src={rockImage} alt={"imagex"} />
         </div>
         <div className={css.grassImage} />
-        {this.renderButton({
-          position: "right",
-          className: css.rightDoor,
-          defaultDoorImage: defaultDoorImage
-        })}
+        {false &&
+          this.renderButton({
+            position: "right",
+            className: css.rightDoor,
+            defaultDoorImage: defaultDoorImage
+          })}
 
-        {this.renderButton({
-          position: "bottom",
-          className: css.bottomDoor,
-          defaultDoorImage: defaultDoorImage
-        })}
+        {false &&
+          this.renderButton({
+            position: "bottom",
+            className: css.bottomDoor,
+            defaultDoorImage: defaultDoorImage
+          })}
 
         <div className={css.imagesBox}>
           <img
