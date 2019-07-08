@@ -136,7 +136,7 @@ class Frame extends Component {
                   className={css.xxxtoggleFacePickerButton2}
                   onClick={this.editNarrative}
                 >
-                  edit
+                  Edit
                 </Button>
               )}
               <WordGroup story={story} className={css.narrativeClass} />

@@ -1,28 +1,6 @@
-.test {
-  border: 10px solid red !important;
-  position: fixed;
-  right: 100px;
-  z-index: 50;
-}
+@import "../../Styles/mixins.modules.scss";
 
 .textPage {
-  // display: flex;
-  // flex-direction: column;
-  // position: relative;
-  // // position: fixed;
-  // z-index: 3;
-  // background: var(--light-pink);
-  // /* top: 0.25rem; */
-  // border: 2px solid purple;
-  // border-radius: 10px;
-  // padding: 0.25rem;
-  // min-height: 20%;
-  // width: 99%;
-  // left: 25%;
-  // // max-width: 50%;
-  // width: 100%;
-  // bottom: 3rem;
-
   display: flex;
   flex-direction: column;
   position: relative;
@@ -30,23 +8,31 @@
   .decisionButtonRow {
     display: flex;
     justify-content: space-around;
-    /* bottom: 0px; */
-    /* align-self: flex-end; */
-    /* justify-self: flex-end; */
+
     margin-top: auto;
+    position: absolute;
+    width: 84%;
+    bottom: 0;
+    z-index: 10;
+    background: pink;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid purple;
+    border-radius: 9px;
 
     .choiceButton {
       display: flex;
       align-items: center;
       flex: 1 1;
-      /* height: 56px; */
       font-size: 22px;
       text-transform: capitalize;
       margin: 1px;
-      border: 1px solid red !important;
+      // border: 1px solid red !important;
       font-size: 2.5vh;
       border-radius: 1vh;
       max-width: 275px;
+      min-width: 150px;
+      @include set-1;
     }
   }
 }
