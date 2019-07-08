@@ -27,7 +27,6 @@ class MainStory extends React.Component {
     // showStory: false,
     showStory: true,
     activeScene: undefined,
-    pageNum: 0,
     pages: {},
     showIntro: false
   }
@@ -87,7 +86,7 @@ class MainStory extends React.Component {
 
     activeScene.neighborNames = this.getNeighbors({ activeScene, locationsMap })
 
-    this.setState({ activeScene, pageNum: this.state.pageNum + 1 })
+    this.setState({ activeScene })
   }
 
   getNeighbors = ({ activeScene, locationsMap }) => {
@@ -205,7 +204,7 @@ class MainStory extends React.Component {
 
   render() {
     const { className } = this.props
-    const { activeScene, pageNum } = this.state
+    const { activeScene } = this.state
 
     const index = localStateStore.getActiveLocationsMapIndex()
 
@@ -215,10 +214,8 @@ class MainStory extends React.Component {
 
     const { name } = localStateStore.getActiveLocationsMap()
     const { name: activeSceneName } = activeScene
-
     const page = localStateStore.getPage()
-
-    const wordPageProps = { activeScene, pageNum }
+    const wordPageProps = { activeScene }
 
     const sceneIndex = localStateStore.getActiveLocationsMapIndex()
     console.log("sceneIndex", toJS(sceneIndex)) // zzz
@@ -289,7 +286,6 @@ class MainStory extends React.Component {
                 wordPageProps={wordPageProps}
                 updateActiveScene={this.updateActiveScene}
                 activeScene={activeScene}
-                pageNum={pageNum}
               />
             </div>
           )}

@@ -149,6 +149,7 @@ const creaturesFromImages = Object.keys(images.creatures)
 const itemsFromImages = Object.keys(images.items)
 
 // zzz - this is where you set the friend
+// TODO  move this to the store
 const testFriend = "liz"
 const yourName = "kat"
 

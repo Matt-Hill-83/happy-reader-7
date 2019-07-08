@@ -47,7 +47,8 @@ class PicturePage extends React.Component {
     // TODO
     // TODO
 
-    const scene = savedMaps[0]
+    const sceneIndex = localStateStore.getActiveLocationsMapIndex()
+    const scene = savedMaps[sceneIndex]
 
     const scenesGrid = JSON.parse(scene.scenesGrid)
 
@@ -166,7 +167,6 @@ class PicturePage extends React.Component {
           updateActiveScene={updateActiveScene}
         />
         <div className={css.locationHeader}>{`${activeLocationName}`}</div>
-        <div className={css.pageNumber}>{`Page ${this.props.pageNum}`}</div>
       </div>
     )
   }

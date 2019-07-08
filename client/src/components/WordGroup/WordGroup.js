@@ -1,43 +1,42 @@
-import React from "react";
-import { observer } from "mobx-react";
+import React from "react"
+import { observer } from "mobx-react"
 
-import Sounds from "../../Sounds/Sounds";
+import Sounds from "../../Sounds/Sounds"
 
-import css from "./WordGroup.module.scss";
+import css from "./WordGroup.module.scss"
 
 class WordGroup extends React.Component {
   state = {
     activeScene: undefined,
-    pageNum: 0,
     sound: null
-  };
+  }
 
   async componentWillMount() {
-    const { story } = this.props;
-    this.setState({ story });
+    const { story } = this.props
+    this.setState({ story })
   }
 
   componentWillReceiveProps(newProps) {
-    const { story } = newProps;
-    this.setState({ story });
+    const { story } = newProps
+    this.setState({ story })
   }
 
   playWordSound = (event, { word }) => {
-    word = word.replace(/[.|,|/?]/, "");
-    this.setState({ sound: Sounds[word] });
-  };
+    word = word.replace(/[.|,|/?]/, "")
+    this.setState({ sound: Sounds[word] })
+  }
 
   renderNarrative = () => {
-    const { story } = this.state;
+    const { story } = this.state
 
     const renderedNarrative = story.map((sentence, sentenceIndex) => {
-      const parsedSentence = sentence.split(/\s/);
+      const parsedSentence = sentence.split(/\s/)
 
       const renderedSentence = parsedSentence.map((word, wordIndex) => {
-        const tabIndex = 100 * sentenceIndex + (wordIndex + 1);
+        const tabIndex = 100 * sentenceIndex + (wordIndex + 1)
 
         // TODO - fix autofocus
-        const autofocus = tabIndex === 1 ? { autoFocus: true } : { test: 3 };
+        const autofocus = tabIndex === 1 ? { autoFocus: true } : { test: 3 }
 
         return (
           <span
@@ -51,28 +50,28 @@ class WordGroup extends React.Component {
           >
             {word}
           </span>
-        );
-      });
+        )
+      })
 
       return (
         <span key={sentenceIndex} className={css.sentence}>
           {renderedSentence}
         </span>
-      );
-    });
+      )
+    })
 
-    return <div className={css.narrative}>{renderedNarrative}</div>;
-  };
+    return <div className={css.narrative}>{renderedNarrative}</div>
+  }
 
   render() {
-    const { className } = this.props;
+    const { className } = this.props
 
     return (
       <div className={`${css.main} ${className}`}>
         <audio src={this.state.sound} autoPlay />
         {this.renderNarrative()}
       </div>
-    );
+    )
   }
 }
-export default observer(WordGroup);
+export default observer(WordGroup)

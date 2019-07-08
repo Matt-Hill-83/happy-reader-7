@@ -1,5 +1,4 @@
 .dialog {
-  /* border: 1px solid red !important; */
   position: absolute;
   display: flex;
   left: 50%;
@@ -7,13 +6,12 @@
   z-index: 10;
   flex-direction: column;
   width: 100%;
-  top: 0px;
   padding-top: 3%;
   padding-left: 7%;
-  // height: 31%;
   justify-content: flex-end;
   padding-bottom: 0px;
   padding-right: 7%;
+  bottom: 68%;
 
   .line {
     font-family: monospace;

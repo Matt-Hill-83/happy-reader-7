@@ -91,15 +91,6 @@
     }
   }
 
-  .pageNumber {
-    position: absolute;
-    background: var(--color-blue-light);
-    padding: 0 6px;
-    border-radius: 0 0 3px 0;
-    left: 3px;
-    top: 3px;
-  }
-
   .backgroundImage {
     display: flex;
 
@@ -111,13 +102,14 @@
     position: absolute;
     z-index: 10;
     display: flex;
-    font-size: 24px;
+    font-size: 28px;
     text-transform: capitalize;
     background: var(--color-pink);
     border-radius: 4px;
     padding: 0 6px;
-    right: 3px;
-    top: 3px;
+    top: 0.5%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .characterImageMini {
