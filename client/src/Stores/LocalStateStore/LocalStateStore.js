@@ -57,6 +57,11 @@ class LocalStateStore {
     this.activeLocationsMapIndex = activeLocationsMapIndex
   }
 
+  isLastMap = () => {
+    const numLocations = this.locationsMaps.length
+    return this.activeLocationsMapIndex === numLocations - 1
+  }
+
   addNewLocationsMap = newLocationsMap => {
     this.locationsMaps.push(newLocationsMap)
   }

@@ -8,19 +8,19 @@ import {
   Position
 } from "@blueprintjs/core"
 
-// import MainHeader from "../MainHeader/MainHeader.js";
+import { observer } from "mobx-react"
+import { toJS } from "mobx"
+
 import FlashCards from "../FlashCards/FlashCards"
 import IntroPage1 from "../IntroPage1/IntroPage1.js"
 import PicturePage from "../PicturePage/PicturePage"
 import React from "react"
-import Utils from "../../Utils/Utils.js"
-import css from "./MainStory.module.scss"
 // import { frameSetStore } from "../../Stores/FrameSetStore"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import { maps } from "../../Stores/InitStores.js"
 import mySentences from "../../Models/sentences.js"
-import { observer } from "mobx-react"
-import { toJS } from "mobx"
+
+import css from "./MainStory.module.scss"
 
 class MainStory extends React.Component {
   state = {
@@ -160,10 +160,14 @@ class MainStory extends React.Component {
 
   closeYouWin = () => {
     this.setState({ showYouWin: false })
-    localStateStore.incrementActiveLocationsMapIndex()
-    const startScene = this.getTerminalScene({})
+    const isLastMap = localStateStore.isLastMap()
 
-    this.updateActiveScene({ activeScene: startScene })
+    if (!isLastMap) {
+      localStateStore.incrementActiveLocationsMapIndex()
+      const startScene = this.getTerminalScene({})
+
+      this.updateActiveScene({ activeScene: startScene })
+    }
   }
 
   renderWorldPicker = () => {
@@ -206,13 +210,20 @@ class MainStory extends React.Component {
     const { className } = this.props
     const { activeScene } = this.state
 
+    console.log("activeScene", toJS(activeScene)) // zzz
+
     const index = localStateStore.getActiveLocationsMapIndex()
 
     if (!activeScene) {
       return null
     }
 
-    const { name } = localStateStore.getActiveLocationsMap()
+    const activeLocationsMap = localStateStore.getActiveLocationsMap()
+    if (!activeLocationsMap) {
+      // you win!  All done!
+    }
+
+    // const { name } = localStateStore.getActiveLocationsMap()
     const { name: activeSceneName } = activeScene
     const page = localStateStore.getPage()
     const wordPageProps = { activeScene }
@@ -229,7 +240,7 @@ class MainStory extends React.Component {
     const renderedMapTitle = (
       <div className={css.mapTitle}>
         <span>{`map: ${index}  `}</span>
-        <span>{`name: ${name}`}</span>
+        <span>{`name: ${activeLocationsMap.name}`}</span>
         <div>{`scene: ${activeSceneName}`}</div>
       </div>
     )
@@ -266,15 +277,18 @@ class MainStory extends React.Component {
       </Button>
     )
 
+    const isLastMap = localStateStore.isLastMap()
+
+    const youWinMessage = isLastMap ? "You Win!" : "Good Job!"
+
     return (
       <div className={`${css.main} ${className}`}>
-        {/* <MainHeader toggleFlashCards={this.toggleFlashCards} /> */}
         {/* {this.renderWorldPicker()} */}
         <div className={css.floatingButtons}>
           {renderedMapTitle}
           <div className={css.settingButtons}>
-            {changeCharacterButton}
-            {toggleMapButton}
+            {/* {changeCharacterButton} */}
+            {/* {toggleMapButton} */}
             {toggleWorldBuilderButton}
           </div>
         </div>
@@ -295,7 +309,7 @@ class MainStory extends React.Component {
           content={"test2"}
           isCloseButtonShown={true}
         >
-          You Win!!!
+          {youWinMessage}
           <Button onClick={this.closeYouWin}>GO</Button>
         </Dialog>
       </div>
