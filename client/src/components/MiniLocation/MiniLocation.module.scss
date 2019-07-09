@@ -167,6 +167,7 @@
 .activeClass {
   :global {
     [class*="MiniLocation_grassImage"] {
+      border: 10px solid red !important;
     }
   }
 }

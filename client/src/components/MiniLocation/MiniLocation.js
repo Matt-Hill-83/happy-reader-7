@@ -37,6 +37,21 @@ class MiniLocation extends React.Component {
     bottom: { image: "doorGreen", open: true }
   }
 
+  renderYouMini = () => {
+    const you = localStateStore.getYou()
+    console.log("you", toJS(you)) // zzz
+
+    const youImage = you.creature
+
+    return (
+      <img
+        className={`${css.characterImageMini} ${css.characterYouMini}`}
+        src={Images.creatures[youImage]}
+        alt={youImage}
+      />
+    )
+  }
+
   changeDoor = ({ event }) => {
     this.setState({
       youCreature: event.target.value,
@@ -177,6 +192,8 @@ class MiniLocation extends React.Component {
       return friend
     })
 
+    console.log("isActive", isActive) // zzz
+
     if (isActive) {
       const you = this.renderYouMini()
       renderedCharacters.unshift(you)
@@ -205,6 +222,11 @@ class MiniLocation extends React.Component {
     if (!locationName) {
       return <div className={`${css.main} ${className} ${localClass}`} />
     }
+
+    // const { activeScene } = this.props
+    // const { name: locationName, creatures = [] } = location
+
+    // const isActive = locationName === activeScene.name
 
     return (
       <div
@@ -239,7 +261,7 @@ class MiniLocation extends React.Component {
         </div>
         {renderedItems || null}
         <div className={css.characters}>
-          {this.renderCharacters({ creatures })}
+          {this.renderCharacters({ creatures, isActive })}
         </div>
         {showLabel && <span className={css.locationTitle}>{locationName}</span>}
       </div>

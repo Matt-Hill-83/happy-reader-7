@@ -63,19 +63,6 @@ class PicturePage extends React.Component {
     return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>
   }
 
-  getLocationsForDragger = () => {
-    const plot = localStateStore.getPlot()
-
-    return plot.allScenes.map((location, colIndex) => {
-      return {
-        id: `location-${colIndex}`,
-        creatures: [],
-        // This should be rendered in the WorldBuilder component, based on what creatures have been added.
-        content: this.renderMiniLocation({ location })
-      }
-    })
-  }
-
   renderCharacters = ({ isActive, creatures }) => {
     const creatureType = creatures.length > 0 && creatures[0].type
 
