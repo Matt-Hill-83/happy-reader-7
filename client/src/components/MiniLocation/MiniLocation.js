@@ -9,7 +9,7 @@ import {
   TextField
 } from "@material-ui/core"
 
-import { IconNames } from "@blueprintjs/icons"
+// import { IconNames } from "@blueprintjs/icons"
 import Images from "../../images/images.js"
 import React from "react"
 import Utils from "../../Utils/Utils.js"
@@ -17,6 +17,7 @@ import css from "./MiniLocation.module.scss"
 import myWords from "../../Models/words.js"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 
 const { words, wordTypes } = myWords
 
