@@ -304,7 +304,7 @@ class MainStory extends React.Component {
         <div className={css.floatingButtons}>
           {renderedMapTitle}
           <div className={css.settingButtons}>
-            {changeCharacterButton}
+            {/* {changeCharacterButton} */}
             {/* {toggleMapButton} */}
             {toggleWorldBuilderButton}
           </div>

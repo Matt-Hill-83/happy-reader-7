@@ -13,8 +13,8 @@ import { maps } from "../../Stores/InitStores"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
-const NUM_ROWS_LOCATIONS_GRID = 3
-const NUM_COLS_LOCATIONS_GRID = 3
+const NUM_ROWS_LOCATIONS_GRID = 8
+const NUM_COLS_LOCATIONS_GRID = 8
 const COLUMN_WIDTH = 150
 
 const LOCATIONS_PREFIX = "locationsGrid"
