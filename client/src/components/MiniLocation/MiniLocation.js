@@ -43,6 +43,7 @@ class MiniLocation extends React.Component {
     console.log("you", toJS(you)) // zzz
 
     const youImage = you.creature
+    console.log("youImage", toJS(youImage)) // zzz
 
     return (
       <img

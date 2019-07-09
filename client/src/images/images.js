@@ -48,6 +48,7 @@ import unicorn from "./creatures/unicorn-1.png"
 import wizard from "./creatures/wizard.png"
 import zombie from "./creatures/zombie.png"
 import liz from "./creatures/jan-02-normal.png"
+import kat from "./rigged-girls/kat/kat-normal.png"
 import end from "./creatures/star.png"
 import start from "./creatures/start.png"
 
@@ -158,7 +159,8 @@ export default {
     start,
     wizard,
     zombie,
-    liz
+    liz,
+    kat
   },
   backgrounds: {
     door,
