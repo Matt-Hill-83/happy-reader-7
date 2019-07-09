@@ -25,13 +25,13 @@ body {
     flex-direction: column;
   }
   [class*="PicturePage_leftHalf"] {
-    border: 10px solid purple !important;
+    // border: 10px solid purple !important;
     width: 100%;
   }
 }
 
 .mobileLandscape {
-  border: 10px solid blue !important;
+  // border: 10px solid blue !important;
   --window-height: 360px;
   --story-font-size: 16px;
 }
