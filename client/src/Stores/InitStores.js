@@ -9,9 +9,6 @@ firebase.initializeApp({
   projectId: "happy-reader-4"
 })
 
-// const firestore = firebase.firestore()
-// firestore.settings({ timestampsInSnapshots: true })
-
 initFirestorter({ firebase: firebase })
 
 class Map extends Document {

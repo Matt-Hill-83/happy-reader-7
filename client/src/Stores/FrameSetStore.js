@@ -22,8 +22,25 @@ class FrameSets extends Document {
   frameSet = {}
 }
 
+class WorldNames extends Document {
+  constructor(source, options) {
+    super(source, {
+      ...(options || {})
+      // schema: struct({
+      //   name: "string?",
+      //   grid: "string?",
+      //   finished: "boolean?"
+      // })
+    })
+  }
+}
+
 const frameSetStore = new Collection("frameSets", {
   DocumentClass: FrameSets
 })
 
-export { frameSetStore }
+const worldNameStore = new Collection("worldNames", {
+  DocumentClass: WorldNames
+})
+
+export { frameSetStore, worldNameStore }

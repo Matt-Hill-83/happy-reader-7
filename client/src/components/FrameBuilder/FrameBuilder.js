@@ -11,7 +11,7 @@ import React, { Component } from "react"
 
 import Frame from "../Frame/Frame"
 import { IconNames } from "@blueprintjs/icons"
-import { frameSetStore } from "../../Stores/FrameSetStore"
+import { frameSetStore, worldNameStore } from "../../Stores/FrameSetStore"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 

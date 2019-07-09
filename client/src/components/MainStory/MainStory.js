@@ -19,8 +19,10 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import { maps } from "../../Stores/InitStores.js"
 import mySentences from "../../Models/sentences.js"
 
-import css from "./MainStory.module.scss"
 import StoryPickerPage from "../StoryPickerPage/StoryPickerPage"
+
+import css from "./MainStory.module.scss"
+import { worldNameStore } from "../../Stores/FrameSetStore"
 
 class MainStory extends React.Component {
   state = {
@@ -52,6 +54,11 @@ class MainStory extends React.Component {
 
     const scenesGrid = JSON.parse(locationsMap.scenesGrid)
 
+    // TODO
+    // TODO
+    // TODO
+    // TODO
+    // TODO - why do we get the scene from allScenes, instead of from the db?
     const allScenes = scenesGrid.flat()
     const terminalScene = allScenes.find(scene => {
       if (!scene.creatures) {
@@ -69,10 +76,16 @@ class MainStory extends React.Component {
 
   onExitIntro = async () => {
     const { docs } = await maps.fetch()
+    const test = await worldNameStore.fetch()
+    console.log("test", toJS(test)) // zzz
 
+    // TODO - just get these from the store.
     const savedMaps = docs.map(map => toJS(map.data))
+    console.log("savedMaps", toJS(savedMaps)) // zzz
+
     localStateStore.setLocationsMaps(savedMaps)
-    const startScene = this.getTerminalScene({ savedMaps })
+    const startScene = this.getTerminalScene({ savedMaps }) || savedMaps[0]
+    console.log("startScene", toJS(startScene)) // zzz
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
     // localStateStore.setPage("story-picker")
@@ -81,8 +94,11 @@ class MainStory extends React.Component {
   updateActiveScene = ({ activeScene }) => {
     const locationsMap = localStateStore.getActiveLocationsMap()
 
+    const lastScene = maps.docs.slice(-1)[0].data
+    console.log("lastScene", toJS(lastScene)) // zzz
+
     const activeSceneName = activeScene.name
-    const endScene = this.getTerminalScene({ start: false })
+    const endScene = this.getTerminalScene({ start: false }) || lastScene
 
     const activeLocationsMap = localStateStore.getActiveLocationsMap()
 
