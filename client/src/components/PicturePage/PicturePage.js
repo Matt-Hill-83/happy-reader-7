@@ -63,25 +63,6 @@ class PicturePage extends React.Component {
     return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>
   }
 
-  // renderCharacters = ({ isActive, creatures }) => {
-  //   const creatureType = creatures.length > 0 && creatures[0].type
-
-  //   const image = Images.creatures[creatureType] || null
-
-  //   const friend = (
-  //     <img
-  //       className={`${css.characterImageMini} ${css.character1Mini}`}
-  //       src={image}
-  //       alt={creatureType}
-  //     />
-  //   )
-
-  //   const you = isActive ? this.renderYouMini() : null
-  //   const characters = [you, friend]
-
-  //   return characters
-  // }
-
   createSingleRow = ({ locationRow, rowIndex }) => {
     return locationRow.map((location, colIndex) => {
       return this.renderMiniLocation({ location, colIndex, rowIndex })
@@ -99,11 +80,6 @@ class PicturePage extends React.Component {
 
     const isActive = locationName === activeScene.name
 
-    // const characters = this.renderCharacters({
-    //   creatures,
-    //   isActive
-    // })
-
     const id = `${colIndex}-${rowIndex}`
 
     return (
@@ -111,7 +87,6 @@ class PicturePage extends React.Component {
         id={id}
         key={locationName}
         location={location}
-        // characters={characters}
         isActive={isActive}
         className={className}
       />

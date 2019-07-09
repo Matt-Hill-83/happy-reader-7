@@ -193,8 +193,6 @@ class MiniLocation extends React.Component {
       return friend
     })
 
-    console.log("isActive", isActive) // zzz
-
     if (isActive) {
       const you = this.renderYouMini()
       renderedCharacters.unshift(you)
@@ -220,11 +218,6 @@ class MiniLocation extends React.Component {
     if (!locationName) {
       return <div className={`${css.main} ${className} ${localClass}`} />
     }
-
-    // const { activeScene } = this.props
-    // const { name: locationName, creatures = [] } = location
-
-    // const isActive = locationName === activeScene.name
 
     return (
       <div

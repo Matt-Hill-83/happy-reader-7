@@ -182,37 +182,6 @@ class MainStory extends React.Component {
     }
   }
 
-  renderWorldPicker = () => {
-    // this is not used now.
-    // worlds proceed from start 2 finish.
-    // We need a Game Picker instead.
-    const savedMaps = maps.docs.map(map => toJS(map.data))
-
-    if (!savedMaps[0]) {
-      return null
-    }
-
-    const mapList = savedMaps.map((map, index) => {
-      return (
-        <MenuItem text={map.name} onClick={() => this.changeMap({ index })} />
-      )
-    })
-
-    const renderedMapList = <Menu>{mapList}</Menu>
-
-    const worldPicker = (
-      <Popover
-        className={css.worldPickerDropdown}
-        content={renderedMapList}
-        position={Position.RIGHT_TOP}
-      >
-        <Button icon="share" text="Load Map" />
-      </Popover>
-    )
-
-    return worldPicker
-  }
-
   changeMap = ({ index }) => {
     localStateStore.setActiveLocationsMapIndex(index)
   }
@@ -300,7 +269,6 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
-        {/* {this.renderWorldPicker()} */}
         <div className={css.floatingButtons}>
           {renderedMapTitle}
           <div className={css.settingButtons}>

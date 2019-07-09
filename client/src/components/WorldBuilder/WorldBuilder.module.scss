@@ -1,5 +1,12 @@
 @import "../../Styles/mixins.modules.scss";
 
+.worldPickerDropdown {
+  position: absolute;
+  top: 0px;
+  z-index: 1000;
+  right: 0px;
+}
+
 .locationGridContainer {
   display: flex;
   width: 100%;

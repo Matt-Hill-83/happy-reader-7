@@ -1,17 +1,28 @@
-import { Button, Icon, Position } from "@blueprintjs/core"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import React, { Component } from "react"
+import { observer } from "mobx-react"
+import { toJS } from "mobx"
+
+import {
+  Button,
+  Dialog,
+  Icon,
+  Menu,
+  MenuItem,
+  Popover,
+  PopoverInteractionKind,
+  Position
+} from "@blueprintjs/core"
 
 import FrameBuilder from "../FrameBuilder/FrameBuilder"
 import { IconNames } from "@blueprintjs/icons"
 import Images from "../../images/images"
 import MiniLocation from "../MiniLocation/MiniLocation"
-import css from "./WorldBuilder.module.scss"
-import { frameSetStore } from "../../Stores/FrameSetStore"
+// import { frameSetStore } from "../../Stores/FrameSetStore"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import { maps } from "../../Stores/InitStores"
-import { observer } from "mobx-react"
-import { toJS } from "mobx"
+
+import css from "./WorldBuilder.module.scss"
 
 const NUM_ROWS_LOCATIONS_GRID = 8
 const NUM_COLS_LOCATIONS_GRID = 8
@@ -105,6 +116,34 @@ class WorldBuilder extends Component {
       [SOURCE_CREATURES_PROP_NAME]: creatureObjects,
       ...preAllocatedArrays
     })
+  }
+
+  renderWorldPicker = () => {
+    const savedMaps = maps.docs.map(map => toJS(map.data))
+
+    if (!savedMaps[0]) {
+      return null
+    }
+
+    const mapList = savedMaps.map((map, index) => {
+      return (
+        <MenuItem text={map.name} onClick={() => this.changeMap({ index })} />
+      )
+    })
+
+    const renderedMapList = <Menu>{mapList}</Menu>
+
+    const worldPicker = (
+      <Popover
+        className={css.worldPickerDropdown}
+        content={renderedMapList}
+        position={Position.RIGHT_TOP}
+      >
+        <Button icon="share" text="Load Map" />
+      </Popover>
+    )
+
+    return worldPicker
   }
 
   // a little function to help us with reordering the result
@@ -358,6 +397,8 @@ class WorldBuilder extends Component {
       // endScene: "bog"
     }
 
+    console.log("newMap", newMap) // zzz
+
     maps.add(newMap)
   }
 
@@ -508,6 +549,7 @@ class WorldBuilder extends Component {
           </div>
         </div>
         <div className={css.content}>
+          {this.renderWorldPicker()}
           <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
             {/* Create these with .map() */}
             {this.renderList({
