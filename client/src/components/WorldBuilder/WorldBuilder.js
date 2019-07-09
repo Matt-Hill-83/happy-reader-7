@@ -527,14 +527,7 @@ class WorldBuilder extends Component {
   }
 
   render() {
-    // move these to the init in main story
-    // these need to be rendered, or else the store won't populate from the firestore db
-    // these need to be rendered, or else the store won't populate from the firestore db
-    // const dummy = maps.docs.map(map => <div>{map.data.name}</div>)
-    // console.log("dummy", toJS(dummy)) //
-    // these need to be rendered, or else the store won't populate from the firestore db
-    // these need to be rendered, or else the store won't populate from the firestore db
-    console.log("worldNameStore", worldNameStore.docs) // zzz
+    console.log("worldNameStore", toJS(worldNameStore.docs[0].data)) // zzz
 
     const { sceneToEdit, showFrameBuilder } = this.state
 
