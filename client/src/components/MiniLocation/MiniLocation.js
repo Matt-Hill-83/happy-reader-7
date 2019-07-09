@@ -40,17 +40,16 @@ class MiniLocation extends React.Component {
 
   renderYouMini = () => {
     const you = localStateStore.getYou()
-    console.log("you", toJS(you)) // zzz
-
     const youImage = you.creature
-    console.log("youImage", toJS(youImage)) // zzz
 
     return (
-      <img
-        className={`${css.characterImageMini} ${css.characterYouMini}`}
-        src={Images.creatures[youImage]}
-        alt={youImage}
-      />
+      <div className={css.miniYou}>
+        <img
+          className={`${css.characterImageMini} ${css.characterYouMini}`}
+          src={Images.creatures[youImage]}
+          alt={youImage}
+        />
+      </div>
     )
   }
 
@@ -206,11 +205,8 @@ class MiniLocation extends React.Component {
 
   render() {
     const { location, isActive, className, showLabel = true, id } = this.props
-
     const { items = [], name: locationName, creatures = [] } = location
-
     const localClass = isActive ? css.activeClass : ""
-
     const locationImage = Images.locations[locationName]
 
     const rockImage = Images.backgrounds["rock"]

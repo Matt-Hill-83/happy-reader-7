@@ -1,5 +1,22 @@
 @import "../../Styles/mixins.modules.scss";
 
+.miniYou {
+  border: 1px solid blue !important;
+  // height: 20%;
+}
+
+.characterYouMini {
+  bottom: 0px;
+  left: 0%;
+  height: 100%;
+  width: auto;
+
+  // border: 1px solid var(--color-pink);
+  // background: var(--color-pink);
+  // padding: 2px;
+  // border-radius: 16px;
+}
+
 .doorPickerContainer {
   // border: 1px solid blue !important;
   display: flex;
@@ -167,7 +184,8 @@
 .activeClass {
   :global {
     [class*="MiniLocation_grassImage"] {
-      border: 10px solid red !important;
+      border: 2px solid red !important;
+      background: var(--color-yellow);
     }
   }
 }

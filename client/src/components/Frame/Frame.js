@@ -116,7 +116,6 @@ class Frame extends Component {
         </div>
       )
     })
-    console.log("isEditMode", isEditMode) // zzz
 
     return (
       <div className={css.scene}>

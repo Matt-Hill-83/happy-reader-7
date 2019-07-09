@@ -54,7 +54,6 @@ class MainStory extends React.Component {
         return false
       }
       const creatureTypes = scene.creatures.map(char => char.type)
-      console.log("creatureTypes", toJS(creatureTypes)) // zzz
 
       return creatureTypes.includes(`${start ? "start" : "end"}`)
     })
@@ -70,22 +69,15 @@ class MainStory extends React.Component {
     const savedMaps = docs.map(map => toJS(map.data))
     localStateStore.setLocationsMaps(savedMaps)
     const startScene = this.getTerminalScene({ savedMaps })
-    console.log("startScene", startScene) // zzz
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
   }
 
   updateActiveScene = ({ activeScene }) => {
     const locationsMap = localStateStore.getActiveLocationsMap()
-    console.log("activeScene", toJS(activeScene)) // zzz
 
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false })
-    console.log("endScene", endScene) // zzz
-
-    //////////////////////
-    //////////////////////
-    //////////////////////
 
     const activeLocationsMap = localStateStore.getActiveLocationsMap()
 
@@ -94,10 +86,6 @@ class MainStory extends React.Component {
       mapName: activeLocationsMap.name,
       sceneName: activeSceneName
     })
-
-    ////////////////
-    ////////////////
-    ////////////////
 
     if (activeSceneName === endScene.name) {
       this.setState({ showYouWin: true })
@@ -221,15 +209,12 @@ class MainStory extends React.Component {
   }
 
   changeMap = ({ index }) => {
-    console.log("map index", index) // zzz
     localStateStore.setActiveLocationsMapIndex(index)
   }
 
   render() {
     const { className } = this.props
     const { activeScene } = this.state
-
-    console.log("activeScene", toJS(activeScene)) // zzz
 
     const index = localStateStore.getActiveLocationsMapIndex()
 
@@ -245,7 +230,6 @@ class MainStory extends React.Component {
     const wordPageProps = { activeScene }
 
     const sceneIndex = localStateStore.getActiveLocationsMapIndex()
-    console.log("sceneIndex", toJS(sceneIndex)) // zzz
 
     if (page === "intro1") {
       return (
@@ -328,12 +312,16 @@ class MainStory extends React.Component {
         </div>
         <Dialog
           isOpen={this.state.showYouWin}
-          content={"test2"}
           isCloseButtonShown={true}
           className={css.levelCompleteDialog}
         >
-          {youWinMessage}
-          <Button onClick={this.closeYouWin}>GO</Button>
+          <span className={css.levelCompletionMessage}>{youWinMessage}</span>
+          <Button
+            className={css.levelCompletionButton}
+            onClick={this.closeYouWin}
+          >
+            GO
+          </Button>
         </Dialog>
       </div>
     )
