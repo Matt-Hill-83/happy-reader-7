@@ -20,6 +20,7 @@ import { maps } from "../../Stores/InitStores.js"
 import mySentences from "../../Models/sentences.js"
 
 import css from "./MainStory.module.scss"
+import StoryPickerPage from "../StoryPickerPage/StoryPickerPage"
 
 class MainStory extends React.Component {
   state = {
@@ -28,19 +29,22 @@ class MainStory extends React.Component {
     activeScene: undefined,
     pages: {},
     showIntro: false
+    // showIntro: true
   }
 
   async componentWillMount() {
     mySentences.generateYou({})
     mySentences.generatePlot({})
 
-    localStateStore.setsmallMap(false)
+    // localStateStore.setsmallMap(false)
     if (this.state.showIntro) {
-      localStateStore.setPage("intro1")
+      // localStateStore.setPage("you-picker")
+      localStateStore.setPage("story-picker")
     } else {
       localStateStore.setPage("intro2")
-      this.onExitIntro({ you: { name: "Luna", creature: "kat" } })
+      // this.onExitIntro({ you: { name: "Luna", creature: "kat" } })
     }
+    this.onExitIntro()
   }
 
   getTerminalScene = ({ start = true }) => {
@@ -63,7 +67,7 @@ class MainStory extends React.Component {
     // return terminalScene || start ? allScenes[0] : allScenes[1]
   }
 
-  onExitIntro = async ({}) => {
+  onExitIntro = async () => {
     const { docs } = await maps.fetch()
 
     const savedMaps = docs.map(map => toJS(map.data))
@@ -71,6 +75,7 @@ class MainStory extends React.Component {
     const startScene = this.getTerminalScene({ savedMaps })
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
+    // localStateStore.setPage("story-picker")
   }
 
   updateActiveScene = ({ activeScene }) => {
@@ -145,7 +150,7 @@ class MainStory extends React.Component {
   }
 
   changeCharacter = () => {
-    localStateStore.setPage("intro1")
+    localStateStore.setPage("you-picker")
   }
 
   toggleMap = () => {
@@ -224,16 +229,22 @@ class MainStory extends React.Component {
 
     const activeLocationsMap = localStateStore.getActiveLocationsMap()
 
-    // const { name } = localStateStore.getActiveLocationsMap()
     const { name: activeSceneName } = activeScene
     const page = localStateStore.getPage()
     const wordPageProps = { activeScene }
 
-    const sceneIndex = localStateStore.getActiveLocationsMapIndex()
-
-    if (page === "intro1") {
+    if (page === "you-picker") {
       return (
         <IntroPage1 className={css.IntroPage1} onExitIntro={this.onExitIntro} />
+      )
+    }
+
+    if (page === "story-picker") {
+      return (
+        <StoryPickerPage
+          className={css.IntroPage1}
+          onExitIntro={this.onExitIntro}
+        />
       )
     }
 
@@ -256,7 +267,7 @@ class MainStory extends React.Component {
         tabIndex={0}
         className={css.newStoryBtn}
         onClick={this.changeCharacter}
-        disabled={true}
+        // disabled={true}
       >
         <span> Change Character </span>
       </Button>
@@ -293,7 +304,7 @@ class MainStory extends React.Component {
         <div className={css.floatingButtons}>
           {renderedMapTitle}
           <div className={css.settingButtons}>
-            {/* {changeCharacterButton} */}
+            {changeCharacterButton}
             {/* {toggleMapButton} */}
             {toggleWorldBuilderButton}
           </div>
