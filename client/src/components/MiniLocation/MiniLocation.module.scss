@@ -1,8 +1,6 @@
 @import "../../Styles/mixins.modules.scss";
 
 .miniYou {
-  border: 1px solid blue !important;
-  // height: 20%;
 }
 
 .characterYouMini {
@@ -10,11 +8,6 @@
   left: 0%;
   height: 100%;
   width: auto;
-
-  // border: 1px solid var(--color-pink);
-  // background: var(--color-pink);
-  // padding: 2px;
-  // border-radius: 16px;
 }
 
 .doorPickerContainer {
@@ -67,8 +60,6 @@
 
 .doorPickerDropdown {
   :global {
-    // MuiInputBase-root fieldset
-
     // hide dropdown caret
     svg[class*="MuiSelect-icon"] {
       display: none;
