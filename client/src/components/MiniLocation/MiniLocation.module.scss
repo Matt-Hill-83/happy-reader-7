@@ -3,6 +3,24 @@
 .miniYou {
 }
 
+.isStartScene {
+  :global {
+    [class*="MiniLocation_grassImage"] {
+      border: 2px solid blue !important;
+      background: var(--color-pink);
+    }
+  }
+}
+
+.activeClass {
+  :global {
+    [class*="MiniLocation_grassImage"] {
+      border: 2px solid red !important;
+      background: var(--color-yellow);
+    }
+  }
+}
+
 .isStartSceneCheckBox {
   z-index: 1;
   position: absolute;
@@ -183,15 +201,6 @@
 
     right: 10%;
     bottom: 10%;
-  }
-}
-
-.activeClass {
-  :global {
-    [class*="MiniLocation_grassImage"] {
-      border: 2px solid red !important;
-      background: var(--color-yellow);
-    }
   }
 }
 

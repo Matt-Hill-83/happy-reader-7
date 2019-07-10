@@ -53,6 +53,11 @@ class PicturePage extends React.Component {
     const scenesGrid = JSON.parse(scene.scenesGrid)
 
     const miniLocationsGrid = scenesGrid.map((locationRow, rowIndex) => {
+      console.log(
+        "locationRow-------------------------------------",
+        toJS(locationRow)
+      ) // zzz
+
       return (
         <div key={rowIndex} className={css.miniLocationsRow}>
           {this.createSingleRow({ locationRow, rowIndex })}
@@ -76,7 +81,19 @@ class PicturePage extends React.Component {
     className = ""
   }) => {
     const { activeScene } = this.props
+
+    // TODO
+    // TODO
+    // TODO
+    // TODO
+    // TODO - where is this location coming from and why is there no isstartscene?
     const { name: locationName, creatures = [] } = location
+    if (location.isStartScene) {
+      console.log(
+        "+++++++++++++++++++++++++++++++++++++++++++++++++location.isStartScene",
+        location.isStartScene
+      ) // zzz
+    }
 
     const isActive = locationName === activeScene.name
 

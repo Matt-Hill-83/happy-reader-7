@@ -1,23 +1,15 @@
-import { Button, Icon, Position, Tooltip, Checkbox } from "@blueprintjs/core"
-// import _get from "lodash.get";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  OutlinedInput,
-  Select,
-  TextField
-} from "@material-ui/core"
-
-// import { IconNames } from "@blueprintjs/icons"
-import Images from "../../images/images.js"
 import React from "react"
+import { observer } from "mobx-react"
+import { Button, Icon, Position, Tooltip, Checkbox } from "@blueprintjs/core"
+import { FormControl, MenuItem, OutlinedInput, Select } from "@material-ui/core"
+
+import Images from "../../images/images.js"
 import Utils from "../../Utils/Utils.js"
 import css from "./MiniLocation.module.scss"
 import myWords from "../../Models/words.js"
-import { observer } from "mobx-react"
-import { toJS } from "mobx"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
+
+import { toJS } from "mobx"
 
 const { words, wordTypes } = myWords
 
@@ -58,28 +50,37 @@ class MiniLocation extends React.Component {
       youCreature: event.target.value,
       name: event.target.name
     })
-
-    console.log("event.target.name", event.target.name) // zzz
-    console.log("event.target.value", event.target.value) // zzz
   }
 
   async componentWillMount() {
     const {
-      location: { doors }
+      location: { doors },
+      isStartScene
     } = this.props
 
+    this.setState({ isStartScene })
+
     if (doors) {
-      this.setState({ doors })
+      this.setState({ doors, isStartScene })
     }
   }
 
   componentWillReceiveProps(newProps) {
     const {
-      location: { doors }
+      location: { doors },
+      location,
+      isStartScene
     } = newProps
 
+    // TODO - do all this for end scene
+    // TODO - do all this for end scene
+    // TODO - do all this for end scene
+    // TODO - do all this for end scene
+    // TODO - do all this for end scene
+    this.setState({ isStartScene })
+
     if (doors) {
-      this.setState({ doors })
+      this.setState({ doors, isStartScene })
     }
   }
 
@@ -220,7 +221,15 @@ class MiniLocation extends React.Component {
 
   render() {
     const { isStartScene, isEndScene } = this.state
-    const { location, isActive, className, showLabel = true, id } = this.props
+    const {
+      location,
+      isActive,
+      className,
+      showLabel = true,
+      id,
+      isEditMode
+    } = this.props
+
     const { items = [], name: locationName, creatures = [] } = location
     const localClass = isActive ? css.activeClass : ""
     const locationImage = Images.locations[locationName]
@@ -241,16 +250,22 @@ class MiniLocation extends React.Component {
       <div
         key={id}
         id={id}
-        className={`${css.main} ${className} ${localClass}`}
+        className={`${css.main} ${className} ${
+          this.props.location.isStartScene ? css.isStartScene : ""
+        } ${localClass} `}
       >
-        <div className={css.isStartSceneCheckBox}>
-          Start
-          <Checkbox onClick={this.checkIsStartScene} checked={isStartScene} />
-        </div>
-        <div className={css.isEndSceneCheckBox}>
-          End
-          <Checkbox onClick={this.checkIsEndScene} checked={isEndScene} />
-        </div>
+        {isEditMode && (
+          <div className={css.isStartSceneCheckBox}>
+            Start
+            <Checkbox onClick={this.checkIsStartScene} checked={isStartScene} />
+          </div>
+        )}
+        {isEditMode && (
+          <div className={css.isEndSceneCheckBox}>
+            End
+            <Checkbox onClick={this.checkIsEndScene} checked={isEndScene} />
+          </div>
+        )}
         <div className={css.rockImage}>
           <img className={css.rockImage} src={rockImage} alt={"imagex"} />
         </div>

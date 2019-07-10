@@ -60,6 +60,8 @@ class MainStory extends React.Component {
     // TODO - why do we get the scene from allScenes, instead of from the db?
     const allScenes = scenesGrid.flat()
     const terminalScene = allScenes.find(scene => {
+      // console.log("scene.isStartScene", scene.isStartScene) // zzz
+
       return start ? scene.isStartScene : scene.isEndScene
     })
 
