@@ -38,7 +38,6 @@ class MainStory extends React.Component {
     mySentences.generateYou({})
     mySentences.generatePlot({})
 
-    // localStateStore.setsmallMap(false)
     if (this.state.showIntro) {
       // localStateStore.setPage("you-picker")
       localStateStore.setPage("story-picker")
@@ -75,17 +74,18 @@ class MainStory extends React.Component {
   }
 
   onExitIntro = async () => {
-    const { docs } = await maps.fetch()
-    const test = await worldNameStore.fetch()
-    console.log("test", toJS(test)) // zzz
+    await maps.fetch()
+    await worldNameStore.fetch()
 
     // TODO - just get these from the store.
-    const savedMaps = docs.map(map => toJS(map.data))
-    console.log("savedMaps", toJS(savedMaps)) // zzz
+    // const savedMaps = docs.map(map => toJS(map.data))
+    const savedMaps = maps.docs.map(map => toJS(map.data))
+    // console.log("savedMaps", toJS(savedMaps)) // zzz
 
+    // TODO - we shoudn't need to set them to here.
     localStateStore.setLocationsMaps(savedMaps)
     const startScene = this.getTerminalScene({ savedMaps }) || savedMaps[0]
-    console.log("startScene", toJS(startScene)) // zzz
+    // console.log("startScene", toJS(startScene)) // zzz
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
     // localStateStore.setPage("story-picker")
@@ -95,14 +95,13 @@ class MainStory extends React.Component {
     const locationsMap = localStateStore.getActiveLocationsMap()
 
     const lastScene = maps.docs.slice(-1)[0].data
-    console.log("lastScene", toJS(lastScene)) // zzz
+    // console.log("lastScene", toJS(lastScene)) // zzz
 
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false }) || lastScene
 
     const activeLocationsMap = localStateStore.getActiveLocationsMap()
 
-    // todo, move this to where the scene is updated
     localStateStore.setLocationDetails({
       mapName: activeLocationsMap.name,
       sceneName: activeSceneName
@@ -169,11 +168,6 @@ class MainStory extends React.Component {
     localStateStore.setPage("you-picker")
   }
 
-  toggleMap = () => {
-    const smallMap = localStateStore.getsmallMap()
-    localStateStore.setsmallMap(!smallMap)
-  }
-
   toggleWorldBuilder = () => {
     const plot = localStateStore.getPlot()
 
@@ -233,12 +227,6 @@ class MainStory extends React.Component {
       )
     }
 
-    // // todo, move this to where the scene is updated
-    // localStateStore.setLocationDetails({
-    //   mapName: activeLocationsMap.name,
-    //   sceneName: activeSceneName
-    // })
-
     const renderedMapTitle = (
       <div className={css.mapTitle}>
         <span>{`map: ${index}  `}</span>
@@ -255,17 +243,6 @@ class MainStory extends React.Component {
         // disabled={true}
       >
         <span> Change Character </span>
-      </Button>
-    )
-
-    const toggleMapButton = (
-      <Button
-        tabIndex={0}
-        className={css.newStoryBtn}
-        onClick={this.toggleMap}
-        disabled={true}
-      >
-        <span>Toggle Map</span>
       </Button>
     )
 
@@ -289,7 +266,6 @@ class MainStory extends React.Component {
           {renderedMapTitle}
           <div className={css.settingButtons}>
             {/* {changeCharacterButton} */}
-            {/* {toggleMapButton} */}
             {toggleWorldBuilderButton}
           </div>
         </div>

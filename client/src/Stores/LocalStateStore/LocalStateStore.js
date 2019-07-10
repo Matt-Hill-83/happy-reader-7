@@ -2,7 +2,6 @@ import { action, computed, decorate, observable } from "mobx"
 
 class LocalStateStore {
   page = ""
-  smallMap = true
   showWorldBuilder = false
   // showWorldBuilder = true
   you = {}
@@ -31,11 +30,6 @@ class LocalStateStore {
   getPlot = () => this.plot
   setPlot = plot => {
     this.plot = plot
-  }
-
-  getsmallMap = () => this.smallMap
-  setsmallMap = smallMap => {
-    this.smallMap = smallMap
   }
 
   getShowWorldBuilder = () => this.showWorldBuilder
@@ -82,7 +76,6 @@ decorate(LocalStateStore, {
   page: observable,
   plot: observable,
   showWorldBuilder: observable,
-  smallMap: observable,
   you: observable,
   locationDetails: observable
 })

@@ -532,6 +532,7 @@ class WorldBuilder extends Component {
     const { sceneToEdit, showFrameBuilder } = this.state
 
     console.log("sceneToEdit - world builder", toJS(sceneToEdit)) // zzz
+    const world = { name: "this world" }
 
     return (
       <div className={css.main}>
@@ -577,6 +578,7 @@ class WorldBuilder extends Component {
         </div>
         {showFrameBuilder && (
           <FrameBuilder
+            world={world}
             sceneToEdit={sceneToEdit}
             onExitFrameBuilder={frame => this.onExitFrameBuilder({ frame })}
           />

@@ -5,22 +5,32 @@ import {
   FormGroup,
   Icon,
   InputGroup,
-  Position
+  Position,
+  Checkbox
 } from "@blueprintjs/core"
+
 import React, { Component } from "react"
 
 import Frame from "../Frame/Frame"
 import { IconNames } from "@blueprintjs/icons"
-import { frameSetStore, worldNameStore } from "../../Stores/FrameSetStore"
+import { frameSetStore } from "../../Stores/FrameSetStore"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
 import css from "./FrameBuilder.module.scss"
 
 class FrameBuilder extends Component {
-  state = { frames: [], activeFrameSet: "" }
+  state = {
+    frames: [],
+    activeFrameSet: "",
+    isStartScene: false,
+    isEndScene: false
+  }
 
-  componentWillMount() {}
+  componentWillMount() {
+    const { isStartScene, isEndScene } = this.props
+    this.setState({ isStartScene, isEndScene })
+  }
 
   onExitFrameBuilder = () => {
     const { onExitFrameBuilder } = this.props
@@ -161,11 +171,29 @@ class FrameBuilder extends Component {
     return activeFrameSet
   }
 
+  checkIsStartScene = () => {
+    const { sceneToEdit, world } = this.props
+    const { isStartScene } = this.state
+
+    // TODO
+    // TODO
+    // TODO
+    // TODO
+    // TODO
+    // fix this logic
+    world.startScene = !isStartScene
+    this.setState({ isStartScene: !isStartScene })
+    // should disable any other scenes with this checked
+    return
+  }
+
   render() {
     const {
       sceneToEdit,
       sceneToEdit: { creatures = [] }
     } = this.props
+
+    const { isStartScene } = this.state
 
     const frames = [
       {
@@ -250,6 +278,14 @@ class FrameBuilder extends Component {
 
     return (
       <div className={css.main}>
+        <div>
+          is Start Scene
+          <Checkbox
+            // style={styles.checkbox}
+            onClick={this.checkIsStartScene}
+            checked={isStartScene}
+          />
+        </div>
         {this.renderFrameSetPicker()}
         {this.renderActiveFrameSetName()}
 
