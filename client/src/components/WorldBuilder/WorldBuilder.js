@@ -385,13 +385,19 @@ class WorldBuilder extends Component {
     return targetArrays
   }
 
-  saveMap = () => {
+  saveMap = async () => {
     const locationsMap = this.transformLocationsGridToLocationsMap()
-    const myString = JSON.stringify(locationsMap)
+    const flatArray = JSON.stringify(locationsMap)
+    const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
+
+    const newName = previousMapName + 1
+    await worldNameStore.docs[0].update({
+      previousMapName: newName
+    })
 
     const newMap = {
-      name: "name",
-      scenesGrid: myString,
+      name: newName,
+      scenesGrid: flatArray,
       order: 0
       // These should be calculated dynamically, based on where the stars are placed.
       // startScene: "home",

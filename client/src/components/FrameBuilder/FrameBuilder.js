@@ -41,7 +41,6 @@ class FrameBuilder extends Component {
 
   addFrameSet = ({}) => {
     const frameSet = this.newFrameSet
-    console.log("frameSet", frameSet) // zzz
 
     frameSetStore.add(frameSet)
   }
