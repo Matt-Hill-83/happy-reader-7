@@ -403,9 +403,9 @@ class WorldBuilder extends Component {
       // startScene: "home",
       // endScene: "bog"
     }
+    console.log("newMap", toJS(newMap)) // zzz
 
-    console.log("newMap", newMap) // zzz
-
+    // return
     maps.add(newMap)
   }
 
@@ -420,6 +420,8 @@ class WorldBuilder extends Component {
 
   transformLocationsGridToLocationsMap = () => {
     const { locationsGrid } = this.state
+    console.log("locationsGrid", toJS(locationsGrid)) // zzz
+
     const locationsMap = []
 
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0)
@@ -460,6 +462,8 @@ class WorldBuilder extends Component {
   }
 
   editFrame = ({ scene }) => {
+    console.log("scene", scene) // zzz
+
     this.setState({ sceneToEdit: scene, showFrameBuilder: true })
   }
 
@@ -533,8 +537,6 @@ class WorldBuilder extends Component {
   }
 
   render() {
-    console.log("worldNameStore", toJS(worldNameStore.docs[0].data)) // zzz
-
     const { sceneToEdit, showFrameBuilder } = this.state
 
     console.log("sceneToEdit - world builder", toJS(sceneToEdit)) // zzz

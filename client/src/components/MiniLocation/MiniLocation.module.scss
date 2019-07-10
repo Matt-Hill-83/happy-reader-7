@@ -3,6 +3,20 @@
 .miniYou {
 }
 
+.isStartSceneCheckBox {
+  z-index: 1;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.isEndSceneCheckBox {
+  z-index: 1;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
 .characterYouMini {
   bottom: 0px;
   left: 0%;

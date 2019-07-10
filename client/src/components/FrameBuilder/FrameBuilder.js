@@ -174,6 +174,7 @@ class FrameBuilder extends Component {
     const { sceneToEdit, world } = this.props
     const { isStartScene } = this.state
 
+    sceneToEdit.test = "zzzzzzzz"
     // TODO
     // TODO
     // TODO

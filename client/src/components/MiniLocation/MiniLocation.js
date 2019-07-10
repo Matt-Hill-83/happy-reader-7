@@ -1,4 +1,4 @@
-import { Button, Icon, Position, Tooltip } from "@blueprintjs/core"
+import { Button, Icon, Position, Tooltip, Checkbox } from "@blueprintjs/core"
 // import _get from "lodash.get";
 import {
   FormControl,
@@ -201,7 +201,25 @@ class MiniLocation extends React.Component {
     return renderedCharacters
   }
 
+  checkIsStartScene = () => {
+    console.log("this.props", this.props) // zzz
+    const { location } = this.props
+
+    location.isStartScene = !this.state.isStartScene
+    this.setState({ isStartScene: !this.state.isStartScene })
+    return
+  }
+
+  checkIsEndScene = () => {
+    const { location } = this.props
+
+    location.isEndScene = !this.state.isEndScene
+    this.setState({ isEndScene: !this.state.isEndScene })
+    return
+  }
+
   render() {
+    const { isStartScene, isEndScene } = this.state
     const { location, isActive, className, showLabel = true, id } = this.props
     const { items = [], name: locationName, creatures = [] } = location
     const localClass = isActive ? css.activeClass : ""
@@ -225,6 +243,14 @@ class MiniLocation extends React.Component {
         id={id}
         className={`${css.main} ${className} ${localClass}`}
       >
+        <div className={css.isStartSceneCheckBox}>
+          Start
+          <Checkbox onClick={this.checkIsStartScene} checked={isStartScene} />
+        </div>
+        <div className={css.isEndSceneCheckBox}>
+          End
+          <Checkbox onClick={this.checkIsEndScene} checked={isEndScene} />
+        </div>
         <div className={css.rockImage}>
           <img className={css.rockImage} src={rockImage} alt={"imagex"} />
         </div>

@@ -60,32 +60,22 @@ class MainStory extends React.Component {
     // TODO - why do we get the scene from allScenes, instead of from the db?
     const allScenes = scenesGrid.flat()
     const terminalScene = allScenes.find(scene => {
-      if (!scene.creatures) {
-        return false
-      }
-      const creatureTypes = scene.creatures.map(char => char.type)
-
-      return creatureTypes.includes(`${start ? "start" : "end"}`)
+      return start ? scene.isStartScene : scene.isEndScene
     })
 
     // If no start and finish scenes are marked, choose some, so the program doesn't break
     return terminalScene
-    // return terminalScene || start ? allScenes[0] : allScenes[1]
   }
 
   onExitIntro = async () => {
     await maps.fetch()
     await worldNameStore.fetch()
 
-    // TODO - just get these from the store.
-    // const savedMaps = docs.map(map => toJS(map.data))
     const savedMaps = maps.docs.map(map => toJS(map.data))
-    // console.log("savedMaps", toJS(savedMaps)) // zzz
 
     // TODO - we shoudn't need to set them to here.
     localStateStore.setLocationsMaps(savedMaps)
     const startScene = this.getTerminalScene({ savedMaps }) || savedMaps[0]
-    // console.log("startScene", toJS(startScene)) // zzz
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
     // localStateStore.setPage("story-picker")
