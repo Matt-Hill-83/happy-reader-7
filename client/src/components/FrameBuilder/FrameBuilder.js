@@ -46,7 +46,7 @@ class FrameBuilder extends Component {
 
   getNewFrame = () => {
     const {
-      sceneToEdit: { creatures = [] }
+      scene: { creatures = [] }
     } = this.props
     console.log("creatures", toJS(creatures)) // zzz
 
@@ -257,10 +257,10 @@ class FrameBuilder extends Component {
   }
 
   checkIsStartScene = () => {
-    const { sceneToEdit, world } = this.props
+    const { scene, world } = this.props
     const { isStartScene } = this.state
 
-    sceneToEdit.test = "zzzzzzzz"
+    scene.test = "zzzzzzzz"
     // TODO
     // TODO
     // TODO
@@ -311,7 +311,7 @@ class FrameBuilder extends Component {
   }
 
   render() {
-    const { sceneToEdit } = this.props
+    const { scene } = this.props
 
     // const newFrame = this.getNewFrame()
     // const frames = [newFrame]
@@ -320,7 +320,7 @@ class FrameBuilder extends Component {
     // this.newFrameSet = { name: "new Name", title: "new title", frames }
 
     // const activeFrameSet = this.getActiveFrameSet()
-    const activeFrameSet = sceneToEdit.frameSet || this.getNewFrameSet()
+    const activeFrameSet = scene.frameSet || this.getNewFrameSet()
 
     const renderedFrames = activeFrameSet.frames.map(frame => {
       // activeFrameSet &&
@@ -330,7 +330,7 @@ class FrameBuilder extends Component {
       return (
         <Frame
           frame={frame}
-          sceneToEdit={sceneToEdit}
+          scene={scene}
           updateFrameSet={this.updateFrameSet}
         />
       )

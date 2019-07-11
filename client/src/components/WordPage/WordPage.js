@@ -106,7 +106,7 @@ class WordPage extends React.Component {
 
     return (
       <div className={css.textPage}>
-        <Frame frame={frame} sceneToEdit={activeScene} isEditMode={false} />
+        <Frame frame={frame} scene={activeScene} isEditMode={false} />
         {!isLastFrame && (
           <Button onClick={this.onClickNext} className={css.nextButton}>
             NEXT

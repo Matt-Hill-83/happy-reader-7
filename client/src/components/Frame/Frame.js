@@ -103,17 +103,17 @@ class Frame extends Component {
   }
 
   editNarrative = ({ allCharacters = [] }) => {
-    const { sceneToEdit, frame = {}, isEditMode = true } = this.props
+    const { scene, frame = {}, isEditMode = true } = this.props
     const { story = [], faces = [] } = frame
     console.log("story", toJS(story)) // zzz
   }
 
   renderFrame = ({ allCharacters = [] }) => {
-    const { sceneToEdit, frame = {}, isEditMode = true } = this.props
+    const { scene, frame = {}, isEditMode = true } = this.props
     const { story = [], faces = [] } = frame
 
     const backgroundImage = Images.backgrounds["hill01"]
-    const locationImage = Images.locations[sceneToEdit.name]
+    const locationImage = Images.locations[scene.name]
     const bookImage = Images.sceneView.book
     const notebookImage = Images.sceneView.notebook
 

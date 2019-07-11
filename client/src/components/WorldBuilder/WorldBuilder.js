@@ -475,15 +475,15 @@ class WorldBuilder extends Component {
   editFrame = ({ scene }) => {
     console.log("scene", scene) // zzz
 
-    this.setState({ sceneToEdit: scene, showFrameBuilder: true })
+    this.setState({ scene: scene, showFrameBuilder: true })
   }
 
   onExitFrameBuilder = ({ frames }) => {
     console.log("frames", frames) // zzz
-    const sceneToEdit = this.state.sceneToEdit
-    console.log("sceneToEdit", sceneToEdit) // zzz
+    const scene = this.state.scene
+    console.log("scene", scene) // zzz
 
-    this.setState({ sceneToEdit: "", showFrameBuilder: false })
+    this.setState({ scene: "", showFrameBuilder: false })
   }
 
   renderLocation = ({ item }) => {
@@ -560,9 +560,9 @@ class WorldBuilder extends Component {
   }
 
   render() {
-    const { sceneToEdit, showFrameBuilder } = this.state
+    const { scene, showFrameBuilder } = this.state
 
-    console.log("sceneToEdit - world builder", toJS(sceneToEdit)) // zzz
+    console.log("scene - world builder", toJS(scene)) // zzz
     const world = { name: "this world" }
 
     return (
@@ -610,7 +610,7 @@ class WorldBuilder extends Component {
         {showFrameBuilder && (
           <FrameBuilder
             world={world}
-            sceneToEdit={sceneToEdit}
+            scene={scene}
             onExitFrameBuilder={frame => this.onExitFrameBuilder({ frame })}
           />
         )}
