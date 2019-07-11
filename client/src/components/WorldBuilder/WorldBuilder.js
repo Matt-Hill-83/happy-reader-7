@@ -67,8 +67,8 @@ class WorldBuilder extends Component {
     })
 
     // generate placeholders for output grid in state
-    const preAllocatedArrays = this.preAllocateArrays({})
-    console.log("preAllocatedArrays", preAllocatedArrays) // zzz
+    const locationsGrid = this.preAllocateArrays({})
+    console.log("locationsGrid", locationsGrid) // zzz
 
     // Instead of making different containers, why not dump all items together and sort them by tag?
     // And instead of removing from the list, just mark them as not visible.
@@ -117,7 +117,7 @@ class WorldBuilder extends Component {
       [SOURCE_ITEMS_PROP_NAME]: itemObjects,
       [SOURCE_LOCATIONS_PROP_NAME]: locations,
       [SOURCE_CREATURES_PROP_NAME]: creatureObjects,
-      ...preAllocatedArrays
+      locationsGrid
     })
   }
 
@@ -224,6 +224,8 @@ class WorldBuilder extends Component {
         locationsGrid[rowName][colName] = []
       })
     })
+
+    return locationsGrid
     newStateObject.locationsGrid = locationsGrid
 
     return newStateObject
