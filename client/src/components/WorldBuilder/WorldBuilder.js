@@ -590,9 +590,23 @@ class WorldBuilder extends Component {
 
     const place = grid[0][0]
     console.log("place", toJS(place)) // zzz
+    const rows = grid.map((row, rowIndex) => {
+      console.log("row", toJS(row)) // zzz
 
-    const test = this.renderLocation({ item: { scene: grid[0][0] } })
-    return <div className={css.test}>{test}</div>
+      const renderedRow = row.map((col, colIndex) => {
+        let test
+        if (col.name) {
+          console.log("col", toJS(col)) // zzz
+          test = this.renderLocation({ item: { scene: col } }) || null
+        } else {
+          test = null
+        }
+        return <div className={css.sizerDiv}>{test}</div>
+      })
+      return <div className={css.rowDiv}>{renderedRow}</div>
+    })
+
+    return <div className={css.test}>{rows}</div>
   }
 
   render() {
@@ -610,40 +624,49 @@ class WorldBuilder extends Component {
             <div className={css.subTitle}>
               (drag items to create your world...)
               {this.renderSaveWorldButton()}
+              <Button
+                icon="share"
+                text="Edit World"
+                onClick={() =>
+                  this.setState({ editWorld: !this.state.editWorld })
+                }
+              />
             </div>
           </div>
         </div>
         <div className={css.content}>
-          {this.renderSimpleWorld()}
-          {this.renderWorldPicker()}
-          <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
-            {/* Create these with .map() */}
-            {this.renderList({
-              droppableId: SOURCE_CREATURES_PROP_NAME,
-              items: this.state[SOURCE_CREATURES_PROP_NAME],
-              className: css.source
-            })}
-            {this.renderList({
-              droppableId: SOURCE_LOCATIONS_PROP_NAME,
-              items: this.state[SOURCE_LOCATIONS_PROP_NAME],
-              className: css.source
-            })}
-            {/* {this.renderList({
+          {this.state.editWorld && this.renderSimpleWorld()}
+          {this.state.editWorld && this.renderWorldPicker()}
+          {!this.state.editWorld && (
+            <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
+              {/* Create these with .map() */}
+              {this.renderList({
+                droppableId: SOURCE_CREATURES_PROP_NAME,
+                items: this.state[SOURCE_CREATURES_PROP_NAME],
+                className: css.source
+              })}
+              {this.renderList({
+                droppableId: SOURCE_LOCATIONS_PROP_NAME,
+                items: this.state[SOURCE_LOCATIONS_PROP_NAME],
+                className: css.source
+              })}
+              {/* {this.renderList({
               droppableId: SOURCE_ITEMS_PROP_NAME,
               items: this.state[SOURCE_ITEMS_PROP_NAME],
               className: css.source
             })} */}
-            {this.createLocationsGridRows({
-              numTargetsInRow: NUM_COLS_LOCATIONS_GRID,
-              numRows: NUM_ROWS_LOCATIONS_GRID,
-              prefix: LOCATIONS_PREFIX
-            })}
-            {/* {this.createLocationsGridRows({
+              {this.createLocationsGridRows({
+                numTargetsInRow: NUM_COLS_LOCATIONS_GRID,
+                numRows: NUM_ROWS_LOCATIONS_GRID,
+                prefix: LOCATIONS_PREFIX
+              })}
+              {/* {this.createLocationsGridRows({
               numTargetsInRow: NUM_COLS_LOCATIONS_GRID,
               numRows: NUM_ROWS_LOCATIONS_GRID,
               prefix: LOCATIONS_PREFIX
             })} */}
-          </DragDropContext>
+            </DragDropContext>
+          )}
         </div>
         {showFrameBuilder && (
           <FrameBuilder
