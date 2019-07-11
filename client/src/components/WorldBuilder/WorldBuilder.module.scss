@@ -1,5 +1,11 @@
 @import "../../Styles/mixins.modules.scss";
 
+.test {
+  border: 1px solid red !important;
+  display: flex;
+  height: 50%;
+  width: 50%;
+}
 .worldPickerDropdown {
   position: absolute;
   top: 0px;
@@ -40,9 +46,6 @@
 
   .characterImage {
     @include character-image;
-  }
-
-  div [data-react-beautiful-dnd-draggable] {
   }
 }
 

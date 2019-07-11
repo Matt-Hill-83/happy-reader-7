@@ -130,11 +130,10 @@ class WorldBuilder extends Component {
     const test = JSON.parse(savedMaps[index]["scenesGrid"])
     console.log("test", test) // zzz
 
-    const locationsGrid = this.preAllocateArrays({ savedGrid: test })
-    console.log("locationsGrid - loaded", locationsGrid) // zzz
+    // const locationsGrid = this.preAllocateArrays({ savedGrid: test })
+    // console.log("locationsGrid - loaded", locationsGrid) // zzz
 
-    const world = { test: "test" }
-    this.setState({ locationsGrid })
+    this.setState({ world: { grid: test } })
   }
 
   renderWorldPicker = () => {
@@ -388,10 +387,6 @@ class WorldBuilder extends Component {
     return <div className={css.targetGrid}>{targetArraysRows}</div>
   }
 
-  createStoragePropertyName = ({ rowIndex, colIndex, prefix = "item" }) => {
-    return `${prefix}-row-${rowIndex}-col-${colIndex}`
-  }
-
   createLocationsGridRow = ({ numTargetsInRow, rowIndex, prefix }) => {
     const targetArrays = []
     for (let colIndex = 0; colIndex < numTargetsInRow; colIndex++) {
@@ -413,6 +408,10 @@ class WorldBuilder extends Component {
     }
 
     return targetArrays
+  }
+
+  createStoragePropertyName = ({ rowIndex, colIndex, prefix = "item" }) => {
+    return `${prefix}-row-${rowIndex}-col-${colIndex}`
   }
 
   saveWorld = async () => {
@@ -578,6 +577,24 @@ class WorldBuilder extends Component {
     )
   }
 
+  renderSimpleWorld = () => {
+    const {
+      world,
+      world: { grid }
+    } = this.state
+    console.log("world", toJS(world)) // zzz
+
+    if (!grid) {
+      return null
+    }
+
+    const place = grid[0][0]
+    console.log("place", toJS(place)) // zzz
+
+    const test = this.renderLocation({ item: { scene: grid[0][0] } })
+    return <div className={css.test}>{test}</div>
+  }
+
   render() {
     const { scene, showFrameBuilder } = this.state
 
@@ -597,6 +614,7 @@ class WorldBuilder extends Component {
           </div>
         </div>
         <div className={css.content}>
+          {this.renderSimpleWorld()}
           {this.renderWorldPicker()}
           <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
             {/* Create these with .map() */}
