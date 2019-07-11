@@ -31,6 +31,9 @@ class FrameBuilder extends Component {
 
   componentWillMount() {
     const { isStartScene, isEndScene } = this.props
+
+    console.log("this.props", this.props) // zzz
+
     this.setState({ isStartScene, isEndScene })
   }
 
@@ -132,6 +135,30 @@ class FrameBuilder extends Component {
   }
 
   renderActiveFrameSetName = () => {
+    const activeFrameSet = this.getActiveFrameSet()
+    const title =
+      activeFrameSet && activeFrameSet.data && activeFrameSet.data.title
+
+    return (
+      <div className={css.frameSetNameContainer}>
+        <FormGroup label="Title" labelFor="text-input">
+          <InputGroup
+            value={title}
+            id="text-input"
+            placeholder="Placeholder text"
+            onChange={event =>
+              this.onChangeFrameSetTitle({ frameSet: activeFrameSet, event })
+            }
+            onBlur={event =>
+              this.updateFrameSetTitle({ frameSet: activeFrameSet, event })
+            }
+          />
+        </FormGroup>
+      </div>
+    )
+  }
+
+  renderNarrativeEditor = () => {
     const activeFrameSet = this.getActiveFrameSet()
     const title =
       activeFrameSet && activeFrameSet.data && activeFrameSet.data.title

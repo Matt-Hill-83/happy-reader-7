@@ -102,6 +102,12 @@ class Frame extends Component {
     return mood
   }
 
+  editNarrative = ({ allCharacters = [] }) => {
+    const { sceneToEdit, frame = {}, isEditMode = true } = this.props
+    const { story = [], faces = [] } = frame
+    console.log("story", toJS(story)) // zzz
+  }
+
   renderFrame = ({ allCharacters = [] }) => {
     const { sceneToEdit, frame = {}, isEditMode = true } = this.props
     const { story = [], faces = [] } = frame
