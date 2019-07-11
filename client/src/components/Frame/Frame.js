@@ -104,6 +104,7 @@ class Frame extends Component {
 
   editNarrative = ({ allCharacters = [] }) => {
     const { scene, frame = {}, isEditMode = true } = this.props
+
     const { story = [], faces = [] } = frame
     console.log("story", toJS(story)) // zzz
   }

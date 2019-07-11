@@ -30,11 +30,17 @@ class FrameBuilder extends Component {
   }
 
   componentWillMount() {
-    const { isStartScene, isEndScene } = this.props
+    const { isStartScene, isEndScene, scene } = this.props
 
     console.log("this.props", this.props) // zzz
 
-    this.setState({ isStartScene, isEndScene })
+    this.setState({ isStartScene, isEndScene, scene })
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { isStartScene, isEndScene, scene } = newProps
+
+    this.setState({ isStartScene, isEndScene, scene })
   }
 
   onExitFrameBuilder = () => {
@@ -89,7 +95,7 @@ class FrameBuilder extends Component {
   }
 
   onAddFrame = () => {
-    const activeFrameSet = this.getActiveFrameSet().data
+    const activeFrameSet = this.getFrameSet()
     console.log("activeFrameSet", toJS(activeFrameSet)) // zzz
 
     const newFrame = this.getNewFrame()
@@ -124,7 +130,7 @@ class FrameBuilder extends Component {
   }
 
   updateFrameSet = async () => {
-    const frameSet = this.getActiveFrameSet()
+    const frameSet = this.getFrameSet()
 
     const { updateWorld } = this.props
     updateWorld && updateWorld({ newProps: frameSet })
@@ -135,7 +141,7 @@ class FrameBuilder extends Component {
   }
 
   renderActiveFrameSetName = () => {
-    const activeFrameSet = this.getActiveFrameSet()
+    const activeFrameSet = this.getFrameSet()
     const title =
       activeFrameSet && activeFrameSet.data && activeFrameSet.data.title
 
@@ -159,7 +165,7 @@ class FrameBuilder extends Component {
   }
 
   renderNarrativeEditor = () => {
-    const activeFrameSet = this.getActiveFrameSet()
+    const activeFrameSet = this.getFrameSet()
     const title =
       activeFrameSet && activeFrameSet.data && activeFrameSet.data.title
 
@@ -230,30 +236,8 @@ class FrameBuilder extends Component {
     }
   }
 
-  getActiveFrameSet = () => {
-    const frameSets = this.getFrameSets()
-
-    let activeFrameSet = null
-
-    // TODO - if there is no frameset selected, choose the first one
-    if (this.state.activeFrameSet) {
-      activeFrameSet = frameSets.find(
-        frameSet => frameSet.data.name === this.state.activeFrameSet
-      )
-    } else {
-      if (!frameSets[0] || !frameSets[0].data) {
-        return null
-      }
-      activeFrameSet = frameSets[0]
-      const activeFrameSetName = activeFrameSet.data.name
-
-      this.setActiveFrameSet({ name: activeFrameSetName })
-    }
-
-    if (!activeFrameSet) {
-      return null
-    }
-    return activeFrameSet
+  getFrameSet = () => {
+    return (this.state.scene && this.state.scene.frameSet) || []
   }
 
   checkIsStartScene = () => {
@@ -275,11 +259,8 @@ class FrameBuilder extends Component {
 
   renderLocation = ({ item }) => {
     const { scene, id, name = "" } = item
-    console.log("scene.isStartScene", scene.isStartScene) // zzz
 
     const { updateWorld } = this.props
-
-    // const creatures = scene && scene.creatures
 
     const content = (
       <div className={css.locationGridContainer}>
@@ -319,7 +300,7 @@ class FrameBuilder extends Component {
     // this.newFrames = frames
     // this.newFrameSet = { name: "new Name", title: "new title", frames }
 
-    // const activeFrameSet = this.getActiveFrameSet()
+    // const activeFrameSet = this.getFrameSet()
     const activeFrameSet = scene.frameSet || this.getNewFrameSet()
 
     const renderedFrames = activeFrameSet.frames.map(frame => {
