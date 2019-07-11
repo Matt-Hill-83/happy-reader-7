@@ -396,7 +396,7 @@ class WorldBuilder extends Component {
     return targetArrays
   }
 
-  saveMap = async () => {
+  saveWorld = async () => {
     const locationsMap = this.transformLocationsGridToLocationsMap()
     const flatArray = JSON.stringify(locationsMap)
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
@@ -422,7 +422,7 @@ class WorldBuilder extends Component {
 
   renderSaveWorldButton = () => {
     return (
-      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
+      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveWorld}>
         <span> Save World </span>
         <Icon color={"purple"} icon={IconNames.SAVED} />
       </Button>

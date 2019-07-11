@@ -110,10 +110,6 @@ class FrameBuilder extends Component {
     frameSetStore.add(frameSet)
   }
 
-  getFrameSets = () => {
-    return frameSetStore.docs
-  }
-
   setActiveFrameSet = ({ name }) => {
     this.setState({ activeFrameSet: name })
   }
@@ -188,39 +184,6 @@ class FrameBuilder extends Component {
     )
   }
 
-  // renderFrameSetPicker = () => {
-  //   const frameSets = this.getFrameSets()
-  //   const renderedFrames = frameSets.map(frameSet => {
-  //     const { name, title } = frameSet.data
-
-  //     return (
-  //       <div className={css.itemRow}>
-  //         <Button
-  //           icon="database"
-  //           onClick={() => this.setActiveFrameSet({ name })}
-  //           className={css.frameSetName}
-  //         >
-  //           {`name - ${name} title -   ${title}`}
-  //         </Button>
-  //         <Button
-  //           icon="cross"
-  //           onClick={() => this.onPressDelete({ item: frameSet })}
-  //           className={css.xxx}
-  //         />
-  //       </div>
-  //     )
-  //   })
-  //   return (
-  //     <div className={css.frameSetsList}>
-  //       <Button className={css.addButton} onClick={this.addFrameSet}>
-  //         + New
-  //         {/* <Icon icon={IconNames.SAVED} /> */}
-  //       </Button>
-  //       {renderedFrames}
-  //     </div>
-  //   )
-  // }
-
   deleteFrame = ({ id }) => {
     console.log("deleting Frame") // zzz
   }
@@ -237,7 +200,7 @@ class FrameBuilder extends Component {
   }
 
   getFrameSet = () => {
-    return (this.state.scene && this.state.scene.frameSet) || []
+    return (this.state.scene && this.state.scene.frameSet) || {}
   }
 
   checkIsStartScene = () => {
@@ -294,20 +257,9 @@ class FrameBuilder extends Component {
   render() {
     const { scene } = this.props
 
-    // const newFrame = this.getNewFrame()
-    // const frames = [newFrame]
-
-    // this.newFrames = frames
-    // this.newFrameSet = { name: "new Name", title: "new title", frames }
-
-    // const activeFrameSet = this.getFrameSet()
     const activeFrameSet = scene.frameSet || this.getNewFrameSet()
 
     const renderedFrames = activeFrameSet.frames.map(frame => {
-      // activeFrameSet &&
-      // activeFrameSet.data &&
-      // activeFrameSet.data.frames &&
-      // activeFrameSet.data.frames.map(frame => {
       return (
         <Frame
           frame={frame}
