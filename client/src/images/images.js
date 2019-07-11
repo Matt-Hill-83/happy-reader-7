@@ -108,12 +108,6 @@ import greenKey from "./items/green-key.png"
 import hat from "./items/hat.png"
 import key from "./items/key.png"
 
-// poseable girl
-import rubyHappy from "./rigged-girls/ruby/ruby-happy-01.png"
-import rubyMad from "./rigged-girls/ruby/ruby-mad-01.png"
-import rubySad from "./rigged-girls/ruby/ruby-sad-01.png"
-import rubySly from "./rigged-girls/ruby/ruby-sly-01.png"
-
 // scene view
 import sceneViewBook from "./scene-view/book01.png"
 import sceneViewNotebook from "./scene-view/notebook-01.png"
