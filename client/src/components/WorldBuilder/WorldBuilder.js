@@ -67,7 +67,8 @@ class WorldBuilder extends Component {
     })
 
     // generate placeholders for output grid in state
-    const preAllocatedArrays = this.preAllocateArrays()
+    const preAllocatedArrays = this.preAllocateArrays({})
+    console.log("preAllocatedArrays", preAllocatedArrays) // zzz
 
     // Instead of making different containers, why not dump all items together and sort them by tag?
     // And instead of removing from the list, just mark them as not visible.
@@ -105,7 +106,7 @@ class WorldBuilder extends Component {
         name,
         content: (
           <div className={css.characterImage}>
-            <img src={image} alt={"item image"} />
+            <img src={image} alt={"item"} />
             <span className={css.characterLabel}>{type}</span>
           </div>
         )
@@ -124,9 +125,12 @@ class WorldBuilder extends Component {
     console.log("index", index) // zzz
 
     const savedMaps = maps.docs.map(map => toJS(map.data))
-    console.log("savedMaps[index]", savedMaps[index]) // zzz
+    console.log("savedMaps[index]", savedMaps[index]["scenesGrid"]) // zzz
 
-    const world = { test }
+    const test = JSON.parse(savedMaps[index]["scenesGrid"])
+    console.log("test", test) // zzz
+
+    const world = { test: "test" }
     this.setState({ world })
   }
 
@@ -151,7 +155,7 @@ class WorldBuilder extends Component {
         content={renderedMapList}
         position={Position.RIGHT_TOP}
       >
-        <Button icon="share" text="Load Map" />
+        <Button icon="share" text="Load World" />
       </Popover>
     )
 
@@ -204,7 +208,7 @@ class WorldBuilder extends Component {
     width: COLUMN_WIDTH
   })
 
-  preAllocateArrays = () => {
+  preAllocateArrays = ({}) => {
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0)
     const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0)
 
@@ -218,14 +222,12 @@ class WorldBuilder extends Component {
         const colName = `col-${colIndex}`
 
         locationsGrid[rowName][colName] = []
-        newStateObject.locationsGrid = locationsGrid
       })
     })
+    newStateObject.locationsGrid = locationsGrid
 
     return newStateObject
   }
-
-  componentWillReceiveProps(newProps) {}
 
   getList = ({ id }) => {
     if (
@@ -564,6 +566,7 @@ class WorldBuilder extends Component {
 
     console.log("scene - world builder", toJS(scene)) // zzz
     const world = { name: "this world" }
+    console.log("this.state", toJS(this.state)) // zzz
 
     return (
       <div className={css.main}>
