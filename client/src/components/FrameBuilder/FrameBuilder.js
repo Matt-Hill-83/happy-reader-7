@@ -126,9 +126,9 @@ class FrameBuilder extends Component {
     const { updateWorld } = this.props
     updateWorld && updateWorld({ newProps: frameSet })
 
-    await frameSet.update({
-      ...frameSet.data
-    })
+    // await frameSet.update({
+    //   ...frameSet.data
+    // })
   }
 
   renderActiveFrameSetName = () => {
@@ -155,38 +155,38 @@ class FrameBuilder extends Component {
     )
   }
 
-  renderFrameSetPicker = () => {
-    const frameSets = this.getFrameSets()
-    const renderedFrames = frameSets.map(frameSet => {
-      const { name, title } = frameSet.data
+  // renderFrameSetPicker = () => {
+  //   const frameSets = this.getFrameSets()
+  //   const renderedFrames = frameSets.map(frameSet => {
+  //     const { name, title } = frameSet.data
 
-      return (
-        <div className={css.itemRow}>
-          <Button
-            icon="database"
-            onClick={() => this.setActiveFrameSet({ name })}
-            className={css.frameSetName}
-          >
-            {`name - ${name} title -   ${title}`}
-          </Button>
-          <Button
-            icon="cross"
-            onClick={() => this.onPressDelete({ item: frameSet })}
-            className={css.xxx}
-          />
-        </div>
-      )
-    })
-    return (
-      <div className={css.frameSetsList}>
-        <Button className={css.addButton} onClick={this.addFrameSet}>
-          + New
-          {/* <Icon icon={IconNames.SAVED} /> */}
-        </Button>
-        {renderedFrames}
-      </div>
-    )
-  }
+  //     return (
+  //       <div className={css.itemRow}>
+  //         <Button
+  //           icon="database"
+  //           onClick={() => this.setActiveFrameSet({ name })}
+  //           className={css.frameSetName}
+  //         >
+  //           {`name - ${name} title -   ${title}`}
+  //         </Button>
+  //         <Button
+  //           icon="cross"
+  //           onClick={() => this.onPressDelete({ item: frameSet })}
+  //           className={css.xxx}
+  //         />
+  //       </div>
+  //     )
+  //   })
+  //   return (
+  //     <div className={css.frameSetsList}>
+  //       <Button className={css.addButton} onClick={this.addFrameSet}>
+  //         + New
+  //         {/* <Icon icon={IconNames.SAVED} /> */}
+  //       </Button>
+  //       {renderedFrames}
+  //     </div>
+  //   )
+  // }
 
   deleteFrame = ({ id }) => {
     console.log("deleting Frame") // zzz
@@ -275,58 +275,44 @@ class FrameBuilder extends Component {
     return content
   }
 
+  getNewFrameSet = () => {
+    return {
+      name: "test",
+      title: "test",
+      frames: [this.getNewFrame()]
+    }
+  }
+
   render() {
     const { sceneToEdit } = this.props
 
-    const newFrame = this.getNewFrame()
-    const frames = [newFrame]
+    // const newFrame = this.getNewFrame()
+    // const frames = [newFrame]
 
-    // const frames = [
-    //   {
-    //     creatures,
-    //     story: [`Kat meets Liz.`, ``],
-    //     faces: [
-    //       { character: "liz", face: "scared" },
-    //       { character: "kat", face: "cry" }
-    //     ],
-    //     dialog: [
-    //       { character: "liz", text: "Hi Kat" },
-    //       { character: "kat", text: "Hi Liz" }
-    //     ]
-    //   }
-    // ]
+    // this.newFrames = frames
+    // this.newFrameSet = { name: "new Name", title: "new title", frames }
 
-    this.newFrames = frames
-    this.newFrameSet = { name: "new Name", title: "new title", frames }
+    // const activeFrameSet = this.getActiveFrameSet()
+    const activeFrameSet = sceneToEdit.frameSet || this.getNewFrameSet()
 
-    const activeFrameSet = this.getActiveFrameSet()
-
-    const renderedFrames =
-      activeFrameSet &&
-      activeFrameSet.data &&
-      activeFrameSet.data.frames &&
-      activeFrameSet.data.frames.map(frame => {
-        return (
-          <Frame
-            frame={frame}
-            sceneToEdit={sceneToEdit}
-            updateFrameSet={this.updateFrameSet}
-          />
-        )
-      })
+    const renderedFrames = activeFrameSet.frames.map(frame => {
+      // activeFrameSet &&
+      // activeFrameSet.data &&
+      // activeFrameSet.data.frames &&
+      // activeFrameSet.data.frames.map(frame => {
+      return (
+        <Frame
+          frame={frame}
+          sceneToEdit={sceneToEdit}
+          updateFrameSet={this.updateFrameSet}
+        />
+      )
+    })
 
     return (
       <div className={css.main}>
-        {/* <div>
-          is Start Scene
-          <Checkbox
-            // style={styles.checkbox}
-            onClick={this.checkIsStartScene}
-            checked={isStartScene}
-          />
-        </div> */}
         {/* {this.renderLocation()} */}
-        {this.renderFrameSetPicker()}
+        {/* {this.renderFrameSetPicker()} */}
         {this.renderActiveFrameSetName()}
 
         {renderedFrames}

@@ -8,16 +8,23 @@ import { toJS } from "mobx"
 
 const girlImages = Images.posableGirls
 
+// TODO - the else logic should be placed where this component is called?
+
 class Character extends Component {
   render() {
     const { name, mood, isEditMode } = this.props
+    console.log("this.props", toJS(this.props)) // zzz
 
     const images = girlImages.find(girl => girl.name === name)
 
     // if there are no posable images
     if (!images) {
       const image = Images.creatures[name]
-      return <img className={css.locationImage} src={image} alt={"imagex"} />
+      return (
+        <div className={css.characterContainer}>
+          <img className={css.characterImage} src={image} alt={"imagex"} />
+        </div>
+      )
     }
 
     // else...

@@ -178,23 +178,18 @@ class Frame extends Component {
 
   render() {
     const { frame, isEditMode = true } = this.props
-
-    const creatures = (frame && frame.creatures) || []
-    console.log("creatures", toJS(creatures)) // zzz
-
     const { showFacePicker } = this.state
 
-    const friendNames = creatures.map(creature => creature.type)
-    const you = localStateStore.getYou()
-    const yourName = you.name
+    const allCharacters = (frame && frame.creatures) || []
+    // console.log("creatures", toJS(creatures)) // zzz
 
-    const allCharacters = [yourName, ...friendNames]
+    // // const friendNames = creatures.map(creature => creature.type)
+    // const you = localStateStore.getYou()
+    // const yourName = you.name
 
-    // const renderedFacePickers =
-    //   isEditMode &&
-    //   allCharacters.map(name => {
-    //     return this.renderFacePicker({ name })
-    //   })
+    // const allCharacters = [yourName, ...creatures]
+    // // const allCharacters = [yourName, ...friendNames]
+    console.log("allCharacters", allCharacters) // zzz
 
     return (
       <>
@@ -210,7 +205,7 @@ class Frame extends Component {
           </div>
         )}
         <div className={css.scenesContainer}>
-          {this.renderFrame({ you, allCharacters })}
+          {this.renderFrame({ allCharacters })}
           {isEditMode && (
             <Button
               className={css.toggleFacePickerButton}

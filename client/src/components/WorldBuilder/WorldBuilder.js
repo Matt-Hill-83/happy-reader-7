@@ -488,9 +488,6 @@ class WorldBuilder extends Component {
 
   renderLocation = ({ item }) => {
     const { scene, id, name = "" } = item
-    console.log("scene.isStartScene", scene.isStartScene) // zzz
-
-    // const creatures = scene && scene.creatures
 
     const content = (
       <div className={css.locationGridContainer}>

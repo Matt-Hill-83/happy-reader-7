@@ -11,6 +11,17 @@
   }
 }
 
+.characterContainer {
+  border: 1px solid red !important;
+  height: 300px;
+}
+
+.characterImage {
+  border: 1px solid blue !important;
+  height: 100%;
+  width: auto;
+}
+
 .headForBody {
   background: transparent !important;
   position: absolute !important;
