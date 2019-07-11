@@ -45,6 +45,10 @@ class Frame extends Component {
 
   renderFacePicker = ({ name }) => {
     const girlImages = Images.posableGirls
+    console.log("name", toJS(name)) // zzz
+
+    console.log("girlImages", toJS(girlImages)) // zzz
+
     const images = girlImages.find(girl => girl.name === name)
 
     const {
@@ -156,7 +160,7 @@ class Frame extends Component {
                 isEditMode ? css.isEditMode : ""
               }`}
               src={backgroundImage}
-              alt={`backgroundImage-image`}
+              alt={`backgroundImage`}
             />
           </div>
 
@@ -166,10 +170,18 @@ class Frame extends Component {
     )
   }
 
+  renderFacePickers = ({ allCharacters }) => {
+    return allCharacters.map(name => {
+      return this.renderFacePicker({ name })
+    })
+  }
+
   render() {
     const { frame, isEditMode = true } = this.props
 
     const creatures = (frame && frame.creatures) || []
+    console.log("creatures", toJS(creatures)) // zzz
+
     const { showFacePicker } = this.state
 
     const friendNames = creatures.map(creature => creature.type)
@@ -178,11 +190,11 @@ class Frame extends Component {
 
     const allCharacters = [yourName, ...friendNames]
 
-    const renderedFacePickers =
-      isEditMode &&
-      allCharacters.map(name => {
-        return this.renderFacePicker({ name })
-      })
+    // const renderedFacePickers =
+    //   isEditMode &&
+    //   allCharacters.map(name => {
+    //     return this.renderFacePicker({ name })
+    //   })
 
     return (
       <>
@@ -194,7 +206,7 @@ class Frame extends Component {
             >
               <Icon icon={IconNames.DATABASE} />
             </Button>
-            {renderedFacePickers}
+            {isEditMode && this.renderFacePickers({ allCharacters })}
           </div>
         )}
         <div className={css.scenesContainer}>

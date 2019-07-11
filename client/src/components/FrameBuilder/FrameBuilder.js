@@ -18,6 +18,8 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
 import css from "./FrameBuilder.module.scss"
+import MiniLocation from "../MiniLocation/MiniLocation"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 
 class FrameBuilder extends Component {
   state = {
@@ -39,6 +41,60 @@ class FrameBuilder extends Component {
     onExitFrameBuilder && onExitFrameBuilder({ frames })
   }
 
+  getNewFrame = () => {
+    const {
+      sceneToEdit: { creatures = [] }
+    } = this.props
+    console.log("creatures", toJS(creatures)) // zzz
+
+    const friendNames = creatures.map(creature => creature.type)
+    const you = localStateStore.getYou()
+    const yourName = you.name
+
+    const allCharacters = [yourName, ...friendNames]
+
+    const creatureName0 = allCharacters[0].type
+    // const creatureName1 = creatures[1].type
+    console.log("creatureName0", toJS(creatureName0)) // zzz
+    // console.log("creatureName1", toJS(creatureName1)) // zzz
+
+    const newFrame = {
+      creatures: allCharacters,
+      story: [
+        `${creatureName0} meets ${"creatureName1"}.`,
+        `${creatureName0} and ${"creatureName1"} play.`
+      ],
+      faces: [
+        { character: "creatureName1", face: "scared" },
+        { character: creatureName0, face: "cry" }
+      ],
+      dialog: [
+        {
+          character: "creatureName1",
+          text: `${"creatureName1"}! ${"creatureName1"}!!`
+        },
+        { character: creatureName0, text: `Hi ${creatureName0}.` },
+        { character: "creatureName1", text: "Can you play?" },
+        { character: creatureName0, text: "No, I can not play." },
+        { character: creatureName0, text: "I lost Piggy!." },
+        { character: "creatureName1", text: "You lost Piggy?" },
+        { character: "creatureName1", text: "Nooooooooo!" }
+      ]
+    }
+
+    return newFrame
+  }
+
+  onAddFrame = () => {
+    const activeFrameSet = this.getActiveFrameSet().data
+    console.log("activeFrameSet", toJS(activeFrameSet)) // zzz
+
+    const newFrame = this.getNewFrame()
+    activeFrameSet.frames.push(newFrame)
+    this.updateFrameSet()
+  }
+
+  // TODO - frameset should be attached to World
   addFrameSet = ({}) => {
     const frameSet = this.newFrameSet
 
@@ -66,6 +122,9 @@ class FrameBuilder extends Component {
 
   updateFrameSet = async () => {
     const frameSet = this.getActiveFrameSet()
+
+    const { updateWorld } = this.props
+    updateWorld && updateWorld({ newProps: frameSet })
 
     await frameSet.update({
       ...frameSet.data
@@ -187,69 +246,52 @@ class FrameBuilder extends Component {
     return
   }
 
+  renderLocation = ({ item }) => {
+    const { scene, id, name = "" } = item
+    console.log("scene.isStartScene", scene.isStartScene) // zzz
+
+    const { updateWorld } = this.props
+
+    // const creatures = scene && scene.creatures
+
+    const content = (
+      <div className={css.locationGridContainer}>
+        <MiniLocation
+          id={id}
+          key={name}
+          location={scene}
+          isEditMode={true}
+          updateWorld={updateWorld}
+        />
+        <Button
+          className={css.scenePropsButton}
+          onClick={() => this.editFrame({ scene })}
+        >
+          <Icon icon={IconNames.SETTINGS} />
+        </Button>
+      </div>
+    )
+
+    return content
+  }
+
   render() {
-    const {
-      sceneToEdit,
-      sceneToEdit: { creatures = [] }
-    } = this.props
+    const { sceneToEdit } = this.props
 
-    const { isStartScene } = this.state
-
-    const frames = [
-      {
-        creatures,
-        story: [`Kat meets Liz.`, ``],
-        faces: [
-          { character: "liz", face: "scared" },
-          { character: "kat", face: "cry" }
-        ],
-        dialog: [
-          { character: "liz", text: "Hi Kat" },
-          { character: "kat", text: "Hi Liz" }
-        ]
-      }
-    ]
+    const newFrame = this.getNewFrame()
+    const frames = [newFrame]
 
     // const frames = [
     //   {
     //     creatures,
-    //     story: [`Kat meets Liz.`, `Kat and Liz play.`],
+    //     story: [`Kat meets Liz.`, ``],
     //     faces: [
     //       { character: "liz", face: "scared" },
     //       { character: "kat", face: "cry" }
     //     ],
     //     dialog: [
-    //       { character: "liz", text: "Liz! Liz!!" },
-    //       { character: "kat", text: "Hi Kat." },
-    //       { character: "liz", text: "Can you play?" },
-    //       { character: "kat", text: "No, I can not play." },
-    //       { character: "kat", text: "I lost Piggy!." },
-    //       { character: "liz", text: "You lost Piggy?" },
-    //       { character: "liz", text: "Nooooooooo!" }
-    //     ]
-    //   },
-    //   {
-    //     creatures,
-    //     story: [`Liz lost Piggy.`, `Kat is sad.`],
-    //     faces: [
-    //       { character: "liz", face: "scared" },
-    //       { character: "kat", face: "cry" }
-    //     ],
-    //     dialog: [
-    //       { character: "kat", text: "oh noooo!" },
-    //       { character: "liz", text: "I can help!" }
-    //     ]
-    //   },
-    //   {
-    //     creatures,
-    //     story: [`Liz finds Piggy.`, `Liz is happy!`],
-    //     faces: [
-    //       { character: "kat", face: "joy" },
-    //       { character: "liz", face: "joy" }
-    //     ],
-    //     dialog: [
-    //       { character: "kat", text: "I love you Liz!" },
-    //       { character: "liz", text: "I love you Kat!" }
+    //       { character: "liz", text: "Hi Kat" },
+    //       { character: "kat", text: "Hi Liz" }
     //     ]
     //   }
     // ]
@@ -258,9 +300,6 @@ class FrameBuilder extends Component {
     this.newFrameSet = { name: "new Name", title: "new title", frames }
 
     const activeFrameSet = this.getActiveFrameSet()
-    // if (!activeFrameSet) {
-    //   return null
-    // }
 
     const renderedFrames =
       activeFrameSet &&
@@ -278,14 +317,15 @@ class FrameBuilder extends Component {
 
     return (
       <div className={css.main}>
-        <div>
+        {/* <div>
           is Start Scene
           <Checkbox
             // style={styles.checkbox}
             onClick={this.checkIsStartScene}
             checked={isStartScene}
           />
-        </div>
+        </div> */}
+        {/* {this.renderLocation()} */}
         {this.renderFrameSetPicker()}
         {this.renderActiveFrameSetName()}
 
@@ -295,6 +335,12 @@ class FrameBuilder extends Component {
           <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
             <Icon icon={IconNames.CLOSE} />
             Close
+          </Button>
+        </div>
+        <div className={css.buttonContainer}>
+          <Button className={css.closeButton} onClick={this.onAddFrame}>
+            <Icon icon={IconNames.CLOSE} />
+            Add Frame
           </Button>
         </div>
       </div>

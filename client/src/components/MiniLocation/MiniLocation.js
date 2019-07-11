@@ -206,17 +206,22 @@ class MiniLocation extends React.Component {
     console.log("this.props", this.props) // zzz
     const { location } = this.props
 
+    // TODO - test this
+    // TODO - test this
+    // TODO - test this
+    this.props.updateWorld &&
+      this.props.updateWorld({ newProps: { startScene: location.name } })
+
     location.isStartScene = !this.state.isStartScene
     this.setState({ isStartScene: !this.state.isStartScene })
-    return
   }
 
   checkIsEndScene = () => {
     const { location } = this.props
-
+    this.props.updateEndScene &&
+      this.props.updateEndScene({ sceneName: location.name })
     location.isEndScene = !this.state.isEndScene
     this.setState({ isEndScene: !this.state.isEndScene })
-    return
   }
 
   render() {

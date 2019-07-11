@@ -2,10 +2,11 @@ import { Button } from "@blueprintjs/core"
 import Frame from "../Frame/Frame.js"
 import React from "react"
 import _get from "lodash.get"
-import { frameSetStore } from "../../Stores/FrameSetStore.js"
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
+
+import { frameSetStore } from "../../Stores/FrameSetStore.js"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 
 import css from "./WordPage.module.scss"
 
@@ -66,6 +67,10 @@ class WordPage extends React.Component {
     }
 
     const locationDetails = localStateStore.getLocationDetails()
+
+    const activeLocationsMap = localStateStore.getActiveLocationsMap()
+
+    console.log("activeLocationsMap", toJS(activeLocationsMap)) // zzz
 
     const regex = `(.+)-(.+)`
 

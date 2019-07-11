@@ -14,6 +14,13 @@ class Character extends Component {
 
     const images = girlImages.find(girl => girl.name === name)
 
+    // if there are no posable images
+    if (!images) {
+      const image = Images.creatures[name]
+      return <img className={css.locationImage} src={image} alt={"imagex"} />
+    }
+
+    // else...
     const {
       images: { heads, body }
     } = images
@@ -24,11 +31,7 @@ class Character extends Component {
 
     return (
       <div className={css.girlBodyContainer}>
-        <img
-          className={`${css.girlBodyImage}`}
-          src={body.image}
-          alt={`${name}-image`}
-        />
+        <img className={`${css.girlBodyImage}`} src={body.image} alt={`name`} />
         <span className={`${css.bodyLabel}`}>{name}</span>
         <Head
           name={name}

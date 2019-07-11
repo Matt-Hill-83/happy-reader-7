@@ -41,6 +41,7 @@ const SOURCE_ITEMS_PROP_NAME = "sourceItems"
 
 class WorldBuilder extends Component {
   state = {
+    world: {},
     showFrameBuilder: false,
     [SOURCE_ITEMS_PROP_NAME]: [],
     [SOURCE_CREATURES_PROP_NAME]: [],
@@ -117,6 +118,16 @@ class WorldBuilder extends Component {
       [SOURCE_CREATURES_PROP_NAME]: creatureObjects,
       ...preAllocatedArrays
     })
+  }
+
+  changeMap = ({ index }) => {
+    console.log("index", index) // zzz
+
+    const savedMaps = maps.docs.map(map => toJS(map.data))
+    console.log("savedMaps[index]", savedMaps[index]) // zzz
+
+    const world = { test }
+    this.setState({ world })
   }
 
   renderWorldPicker = () => {
@@ -409,10 +420,10 @@ class WorldBuilder extends Component {
     maps.add(newMap)
   }
 
-  renderSaveMapButton = () => {
+  renderSaveWorldButton = () => {
     return (
       <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
-        <span> Save Map </span>
+        <span> Save World </span>
         <Icon color={"purple"} icon={IconNames.SAVED} />
       </Button>
     )
@@ -483,7 +494,13 @@ class WorldBuilder extends Component {
 
     const content = (
       <div className={css.locationGridContainer}>
-        <MiniLocation id={id} key={name} location={scene} isEditMode={true} />
+        <MiniLocation
+          id={id}
+          key={name}
+          location={scene}
+          isEditMode={true}
+          updateWorld={this.updateWorld}
+        />
         <Button
           className={css.scenePropsButton}
           onClick={() => this.editFrame({ scene })}
@@ -494,6 +511,13 @@ class WorldBuilder extends Component {
     )
 
     return content
+  }
+
+  updateWorld = ({ newProps }) => {
+    const world = this.state.world
+    Object.assign(world, newProps)
+
+    this.setState({ world })
   }
 
   renderItems = ({ provided, snapshot, items }) => {
@@ -551,7 +575,7 @@ class WorldBuilder extends Component {
             <div className={css.title}>World Builder</div>
             <div className={css.subTitle}>
               (drag items to create your world...)
-              {this.renderSaveMapButton()}
+              {this.renderSaveWorldButton()}
             </div>
           </div>
         </div>
