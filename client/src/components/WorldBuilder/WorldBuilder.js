@@ -623,6 +623,7 @@ class WorldBuilder extends Component {
             <div className={css.title}>World Builder</div>
             <div className={css.subTitle}>
               (drag items to create your world...)
+              {this.renderSaveWorldButton()}
               <div className={css.editWorldButtons}>
                 <Button
                   icon="share"
@@ -631,14 +632,13 @@ class WorldBuilder extends Component {
                     this.setState({ editWorld: !this.state.editWorld })
                   }
                 />
-                {this.renderSaveWorldButton()}
+                {this.state.editWorld && this.renderWorldPicker()}
               </div>
             </div>
           </div>
         </div>
         <div className={css.content}>
           {this.state.editWorld && this.renderSimpleWorld()}
-          {this.state.editWorld && this.renderWorldPicker()}
           {!this.state.editWorld && (
             <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
               {/* Create these with .map() */}
