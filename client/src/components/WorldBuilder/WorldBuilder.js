@@ -623,14 +623,16 @@ class WorldBuilder extends Component {
             <div className={css.title}>World Builder</div>
             <div className={css.subTitle}>
               (drag items to create your world...)
-              {this.renderSaveWorldButton()}
-              <Button
-                icon="share"
-                text="Edit World"
-                onClick={() =>
-                  this.setState({ editWorld: !this.state.editWorld })
-                }
-              />
+              <div className={css.editWorldButtons}>
+                <Button
+                  icon="share"
+                  text="Edit World"
+                  onClick={() =>
+                    this.setState({ editWorld: !this.state.editWorld })
+                  }
+                />
+                {this.renderSaveWorldButton()}
+              </div>
             </div>
           </div>
         </div>

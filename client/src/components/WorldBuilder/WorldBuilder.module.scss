@@ -1,5 +1,11 @@
 @import "../../Styles/mixins.modules.scss";
 
+.editWorldButtons {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
 .test {
   border: 1px solid red !important;
   display: flex;
