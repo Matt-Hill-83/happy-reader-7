@@ -48,6 +48,13 @@ class WorldBuilder extends Component {
     editWorld: true
   }
 
+  async componentWillMount() {
+    this.initDraggableStuff()
+    const initialMapIndex = 0
+    this.changeMap({ index: initialMapIndex })
+    this.editFrame({})
+  }
+
   initDraggableStuff = async () => {
     const { allItems, allScenes } = localStateStore.getPlot()
     const allCreatures = localStateStore.getCreatures()
@@ -119,12 +126,6 @@ class WorldBuilder extends Component {
       [SOURCE_CREATURES_PROP_NAME]: creatureObjects,
       locationsGrid
     })
-  }
-
-  async componentWillMount() {
-    this.initDraggableStuff()
-    const initialMapIndex = 0
-    this.changeMap({ index: initialMapIndex })
   }
 
   changeMap = ({ index }) => {
@@ -595,14 +596,10 @@ class WorldBuilder extends Component {
     }
 
     const place = grid[0][0]
-    console.log("place", toJS(place)) // zzz
     const rows = grid.map((row, rowIndex) => {
-      console.log("row", toJS(row)) // zzz
-
       const renderedRow = row.map((col, colIndex) => {
         let test
         if (col.name) {
-          console.log("col", toJS(col)) // zzz
           test = this.renderLocation({ item: { scene: col } }) || null
         } else {
           test = null
@@ -618,9 +615,7 @@ class WorldBuilder extends Component {
   render() {
     const { scene, showFrameBuilder } = this.state
 
-    console.log("scene - world builder", toJS(scene)) // zzz
     const world = { name: "this world" }
-    console.log("this.state", toJS(this.state)) // zzz
 
     return (
       <div className={css.main}>
@@ -644,6 +639,7 @@ class WorldBuilder extends Component {
           </div>
         </div>
         <div className={css.content}>
+          {/* {true && ( */}
           {showFrameBuilder && (
             <FrameBuilder
               world={world}

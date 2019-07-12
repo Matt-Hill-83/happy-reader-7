@@ -254,41 +254,59 @@ class FrameBuilder extends Component {
     }
   }
 
-  render() {
+  renderFrames = () => {
     const { scene } = this.props
 
-    const activeFrameSet = scene.frameSet || this.getNewFrameSet()
+    const activeFrameSet = (scene && scene.frameSet) || this.getNewFrameSet()
 
-    const renderedFrames = activeFrameSet.frames.map(frame => {
-      return (
-        <Frame
-          frame={frame}
-          scene={scene}
-          updateFrameSet={this.updateFrameSet}
-        />
-      )
-    })
+    const renderedFrames =
+      activeFrameSet &&
+      activeFrameSet.frames.map(frame => {
+        return (
+          <Frame
+            frame={frame}
+            scene={scene}
+            updateFrameSet={this.updateFrameSet}
+          />
+        )
+      })
+
+    return renderedFrames
+  }
+
+  render() {
+    const { scene } = this.props
+    console.log("scene", toJS(scene)) // zzz
+
+    // const activeFrameSet = (scene && scene.frameSet) || this.getNewFrameSet()
 
     return (
       <div className={css.main}>
         {/* {this.renderLocation()} */}
         {/* {this.renderFrameSetPicker()} */}
-        {this.renderActiveFrameSetName()}
+        {scene && this.renderActiveFrameSetName()}
 
-        {renderedFrames}
+        {scene && this.renderFrames()}
 
-        <div className={css.buttonContainer}>
-          <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
-            <Icon icon={IconNames.CLOSE} />
-            Close
-          </Button>
-        </div>
-        <div className={css.buttonContainer}>
-          <Button className={css.closeButton} onClick={this.onAddFrame}>
-            <Icon icon={IconNames.CLOSE} />
-            Add Frame
-          </Button>
-        </div>
+        {scene && (
+          <div className={css.buttonContainer}>
+            <Button
+              className={css.closeButton}
+              onClick={this.onExitFrameBuilder}
+            >
+              <Icon icon={IconNames.CLOSE} />
+              Close
+            </Button>
+          </div>
+        )}
+        {scene && (
+          <div className={css.buttonContainer}>
+            <Button className={css.closeButton} onClick={this.onAddFrame}>
+              <Icon icon={IconNames.CLOSE} />
+              Add Frame
+            </Button>
+          </div>
+        )}
       </div>
     )
   }
