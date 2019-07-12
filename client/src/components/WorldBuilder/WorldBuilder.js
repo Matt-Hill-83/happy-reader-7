@@ -18,12 +18,11 @@ import FrameBuilder from "../FrameBuilder/FrameBuilder"
 import { IconNames } from "@blueprintjs/icons"
 import Images from "../../images/images"
 import MiniLocation from "../MiniLocation/MiniLocation"
-// import { frameSetStore } from "../../Stores/FrameSetStore"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import { maps } from "../../Stores/InitStores"
+import { worldNameStore } from "../../Stores/FrameSetStore"
 
 import css from "./WorldBuilder.module.scss"
-import { worldNameStore } from "../../Stores/FrameSetStore"
 
 const NUM_ROWS_LOCATIONS_GRID = 8
 const NUM_COLS_LOCATIONS_GRID = 8
@@ -45,10 +44,11 @@ class WorldBuilder extends Component {
     showFrameBuilder: false,
     [SOURCE_ITEMS_PROP_NAME]: [],
     [SOURCE_CREATURES_PROP_NAME]: [],
-    [SOURCE_LOCATIONS_PROP_NAME]: []
+    [SOURCE_LOCATIONS_PROP_NAME]: [],
+    editWorld: true
   }
 
-  async componentWillMount() {
+  initDraggableStuff = async () => {
     const { allItems, allScenes } = localStateStore.getPlot()
     const allCreatures = localStateStore.getCreatures()
 
@@ -119,6 +119,12 @@ class WorldBuilder extends Component {
       [SOURCE_CREATURES_PROP_NAME]: creatureObjects,
       locationsGrid
     })
+  }
+
+  async componentWillMount() {
+    this.initDraggableStuff()
+    const initialMapIndex = 0
+    this.changeMap({ index: initialMapIndex })
   }
 
   changeMap = ({ index }) => {
@@ -638,6 +644,13 @@ class WorldBuilder extends Component {
           </div>
         </div>
         <div className={css.content}>
+          {showFrameBuilder && (
+            <FrameBuilder
+              world={world}
+              scene={scene}
+              onExitFrameBuilder={frame => this.onExitFrameBuilder({ frame })}
+            />
+          )}
           {this.state.editWorld && this.renderSimpleWorld()}
           {!this.state.editWorld && (
             <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
@@ -670,13 +683,6 @@ class WorldBuilder extends Component {
             </DragDropContext>
           )}
         </div>
-        {showFrameBuilder && (
-          <FrameBuilder
-            world={world}
-            scene={scene}
-            onExitFrameBuilder={frame => this.onExitFrameBuilder({ frame })}
-          />
-        )}
       </div>
     )
   }

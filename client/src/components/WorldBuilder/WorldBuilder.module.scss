@@ -1,5 +1,28 @@
 @import "../../Styles/mixins.modules.scss";
 
+.main {
+  border: 1px solid red !important;
+  display: flex;
+  flex-direction: column;
+
+  :global {
+    [data-react-beautiful-dnd-draggable] {
+      height: var(--cell-height);
+      width: var(--cell-height);
+      padding: 0px !important;
+      margin: 0px !important;
+
+      img[class*="PicturePage_characterImageMini__"] {
+        display: none;
+      }
+    }
+  }
+
+  .characterImage {
+    @include character-image;
+  }
+}
+
 .editWorldButtons {
   position: absolute;
   top: 0px;
@@ -51,29 +74,6 @@
   position: absolute;
   display: flex;
   right: 1%;
-}
-
-.main {
-  border: 1px solid red !important;
-  display: flex;
-  flex-direction: column;
-
-  :global {
-    [data-react-beautiful-dnd-draggable] {
-      height: var(--cell-height);
-      width: var(--cell-height);
-      padding: 0px !important;
-      margin: 0px !important;
-
-      img[class*="PicturePage_characterImageMini__"] {
-        display: none;
-      }
-    }
-  }
-
-  .characterImage {
-    @include character-image;
-  }
 }
 
 .source {
