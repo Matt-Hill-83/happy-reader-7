@@ -17,9 +17,10 @@ import { frameSetStore } from "../../Stores/FrameSetStore"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
-import css from "./FrameBuilder.module.scss"
 import MiniLocation from "../MiniLocation/MiniLocation"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
+
+import css from "./FrameBuilder.module.scss"
 
 class FrameBuilder extends Component {
   state = {
@@ -200,6 +201,8 @@ class FrameBuilder extends Component {
   }
 
   getFrameSet = () => {
+    console.log("this.state.scene", toJS(this.state.scene)) // zzz
+
     return (this.state.scene && this.state.scene.frameSet) || {}
   }
 

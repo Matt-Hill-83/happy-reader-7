@@ -52,7 +52,7 @@ class WorldBuilder extends Component {
     this.initDraggableStuff()
     const initialMapIndex = 0
     this.changeMap({ index: initialMapIndex })
-    this.editFrame({})
+    // this.editFrame({})
   }
 
   initDraggableStuff = async () => {
@@ -132,15 +132,18 @@ class WorldBuilder extends Component {
     console.log("index", index) // zzz
 
     const savedMaps = maps.docs.map(map => toJS(map.data))
-    console.log("savedMaps[index]", savedMaps[index]["scenesGrid"]) // zzz
 
-    const test = JSON.parse(savedMaps[index]["scenesGrid"])
-    console.log("test", test) // zzz
+    const world = savedMaps[index]
+    console.log("world.grid", toJS(world.grid)) // zzz
 
-    // const locationsGrid = this.preAllocateArrays({ savedGrid: test })
-    // console.log("locationsGrid - loaded", locationsGrid) // zzz
+    // console.log("world", world["scenesGrid"]) // zzz
 
-    this.setState({ world: { grid: test } })
+    // const grid = JSON.parse(world["scenesGrid"])
+    // world.grid = grid
+
+    // console.log("grid", grid) // zzz
+
+    this.setState({ world })
   }
 
   renderWorldPicker = () => {
@@ -513,6 +516,7 @@ class WorldBuilder extends Component {
 
   renderLocation = ({ item }) => {
     const { scene, id, name = "" } = item
+    console.log("scene - render loc", toJS(scene)) // zzz
 
     const content = (
       <div className={css.locationGridContainer}>
@@ -595,27 +599,28 @@ class WorldBuilder extends Component {
       return null
     }
 
-    const place = grid[0][0]
+    // const place = grid[0][0]
     const rows = grid.map((row, rowIndex) => {
-      const renderedRow = row.map((col, colIndex) => {
-        let test
-        if (col.name) {
-          test = this.renderLocation({ item: { scene: col } }) || null
+      const renderedRow = row.map((scene, colIndex) => {
+        let newItem
+        if (scene.name) {
+          console.log("scene", toJS(scene)) // zzz
+
+          newItem = this.renderLocation({ item: { scene } }) || null
         } else {
-          test = null
+          newItem = null
         }
-        return <div className={css.sizerDiv}>{test}</div>
+        return <div className={css.sizerDiv}>{newItem}</div>
       })
       return <div className={css.rowDiv}>{renderedRow}</div>
     })
 
-    return <div className={css.test}>{rows}</div>
+    return <div className={css.scenesContainer}>{rows}</div>
   }
 
   render() {
-    const { scene, showFrameBuilder } = this.state
-
-    const world = { name: "this world" }
+    const { world, scene, showFrameBuilder } = this.state
+    console.log("scene - WB", toJS(scene)) // zzz
 
     return (
       <div className={css.main}>

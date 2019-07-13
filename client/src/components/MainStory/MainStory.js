@@ -38,6 +38,21 @@ class MainStory extends React.Component {
     mySentences.generateYou({})
     mySentences.generatePlot({})
 
+    await maps.fetch()
+    await worldNameStore.fetch()
+
+    const savedMaps = maps.docs.map(map => map.data)
+    savedMaps.forEach(map => {
+      // reconstitute the flattened Grid
+      const scenesGrid = map["scenesGrid"]
+      const parsedScenesGrid = JSON.parse(scenesGrid)
+      console.log("parsedScenesGrid", toJS(parsedScenesGrid)) // zzz
+
+      console.log("scenesGrid", toJS(scenesGrid)) // zzz
+
+      map.grid = parsedScenesGrid
+    })
+
     if (this.state.showIntro) {
       // localStateStore.setPage("you-picker")
       localStateStore.setPage("story-picker")
@@ -62,16 +77,18 @@ class MainStory extends React.Component {
     const terminalScene = allScenes.find(scene => {
       // console.log("scene.isStartScene", scene.isStartScene) // zzz
 
-      return start ? scene.isStartScene : scene.isEndScene
+      return start
+        ? scene.isStartScene || allScenes[0]
+        : scene.isEndScene || allScenes[1]
     })
 
     // If no start and finish scenes are marked, choose some, so the program doesn't break
-    return terminalScene
+    return terminalScene || allScenes[0]
   }
 
   onExitIntro = async () => {
-    await maps.fetch()
-    await worldNameStore.fetch()
+    // await maps.fetch()
+    // await worldNameStore.fetch()
 
     const savedMaps = maps.docs.map(map => toJS(map.data))
 
