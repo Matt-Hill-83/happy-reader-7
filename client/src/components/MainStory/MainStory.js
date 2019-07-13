@@ -45,6 +45,10 @@ class MainStory extends React.Component {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     savedMaps[0].update({ test: 99 })
 
+    // TODO -
+    // TODO -
+    // TODO -
+    // TODO - convert scenesGrid to scenes here, using existing tool.
     // reconstitute the flattened grids
     // savedMaps.forEach(map => {
     //   console.log(

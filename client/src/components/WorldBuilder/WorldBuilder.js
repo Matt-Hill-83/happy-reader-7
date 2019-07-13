@@ -550,7 +550,6 @@ class WorldBuilder extends Component {
     const map = this.state.world
     console.log("newProps", newProps) // zzz
     console.log("map---update", toJS(map)) // zzz
-    /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
     Object.assign(map.data, newProps)
     // Utils.setGridToMap({ map: map, grid: map.data.grid })
 
