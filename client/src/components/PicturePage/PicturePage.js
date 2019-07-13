@@ -1,19 +1,19 @@
-import { Button, Menu, MenuItem, Popover, Position } from "@blueprintjs/core"
-
-import Frame from "../Frame/Frame.js"
-import FrameBuilder from "../FrameBuilder/FrameBuilder.js"
-import Images from "../../images/images.js"
-import LineTo from "react-lineto"
-import MiniLocation from "../MiniLocation/MiniLocation.js"
-import React from "react"
-import WordPage from "../WordPage/WordPage.js"
-import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 import _get from "lodash.get"
-import css from "./PicturePage.module.scss"
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
-import { maps } from "../../Stores/InitStores"
+import { Button, Menu, MenuItem, Popover, Position } from "@blueprintjs/core"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
+import LineTo from "react-lineto"
+import React from "react"
+
+import { maps } from "../../Stores/InitStores"
+import Images from "../../images/images.js"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
+import MiniLocation from "../MiniLocation/MiniLocation.js"
+import Utils from "../../Utils/Utils.js"
+import WordPage from "../WordPage/WordPage.js"
+import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
+
+import css from "./PicturePage.module.scss"
 
 class PicturePage extends React.Component {
   constructor(props) {
@@ -36,8 +36,7 @@ class PicturePage extends React.Component {
   }
 
   renderLocationRows = () => {
-    const savedMaps = maps.docs.map(map => toJS(map.data))
-    console.log("savedMaps - render rows", savedMaps) // zzz
+    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
     if (!savedMaps[0]) {
       return null

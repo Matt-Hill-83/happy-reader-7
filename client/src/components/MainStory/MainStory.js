@@ -46,6 +46,7 @@ class MainStory extends React.Component {
 
     // reconstitute the flattened grids
     savedMaps.forEach(map => (map.grid = JSON.parse(map.scenesGrid)))
+    localStateStore.setLocationsMaps(savedMaps)
 
     if (this.state.showIntro) {
       // localStateStore.setPage("you-picker")
@@ -70,10 +71,8 @@ class MainStory extends React.Component {
   }
 
   onExitIntro = async () => {
-    const savedMaps = maps.docs.map(map => toJS(map.data))
+    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
-    // TODO - we shoudn't need to set them to here.
-    localStateStore.setLocationsMaps(savedMaps)
     const startScene = this.getTerminalScene({ savedMaps }) || savedMaps[0]
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
