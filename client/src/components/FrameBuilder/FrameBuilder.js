@@ -62,7 +62,7 @@ class FrameBuilder extends Component {
 
     const allCharacters = [yourName, ...friendNames]
 
-    const creatureName0 = allCharacters[0].type
+    const creatureName0 = allCharacters[0].type || ""
     // const creatureName1 = creatures[1].type
 
     const newFrame = {
@@ -101,11 +101,11 @@ class FrameBuilder extends Component {
   }
 
   // TODO - frameset should be attached to World
-  addFrameSet = ({}) => {
-    const frameSet = this.newFrameSet
+  // addFrameSet = ({}) => {
+  //   const frameSet = this.newFrameSet
 
-    frameSetStore.add(frameSet)
-  }
+  //   frameSetStore.add(frameSet)
+  // }
 
   // setActiveFrameSet = ({ name }) => {
   //   this.setState({ activeFrameSet: name })
@@ -129,7 +129,7 @@ class FrameBuilder extends Component {
     const frameSet = this.getFrameSet()
     console.log("frameSet update FS", toJS(frameSet)) // zzz
 
-    updateWorld && updateWorld({ newProps: { frameSet } })
+    updateWorld && updateWorld({ newProps: { frameSet: toJS(frameSet) } })
 
     // await frameSet.update({
     //   ...frameSet.data
@@ -248,6 +248,7 @@ class FrameBuilder extends Component {
 
   renderFrames = () => {
     const { scene } = this.props
+    console.log("scene - FB - render frames", toJS(scene)) // zzz
 
     const activeFrameSet = (scene && scene.frameSet) || this.getNewFrameSet()
 

@@ -548,9 +548,11 @@ class WorldBuilder extends Component {
   // TODO - make this global Util
   updateWorld = ({ newProps }) => {
     const map = this.state.world
-    console.log("newProps", newProps) // zzz
+    console.log("newProps", toJS(newProps)) // zzz
+    // zzz
     console.log("map---update", toJS(map)) // zzz
-    Object.assign(map.data, newProps)
+    Object.assign(map.data, toJS(newProps))
+    // Object.assign(map.data, newProps)
     // Utils.setGridToMap({ map: map, grid: map.data.grid })
 
     // map.update({ test: 11 })
