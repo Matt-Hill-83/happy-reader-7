@@ -32,11 +32,13 @@ class FrameBuilder extends Component {
 
   componentWillMount() {
     const { isStartScene, isEndScene, scene } = this.props
+    console.log("scene- fb - will mount", toJS(scene)) // zzz
 
     this.setState({ isStartScene, isEndScene, scene })
   }
 
   componentWillReceiveProps(newProps) {
+    console.log("scene- fb - new props", toJS(scene)) // zzz
     const { isStartScene, isEndScene, scene } = newProps
 
     this.setState({ isStartScene, isEndScene, scene })
@@ -111,7 +113,7 @@ class FrameBuilder extends Component {
 
   onChangeFrameSetTitle = async ({ frameSet, event }) => {
     const newTitle = event.target.value
-    frameSet.data.title = newTitle
+    frameSet.titlele = newTitle
   }
 
   updateFrameSetTitle = async ({ frameSet, event }) => {
@@ -134,7 +136,7 @@ class FrameBuilder extends Component {
   renderActiveFrameSetName = () => {
     const activeFrameSet = this.getFrameSet()
     const title =
-      activeFrameSet && activeFrameSet.data && activeFrameSet.data.title
+      activeFrameSet && activeFrameSet.data && activeFrameSet.titlele
 
     return (
       <div className={css.frameSetNameContainer}>
@@ -158,7 +160,7 @@ class FrameBuilder extends Component {
   renderNarrativeEditor = () => {
     const activeFrameSet = this.getFrameSet()
     const title =
-      activeFrameSet && activeFrameSet.data && activeFrameSet.data.title
+      activeFrameSet && activeFrameSet.data && activeFrameSet.titlele
 
     return (
       <div className={css.frameSetNameContainer}>
@@ -193,6 +195,8 @@ class FrameBuilder extends Component {
   }
 
   getFrameSet = () => {
+    console.log("this.state.scene", toJS(this.state.scene)) // zzz
+
     return (this.state.scene && this.state.scene.frameSet) || {}
   }
 
@@ -269,6 +273,7 @@ class FrameBuilder extends Component {
 
   render() {
     const { scene } = this.props
+    console.log("scene - render - FB", toJS(scene)) // zzz
 
     return (
       <div className={css.main}>

@@ -77,7 +77,7 @@ class WordPage extends React.Component {
     const foundFrameSet = frameSets.find(fs => {
       // console.log("fs", toJS(fs)) // zzz
 
-      const match = fs.data.title.match(regex)
+      const match = fs.titlele.match(regex)
       if (!match) {
         return false
       }

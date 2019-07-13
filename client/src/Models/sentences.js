@@ -161,7 +161,7 @@ const allScenes = locationsFromImages.map(name => {
       bottom: { open: false }
     },
     creatures: [],
-    frameset: { frames: [] }
+    frameSet: { frames: [] }
   }
 })
 
