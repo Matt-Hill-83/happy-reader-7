@@ -252,17 +252,20 @@ class FrameBuilder extends Component {
 
     const activeFrameSet = (scene && scene.frameSet) || this.getNewFrameSet()
 
-    const renderedFrames =
-      activeFrameSet &&
-      activeFrameSet.frames.map(frame => {
-        return (
-          <Frame
-            frame={frame}
-            scene={scene}
-            updateFrameSet={this.updateFrameSet}
-          />
-        )
-      })
+    const frames =
+      activeFrameSet.frames && activeFrameSet.frames.length
+        ? activeFrameSet.frames
+        : [this.getNewFrame()]
+
+    const renderedFrames = frames.map(frame => {
+      return (
+        <Frame
+          frame={frame}
+          scene={scene}
+          updateFrameSet={this.updateFrameSet}
+        />
+      )
+    })
 
     return renderedFrames
   }
