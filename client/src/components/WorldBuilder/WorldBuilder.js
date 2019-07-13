@@ -52,7 +52,7 @@ class WorldBuilder extends Component {
 
   async componentWillMount() {
     this.initDraggableStuff()
-    const initialMapIndex = 1
+    const initialMapIndex = 0
     this.changeMap({ index: initialMapIndex })
   }
 
@@ -131,16 +131,10 @@ class WorldBuilder extends Component {
 
   changeMap = ({ index }) => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-
-    // const savedMaps = localStateStore.getLocationsMaps()
-    console.log("savedMaps - change", savedMaps) // zzz
-
     const world = savedMaps[index]
-    console.log("world - change map", toJS(world.data)) // zzz
 
     // TODO:  I could just set the index to state
     this.setState({ locationsGrid: world.data.scenesGrid, world })
-    // this.setState({ world })
   }
 
   renderMapPicker = () => {
@@ -548,17 +542,9 @@ class WorldBuilder extends Component {
   // TODO - make this global Util
   updateWorld = ({ newProps }) => {
     const map = this.state.world
-    console.log("newProps", toJS(newProps)) // zzz
-    // zzz
-    console.log("map---update", toJS(map)) // zzz
     Object.assign(map.data, toJS(newProps))
-    // Object.assign(map.data, newProps)
-    // Utils.setGridToMap({ map: map, grid: map.data.grid })
-
-    // map.update({ test: 11 })
     map.update(map.data)
-    console.log("map - upated", toJS(map)) // zzz
-    this.setState({ world: map })
+    // this.setState({ world: map })
   }
 
   renderItems = ({ provided, snapshot, items }) => {
