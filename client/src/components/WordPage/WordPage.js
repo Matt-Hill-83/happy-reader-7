@@ -61,44 +61,46 @@ class WordPage extends React.Component {
   }
 
   render() {
-    const frameSets = frameSetStore.docs
-    if (!frameSets.length) {
-      return null
-    }
+    // const frameSets = frameSetStore.docs
+    // if (!frameSets.length) {
+    //   return null
+    // }
 
-    const locationDetails = localStateStore.getLocationDetails()
+    // const locationDetails = localStateStore.getLocationDetails()
 
-    const activeLocationsMap = localStateStore.getActiveMap()
+    const map = localStateStore.getActiveMap()
 
-    console.log("activeLocationsMap", toJS(activeLocationsMap)) // zzz
+    console.log("map", toJS(map)) // zzz
 
-    const regex = `(.+)-(.+)`
+    // const regex = `(.+)-(.+)`
 
-    const foundFrameSet = frameSets.find(fs => {
-      // console.log("fs", toJS(fs)) // zzz
+    // const foundFrameSet = frameSets.find(fs => {
+    //   // console.log("fs", toJS(fs)) // zzz
 
-      const match = fs.titlele.match(regex)
-      if (!match) {
-        return false
-      }
-      // console.log("match", toJS(match)) // zzz
-      const map = match[1]
-      const scene = match[2]
+    //   const match = fs.titlele.match(regex)
+    //   if (!match) {
+    //     return false
+    //   }
+    //   // console.log("match", toJS(match)) // zzz
+    //   const map = match[1]
+    //   const scene = match[2]
 
-      return (
-        map === locationDetails.mapName && scene === locationDetails.sceneName
-      )
-    })
+    //   return (
+    //     map === locationDetails.mapName && scene === locationDetails.sceneName
+    //   )
+    // })
 
-    console.log("foundFrameSet", toJS(foundFrameSet && foundFrameSet.data)) // zzz
+    // console.log("foundFrameSet", toJS(foundFrameSet && foundFrameSet.data)) // zzz
 
-    const myFrameSet = (foundFrameSet && foundFrameSet.data) || { frames: [] }
-    console.log("myFrameSet", toJS(myFrameSet)) // zzz
+    // const myFrameSet = map.data.
+    // // const myFrameSet = (foundFrameSet && foundFrameSet.data) || { frames: [] }
+    // console.log("myFrameSet", toJS(myFrameSet)) // zzz
 
     const { activeScene, frameIndex } = this.state
+    const myFrameSet = activeScene.frameSet
 
     let isLastFrame = frameIndex === myFrameSet.frames.length - 1
-    if (!foundFrameSet) {
+    if (!myFrameSet) {
       isLastFrame = true
     }
 

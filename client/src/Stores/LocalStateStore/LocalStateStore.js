@@ -2,8 +2,8 @@ import { action, computed, decorate, observable, toJS } from "mobx"
 
 class LocalStateStore {
   page = ""
-  // showWorldBuilder = false
-  showWorldBuilder = true
+  showWorldBuilder = false
+  // showWorldBuilder = true
   you = {}
   plot = {}
   locationsMaps = []

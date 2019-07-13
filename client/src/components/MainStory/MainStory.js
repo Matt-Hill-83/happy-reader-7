@@ -43,20 +43,22 @@ class MainStory extends React.Component {
     await worldNameStore.fetch()
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    savedMaps[0].update({ test: 99 })
+    // savedMaps[0].update({ test: 99 })
 
     // TODO -
     // TODO -
     // TODO -
     // TODO - convert scenesGrid to scenes here, using existing tool.
     // reconstitute the flattened grids
-    // savedMaps.forEach(map => {
-    //   console.log(
-    //     "JSON.parse(map.scenesGrid)",
-    //     toJS(JSON.parse(map.data.scenesGrid))
-    //   ) // zzz
-    //   return (map.data.grid = JSON.parse(map.data.scenesGrid))
-    // })
+    savedMaps.forEach(map => {
+      const test = this.transformLocationsGridToLocationsMap({
+        scenesGrid: map.data.scenesGrid
+      })
+      console.log("test", toJS(test)) // zzz
+
+      return (map.data.grid = test)
+    })
+
     localStateStore.setLocationsMaps(savedMaps)
 
     if (this.state.showIntro) {
@@ -69,8 +71,34 @@ class MainStory extends React.Component {
     this.onExitIntro()
   }
 
+  transformLocationsGridToLocationsMap = ({ scenesGrid }) => {
+    console.log("scenesGrid-old", toJS(scenesGrid)) // zzz
+
+    const locationsMap = []
+
+    const rows = Array(8).fill(0)
+    const columns = Array(8).fill(0)
+
+    rows.map((row, rowIndex) => {
+      const newRow = []
+
+      columns.map((col, colIndex) => {
+        const rowName = `row-${rowIndex}`
+        const colName = `col-${colIndex}`
+
+        const newCell = scenesGrid[rowName][colName]
+        const criticalData = (newCell[0] && toJS(newCell[0].scene)) || {}
+
+        newRow.push(criticalData)
+      })
+      locationsMap.push(newRow)
+    })
+
+    return locationsMap
+  }
+
   getTerminalScene = ({ start = true }) => {
-    return null
+    // return null
     const map = localStateStore.getActiveMap()
 
     const allScenes = map.data.grid.flat()
@@ -118,7 +146,7 @@ class MainStory extends React.Component {
   }
 
   getNeighbors = ({ activeScene, map }) => {
-    return null
+    // return null
     const activeSceneName = activeScene.name
 
     const neighbors = []

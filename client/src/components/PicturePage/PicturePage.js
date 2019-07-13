@@ -35,34 +35,40 @@ class PicturePage extends React.Component {
     )
   }
 
-  renderLocationRows = () => {
-    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+  renderSceneRows = () => {
+    // const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
-    if (!savedMaps[0]) {
-      return null
-    }
+    // if (!savedMaps[0]) {
+    //   return null
+    // }
     // TODO - get the frames map associated with the scene (?)
     // TODO
     // TODO
     // TODO
 
-    const sceneIndex = localStateStore.getActiveMapIndex()
-    const scene = savedMaps[sceneIndex]
+    // const sceneIndex = localStateStore.getActiveMapIndex()
+    const map = localStateStore.getActiveMap()
+    // const map = savedMaps[sceneIndex]
 
-    const scenesGrid = JSON.parse(scene.scenesGrid)
+    const scenesGrid = map.data.grid
+    console.log("PP - scenesGrid", toJS(scenesGrid)) // zzz
 
-    const miniLocationsGrid = scenesGrid.map((locationRow, rowIndex) => {
-      console.log(
-        "locationRow-------------------------------------",
-        toJS(locationRow)
-      ) // zzz
+    // const scenesGrid = JSON.parse(scene.scenesGrid)
 
-      return (
-        <div key={rowIndex} className={css.miniLocationsRow}>
-          {this.createSingleRow({ locationRow, rowIndex })}
-        </div>
-      )
-    })
+    const miniLocationsGrid =
+      scenesGrid &&
+      scenesGrid.map((locationRow, rowIndex) => {
+        console.log(
+          "locationRow-------------------------------------",
+          toJS(locationRow)
+        ) // zzz
+
+        return (
+          <div key={rowIndex} className={css.miniLocationsRow}>
+            {this.createSingleRow({ locationRow, rowIndex })}
+          </div>
+        )
+      })
 
     return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>
   }
@@ -160,7 +166,7 @@ class PicturePage extends React.Component {
             src={mapImage}
             alt={"bk image"}
           />
-          {this.renderLocationRows()}
+          {this.renderSceneRows()}
         </div>
       </div>
     )

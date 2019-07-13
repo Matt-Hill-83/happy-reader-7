@@ -32,14 +32,12 @@ class FrameBuilder extends Component {
 
   componentWillMount() {
     const { isStartScene, isEndScene, scene } = this.props
-    // console.log("scene- fb - will mount", toJS(scene)) // zzz
 
     this.setState({ isStartScene, isEndScene, scene })
   }
 
   componentWillReceiveProps(newProps) {
     const { isStartScene, isEndScene, scene } = newProps
-    // console.log("scene- fb - new props", toJS(scene)) // zzz
 
     this.setState({ isStartScene, isEndScene, scene })
   }
@@ -127,7 +125,6 @@ class FrameBuilder extends Component {
   updateFrameSet = async () => {
     const { updateWorld } = this.props
     const frameSet = this.getFrameSet()
-    console.log("frameSet update FS", toJS(frameSet)) // zzz
 
     updateWorld && updateWorld({ newProps: { frameSet: toJS(frameSet) } })
 
@@ -248,7 +245,6 @@ class FrameBuilder extends Component {
 
   renderFrames = () => {
     const { scene } = this.props
-    console.log("scene - FB - render frames", toJS(scene)) // zzz
 
     const activeFrameSet = (scene && scene.frameSet) || this.getNewFrameSet()
 
@@ -272,12 +268,10 @@ class FrameBuilder extends Component {
 
   render() {
     const { scene } = this.props
-    console.log("scene", toJS(scene)) // zzz
 
     return (
       <div className={css.main}>
         {/* {this.renderLocation()} */}
-        {/* {this.renderFrameSetPicker()} */}
         {scene && this.renderActiveFrameSetName()}
 
         {scene && this.renderFrames()}
