@@ -64,22 +64,13 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene = ({ start = true }) => {
-    const locationsMap = localStateStore.getActiveLocationsMap()
+    const map = localStateStore.getActiveMap()
 
-    const scenesGrid = JSON.parse(locationsMap.scenesGrid)
+    const scenesGrid = map.grid
 
-    // TODO
-    // TODO
-    // TODO
-    // TODO
-    // TODO - why do we get the scene from allScenes, instead of from the db?
     const allScenes = scenesGrid.flat()
     const terminalScene = allScenes.find(scene => {
-      // console.log("scene.isStartScene", scene.isStartScene) // zzz
-
-      return start
-        ? scene.isStartScene || allScenes[0]
-        : scene.isEndScene || allScenes[1]
+      return start ? scene.isStartScene : scene.isEndScene
     })
 
     // If no start and finish scenes are marked, choose some, so the program doesn't break
@@ -101,7 +92,7 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
-    const locationsMap = localStateStore.getActiveLocationsMap()
+    const locationsMap = localStateStore.getActiveMap()
 
     const lastScene = maps.docs.slice(-1)[0].data
     // console.log("lastScene", toJS(lastScene)) // zzz
@@ -109,7 +100,7 @@ class MainStory extends React.Component {
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false }) || lastScene
 
-    const activeLocationsMap = localStateStore.getActiveLocationsMap()
+    const activeLocationsMap = localStateStore.getActiveMap()
 
     localStateStore.setLocationDetails({
       mapName: activeLocationsMap.name,
@@ -209,13 +200,13 @@ class MainStory extends React.Component {
     const { className } = this.props
     const { activeScene } = this.state
 
-    const index = localStateStore.getActiveLocationsMapIndex()
+    const index = localStateStore.getActiveMapIndex()
 
     if (!activeScene) {
       return null
     }
 
-    const activeLocationsMap = localStateStore.getActiveLocationsMap()
+    const activeLocationsMap = localStateStore.getActiveMap()
 
     const { name: activeSceneName } = activeScene
     const page = localStateStore.getPage()

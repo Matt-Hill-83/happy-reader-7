@@ -68,7 +68,7 @@ class WordPage extends React.Component {
 
     const locationDetails = localStateStore.getLocationDetails()
 
-    const activeLocationsMap = localStateStore.getActiveLocationsMap()
+    const activeLocationsMap = localStateStore.getActiveMap()
 
     console.log("activeLocationsMap", toJS(activeLocationsMap)) // zzz
 

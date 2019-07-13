@@ -23,6 +23,7 @@ import { maps } from "../../Stores/InitStores"
 import { worldNameStore } from "../../Stores/FrameSetStore"
 
 import css from "./WorldBuilder.module.scss"
+import Utils from "../../Utils/Utils"
 
 const NUM_ROWS_LOCATIONS_GRID = 8
 const NUM_COLS_LOCATIONS_GRID = 8
@@ -129,25 +130,17 @@ class WorldBuilder extends Component {
   }
 
   changeMap = ({ index }) => {
-    console.log("index", index) // zzz
-
-    const savedMaps = maps.docs.map(map => toJS(map.data))
-
+    const savedMaps = maps.docs.map(map => map.data)
     const world = savedMaps[index]
-    console.log("world.grid", toJS(world.grid)) // zzz
+    console.log("world", toJS(world)) // zzz
 
-    // console.log("world", world["scenesGrid"]) // zzz
-
-    // const grid = JSON.parse(world["scenesGrid"])
-    // world.grid = grid
-
-    // console.log("grid", grid) // zzz
-
+    // TODO:  I could just set the index to state
     this.setState({ world })
   }
 
   renderWorldPicker = () => {
-    const savedMaps = maps.docs.map(map => toJS(map.data))
+    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    // const savedMaps = maps.docs.map(map => toJS(map.data))
 
     if (!savedMaps[0]) {
       return null

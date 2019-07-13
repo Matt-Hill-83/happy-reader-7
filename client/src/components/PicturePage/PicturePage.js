@@ -47,7 +47,7 @@ class PicturePage extends React.Component {
     // TODO
     // TODO
 
-    const sceneIndex = localStateStore.getActiveLocationsMapIndex()
+    const sceneIndex = localStateStore.getActiveMapIndex()
     const scene = savedMaps[sceneIndex]
 
     const scenesGrid = JSON.parse(scene.scenesGrid)

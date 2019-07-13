@@ -47,13 +47,13 @@ class LocalStateStore {
     this.creatures = creatures
   }
 
-  getActiveLocationsMap = () => this.locationsMaps[this.activeLocationsMapIndex]
+  getActiveMap = () => this.locationsMaps[this.activeLocationsMapIndex]
 
   incrementActiveLocationsMapIndex = () => {
     this.activeLocationsMapIndex = this.activeLocationsMapIndex + 1
   }
 
-  getActiveLocationsMapIndex = () => this.activeLocationsMapIndex
+  getActiveMapIndex = () => this.activeLocationsMapIndex
   setActiveLocationsMapIndex = activeLocationsMapIndex => {
     this.activeLocationsMapIndex = activeLocationsMapIndex
   }
