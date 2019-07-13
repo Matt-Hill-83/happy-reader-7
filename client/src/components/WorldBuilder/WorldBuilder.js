@@ -53,7 +53,6 @@ class WorldBuilder extends Component {
     this.initDraggableStuff()
     const initialMapIndex = 0
     this.changeMap({ index: initialMapIndex })
-    // this.editFrame({})
   }
 
   initDraggableStuff = async () => {
@@ -130,9 +129,12 @@ class WorldBuilder extends Component {
   }
 
   changeMap = ({ index }) => {
-    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    // const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    const savedMaps = localStateStore.getLocationsMaps()
+    console.log("savedMaps - change map", savedMaps) // zzz
+
     const world = savedMaps[index]
-    console.log("world", toJS(world)) // zzz
+    console.log("world - change map", toJS(world.data)) // zzz
 
     // TODO:  I could just set the index to state
     this.setState({ world })
@@ -591,7 +593,9 @@ class WorldBuilder extends Component {
   renderSimpleWorld = () => {
     const {
       world,
-      world: { grid }
+      world: {
+        data: { grid }
+      }
     } = this.state
     console.log("world", toJS(world)) // zzz
 
@@ -613,11 +617,14 @@ class WorldBuilder extends Component {
       return <div className={css.rowDiv}>{renderedRow}</div>
     })
 
+    console.log("rows", toJS(rows)) // zzz
+
     return <div className={css.scenesContainer}>{rows}</div>
   }
 
   render() {
     const { world, scene, showFrameBuilder } = this.state
+    console.log("world.data - wb render ", toJS(world.data)) // zzz
 
     return (
       <div className={css.main}>

@@ -1,4 +1,4 @@
-import { action, computed, decorate, observable } from "mobx"
+import { action, computed, decorate, observable, toJS } from "mobx"
 
 class LocalStateStore {
   page = ""
@@ -39,6 +39,8 @@ class LocalStateStore {
 
   getLocationsMaps = () => this.locationsMaps
   setLocationsMaps = locationsMaps => {
+    console.log("locationsMaps", toJS(locationsMaps)) // zzz
+
     this.locationsMaps = locationsMaps
   }
 

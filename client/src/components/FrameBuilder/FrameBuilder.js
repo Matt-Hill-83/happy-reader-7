@@ -208,7 +208,7 @@ class FrameBuilder extends Component {
     // TODO
     // TODO
     // fix this logic
-    world.startScene = !isStartScene
+    world.data.startScene = !isStartScene
     this.setState({ isStartScene: !isStartScene })
     // should disable any other scenes with this checked
     return
