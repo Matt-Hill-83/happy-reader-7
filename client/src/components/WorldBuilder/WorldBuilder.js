@@ -67,16 +67,8 @@ class WorldBuilder extends Component {
       }
     })
 
-    // const items = allItems.map((item, index) => {
-    //   return {
-    //     id: `${ITEMS_TAG}-${index}`,
-    //     scene: item
-    //   }
-    // })
-
     // generate placeholders for output grid in state
     const locationsGrid = this.preAllocateArrays({})
-    console.log("locationsGrid - saved", locationsGrid) // zzz
 
     // Instead of making different containers, why not dump all items together and sort them by tag?
     // And instead of removing from the list, just mark them as not visible.
@@ -420,8 +412,6 @@ class WorldBuilder extends Component {
 
   saveWorld = async () => {
     const locationsMap = this.transformLocationsGridToLocationsMap2()
-    // const locationsMap = this.transformLocationsGridToLocationsMap()
-    // const flatArray = JSON.stringify(locationsMap)
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
@@ -432,12 +422,8 @@ class WorldBuilder extends Component {
     const newMap = {
       name: newName,
       scenesGrid: locationsMap,
-      // scenesGrid: flatArray,
       order: 0,
       ignore: false
-      // These should be calculated dynamically, based on where the stars are placed.
-      // startScene: "home",
-      // endScene: "bog"
     }
     console.log("newMap", toJS(newMap)) // zzz
 
@@ -544,7 +530,6 @@ class WorldBuilder extends Component {
     const map = this.state.world
     Object.assign(map.data, toJS(newProps))
     map.update(map.data)
-    // this.setState({ world: map })
   }
 
   renderItems = ({ provided, snapshot, items }) => {
@@ -598,7 +583,6 @@ class WorldBuilder extends Component {
       return null
     }
 
-    // const place = grid[0][0]
     const rows = grid.map((row, rowIndex) => {
       const renderedRow = row.map((scene, colIndex) => {
         let newItem
@@ -628,15 +612,14 @@ class WorldBuilder extends Component {
               (drag items to create your world...)
               {this.renderSaveWorldButton()}
               <div className={css.editWorldButtons}>
-                <Button
+                {/* <Button
                   icon="share"
                   text="Edit World"
                   onClick={() =>
                     this.setState({ editWorld: !this.state.editWorld })
                   }
-                />
+                /> */}
                 {this.renderMapPicker()}
-                {/* {this.state.editWorld && this.renderMapPicker()} */}
               </div>
             </div>
           </div>
