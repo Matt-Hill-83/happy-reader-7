@@ -1,9 +1,6 @@
 import myWords from "../Models/words.js"
 import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js"
 
-// These should have getters and setters
-const { words, wordTypes } = myWords
-
 export default class Utils {
   static getCreatureByType = ({ type }) => {
     const allCreatures = localStateStore.getCreatures()
@@ -124,15 +121,5 @@ export default class Utils {
 
     const filteredItems = items && items.filter(item => !item.data.ignore)
     return filteredItems || []
-  }
-
-  static getGridFromMap = ({ map }) => {
-    return JSON.parse(map.data.scenesGrid)
-  }
-
-  static setGridToMap = ({ map, grid }) => {
-    console.log("JSON.stringify(grid)", JSON.stringify(grid)) // zzz
-
-    map.data.scenesGrid = JSON.stringify(grid)
   }
 }

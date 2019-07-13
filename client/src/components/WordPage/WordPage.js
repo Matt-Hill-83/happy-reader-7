@@ -1,11 +1,10 @@
 import { Button } from "@blueprintjs/core"
-import Frame from "../Frame/Frame.js"
 import React from "react"
 import _get from "lodash.get"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
-import { frameSetStore } from "../../Stores/FrameSetStore.js"
+import Frame from "../Frame/Frame.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 
 import css from "./WordPage.module.scss"
@@ -61,50 +60,15 @@ class WordPage extends React.Component {
   }
 
   render() {
-    // const frameSets = frameSetStore.docs
-    // if (!frameSets.length) {
-    //   return null
-    // }
-
-    // const locationDetails = localStateStore.getLocationDetails()
-
-    const map = localStateStore.getActiveMap()
-
-    console.log("map", toJS(map)) // zzz
-
-    // const regex = `(.+)-(.+)`
-
-    // const foundFrameSet = frameSets.find(fs => {
-    //   // console.log("fs", toJS(fs)) // zzz
-
-    //   const match = fs.titlele.match(regex)
-    //   if (!match) {
-    //     return false
-    //   }
-    //   // console.log("match", toJS(match)) // zzz
-    //   const map = match[1]
-    //   const scene = match[2]
-
-    //   return (
-    //     map === locationDetails.mapName && scene === locationDetails.sceneName
-    //   )
-    // })
-
-    // console.log("foundFrameSet", toJS(foundFrameSet && foundFrameSet.data)) // zzz
-
-    // const myFrameSet = map.data.
-    // // const myFrameSet = (foundFrameSet && foundFrameSet.data) || { frames: [] }
-    // console.log("myFrameSet", toJS(myFrameSet)) // zzz
-
     const { activeScene, frameIndex } = this.state
-    const myFrameSet = activeScene.frameSet
+    const frameSet = activeScene.frameSet
 
-    let isLastFrame = frameIndex === myFrameSet.frames.length - 1
-    if (!myFrameSet) {
+    let isLastFrame = frameIndex >= frameSet.frames.length - 1
+    if (!frameSet) {
       isLastFrame = true
     }
 
-    const frame = myFrameSet.frames[frameIndex]
+    const frame = frameSet.frames[frameIndex]
 
     return (
       <div className={css.textPage}>

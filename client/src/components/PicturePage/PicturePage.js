@@ -5,7 +5,6 @@ import { toJS } from "mobx"
 import LineTo from "react-lineto"
 import React from "react"
 
-import { maps } from "../../Stores/InitStores"
 import Images from "../../images/images.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import MiniLocation from "../MiniLocation/MiniLocation.js"
@@ -36,33 +35,12 @@ class PicturePage extends React.Component {
   }
 
   renderSceneRows = () => {
-    // const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-
-    // if (!savedMaps[0]) {
-    //   return null
-    // }
-    // TODO - get the frames map associated with the scene (?)
-    // TODO
-    // TODO
-    // TODO
-
-    // const sceneIndex = localStateStore.getActiveMapIndex()
     const map = localStateStore.getActiveMap()
-    // const map = savedMaps[sceneIndex]
-
     const scenesGrid = map.data.grid
-    console.log("PP - scenesGrid", toJS(scenesGrid)) // zzz
-
-    // const scenesGrid = JSON.parse(scene.scenesGrid)
 
     const miniLocationsGrid =
       scenesGrid &&
       scenesGrid.map((locationRow, rowIndex) => {
-        console.log(
-          "locationRow-------------------------------------",
-          toJS(locationRow)
-        ) // zzz
-
         return (
           <div key={rowIndex} className={css.miniLocationsRow}>
             {this.createSingleRow({ locationRow, rowIndex })}
@@ -87,17 +65,8 @@ class PicturePage extends React.Component {
   }) => {
     const { activeScene } = this.props
 
-    // TODO
-    // TODO
-    // TODO
-    // TODO
-    // TODO - where is this location coming from and why is there no isstartscene?
     const { name: locationName, creatures = [] } = location
     if (location.isStartScene) {
-      console.log(
-        "+++++++++++++++++++++++++++++++++++++++++++++++++location.isStartScene",
-        location.isStartScene
-      ) // zzz
     }
 
     const isActive = locationName === activeScene.name

@@ -43,20 +43,13 @@ class MainStory extends React.Component {
     await worldNameStore.fetch()
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    // savedMaps[0].update({ test: 99 })
 
-    // TODO -
-    // TODO -
-    // TODO -
-    // TODO - convert scenesGrid to scenes here, using existing tool.
-    // reconstitute the flattened grids
     savedMaps.forEach(map => {
-      const test = this.transformLocationsGridToLocationsMap({
+      const grid = this.transformLocationsGridToLocationsMap({
         scenesGrid: map.data.scenesGrid
       })
-      console.log("test", toJS(test)) // zzz
 
-      return (map.data.grid = test)
+      return (map.data.grid = grid)
     })
 
     localStateStore.setLocationsMaps(savedMaps)
@@ -72,10 +65,9 @@ class MainStory extends React.Component {
   }
 
   transformLocationsGridToLocationsMap = ({ scenesGrid }) => {
-    console.log("scenesGrid-old", toJS(scenesGrid)) // zzz
-
     const locationsMap = []
 
+    // TODO - use array dimensions
     const rows = Array(8).fill(0)
     const columns = Array(8).fill(0)
 
@@ -87,9 +79,9 @@ class MainStory extends React.Component {
         const colName = `col-${colIndex}`
 
         const newCell = scenesGrid[rowName][colName]
-        const criticalData = (newCell[0] && toJS(newCell[0].scene)) || {}
+        const scene = (newCell[0] && toJS(newCell[0].scene)) || {}
 
-        newRow.push(criticalData)
+        newRow.push(scene)
       })
       locationsMap.push(newRow)
     })
@@ -98,7 +90,6 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene = ({ start = true }) => {
-    // return null
     const map = localStateStore.getActiveMap()
 
     const allScenes = map.data.grid.flat()
@@ -112,7 +103,6 @@ class MainStory extends React.Component {
 
   onExitIntro = async () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-
     const startScene = this.getTerminalScene({ savedMaps }) || savedMaps[0]
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
@@ -121,15 +111,10 @@ class MainStory extends React.Component {
 
   updateActiveScene = ({ activeScene }) => {
     const map = localStateStore.getActiveMap()
-    console.log("map", toJS(map)) // zzz
-
     const lastScene = maps.docs.slice(-1)[0].data
 
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false }) || lastScene
-    console.log("endScene", toJS(endScene)) // zzz
-
-    // const activeLocationsMap = localStateStore.getActiveMap()
 
     localStateStore.setLocationDetails({
       mapName: map.data.name,
@@ -146,7 +131,6 @@ class MainStory extends React.Component {
   }
 
   getNeighbors = ({ activeScene, map }) => {
-    // return null
     const activeSceneName = activeScene.name
 
     const neighbors = []

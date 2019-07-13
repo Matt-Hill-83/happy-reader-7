@@ -29,15 +29,4 @@ const maps = new Collection("maps", {
   DocumentClass: Map
 })
 
-// console.log("maps.docs", toJS(maps.docs)) // zzz
-
-// maps.docs.forEach(map => {
-//   console.log(
-//     "JSON.parse(map.scenesGrid)",
-//     toJS(JSON.parse(map.data.scenesGrid))
-//   ) // zzz
-//   return (map.data.grid = JSON.parse(map.data.scenesGrid))
-// })
-// console.log("maps", toJS(maps)) // zzz
-
 export { maps }

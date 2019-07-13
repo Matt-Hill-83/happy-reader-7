@@ -1,5 +1,4 @@
 import {
-  AnchorButton,
   Button,
   ButtonGroup,
   FormGroup,
@@ -13,7 +12,6 @@ import React, { Component } from "react"
 
 import Frame from "../Frame/Frame"
 import { IconNames } from "@blueprintjs/icons"
-import { frameSetStore } from "../../Stores/FrameSetStore"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
@@ -61,7 +59,7 @@ class FrameBuilder extends Component {
     const allCharacters = [yourName, ...friendNames]
 
     const creatureName0 = allCharacters[0].type || ""
-    // const creatureName1 = creatures[1].type
+    const creatureName1 = creatures[1].type || "creature 1"
 
     const newFrame = {
       creatures: allCharacters,
@@ -75,7 +73,7 @@ class FrameBuilder extends Component {
       ],
       dialog: [
         {
-          character: "creatureName1",
+          character: creatureName1,
           text: `${"creatureName1"}! ${"creatureName1"}!!`
         },
         { character: creatureName0, text: `Hi ${creatureName0}.` },
@@ -98,17 +96,6 @@ class FrameBuilder extends Component {
     this.updateFrameSet()
   }
 
-  // TODO - frameset should be attached to World
-  // addFrameSet = ({}) => {
-  //   const frameSet = this.newFrameSet
-
-  //   frameSetStore.add(frameSet)
-  // }
-
-  // setActiveFrameSet = ({ name }) => {
-  //   this.setState({ activeFrameSet: name })
-  // }
-
   onChangeFrameSetTitle = async ({ event }) => {
     const frameSet = this.getFrameSet()
     frameSet.title = event.target.value
@@ -127,10 +114,6 @@ class FrameBuilder extends Component {
     const frameSet = this.getFrameSet()
 
     updateWorld && updateWorld({ newProps: { frameSet: toJS(frameSet) } })
-
-    // await frameSet.update({
-    //   ...frameSet.data
-    // })
   }
 
   renderActiveFrameSetName = () => {

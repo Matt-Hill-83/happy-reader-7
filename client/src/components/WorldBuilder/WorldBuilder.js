@@ -287,8 +287,6 @@ class WorldBuilder extends Component {
         return
       }
 
-      // console.log("removed", removed); // zzz
-
       // There should be a separate object in the draggable object that preserves all the item props
       // separate from the renderd content
       destListClone[0].scene.creatures.push({ ...removed.properties })
@@ -425,7 +423,6 @@ class WorldBuilder extends Component {
       order: 0,
       ignore: false
     }
-    console.log("newMap", toJS(newMap)) // zzz
 
     maps.add(newMap)
   }
@@ -446,7 +443,6 @@ class WorldBuilder extends Component {
 
   transformLocationsGridToLocationsMap = () => {
     const { locationsGrid } = this.state
-    console.log("locationsGrid-old", toJS(locationsGrid)) // zzz
 
     const locationsMap = []
 
@@ -488,15 +484,11 @@ class WorldBuilder extends Component {
   }
 
   editFrame = ({ scene }) => {
-    console.log("scene", scene) // zzz
-
     this.setState({ scene: scene, showFrameBuilder: true })
   }
 
   onExitFrameBuilder = ({ frames }) => {
-    console.log("frames", frames) // zzz
-    const scene = this.state.scene
-    console.log("scene", scene) // zzz
+    // const scene = this.state.scene
 
     this.setState({ scene: "", showFrameBuilder: false })
   }
@@ -574,34 +566,33 @@ class WorldBuilder extends Component {
     )
   }
 
-  renderSimpleWorld = () => {
-    const { world } = this.state
+  // renderSimpleWorld = () => {
+  //   const { world } = this.state
 
-    const grid = Utils.getGridFromMap({ map: world })
+  //   const grid = Utils.getGridFromMap({ map: world })
 
-    if (!grid) {
-      return null
-    }
+  //   if (!grid) {
+  //     return null
+  //   }
 
-    const rows = grid.map((row, rowIndex) => {
-      const renderedRow = row.map((scene, colIndex) => {
-        let newItem
-        if (scene.name) {
-          newItem = this.renderLocation({ item: { scene } }) || null
-        } else {
-          newItem = null
-        }
-        return <div className={css.sizerDiv}>{newItem}</div>
-      })
-      return <div className={css.rowDiv}>{renderedRow}</div>
-    })
+  //   const rows = grid.map((row, rowIndex) => {
+  //     const renderedRow = row.map((scene, colIndex) => {
+  //       let newItem
+  //       if (scene.name) {
+  //         newItem = this.renderLocation({ item: { scene } }) || null
+  //       } else {
+  //         newItem = null
+  //       }
+  //       return <div className={css.sizerDiv}>{newItem}</div>
+  //     })
+  //     return <div className={css.rowDiv}>{renderedRow}</div>
+  //   })
 
-    return <div className={css.scenesContainer}>{rows}</div>
-  }
+  //   return <div className={css.scenesContainer}>{rows}</div>
+  // }
 
   render() {
     const { world, scene, showFrameBuilder } = this.state
-    console.log("world.data - wb render ", toJS(world.data)) // zzz
 
     return (
       <div className={css.main}>
@@ -633,7 +624,7 @@ class WorldBuilder extends Component {
               updateWorld={this.updateWorld}
             />
           )}
-          {this.state.editWorld && this.renderSimpleWorld()}
+          {/* {this.state.editWorld && this.renderSimpleWorld()} */}
           {!this.state.editWorld && (
             <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
               {/* Create these with .map() */}
