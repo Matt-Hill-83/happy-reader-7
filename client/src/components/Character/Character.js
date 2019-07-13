@@ -13,7 +13,6 @@ const girlImages = Images.posableGirls
 class Character extends Component {
   render() {
     const { name, mood, isEditMode } = this.props
-    console.log("this.props", toJS(this.props)) // zzz
 
     const images = girlImages.find(girl => girl.name === name)
 

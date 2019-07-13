@@ -45,9 +45,6 @@ class Frame extends Component {
 
   renderFacePicker = ({ name }) => {
     const girlImages = Images.posableGirls
-    console.log("name", toJS(name)) // zzz
-
-    console.log("girlImages", toJS(girlImages)) // zzz
 
     const images = girlImages.find(girl => girl.name === name)
 
@@ -106,7 +103,6 @@ class Frame extends Component {
     const { scene, frame = {}, isEditMode = true } = this.props
 
     const { story = [], faces = [] } = frame
-    console.log("story", toJS(story)) // zzz
   }
 
   renderFrame = ({ allCharacters = [] }) => {
