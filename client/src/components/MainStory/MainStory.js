@@ -46,13 +46,13 @@ class MainStory extends React.Component {
     savedMaps[0].update({ test: 99 })
 
     // reconstitute the flattened grids
-    savedMaps.forEach(map => {
-      console.log(
-        "JSON.parse(map.scenesGrid)",
-        toJS(JSON.parse(map.data.scenesGrid))
-      ) // zzz
-      return (map.data.grid = JSON.parse(map.data.scenesGrid))
-    })
+    // savedMaps.forEach(map => {
+    //   console.log(
+    //     "JSON.parse(map.scenesGrid)",
+    //     toJS(JSON.parse(map.data.scenesGrid))
+    //   ) // zzz
+    //   return (map.data.grid = JSON.parse(map.data.scenesGrid))
+    // })
     localStateStore.setLocationsMaps(savedMaps)
 
     if (this.state.showIntro) {
@@ -66,6 +66,7 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene = ({ start = true }) => {
+    return null
     const map = localStateStore.getActiveMap()
 
     const allScenes = map.data.grid.flat()
@@ -113,6 +114,7 @@ class MainStory extends React.Component {
   }
 
   getNeighbors = ({ activeScene, map }) => {
+    return null
     const activeSceneName = activeScene.name
 
     const neighbors = []

@@ -192,8 +192,6 @@ class FrameBuilder extends Component {
   }
 
   getFrameSet = () => {
-    console.log("this.state.scene - get FS", toJS(this.state.scene)) // zzz
-
     return (this.state.scene && this.state.scene.frameSet) || {}
   }
 
@@ -270,6 +268,7 @@ class FrameBuilder extends Component {
 
   render() {
     const { scene } = this.props
+    console.log("scene", toJS(scene)) // zzz
 
     return (
       <div className={css.main}>

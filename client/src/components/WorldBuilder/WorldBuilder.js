@@ -46,12 +46,13 @@ class WorldBuilder extends Component {
     [SOURCE_ITEMS_PROP_NAME]: [],
     [SOURCE_CREATURES_PROP_NAME]: [],
     [SOURCE_LOCATIONS_PROP_NAME]: [],
-    editWorld: true
+    editWorld: false
+    // editWorld: true
   }
 
   async componentWillMount() {
     this.initDraggableStuff()
-    const initialMapIndex = 0
+    const initialMapIndex = 1
     this.changeMap({ index: initialMapIndex })
   }
 
@@ -138,7 +139,8 @@ class WorldBuilder extends Component {
     console.log("world - change map", toJS(world.data)) // zzz
 
     // TODO:  I could just set the index to state
-    this.setState({ world })
+    this.setState({ locationsGrid: world.data.scenesGrid })
+    // this.setState({ world })
   }
 
   renderMapPicker = () => {
@@ -423,8 +425,9 @@ class WorldBuilder extends Component {
   }
 
   saveWorld = async () => {
-    const locationsMap = this.transformLocationsGridToLocationsMap()
-    const flatArray = JSON.stringify(locationsMap)
+    const locationsMap = this.transformLocationsGridToLocationsMap2()
+    // const locationsMap = this.transformLocationsGridToLocationsMap()
+    // const flatArray = JSON.stringify(locationsMap)
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
@@ -434,7 +437,8 @@ class WorldBuilder extends Component {
 
     const newMap = {
       name: newName,
-      scenesGrid: flatArray,
+      scenesGrid: locationsMap,
+      // scenesGrid: flatArray,
       order: 0,
       ignore: false
       // These should be calculated dynamically, based on where the stars are placed.
@@ -453,6 +457,11 @@ class WorldBuilder extends Component {
         <Icon color={"purple"} icon={IconNames.SAVED} />
       </Button>
     )
+  }
+
+  transformLocationsGridToLocationsMap2 = () => {
+    const { locationsGrid } = this.state
+    return locationsGrid
   }
 
   transformLocationsGridToLocationsMap = () => {
@@ -538,15 +547,17 @@ class WorldBuilder extends Component {
 
   // TODO - make this global Util
   updateWorld = ({ newProps }) => {
-    const world = this.state.world
+    const map = this.state.world
     console.log("newProps", newProps) // zzz
+    console.log("map---update", toJS(map)) // zzz
 
-    Object.assign(world, newProps)
+    Object.assign(map.data, newProps)
+    Utils.setGridToMap({ map: map, grid: map.data.grid })
 
-    console.log("world", toJS(world)) // zzz
-
-    world.update({ test: 5 })
-    this.setState({ world })
+    // map.update({ test: 11 })
+    // map.update(map.data)
+    console.log("map - upated", toJS(map)) // zzz
+    this.setState({ world: map })
   }
 
   renderItems = ({ provided, snapshot, items }) => {
@@ -596,8 +607,6 @@ class WorldBuilder extends Component {
 
     const grid = Utils.getGridFromMap({ map: world })
 
-    console.log("world", toJS(world)) // zzz
-
     if (!grid) {
       return null
     }
@@ -615,8 +624,6 @@ class WorldBuilder extends Component {
       })
       return <div className={css.rowDiv}>{renderedRow}</div>
     })
-
-    console.log("rows", toJS(rows)) // zzz
 
     return <div className={css.scenesContainer}>{rows}</div>
   }
@@ -641,7 +648,8 @@ class WorldBuilder extends Component {
                     this.setState({ editWorld: !this.state.editWorld })
                   }
                 />
-                {this.state.editWorld && this.renderMapPicker()}
+                {this.renderMapPicker()}
+                {/* {this.state.editWorld && this.renderMapPicker()} */}
               </div>
             </div>
           </div>

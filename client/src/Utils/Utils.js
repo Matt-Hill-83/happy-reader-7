@@ -120,7 +120,6 @@ export default class Utils {
   }
 
   static getItemsFromDbObj = ({ dbList }) => {
-    // const items = dbList.docs.map(map => map.data)
     const items = dbList.docs
 
     const filteredItems = items && items.filter(item => !item.data.ignore)
@@ -129,6 +128,11 @@ export default class Utils {
 
   static getGridFromMap = ({ map }) => {
     return JSON.parse(map.data.scenesGrid)
-    // return (map.data.grid = JSON.parse(map.data.scenesGrid))
+  }
+
+  static setGridToMap = ({ map, grid }) => {
+    console.log("JSON.stringify(grid)", JSON.stringify(grid)) // zzz
+
+    map.data.scenesGrid = JSON.stringify(grid)
   }
 }
