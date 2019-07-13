@@ -113,7 +113,7 @@ class FrameBuilder extends Component {
 
   onChangeFrameSetTitle = async ({ frameSet, event }) => {
     const newTitle = event.target.value
-    frameSet.titlele = newTitle
+    frameSet.title = newTitle
   }
 
   updateFrameSetTitle = async ({ frameSet, event }) => {
@@ -135,8 +135,7 @@ class FrameBuilder extends Component {
 
   renderActiveFrameSetName = () => {
     const activeFrameSet = this.getFrameSet()
-    const title =
-      activeFrameSet && activeFrameSet.data && activeFrameSet.titlele
+    const title = activeFrameSet && activeFrameSet.data && activeFrameSet.title
 
     return (
       <div className={css.frameSetNameContainer}>
@@ -159,8 +158,7 @@ class FrameBuilder extends Component {
 
   renderNarrativeEditor = () => {
     const activeFrameSet = this.getFrameSet()
-    const title =
-      activeFrameSet && activeFrameSet.data && activeFrameSet.titlele
+    const title = activeFrameSet && activeFrameSet.data && activeFrameSet.title
 
     return (
       <div className={css.frameSetNameContainer}>
