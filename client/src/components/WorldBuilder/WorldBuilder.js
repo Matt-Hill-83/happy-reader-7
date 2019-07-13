@@ -129,9 +129,10 @@ class WorldBuilder extends Component {
   }
 
   changeMap = ({ index }) => {
-    // const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    const savedMaps = localStateStore.getLocationsMaps()
-    console.log("savedMaps - change map", savedMaps) // zzz
+    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+
+    // const savedMaps = localStateStore.getLocationsMaps()
+    console.log("savedMaps - change", savedMaps) // zzz
 
     const world = savedMaps[index]
     console.log("world - change map", toJS(world.data)) // zzz
@@ -591,12 +592,10 @@ class WorldBuilder extends Component {
   }
 
   renderSimpleWorld = () => {
-    const {
-      world,
-      world: {
-        data: { grid }
-      }
-    } = this.state
+    const { world } = this.state
+
+    const grid = Utils.getGridFromMap({ map: world })
+
     console.log("world", toJS(world)) // zzz
 
     if (!grid) {

@@ -126,4 +126,9 @@ export default class Utils {
     const filteredItems = items && items.filter(item => !item.data.ignore)
     return filteredItems || []
   }
+
+  static getGridFromMap = ({ map }) => {
+    return JSON.parse(map.data.scenesGrid)
+    // return (map.data.grid = JSON.parse(map.data.scenesGrid))
+  }
 }
