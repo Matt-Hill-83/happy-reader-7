@@ -23,6 +23,7 @@ import StoryPickerPage from "../StoryPickerPage/StoryPickerPage"
 
 import css from "./MainStory.module.scss"
 import { worldNameStore } from "../../Stores/FrameSetStore"
+import Utils from "../../Utils/Utils"
 
 class MainStory extends React.Component {
   state = {
@@ -41,17 +42,10 @@ class MainStory extends React.Component {
     await maps.fetch()
     await worldNameStore.fetch()
 
-    const savedMaps = maps.docs.map(map => map.data)
-    savedMaps.forEach(map => {
-      // reconstitute the flattened Grid
-      const scenesGrid = map["scenesGrid"]
-      const parsedScenesGrid = JSON.parse(scenesGrid)
-      console.log("parsedScenesGrid", toJS(parsedScenesGrid)) // zzz
+    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
-      console.log("scenesGrid", toJS(scenesGrid)) // zzz
-
-      map.grid = parsedScenesGrid
-    })
+    // reconstitute the flattened grids
+    savedMaps.forEach(map => (map.grid = JSON.parse(map.scenesGrid)))
 
     if (this.state.showIntro) {
       // localStateStore.setPage("you-picker")
@@ -66,9 +60,7 @@ class MainStory extends React.Component {
   getTerminalScene = ({ start = true }) => {
     const map = localStateStore.getActiveMap()
 
-    const scenesGrid = map.grid
-
-    const allScenes = scenesGrid.flat()
+    const allScenes = map.grid.flat()
     const terminalScene = allScenes.find(scene => {
       return start ? scene.isStartScene : scene.isEndScene
     })
@@ -78,9 +70,6 @@ class MainStory extends React.Component {
   }
 
   onExitIntro = async () => {
-    // await maps.fetch()
-    // await worldNameStore.fetch()
-
     const savedMaps = maps.docs.map(map => toJS(map.data))
 
     // TODO - we shoudn't need to set them to here.
@@ -93,9 +82,7 @@ class MainStory extends React.Component {
 
   updateActiveScene = ({ activeScene }) => {
     const locationsMap = localStateStore.getActiveMap()
-
     const lastScene = maps.docs.slice(-1)[0].data
-    // console.log("lastScene", toJS(lastScene)) // zzz
 
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false }) || lastScene

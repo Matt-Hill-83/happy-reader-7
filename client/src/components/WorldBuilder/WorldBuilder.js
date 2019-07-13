@@ -130,7 +130,7 @@ class WorldBuilder extends Component {
   }
 
   changeMap = ({ index }) => {
-    const savedMaps = maps.docs.map(map => map.data)
+    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     const world = savedMaps[index]
     console.log("world", toJS(world)) // zzz
 
@@ -140,7 +140,6 @@ class WorldBuilder extends Component {
 
   renderWorldPicker = () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    // const savedMaps = maps.docs.map(map => toJS(map.data))
 
     if (!savedMaps[0]) {
       return null
