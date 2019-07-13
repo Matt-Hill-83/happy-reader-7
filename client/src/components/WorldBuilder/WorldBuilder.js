@@ -139,7 +139,7 @@ class WorldBuilder extends Component {
     console.log("world - change map", toJS(world.data)) // zzz
 
     // TODO:  I could just set the index to state
-    this.setState({ locationsGrid: world.data.scenesGrid })
+    this.setState({ locationsGrid: world.data.scenesGrid, world })
     // this.setState({ world })
   }
 
@@ -550,12 +550,12 @@ class WorldBuilder extends Component {
     const map = this.state.world
     console.log("newProps", newProps) // zzz
     console.log("map---update", toJS(map)) // zzz
-
+    /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
     Object.assign(map.data, newProps)
-    Utils.setGridToMap({ map: map, grid: map.data.grid })
+    // Utils.setGridToMap({ map: map, grid: map.data.grid })
 
     // map.update({ test: 11 })
-    // map.update(map.data)
+    map.update(map.data)
     console.log("map - upated", toJS(map)) // zzz
     this.setState({ world: map })
   }
