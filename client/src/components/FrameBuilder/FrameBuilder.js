@@ -32,14 +32,14 @@ class FrameBuilder extends Component {
 
   componentWillMount() {
     const { isStartScene, isEndScene, scene } = this.props
-    console.log("scene- fb - will mount", toJS(scene)) // zzz
+    // console.log("scene- fb - will mount", toJS(scene)) // zzz
 
     this.setState({ isStartScene, isEndScene, scene })
   }
 
   componentWillReceiveProps(newProps) {
-    console.log("scene- fb - new props", toJS(scene)) // zzz
     const { isStartScene, isEndScene, scene } = newProps
+    // console.log("scene- fb - new props", toJS(scene)) // zzz
 
     this.setState({ isStartScene, isEndScene, scene })
   }
@@ -111,22 +111,25 @@ class FrameBuilder extends Component {
     this.setState({ activeFrameSet: name })
   }
 
-  onChangeFrameSetTitle = async ({ frameSet, event }) => {
-    const newTitle = event.target.value
-    frameSet.title = newTitle
+  onChangeFrameSetTitle = async ({ event }) => {
+    const frameSet = this.getFrameSet()
+    frameSet.title = event.target.value
+    this.setState({ frameSet })
   }
 
-  updateFrameSetTitle = async ({ frameSet, event }) => {
-    await frameSet.update({
-      title: event.target.value
-    })
+  updateFrameSetTitle = async ({ event }) => {
+    const frameSet = this.getFrameSet()
+    frameSet.title = event.target.value
+    this.setState({ frameSet })
+    this.updateFrameSet()
   }
 
   updateFrameSet = async () => {
-    const frameSet = this.getFrameSet()
-
     const { updateWorld } = this.props
-    updateWorld && updateWorld({ newProps: frameSet })
+    const frameSet = this.getFrameSet()
+    console.log("frameSet update FS", toJS(frameSet)) // zzz
+
+    updateWorld && updateWorld({ newProps: { frameSet } })
 
     // await frameSet.update({
     //   ...frameSet.data
@@ -147,9 +150,7 @@ class FrameBuilder extends Component {
             onChange={event =>
               this.onChangeFrameSetTitle({ frameSet: activeFrameSet, event })
             }
-            onBlur={event =>
-              this.updateFrameSetTitle({ frameSet: activeFrameSet, event })
-            }
+            onBlur={event => this.updateFrameSetTitle({ event })}
           />
         </FormGroup>
       </div>
@@ -170,9 +171,7 @@ class FrameBuilder extends Component {
             onChange={event =>
               this.onChangeFrameSetTitle({ frameSet: activeFrameSet, event })
             }
-            onBlur={event =>
-              this.updateFrameSetTitle({ frameSet: activeFrameSet, event })
-            }
+            onBlur={event => this.updateFrameSetTitle({ event })}
           />
         </FormGroup>
       </div>
@@ -193,7 +192,7 @@ class FrameBuilder extends Component {
   }
 
   getFrameSet = () => {
-    console.log("this.state.scene", toJS(this.state.scene)) // zzz
+    // console.log("this.state.scene", toJS(this.state.scene)) // zzz
 
     return (this.state.scene && this.state.scene.frameSet) || {}
   }
@@ -271,7 +270,6 @@ class FrameBuilder extends Component {
 
   render() {
     const { scene } = this.props
-    console.log("scene - render - FB", toJS(scene)) // zzz
 
     return (
       <div className={css.main}>

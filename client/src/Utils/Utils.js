@@ -120,6 +120,8 @@ export default class Utils {
   }
 
   static getItemsFromDbObj = ({ dbList }) => {
-    return dbList.docs.map(map => map.data)
+    const items = dbList.docs.map(map => map.data)
+    const filteredItems = items && items.filter(item => !item.ignore)
+    return filteredItems || []
   }
 }

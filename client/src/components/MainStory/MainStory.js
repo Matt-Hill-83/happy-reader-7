@@ -12,18 +12,17 @@ import {
   Position
 } from "@blueprintjs/core"
 
+import { maps } from "../../Stores/InitStores.js"
+import { worldNameStore } from "../../Stores/FrameSetStore"
 import FlashCards from "../FlashCards/FlashCards"
 import IntroPage1 from "../IntroPage1/IntroPage1.js"
-import PicturePage from "../PicturePage/PicturePage"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
-import { maps } from "../../Stores/InitStores.js"
 import mySentences from "../../Models/sentences.js"
-
+import PicturePage from "../PicturePage/PicturePage"
 import StoryPickerPage from "../StoryPickerPage/StoryPickerPage"
+import Utils from "../../Utils/Utils"
 
 import css from "./MainStory.module.scss"
-import { worldNameStore } from "../../Stores/FrameSetStore"
-import Utils from "../../Utils/Utils"
 
 class MainStory extends React.Component {
   state = {
@@ -39,13 +38,20 @@ class MainStory extends React.Component {
     mySentences.generateYou({})
     mySentences.generatePlot({})
 
+    // I need to make these stored shared singletons
     await maps.fetch()
     await worldNameStore.fetch()
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
     // reconstitute the flattened grids
-    savedMaps.forEach(map => (map.grid = JSON.parse(map.scenesGrid)))
+    savedMaps.forEach(map => {
+      console.log(
+        "JSON.parse(map.scenesGrid)",
+        toJS(JSON.parse(map.scenesGrid))
+      ) // zzz
+      return (map.grid = JSON.parse(map.scenesGrid))
+    })
     localStateStore.setLocationsMaps(savedMaps)
 
     if (this.state.showIntro) {

@@ -429,7 +429,8 @@ class WorldBuilder extends Component {
     const newMap = {
       name: newName,
       scenesGrid: flatArray,
-      order: 0
+      order: 0,
+      ignore: false
       // These should be calculated dynamically, based on where the stars are placed.
       // startScene: "home",
       // endScene: "bog"
@@ -508,7 +509,6 @@ class WorldBuilder extends Component {
 
   renderLocation = ({ item }) => {
     const { scene, id, name = "" } = item
-    console.log("scene - render loc", toJS(scene)) // zzz
 
     const content = (
       <div className={css.locationGridContainer}>
@@ -531,9 +531,14 @@ class WorldBuilder extends Component {
     return content
   }
 
+  // TODO - make this global Util
   updateWorld = ({ newProps }) => {
     const world = this.state.world
+    console.log("newProps", newProps) // zzz
+
     Object.assign(world, newProps)
+
+    console.log("world", toJS(world)) // zzz
 
     this.setState({ world })
   }
@@ -596,8 +601,6 @@ class WorldBuilder extends Component {
       const renderedRow = row.map((scene, colIndex) => {
         let newItem
         if (scene.name) {
-          console.log("scene", toJS(scene)) // zzz
-
           newItem = this.renderLocation({ item: { scene } }) || null
         } else {
           newItem = null
@@ -612,7 +615,6 @@ class WorldBuilder extends Component {
 
   render() {
     const { world, scene, showFrameBuilder } = this.state
-    console.log("scene - WB", toJS(scene)) // zzz
 
     return (
       <div className={css.main}>
@@ -636,12 +638,12 @@ class WorldBuilder extends Component {
           </div>
         </div>
         <div className={css.content}>
-          {/* {true && ( */}
           {showFrameBuilder && (
             <FrameBuilder
               world={world}
               scene={scene}
               onExitFrameBuilder={frame => this.onExitFrameBuilder({ frame })}
+              updateWorld={this.updateWorld}
             />
           )}
           {this.state.editWorld && this.renderSimpleWorld()}
