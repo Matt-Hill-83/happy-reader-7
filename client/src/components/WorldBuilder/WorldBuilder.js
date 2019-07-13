@@ -437,7 +437,6 @@ class WorldBuilder extends Component {
     }
     console.log("newMap", toJS(newMap)) // zzz
 
-    // return
     maps.add(newMap)
   }
 
