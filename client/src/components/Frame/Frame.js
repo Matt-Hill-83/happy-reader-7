@@ -188,15 +188,6 @@ class Frame extends Component {
     const { showFacePicker } = this.state
 
     const allCharacters = (frame && frame.creatures) || []
-    // console.log("creatures", toJS(creatures)) // zzz
-
-    // // const friendNames = creatures.map(creature => creature.type)
-    // const you = localStateStore.getYou()
-    // const yourName = you.name
-
-    // const allCharacters = [yourName, ...creatures]
-    // // const allCharacters = [yourName, ...friendNames]
-    console.log("allCharacters", allCharacters) // zzz
 
     return (
       <>

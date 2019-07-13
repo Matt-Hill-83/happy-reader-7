@@ -33,8 +33,6 @@ class FrameBuilder extends Component {
   componentWillMount() {
     const { isStartScene, isEndScene, scene } = this.props
 
-    console.log("this.props", this.props) // zzz
-
     this.setState({ isStartScene, isEndScene, scene })
   }
 
@@ -55,7 +53,6 @@ class FrameBuilder extends Component {
     const {
       scene: { creatures = [] }
     } = this.props
-    console.log("creatures", toJS(creatures)) // zzz
 
     const friendNames = creatures.map(creature => creature.type)
     const you = localStateStore.getYou()
@@ -65,8 +62,6 @@ class FrameBuilder extends Component {
 
     const creatureName0 = allCharacters[0].type
     // const creatureName1 = creatures[1].type
-    console.log("creatureName0", toJS(creatureName0)) // zzz
-    // console.log("creatureName1", toJS(creatureName1)) // zzz
 
     const newFrame = {
       creatures: allCharacters,
@@ -97,7 +92,6 @@ class FrameBuilder extends Component {
 
   onAddFrame = () => {
     const activeFrameSet = this.getFrameSet()
-    console.log("activeFrameSet", toJS(activeFrameSet)) // zzz
 
     const newFrame = this.getNewFrame()
     activeFrameSet.frames.push(newFrame)
@@ -185,9 +179,7 @@ class FrameBuilder extends Component {
     )
   }
 
-  deleteFrame = ({ id }) => {
-    console.log("deleting Frame") // zzz
-  }
+  deleteFrame = ({ id }) => {}
 
   onPressDelete = async ({ item }) => {
     if (this._deleting) return
@@ -201,8 +193,6 @@ class FrameBuilder extends Component {
   }
 
   getFrameSet = () => {
-    console.log("this.state.scene", toJS(this.state.scene)) // zzz
-
     return (this.state.scene && this.state.scene.frameSet) || {}
   }
 
@@ -279,9 +269,6 @@ class FrameBuilder extends Component {
 
   render() {
     const { scene } = this.props
-    console.log("scene", toJS(scene)) // zzz
-
-    // const activeFrameSet = (scene && scene.frameSet) || this.getNewFrameSet()
 
     return (
       <div className={css.main}>
