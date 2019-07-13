@@ -138,7 +138,7 @@ class WorldBuilder extends Component {
     this.setState({ world })
   }
 
-  renderWorldPicker = () => {
+  renderMapPicker = () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
     if (!savedMaps[0]) {
@@ -147,7 +147,10 @@ class WorldBuilder extends Component {
 
     const mapList = savedMaps.map((map, index) => {
       return (
-        <MenuItem text={map.name} onClick={() => this.changeMap({ index })} />
+        <MenuItem
+          text={map.data.name}
+          onClick={() => this.changeMap({ index })}
+        />
       )
     })
 
@@ -539,6 +542,7 @@ class WorldBuilder extends Component {
 
     console.log("world", toJS(world)) // zzz
 
+    world.update({ test: 5 })
     this.setState({ world })
   }
 
@@ -631,7 +635,7 @@ class WorldBuilder extends Component {
                     this.setState({ editWorld: !this.state.editWorld })
                   }
                 />
-                {this.state.editWorld && this.renderWorldPicker()}
+                {this.state.editWorld && this.renderMapPicker()}
               </div>
             </div>
           </div>

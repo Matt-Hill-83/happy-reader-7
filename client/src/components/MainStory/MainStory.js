@@ -43,14 +43,15 @@ class MainStory extends React.Component {
     await worldNameStore.fetch()
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    savedMaps[0].update({ test: 99 })
 
     // reconstitute the flattened grids
     savedMaps.forEach(map => {
       console.log(
         "JSON.parse(map.scenesGrid)",
-        toJS(JSON.parse(map.scenesGrid))
+        toJS(JSON.parse(map.data.scenesGrid))
       ) // zzz
-      return (map.grid = JSON.parse(map.scenesGrid))
+      return (map.data.grid = JSON.parse(map.data.scenesGrid))
     })
     localStateStore.setLocationsMaps(savedMaps)
 
@@ -67,7 +68,7 @@ class MainStory extends React.Component {
   getTerminalScene = ({ start = true }) => {
     const map = localStateStore.getActiveMap()
 
-    const allScenes = map.grid.flat()
+    const allScenes = map.data.grid.flat()
     const terminalScene = allScenes.find(scene => {
       return start ? scene.isStartScene : scene.isEndScene
     })
@@ -86,16 +87,19 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
-    const locationsMap = localStateStore.getActiveMap()
+    const map = localStateStore.getActiveMap()
+    console.log("map", toJS(map)) // zzz
+
     const lastScene = maps.docs.slice(-1)[0].data
 
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false }) || lastScene
+    console.log("endScene", toJS(endScene)) // zzz
 
-    const activeLocationsMap = localStateStore.getActiveMap()
+    // const activeLocationsMap = localStateStore.getActiveMap()
 
     localStateStore.setLocationDetails({
-      mapName: activeLocationsMap.name,
+      mapName: map.data.name,
       sceneName: activeSceneName
     })
 
@@ -103,21 +107,19 @@ class MainStory extends React.Component {
       this.setState({ showYouWin: true })
     }
 
-    activeScene.neighborNames = this.getNeighbors({ activeScene, locationsMap })
+    activeScene.neighborNames = this.getNeighbors({ activeScene, map })
 
     this.setState({ activeScene })
   }
 
-  getNeighbors = ({ activeScene, locationsMap }) => {
+  getNeighbors = ({ activeScene, map }) => {
     const activeSceneName = activeScene.name
 
     const neighbors = []
     const neighborsArray = []
 
     // create a map of all the locations for future use
-    const scenesGrid = JSON.parse(locationsMap.scenesGrid)
-
-    scenesGrid.forEach((row, rowIndex) => {
+    map.data.grid.forEach((row, rowIndex) => {
       row.forEach((location, locationIndex) => {
         location = location || {}
 

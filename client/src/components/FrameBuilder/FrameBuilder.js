@@ -107,9 +107,9 @@ class FrameBuilder extends Component {
     frameSetStore.add(frameSet)
   }
 
-  setActiveFrameSet = ({ name }) => {
-    this.setState({ activeFrameSet: name })
-  }
+  // setActiveFrameSet = ({ name }) => {
+  //   this.setState({ activeFrameSet: name })
+  // }
 
   onChangeFrameSetTitle = async ({ event }) => {
     const frameSet = this.getFrameSet()
@@ -192,7 +192,7 @@ class FrameBuilder extends Component {
   }
 
   getFrameSet = () => {
-    // console.log("this.state.scene", toJS(this.state.scene)) // zzz
+    console.log("this.state.scene - get FS", toJS(this.state.scene)) // zzz
 
     return (this.state.scene && this.state.scene.frameSet) || {}
   }
