@@ -88,7 +88,7 @@ class WorldBuilder extends Component {
         name,
         content: (
           <div className={css.characterImage}>
-            <img src={image} alt={`${CREATURES_TAG} image`} />
+            <img src={image} alt={`${CREATURES_TAG}`} />
             <span className={css.characterLabel}>{type}</span>
           </div>
         )
