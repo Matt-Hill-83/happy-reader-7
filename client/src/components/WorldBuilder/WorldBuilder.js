@@ -123,14 +123,8 @@ class WorldBuilder extends Component {
   }
 
   changeMap = ({ index }) => {
-    console.log("index", index) // zzz
-
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    console.log("savedMaps", savedMaps) // zzz
-
     let world = savedMaps[index]
-    console.log("world", toJS(world)) // zzz
-
     let scenesGrid
 
     // new map
