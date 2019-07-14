@@ -431,7 +431,8 @@ class WorldBuilder extends Component {
   }
 
   saveWorld = async () => {
-    const locationsMap = this.transformLocationsGridToLocationsMap2()
+    const { locationsGrid } = this.state
+    // const locationsMap = this.transformLocationsGridToLocationsMap2()
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
@@ -441,7 +442,7 @@ class WorldBuilder extends Component {
 
     const newMap = {
       name: newName,
-      scenesGrid: locationsMap,
+      scenesGrid: locationsGrid,
       order: 0,
       ignore: false
     }
@@ -458,36 +459,10 @@ class WorldBuilder extends Component {
     )
   }
 
-  transformLocationsGridToLocationsMap2 = () => {
-    const { locationsGrid } = this.state
-    return locationsGrid
-  }
-
-  transformLocationsGridToLocationsMap = () => {
-    const { locationsGrid } = this.state
-
-    const locationsMap = []
-
-    const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0)
-    const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0)
-
-    rows.map((row, rowIndex) => {
-      const newRow = []
-
-      columns.map((col, colIndex) => {
-        const rowName = `row-${rowIndex}`
-        const colName = `col-${colIndex}`
-
-        const newCell = locationsGrid[rowName][colName]
-        const criticalData = (newCell[0] && toJS(newCell[0].scene)) || {}
-
-        newRow.push(criticalData)
-      })
-      locationsMap.push(newRow)
-    })
-
-    return locationsMap
-  }
+  // transformLocationsGridToLocationsMap2 = () => {
+  //   const { locationsGrid } = this.state
+  //   return locationsGrid
+  // }
 
   renderList = ({ droppableId, items, className }) => {
     return (
