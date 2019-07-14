@@ -209,8 +209,8 @@ class MiniLocation extends React.Component {
     // TODO - test this
     // TODO - test this
     // TODO - test this
-    this.props.updateWorld &&
-      this.props.updateWorld({ newProps: { startScene: location.name } })
+    this.props.updateMap &&
+      this.props.updateMap({ newProps: { startScene: location.name } })
 
     location.isStartScene = !this.state.isStartScene
     this.setState({ isStartScene: !this.state.isStartScene })

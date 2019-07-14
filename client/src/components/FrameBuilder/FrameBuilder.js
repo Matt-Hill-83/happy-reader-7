@@ -110,10 +110,10 @@ class FrameBuilder extends Component {
   }
 
   updateFrameSet = async () => {
-    const { updateWorld } = this.props
+    const { updateMap } = this.props
     const frameSet = this.getFrameSet()
 
-    updateWorld && updateWorld({ newProps: { frameSet: toJS(frameSet) } })
+    updateMap && updateMap({ newProps: { frameSet: toJS(frameSet) } })
   }
 
   renderActiveFrameSetName = () => {
@@ -195,7 +195,7 @@ class FrameBuilder extends Component {
   renderLocation = ({ item }) => {
     const { scene, id, name = "" } = item
 
-    const { updateWorld } = this.props
+    const { updateMap } = this.props
 
     const content = (
       <div className={css.locationGridContainer}>
@@ -204,7 +204,7 @@ class FrameBuilder extends Component {
           key={name}
           location={scene}
           isEditMode={true}
-          updateWorld={updateWorld}
+          updateMap={updateMap}
         />
         <Button
           className={css.scenePropsButton}
@@ -268,16 +268,13 @@ class FrameBuilder extends Component {
               <Icon icon={IconNames.CLOSE} />
               Close
             </Button>
-          </div>
-        )}
-        {scene && (
-          <div className={css.buttonContainer}>
             <Button className={css.closeButton} onClick={this.onAddFrame}>
               <Icon icon={IconNames.CLOSE} />
               Add Frame
             </Button>
           </div>
         )}
+        {scene && <div className={css.buttonContainer} />}
       </div>
     )
   }

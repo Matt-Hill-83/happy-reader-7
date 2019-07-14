@@ -514,7 +514,7 @@ class WorldBuilder extends Component {
           key={name}
           location={scene}
           isEditMode={true}
-          updateWorld={this.updateWorld}
+          updateMap={this.updateMap}
         />
         <Button
           className={css.scenePropsButton}
@@ -529,7 +529,7 @@ class WorldBuilder extends Component {
   }
 
   // TODO - make this global Util
-  updateWorld = ({ newProps }) => {
+  updateMap = ({ newProps }) => {
     const map = this.state.world
     console.log("newProps", toJS(newProps)) // zzz
 
@@ -606,7 +606,7 @@ class WorldBuilder extends Component {
               world={world}
               scene={scene}
               onExitFrameBuilder={frame => this.onExitFrameBuilder({ frame })}
-              updateWorld={this.updateWorld}
+              updateMap={this.updateMap}
             />
           )}
           {/* {this.state.editWorld && this.renderSimpleWorld()} */}
