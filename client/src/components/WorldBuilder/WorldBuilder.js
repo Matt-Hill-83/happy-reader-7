@@ -29,7 +29,7 @@ const NUM_ROWS_LOCATIONS_GRID = 8
 const NUM_COLS_LOCATIONS_GRID = 8
 const COLUMN_WIDTH = 150
 
-const LOCATIONS_PREFIX = "locationsGrid"
+const LOCATIONS_PREFIX = "scenesGrid"
 
 const LOCATIONS_TAG = "location"
 const CREATURES_TAG = "creature"
@@ -68,7 +68,7 @@ class WorldBuilder extends Component {
     })
 
     // generate placeholders for output grid in state
-    const locationsGrid = this.preAllocateArrays({})
+    const scenesGrid = this.preAllocateArrays({})
 
     // Instead of making different containers, why not dump all items together and sort them by tag?
     // And instead of removing from the list, just mark them as not visible.
@@ -117,7 +117,7 @@ class WorldBuilder extends Component {
       [SOURCE_ITEMS_PROP_NAME]: itemObjects,
       [SOURCE_LOCATIONS_PROP_NAME]: locations,
       [SOURCE_CREATURES_PROP_NAME]: creatureObjects,
-      locationsGrid
+      scenesGrid
     })
   }
 
@@ -130,19 +130,19 @@ class WorldBuilder extends Component {
     let world = savedMaps[index]
     console.log("world", toJS(world)) // zzz
 
-    let locationsGrid
+    let scenesGrid
 
     // new map
     if (index === -1) {
-      locationsGrid = this.preAllocateArrays({})
+      scenesGrid = this.preAllocateArrays({})
       const name = "My New World"
-      world = { locationsGrid, name }
+      world = { scenesGrid, name }
     } else {
-      locationsGrid = world.data.scenesGrid
+      scenesGrid = world.data.scenesGrid
     }
 
     // TODO:  I could just set the index to state
-    this.setState({ locationsGrid, world })
+    this.setState({ scenesGrid, world })
   }
 
   renderMapPicker = () => {
@@ -232,22 +232,22 @@ class WorldBuilder extends Component {
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0)
     const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0)
 
-    const locationsGrid = {}
+    const scenesGrid = {}
 
     rows.map((row, rowIndex) => {
       const rowName = `row-${rowIndex}`
-      locationsGrid[rowName] = {}
+      scenesGrid[rowName] = {}
       columns.map((col, colIndex) => {
         const colName = `col-${colIndex}`
 
-        locationsGrid[rowName][colName] = savedGrid
+        scenesGrid[rowName][colName] = savedGrid
           ? { scene: savedGrid[rowIndex][colIndex] }
           : []
 
         if (savedGrid) {
           const savedScene = savedGrid[rowIndex][colIndex]
           if (savedScene) {
-            locationsGrid[rowName][colName] = [
+            scenesGrid[rowName][colName] = [
               {
                 scene: savedScene,
                 id: `location-${colIndex + 1}`
@@ -255,12 +255,12 @@ class WorldBuilder extends Component {
             ]
           }
         } else {
-          locationsGrid[rowName][colName] = []
+          scenesGrid[rowName][colName] = []
         }
       })
     })
 
-    return locationsGrid
+    return scenesGrid
   }
 
   getList = ({ id }) => {
@@ -274,7 +274,7 @@ class WorldBuilder extends Component {
       const { row, col, prefix } = this.getStorageRowColFromId({ id })
 
       if (prefix === LOCATIONS_PREFIX) {
-        return this.state.locationsGrid[row][col]
+        return this.state.scenesGrid[row][col]
       }
     }
   }
@@ -291,7 +291,7 @@ class WorldBuilder extends Component {
   dropInNewList = ({ source, destination, destinationId, sourceId }) => {
     let result = {}
     // dragging a creature to a different destination
-    // TODO -  should specifically reference locationsGrid
+    // TODO -  should specifically reference scenesGrid
     if (
       sourceId === SOURCE_CREATURES_PROP_NAME &&
       destinationId !== SOURCE_CREATURES_PROP_NAME
@@ -329,12 +329,12 @@ class WorldBuilder extends Component {
         id: destinationId
       })
 
-      const { locationsGrid } = this.state
-      locationsGrid[row][col] = result[destinationId]
+      const { scenesGrid } = this.state
+      scenesGrid[row][col] = result[destinationId]
 
       this.setState({
         [sourceId]: result[sourceId],
-        locationsGrid
+        scenesGrid
       })
     } else {
       result = this.move({
@@ -350,12 +350,12 @@ class WorldBuilder extends Component {
       })
 
       if (row) {
-        const { locationsGrid } = this.state
-        locationsGrid[row][col] = result[destinationId]
+        const { scenesGrid } = this.state
+        scenesGrid[row][col] = result[destinationId]
 
         this.setState({
           [sourceId]: result[sourceId],
-          locationsGrid
+          scenesGrid
         })
       }
     }
@@ -416,7 +416,7 @@ class WorldBuilder extends Component {
 
       const newTargetArray = this.renderList({
         droppableId: arrayName,
-        items: this.state.locationsGrid[row][col],
+        items: this.state.scenesGrid[row][col],
         className: css.destination
       })
 
@@ -431,7 +431,7 @@ class WorldBuilder extends Component {
   }
 
   saveWorld = async () => {
-    const { locationsGrid } = this.state
+    const { scenesGrid } = this.state
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
@@ -441,7 +441,7 @@ class WorldBuilder extends Component {
 
     const newMap = {
       name: newName,
-      scenesGrid: locationsGrid,
+      scenesGrid: scenesGrid,
       order: 0,
       ignore: false
     }
