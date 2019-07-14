@@ -24,10 +24,16 @@
   }
 }
 
+.mapPickerRow {
+  border: 1px solid red !important;
+  display: flex;
+  justify-content: space-between;
+}
+
 .editWorldButtons {
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  // position: absolute;
+  // top: 0px;
+  // left: 0px;
 }
 
 .scenesContainer {

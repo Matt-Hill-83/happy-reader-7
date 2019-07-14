@@ -164,7 +164,10 @@ class WorldBuilder extends Component {
 
     const mapList = savedMaps.map((map, index) => {
       const text = (
-        <span onClick={() => this.changeMap({ index })}>
+        <span
+          className={css.mapPickerRow}
+          onClick={() => this.changeMap({ index })}
+        >
           {map.data.name}
           <span onClick={() => this.onDeleteMap({ map })}>
             <Icon icon={IconNames.TRASH} />
