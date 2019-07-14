@@ -122,11 +122,25 @@ class WorldBuilder extends Component {
   }
 
   changeMap = ({ index }) => {
+    console.log("index", index) // zzz
+
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    const world = savedMaps[index]
+    console.log("savedMaps", savedMaps) // zzz
+
+    let world = savedMaps[index]
+    let locationsGrid
+
+    // new map
+    if (index === -1) {
+      locationsGrid = this.preAllocateArrays({})
+      const name = "My New World"
+      world = { locationsGrid, name }
+    } else {
+      locationsGrid = world.data.scenesGrid
+    }
 
     // TODO:  I could just set the index to state
-    this.setState({ locationsGrid: world.data.scenesGrid, world })
+    this.setState({ locationsGrid, world })
   }
 
   renderMapPicker = () => {
@@ -136,6 +150,10 @@ class WorldBuilder extends Component {
       return null
     }
 
+    const newMap = (
+      <MenuItem text={"newMap"} onClick={() => this.changeMap({ index: -1 })} />
+    )
+
     const mapList = savedMaps.map((map, index) => {
       return (
         <MenuItem
@@ -144,6 +162,8 @@ class WorldBuilder extends Component {
         />
       )
     })
+
+    mapList.push(newMap)
 
     const renderedMapList = <Menu>{mapList}</Menu>
 

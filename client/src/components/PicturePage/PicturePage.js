@@ -157,7 +157,7 @@ class PicturePage extends React.Component {
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
 
     if (showWorldBuilder) {
-      return <WorldBuilder />
+      // return <WorldBuilder />
     } else {
       return (
         <div className={`${css.main}`}>

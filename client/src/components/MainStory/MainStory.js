@@ -1,6 +1,7 @@
 import React from "react"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
+import _get from "lodash.get"
 
 import {
   Button,
@@ -23,6 +24,7 @@ import StoryPickerPage from "../StoryPickerPage/StoryPickerPage"
 import Utils from "../../Utils/Utils"
 
 import css from "./MainStory.module.scss"
+import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 
 class MainStory extends React.Component {
   state = {
@@ -43,6 +45,7 @@ class MainStory extends React.Component {
     await worldNameStore.fetch()
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    console.log("savedMaps", toJS(savedMaps)) // zzz
 
     savedMaps.forEach(map => {
       const grid = this.transformLocationsGridToLocationsMap({
@@ -90,9 +93,12 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene = ({ start = true }) => {
+    // TODO, get map from strore by mapId
     const map = localStateStore.getActiveMap()
 
-    const allScenes = map.data.grid.flat()
+    const grid = _get(map, "data.grid") || []
+
+    const allScenes = grid.flat()
     const terminalScene = allScenes.find(scene => {
       return start ? scene.isStartScene : scene.isEndScene
     })
@@ -103,13 +109,17 @@ class MainStory extends React.Component {
 
   onExitIntro = async () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    const startScene = this.getTerminalScene({ savedMaps }) || savedMaps[0]
+    const startScene = this.getTerminalScene({ savedMaps })
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
     // localStateStore.setPage("story-picker")
   }
 
   updateActiveScene = ({ activeScene }) => {
+    if (!activeScene.name) {
+      return
+    }
+
     const map = localStateStore.getActiveMap()
     const lastScene = maps.docs.slice(-1)[0].data
 
@@ -209,6 +219,17 @@ class MainStory extends React.Component {
   }
 
   render() {
+    console.log("Main Story render") // zzz
+    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    if (!savedMaps.length) {
+      return null
+    }
+
+    const showWorldBuilder = localStateStore.getShowWorldBuilder()
+    if (showWorldBuilder) {
+      return <WorldBuilder />
+    }
+
     const { className } = this.props
     const { activeScene } = this.state
 
