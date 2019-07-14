@@ -128,6 +128,8 @@ class WorldBuilder extends Component {
     console.log("savedMaps", savedMaps) // zzz
 
     let world = savedMaps[index]
+    console.log("world", toJS(world)) // zzz
+
     let locationsGrid
 
     // new map
