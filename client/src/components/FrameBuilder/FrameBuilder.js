@@ -23,21 +23,19 @@ import css from "./FrameBuilder.module.scss"
 class FrameBuilder extends Component {
   state = {
     frames: [],
-    activeFrameSet: "",
-    isStartScene: false,
-    isEndScene: false
+    activeFrameSet: ""
+    // isStartScene: false,
+    // isEndScene: false,
   }
 
   componentWillMount() {
-    const { isStartScene, isEndScene, scene } = this.props
-
-    this.setState({ isStartScene, isEndScene, scene })
+    // const { isStartScene, isEndScene, scene } = this.props
+    // this.setState({ isStartScene, isEndScene, scene })
   }
 
   componentWillReceiveProps(newProps) {
-    const { isStartScene, isEndScene, scene } = newProps
-
-    this.setState({ isStartScene, isEndScene, scene })
+    // const { isStartScene, isEndScene, scene } = newProps
+    // this.setState({ isStartScene, isEndScene, scene })
   }
 
   onExitFrameBuilder = () => {
