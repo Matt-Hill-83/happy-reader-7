@@ -78,13 +78,16 @@ class Frame extends Component {
 
     const chats =
       dialog &&
-      dialog.map(line => {
-        const { text, character } = line
+      dialog.map((line, index) => {
+        console.log("line", toJS(line)) // zzz
 
+        const { text, characterIndex } = line
+
+        const className = `character${characterIndex}`
         return (
           <WordGroup
             story={[text]}
-            className={`${css.line} ${css[character]}`}
+            className={`${css.line} ${css[className]}`}
           />
         )
       })

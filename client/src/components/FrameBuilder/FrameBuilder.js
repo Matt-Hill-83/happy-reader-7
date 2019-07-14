@@ -66,20 +66,20 @@ class FrameBuilder extends Component {
         `${creatureName0} and ${creatureName1} play.`
       ],
       faces: [
-        { character: creatureName1, face: "scared" },
-        { character: creatureName0, face: "cry" }
+        { characterIndex: 1, face: "scared" },
+        { characterIndex: 0, face: "cry" }
       ],
       dialog: [
         {
-          character: creatureName1,
+          characterIndex: 1,
           text: `${creatureName1}! ${creatureName1}!!`
         },
-        { character: creatureName0, text: `Hi ${creatureName0}.` },
-        { character: creatureName1, text: "Can you play?" },
-        { character: creatureName0, text: "No, I can not play." },
-        { character: creatureName0, text: "I lost Piggy!." },
-        { character: creatureName1, text: "You lost Piggy?" },
-        { character: creatureName1, text: "Nooooooooo!" }
+        { characterIndex: 0, text: `Hi ${creatureName0}.` },
+        { characterIndex: 1, text: "Can you play?" },
+        { characterIndex: 0, text: "No, I can not play." },
+        { characterIndex: 0, text: "I lost Piggy!." },
+        { characterIndex: 1, text: "You lost Piggy?" },
+        { characterIndex: 1, text: "Nooooooooo!" }
       ]
     }
 
