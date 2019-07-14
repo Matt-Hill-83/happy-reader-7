@@ -8,7 +8,7 @@ import Images from "../../images/images"
 import Utils from "../../Utils/Utils"
 import WordGroup from "../WordGroup/WordGroup"
 import css from "./Frame.module.scss"
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
+// import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 

@@ -58,30 +58,30 @@ class FrameBuilder extends Component {
 
     const allCharacters = [yourName, ...friendNames]
 
-    const creatureName0 = allCharacters[0].type || ""
-    const creatureName1 = creatures[1].type || "creature 1"
+    const creatureName0 = allCharacters[0] || "creature0"
+    const creatureName1 = allCharacters[1] || "creature 1"
 
     const newFrame = {
       creatures: allCharacters,
       story: [
-        `${creatureName0} meets ${"creatureName1"}.`,
-        `${creatureName0} and ${"creatureName1"} play.`
+        `${creatureName0} meets ${creatureName1}.`,
+        `${creatureName0} and ${creatureName1} play.`
       ],
       faces: [
-        { character: "creatureName1", face: "scared" },
+        { character: creatureName1, face: "scared" },
         { character: creatureName0, face: "cry" }
       ],
       dialog: [
         {
           character: creatureName1,
-          text: `${"creatureName1"}! ${"creatureName1"}!!`
+          text: `${creatureName1}! ${creatureName1}!!`
         },
         { character: creatureName0, text: `Hi ${creatureName0}.` },
-        { character: "creatureName1", text: "Can you play?" },
+        { character: creatureName1, text: "Can you play?" },
         { character: creatureName0, text: "No, I can not play." },
         { character: creatureName0, text: "I lost Piggy!." },
-        { character: "creatureName1", text: "You lost Piggy?" },
-        { character: "creatureName1", text: "Nooooooooo!" }
+        { character: creatureName1, text: "You lost Piggy?" },
+        { character: creatureName1, text: "Nooooooooo!" }
       ]
     }
 
