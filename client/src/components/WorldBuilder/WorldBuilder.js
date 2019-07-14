@@ -146,6 +146,17 @@ class WorldBuilder extends Component {
     this.setState({ scenesGrid, world })
   }
 
+  onDeleteMap = async ({ map }) => {
+    if (this._deleting) return
+    this._deleting = true
+    try {
+      await map.delete()
+      this._deleting = false
+    } catch (err) {
+      this._deleting = false
+    }
+  }
+
   renderMapPicker = () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
@@ -158,12 +169,15 @@ class WorldBuilder extends Component {
     )
 
     const mapList = savedMaps.map((map, index) => {
-      return (
-        <MenuItem
-          text={map.data.name}
-          onClick={() => this.changeMap({ index })}
-        />
+      const text = (
+        <span onClick={() => this.changeMap({ index })}>
+          {map.data.name}
+          <span onClick={() => this.onDeleteMap({ map })}>
+            <Icon icon={IconNames.TRASH} />
+          </span>
+        </span>
       )
+      return <MenuItem text={text} />
     })
 
     mapList.push(newMap)
