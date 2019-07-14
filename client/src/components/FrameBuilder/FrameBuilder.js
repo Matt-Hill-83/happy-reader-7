@@ -23,7 +23,7 @@ import css from "./FrameBuilder.module.scss"
 class FrameBuilder extends Component {
   state = {
     frames: [],
-    activeFrameSet: ""
+    frameSet: ""
     // isStartScene: false,
     // isEndScene: false,
   }
@@ -87,10 +87,10 @@ class FrameBuilder extends Component {
   }
 
   onAddFrame = () => {
-    const activeFrameSet = this.getFrameSet()
+    const frameSet = this.getFrameSet()
 
     const newFrame = this.getNewFrame()
-    activeFrameSet.frames.push(newFrame)
+    frameSet.frames.push(newFrame)
     this.updateFrameSet()
   }
 
@@ -115,8 +115,8 @@ class FrameBuilder extends Component {
   }
 
   renderActiveFrameSetName = () => {
-    const activeFrameSet = this.getFrameSet()
-    const title = activeFrameSet && activeFrameSet.data && activeFrameSet.title
+    const frameSet = this.getFrameSet()
+    const title = frameSet && frameSet.data && frameSet.title
 
     return (
       <div className={css.frameSetNameContainer}>
@@ -126,7 +126,7 @@ class FrameBuilder extends Component {
             id="text-input"
             placeholder="Placeholder text"
             onChange={event =>
-              this.onChangeFrameSetTitle({ frameSet: activeFrameSet, event })
+              this.onChangeFrameSetTitle({ frameSet: frameSet, event })
             }
             onBlur={event => this.updateFrameSetTitle({ event })}
           />
@@ -136,8 +136,8 @@ class FrameBuilder extends Component {
   }
 
   renderNarrativeEditor = () => {
-    const activeFrameSet = this.getFrameSet()
-    const title = activeFrameSet && activeFrameSet.data && activeFrameSet.title
+    const frameSet = this.getFrameSet()
+    const title = frameSet && frameSet.data && frameSet.title
 
     return (
       <div className={css.frameSetNameContainer}>
@@ -147,7 +147,7 @@ class FrameBuilder extends Component {
             id="text-input"
             placeholder="Placeholder text"
             onChange={event =>
-              this.onChangeFrameSetTitle({ frameSet: activeFrameSet, event })
+              this.onChangeFrameSetTitle({ frameSet: frameSet, event })
             }
             onBlur={event => this.updateFrameSetTitle({ event })}
           />
@@ -227,11 +227,11 @@ class FrameBuilder extends Component {
   renderFrames = () => {
     const { scene } = this.props
 
-    const activeFrameSet = (scene && scene.frameSet) || this.getNewFrameSet()
+    const frameSet = (scene && scene.frameSet) || this.getNewFrameSet()
 
     const frames =
-      activeFrameSet.frames && activeFrameSet.frames.length
-        ? activeFrameSet.frames
+      frameSet.frames && frameSet.frames.length
+        ? frameSet.frames
         : [this.getNewFrame()]
 
     const renderedFrames = frames.map(frame => {

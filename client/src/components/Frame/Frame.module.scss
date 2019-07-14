@@ -1,3 +1,11 @@
+.closeButton {
+  border: 1px solid red !important;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 1000;
+}
+
 .dialog {
   position: absolute;
   display: flex;
@@ -28,6 +36,7 @@
     }
   }
 
+  // TODO - make these character1 and character2
   .kat {
     border: 3px solid orange !important;
     color: #8610ff;
@@ -89,6 +98,7 @@
 .scenesContainer {
   display: flex;
   height: 100%;
+  position: relative;
 }
 
 .narrative {

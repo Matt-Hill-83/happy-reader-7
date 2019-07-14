@@ -4,13 +4,13 @@ import React, { Component } from "react"
 import Character from "../Character/Character"
 import Head from "../Head/Head"
 import { IconNames } from "@blueprintjs/icons"
-import Images from "../../images/images"
-import Utils from "../../Utils/Utils"
-import WordGroup from "../WordGroup/WordGroup"
-import css from "./Frame.module.scss"
-// import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
+
+import Images from "../../images/images"
+import WordGroup from "../WordGroup/WordGroup"
+
+import css from "./Frame.module.scss"
 
 class Frame extends Component {
   state = { showFacePicker: false }
@@ -189,18 +189,20 @@ class Frame extends Component {
       <>
         {isEditMode && showFacePicker && (
           <div className={css.girlPickersContainer}>
-            <Button
-              className={css.toggleFacePickerButton2}
-              onClick={this.toggleFacePicker}
-            >
-              <Icon icon={IconNames.DATABASE} />
-            </Button>
+            {false && (
+              <Button
+                className={css.toggleFacePickerButton2}
+                onClick={this.toggleFacePicker}
+              >
+                <Icon icon={IconNames.DATABASE} />
+              </Button>
+            )}
             {isEditMode && this.renderFacePickers({ allCharacters })}
           </div>
         )}
         <div className={css.scenesContainer}>
           {this.renderFrame({ allCharacters })}
-          {isEditMode && (
+          {false && isEditMode && (
             <Button
               className={css.toggleFacePickerButton}
               onClick={this.toggleFacePicker}
@@ -208,13 +210,13 @@ class Frame extends Component {
               <Icon icon={IconNames.DATABASE} />
             </Button>
           )}
-        </div>
 
-        {isEditMode && (
-          <Button className={css.closeButton} onClick={this.deleteFrame}>
-            <Icon icon={IconNames.CROSS} />
-          </Button>
-        )}
+          {isEditMode && (
+            <Button className={css.closeButton} onClick={this.deleteFrame}>
+              <Icon icon={IconNames.CROSS} />
+            </Button>
+          )}
+        </div>
       </>
     )
   }
