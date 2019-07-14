@@ -25,6 +25,7 @@ import { worldNameStore } from "../../Stores/FrameSetStore"
 import css from "./WorldBuilder.module.scss"
 import Utils from "../../Utils/Utils"
 
+const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 8
 const NUM_COLS_LOCATIONS_GRID = 8
 const COLUMN_WIDTH = 150
@@ -52,7 +53,7 @@ class WorldBuilder extends Component {
 
   async componentWillMount() {
     this.initDraggableStuff()
-    const initialMapIndex = 0
+    const initialMapIndex = INITIAL_MAP_INDEX
     this.changeMap({ index: initialMapIndex })
   }
 
@@ -430,7 +431,7 @@ class WorldBuilder extends Component {
     return `${prefix}-row-${rowIndex}-col-${colIndex}`
   }
 
-  saveWorld = async () => {
+  saveMap = async () => {
     const { scenesGrid } = this.state
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
@@ -449,10 +450,10 @@ class WorldBuilder extends Component {
     maps.add(newMap)
   }
 
-  renderSaveWorldButton = () => {
+  renderSaveMapButton = () => {
     return (
-      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveWorld}>
-        <span> Save World </span>
+      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
+        <span> Save Map </span>
         <Icon color={"purple"} icon={IconNames.SAVED} />
       </Button>
     )
@@ -479,9 +480,7 @@ class WorldBuilder extends Component {
   }
 
   onExitFrameBuilder = ({ frames }) => {
-    // const scene = this.state.scene
-
-    this.setState({ scene: "", showFrameBuilder: false })
+    // this.setState({ scene: "", showFrameBuilder: false })
   }
 
   renderLocation = ({ item }) => {
@@ -592,7 +591,7 @@ class WorldBuilder extends Component {
             <div className={css.title}>World Builder</div>
             <div className={css.subTitle}>
               (drag items to create your world...)
-              {this.renderSaveWorldButton()}
+              {this.renderSaveMapButton()}
               <div className={css.editWorldButtons}>
                 {/* <Button
                   icon="share"
