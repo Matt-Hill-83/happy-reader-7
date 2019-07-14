@@ -432,7 +432,6 @@ class WorldBuilder extends Component {
 
   saveWorld = async () => {
     const { locationsGrid } = this.state
-    // const locationsMap = this.transformLocationsGridToLocationsMap2()
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
@@ -458,11 +457,6 @@ class WorldBuilder extends Component {
       </Button>
     )
   }
-
-  // transformLocationsGridToLocationsMap2 = () => {
-  //   const { locationsGrid } = this.state
-  //   return locationsGrid
-  // }
 
   renderList = ({ droppableId, items, className }) => {
     return (
