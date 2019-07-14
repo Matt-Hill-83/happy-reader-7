@@ -25,7 +25,8 @@ import { worldNameStore } from "../../Stores/FrameSetStore"
 import css from "./WorldBuilder.module.scss"
 import Utils from "../../Utils/Utils"
 
-const INITIAL_MAP_INDEX = -1
+const INITIAL_MAP_INDEX = 0
+// const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 8
 const NUM_COLS_LOCATIONS_GRID = 8
 const COLUMN_WIDTH = 150
@@ -185,9 +186,9 @@ class WorldBuilder extends Component {
       <Popover
         className={css.worldPickerDropdown}
         content={renderedMapList}
-        position={Position.RIGHT_TOP}
+        position={Position.BOTTOM}
       >
-        <Button icon="share" text="Load World" />
+        <Button icon="share" text="Load Map" />
       </Popover>
     )
 
@@ -470,6 +471,15 @@ class WorldBuilder extends Component {
     )
   }
 
+  renderUpdateMapButton = () => {
+    return (
+      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
+        <span> Update Map </span>
+        <Icon color={"purple"} icon={IconNames.SAVED} />
+      </Button>
+    )
+  }
+
   renderList = ({ droppableId, items, className }) => {
     return (
       <div className={className}>
@@ -521,7 +531,11 @@ class WorldBuilder extends Component {
   // TODO - make this global Util
   updateWorld = ({ newProps }) => {
     const map = this.state.world
+    console.log("newProps", toJS(newProps)) // zzz
+
     Object.assign(map.data, toJS(newProps))
+    delete map.data.grid
+    console.log("map.data", toJS(map.data)) // zzz
     map.update(map.data)
   }
 
@@ -567,50 +581,20 @@ class WorldBuilder extends Component {
     )
   }
 
-  // renderSimpleWorld = () => {
-  //   const { world } = this.state
-
-  //   const grid = Utils.getGridFromMap({ map: world })
-
-  //   if (!grid) {
-  //     return null
-  //   }
-
-  //   const rows = grid.map((row, rowIndex) => {
-  //     const renderedRow = row.map((scene, colIndex) => {
-  //       let newItem
-  //       if (scene.name) {
-  //         newItem = this.renderLocation({ item: { scene } }) || null
-  //       } else {
-  //         newItem = null
-  //       }
-  //       return <div className={css.sizerDiv}>{newItem}</div>
-  //     })
-  //     return <div className={css.rowDiv}>{renderedRow}</div>
-  //   })
-
-  //   return <div className={css.scenesContainer}>{rows}</div>
-  // }
-
   render() {
     const { world, scene, showFrameBuilder } = this.state
-
     return (
       <div className={css.main}>
         <div className={css.header}>
           <div className={css.titles}>
-            <div className={css.title}>World Builder</div>
+            <div className={css.title}>{`World Builder - world: ${(world.data &&
+              world.data.name) ||
+              "none"}`}</div>
             <div className={css.subTitle}>
               (drag items to create your world...)
-              {this.renderSaveMapButton()}
               <div className={css.editWorldButtons}>
-                {/* <Button
-                  icon="share"
-                  text="Edit World"
-                  onClick={() =>
-                    this.setState({ editWorld: !this.state.editWorld })
-                  }
-                /> */}
+                {this.renderSaveMapButton()}
+                {this.renderUpdateMapButton()}
                 {this.renderMapPicker()}
               </div>
             </div>
