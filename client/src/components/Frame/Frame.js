@@ -149,10 +149,14 @@ class Frame extends Component {
   }
 
   renderFrame = ({ allCharacters = [] }) => {
-    const { frame } = this.state
+    const {
+      frame,
+      frame: { story = [], faces = [] },
+      showNarrativeEditor
+    } = this.state
 
     const { scene, isEditMode = true } = this.props
-    const { story = [], faces = [] } = frame
+    // const { story = [], faces = [] } = frame
 
     const backgroundImage = Images.backgrounds["hill01"]
     const locationImage = Images.locations[scene.name]
@@ -181,6 +185,7 @@ class Frame extends Component {
             />
           </div>
           <div className={css.bookImageContainer}>
+            {showNarrativeEditor && this.renderNarrativeEditor()}
             <div className={css.narrative}>
               {isEditMode && (
                 <Button
@@ -225,18 +230,13 @@ class Frame extends Component {
   }
 
   render() {
-    const { frame, isEditMode = true } = this.props
-    const { showFacePicker, showNarrativeEditor } = this.state
+    const { isEditMode = true } = this.props
+    const { frame, showFacePicker, showNarrativeEditor } = this.state
 
     const allCharacters = (frame && frame.creatures) || []
 
     return (
       <>
-        {isEditMode && showFacePicker && (
-          <div className={css.girlPickersContainer}>
-            {isEditMode && this.renderFacePickers({ allCharacters })}
-          </div>
-        )}
         <div className={css.scenesContainer}>
           {this.renderFrame({ allCharacters })}
 
@@ -245,8 +245,12 @@ class Frame extends Component {
               <Icon icon={IconNames.CROSS} />
             </Button>
           )}
-          {showNarrativeEditor && this.renderNarrativeEditor()}
         </div>
+        {isEditMode && showFacePicker && (
+          <div className={css.girlPickersContainer}>
+            {isEditMode && this.renderFacePickers({ allCharacters })}
+          </div>
+        )}
       </>
     )
   }
