@@ -58,7 +58,7 @@ class Frame extends Component {
     this.toggleFacePicker()
   }
 
-  renderFacePicker = ({ name }) => {
+  renderFacePicker = ({ name, facePickerIndex }) => {
     const girlImages = Images.posableGirls
 
     const images = girlImages.find(girl => girl.name === name)
@@ -67,16 +67,16 @@ class Frame extends Component {
       images: { heads }
     } = images
 
-    const headImages = heads.map(head => {
+    const headImages = heads.map((head, headIndex) => {
       return (
-        <div onClick={() => this.selectHead({ head, name })}>
+        <div key={headIndex} onClick={() => this.selectHead({ head, name })}>
           <Head name={name} head={head} />
         </div>
       )
     })
 
     return (
-      <div className={css.girlPickerContainer}>
+      <div key={facePickerIndex} className={css.girlPickerContainer}>
         <div className={css.girlPicker}>{headImages}</div>
       </div>
     )
@@ -96,7 +96,11 @@ class Frame extends Component {
 
       const className = `character${characterIndex}`
       return (
-        <WordGroup story={[text]} className={`${css.line} ${css[className]}`} />
+        <WordGroup
+          index={index}
+          story={[text]}
+          className={`${css.line} ${css[className]}`}
+        />
       )
     })
 
@@ -163,11 +167,11 @@ class Frame extends Component {
     const bookImage = Images.sceneView.book
     const notebookImage = Images.sceneView.notebook
 
-    const renderedFriends = allCharacters.map(friend => {
+    const renderedFriends = allCharacters.map((friend, index) => {
       const mood = this.getMood({ name: friend, faces })
 
       return (
-        <div onClick={this.toggleFacePicker}>
+        <div key={index} onClick={this.toggleFacePicker}>
           <Character name={friend} mood={mood} isEditMode={isEditMode} />
         </div>
       )
@@ -224,14 +228,18 @@ class Frame extends Component {
   }
 
   renderFacePickers = ({ allCharacters }) => {
-    return allCharacters.map(name => {
-      return this.renderFacePicker({ name })
+    return allCharacters.map((name, index) => {
+      return this.renderFacePicker({ name, facePickerIndex: index })
     })
   }
 
   render() {
+    console.log("render frame") // zzz
+
     const { isEditMode = true } = this.props
     const { frame, showFacePicker, showNarrativeEditor } = this.state
+
+    console.log("frame", toJS(frame)) // zzz
 
     const allCharacters = (frame && frame.creatures) || []
 

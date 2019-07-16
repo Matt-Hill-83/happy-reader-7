@@ -312,19 +312,21 @@ class MainStory extends React.Component {
             </div>
           )}
         </div>
-        <Dialog
-          isOpen={this.state.showYouWin}
-          isCloseButtonShown={true}
-          className={css.levelCompleteDialog}
-        >
-          <span className={css.levelCompletionMessage}>{youWinMessage}</span>
-          <Button
-            className={css.levelCompletionButton}
-            onClick={this.closeYouWin}
+        {true && (
+          <Dialog
+            isOpen={this.state.showYouWin}
+            isCloseButtonShown={true}
+            className={css.levelCompleteDialog}
           >
-            GO
-          </Button>
-        </Dialog>
+            <span className={css.levelCompletionMessage}>{youWinMessage}</span>
+            <Button
+              className={css.levelCompletionButton}
+              onClick={this.closeYouWin}
+            >
+              GO
+            </Button>
+          </Dialog>
+        )}
       </div>
     )
   }
