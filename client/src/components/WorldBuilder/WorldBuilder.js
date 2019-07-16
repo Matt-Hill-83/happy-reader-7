@@ -44,6 +44,7 @@ const SOURCE_ITEMS_PROP_NAME = "sourceItems"
 class WorldBuilder extends Component {
   state = {
     world: {},
+    sceneToEdit: null,
     showFrameBuilder: false,
     [SOURCE_ITEMS_PROP_NAME]: [],
     [SOURCE_CREATURES_PROP_NAME]: [],
@@ -496,12 +497,12 @@ class WorldBuilder extends Component {
     )
   }
 
-  editFrame = ({ scene }) => {
-    this.setState({ scene: scene, showFrameBuilder: true })
+  editFrame = ({ sceneToEdit }) => {
+    this.setState({ sceneToEdit, showFrameBuilder: true })
   }
 
   onExitFrameBuilder = ({ frames }) => {
-    // this.setState({ scene: "", showFrameBuilder: false })
+    this.setState({ sceneToEdit: "", showFrameBuilder: false })
   }
 
   renderLocation = ({ item }) => {
@@ -518,7 +519,7 @@ class WorldBuilder extends Component {
         />
         <Button
           className={css.scenePropsButton}
-          onClick={() => this.editFrame({ scene })}
+          onClick={() => this.editFrame({ sceneToEdit: scene })}
         >
           <Icon icon={IconNames.SETTINGS} />
         </Button>
@@ -531,7 +532,7 @@ class WorldBuilder extends Component {
   // TODO - make this global Util
   updateMap = ({ newProps }) => {
     const map = this.state.world
-    console.log("newProps", toJS(newProps)) // zzz
+    console.log("newProps - FB", toJS(newProps)) // zzz
 
     Object.assign(map.data, toJS(newProps))
     delete map.data.grid
@@ -582,7 +583,8 @@ class WorldBuilder extends Component {
   }
 
   render() {
-    const { world, scene, showFrameBuilder } = this.state
+    const { world, sceneToEdit, showFrameBuilder } = this.state
+
     return (
       <div className={css.main}>
         <div className={css.header}>
@@ -604,7 +606,7 @@ class WorldBuilder extends Component {
           {showFrameBuilder && (
             <FrameBuilder
               world={world}
-              scene={scene}
+              scene={sceneToEdit}
               onExitFrameBuilder={frame => this.onExitFrameBuilder({ frame })}
               updateMap={this.updateMap}
             />

@@ -15,12 +15,20 @@ import css from "./Frame.module.scss"
 class Frame extends Component {
   state = { showFacePicker: false }
 
-  componentWillMount() {}
+  componentWillMount() {
+    // const { isStartScene, isEndScene, scene } = this.props
+    // this.setState({ isStartScene, isEndScene, scene })
+  }
+
+  componentWillReceiveProps(newProps) {
+    // const { isStartScene, isEndScene, scene } = newProps
+    // this.setState({ isStartScene, isEndScene, scene })
+  }
 
   deleteFrame = () => {
-    const { deleteFrame } = this.props
+    const { deleteFrame, frameIndex } = this.props
 
-    deleteFrame && deleteFrame({ frame: "id" })
+    deleteFrame({ frameIndex })
   }
 
   cloneFrame = () => {
@@ -72,15 +80,13 @@ class Frame extends Component {
     this.setState({ showFacePicker })
   }
 
-  renderedDialog = ({}) => {
+  renderedDialog = () => {
     const { frame } = this.props
     const dialog = (frame && frame.dialog) || []
 
     const chats =
       dialog &&
       dialog.map((line, index) => {
-        console.log("line", toJS(line)) // zzz
-
         const { text, characterIndex } = line
 
         const className = `character${characterIndex}`
@@ -103,10 +109,32 @@ class Frame extends Component {
   }
 
   editNarrative = ({ allCharacters = [] }) => {
+    console.log("edit narrative") // zzz
+
     const { scene, frame = {}, isEditMode = true } = this.props
 
     const { story = [], faces = [] } = frame
   }
+
+  onChangeNarrative = async ({ event }) => {
+    const frameSet = this.getFrameSet()
+    frameSet.title = event.target.value
+    this.setState({ frameSet })
+  }
+
+  updateNarrative = async ({ event }) => {
+    const frameSet = this.getFrameSet()
+    frameSet.title = event.target.value
+    this.setState({ frameSet })
+    this.props.updateFrameSet({ frameSet })
+  }
+
+  // updateFrameSet = async () => {
+  //   const { updateMap } = this.props
+  //   const frameSet = this.getFrameSet()
+
+  //   // updateMap && updateMap({ newProps: { frameSet: toJS(frameSet) } })
+  // }
 
   renderFrame = ({ allCharacters = [] }) => {
     const { scene, frame = {}, isEditMode = true } = this.props

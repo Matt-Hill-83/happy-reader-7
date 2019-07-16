@@ -23,19 +23,19 @@ import css from "./FrameBuilder.module.scss"
 class FrameBuilder extends Component {
   state = {
     frames: [],
-    frameSet: ""
-    // isStartScene: false,
-    // isEndScene: false,
+    frameSet: "",
+    isStartScene: false,
+    isEndScene: false
   }
 
   componentWillMount() {
-    // const { isStartScene, isEndScene, scene } = this.props
-    // this.setState({ isStartScene, isEndScene, scene })
+    const { isStartScene, isEndScene, scene } = this.props
+    this.setState({ isStartScene, isEndScene, scene })
   }
 
   componentWillReceiveProps(newProps) {
-    // const { isStartScene, isEndScene, scene } = newProps
-    // this.setState({ isStartScene, isEndScene, scene })
+    const { isStartScene, isEndScene, scene } = newProps
+    this.setState({ isStartScene, isEndScene, scene })
   }
 
   onExitFrameBuilder = () => {
@@ -48,7 +48,10 @@ class FrameBuilder extends Component {
   getNewFrame = () => {
     const {
       scene: { creatures = [] }
-    } = this.props
+    } = this.state
+    // const {
+    //   scene: { creatures = [] }
+    // } = this.props
 
     const friendNames = creatures.map(creature => creature.type)
     const you = localStateStore.getYou()
@@ -66,20 +69,33 @@ class FrameBuilder extends Component {
         `${creatureName0} and ${creatureName1} play.`
       ],
       faces: [
-        { characterIndex: 1, face: "scared" },
-        { characterIndex: 0, face: "cry" }
+        { character: creatureName1, characterIndex: 1, face: "scared" },
+        { character: creatureName0, characterIndex: 0, face: "cry" }
       ],
       dialog: [
         {
+          character: creatureName1,
           characterIndex: 1,
           text: `${creatureName1}! ${creatureName1}!!`
         },
-        { characterIndex: 0, text: `Hi ${creatureName0}.` },
-        { characterIndex: 1, text: "Can you play?" },
-        { characterIndex: 0, text: "No, I can not play." },
-        { characterIndex: 0, text: "I lost Piggy!." },
-        { characterIndex: 1, text: "You lost Piggy?" },
-        { characterIndex: 1, text: "Nooooooooo!" }
+        {
+          character: creatureName0,
+          characterIndex: 0,
+          text: `Hi ${creatureName0}.`
+        },
+        { character: creatureName1, characterIndex: 1, text: "Can you play?" },
+        {
+          character: creatureName0,
+          characterIndex: 0,
+          text: "No, I can not play."
+        },
+        { character: creatureName0, characterIndex: 0, text: "I lost Piggy!." },
+        {
+          character: creatureName1,
+          characterIndex: 1,
+          text: "You lost Piggy?"
+        },
+        { character: creatureName1, characterIndex: 1, text: "Nooooooooo!" }
       ]
     }
 
@@ -87,11 +103,19 @@ class FrameBuilder extends Component {
   }
 
   onAddFrame = () => {
-    const frameSet = this.getFrameSet()
+    const {
+      scene,
+      scene: { frameSet }
+    } = this.state
+    const { updateMap } = this.props
 
+    // const frameSet = this.getFrameSet()
     const newFrame = this.getNewFrame()
     frameSet.frames.push(newFrame)
-    this.updateFrameSet()
+
+    updateMap({})
+    this.setState({ scene })
+    // this.updateFrameSet({ frames:  })
   }
 
   onChangeFrameSetTitle = async ({ event }) => {
@@ -103,16 +127,25 @@ class FrameBuilder extends Component {
   updateFrameSetTitle = async ({ event }) => {
     const frameSet = this.getFrameSet()
     frameSet.title = event.target.value
-    this.setState({ frameSet })
-    this.updateFrameSet()
+    this.updateFrameSet({ frameSet })
   }
 
-  updateFrameSet = async () => {
+  updateFrameSet = async ({ newProps }) => {
     const { updateMap } = this.props
-    const frameSet = this.getFrameSet()
+    const frameSet = this.state
 
-    updateMap && updateMap({ newProps: { frameSet: toJS(frameSet) } })
+    console.log("frameSet", frameSet) // zzz
+    Object.assign(frameSet, toJS(newProps))
+
+    updateMap({ newProps: { frameSet: toJS(frameSet) } })
+    this.setState({ frameSet })
   }
+  // updateFrameSet = async ({ frameSet }) => {
+  //   this.setState({ frameSet })
+  //   const { updateMap } = this.props
+
+  //   updateMap && updateMap({ newProps: { frameSet: toJS(frameSet) } })
+  // }
 
   renderActiveFrameSetName = () => {
     const frameSet = this.getFrameSet()
@@ -156,7 +189,21 @@ class FrameBuilder extends Component {
     )
   }
 
-  deleteFrame = ({ id }) => {}
+  deleteFrame = ({ frameIndex }) => {
+    const {
+      scene,
+      scene: {
+        frameSet: { frames }
+      }
+    } = this.state
+
+    console.log("frames", toJS(frames)) // zzz
+
+    frames.splice(frameIndex, 1)
+    console.log("frames", toJS(frames)) // zzz
+
+    this.setState({ scene })
+  }
 
   onPressDelete = async ({ item }) => {
     if (this._deleting) return
@@ -225,7 +272,7 @@ class FrameBuilder extends Component {
   }
 
   renderFrames = () => {
-    const { scene } = this.props
+    const { scene, updateMap } = this.props
 
     const frameSet = (scene && scene.frameSet) || this.getNewFrameSet()
 
@@ -234,12 +281,15 @@ class FrameBuilder extends Component {
         ? frameSet.frames
         : [this.getNewFrame()]
 
-    const renderedFrames = frames.map(frame => {
+    const renderedFrames = frames.map((frame, index) => {
       return (
         <Frame
           frame={frame}
           scene={scene}
           updateFrameSet={this.updateFrameSet}
+          deleteFrame={this.deleteFrame}
+          frameIndex={index}
+          // updateMap={updateMap}
         />
       )
     })
