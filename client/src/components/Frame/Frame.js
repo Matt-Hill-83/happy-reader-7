@@ -89,7 +89,6 @@ class Frame extends Component {
 
   renderedDialog = () => {
     const { frame } = this.state
-    // const { frame } = this.props
     const dialog = (frame && frame.dialog) || []
 
     const chats = dialog.map((line, index) => {
@@ -117,19 +116,8 @@ class Frame extends Component {
   }
 
   saveNarrative = async () => {
-    // this.setState({ showNarrativeEditor: true })
-    console.log("save narrative") // zzz
     const { updateMap } = this.props
-    // const {
-    //   frame,
-    //   frame: { story = [] }
-    // } = this.state
-
-    // console.log("story", toJS(story)) // zzz
-    // frame.story = ["test"]
-
     await updateMap({})
-    // this.setState({ frame })
   }
 
   onChangeNarrative = ({ story, event }) => {
@@ -142,7 +130,6 @@ class Frame extends Component {
 
   renderNarrativeEditor = () => {
     const {
-      frame,
       frame: { story }
     } = this.state
 
@@ -160,19 +147,6 @@ class Frame extends Component {
       </div>
     )
   }
-
-  // onChangeNarrative = async ({ event }) => {
-  //   const frameSet = this.getFrameSet()
-  //   frameSet.title = event.target.value
-  //   this.setState({ frameSet })
-  // }
-
-  // updateNarrative = async ({ event }) => {
-  //   const frameSet = this.getFrameSet()
-  //   frameSet.title = event.target.value
-  //   this.setState({ frameSet })
-  //   this.props.updateFrameSet({ frameSet })
-  // }
 
   renderFrame = ({ allCharacters = [] }) => {
     const { frame } = this.state
@@ -260,27 +234,11 @@ class Frame extends Component {
       <>
         {isEditMode && showFacePicker && (
           <div className={css.girlPickersContainer}>
-            {false && (
-              <Button
-                className={css.toggleFacePickerButton2}
-                onClick={this.toggleFacePicker}
-              >
-                <Icon icon={IconNames.DATABASE} />
-              </Button>
-            )}
             {isEditMode && this.renderFacePickers({ allCharacters })}
           </div>
         )}
         <div className={css.scenesContainer}>
           {this.renderFrame({ allCharacters })}
-          {false && isEditMode && (
-            <Button
-              className={css.toggleFacePickerButton}
-              onClick={this.toggleFacePicker}
-            >
-              <Icon icon={IconNames.DATABASE} />
-            </Button>
-          )}
 
           {isEditMode && (
             <Button className={css.closeButton} onClick={this.deleteFrame}>
