@@ -530,14 +530,14 @@ class WorldBuilder extends Component {
   }
 
   // TODO - make this global Util
-  updateMap = ({ newProps }) => {
+  updateMap = async ({ newProps }) => {
     const map = this.state.world
     console.log("newProps - FB", toJS(newProps)) // zzz
 
     Object.assign(map.data, toJS(newProps))
     delete map.data.grid
     console.log("map.data", toJS(map.data)) // zzz
-    map.update(map.data)
+    await map.update(map.data)
   }
 
   renderItems = ({ provided, snapshot, items }) => {

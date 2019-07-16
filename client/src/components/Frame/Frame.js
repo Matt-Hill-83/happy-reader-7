@@ -16,19 +16,19 @@ class Frame extends Component {
   state = { showFacePicker: false }
 
   componentWillMount() {
-    // const { isStartScene, isEndScene, scene } = this.props
-    // this.setState({ isStartScene, isEndScene, scene })
+    const { isStartScene, isEndScene, frame } = this.props
+    this.setState({ isStartScene, isEndScene, frame })
   }
 
   componentWillReceiveProps(newProps) {
-    // const { isStartScene, isEndScene, scene } = newProps
-    // this.setState({ isStartScene, isEndScene, scene })
+    const { isStartScene, isEndScene, frame } = newProps
+    this.setState({ isStartScene, isEndScene, frame })
   }
 
-  deleteFrame = () => {
+  deleteFrame = async () => {
     const { deleteFrame, frameIndex } = this.props
 
-    deleteFrame({ frameIndex })
+    await deleteFrame({ frameIndex })
   }
 
   cloneFrame = () => {

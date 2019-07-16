@@ -102,20 +102,18 @@ class FrameBuilder extends Component {
     return newFrame
   }
 
-  onAddFrame = () => {
+  onAddFrame = async () => {
     const {
       scene,
       scene: { frameSet }
     } = this.state
     const { updateMap } = this.props
 
-    // const frameSet = this.getFrameSet()
     const newFrame = this.getNewFrame()
     frameSet.frames.push(newFrame)
 
-    updateMap({})
+    await updateMap({})
     this.setState({ scene })
-    // this.updateFrameSet({ frames:  })
   }
 
   onChangeFrameSetTitle = async ({ event }) => {
@@ -189,7 +187,7 @@ class FrameBuilder extends Component {
     )
   }
 
-  deleteFrame = ({ frameIndex }) => {
+  deleteFrame = async ({ frameIndex }) => {
     const {
       scene,
       scene: {
@@ -197,11 +195,10 @@ class FrameBuilder extends Component {
       }
     } = this.state
 
-    console.log("frames", toJS(frames)) // zzz
-
+    const { updateMap } = this.props
     frames.splice(frameIndex, 1)
-    console.log("frames", toJS(frames)) // zzz
 
+    await updateMap({})
     this.setState({ scene })
   }
 
