@@ -2,8 +2,8 @@ import { action, computed, decorate, observable, toJS } from "mobx"
 
 class LocalStateStore {
   page = ""
-  // showWorldBuilder = false
-  showWorldBuilder = true
+  showWorldBuilder = false
+  // showWorldBuilder = true
   you = {}
   plot = {}
   locationsMaps = []
@@ -39,8 +39,6 @@ class LocalStateStore {
 
   getLocationsMaps = () => this.locationsMaps
   setLocationsMaps = locationsMaps => {
-    console.log("locationsMaps", toJS(locationsMaps)) // zzz
-
     this.locationsMaps = locationsMaps
   }
 

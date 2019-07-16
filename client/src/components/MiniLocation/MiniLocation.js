@@ -203,7 +203,6 @@ class MiniLocation extends React.Component {
   }
 
   checkIsStartScene = () => {
-    console.log("this.props", this.props) // zzz
     const { location } = this.props
 
     // TODO - test this

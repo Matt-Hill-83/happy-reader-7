@@ -112,7 +112,6 @@ class Frame extends Component {
 
   editNarrative = async () => {
     this.setState({ showNarrativeEditor: true })
-    console.log("edit narrative") // zzz
   }
 
   saveNarrative = async () => {
@@ -123,7 +122,6 @@ class Frame extends Component {
   onChangeNarrative = ({ story, event }) => {
     const { frame } = this.state
     const newStory = event.target.value
-    console.log("newStory", newStory) // zzz
     frame.story[0] = newStory
     this.setState({ frame })
   }
@@ -148,15 +146,17 @@ class Frame extends Component {
     )
   }
 
+  // TODO -
+  // TODO -
+  // TODO - why is second scene empty?
+
   renderFrame = ({ allCharacters = [] }) => {
-    const {
-      frame,
-      frame: { story = [], faces = [] },
-      showNarrativeEditor
-    } = this.state
+    const { frame, showNarrativeEditor } = this.state
+    if (!frame) return null
+
+    const { story = [], faces = [] } = frame
 
     const { scene, isEditMode = true } = this.props
-    // const { story = [], faces = [] } = frame
 
     const backgroundImage = Images.backgrounds["hill01"]
     const locationImage = Images.locations[scene.name]

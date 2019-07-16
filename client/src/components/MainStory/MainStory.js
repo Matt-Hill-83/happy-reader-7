@@ -45,7 +45,6 @@ class MainStory extends React.Component {
     await worldNameStore.fetch()
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    console.log("savedMaps", toJS(savedMaps)) // zzz
 
     savedMaps.forEach(map => {
       const grid = this.transformLocationsGridToLocationsMap({
@@ -219,7 +218,6 @@ class MainStory extends React.Component {
   }
 
   render() {
-    console.log("Main Story render") // zzz
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     if (!savedMaps.length) {
       return null

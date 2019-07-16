@@ -532,11 +532,9 @@ class WorldBuilder extends Component {
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
     const map = this.state.world
-    console.log("newProps - FB", toJS(newProps)) // zzz
 
     Object.assign(map.data, toJS(newProps))
     delete map.data.grid
-    console.log("map.data", toJS(map.data)) // zzz
     await map.update(map.data)
   }
 
