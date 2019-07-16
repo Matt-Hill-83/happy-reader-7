@@ -38,16 +38,19 @@ class Frame extends Component {
   }
 
   selectHead = ({ name, head }) => {
+    const { updateFrameSet } = this.props
+
     const {
-      updateFrameSet,
+      frame,
       frame: { faces }
-    } = this.props
+    } = this.state
 
     const thisFace = faces.find(face => face.character === name)
     thisFace.face = head.mood
 
     updateFrameSet({})
 
+    this.setState({ frame })
     this.toggleFacePicker()
   }
 

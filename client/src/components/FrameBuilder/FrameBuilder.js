@@ -128,14 +128,14 @@ class FrameBuilder extends Component {
     this.updateFrameSet({ frameSet })
   }
 
-  updateFrameSet = async ({ newProps }) => {
+  updateFrameSet = async ({ newProps = {} }) => {
     const { updateMap } = this.props
     const frameSet = this.state
 
     console.log("frameSet", frameSet) // zzz
     Object.assign(frameSet, toJS(newProps))
 
-    updateMap({ newProps: { frameSet: toJS(frameSet) } })
+    updateMap({})
     this.setState({ frameSet })
   }
   // updateFrameSet = async ({ frameSet }) => {
