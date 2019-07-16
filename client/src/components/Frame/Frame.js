@@ -1,4 +1,10 @@
-import { Button, Icon, Position } from "@blueprintjs/core"
+import {
+  Button,
+  Icon,
+  Position,
+  InputGroup,
+  FormGroup
+} from "@blueprintjs/core"
 import React, { Component } from "react"
 
 import Character from "../Character/Character"
@@ -13,7 +19,7 @@ import WordGroup from "../WordGroup/WordGroup"
 import css from "./Frame.module.scss"
 
 class Frame extends Component {
-  state = { showFacePicker: false }
+  state = { showFacePicker: false, showNarrativeEditor: true }
 
   componentWillMount() {
     const { isStartScene, isEndScene, frame } = this.props
@@ -106,18 +112,53 @@ class Frame extends Component {
   }
 
   editNarrative = async () => {
+    this.setState({ showNarrativeEditor: true })
     console.log("edit narrative") // zzz
-    const { updateMap } = this.props
-    const {
-      frame,
-      frame: { story = [] }
-    } = this.state
+  }
 
-    console.log("story", toJS(story)) // zzz
-    frame.story = ["test"]
+  saveNarrative = async () => {
+    // this.setState({ showNarrativeEditor: true })
+    console.log("save narrative") // zzz
+    const { updateMap } = this.props
+    // const {
+    //   frame,
+    //   frame: { story = [] }
+    // } = this.state
+
+    // console.log("story", toJS(story)) // zzz
+    // frame.story = ["test"]
 
     await updateMap({})
+    // this.setState({ frame })
+  }
+
+  onChangeNarrative = ({ story, event }) => {
+    const { frame } = this.state
+    const newStory = event.target.value
+    console.log("newStory", newStory) // zzz
+    frame.story[0] = newStory
     this.setState({ frame })
+  }
+
+  renderNarrativeEditor = () => {
+    const {
+      frame,
+      frame: { story }
+    } = this.state
+
+    return (
+      <div className={css.frameSetNameContainer}>
+        <FormGroup label="Title" labelFor="text-input">
+          <InputGroup
+            value={story[0]}
+            id="text-input"
+            placeholder="Placeholder text"
+            onChange={event => this.onChangeNarrative({ story, event })}
+            onBlur={event => this.saveNarrative({ event })}
+          />
+        </FormGroup>
+      </div>
+    )
   }
 
   // onChangeNarrative = async ({ event }) => {
@@ -211,7 +252,7 @@ class Frame extends Component {
 
   render() {
     const { frame, isEditMode = true } = this.props
-    const { showFacePicker } = this.state
+    const { showFacePicker, showNarrativeEditor } = this.state
 
     const allCharacters = (frame && frame.creatures) || []
 
@@ -246,6 +287,7 @@ class Frame extends Component {
               <Icon icon={IconNames.CROSS} />
             </Button>
           )}
+          {showNarrativeEditor && this.renderNarrativeEditor()}
         </div>
       </>
     )

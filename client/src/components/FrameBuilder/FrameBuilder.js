@@ -157,27 +157,6 @@ class FrameBuilder extends Component {
     )
   }
 
-  renderNarrativeEditor = () => {
-    const frameSet = this.getFrameSet()
-    const title = frameSet && frameSet.data && frameSet.title
-
-    return (
-      <div className={css.frameSetNameContainer}>
-        <FormGroup label="Title" labelFor="text-input">
-          <InputGroup
-            value={title}
-            id="text-input"
-            placeholder="Placeholder text"
-            onChange={event =>
-              this.onChangeFrameSetTitle({ frameSet: frameSet, event })
-            }
-            onBlur={event => this.updateFrameSetTitle({ event })}
-          />
-        </FormGroup>
-      </div>
-    )
-  }
-
   deleteFrame = async ({ frameIndex }) => {
     const {
       scene,
