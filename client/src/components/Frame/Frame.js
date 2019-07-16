@@ -27,14 +27,12 @@ class Frame extends Component {
 
   deleteFrame = async () => {
     const { deleteFrame, frameIndex } = this.props
-
     await deleteFrame({ frameIndex })
   }
 
-  cloneFrame = () => {
-    const { cloneFrame } = this.props
-
-    cloneFrame && cloneFrame({ frame: "id" })
+  cloneFrame = async () => {
+    const { cloneFrame, frameIndex } = this.props
+    await cloneFrame({ frameIndex })
   }
 
   selectHead = ({ name, head }) => {
@@ -84,22 +82,18 @@ class Frame extends Component {
   }
 
   renderedDialog = () => {
-    const { frame } = this.props
+    const { frame } = this.state
+    // const { frame } = this.props
     const dialog = (frame && frame.dialog) || []
 
-    const chats =
-      dialog &&
-      dialog.map((line, index) => {
-        const { text, characterIndex } = line
+    const chats = dialog.map((line, index) => {
+      const { text, characterIndex } = line
 
-        const className = `character${characterIndex}`
-        return (
-          <WordGroup
-            story={[text]}
-            className={`${css.line} ${css[className]}`}
-          />
-        )
-      })
+      const className = `character${characterIndex}`
+      return (
+        <WordGroup story={[text]} className={`${css.line} ${css[className]}`} />
+      )
+    })
 
     return <div className={css.dialog}>{chats}</div>
   }
@@ -111,36 +105,38 @@ class Frame extends Component {
     return mood
   }
 
-  editNarrative = ({ allCharacters = [] }) => {
+  editNarrative = async () => {
     console.log("edit narrative") // zzz
+    const { updateMap } = this.props
+    const {
+      frame,
+      frame: { story = [] }
+    } = this.state
 
-    const { scene, frame = {}, isEditMode = true } = this.props
+    console.log("story", toJS(story)) // zzz
+    frame.story = ["test"]
 
-    const { story = [], faces = [] } = frame
+    await updateMap({})
+    this.setState({ frame })
   }
 
-  onChangeNarrative = async ({ event }) => {
-    const frameSet = this.getFrameSet()
-    frameSet.title = event.target.value
-    this.setState({ frameSet })
-  }
-
-  updateNarrative = async ({ event }) => {
-    const frameSet = this.getFrameSet()
-    frameSet.title = event.target.value
-    this.setState({ frameSet })
-    this.props.updateFrameSet({ frameSet })
-  }
-
-  // updateFrameSet = async () => {
-  //   const { updateMap } = this.props
+  // onChangeNarrative = async ({ event }) => {
   //   const frameSet = this.getFrameSet()
+  //   frameSet.title = event.target.value
+  //   this.setState({ frameSet })
+  // }
 
-  //   // updateMap && updateMap({ newProps: { frameSet: toJS(frameSet) } })
+  // updateNarrative = async ({ event }) => {
+  //   const frameSet = this.getFrameSet()
+  //   frameSet.title = event.target.value
+  //   this.setState({ frameSet })
+  //   this.props.updateFrameSet({ frameSet })
   // }
 
   renderFrame = ({ allCharacters = [] }) => {
-    const { scene, frame = {}, isEditMode = true } = this.props
+    const { frame } = this.state
+
+    const { scene, isEditMode = true } = this.props
     const { story = [], faces = [] } = frame
 
     const backgroundImage = Images.backgrounds["hill01"]

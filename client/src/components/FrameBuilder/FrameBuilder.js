@@ -132,18 +132,9 @@ class FrameBuilder extends Component {
     const { updateMap } = this.props
     const frameSet = this.state
 
-    console.log("frameSet", frameSet) // zzz
-    Object.assign(frameSet, toJS(newProps))
-
     updateMap({})
     this.setState({ frameSet })
   }
-  // updateFrameSet = async ({ frameSet }) => {
-  //   this.setState({ frameSet })
-  //   const { updateMap } = this.props
-
-  //   updateMap && updateMap({ newProps: { frameSet: toJS(frameSet) } })
-  // }
 
   renderActiveFrameSetName = () => {
     const frameSet = this.getFrameSet()
@@ -286,7 +277,7 @@ class FrameBuilder extends Component {
           updateFrameSet={this.updateFrameSet}
           deleteFrame={this.deleteFrame}
           frameIndex={index}
-          // updateMap={updateMap}
+          updateMap={updateMap}
         />
       )
     })
