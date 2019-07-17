@@ -18,13 +18,11 @@ class WordPage extends React.Component {
   async componentWillMount() {
     const { activeScene } = this.props
     this.setState({ activeScene })
-    // console.log("this.props.wordPageProps", toJS(this.props.wordPageProps)) // zzz
   }
 
   componentWillReceiveProps(newProps) {
     const { activeScene } = newProps
     this.setState({ activeScene })
-    // console.log("newProps.wordPageProps", toJS(newProps.wordPageProps)) // zzz
   }
 
   changeLocation = ({ sceneName }) => {
@@ -65,11 +63,8 @@ class WordPage extends React.Component {
   }
 
   render() {
-    console.log("render Word page") // zzz
-
     const { activeScene, frameIndex } = this.state
     const frameSet = activeScene.frameSet
-    console.log("activeScene", toJS(activeScene)) // zzz
 
     let isLastFrame = frameIndex >= frameSet.frames.length - 1
     if (!frameSet) {

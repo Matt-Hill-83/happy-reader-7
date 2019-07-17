@@ -46,6 +46,7 @@ class MainStory extends React.Component {
     // I need to make these stored shared singletons
     await maps.fetch()
     await worldNameStore.fetch()
+    console.log("maps", maps) // zzz
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
@@ -309,7 +310,6 @@ class MainStory extends React.Component {
           {this.state.showStory && (
             <div className={css.storyBox}>
               <PicturePage
-                // wordPageProps={wordPageProps}
                 updateActiveScene={this.updateActiveScene}
                 activeScene={activeScene}
               />

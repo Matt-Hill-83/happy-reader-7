@@ -10,7 +10,6 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import MiniLocation from "../MiniLocation/MiniLocation.js"
 import Utils from "../../Utils/Utils.js"
 import WordPage from "../WordPage/WordPage.js"
-import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 
 import css from "./PicturePage.module.scss"
 
@@ -109,14 +108,13 @@ class PicturePage extends React.Component {
   }
 
   renderStoryPage = () => {
-    const { activeScene, wordPageProps, updateActiveScene } = this.props
+    const { activeScene, updateActiveScene } = this.props
 
     const activeLocationName = activeScene.name
 
     return (
       <div className={`${css.halfPage} ${css.leftHalf}`}>
         <WordPage
-          // wordPageProps={wordPageProps}
           updateActiveScene={updateActiveScene}
           activeScene={activeScene}
         />
