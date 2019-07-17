@@ -247,8 +247,7 @@ class MainStory extends React.Component {
       return null
     }
 
-    const activeLocationsMap = localStateStore.getActiveMap()
-    console.log("activeLocationsMap", activeLocationsMap) // zzz
+    const map = localStateStore.getActiveMap()
 
     const { name: activeSceneName } = activeScene
     const page = localStateStore.getPage()
@@ -270,8 +269,8 @@ class MainStory extends React.Component {
 
     const renderedMapTitle = (
       <div className={css.mapTitle}>
-        <span>{`map: ${index}  `}</span>
-        <span>{`name: ${activeLocationsMap.data.name}`}</span>
+        <div>{`map: ${index}`}</div>
+        <div>{`name: ${map.data.name}`}</div>
         <div>{`scene: ${activeSceneName}`}</div>
       </div>
     )
