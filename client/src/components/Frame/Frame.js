@@ -107,6 +107,44 @@ class Frame extends Component {
     return <div className={css.dialog}>{chats}</div>
   }
 
+  onChangeDialog = ({ event, lineIndex }) => {
+    const { frame } = this.state
+    const dialog = (frame && frame.dialog) || []
+
+    const newLine = event.target.value
+    dialog[lineIndex]["text"] = newLine
+    this.setState({ frame })
+  }
+
+  renderDialogEditor = () => {
+    const { frame } = this.state
+    const dialog = (frame && frame.dialog) || []
+
+    const inputFields = dialog.map((line, lineIndex) => {
+      const { text, characterIndex } = line
+      const className = `character${characterIndex}`
+
+      return (
+        <InputGroup
+          className={`${css.line} ${css[className]}`}
+          value={text}
+          id="text-input"
+          placeholder="Placeholder text"
+          onChange={event => this.onChangeDialog({ event, lineIndex })}
+          onBlur={event => this.saveNarrative({ event })}
+        />
+      )
+    })
+
+    return (
+      <div className={css.dialogEditor}>
+        <FormGroup label="Title" labelFor="text-input">
+          {inputFields}
+        </FormGroup>
+      </div>
+    )
+  }
+
   getMood = ({ name, faces }) => {
     let mood = "ok"
     const newMood = faces && faces.find(face => face.character === name)
@@ -156,10 +194,6 @@ class Frame extends Component {
     )
   }
 
-  // TODO -
-  // TODO -
-  // TODO - why is second scene empty?
-
   renderFrame = ({ allCharacters = [] }) => {
     const { frame, showNarrativeEditor } = this.state
     if (!frame) return null
@@ -187,6 +221,7 @@ class Frame extends Component {
       <div className={css.scene}>
         <div className={css.backgroundImageContainer}>
           {this.renderedDialog({})}
+          {isEditMode && this.renderDialogEditor()}
           <div className={css.locationImageContainer}>
             <img
               className={css.locationImage}

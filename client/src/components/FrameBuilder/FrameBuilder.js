@@ -79,20 +79,20 @@ class FrameBuilder extends Component {
           character: creatureName0,
           characterIndex: 0,
           text: `Hi ${creatureName0}.`
-        },
-        { character: creatureName1, characterIndex: 1, text: "Can you play?" },
-        {
-          character: creatureName0,
-          characterIndex: 0,
-          text: "No, I can not play."
-        },
-        { character: creatureName0, characterIndex: 0, text: "I lost Piggy!." },
-        {
-          character: creatureName1,
-          characterIndex: 1,
-          text: "You lost Piggy?"
-        },
-        { character: creatureName1, characterIndex: 1, text: "Nooooooooo!" }
+        }
+        // { character: creatureName1, characterIndex: 1, text: "Can you play?" },
+        // {
+        //   character: creatureName0,
+        //   characterIndex: 0,
+        //   text: "No, I can not play."
+        // },
+        // { character: creatureName0, characterIndex: 0, text: "I lost Piggy!." },
+        // {
+        //   character: creatureName1,
+        //   characterIndex: 1,
+        //   text: "You lost Piggy?"
+        // },
+        // { character: creatureName1, characterIndex: 1, text: "Nooooooooo!" }
       ]
     }
 
