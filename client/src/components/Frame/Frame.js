@@ -195,7 +195,7 @@ class Frame extends Component {
             />
           </div>
           <div className={css.bookImageContainer}>
-            {showNarrativeEditor && this.renderNarrativeEditor()}
+            {isEditMode && showNarrativeEditor && this.renderNarrativeEditor()}
             <div className={css.narrative}>
               {isEditMode && (
                 <Button
