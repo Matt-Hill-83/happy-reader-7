@@ -16,13 +16,15 @@ class WordPage extends React.Component {
   }
 
   async componentWillMount() {
-    this.setState({ ...this.props.wordPageProps })
-    console.log("this.props.wordPageProps", toJS(this.props.wordPageProps)) // zzz
+    const { activeScene } = this.props
+    this.setState({ activeScene })
+    // console.log("this.props.wordPageProps", toJS(this.props.wordPageProps)) // zzz
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({ ...newProps.wordPageProps })
-    console.log("newProps.wordPageProps", toJS(newProps.wordPageProps)) // zzz
+    const { activeScene } = newProps
+    this.setState({ activeScene })
+    // console.log("newProps.wordPageProps", toJS(newProps.wordPageProps)) // zzz
   }
 
   changeLocation = ({ sceneName }) => {

@@ -116,8 +116,9 @@ class PicturePage extends React.Component {
     return (
       <div className={`${css.halfPage} ${css.leftHalf}`}>
         <WordPage
-          wordPageProps={wordPageProps}
+          // wordPageProps={wordPageProps}
           updateActiveScene={updateActiveScene}
+          activeScene={activeScene}
         />
         <div className={css.locationHeader}>{`${activeLocationName}`}</div>
       </div>

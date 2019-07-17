@@ -245,7 +245,7 @@ class MainStory extends React.Component {
 
     const { name: activeSceneName } = activeScene
     const page = localStateStore.getPage()
-    const wordPageProps = { activeScene }
+    // const wordPageProps = { activeScene }
 
     if (page === "you-picker") {
       return (
@@ -309,7 +309,7 @@ class MainStory extends React.Component {
           {this.state.showStory && (
             <div className={css.storyBox}>
               <PicturePage
-                wordPageProps={wordPageProps}
+                // wordPageProps={wordPageProps}
                 updateActiveScene={this.updateActiveScene}
                 activeScene={activeScene}
               />
