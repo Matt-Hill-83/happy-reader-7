@@ -59,24 +59,24 @@ class PicturePage extends React.Component {
   renderMiniLocation = ({
     colIndex = 0,
     rowIndex = 0,
-    location,
+    location: scene,
     className = ""
   }) => {
     const { activeScene } = this.props
 
-    const { name: locationName, creatures = [] } = location
-    if (location.isStartScene) {
-    }
+    const { name: sceneName } = scene
+    // if (scene.isStartScene) {
+    // }
 
-    const isActive = locationName === activeScene.name
+    const isActive = sceneName === activeScene.name
 
     const id = `${colIndex}-${rowIndex}`
 
     return (
       <MiniLocation
         id={id}
-        key={locationName}
-        location={location}
+        key={sceneName}
+        location={scene}
         isActive={isActive}
         className={className}
       />

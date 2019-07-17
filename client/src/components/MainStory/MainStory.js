@@ -112,6 +112,7 @@ class MainStory extends React.Component {
 
     const allScenes = grid.flat()
 
+    // hacky way to retroactively assign startScene and endScene to each scene
     allScenes.forEach(scene => {
       scene.isStartScene = scene.name === startScene
       scene.isEndScene = scene.name === endScene
@@ -119,10 +120,6 @@ class MainStory extends React.Component {
 
     const terminalScene = allScenes.find(scene => {
       if (scene.isStartScene || scene.isEndScene) {
-        console.log("scene", toJS(scene)) // zzz
-        console.log("scene - name", toJS(scene.name)) // zzz
-        console.log("scene - isStart", toJS(scene.isStartScene)) // zzz
-        console.log("scene - isEnd", toJS(scene.isEndScene)) // zzz
         return start ? scene.isStartScene : scene.isEndScene
       }
     })

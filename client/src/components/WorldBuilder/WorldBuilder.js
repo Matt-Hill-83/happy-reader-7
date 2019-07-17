@@ -376,6 +376,8 @@ class WorldBuilder extends Component {
   }
 
   onDragEnd = result => {
+    console.log("on drag end") // zzz
+
     const {
       source,
       source: { droppableId: sourceId },
