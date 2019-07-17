@@ -531,6 +531,8 @@ class WorldBuilder extends Component {
 
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
+    console.log("updateMap") // zzz
+
     const map = this.state.world
 
     Object.assign(map.data, toJS(newProps))
@@ -581,6 +583,8 @@ class WorldBuilder extends Component {
   }
 
   render() {
+    console.log("WB - render") // zzz
+
     const { world, sceneToEdit, showFrameBuilder } = this.state
 
     return (

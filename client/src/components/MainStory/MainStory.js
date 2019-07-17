@@ -115,7 +115,7 @@ class MainStory extends React.Component {
 
   onExitIntro = async () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    const startScene = this.getTerminalScene({ savedMaps })
+    const startScene = this.getTerminalScene({})
     console.log("savedMaps[0]", toJS(savedMaps[0].data)) // zzz
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
@@ -226,6 +226,8 @@ class MainStory extends React.Component {
   }
 
   render() {
+    console.log("MS - render") // zzz
+
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     if (!savedMaps.length) {
       return null
@@ -246,10 +248,10 @@ class MainStory extends React.Component {
     }
 
     const activeLocationsMap = localStateStore.getActiveMap()
+    console.log("activeLocationsMap", activeLocationsMap) // zzz
 
     const { name: activeSceneName } = activeScene
     const page = localStateStore.getPage()
-    // const wordPageProps = { activeScene }
 
     if (page === "you-picker") {
       return (
@@ -269,7 +271,7 @@ class MainStory extends React.Component {
     const renderedMapTitle = (
       <div className={css.mapTitle}>
         <span>{`map: ${index}  `}</span>
-        <span>{`name: ${activeLocationsMap.name}`}</span>
+        <span>{`name: ${activeLocationsMap.data.name}`}</span>
         <div>{`scene: ${activeSceneName}`}</div>
       </div>
     )

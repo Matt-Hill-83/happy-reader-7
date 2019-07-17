@@ -149,6 +149,8 @@ class PicturePage extends React.Component {
   }
 
   render() {
+    console.log("PP - render") // zzz
+
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
 
     if (showWorldBuilder) {
