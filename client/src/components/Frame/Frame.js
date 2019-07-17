@@ -22,13 +22,13 @@ class Frame extends Component {
   state = { showFacePicker: false, showNarrativeEditor: true }
 
   componentWillMount() {
-    const { isStartScene, isEndScene, frame } = this.props
-    this.setState({ isStartScene, isEndScene, frame })
+    const { frame } = this.props
+    this.setState({ frame })
   }
 
   componentWillReceiveProps(newProps) {
-    const { isStartScene, isEndScene, frame } = newProps
-    this.setState({ isStartScene, isEndScene, frame })
+    const { frame } = newProps
+    this.setState({ frame })
   }
 
   deleteFrame = async () => {

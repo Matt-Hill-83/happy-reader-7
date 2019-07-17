@@ -102,11 +102,29 @@ class MainStory extends React.Component {
     // TODO, get map from store by mapId
     const map = localStateStore.getActiveMap()
 
+    const startScene = map.data.startScene // zzz
+    const endScene = map.data.endScene // zzz
+
+    console.log("startScene", startScene) // zzz
+    console.log("endScene", endScene) // zzz
+
     const grid = _get(map, "data.grid") || []
 
     const allScenes = grid.flat()
+
+    allScenes.forEach(scene => {
+      scene.isStartScene = scene.name === startScene
+      scene.isEndScene = scene.name === endScene
+    })
+
     const terminalScene = allScenes.find(scene => {
-      return start ? scene.isStartScene : scene.isEndScene
+      if (scene.isStartScene || scene.isEndScene) {
+        console.log("scene", toJS(scene)) // zzz
+        console.log("scene - name", toJS(scene.name)) // zzz
+        console.log("scene - isStart", toJS(scene.isStartScene)) // zzz
+        console.log("scene - isEnd", toJS(scene.isEndScene)) // zzz
+        return start ? scene.isStartScene : scene.isEndScene
+      }
     })
 
     // If no start and finish scenes are marked, choose some, so the program doesn't break
@@ -116,6 +134,8 @@ class MainStory extends React.Component {
   onExitIntro = async () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     const startScene = this.getTerminalScene({})
+    console.log("startScene", toJS(startScene)) // zzz
+
     console.log("savedMaps[0]", toJS(savedMaps[0].data)) // zzz
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
@@ -132,6 +152,7 @@ class MainStory extends React.Component {
 
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false }) || lastScene
+    console.log("endScene", toJS(endScene)) // zzz
 
     localStateStore.setLocationDetails({
       mapName: map.data.name,
@@ -282,7 +303,7 @@ class MainStory extends React.Component {
         onClick={this.changeCharacter}
         // disabled={true}
       >
-        <span> Change Character </span>
+        <span>Change Character</span>
       </Button>
     )
 

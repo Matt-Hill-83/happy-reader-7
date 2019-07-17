@@ -49,9 +49,6 @@ class FrameBuilder extends Component {
     const {
       scene: { creatures = [] }
     } = this.state
-    // const {
-    //   scene: { creatures = [] }
-    // } = this.props
 
     const friendNames = creatures.map(creature => creature.type)
     const you = localStateStore.getYou()
@@ -185,23 +182,6 @@ class FrameBuilder extends Component {
 
   getFrameSet = () => {
     return (this.state.scene && this.state.scene.frameSet) || {}
-  }
-
-  checkIsStartScene = () => {
-    const { scene, world } = this.props
-    const { isStartScene } = this.state
-
-    scene.test = "zzzzzzzz"
-    // TODO
-    // TODO
-    // TODO
-    // TODO
-    // TODO
-    // fix this logic
-    world.data.startScene = !isStartScene
-    this.setState({ isStartScene: !isStartScene })
-    // should disable any other scenes with this checked
-    return
   }
 
   renderLocation = ({ item }) => {

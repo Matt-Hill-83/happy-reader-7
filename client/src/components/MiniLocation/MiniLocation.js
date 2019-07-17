@@ -55,21 +55,22 @@ class MiniLocation extends React.Component {
   async componentWillMount() {
     const {
       location: { doors },
-      isStartScene
+      isStartScene,
+      isEndScene
     } = this.props
 
-    this.setState({ isStartScene })
+    this.setState({ isStartScene, isEndScene })
 
     if (doors) {
-      this.setState({ doors, isStartScene })
+      this.setState({ doors })
     }
   }
 
   componentWillReceiveProps(newProps) {
     const {
       location: { doors },
-      location,
-      isStartScene
+      isStartScene,
+      isEndScene
     } = newProps
 
     // TODO - do all this for end scene
@@ -77,10 +78,10 @@ class MiniLocation extends React.Component {
     // TODO - do all this for end scene
     // TODO - do all this for end scene
     // TODO - do all this for end scene
-    this.setState({ isStartScene })
+    this.setState({ isStartScene, isEndScene })
 
     if (doors) {
-      this.setState({ doors, isStartScene })
+      this.setState({ doors })
     }
   }
 
@@ -176,9 +177,10 @@ class MiniLocation extends React.Component {
 
   renderCharacters = ({ isActive, creatures }) => {
     // Hide start star
-    const filteredCretures = creatures.filter(cr => cr.type !== "start")
+    // const filteredCretures = creatures.filter(cr => cr.type !== "start")
 
-    const renderedCharacters = filteredCretures.map(creature => {
+    const renderedCharacters = creatures.map(creature => {
+      // const renderedCharacters = filteredCretures.map(creature => {
       const creatureType = creature && creature.type
 
       const image = Images.creatures[creatureType] || null
@@ -204,22 +206,19 @@ class MiniLocation extends React.Component {
 
   checkIsStartScene = () => {
     const { location } = this.props
+    location.isStartScene = !this.state.isStartScene
 
-    // TODO - test this
-    // TODO - test this
-    // TODO - test this
     this.props.updateMap &&
       this.props.updateMap({ newProps: { startScene: location.name } })
-
-    location.isStartScene = !this.state.isStartScene
     this.setState({ isStartScene: !this.state.isStartScene })
   }
 
   checkIsEndScene = () => {
     const { location } = this.props
-    this.props.updateEndScene &&
-      this.props.updateEndScene({ sceneName: location.name })
     location.isEndScene = !this.state.isEndScene
+
+    this.props.updateMap &&
+      this.props.updateMap({ newProps: { endScene: location.name } })
     this.setState({ isEndScene: !this.state.isEndScene })
   }
 
