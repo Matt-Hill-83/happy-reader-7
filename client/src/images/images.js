@@ -58,6 +58,7 @@ import doorYellow from "./doors/doorYellow.jpg"
 
 // backgrounds
 import door from "./backgrounds/door.png"
+import cloud from "./backgrounds/cloud.png"
 import forest from "./backgrounds/forest-3.jpg"
 import forestLeft from "./backgrounds/forest-1-left.png"
 import forestRight from "./backgrounds/forest-1-right.png"
@@ -158,6 +159,7 @@ export default {
   },
   backgrounds: {
     door,
+    cloud,
     forest,
     forestLeft,
     forestRight,

@@ -102,8 +102,8 @@ class MainStory extends React.Component {
     // TODO, get map from store by mapId
     const map = localStateStore.getActiveMap()
 
-    const startScene = map.data.startScene // zzz
-    const endScene = map.data.endScene // zzz
+    const startScene = map.data.startScene
+    const endScene = map.data.endScene
 
     console.log("startScene", startScene) // zzz
     console.log("endScene", endScene) // zzz
@@ -129,11 +129,8 @@ class MainStory extends React.Component {
   }
 
   onExitIntro = async () => {
-    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     const startScene = this.getTerminalScene({})
-    console.log("startScene", toJS(startScene)) // zzz
-
-    console.log("savedMaps[0]", toJS(savedMaps[0].data)) // zzz
+    startScene.showCloud = false
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
     // localStateStore.setPage("story-picker")
@@ -161,6 +158,8 @@ class MainStory extends React.Component {
     }
 
     activeScene.neighborNames = this.getNeighbors({ activeScene, map })
+
+    activeScene.showCloud = false
 
     this.setState({ activeScene })
   }

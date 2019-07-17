@@ -201,7 +201,7 @@ class MiniLocation extends React.Component {
       renderedCharacters.unshift(you)
     }
 
-    return renderedCharacters
+    return <div className={css.charactersContainer}>{renderedCharacters}</div>
   }
 
   checkIsStartScene = () => {
@@ -226,6 +226,7 @@ class MiniLocation extends React.Component {
     const { isStartScene, isEndScene } = this.state
     const {
       location,
+      location: { showCloud = true },
       isActive,
       className,
       showLabel = true,
@@ -238,6 +239,7 @@ class MiniLocation extends React.Component {
     const locationImage = Images.locations[locationName]
 
     const rockImage = Images.backgrounds["rock"]
+    const cloudImage = Images.backgrounds["cloud"]
     const defaultDoorImage = Images.backgrounds["door"]
 
     const renderedItems = items.map(item => {
@@ -273,6 +275,11 @@ class MiniLocation extends React.Component {
           <img className={css.rockImage} src={rockImage} alt={"imagex"} />
         </div>
         <div className={css.grassImage} />
+        {showCloud && (
+          <div className={css.cloudImageContainer}>
+            <img className={css.cloudImage} src={cloudImage} alt={"imagex"} />
+          </div>
+        )}
         {false &&
           this.renderButton({
             position: "right",

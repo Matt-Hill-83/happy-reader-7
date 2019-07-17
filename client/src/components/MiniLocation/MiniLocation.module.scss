@@ -3,6 +3,30 @@
 .miniYou {
 }
 
+.charactersContainer {
+  // border: 1px solid red !important;
+  overflow: hidden;
+  z-index: 10;
+  width: 100%;
+
+  > div {
+    // border: 1px solid blue !important;
+    display: flex;
+    display: inline-flex;
+    height: 100%;
+  }
+}
+
+.characters {
+  display: flex;
+  position: absolute;
+  width: 100%;
+
+  height: 25%;
+  bottom: 8%;
+  left: 10%;
+}
+
 .isStartScene {
   :global {
     [class*="MiniLocation_grassImage"] {
@@ -42,8 +66,24 @@
   width: auto;
 }
 
+.cloudImageContainer {
+  display: flex;
+  // border: 1px solid red !important;
+
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  width: 100%;
+}
+
+.cloudImage {
+  display: flex;
+
+  height: 100%;
+  width: 100%;
+}
+
 .doorPickerContainer {
-  // border: 1px solid blue !important;
   display: flex;
 
   position: absolute;
@@ -133,14 +173,16 @@
 }
 
 .characterImageMini {
-  display: flex;
+  // display: flex;
+  display: inline-flex;
   z-index: 3;
-  align-self: flex-end;
+  // align-self: flex-end;
 }
 
 .character1Mini {
   height: 100%;
   width: auto;
+  display: inline-flex;
   // background: var(--translucent-white);
   // border-radius: 46%;
   // border: 10px solid blue !important;
@@ -181,15 +223,6 @@
     height: 50%;
     width: auto;
     max-width: 100%;
-  }
-
-  .characters {
-    display: flex;
-    position: absolute;
-
-    height: 25%;
-    bottom: 8%;
-    left: 10%;
   }
 
   .itemImage {
