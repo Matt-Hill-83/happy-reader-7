@@ -37,8 +37,8 @@ class MainStory extends React.Component {
   }
 
   async componentWillMount() {
-    const test = Utils.generateUuid()
-    console.log("test", test) // zzz
+    // const test = Utils.generateUuid()
+    // console.log("test", test) // zzz
 
     mySentences.generateYou({})
     mySentences.generatePlot({})
@@ -73,9 +73,12 @@ class MainStory extends React.Component {
   transformLocationsGridToLocationsMap = ({ scenesGrid }) => {
     const locationsMap = []
 
+    const numRows = Object.values(scenesGrid).length
+    const numCols = Object.values(Object.values(scenesGrid)[0]).length
+
     // TODO - use array dimensions
-    const rows = Array(8).fill(0)
-    const columns = Array(8).fill(0)
+    const rows = Array(numRows).fill(0)
+    const columns = Array(numCols).fill(0)
 
     rows.map((row, rowIndex) => {
       const newRow = []
