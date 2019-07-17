@@ -136,6 +136,7 @@ export default {
     waterfall
   },
   creatures: {
+    liz,
     bug,
     dragon,
     pig,
@@ -154,7 +155,6 @@ export default {
     // start,
     wizard,
     zombie,
-    liz,
     kat
   },
   backgrounds: {

@@ -123,10 +123,10 @@ class Frame extends Component {
     await updateMap({})
   }
 
-  onChangeNarrative = ({ story, event }) => {
+  onChangeNarrative = ({ event, lineIndex }) => {
     const { frame } = this.state
-    const newStory = event.target.value
-    frame.story[0] = newStory
+    const newLine = event.target.value
+    frame.story[lineIndex] = newLine
     this.setState({ frame })
   }
 
@@ -135,16 +135,22 @@ class Frame extends Component {
       frame: { story }
     } = this.state
 
+    const inputFields = story.map((line, lineIndex) => {
+      return (
+        <InputGroup
+          value={line}
+          id="text-input"
+          placeholder="Placeholder text"
+          onChange={event => this.onChangeNarrative({ event, lineIndex })}
+          onBlur={event => this.saveNarrative({ event })}
+        />
+      )
+    })
+
     return (
       <div className={css.frameSetNameContainer}>
         <FormGroup label="Title" labelFor="text-input">
-          <InputGroup
-            value={story[0]}
-            id="text-input"
-            placeholder="Placeholder text"
-            onChange={event => this.onChangeNarrative({ story, event })}
-            onBlur={event => this.saveNarrative({ event })}
-          />
+          {inputFields}
         </FormGroup>
       </div>
     )

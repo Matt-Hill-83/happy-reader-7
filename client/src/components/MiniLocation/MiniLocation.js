@@ -275,7 +275,7 @@ class MiniLocation extends React.Component {
           <img className={css.rockImage} src={rockImage} alt={"imagex"} />
         </div>
         <div className={css.grassImage} />
-        {showCloud && (
+        {!isEditMode && showCloud && (
           <div className={css.cloudImageContainer}>
             <img className={css.cloudImage} src={cloudImage} alt={"imagex"} />
           </div>
