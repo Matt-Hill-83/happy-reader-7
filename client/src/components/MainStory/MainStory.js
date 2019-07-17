@@ -95,7 +95,7 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene = ({ start = true }) => {
-    // TODO, get map from strore by mapId
+    // TODO, get map from store by mapId
     const map = localStateStore.getActiveMap()
 
     const grid = _get(map, "data.grid") || []
