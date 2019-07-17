@@ -237,7 +237,7 @@ class Frame extends Component {
     console.log("render frame") // zzz
 
     const { isEditMode = true } = this.props
-    const { frame, showFacePicker, showNarrativeEditor } = this.state
+    const { frame, showFacePicker } = this.state
 
     console.log("frame", toJS(frame)) // zzz
 

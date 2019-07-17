@@ -17,10 +17,12 @@ class WordPage extends React.Component {
 
   async componentWillMount() {
     this.setState({ ...this.props.wordPageProps })
+    console.log("this.props.wordPageProps", toJS(this.props.wordPageProps)) // zzz
   }
 
   componentWillReceiveProps(newProps) {
     this.setState({ ...newProps.wordPageProps })
+    console.log("newProps.wordPageProps", toJS(newProps.wordPageProps)) // zzz
   }
 
   changeLocation = ({ sceneName }) => {
@@ -60,8 +62,11 @@ class WordPage extends React.Component {
   }
 
   render() {
+    console.log("render Word page") // zzz
+
     const { activeScene, frameIndex } = this.state
     const frameSet = activeScene.frameSet
+    console.log("activeScene", toJS(activeScene)) // zzz
 
     let isLastFrame = frameIndex >= frameSet.frames.length - 1
     if (!frameSet) {
@@ -72,7 +77,12 @@ class WordPage extends React.Component {
 
     return (
       <div className={css.textPage}>
-        <Frame frame={frame} scene={activeScene} isEditMode={false} />
+        <Frame
+          index={frameIndex}
+          frame={frame}
+          scene={activeScene}
+          isEditMode={false}
+        />
         {!isLastFrame && (
           <Button onClick={this.onClickNext} className={css.nextButton}>
             NEXT

@@ -37,6 +37,9 @@ class MainStory extends React.Component {
   }
 
   async componentWillMount() {
+    const test = Utils.generateUuid()
+    console.log("test", test) // zzz
+
     mySentences.generateYou({})
     mySentences.generatePlot({})
 
@@ -51,7 +54,7 @@ class MainStory extends React.Component {
         scenesGrid: map.data.scenesGrid
       })
 
-      return (map.data.grid = grid)
+      map.data.grid = grid
     })
 
     localStateStore.setLocationsMaps(savedMaps)
@@ -109,6 +112,7 @@ class MainStory extends React.Component {
   onExitIntro = async () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     const startScene = this.getTerminalScene({ savedMaps })
+    console.log("savedMaps[0]", toJS(savedMaps[0].data)) // zzz
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
     // localStateStore.setPage("story-picker")
