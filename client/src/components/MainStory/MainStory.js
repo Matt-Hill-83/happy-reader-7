@@ -243,17 +243,10 @@ class MainStory extends React.Component {
   }
 
   renderGame = () => {
-    console.log("MS - render") // zzz
-
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     if (!savedMaps.length) {
       return null
     }
-
-    // const showWorldBuilder = localStateStore.getShowWorldBuilder()
-    // // if (showWorldBuilder) {
-    // //   return <WorldBuilder />
-    // // }
 
     const { className } = this.props
     const { activeScene } = this.state
@@ -283,16 +276,6 @@ class MainStory extends React.Component {
         onClick={this.changeCharacter}
       >
         <span>Change Character</span>
-      </Button>
-    )
-
-    const toggleWorldBuilderButton = (
-      <Button
-        tabIndex={0}
-        className={css.toggleWorldBuilder}
-        onClick={this.toggleWorldBuilder}
-      >
-        <span> Toggle World Builder </span>
       </Button>
     )
 
