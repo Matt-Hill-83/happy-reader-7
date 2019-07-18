@@ -287,7 +287,9 @@ class MainStory extends React.Component {
       <div className={`${css.main} ${className}`}>
         <div className={css.floatingButtons}>
           {renderedMapTitle}
-          <div className={css.settingButtons}>{changeCharacterButton}</div>
+          {false && (
+            <div className={css.settingButtons}>{changeCharacterButton}</div>
+          )}
         </div>
         <div className={css.body}>
           {!this.state.showStory && <FlashCards />}
