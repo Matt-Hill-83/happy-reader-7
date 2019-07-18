@@ -22,9 +22,9 @@ import mySentences from "../../Models/sentences.js"
 import PicturePage from "../PicturePage/PicturePage"
 import StoryPickerPage from "../StoryPickerPage/StoryPickerPage"
 import Utils from "../../Utils/Utils"
+import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 
 import css from "./MainStory.module.scss"
-import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 
 class MainStory extends React.Component {
   state = {
@@ -64,6 +64,10 @@ class MainStory extends React.Component {
       localStateStore.setPage("intro2")
       // this.onExitIntro({ you: { name: "Luna", creature: "kat" } })
     }
+
+    const showWorldBuilder = localStateStore.getShowWorldBuilder()
+    if (showWorldBuilder) return null
+
     this.onExitIntro()
   }
 
@@ -329,13 +333,14 @@ class MainStory extends React.Component {
     }
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
+    console.log("showWorldBuilder", toJS(showWorldBuilder)) // zzz
 
     const { className } = this.props
     const { activeScene } = this.state
 
-    if (!activeScene) {
-      return null
-    }
+    // if (!activeScene) {
+    //   return null
+    // }
 
     const page = localStateStore.getPage()
 

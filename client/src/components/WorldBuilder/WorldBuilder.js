@@ -24,6 +24,7 @@ import { worldNameStore } from "../../Stores/FrameSetStore"
 
 import css from "./WorldBuilder.module.scss"
 import Utils from "../../Utils/Utils"
+import WorldPicker from "../WorldPicker/WorldPicker"
 
 const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
@@ -604,6 +605,7 @@ class WorldBuilder extends Component {
                 {this.renderSaveMapButton()}
                 {this.renderUpdateMapButton()}
                 {this.renderMapPicker()}
+                <WorldPicker />
               </div>
             </div>
           </div>
