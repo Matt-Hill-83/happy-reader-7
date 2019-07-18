@@ -94,6 +94,8 @@ class Frame extends Component {
     const chats = dialog.map((line, index) => {
       const { text, characterIndex } = line
 
+      if (!text) return null
+
       const className = `character${characterIndex}`
       return (
         <WordGroup

@@ -8,14 +8,10 @@
   .decisionButtonRow {
     display: flex;
     justify-content: space-around;
-    margin-top: auto;
     position: fixed;
-    width: 43%;
     bottom: 2%;
     z-index: 10;
     background: var(--set1-pink-bk);
-    left: 50%;
-    transform: translateX(-17%);
     border: 2px solid var(--set1-purple-brdr);
     border-radius: 9px;
 
