@@ -49,7 +49,8 @@ import wizard from "./creatures/wizard.png"
 import zombie from "./creatures/zombie.png"
 import liz from "./creatures/jan-02-normal.png"
 import kat from "./rigged-girls/kat/kat-normal.png"
-import end from "./creatures/star.png"
+import star from "./creatures/star.png"
+import end from "./creatures/end.png"
 import start from "./creatures/start.png"
 
 //doors
@@ -115,6 +116,7 @@ import sceneViewNotebook from "./scene-view/notebook-01.png"
 
 export default {
   locations: {
+    home: house,
     barn,
     bees,
     bog,
@@ -122,7 +124,6 @@ export default {
     cave,
     coop,
     hill,
-    home: house,
     lake,
     log,
     pond,
@@ -132,16 +133,17 @@ export default {
     swamp,
     swing,
     tree,
+    end,
     bus,
     waterfall
   },
   creatures: {
     liz,
+    // star,
     bug,
     dragon,
     pig,
     hog,
-    // pig,
     elf,
     fairy,
     girl,
@@ -151,7 +153,6 @@ export default {
     monster,
     troll,
     unicorn,
-    // end,
     // start,
     wizard,
     zombie,

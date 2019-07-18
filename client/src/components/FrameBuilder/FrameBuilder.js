@@ -80,19 +80,6 @@ class FrameBuilder extends Component {
           characterIndex: 0,
           text: `Hi ${creatureName0}.`
         }
-        // { character: creatureName1, characterIndex: 1, text: "Can you play?" },
-        // {
-        //   character: creatureName0,
-        //   characterIndex: 0,
-        //   text: "No, I can not play."
-        // },
-        // { character: creatureName0, characterIndex: 0, text: "I lost Piggy!." },
-        // {
-        //   character: creatureName1,
-        //   characterIndex: 1,
-        //   text: "You lost Piggy?"
-        // },
-        // { character: creatureName1, characterIndex: 1, text: "Nooooooooo!" }
       ]
     }
 
@@ -219,14 +206,24 @@ class FrameBuilder extends Component {
   }
 
   renderFrames = () => {
-    const { scene, updateMap } = this.props
+    const {
+      scene,
+      scene: { frameSet },
+      updateMap
+    } = this.props
 
-    const frameSet = (scene && scene.frameSet) || this.getNewFrameSet()
+    // const frameSet = (scene && scene.frameSet) || this.getNewFrameSet()
+    if (!frameSet) {
+      this.getNewFrameSet()
+      updateMap({})
+    }
 
-    const frames =
-      frameSet.frames && frameSet.frames.length
-        ? frameSet.frames
-        : [this.getNewFrame()]
+    let frames = frameSet.frames && frameSet.frames.length && frameSet.frames
+    if (!frames) {
+      frames = [this.getNewFrame()]
+      updateMap({})
+    }
+    if (!frames) return []
 
     const renderedFrames = frames.map((frame, index) => {
       return (

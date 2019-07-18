@@ -336,7 +336,8 @@ class WorldBuilder extends Component {
       // do this different
       // sourceListClone.push(...removedFromDest);
 
-      result[sourceId] = sourceListClone
+      // result[sourceId] = sourceListClone
+      result[sourceId] = sourceList
       result[destinationId] = destListClone
 
       const { row, col } = this.getStorageRowColFromId({
@@ -404,6 +405,7 @@ class WorldBuilder extends Component {
     } else {
       this.dropInNewList({ source, destination, destinationId, sourceId })
     }
+    this.updateMap({})
   }
 
   createLocationsGridRows = ({ numTargetsInRow, numRows, prefix }) => {
