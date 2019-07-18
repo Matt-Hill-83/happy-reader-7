@@ -62,14 +62,10 @@ class PicturePage extends React.Component {
     location: scene,
     className = ""
   }) => {
+    // TODO - this should come from state
     const { activeScene } = this.props
-
     const { name: sceneName } = scene
-    // if (scene.isStartScene) {
-    // }
-
     const isActive = sceneName === activeScene.name
-
     const id = `${colIndex}-${rowIndex}`
 
     return (

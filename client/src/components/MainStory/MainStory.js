@@ -38,7 +38,7 @@ class MainStory extends React.Component {
   }
 
   async componentWillMount() {
-    mySentences.generateYou({})
+    // mySentences.generateYou({})
     mySentences.generatePlot({})
 
     // I need to make these stored shared singletons
@@ -226,6 +226,8 @@ class MainStory extends React.Component {
     const newShowWorldBuilder = !showWorldBuilder
 
     localStateStore.setShowWorldBuilder(newShowWorldBuilder)
+
+    // TODO - get rid of all this plot stuff
     if (newShowWorldBuilder === false) {
       this.updateActiveScene({ activeScene: plot.activeScene })
     }

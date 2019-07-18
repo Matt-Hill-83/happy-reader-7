@@ -134,12 +134,17 @@ class WorldBuilder extends Component {
       scenesGrid = this.preAllocateArrays({})
       const name = "My New World"
       world = { scenesGrid, name }
+      this.setState({ scenesGrid, world })
+      // TODO - save map here
+      // TODO - save map here
+      // TODO - save map here
+      // TODO - save map here
     } else {
       scenesGrid = world.data.scenesGrid
+      this.setState({ scenesGrid, world })
     }
 
     // TODO:  I could just set the index to state
-    this.setState({ scenesGrid, world })
   }
 
   onDeleteMap = async ({ map }) => {
@@ -161,7 +166,10 @@ class WorldBuilder extends Component {
     }
 
     const newMap = (
-      <MenuItem text={"newMap"} onClick={() => this.changeMap({ index: -1 })} />
+      <MenuItem
+        text={"+ New Map"}
+        onClick={() => this.changeMap({ index: -1 })}
+      />
     )
 
     const mapList = savedMaps.map((map, index) => {
@@ -459,6 +467,7 @@ class WorldBuilder extends Component {
 
     const newMap = {
       name: newName,
+      title: "Troll Poop",
       scenesGrid: scenesGrid,
       order: 0,
       ignore: false
@@ -476,14 +485,14 @@ class WorldBuilder extends Component {
     )
   }
 
-  renderUpdateMapButton = () => {
-    return (
-      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
-        <span> Update Map </span>
-        <Icon color={"purple"} icon={IconNames.SAVED} />
-      </Button>
-    )
-  }
+  // renderUpdateMapButton = () => {
+  //   return (
+  //     <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
+  //       <span> Update Map </span>
+  //       <Icon color={"purple"} icon={IconNames.SAVED} />
+  //     </Button>
+  //   )
+  // }
 
   renderList = ({ droppableId, items, className }) => {
     return (
@@ -602,7 +611,7 @@ class WorldBuilder extends Component {
               (drag items to create your world...)
               <div className={css.editWorldButtons}>
                 {this.renderSaveMapButton()}
-                {this.renderUpdateMapButton()}
+                {/* {this.renderUpdateMapButton()} */}
                 {this.renderMapPicker()}
               </div>
             </div>

@@ -232,7 +232,7 @@ class Frame extends Component {
           <div className={css.bookImageContainer}>
             {isEditMode && showNarrativeEditor && this.renderNarrativeEditor()}
             <div className={css.narrative}>
-              {isEditMode && (
+              {false && isEditMode && (
                 <Button
                   className={css.xxxtoggleFacePickerButton2}
                   onClick={this.editNarrative}
