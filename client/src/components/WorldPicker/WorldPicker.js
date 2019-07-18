@@ -28,22 +28,9 @@ class WorldPicker extends Component {
 
   async componentWillMount() {}
 
-  changeMap = ({ index }) => {
-    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    let world = savedMaps[index]
-    let scenesGrid
-
-    // new map
-    if (index === -1) {
-      scenesGrid = this.preAllocateArrays({})
-      const name = "My New World"
-      world = { scenesGrid, name }
-    } else {
-      scenesGrid = world.data.scenesGrid
-    }
-
-    // TODO:  I could just set the index to state
-    this.setState({ scenesGrid, world })
+  changeMap = ({ index, mapId }) => {
+    const { onChangeMap } = this.props
+    onChangeMap && onChangeMap({ index, mapId })
   }
 
   onDeleteMap = async ({ map }) => {
@@ -57,25 +44,6 @@ class WorldPicker extends Component {
     }
   }
 
-  saveMap = async () => {
-    const { scenesGrid } = this.state
-    const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
-
-    const newName = previousMapName + 1
-    await worldNameStore.docs[0].update({
-      previousMapName: newName
-    })
-
-    const newMap = {
-      name: newName,
-      scenesGrid: scenesGrid,
-      order: 0,
-      ignore: false
-    }
-
-    maps.add(newMap)
-  }
-
   renderMapPicker = () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
@@ -83,15 +51,12 @@ class WorldPicker extends Component {
       return null
     }
 
-    const newMap = (
-      <MenuItem text={"newMap"} onClick={() => this.changeMap({ index: -1 })} />
-    )
-
     const mapList = savedMaps.map((map, index) => {
+      const mapId = map.id
       const text = (
         <span
           className={css.mapPickerRow}
-          onClick={() => this.changeMap({ index })}
+          onClick={() => this.changeMap({ index, mapId })}
         >
           {map.data.name}
           <span onClick={() => this.onDeleteMap({ map })}>
@@ -101,8 +66,6 @@ class WorldPicker extends Component {
       )
       return <MenuItem text={text} />
     })
-
-    mapList.push(newMap)
 
     const renderedMapList = <Menu>{mapList}</Menu>
 

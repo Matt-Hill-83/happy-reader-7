@@ -25,6 +25,7 @@ import Utils from "../../Utils/Utils"
 import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 
 import css from "./MainStory.module.scss"
+import WorldPicker from "../WorldPicker/WorldPicker.js"
 
 class MainStory extends React.Component {
   state = {
@@ -100,7 +101,7 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene = ({ start = true }) => {
-    // TODO, get map from store by mapId
+    // TODO, get map from store by mapId, index
     const map = localStateStore.getActiveMap()
 
     const startScene = map.data.startScene
@@ -246,6 +247,12 @@ class MainStory extends React.Component {
     localStateStore.setActiveLocationsMapIndex(index)
   }
 
+  onChangeMap = ({ mapId, index }) => {
+    console.log("mapId, index", mapId) // zzz
+
+    localStateStore.setActiveLocationsMapIndex(index)
+  }
+
   renderGame = () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     if (!savedMaps.length) {
@@ -289,6 +296,9 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
+        <WorldPicker
+          onChangeMap={({ mapId, index }) => this.onChangeMap({ mapId, index })}
+        />
         <div className={css.floatingButtons}>
           {renderedMapTitle}
           {false && (
@@ -336,7 +346,7 @@ class MainStory extends React.Component {
     console.log("showWorldBuilder", toJS(showWorldBuilder)) // zzz
 
     const { className } = this.props
-    const { activeScene } = this.state
+    // const { activeScene } = this.state
 
     // if (!activeScene) {
     //   return null
