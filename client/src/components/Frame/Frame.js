@@ -220,8 +220,6 @@ class Frame extends Component {
     return (
       <div className={css.scene}>
         <div className={css.backgroundImageContainer}>
-          {this.renderedDialog({})}
-          {isEditMode && this.renderDialogEditor()}
           <div className={css.locationImageContainer}>
             <img
               className={css.locationImage}
@@ -232,24 +230,18 @@ class Frame extends Component {
           <div className={css.bookImageContainer}>
             {isEditMode && showNarrativeEditor && this.renderNarrativeEditor()}
             <div className={css.narrative}>
-              {false && isEditMode && (
-                <Button
-                  className={css.xxxtoggleFacePickerButton2}
-                  onClick={this.editNarrative}
-                >
-                  Edit
-                </Button>
-              )}
               <WordGroup story={story} className={css.narrativeClass} />
             </div>
             <img className={css.bookImage} src={bookImage} alt={"imagex"} />
-          </div>
-          <div className={css.notebookImageContainer}>
-            <img
-              className={css.notebookImage}
-              src={notebookImage}
-              alt={"imagex"}
-            />
+            <div className={css.notebookImageContainer}>
+              <img
+                className={css.notebookImage}
+                src={notebookImage}
+                alt={"imagex"}
+              />
+              {this.renderedDialog({})}
+              {isEditMode && this.renderDialogEditor()}
+            </div>
           </div>
 
           <div className={css.backgroundGrass}>

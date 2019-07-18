@@ -17,17 +17,16 @@
 .dialog {
   position: absolute;
   display: flex;
-  left: 50%;
-  transform: translateX(-50%);
   z-index: 10;
   flex-direction: column;
   width: 100%;
-  padding-top: 3%;
   padding-left: 7%;
   justify-content: flex-end;
-  padding-bottom: 0px;
   padding-right: 7%;
-  bottom: 68%;
+  bottom: 1%;
+  border: 1px solid;
+  border-radius: 6px;
+  height: 100%;
 
   .line {
     font-family: monospace;
@@ -148,8 +147,9 @@
 
 .bookImageContainer {
   position: absolute;
-  bottom: 0px;
+  top: 3%;
   z-index: 10;
+  width: 100%;
 
   .bookImage {
     height: auto;
@@ -158,16 +158,9 @@
 }
 
 .notebookImageContainer {
-  position: absolute;
-  top: 1%;
-  width: 95%;
-  display: flex;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 30%;
-  border-radius: 11px;
-  overflow: hidden;
-  border: 1px solid transparent;
+  width: 100%;
+  position: relative;
+  max-height: 170px;
 
   .notebookImage {
     height: auto;
@@ -227,11 +220,12 @@
 }
 
 .charactersContainer {
-  height: 38%;
+  /* height: 38%; */
   display: flex;
   position: absolute;
-  bottom: 9%;
+  bottom: 1%;
   width: 66%;
-  left: 3%;
+  /* left: 3%; */
   justify-content: space-around;
+  height: 30%;
 }
