@@ -485,15 +485,6 @@ class WorldBuilder extends Component {
     )
   }
 
-  // renderUpdateMapButton = () => {
-  //   return (
-  //     <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
-  //       <span> Update Map </span>
-  //       <Icon color={"purple"} icon={IconNames.SAVED} />
-  //     </Button>
-  //   )
-  // }
-
   renderList = ({ droppableId, items, className }) => {
     return (
       <div className={className}>
@@ -611,7 +602,6 @@ class WorldBuilder extends Component {
               (drag items to create your world...)
               <div className={css.editWorldButtons}>
                 {this.renderSaveMapButton()}
-                {/* {this.renderUpdateMapButton()} */}
                 {this.renderMapPicker()}
               </div>
             </div>
