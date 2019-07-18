@@ -37,9 +37,6 @@ class MainStory extends React.Component {
   }
 
   async componentWillMount() {
-    // const test = Utils.generateUuid()
-    // console.log("test", test) // zzz
-
     mySentences.generateYou({})
     mySentences.generatePlot({})
 

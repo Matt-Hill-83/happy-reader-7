@@ -122,19 +122,4 @@ export default class Utils {
     const filteredItems = items && items.filter(item => !item.data.ignore)
     return filteredItems || []
   }
-
-  static generateUuid() {
-    const sepStr = "-"
-    let d = new Date().getTime()
-
-    const uuid = `xxxxxxxx${sepStr}xxxx${sepStr}4xxx${sepStr}yxxx${sepStr}xxxxxxxxxxxx`.replace(
-      /[xy]/g,
-      c => {
-        const r = (d + Math.random() * 16) % 16 | 0
-        d = Math.floor(d / 16)
-        return (c === "x" ? r : (r & 0x3) | 0x8).toString(16)
-      }
-    )
-    return uuid
-  }
 }
