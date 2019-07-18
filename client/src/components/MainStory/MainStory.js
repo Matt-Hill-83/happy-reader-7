@@ -251,6 +251,7 @@ class MainStory extends React.Component {
     console.log("mapId, index", mapId) // zzz
 
     localStateStore.setActiveLocationsMapIndex(index)
+    this.onExitIntro()
   }
 
   renderGame = () => {

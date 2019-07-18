@@ -1,4 +1,3 @@
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import React, { Component } from "react"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
@@ -14,11 +13,8 @@ import {
   Position
 } from "@blueprintjs/core"
 
-import FrameBuilder from "../FrameBuilder/FrameBuilder"
 import { IconNames } from "@blueprintjs/icons"
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import { maps } from "../../Stores/InitStores"
-import { worldNameStore } from "../../Stores/FrameSetStore"
 
 import css from "./WorldPicker.module.scss"
 import Utils from "../../Utils/Utils"
