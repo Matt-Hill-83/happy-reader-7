@@ -121,6 +121,9 @@ class MainStory extends React.Component {
       }
     })
 
+    console.log("allScenes[0]", toJS(allScenes[0])) // zzz
+    console.log("terminalScene", toJS(terminalScene)) // zzz
+
     // If no start and finish scenes are marked, choose some, so the program doesn't break
     return terminalScene || allScenes[0]
   }
