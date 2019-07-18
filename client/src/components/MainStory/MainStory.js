@@ -44,7 +44,6 @@ class MainStory extends React.Component {
     // I need to make these stored shared singletons
     await maps.fetch()
     await worldNameStore.fetch()
-    console.log("maps", maps) // zzz
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
@@ -107,11 +106,7 @@ class MainStory extends React.Component {
     const startScene = map.data.startScene
     const endScene = map.data.endScene
 
-    console.log("startScene", startScene) // zzz
-    console.log("endScene", endScene) // zzz
-
     const grid = _get(map, "data.grid") || []
-
     const allScenes = grid.flat()
 
     // hacky way to retroactively assign startScene and endScene to each scene
@@ -126,15 +121,22 @@ class MainStory extends React.Component {
       }
     })
 
-    console.log("allScenes[0]", toJS(allScenes[0])) // zzz
-    console.log("terminalScene", toJS(terminalScene)) // zzz
+    const validScenes = allScenes.filter(scene => {
+      return toJS(scene).name
+    })
+
+    const validSceneNames = validScenes.map(scene => scene.name)
+
+    const firstScene = validSceneNames[0]
+    const lastScene = validSceneNames[validSceneNames.length - 1]
 
     // If no start and finish scenes are marked, choose some, so the program doesn't break
-    return terminalScene || allScenes[0].data.name
+    return terminalScene || (start ? firstScene : lastScene)
   }
 
   initWorld = async () => {
     const startScene = this.getTerminalScene({})
+
     startScene.showCloud = false
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
@@ -147,11 +149,9 @@ class MainStory extends React.Component {
     }
 
     const map = localStateStore.getActiveMap()
-    const lastScene = maps.docs.slice(-1)[0].data.name
 
     const activeSceneName = activeScene.name
-    const endScene = this.getTerminalScene({ start: false }) || lastScene
-    console.log("endScene", toJS(endScene)) // zzz
+    const endScene = this.getTerminalScene({ start: false })
 
     localStateStore.setLocationDetails({
       mapName: map.data.name,
@@ -248,8 +248,6 @@ class MainStory extends React.Component {
   }
 
   onChangeMap = ({ mapId, index }) => {
-    console.log("mapId, index", mapId) // zzz
-
     localStateStore.setActiveLocationsMapIndex(index)
     this.initWorld()
   }
@@ -338,8 +336,6 @@ class MainStory extends React.Component {
   }
 
   render() {
-    console.log("MS - render") // zzz
-
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     if (!savedMaps.length) {
       return null
