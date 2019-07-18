@@ -297,11 +297,13 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
-        <WorldPicker
-          onChangeMap={({ mapId, index }) => this.onChangeMap({ mapId, index })}
-        />
         <div className={css.floatingButtons}>
           {renderedMapTitle}
+          <WorldPicker
+            onChangeMap={({ mapId, index }) =>
+              this.onChangeMap({ mapId, index })
+            }
+          />
           {false && (
             <div className={css.settingButtons}>{changeCharacterButton}</div>
           )}

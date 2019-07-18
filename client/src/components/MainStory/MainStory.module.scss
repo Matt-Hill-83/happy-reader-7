@@ -25,19 +25,26 @@
   }
 }
 
+.mapTitle {
+  // border: 1px solid blue !important;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2%;
+}
+
 .toggleWorldBuilder {
   position: absolute;
   display: flex;
   z-index: 1000;
   left: 0px;
 }
+
 .floatingButtons {
   position: absolute;
   z-index: 5;
   background: var(--color-pink);
-  right: 0px;
-  top: 10%;
-  transform: translateY(-50%);
+  left: 42%;
 }
 
 .settingButtons {
