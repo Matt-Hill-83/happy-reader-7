@@ -214,6 +214,10 @@
 
   .locationTitle {
     @include item-label;
+    top: 2%;
+    z-index: 101;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .miniLocationImage {

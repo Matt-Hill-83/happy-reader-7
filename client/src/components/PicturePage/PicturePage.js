@@ -154,14 +154,13 @@ class PicturePage extends React.Component {
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
 
     if (showWorldBuilder) {
-      // return <WorldBuilder />
     } else {
       return (
         <div className={`${css.main}`}>
           {this.renderStoryPage()}
 
           {this.renderMapPage({})}
-          {/* {this.renderYourItems({})} */}
+          {this.renderYourItems({})}
         </div>
       )
     }

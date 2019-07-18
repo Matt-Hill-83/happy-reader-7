@@ -242,7 +242,7 @@ class MainStory extends React.Component {
     localStateStore.setActiveLocationsMapIndex(index)
   }
 
-  render() {
+  renderGame = () => {
     console.log("MS - render") // zzz
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
@@ -250,10 +250,10 @@ class MainStory extends React.Component {
       return null
     }
 
-    const showWorldBuilder = localStateStore.getShowWorldBuilder()
-    if (showWorldBuilder) {
-      return <WorldBuilder />
-    }
+    // const showWorldBuilder = localStateStore.getShowWorldBuilder()
+    // // if (showWorldBuilder) {
+    // //   return <WorldBuilder />
+    // // }
 
     const { className } = this.props
     const { activeScene } = this.state
@@ -306,7 +306,7 @@ class MainStory extends React.Component {
     const toggleWorldBuilderButton = (
       <Button
         tabIndex={0}
-        className={css.newStoryBtn}
+        className={css.toggleWorldBuilder}
         onClick={this.toggleWorldBuilder}
       >
         <span> Toggle World Builder </span>
@@ -319,12 +319,10 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
+        {toggleWorldBuilderButton}
         <div className={css.floatingButtons}>
           {renderedMapTitle}
-          <div className={css.settingButtons}>
-            {/* {changeCharacterButton} */}
-            {toggleWorldBuilderButton}
-          </div>
+          <div className={css.settingButtons}>{changeCharacterButton}</div>
         </div>
         <div className={css.body}>
           {!this.state.showStory && <FlashCards />}
@@ -340,7 +338,78 @@ class MainStory extends React.Component {
 
         <Dialog
           isOpen={false}
-          // isOpen={this.state.showYouWin}
+          isOpen={this.state.showYouWin}
+          isCloseButtonShown={true}
+          className={css.levelCompleteDialog}
+        >
+          <span className={css.levelCompletionMessage}>{youWinMessage}</span>
+          <Button
+            className={css.levelCompletionButton}
+            onClick={this.closeYouWin}
+          >
+            GO
+          </Button>
+        </Dialog>
+      </div>
+    )
+  }
+
+  render() {
+    console.log("MS - render") // zzz
+
+    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    if (!savedMaps.length) {
+      return null
+    }
+
+    const showWorldBuilder = localStateStore.getShowWorldBuilder()
+
+    const { className } = this.props
+    const { activeScene } = this.state
+
+    if (!activeScene) {
+      return null
+    }
+
+    const page = localStateStore.getPage()
+
+    if (page === "you-picker") {
+      return (
+        <IntroPage1 className={css.IntroPage1} onExitIntro={this.onExitIntro} />
+      )
+    }
+
+    if (page === "story-picker") {
+      return (
+        <StoryPickerPage
+          className={css.IntroPage1}
+          onExitIntro={this.onExitIntro}
+        />
+      )
+    }
+
+    const toggleWorldBuilderButton = (
+      <Button
+        tabIndex={0}
+        className={css.toggleWorldBuilder}
+        onClick={this.toggleWorldBuilder}
+      >
+        <span> Toggle World Builder </span>
+      </Button>
+    )
+
+    const isLastMap = localStateStore.isLastMap()
+
+    const youWinMessage = isLastMap ? "You Win!" : "Good Job!"
+
+    return (
+      <div className={`${css.main} ${className}`}>
+        {toggleWorldBuilderButton}
+        {showWorldBuilder && <WorldBuilder />}
+        {!showWorldBuilder && this.renderGame()}
+
+        <Dialog
+          isOpen={this.state.showYouWin}
           isCloseButtonShown={true}
           className={css.levelCompleteDialog}
         >
