@@ -23,9 +23,9 @@ import PicturePage from "../PicturePage/PicturePage"
 import StoryPickerPage from "../StoryPickerPage/StoryPickerPage"
 import Utils from "../../Utils/Utils"
 import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
+import WorldPicker from "../WorldPicker/WorldPicker.js"
 
 import css from "./MainStory.module.scss"
-import WorldPicker from "../WorldPicker/WorldPicker.js"
 
 class MainStory extends React.Component {
   state = {
@@ -63,13 +63,13 @@ class MainStory extends React.Component {
       localStateStore.setPage("story-picker")
     } else {
       localStateStore.setPage("intro2")
-      // this.onExitIntro({ you: { name: "Luna", creature: "kat" } })
+      // this.initWorld({ you: { name: "Luna", creature: "kat" } })
     }
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
     if (showWorldBuilder) return null
 
-    this.onExitIntro()
+    this.initWorld()
   }
 
   transformLocationsGridToLocationsMap = ({ scenesGrid }) => {
@@ -130,10 +130,10 @@ class MainStory extends React.Component {
     console.log("terminalScene", toJS(terminalScene)) // zzz
 
     // If no start and finish scenes are marked, choose some, so the program doesn't break
-    return terminalScene || allScenes[0]
+    return terminalScene || allScenes[0].data.name
   }
 
-  onExitIntro = async () => {
+  initWorld = async () => {
     const startScene = this.getTerminalScene({})
     startScene.showCloud = false
 
@@ -147,7 +147,7 @@ class MainStory extends React.Component {
     }
 
     const map = localStateStore.getActiveMap()
-    const lastScene = maps.docs.slice(-1)[0].data
+    const lastScene = maps.docs.slice(-1)[0].data.name
 
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false }) || lastScene
@@ -251,7 +251,7 @@ class MainStory extends React.Component {
     console.log("mapId, index", mapId) // zzz
 
     localStateStore.setActiveLocationsMapIndex(index)
-    this.onExitIntro()
+    this.initWorld()
   }
 
   renderGame = () => {
@@ -263,7 +263,7 @@ class MainStory extends React.Component {
     const { className } = this.props
     const { activeScene } = this.state
 
-    const index = localStateStore.getActiveMapIndex()
+    // const index = localStateStore.getActiveMapIndex()
 
     if (!activeScene) {
       return null
@@ -271,13 +271,13 @@ class MainStory extends React.Component {
 
     const map = localStateStore.getActiveMap()
 
-    const { name: activeSceneName } = activeScene
+    // const { name: activeSceneName } = activeScene
 
     const renderedMapTitle = (
       <div className={css.mapTitle}>
-        <div>{`map: ${index}`}</div>
+        {/* <div>{`map: ${index}`}</div> */}
         <div>{`name: ${map.data.name}`}</div>
-        <div>{`scene: ${activeSceneName}`}</div>
+        {/* <div>{`scene: ${activeSceneName}`}</div> */}
       </div>
     )
 
@@ -346,20 +346,12 @@ class MainStory extends React.Component {
     }
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
-    console.log("showWorldBuilder", toJS(showWorldBuilder)) // zzz
-
     const { className } = this.props
-    // const { activeScene } = this.state
-
-    // if (!activeScene) {
-    //   return null
-    // }
-
     const page = localStateStore.getPage()
 
     if (page === "you-picker") {
       return (
-        <IntroPage1 className={css.IntroPage1} onExitIntro={this.onExitIntro} />
+        <IntroPage1 className={css.IntroPage1} initWorld={this.initWorld} />
       )
     }
 
@@ -367,7 +359,7 @@ class MainStory extends React.Component {
       return (
         <StoryPickerPage
           className={css.IntroPage1}
-          onExitIntro={this.onExitIntro}
+          initWorld={this.initWorld}
         />
       )
     }

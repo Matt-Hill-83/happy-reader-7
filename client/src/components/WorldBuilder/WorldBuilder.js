@@ -14,17 +14,16 @@ import {
   Position
 } from "@blueprintjs/core"
 
-import FrameBuilder from "../FrameBuilder/FrameBuilder"
 import { IconNames } from "@blueprintjs/icons"
-import Images from "../../images/images"
-import MiniLocation from "../MiniLocation/MiniLocation"
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import { maps } from "../../Stores/InitStores"
 import { worldNameStore } from "../../Stores/FrameSetStore"
+import FrameBuilder from "../FrameBuilder/FrameBuilder"
+import Images from "../../images/images"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
+import MiniLocation from "../MiniLocation/MiniLocation"
+import Utils from "../../Utils/Utils"
 
 import css from "./WorldBuilder.module.scss"
-import Utils from "../../Utils/Utils"
-import WorldPicker from "../WorldPicker/WorldPicker"
 
 const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
@@ -605,7 +604,6 @@ class WorldBuilder extends Component {
                 {this.renderSaveMapButton()}
                 {this.renderUpdateMapButton()}
                 {this.renderMapPicker()}
-                <WorldPicker />
               </div>
             </div>
           </div>
