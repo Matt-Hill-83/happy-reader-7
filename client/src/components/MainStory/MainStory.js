@@ -267,22 +267,6 @@ class MainStory extends React.Component {
     const map = localStateStore.getActiveMap()
 
     const { name: activeSceneName } = activeScene
-    const page = localStateStore.getPage()
-
-    if (page === "you-picker") {
-      return (
-        <IntroPage1 className={css.IntroPage1} onExitIntro={this.onExitIntro} />
-      )
-    }
-
-    if (page === "story-picker") {
-      return (
-        <StoryPickerPage
-          className={css.IntroPage1}
-          onExitIntro={this.onExitIntro}
-        />
-      )
-    }
 
     const renderedMapTitle = (
       <div className={css.mapTitle}>
@@ -297,7 +281,6 @@ class MainStory extends React.Component {
         tabIndex={0}
         className={css.newStoryBtn}
         onClick={this.changeCharacter}
-        // disabled={true}
       >
         <span>Change Character</span>
       </Button>
@@ -319,7 +302,6 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
-        {toggleWorldBuilderButton}
         <div className={css.floatingButtons}>
           {renderedMapTitle}
           <div className={css.settingButtons}>{changeCharacterButton}</div>
@@ -337,7 +319,6 @@ class MainStory extends React.Component {
         </div>
 
         <Dialog
-          isOpen={false}
           isOpen={this.state.showYouWin}
           isCloseButtonShown={true}
           className={css.levelCompleteDialog}
@@ -398,29 +379,11 @@ class MainStory extends React.Component {
       </Button>
     )
 
-    const isLastMap = localStateStore.isLastMap()
-
-    const youWinMessage = isLastMap ? "You Win!" : "Good Job!"
-
     return (
       <div className={`${css.main} ${className}`}>
         {toggleWorldBuilderButton}
         {showWorldBuilder && <WorldBuilder />}
         {!showWorldBuilder && this.renderGame()}
-
-        <Dialog
-          isOpen={this.state.showYouWin}
-          isCloseButtonShown={true}
-          className={css.levelCompleteDialog}
-        >
-          <span className={css.levelCompletionMessage}>{youWinMessage}</span>
-          <Button
-            className={css.levelCompletionButton}
-            onClick={this.closeYouWin}
-          >
-            GO
-          </Button>
-        </Dialog>
       </div>
     )
   }
