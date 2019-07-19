@@ -296,6 +296,8 @@ class WorldBuilder extends Component {
 
     if (idMatch != null && idMatch.groups) {
       return idMatch.groups
+    } else {
+      return {}
     }
   }
 
@@ -352,6 +354,24 @@ class WorldBuilder extends Component {
 
   dropInNewList = ({ source, destination, destinationId, sourceId }) => {
     let result = {}
+    console.log("sourceId", sourceId) // zzz
+    console.log("destinationId", destinationId) // zzz
+
+    const { prefix: sourcePrefix } = this.getStorageRowColFromId({
+      id: sourceId
+    })
+
+    const { prefix: destinationPrefix } = this.getStorageRowColFromId({
+      id: destinationId
+    })
+
+    console.log("sourcePrefix", sourcePrefix) // zzz
+    console.log("destinationPrefix", destinationPrefix) // zzz
+
+    const fromGridToGrid =
+      sourcePrefix === LOCATIONS_PREFIX &&
+      destinationPrefix === LOCATIONS_PREFIX
+
     // dragging a creature to a different destination
     // TODO -  should specifically reference scenesGrid
     if (
@@ -364,7 +384,35 @@ class WorldBuilder extends Component {
         destinationId,
         sourceId
       })
+    } else if (fromGridToGrid) {
+      console.log("grid to grid") // zzz
+
+      result = this.move({
+        source: this.getList({ id: sourceId }),
+        destination: this.getList({ id: destinationId }),
+        droppableSource: source,
+        droppableDestination: destination
+      })
+
+      const {
+        row: destinationRow,
+        col: destinationCol
+      } = this.getStorageRowColFromId({
+        id: destinationId
+      })
+
+      if (destinationRow) {
+        const { scenesGrid } = this.state
+        scenesGrid[destinationRow][destinationCol] = result[destinationId]
+
+        this.setState({
+          [sourceId]: result[sourceId],
+          scenesGrid
+        })
+      }
     } else {
+      console.log("else case") // zzz
+
       result = this.move({
         source: this.getList({ id: sourceId }),
         destination: this.getList({ id: destinationId }),
@@ -404,8 +452,13 @@ class WorldBuilder extends Component {
       return
     }
 
+    console.log("sourceId", sourceId) // zzz
+    console.log("destinationId", destinationId) // zzz
+
     // for dragging within a single column
     if (sourceId === destinationId) {
+      console.log("same column") // zzz
+
       const items = this.reorder(
         this.getList({ id: sourceId }),
         source.index,
