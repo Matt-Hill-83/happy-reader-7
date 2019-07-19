@@ -299,6 +299,57 @@ class WorldBuilder extends Component {
     }
   }
 
+  dropCreatureInLocation = ({
+    source,
+    destination,
+    destinationId,
+    sourceId
+  }) => {
+    console.log("creatures --> location") // zzz
+    let result = {}
+    const sourceList = this.getList({ id: sourceId })
+    const destinationList = this.getList({ id: destinationId })
+    const droppableSource = source
+    // const droppableDestination = destination;
+
+    const sourceListClone = Array.from(sourceList)
+    const destListClone = Array.from(destinationList)
+
+    const [removed] = sourceListClone.splice(droppableSource.index, 1)
+    if (!destListClone[0]) {
+      return
+    }
+
+    // There should be a separate object in the draggable object that preserves all the item props
+    // separate from the renderd content
+    destListClone[0].scene.creatures.push({ ...removed.properties })
+    // destListClone[0].scene.creatures.push({ type: removed.type });
+
+    // const removedFromDest = destListClone.splice(
+    //   0,
+    //   destListClone.length,
+    //   removed
+    // );
+    // do this different
+    // sourceListClone.push(...removedFromDest);
+
+    // result[sourceId] = sourceListClone
+    result[sourceId] = sourceList
+    result[destinationId] = destListClone
+
+    const { row, col } = this.getStorageRowColFromId({
+      id: destinationId
+    })
+
+    const { scenesGrid } = this.state
+    scenesGrid[row][col] = result[destinationId]
+
+    this.setState({
+      [sourceId]: result[sourceId],
+      scenesGrid
+    })
+  }
+
   dropInNewList = ({ source, destination, destinationId, sourceId }) => {
     let result = {}
     // dragging a creature to a different destination
@@ -307,46 +358,11 @@ class WorldBuilder extends Component {
       sourceId === SOURCE_CREATURES_PROP_NAME &&
       destinationId !== SOURCE_CREATURES_PROP_NAME
     ) {
-      const sourceList = this.getList({ id: sourceId })
-      const destinationList = this.getList({ id: destinationId })
-      const droppableSource = source
-      // const droppableDestination = destination;
-
-      const sourceListClone = Array.from(sourceList)
-      const destListClone = Array.from(destinationList)
-
-      const [removed] = sourceListClone.splice(droppableSource.index, 1)
-      if (!destListClone[0]) {
-        return
-      }
-
-      // There should be a separate object in the draggable object that preserves all the item props
-      // separate from the renderd content
-      destListClone[0].scene.creatures.push({ ...removed.properties })
-      // destListClone[0].scene.creatures.push({ type: removed.type });
-
-      // const removedFromDest = destListClone.splice(
-      //   0,
-      //   destListClone.length,
-      //   removed
-      // );
-      // do this different
-      // sourceListClone.push(...removedFromDest);
-
-      // result[sourceId] = sourceListClone
-      result[sourceId] = sourceList
-      result[destinationId] = destListClone
-
-      const { row, col } = this.getStorageRowColFromId({
-        id: destinationId
-      })
-
-      const { scenesGrid } = this.state
-      scenesGrid[row][col] = result[destinationId]
-
-      this.setState({
-        [sourceId]: result[sourceId],
-        scenesGrid
+      this.dropCreatureInLocation({
+        source,
+        destination,
+        destinationId,
+        sourceId
       })
     } else {
       result = this.move({

@@ -94,15 +94,6 @@ class PicturePage extends React.Component {
     return arrows
   }
 
-  changeLocation = ({ sceneName }) => {
-    const plot = localStateStore.getPlot()
-    const { scenes = {} } = plot
-
-    const newScene = scenes.find(scene => scene.name === sceneName)
-
-    this.props.updateActiveScene({ activeScene: newScene })
-  }
-
   renderStoryPage = () => {
     const { activeScene, updateActiveScene } = this.props
 
