@@ -38,7 +38,6 @@ class MainStory extends React.Component {
   }
 
   async componentWillMount() {
-    // mySentences.generateYou({})
     mySentences.generatePlot({})
 
     // I need to make these stored shared singletons
@@ -62,7 +61,6 @@ class MainStory extends React.Component {
       localStateStore.setPage("story-picker")
     } else {
       localStateStore.setPage("intro2")
-      // this.initWorld({ you: { name: "Luna", creature: "kat" } })
     }
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
@@ -77,7 +75,6 @@ class MainStory extends React.Component {
     const numRows = Object.values(scenesGrid).length
     const numCols = Object.values(Object.values(scenesGrid)[0]).length
 
-    // TODO - use array dimensions
     const rows = Array(numRows).fill(0)
     const columns = Array(numCols).fill(0)
 
@@ -281,7 +278,7 @@ class MainStory extends React.Component {
     const renderedMapTitle = (
       <div className={css.mapTitle}>
         {/* <div>{`map: ${index}`}</div> */}
-        <div>{`name: ${map.data.name}`}</div>
+        <span>{`map: ${map.data.name} - ${map.data.title}`}</span>
         {/* <div>{`scene: ${activeSceneName}`}</div> */}
       </div>
     )
