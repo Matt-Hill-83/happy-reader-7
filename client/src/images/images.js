@@ -117,7 +117,7 @@ import sceneViewNotebook from "./scene-view/notebook-01.png"
 export default {
   locations: {
     slide,
-    swamp,
+    // swamp,
     swing,
     bees,
     bog,
