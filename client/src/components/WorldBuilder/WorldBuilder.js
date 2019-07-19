@@ -220,6 +220,23 @@ class WorldBuilder extends Component {
     return result
   }
 
+  removeItem = ({ source, droppableSource }) => {
+    // TODO - put removed item back in master list
+    const sourceClone = Array.from(source)
+    // const destClone = Array.from(destination)
+    sourceClone.splice(droppableSource.index, 1)
+    // const [removed] = sourceClone.splice(droppableSource.index, 1)
+
+    // const removedFromDest = destClone.splice(0, destClone.length, removed)
+    // sourceClone.push(...removedFromDest)
+
+    const result = {}
+    result[droppableSource.droppableId] = sourceClone
+    // result[droppableDestination.droppableId] = destClone
+
+    return result
+  }
+
   getItemStyle = (isDragging, draggableStyle) => ({
     // some basic styles to make the items look a bit nicer
     userSelect: "none",
@@ -301,7 +318,7 @@ class WorldBuilder extends Component {
     }
   }
 
-  dropCreatureInLocation = ({
+  dragFromCreatureToGrid = ({
     source,
     destination,
     destinationId,
@@ -352,73 +369,79 @@ class WorldBuilder extends Component {
     })
   }
 
-  dragFromGridToGrid = ({ source, destination, destinationId, sourceId }) => {
+  dragFromGridToGrid = ({ source, destination }) => {
     console.log("grid to grid") // zzz
-    let result = {}
-    result = this.move({
-      source: this.getList({ id: sourceId }),
-      destination: this.getList({ id: destinationId }),
-      droppableSource: source,
-      droppableDestination: destination
-    })
 
-    const { row: sourceRow, col: sourceCol } = this.getStorageRowColFromId({
-      id: sourceId
-    })
+    const { droppableId: sourceId } = source
+    let destinationId
 
-    const {
-      row: destinationRow,
-      col: destinationCol
-    } = this.getStorageRowColFromId({
-      id: destinationId
-    })
+    if (destination) {
+      console.log("destination", destination) // zzz
 
-    if (destinationRow) {
-      console.log("result[destinationId]", result[destinationId]) // zzz
+      destinationId = destination.droppableId
+
+      const result = this.move({
+        source: this.getList({ id: sourceId }),
+        destination: this.getList({ id: destinationId }),
+        droppableSource: source,
+        droppableDestination: destination
+      })
+
+      const { row: sourceRow, col: sourceCol } = this.getStorageRowColFromId({
+        id: sourceId
+      })
+
+      const {
+        row: destinationRow,
+        col: destinationCol
+      } = this.getStorageRowColFromId({
+        id: destinationId
+      })
+
+      if (destinationRow) {
+        console.log("result[destinationId]", result[destinationId]) // zzz
+
+        const { scenesGrid } = this.state
+        scenesGrid[destinationRow][destinationCol] = result[destinationId]
+        scenesGrid[sourceRow][sourceCol] = []
+
+        this.setState({
+          scenesGrid
+        })
+      }
+    } else {
+      // const result = this.removeItem({
+      //   source: this.getList({ id: sourceId }),
+      //   droppableSource: source
+      // })
+
+      const { row: sourceRow, col: sourceCol } = this.getStorageRowColFromId({
+        id: sourceId
+      })
 
       const { scenesGrid } = this.state
-      scenesGrid[destinationRow][destinationCol] = result[destinationId]
       scenesGrid[sourceRow][sourceCol] = []
 
       this.setState({
         scenesGrid
       })
     }
+    this.updateMap({})
   }
 
   dropInNewList = ({ source, destination, destinationId, sourceId }) => {
-    console.log("sourceId", sourceId) // zzz
-    console.log("destinationId", destinationId) // zzz
-
-    const { prefix: sourcePrefix } = this.getStorageRowColFromId({
-      id: sourceId
-    })
-
-    const { prefix: destinationPrefix } = this.getStorageRowColFromId({
-      id: destinationId
-    })
-
-    console.log("sourcePrefix", sourcePrefix) // zzz
-    console.log("destinationPrefix", destinationPrefix) // zzz
-
-    const fromGridToGrid =
-      sourcePrefix === LOCATIONS_PREFIX &&
-      destinationPrefix === LOCATIONS_PREFIX
-
     // dragging a creature to a different destination
     // TODO -  should specifically reference scenesGrid
     if (
       sourceId === SOURCE_CREATURES_PROP_NAME &&
       destinationId !== SOURCE_CREATURES_PROP_NAME
     ) {
-      this.dropCreatureInLocation({
+      this.dragFromCreatureToGrid({
         source,
         destination,
         destinationId,
         sourceId
       })
-    } else if (fromGridToGrid) {
-      this.dragFromGridToGrid({ source, destination, destinationId, sourceId })
     } else {
       console.log("from location to grid") // zzz
 
@@ -455,14 +478,32 @@ class WorldBuilder extends Component {
       destination
     } = result
 
+    const { prefix: sourcePrefix } = this.getStorageRowColFromId({
+      id: sourceId
+    })
+
+    console.log("sourceId", sourceId) // zzz
+    console.log("sourcePrefix", sourcePrefix) // zzz
+
+    const fromGrid = sourcePrefix === LOCATIONS_PREFIX
+
+    if (fromGrid) {
+      this.dragFromGridToGrid({ source, destination })
+    }
+
     // dropped outside the list
     if (!destination) {
       return
     }
-    const { droppableId: destinationId } = destination
 
-    console.log("sourceId", sourceId) // zzz
+    const { droppableId: destinationId } = destination
+    const { prefix: destinationPrefix } = this.getStorageRowColFromId({
+      id: destinationId
+    })
+
     console.log("destinationId", destinationId) // zzz
+    console.log("destinationId", destinationId) // zzz
+    console.log("destinationPrefix", destinationPrefix) // zzz
 
     // for dragging within a single column
     if (sourceId === destinationId) {
@@ -619,6 +660,9 @@ class WorldBuilder extends Component {
       >
         {items &&
           items.map((item, index) => {
+            console.log("item", toJS(item)) // zzz
+            if (item === undefined) return null
+
             const { id } = item
             let content = <span>content missing</span>
 
