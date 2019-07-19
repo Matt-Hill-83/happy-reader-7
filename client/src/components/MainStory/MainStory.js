@@ -302,6 +302,8 @@ class MainStory extends React.Component {
         <div className={css.floatingButtons}>
           {renderedMapTitle}
           <WorldPicker
+            showDelete={true}
+            // showDelete={false}
             onChangeMap={({ mapId, index }) =>
               this.onChangeMap({ mapId, index })
             }

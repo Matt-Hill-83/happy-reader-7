@@ -41,6 +41,7 @@ class WorldPicker extends Component {
   }
 
   renderMapPicker = () => {
+    const { showDelete } = this.props
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
     if (!savedMaps[0]) {
@@ -55,9 +56,11 @@ class WorldPicker extends Component {
           onClick={() => this.changeMap({ index, mapId })}
         >
           {`${map.data.name} - ${map.data.title}`}
-          <span onClick={() => this.onDeleteMap({ map })}>
-            <Icon icon={IconNames.TRASH} />
-          </span>
+          {showDelete && (
+            <span onClick={() => this.onDeleteMap({ map })}>
+              <Icon icon={IconNames.TRASH} />
+            </span>
+          )}
         </span>
       )
       return <MenuItem text={text} />

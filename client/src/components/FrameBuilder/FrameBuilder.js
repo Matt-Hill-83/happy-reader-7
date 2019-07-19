@@ -171,32 +171,6 @@ class FrameBuilder extends Component {
     return (this.state.scene && this.state.scene.frameSet) || {}
   }
 
-  renderLocation = ({ item }) => {
-    const { scene, id, name = "" } = item
-
-    const { updateMap } = this.props
-
-    const content = (
-      <div className={css.locationGridContainer}>
-        <MiniLocation
-          id={id}
-          key={name}
-          location={scene}
-          isEditMode={true}
-          updateMap={updateMap}
-        />
-        <Button
-          className={css.scenePropsButton}
-          onClick={() => this.editFrame({ scene })}
-        >
-          <Icon icon={IconNames.SETTINGS} />
-        </Button>
-      </div>
-    )
-
-    return content
-  }
-
   getNewFrameSet = () => {
     return {
       name: "test",
@@ -212,7 +186,6 @@ class FrameBuilder extends Component {
       updateMap
     } = this.props
 
-    // const frameSet = (scene && scene.frameSet) || this.getNewFrameSet()
     if (!frameSet) {
       this.getNewFrameSet()
       updateMap({})
