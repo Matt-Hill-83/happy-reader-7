@@ -134,11 +134,7 @@ class WorldBuilder extends Component {
       scenesGrid = this.preAllocateArrays({})
       const name = "My New World"
       world = { scenesGrid, name }
-      this.setState({ scenesGrid, world })
-      // TODO - save map here
-      // TODO - save map here
-      // TODO - save map here
-      // TODO - save map here
+      this.setState({ scenesGrid, world }, this.saveMap)
     } else {
       scenesGrid = world.data.scenesGrid
       this.setState({ scenesGrid, world })
@@ -165,20 +161,13 @@ class WorldBuilder extends Component {
       return null
     }
 
-    const newMap = (
-      <MenuItem
-        text={"+ New Map"}
-        onClick={() => this.changeMap({ index: -1 })}
-      />
-    )
-
     const mapList = savedMaps.map((map, index) => {
       const text = (
         <span
           className={css.mapPickerRow}
           onClick={() => this.changeMap({ index })}
         >
-          {map.data.name}
+          {`${map.data.name} - ${map.data.title}`}
           <span onClick={() => this.onDeleteMap({ map })}>
             <Icon icon={IconNames.TRASH} />
           </span>
@@ -187,7 +176,7 @@ class WorldBuilder extends Component {
       return <MenuItem text={text} />
     })
 
-    mapList.push(newMap)
+    // mapList.push(newMap)
 
     const renderedMapList = <Menu>{mapList}</Menu>
 
@@ -603,6 +592,10 @@ class WorldBuilder extends Component {
               <div className={css.editWorldButtons}>
                 {this.renderSaveMapButton()}
                 {this.renderMapPicker()}
+                <Button
+                  text={"+ New Map"}
+                  onClick={() => this.changeMap({ index: -1 })}
+                />
               </div>
             </div>
           </div>

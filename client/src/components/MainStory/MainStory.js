@@ -66,7 +66,7 @@ class MainStory extends React.Component {
     }
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
-    if (showWorldBuilder) return null
+    if (showWorldBuilder) return
 
     this.initWorld()
   }
@@ -104,7 +104,10 @@ class MainStory extends React.Component {
     const map = localStateStore.getActiveMap()
 
     const startScene = map.data.startScene
+    console.log("startScene", toJS(startScene)) // zzz
+
     const endScene = map.data.endScene
+    console.log("endScene", toJS(endScene)) // zzz
 
     const grid = _get(map, "data.grid") || []
     const allScenes = grid.flat()
@@ -136,6 +139,7 @@ class MainStory extends React.Component {
 
   initWorld = async () => {
     const startScene = this.getTerminalScene({})
+    console.log("startScene", toJS(startScene)) // zzz
 
     startScene.showCloud = false
 
@@ -152,6 +156,7 @@ class MainStory extends React.Component {
 
     const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false })
+    console.log("endScene", toJS(endScene)) // zzz
 
     localStateStore.setLocationDetails({
       mapName: map.data.name,
