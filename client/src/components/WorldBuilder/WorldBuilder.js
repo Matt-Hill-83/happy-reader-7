@@ -352,8 +352,41 @@ class WorldBuilder extends Component {
     })
   }
 
-  dropInNewList = ({ source, destination, destinationId, sourceId }) => {
+  dragFromGridToGrid = ({ source, destination, destinationId, sourceId }) => {
+    console.log("grid to grid") // zzz
     let result = {}
+    result = this.move({
+      source: this.getList({ id: sourceId }),
+      destination: this.getList({ id: destinationId }),
+      droppableSource: source,
+      droppableDestination: destination
+    })
+
+    const { row: sourceRow, col: sourceCol } = this.getStorageRowColFromId({
+      id: sourceId
+    })
+
+    const {
+      row: destinationRow,
+      col: destinationCol
+    } = this.getStorageRowColFromId({
+      id: destinationId
+    })
+
+    if (destinationRow) {
+      console.log("result[destinationId]", result[destinationId]) // zzz
+
+      const { scenesGrid } = this.state
+      scenesGrid[destinationRow][destinationCol] = result[destinationId]
+      scenesGrid[sourceRow][sourceCol] = []
+
+      this.setState({
+        scenesGrid
+      })
+    }
+  }
+
+  dropInNewList = ({ source, destination, destinationId, sourceId }) => {
     console.log("sourceId", sourceId) // zzz
     console.log("destinationId", destinationId) // zzz
 
@@ -385,35 +418,11 @@ class WorldBuilder extends Component {
         sourceId
       })
     } else if (fromGridToGrid) {
-      console.log("grid to grid") // zzz
-
-      result = this.move({
-        source: this.getList({ id: sourceId }),
-        destination: this.getList({ id: destinationId }),
-        droppableSource: source,
-        droppableDestination: destination
-      })
-
-      const {
-        row: destinationRow,
-        col: destinationCol
-      } = this.getStorageRowColFromId({
-        id: destinationId
-      })
-
-      if (destinationRow) {
-        const { scenesGrid } = this.state
-        scenesGrid[destinationRow][destinationCol] = result[destinationId]
-
-        this.setState({
-          [sourceId]: result[sourceId],
-          scenesGrid
-        })
-      }
+      this.dragFromGridToGrid({ source, destination, destinationId, sourceId })
     } else {
-      console.log("else case") // zzz
+      console.log("from location to grid") // zzz
 
-      result = this.move({
+      const result = this.move({
         source: this.getList({ id: sourceId }),
         destination: this.getList({ id: destinationId }),
         droppableSource: source,
@@ -443,14 +452,14 @@ class WorldBuilder extends Component {
     const {
       source,
       source: { droppableId: sourceId },
-      destination,
-      destination: { droppableId: destinationId }
+      destination
     } = result
 
     // dropped outside the list
     if (!destination) {
       return
     }
+    const { droppableId: destinationId } = destination
 
     console.log("sourceId", sourceId) // zzz
     console.log("destinationId", destinationId) // zzz
@@ -653,9 +662,14 @@ class WorldBuilder extends Component {
       <div className={css.main}>
         <div className={css.header}>
           <div className={css.titles}>
-            <div className={css.title}>{`World Builder - world: ${(world.data &&
-              world.data.name) ||
-              "none"}`}</div>
+            <div className={css.title}>{`World Builder - world: ${world.data &&
+              world.data.name} - ${world.data && world.data.title}`}</div>
+            <div className={css.subTitle}>
+              {`start: ${world.data && world.data.startScene}`}
+            </div>
+            <div className={css.subTitle}>
+              {`end: ${world.data && world.data.endScene}`}
+            </div>
             <div className={css.subTitle}>
               (drag items to create your world...)
               <div className={css.editWorldButtons}>
