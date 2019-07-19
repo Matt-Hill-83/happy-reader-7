@@ -248,7 +248,15 @@ class MiniLocation extends React.Component {
     })
 
     if (!locationName) {
-      return <div className={`${css.main} ${className} ${localClass}`} />
+      return (
+        <div className={`${css.main} ${className} ${localClass}`}>
+          {!isEditMode && showCloud && (
+            <div className={css.cloudImageContainer}>
+              <img className={css.cloudImage} src={cloudImage} alt={"imagex"} />
+            </div>
+          )}
+        </div>
+      )
     }
 
     return (
