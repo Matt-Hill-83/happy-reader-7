@@ -265,21 +265,15 @@ class MainStory extends React.Component {
     const { className } = this.props
     const { activeScene } = this.state
 
-    // const index = localStateStore.getActiveMapIndex()
-
     if (!activeScene) {
       return null
     }
 
     const map = localStateStore.getActiveMap()
 
-    // const { name: activeSceneName } = activeScene
-
     const renderedMapTitle = (
       <div className={css.mapTitle}>
-        {/* <div>{`map: ${index}`}</div> */}
         <span>{`map: ${map.data.name} - ${map.data.title}`}</span>
-        {/* <div>{`scene: ${activeSceneName}`}</div> */}
       </div>
     )
 

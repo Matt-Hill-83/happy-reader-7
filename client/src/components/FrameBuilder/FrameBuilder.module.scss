@@ -2,19 +2,15 @@
 
 .main {
   display: flex;
-  // position: absolute;
   overflow: hidden;
-  // height: 100%;
 
-  // width: 100%;
   background: var(--color-pink);
   z-index: 10;
   align-items: center;
-  // margin: auto;
   padding: 2%;
-  border: 1px solid red !important;
-  // min-width: 30%;
+  border: 1px solid purple !important;
   min-width: 700px;
+  position: relative;
 }
 
 .frameSetName2 {
@@ -30,11 +26,11 @@
 }
 
 .buttonContainer {
-  // position: absolute;
-  // right: 24px;
-  // top: 24px;
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 50%;
 }
 
 .closeButton {

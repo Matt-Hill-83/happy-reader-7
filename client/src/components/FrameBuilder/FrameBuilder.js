@@ -120,27 +120,6 @@ class FrameBuilder extends Component {
     this.setState({ frameSet })
   }
 
-  renderActiveFrameSetName = () => {
-    const frameSet = this.getFrameSet()
-    const title = frameSet && frameSet.data && frameSet.title
-
-    return (
-      <div className={css.frameSetNameContainer}>
-        <FormGroup label="Title" labelFor="text-input">
-          <InputGroup
-            value={title}
-            id="text-input"
-            placeholder="Placeholder text"
-            onChange={event =>
-              this.onChangeFrameSetTitle({ frameSet: frameSet, event })
-            }
-            onBlur={event => this.updateFrameSetTitle({ event })}
-          />
-        </FormGroup>
-      </div>
-    )
-  }
-
   deleteFrame = async ({ frameIndex }) => {
     const {
       scene,
@@ -220,8 +199,6 @@ class FrameBuilder extends Component {
     return (
       <div className={css.main}>
         {/* {this.renderLocation()} */}
-        {scene && this.renderActiveFrameSetName()}
-
         {scene && this.renderFrames()}
 
         {scene && (
@@ -239,7 +216,6 @@ class FrameBuilder extends Component {
             </Button>
           </div>
         )}
-        {scene && <div className={css.buttonContainer} />}
       </div>
     )
   }

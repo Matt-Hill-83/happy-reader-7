@@ -25,13 +25,11 @@ body {
     flex-direction: column;
   }
   [class*="PicturePage_leftHalf"] {
-    // border: 10px solid purple !important;
     width: 100%;
   }
 }
 
 .mobileLandscape {
-  // border: 10px solid blue !important;
   --window-height: 360px;
   --story-font-size: 16px;
 }
@@ -39,7 +37,7 @@ body {
 .desktop {
   --window-height: 100vh;
   --story-font-size: 30px;
-  overflow: auto;
+  // overflow: auto;
 
   // TODO: use this for font size:
   // font-size: 15vmin;

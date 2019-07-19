@@ -31,9 +31,6 @@
 }
 
 .editWorldButtons {
-  // position: absolute;
-  // top: 0px;
-  // left: 0px;
 }
 
 .scenesContainer {
@@ -119,4 +116,6 @@
 
 .content {
   display: flex;
+  overflow: scroll;
+  border: 1px solid blue !important;
 }
