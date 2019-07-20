@@ -72,6 +72,7 @@ class WordPage extends React.Component {
     }
 
     const frame = frameSet.frames[frameIndex]
+    const actionButtons = isLastFrame ? this.renderButtons() : null
 
     return (
       <div className={css.textPage}>
@@ -80,6 +81,7 @@ class WordPage extends React.Component {
           frame={frame}
           scene={activeScene}
           isEditMode={false}
+          actionButtons={actionButtons}
         />
         {!isLastFrame && (
           <Button onClick={this.onClickNext} className={css.nextButton}>
@@ -87,7 +89,7 @@ class WordPage extends React.Component {
           </Button>
         )}
 
-        {isLastFrame && this.renderButtons()}
+        {/* {isLastFrame && this.renderButtons()} */}
       </div>
     )
   }

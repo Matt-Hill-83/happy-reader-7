@@ -33,6 +33,32 @@
   z-index: 1000;
 }
 
+.wordsContainer {
+  display: flex;
+  position: absolute;
+  // border: 2px solid red !important;
+  z-index: 1;
+  padding: 2%;
+  width: 100%;
+  bottom: 51%;
+  flex-direction: column;
+}
+
+.narrative {
+  display: flex;
+  z-index: 10;
+  flex-direction: column;
+  padding-left: 7%;
+  justify-content: flex-end;
+  padding-right: 7%;
+  // bottom: 1%;
+  border: 1px solid;
+  border-radius: 6px;
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
 .dialog {
   display: flex;
   z-index: 10;
@@ -40,12 +66,12 @@
   padding-left: 7%;
   justify-content: flex-end;
   padding-right: 7%;
-  bottom: 1%;
+  // bottom: 1%;
   border: 1px solid;
   border-radius: 6px;
   background: white;
   padding: 1rem;
-  margin: 1rem;
+  margin-bottom: 1rem;
 
   .line {
     // font-family: monospace;
@@ -58,13 +84,15 @@
     [class*="WordGroup_sentence__"] {
       padding-right: 0.5rem;
       padding-left: 0.5rem;
-      font-size: 18px;
+      // font-size: 18px;
+      // font-size: 44px;
+      font-size: 3vmin;
     }
   }
 
   // TODO - move colors to colors.js
   .character0 {
-    border: 3px solid orange !important;
+    border: 1px solid orange !important;
     color: #8610ff;
     background: #f7e59a;
     margin-left: auto;
@@ -75,7 +103,7 @@
   }
 
   .character1 {
-    border: 3px solid #ff005c !important;
+    border: 1px solid #ff005c !important;
     background: #ffcee6;
     color: #b900ff;
 
@@ -123,12 +151,12 @@
   position: relative;
 }
 
-.narrative {
-  position: absolute;
-  top: 5%;
-  left: 4%;
-  color: var(--story-text);
-}
+// .narrative {
+//   position: absolute;
+//   top: 5%;
+//   left: 4%;
+//   color: var(--story-text);
+// }
 
 .girlPickersContainer {
   border: 2px solid var(--set1-purple-brdr);
@@ -162,15 +190,14 @@
 }
 
 .bookImageContainer {
-  position: absolute;
-  top: 3%;
+  /* top: 3%; */
   z-index: 10;
-  width: 100%;
-
-  .bookImage {
-    height: auto;
-    width: 100%;
-  }
+  /* width: 100%; */
+  padding: 1rem;
+  border: 2px solid purple;
+  margin-bottom: 0.3rem;
+  border-radius: 0.7rem;
+  /* background: #fdfbff70; */
 }
 
 .notebookImageContainer {

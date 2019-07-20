@@ -204,7 +204,7 @@ class Frame extends Component {
 
     const { story = [], faces = [] } = frame
 
-    const { scene, isEditMode = true } = this.props
+    const { actionButtons, scene, isEditMode = true } = this.props
 
     const backgroundImageSky = Images.backgrounds["sky01"]
     const backgroundImageHill = Images.backgrounds["hill01"]
@@ -228,32 +228,36 @@ class Frame extends Component {
 
     return (
       <div className={css.scene}>
-        <div className={css.backgroundImageContainer}>
-          <div className={css.locationImageContainer}>
-            <img
-              className={css.locationImage}
-              src={locationImage}
-              alt={"imagex"}
-            />
-            <span className={`${css.locationLabel}`}>{scene.name}</span>
-          </div>
+        <div className={css.locationImageContainer}>
+          <img
+            className={css.locationImage}
+            src={locationImage}
+            alt={"imagex"}
+          />
+          <span className={`${css.locationLabel}`}>{scene.name}</span>
+        </div>
+
+        <div className={css.wordsContainer}>
           <div className={css.bookImageContainer}>
             {isEditMode && showNarrativeEditor && this.renderNarrativeEditor()}
             <div className={css.narrative}>
               <WordGroup story={story} className={css.narrativeClass} />
             </div>
-            <img className={css.bookImage} src={bookImage} alt={"imagex"} />
-            <div className={css.notebookImageContainer}>
+            {/* <img className={css.bookImage} src={bookImage} alt={"imagex"} /> */}
+            {/* <div className={css.notebookImageContainer}>
               <img
                 className={css.notebookImage}
                 src={notebookImage}
                 alt={"imagex"}
               />
-              {this.renderedDialog({})}
-              {isEditMode && this.renderDialogEditor()}
-            </div>
+            </div> */}
+            {this.renderedDialog({})}
+            {isEditMode && this.renderDialogEditor()}
           </div>
+          {actionButtons}
+        </div>
 
+        <div className={css.backgroundImageContainer}>
           <div className={css.backgroundGrass}>
             <img
               className={`${css.backgroundGrassImage} ${
