@@ -26,17 +26,23 @@
 }
 
 .closeButton {
-  // border: 1px solid red !important;
   position: absolute;
   right: 0px;
   top: 0px;
   z-index: 1000;
 }
 
+.actionButtons {
+  border: 1px solid red !important;
+  position: absolute;
+  bottom: 1%;
+  display: flex;
+  width: 100%;
+}
+
 .wordsContainer {
   display: flex;
   position: absolute;
-  // border: 2px solid red !important;
   z-index: 1;
   padding: 2%;
   width: 100%;
@@ -51,7 +57,6 @@
   padding-left: 7%;
   justify-content: flex-end;
   padding-right: 7%;
-  // bottom: 1%;
   border: 1px solid;
   border-radius: 6px;
   background: white;
@@ -66,7 +71,6 @@
   padding-left: 7%;
   justify-content: flex-end;
   padding-right: 7%;
-  // bottom: 1%;
   border: 1px solid;
   border-radius: 6px;
   background: white;
@@ -74,8 +78,6 @@
   margin-bottom: 1rem;
 
   .line {
-    // font-family: monospace;
-    // font-weight: bold;
     margin-bottom: 2%;
     border-radius: 0.5rem;
     width: fit-content;
@@ -84,13 +86,10 @@
     [class*="WordGroup_sentence__"] {
       padding-right: 0.5rem;
       padding-left: 0.5rem;
-      // font-size: 18px;
-      // font-size: 44px;
       font-size: 3vmin;
     }
   }
 
-  // TODO - move colors to colors.js
   .character0 {
     border: 1px solid orange !important;
     color: #8610ff;
@@ -151,13 +150,6 @@
   position: relative;
 }
 
-// .narrative {
-//   position: absolute;
-//   top: 5%;
-//   left: 4%;
-//   color: var(--story-text);
-// }
-
 .girlPickersContainer {
   border: 2px solid var(--set1-purple-brdr);
   display: flex;
@@ -190,14 +182,10 @@
 }
 
 .bookImageContainer {
-  /* top: 3%; */
   z-index: 10;
-  /* width: 100%; */
   padding: 1rem;
-  border: 2px solid purple;
   margin-bottom: 0.3rem;
   border-radius: 0.7rem;
-  /* background: #fdfbff70; */
 }
 
 .notebookImageContainer {
@@ -275,14 +263,12 @@
   bottom: 1%;
   justify-content: flex-start;
   height: 18%;
-  // border: 1px solid red;
   width: 100%;
 }
 
 .characterContainer {
   display: flex;
   height: 100%;
-  // border: 1px solid green;
   width: 25%;
 
   &:last-of-type {

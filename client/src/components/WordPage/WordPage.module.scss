@@ -8,27 +8,27 @@
   .decisionButtonRow {
     display: flex;
     justify-content: space-around;
-    // position: fixed;
     bottom: 2%;
     z-index: 10;
     background: var(--set1-pink-bk);
     border: 2px solid var(--set1-purple-brdr);
     border-radius: 9px;
-
-    .choiceButton {
-      display: flex;
-      align-items: center;
-      flex: 1 1;
-      font-size: 22px;
-      text-transform: capitalize;
-      margin: 1px;
-      font-size: 2.5vh;
-      border-radius: 1vh;
-      max-width: 275px;
-      min-width: 150px;
-      @include set-1;
-    }
+    width: 100%;
   }
+}
+
+.choiceButton {
+  display: flex;
+  align-items: center;
+  flex: 1 1;
+  font-size: 22px;
+  text-transform: capitalize;
+  margin: 1px;
+  font-size: 2.5vh;
+  border-radius: 1vh;
+  max-width: 275px;
+  min-width: 150px;
+  @include set-1;
 }
 
 .story {
@@ -40,12 +40,10 @@
   border: 2px solid var(--set1-purple-brdr);
 }
 
-.nextButton {
+.buttonRow {
   display: flex;
   align-items: center;
-  justify-self: flex-end;
-  width: 300px;
-  margin-left: auto;
+  width: 100%;
 
   height: 50px;
   font-size: 36px !important;
@@ -53,3 +51,17 @@
   color: purple !important;
   font-weight: bold !important;
 }
+
+// .nextButton {
+//   display: flex;
+//   align-items: center;
+//   justify-self: flex-end;
+//   width: 300px;
+//   margin-left: auto;
+
+//   height: 50px;
+//   font-size: 36px !important;
+//   background-color: var(--set1-pink-bk) !important;
+//   color: purple !important;
+//   font-weight: bold !important;
+// }

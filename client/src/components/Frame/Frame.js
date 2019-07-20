@@ -204,7 +204,7 @@ class Frame extends Component {
 
     const { story = [], faces = [] } = frame
 
-    const { actionButtons, scene, isEditMode = true } = this.props
+    const { scene, isEditMode = true } = this.props
 
     const backgroundImageSky = Images.backgrounds["sky01"]
     const backgroundImageHill = Images.backgrounds["hill01"]
@@ -243,20 +243,13 @@ class Frame extends Component {
             <div className={css.narrative}>
               <WordGroup story={story} className={css.narrativeClass} />
             </div>
-            {/* <img className={css.bookImage} src={bookImage} alt={"imagex"} /> */}
-            {/* <div className={css.notebookImageContainer}>
-              <img
-                className={css.notebookImage}
-                src={notebookImage}
-                alt={"imagex"}
-              />
-            </div> */}
+
             {this.renderedDialog({})}
             {isEditMode && this.renderDialogEditor()}
           </div>
-          {actionButtons}
         </div>
 
+        {/* <div className={css.actionButtons}>{actionButtons}</div> */}
         <div className={css.backgroundImageContainer}>
           <div className={css.backgroundGrass}>
             <img
