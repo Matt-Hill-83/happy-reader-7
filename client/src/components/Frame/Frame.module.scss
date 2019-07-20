@@ -149,10 +149,11 @@
 }
 
 .locationImageContainer {
-  height: 22%;
+  height: 17%;
   position: absolute;
-  bottom: 41%;
+  bottom: 28%;
   right: 2%;
+  z-index: 10;
 
   .locationImage {
     height: 100%;
@@ -208,6 +209,13 @@
       max-width: 730px;
     }
   }
+}
+
+.backgroundGrassHill {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 72%;
 }
 
 .toggleFacePickerButton {

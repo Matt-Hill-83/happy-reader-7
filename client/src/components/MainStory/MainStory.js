@@ -237,14 +237,14 @@ class MainStory extends React.Component {
 
   closeYouWin = () => {
     this.setState({ showYouWin: false })
-    const isLastMap = localStateStore.isLastMap()
+    // const isLastMap = localStateStore.isLastMap()
 
-    if (!isLastMap) {
-      localStateStore.incrementActiveLocationsMapIndex()
-      const startScene = this.getTerminalScene({})
+    // if (!isLastMap) {
+    //   localStateStore.incrementActiveLocationsMapIndex()
+    //   const startScene = this.getTerminalScene({})
 
-      this.updateActiveScene({ activeScene: startScene })
-    }
+    //   this.updateActiveScene({ activeScene: startScene })
+    // }
   }
 
   changeMap = ({ index }) => {

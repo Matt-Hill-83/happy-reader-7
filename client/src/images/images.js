@@ -64,6 +64,7 @@ import forest from "./backgrounds/forest-3.jpg"
 import forestLeft from "./backgrounds/forest-1-left.png"
 import forestRight from "./backgrounds/forest-1-right.png"
 import hill01 from "./backgrounds/hill-02.png"
+import sky01 from "./backgrounds/sky-01.png"
 import map from "./backgrounds/map-05.jpg"
 import rock from "./backgrounds/rock-2.jpg"
 
@@ -166,7 +167,8 @@ export default {
     forestRight,
     map,
     rock,
-    hill01
+    hill01,
+    sky01
   },
   items: {
     hat,

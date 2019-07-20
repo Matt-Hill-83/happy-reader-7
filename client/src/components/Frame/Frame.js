@@ -59,9 +59,6 @@ class Frame extends Component {
   }
 
   renderFacePicker = ({ name, facePickerIndex }) => {
-    console.log("name", name) // zzz
-    console.log("facePickerIndex", toJS(facePickerIndex)) // zzz
-
     const girlImages = Images.posableGirls
 
     const images = girlImages.find(girl => girl.name === name)
@@ -194,7 +191,7 @@ class Frame extends Component {
 
     return (
       <div className={css.frameSetNameContainer}>
-        <FormGroup label="zzz" labelFor="text-input">
+        <FormGroup label="xxxx" labelFor="text-input">
           {inputFields}
         </FormGroup>
       </div>
@@ -209,7 +206,8 @@ class Frame extends Component {
 
     const { scene, isEditMode = true } = this.props
 
-    const backgroundImage = Images.backgrounds["hill01"]
+    const backgroundImageSky = Images.backgrounds["sky01"]
+    const backgroundImageHill = Images.backgrounds["hill01"]
     const locationImage = Images.locations[scene.name]
     const bookImage = Images.sceneView.book
     const notebookImage = Images.sceneView.notebook
@@ -261,7 +259,14 @@ class Frame extends Component {
               className={`${css.backgroundGrassImage} ${
                 isEditMode ? css.isEditMode : ""
               }`}
-              src={backgroundImage}
+              src={backgroundImageSky}
+              alt={`backgroundImage`}
+            />
+            <img
+              className={`${css.backgroundGrassHill} ${
+                isEditMode ? css.isEditMode : ""
+              }`}
+              src={backgroundImageHill}
               alt={`backgroundImage`}
             />
           </div>
@@ -279,12 +284,8 @@ class Frame extends Component {
   }
 
   render() {
-    // console.log("render frame") // zzz
-
     const { isEditMode = true } = this.props
     const { frame, showFacePicker } = this.state
-
-    // console.log("frame", toJS(frame)) // zzz
 
     const allCharacters = (frame && frame.creatures) || []
 
