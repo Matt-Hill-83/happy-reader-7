@@ -237,6 +237,7 @@ class Frame extends Component {
               src={locationImage}
               alt={"imagex"}
             />
+            <span className={`${css.locationLabel}`}>{scene.name}</span>
           </div>
           <div className={css.bookImageContainer}>
             {isEditMode && showNarrativeEditor && this.renderNarrativeEditor()}

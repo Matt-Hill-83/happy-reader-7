@@ -1,3 +1,22 @@
+@import "../../Styles/mixins.modules.scss";
+
+.locationLabel {
+  @include item-label;
+  position: absolute;
+  border: 1px solid blue !important;
+  border-radius: 3px;
+  top: 2%;
+  background: var(--light-pink);
+  border-radius: 3px;
+  padding: 0 3px;
+  z-index: 10;
+  left: 50%;
+  transform: translate(-50%, 25%);
+  width: 23%;
+  top: unset;
+  bottom: 27%;
+}
+
 .dialogEditor {
   border: 1px solid red !important;
   display: flex;

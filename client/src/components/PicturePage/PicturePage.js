@@ -105,7 +105,7 @@ class PicturePage extends React.Component {
           updateActiveScene={updateActiveScene}
           activeScene={activeScene}
         />
-        <div className={css.locationHeader}>{`${activeLocationName}`}</div>
+        {/* <div className={css.locationHeader}>{`${activeLocationName}`}</div> */}
       </div>
     )
   }
