@@ -59,9 +59,14 @@ class Frame extends Component {
   }
 
   renderFacePicker = ({ name, facePickerIndex }) => {
+    console.log("name", name) // zzz
+    console.log("facePickerIndex", toJS(facePickerIndex)) // zzz
+
     const girlImages = Images.posableGirls
 
     const images = girlImages.find(girl => girl.name === name)
+
+    if (!images) return null
 
     const {
       images: { heads }
@@ -213,7 +218,11 @@ class Frame extends Component {
       const mood = this.getMood({ name: friend, faces })
 
       return (
-        <div key={index} onClick={this.toggleFacePicker}>
+        <div
+          className={css.characterContainer}
+          key={index}
+          onClick={this.toggleFacePicker}
+        >
           <Character name={friend} mood={mood} isEditMode={isEditMode} />
         </div>
       )
@@ -269,12 +278,12 @@ class Frame extends Component {
   }
 
   render() {
-    console.log("render frame") // zzz
+    // console.log("render frame") // zzz
 
     const { isEditMode = true } = this.props
     const { frame, showFacePicker } = this.state
 
-    console.log("frame", toJS(frame)) // zzz
+    // console.log("frame", toJS(frame)) // zzz
 
     const allCharacters = (frame && frame.creatures) || []
 

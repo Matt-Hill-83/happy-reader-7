@@ -660,7 +660,7 @@ class WorldBuilder extends Component {
       >
         {items &&
           items.map((item, index) => {
-            console.log("item", toJS(item)) // zzz
+            // console.log("item", toJS(item)) // zzz
             if (item === undefined) return null
 
             const { id } = item

@@ -7,7 +7,7 @@
 }
 
 .closeButton {
-  border: 1px solid red !important;
+  // border: 1px solid red !important;
   position: absolute;
   right: 0px;
   top: 0px;
@@ -15,11 +15,9 @@
 }
 
 .dialog {
-  /* position: absolute; */
   display: flex;
   z-index: 10;
   flex-direction: column;
-  /* width: 100%; */
   padding-left: 7%;
   justify-content: flex-end;
   padding-right: 7%;
@@ -31,8 +29,8 @@
   margin: 1rem;
 
   .line {
-    font-family: monospace;
-    font-weight: bold;
+    // font-family: monospace;
+    // font-weight: bold;
     margin-bottom: 2%;
     border-radius: 0.5rem;
     width: fit-content;
@@ -76,6 +74,7 @@
   margin: 0.6rem;
   background: var(--set1-pink-bk);
   border-radius: 0.3rem;
+  width: 95vw;
 }
 
 .girlPicker {
@@ -88,11 +87,6 @@
 
   height: auto;
   width: 100%;
-  // width: calc(5 * var(--cell-height-small));
-}
-
-.youContainer {
-  // border: 1px solid blue !important;
 }
 
 .narrativeClass {
@@ -124,7 +118,7 @@
 
   position: absolute;
 
-  bottom: 0;
+  bottom: 32%;
   left: 0;
 
   z-index: 20;
@@ -192,7 +186,6 @@
     max-width: unset;
 
     &.isEditMode {
-      // border: 10px solid red !important;
       max-width: 730px;
     }
   }
@@ -223,12 +216,27 @@
 }
 
 .charactersContainer {
-  /* height: 38%; */
   display: flex;
   position: absolute;
   bottom: 1%;
-  width: 66%;
-  /* left: 3%; */
-  justify-content: space-around;
-  height: 30%;
+  justify-content: flex-start;
+  height: 18%;
+  // border: 1px solid red;
+  width: 100%;
+}
+
+.characterContainer {
+  display: flex;
+  height: 100%;
+  // border: 1px solid green;
+  width: 25%;
+
+  &:last-of-type {
+    margin-left: auto;
+  }
+
+  &:first-of-type {
+    margin-right: auto;
+    margin-left: unset;
+  }
 }

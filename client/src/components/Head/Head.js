@@ -18,13 +18,16 @@ class Head extends Component {
     }
 
     const imageClass = imageClassName || css.girlHeadAmber
+    const containerClass = imageClassName || css.girlHeadAmberContainer
 
     return (
-      <div className={`${css.girlHeadContainer} ${className}`}>
+      <div
+        className={`${css.girlHeadContainer} ${className}  ${containerClass}`}
+      >
         <img
           className={`${css.girlHead} ${imageClass}`}
           src={image}
-          alt={`${"mood"}-image`}
+          alt={"mood"}
         />
         {isEditMode && <span className={css.moodLabel}>{mood}</span>}
       </div>
