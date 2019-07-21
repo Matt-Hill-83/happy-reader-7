@@ -142,7 +142,7 @@ class Frame extends Component {
 
     return (
       <div className={css.dialogEditor}>
-        <FormGroup label="kiringle" labelFor="text-input">
+        <FormGroup label="" labelFor="text-input">
           {inputFields}
         </FormGroup>
       </div>
@@ -191,7 +191,7 @@ class Frame extends Component {
 
     return (
       <div className={css.frameSetNameContainer}>
-        <FormGroup label="xxxx" labelFor="text-input">
+        <FormGroup label="" labelFor="text-input">
           {inputFields}
         </FormGroup>
       </div>
