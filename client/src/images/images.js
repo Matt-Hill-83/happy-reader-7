@@ -161,6 +161,32 @@ const liz2Heads = [
   liz26
 ]
 
+const katHeads = [
+  katBlissful,
+  katCringing,
+  katCrying,
+  katDisgusted,
+  katDismayed,
+  katFunny,
+  katHappy,
+  katHurt,
+  katKissing,
+  katLauging,
+  katLoud,
+  katMad,
+  katNormal,
+  katOptimistic,
+  katSad,
+  katScared,
+  katSilly,
+  katSinister,
+  katSmiling,
+  katSurprised,
+  katTired,
+  katUnsure,
+  katWinking
+]
+
 const posableLiz = {
   name: "liz2",
   type: "liz2",
@@ -171,121 +197,34 @@ const posableLiz = {
   }
 }
 posableLiz.images.heads = liz2Heads.map(image => {
+  const regex = `([^/]+?)$`
+  const match = image.match(regex)
+  const mood = match && match[0]
+
   return {
-    // image: katBody,
-    image: image,
-    mood: "liz1"
-    // mood: image.toString()
+    image,
+    mood
   }
 })
-
-console.log("posableLiz", posableLiz) // zzz
 
 const posableKat = {
   name: "kat",
   type: "kat",
-  mood: "yuck",
+  mood: "kat",
   images: {
-    heads: [
-      {
-        image: katHurt,
-        mood: "hurt"
-      },
-
-      {
-        image: katLoud,
-        mood: "hey!"
-      },
-      {
-        image: katMad,
-        mood: "mad"
-      },
-      {
-        image: katSad,
-        mood: "sad"
-      },
-      {
-        image: katCrying,
-        mood: "cry"
-      },
-      {
-        image: katScared,
-        mood: "scared"
-      },
-      {
-        image: katKissing,
-        mood: "kiss"
-      },
-      {
-        image: katDisgusted,
-        mood: "gross"
-      },
-      {
-        image: katCringing,
-        mood: "yuck"
-      },
-      {
-        image: katBlissful,
-        mood: "blissful"
-      },
-      {
-        image: katDismayed,
-        mood: "left out"
-      },
-      {
-        image: katOptimistic,
-        mood: "joy"
-      },
-      {
-        image: katNormal,
-        mood: "ok"
-      },
-      {
-        image: katFunny,
-        mood: "funny"
-      },
-      {
-        image: katHappy,
-        mood: "happy"
-      },
-
-      {
-        image: katLauging,
-        mood: "lauging"
-      },
-
-      {
-        image: katSilly,
-        mood: "silly"
-      },
-      {
-        image: katSinister,
-        mood: "sinister"
-      },
-      {
-        image: katSmiling,
-        mood: "smile"
-      },
-      {
-        image: katSurprised,
-        mood: "oh my"
-      },
-      {
-        image: katTired,
-        mood: "sleepy"
-      },
-      {
-        image: katUnsure,
-        mood: "unsure"
-      },
-      {
-        image: katWinking,
-        mood: "wink"
-      }
-    ],
+    heads: [],
     body: { image: katBody }
   }
 }
+posableKat.images.heads = katHeads.map(image => {
+  const regex = `([^/]+?)$`
+  const match = image.match(regex)
+  const mood = match && match[0]
+  return {
+    image,
+    mood
+  }
+})
 
 export default {
   locations: {
