@@ -181,6 +181,112 @@ posableLiz.images.heads = liz2Heads.map(image => {
 
 console.log("posableLiz", posableLiz) // zzz
 
+const posableKat = {
+  name: "kat",
+  type: "kat",
+  mood: "yuck",
+  images: {
+    heads: [
+      {
+        image: katHurt,
+        mood: "hurt"
+      },
+
+      {
+        image: katLoud,
+        mood: "hey!"
+      },
+      {
+        image: katMad,
+        mood: "mad"
+      },
+      {
+        image: katSad,
+        mood: "sad"
+      },
+      {
+        image: katCrying,
+        mood: "cry"
+      },
+      {
+        image: katScared,
+        mood: "scared"
+      },
+      {
+        image: katKissing,
+        mood: "kiss"
+      },
+      {
+        image: katDisgusted,
+        mood: "gross"
+      },
+      {
+        image: katCringing,
+        mood: "yuck"
+      },
+      {
+        image: katBlissful,
+        mood: "blissful"
+      },
+      {
+        image: katDismayed,
+        mood: "left out"
+      },
+      {
+        image: katOptimistic,
+        mood: "joy"
+      },
+      {
+        image: katNormal,
+        mood: "ok"
+      },
+      {
+        image: katFunny,
+        mood: "funny"
+      },
+      {
+        image: katHappy,
+        mood: "happy"
+      },
+
+      {
+        image: katLauging,
+        mood: "lauging"
+      },
+
+      {
+        image: katSilly,
+        mood: "silly"
+      },
+      {
+        image: katSinister,
+        mood: "sinister"
+      },
+      {
+        image: katSmiling,
+        mood: "smile"
+      },
+      {
+        image: katSurprised,
+        mood: "oh my"
+      },
+      {
+        image: katTired,
+        mood: "sleepy"
+      },
+      {
+        image: katUnsure,
+        mood: "unsure"
+      },
+      {
+        image: katWinking,
+        mood: "wink"
+      }
+    ],
+    body: { image: katBody }
+  }
+}
+
 export default {
   locations: {
     slide,
@@ -205,7 +311,7 @@ export default {
     waterfall
   },
   creatures: {
-    liz,
+    // liz,
     liz2,
     kat,
     gonzay,
@@ -248,162 +354,7 @@ export default {
     doorYellow,
     door
   },
-  posableGirls: [
-    posableLiz,
-
-    {
-      name: "liz",
-      type: "liz",
-      mood: "scared",
-      images: {
-        heads: [
-          {
-            image: janBlissful,
-            mood: "blissful"
-          },
-          {
-            image: janRepulsed,
-            mood: "repulsed"
-          },
-          {
-            image: janHappy,
-            mood: "joy"
-          },
-          {
-            image: janSneaky,
-            mood: "wink"
-          },
-          {
-            image: janSorry,
-            mood: "sorry"
-          },
-          {
-            image: janMad,
-            mood: "mad"
-          },
-          {
-            image: janSurprised,
-            mood: "oh my"
-          },
-          {
-            image: janNormal,
-            mood: "ok"
-          },
-          {
-            image: janScared,
-            mood: "scared"
-          }
-        ],
-        body: { image: janBody }
-      }
-    },
-
-    {
-      name: "kat",
-      type: "kat",
-      mood: "yuck",
-      images: {
-        heads: [
-          {
-            image: katHurt,
-            mood: "hurt"
-          },
-
-          {
-            image: katLoud,
-            mood: "hey!"
-          },
-          {
-            image: katMad,
-            mood: "mad"
-          },
-          {
-            image: katSad,
-            mood: "sad"
-          },
-          {
-            image: katCrying,
-            mood: "cry"
-          },
-          {
-            image: katScared,
-            mood: "scared"
-          },
-          {
-            image: katKissing,
-            mood: "kiss"
-          },
-          {
-            image: katDisgusted,
-            mood: "gross"
-          },
-          {
-            image: katCringing,
-            mood: "yuck"
-          },
-          {
-            image: katBlissful,
-            mood: "blissful"
-          },
-          {
-            image: katDismayed,
-            mood: "left out"
-          },
-          {
-            image: katOptimistic,
-            mood: "joy"
-          },
-          {
-            image: katNormal,
-            mood: "ok"
-          },
-          {
-            image: katFunny,
-            mood: "funny"
-          },
-          {
-            image: katHappy,
-            mood: "happy"
-          },
-
-          {
-            image: katLauging,
-            mood: "lauging"
-          },
-
-          {
-            image: katSilly,
-            mood: "silly"
-          },
-          {
-            image: katSinister,
-            mood: "sinister"
-          },
-          {
-            image: katSmiling,
-            mood: "smile"
-          },
-          {
-            image: katSurprised,
-            mood: "oh my"
-          },
-          {
-            image: katTired,
-            mood: "sleepy"
-          },
-          {
-            image: katUnsure,
-            mood: "unsure"
-          },
-          {
-            image: katWinking,
-            mood: "wink"
-          }
-        ],
-        body: { image: katBody }
-      }
-    }
-  ],
+  posableGirls: [posableLiz, posableKat],
   sceneView: {
     book: sceneViewBook,
     notebook: sceneViewNotebook

@@ -47,6 +47,8 @@ class Frame extends Component {
 
   selectHead = ({ name, head }) => {
     const { updateFrameSet } = this.props
+    console.log("name", name) // zzz
+    console.log("head", toJS(head)) // zzz
 
     const {
       frame,
@@ -59,10 +61,12 @@ class Frame extends Component {
     updateFrameSet({})
 
     this.setState({ frame })
-    this.toggleFacePicker()
+    this.toggleFacePicker({})
   }
 
   renderFacePicker = ({ character }) => {
+    console.log("character", toJS(character)) // zzz
+
     const girlImages = Images.posableGirls
     const images = girlImages.find(girl => girl.name === character)
 
@@ -102,7 +106,7 @@ class Frame extends Component {
     const { story = [] } = frame
 
     const renderedNarrative = story.map((line, lineIndex) => {
-      if (showNarrativeEditor) {
+      if (isEditMode && showNarrativeEditor) {
         return (
           <InputGroup
             value={line}
@@ -146,15 +150,7 @@ class Frame extends Component {
 
       const className = `character${characterIndex}`
 
-      if (showDialogEditor) {
-        return (
-          <WordGroup
-            index={lineIndex}
-            story={[text]}
-            className={`${css.line} ${css[className]}`}
-          />
-        )
-      } else {
+      if (isEditMode && showDialogEditor) {
         return (
           <InputGroup
             className={`${css.line} ${css[className]}`}
@@ -163,6 +159,14 @@ class Frame extends Component {
             placeholder="Placeholder text"
             onChange={event => this.onChangeDialog({ event, lineIndex })}
             onBlur={event => this.saveNarrative({ event })}
+          />
+        )
+      } else {
+        return (
+          <WordGroup
+            index={lineIndex}
+            story={[text]}
+            className={`${css.line} ${css[className]}`}
           />
         )
       }
@@ -314,7 +318,7 @@ class Frame extends Component {
               this.renderFacePicker({ character: facePickerCharacter })}
             <Button
               className={css.closeFacePickerButton}
-              onClick={this.toggleFacePicker}
+              onClick={() => this.toggleFacePicker({})}
             >
               <Icon icon={IconNames.CROSS} />
             </Button>
