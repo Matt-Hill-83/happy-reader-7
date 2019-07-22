@@ -1,5 +1,6 @@
 import images from "../images/images.js"
 import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js"
+import Utils from "../Utils/Utils.js"
 
 const homeLocation = "home"
 // TODO  move this to the store
@@ -19,38 +20,6 @@ const generateYou = ({ you = {} }) => {
 
 generateYou({})
 
-const getNewFrame = () => {
-  const you = localStateStore.getYou()
-  const yourName = you.name
-  const allCharacters = [yourName]
-
-  const creatureName0 = allCharacters[0] || "creature0"
-  const creatureName1 = allCharacters[1] || "creature 1"
-
-  const newFrame = {
-    creatures: allCharacters,
-    story: [`${creatureName0} is happy.`],
-    faces: [
-      { character: creatureName1, characterIndex: 1, face: "happy" },
-      { character: creatureName0, characterIndex: 0, face: "happy" }
-    ],
-    dialog: [
-      {
-        character: creatureName0,
-        characterIndex: 0,
-        text: `Hi ${creatureName1}.`
-      },
-      {
-        character: creatureName1,
-        characterIndex: 1,
-        text: `${creatureName0}! ${creatureName0}!!`
-      }
-    ]
-  }
-
-  return newFrame
-}
-
 const startScene = {
   name: homeLocation
 }
@@ -67,7 +36,7 @@ const allScenes = locationsFromImages.map(name => {
       bottom: { open: false }
     },
     creatures: [],
-    frameSet: { frames: [getNewFrame()] }
+    frameSet: { frames: [Utils.getNewFrame({})] }
   }
 })
 

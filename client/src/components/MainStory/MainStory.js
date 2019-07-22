@@ -38,11 +38,15 @@ class MainStory extends React.Component {
   }
 
   async componentWillMount() {
-    mySentences.generatePlot({})
-
     // I need to make these stored shared singletons
     await maps.fetch()
     await worldNameStore.fetch()
+    await this.init()
+  }
+
+  init = async () => {
+    // TODO - what does this do exactly, init some constants?
+    mySentences.generatePlot({})
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
@@ -222,8 +226,6 @@ class MainStory extends React.Component {
   }
 
   toggleWorldBuilder = () => {
-    const plot = localStateStore.getPlot()
-
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
     const newShowWorldBuilder = !showWorldBuilder
 
@@ -231,7 +233,8 @@ class MainStory extends React.Component {
 
     // TODO - get rid of all this plot stuff
     if (newShowWorldBuilder === false) {
-      this.updateActiveScene({ activeScene: plot.activeScene })
+      this.init()
+      // this.updateActiveScene({ activeScene: plot.activeScene })
     }
   }
 

@@ -122,4 +122,41 @@ export default class Utils {
     const filteredItems = items && items.filter(item => !item.data.ignore)
     return filteredItems || []
   }
+
+  static getNewFrame = ({ characters }) => {
+    const you = localStateStore.getYou()
+    const yourName = you.name
+    let allCharacters = [yourName]
+
+    if (characters && characters.length) {
+      const friendNames = characters.map(creature => creature.type)
+      allCharacters.push(...friendNames)
+    }
+
+    const creatureName0 = allCharacters[0] || "creature0"
+    const creatureName1 = allCharacters[1] || "creature 1"
+
+    const newFrame = {
+      creatures: allCharacters,
+      story: [`${creatureName0} is happy.`],
+      faces: [
+        { character: creatureName1, characterIndex: 1, face: "happy" },
+        { character: creatureName0, characterIndex: 0, face: "happy" }
+      ],
+      dialog: [
+        {
+          character: creatureName0,
+          characterIndex: 0,
+          text: `Hi ${creatureName1}.`
+        },
+        {
+          character: creatureName1,
+          characterIndex: 1,
+          text: `${creatureName0}! ${creatureName0}!!`
+        }
+      ]
+    }
+
+    return newFrame
+  }
 }

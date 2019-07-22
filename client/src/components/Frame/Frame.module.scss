@@ -73,7 +73,7 @@
   border-radius: 6px;
   background: white;
   padding: 1rem;
-  margin-bottom: 1rem;
+  // margin-bottom: 1rem;
   position: relative;
 
   .line {
@@ -89,7 +89,7 @@
     }
   }
 
-  .character0 {
+  .character1 {
     border: 1px solid orange !important;
     color: #8610ff;
     background: #f7e59a;
@@ -101,24 +101,14 @@
   }
 
   // TODO - move colors to colors.css
-  .character1 {
+  .character0 {
     border: 1px solid #ff005c !important;
     background: #ffcee6;
-    color: #b900ff;
+    color: #8610ff;
 
     [class*="WordGroup_sentence__"] {
       justify-content: flex-start;
     }
-  }
-
-  .dialogEditor {
-    border: 1px solid red !important;
-    display: flex;
-    position: absolute;
-    z-index: 20;
-    top: 0px;
-    width: 100%;
-    left: 0px;
   }
 }
 

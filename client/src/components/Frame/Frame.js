@@ -19,7 +19,11 @@ import WordGroup from "../WordGroup/WordGroup"
 import css from "./Frame.module.scss"
 
 class Frame extends Component {
-  state = { showFacePicker: false, showNarrativeEditor: true }
+  state = {
+    showFacePicker: false,
+    showNarrativeEditor: true,
+    showDialogEditor: false
+  }
 
   componentWillMount() {
     const { frame } = this.props
@@ -92,58 +96,91 @@ class Frame extends Component {
     this.setState({ showFacePicker, facePickerCharacter: character })
   }
 
+  renderNarrative = () => {
+    const { frame, showNarrativeEditor } = this.state
+    const { isEditMode = true } = this.props
+    const { story = [] } = frame
+
+    const renderedNarrative = story.map((line, lineIndex) => {
+      if (showNarrativeEditor) {
+        return (
+          <InputGroup
+            value={line}
+            id="text-input"
+            placeholder="Placeholder text"
+            onChange={event => this.onChangeNarrative({ event, lineIndex })}
+            onBlur={event => this.saveNarrative({ event })}
+          />
+        )
+      } else {
+        return <WordGroup story={[line]} className={css.narrativeClass} />
+      }
+    })
+
+    return (
+      <div className={css.narrative}>
+        {renderedNarrative}
+        {isEditMode && (
+          <Button
+            className={css.closeButton}
+            onClick={() =>
+              this.setState({ showNarrativeEditor: !showNarrativeEditor })
+            }
+          >
+            <Icon icon={IconNames.EDIT} />
+          </Button>
+        )}
+      </div>
+    )
+  }
+
   renderDialog = () => {
     const { isEditMode = true } = this.props
-    const { frame } = this.state
+    const { showDialogEditor, frame } = this.state
     const dialog = (frame && frame.dialog) || []
 
-    const chats = dialog.map((line, index) => {
+    const renderedDialogs = dialog.map((line, lineIndex) => {
       const { text, characterIndex } = line
 
       if (!text) return null
 
       const className = `character${characterIndex}`
-      return (
-        <WordGroup
-          index={index}
-          story={[text]}
-          className={`${css.line} ${css[className]}`}
-        />
-      )
+
+      if (showDialogEditor) {
+        return (
+          <WordGroup
+            index={lineIndex}
+            story={[text]}
+            className={`${css.line} ${css[className]}`}
+          />
+        )
+      } else {
+        return (
+          <InputGroup
+            className={`${css.line} ${css[className]}`}
+            value={text}
+            id="text-input"
+            placeholder="Placeholder text"
+            onChange={event => this.onChangeDialog({ event, lineIndex })}
+            onBlur={event => this.saveNarrative({ event })}
+          />
+        )
+      }
     })
 
     return (
       <div className={css.dialog}>
-        {chats} {isEditMode && this.renderDialogEditor()}
-      </div>
-    )
-  }
-
-  renderDialogEditor = () => {
-    const { frame } = this.state
-    const dialog = (frame && frame.dialog) || []
-
-    const inputFields = dialog.map((line, lineIndex) => {
-      const { text, characterIndex } = line
-      const className = `character${characterIndex}`
-
-      return (
-        <InputGroup
-          className={`${css.line} ${css[className]}`}
-          value={text}
-          id="text-input"
-          placeholder="Placeholder text"
-          onChange={event => this.onChangeDialog({ event, lineIndex })}
-          onBlur={event => this.saveNarrative({ event })}
-        />
-      )
-    })
-
-    return (
-      <div className={css.dialogEditor}>
-        <FormGroup label="" labelFor="text-input">
-          {inputFields}
-        </FormGroup>
+        {renderedDialogs}
+        {isEditMode && (
+          <Button
+            className={css.closeButton}
+            onClick={() =>
+              this.setState({ showDialogEditor: !showDialogEditor })
+            }
+          >
+            <Icon icon={IconNames.EDIT} />
+          </Button>
+        )}
       </div>
     )
   }
@@ -180,31 +217,6 @@ class Frame extends Component {
     this.setState({ frame })
   }
 
-  renderNarrativeEditor = () => {
-    const {
-      frame: { story }
-    } = this.state
-
-    const inputFields = story.map((line, lineIndex) => {
-      return (
-        <InputGroup
-          value={line}
-          id="text-input"
-          placeholder="Placeholder text"
-          onChange={event => this.onChangeNarrative({ event, lineIndex })}
-          onBlur={event => this.saveNarrative({ event })}
-        />
-      )
-    })
-
-    return (
-      <div className={css.editNarrativeContainer}>
-        {inputFields}
-        {/* <FormGroup labelFor="text-input">{inputFields}</FormGroup> */}
-      </div>
-    )
-  }
-
   renderLocationImage = () => {
     const { scene = true } = this.props
     const locationImage = Images.locations[scene.name]
@@ -212,45 +224,6 @@ class Frame extends Component {
       <div className={css.locationImageContainer}>
         <img className={css.locationImage} src={locationImage} alt={"imagex"} />
         <span className={`${css.locationLabel}`}>{scene.name}</span>
-      </div>
-    )
-  }
-
-  renderNarrative = () => {
-    const { frame, showNarrativeEditor } = this.state
-    const { isEditMode = true } = this.props
-    const { story = [] } = frame
-
-    const renderedStory = story.map((line, lineIndex) => {
-      if (showNarrativeEditor) {
-        return (
-          <InputGroup
-            value={line}
-            id="text-input"
-            placeholder="Placeholder text"
-            onChange={event => this.onChangeNarrative({ event, lineIndex })}
-            onBlur={event => this.saveNarrative({ event })}
-          />
-        )
-      } else {
-        return <WordGroup story={[line]} className={css.narrativeClass} />
-      }
-    })
-    return (
-      <div className={css.narrative}>
-        {renderedStory}
-        {/* <WordGroup story={story} className={css.narrativeClass} /> */}
-        {/* {isEditMode && showNarrativeEditor && this.renderNarrativeEditor()} */}
-        {isEditMode && (
-          <Button
-            className={css.closeButton}
-            onClick={() =>
-              this.setState({ showNarrativeEditor: !showNarrativeEditor })
-            }
-          >
-            <Icon icon={IconNames.EDIT} />
-          </Button>
-        )}
       </div>
     )
   }

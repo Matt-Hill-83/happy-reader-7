@@ -15,10 +15,10 @@ import { IconNames } from "@blueprintjs/icons"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
-import MiniLocation from "../MiniLocation/MiniLocation"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 
 import css from "./FrameBuilder.module.scss"
+import Utils from "../../Utils/Utils"
 
 class FrameBuilder extends Component {
   state = {
@@ -50,40 +50,7 @@ class FrameBuilder extends Component {
       scene: { creatures = [] }
     } = this.state
 
-    const friendNames = creatures.map(creature => creature.type)
-    const you = localStateStore.getYou()
-    const yourName = you.name
-
-    const allCharacters = [yourName, ...friendNames]
-
-    const creatureName0 = allCharacters[0] || "creature0"
-    const creatureName1 = allCharacters[1] || "creature 1"
-
-    const newFrame = {
-      creatures: allCharacters,
-      story: [
-        `${creatureName0} meets ${creatureName1}.`,
-        `${creatureName0} and ${creatureName1} play.`
-      ],
-      faces: [
-        { character: creatureName1, characterIndex: 1, face: "scared" },
-        { character: creatureName0, characterIndex: 0, face: "cry" }
-      ],
-      dialog: [
-        {
-          character: creatureName0,
-          characterIndex: 0,
-          text: `${creatureName1}! ${creatureName1}!!`
-        },
-        {
-          character: creatureName1,
-          characterIndex: 1,
-          text: `Hi ${creatureName0}.`
-        }
-      ]
-    }
-
-    return newFrame
+    return Utils.getNewFrame({ characters: creatures })
   }
 
   onAddFrame = async () => {
@@ -97,7 +64,7 @@ class FrameBuilder extends Component {
     frameSet.frames.push(newFrame)
 
     await updateMap({})
-    this.setState({ scene })
+    // this.setState({ scene })
   }
 
   onChangeFrameSetTitle = async ({ event }) => {
