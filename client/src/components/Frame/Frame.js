@@ -92,7 +92,8 @@ class Frame extends Component {
     this.setState({ showFacePicker, facePickerCharacter: character })
   }
 
-  renderedDialog = () => {
+  renderDialog = () => {
+    const { isEditMode = true } = this.props
     const { frame } = this.state
     const dialog = (frame && frame.dialog) || []
 
@@ -111,16 +112,11 @@ class Frame extends Component {
       )
     })
 
-    return <div className={css.dialog}>{chats}</div>
-  }
-
-  onChangeDialog = ({ event, lineIndex }) => {
-    const { frame } = this.state
-    const dialog = (frame && frame.dialog) || []
-
-    const newLine = event.target.value
-    dialog[lineIndex]["text"] = newLine
-    this.setState({ frame })
+    return (
+      <div className={css.dialog}>
+        {chats} {isEditMode && this.renderDialogEditor()}
+      </div>
+    )
   }
 
   renderDialogEditor = () => {
@@ -150,6 +146,15 @@ class Frame extends Component {
         </FormGroup>
       </div>
     )
+  }
+
+  onChangeDialog = ({ event, lineIndex }) => {
+    const { frame } = this.state
+    const dialog = (frame && frame.dialog) || []
+
+    const newLine = event.target.value
+    dialog[lineIndex]["text"] = newLine
+    this.setState({ frame })
   }
 
   getMood = ({ name, faces }) => {
@@ -193,27 +198,96 @@ class Frame extends Component {
     })
 
     return (
-      <div className={css.frameSetNameContainer}>
-        <FormGroup label="" labelFor="text-input">
-          {inputFields}
-        </FormGroup>
+      <div className={css.editNarrativeContainer}>
+        {inputFields}
+        {/* <FormGroup labelFor="text-input">{inputFields}</FormGroup> */}
+      </div>
+    )
+  }
+
+  renderLocationImage = () => {
+    const { scene = true } = this.props
+    const locationImage = Images.locations[scene.name]
+    return (
+      <div className={css.locationImageContainer}>
+        <img className={css.locationImage} src={locationImage} alt={"imagex"} />
+        <span className={`${css.locationLabel}`}>{scene.name}</span>
+      </div>
+    )
+  }
+
+  renderNarrative = () => {
+    const { frame, showNarrativeEditor } = this.state
+    const { isEditMode = true } = this.props
+    const { story = [] } = frame
+
+    const renderedStory = story.map((line, lineIndex) => {
+      if (showNarrativeEditor) {
+        return (
+          <InputGroup
+            value={line}
+            id="text-input"
+            placeholder="Placeholder text"
+            onChange={event => this.onChangeNarrative({ event, lineIndex })}
+            onBlur={event => this.saveNarrative({ event })}
+          />
+        )
+      } else {
+        return <WordGroup story={[line]} className={css.narrativeClass} />
+      }
+    })
+    return (
+      <div className={css.narrative}>
+        {renderedStory}
+        {/* <WordGroup story={story} className={css.narrativeClass} /> */}
+        {/* {isEditMode && showNarrativeEditor && this.renderNarrativeEditor()} */}
+        {isEditMode && (
+          <Button
+            className={css.closeButton}
+            onClick={() =>
+              this.setState({ showNarrativeEditor: !showNarrativeEditor })
+            }
+          >
+            <Icon icon={IconNames.EDIT} />
+          </Button>
+        )}
+      </div>
+    )
+  }
+
+  renderBackground = () => {
+    const { isEditMode = true } = this.props
+    const backgroundImageSky = Images.backgrounds["sky01"]
+    const backgroundImageHill = Images.backgrounds["hill01"]
+
+    return (
+      <div className={css.backgroundImageContainer}>
+        <div className={css.backgroundGrass}>
+          <img
+            className={`${css.backgroundGrassImage} ${
+              isEditMode ? css.isEditMode : ""
+            }`}
+            src={backgroundImageSky}
+            alt={`backgroundImage`}
+          />
+          <img
+            className={`${css.backgroundGrassHill} ${
+              isEditMode ? css.isEditMode : ""
+            }`}
+            src={backgroundImageHill}
+            alt={`backgroundImage`}
+          />
+        </div>
       </div>
     )
   }
 
   renderFrame = ({ allCharacters = [] }) => {
-    const { frame, showNarrativeEditor } = this.state
+    const { frame } = this.state
+    const { faces = [] } = frame
     if (!frame) return null
 
-    const { story = [], faces = [] } = frame
-
-    const { scene, isEditMode = true } = this.props
-
-    const backgroundImageSky = Images.backgrounds["sky01"]
-    const backgroundImageHill = Images.backgrounds["hill01"]
-    const locationImage = Images.locations[scene.name]
-    // const bookImage = Images.sceneView.book
-    // const notebookImage = Images.sceneView.notebook
+    const { isEditMode = true } = this.props
 
     const renderedFriends = allCharacters.map((friend, index) => {
       const mood = this.getMood({ name: friend, faces })
@@ -231,47 +305,15 @@ class Frame extends Component {
 
     return (
       <div className={css.scene}>
-        <div className={css.locationImageContainer}>
-          <img
-            className={css.locationImage}
-            src={locationImage}
-            alt={"imagex"}
-          />
-          <span className={`${css.locationLabel}`}>{scene.name}</span>
-        </div>
+        {this.renderBackground()}
+        {this.renderLocationImage()}
 
         <div className={css.wordsContainer}>
-          <div className={css.bookImageContainer}>
-            {isEditMode && showNarrativeEditor && this.renderNarrativeEditor()}
-            <div className={css.narrative}>
-              <WordGroup story={story} className={css.narrativeClass} />
-            </div>
-
-            {this.renderedDialog({})}
-            {isEditMode && this.renderDialogEditor()}
-          </div>
+          {this.renderNarrative()}
+          {this.renderDialog()}
         </div>
 
-        <div className={css.backgroundImageContainer}>
-          <div className={css.backgroundGrass}>
-            <img
-              className={`${css.backgroundGrassImage} ${
-                isEditMode ? css.isEditMode : ""
-              }`}
-              src={backgroundImageSky}
-              alt={`backgroundImage`}
-            />
-            <img
-              className={`${css.backgroundGrassHill} ${
-                isEditMode ? css.isEditMode : ""
-              }`}
-              src={backgroundImageHill}
-              alt={`backgroundImage`}
-            />
-          </div>
-
-          <div className={css.charactersContainer}>{renderedFriends}</div>
-        </div>
+        <div className={css.charactersContainer}>{renderedFriends}</div>
       </div>
     )
   }

@@ -22,14 +22,6 @@
   bottom: 27%;
 }
 
-.dialogEditor {
-  border: 1px solid red !important;
-  display: flex;
-  position: absolute;
-  z-index: 20;
-  top: 30%;
-}
-
 .closeButton {
   position: absolute;
   right: 0px;
@@ -67,6 +59,7 @@
   background: white;
   padding: 1rem;
   margin-bottom: 1rem;
+  position: relative;
 }
 
 .dialog {
@@ -81,6 +74,7 @@
   background: white;
   padding: 1rem;
   margin-bottom: 1rem;
+  position: relative;
 
   .line {
     margin-bottom: 2%;
@@ -106,6 +100,7 @@
     }
   }
 
+  // TODO - move colors to colors.css
   .character1 {
     border: 1px solid #ff005c !important;
     background: #ffcee6;
@@ -114,6 +109,16 @@
     [class*="WordGroup_sentence__"] {
       justify-content: flex-start;
     }
+  }
+
+  .dialogEditor {
+    border: 1px solid red !important;
+    display: flex;
+    position: absolute;
+    z-index: 20;
+    top: 0px;
+    width: 100%;
+    left: 0px;
   }
 }
 
@@ -187,25 +192,6 @@
   }
 }
 
-.bookImageContainer {
-  z-index: 10;
-  padding: 1rem;
-  margin-bottom: 0.3rem;
-  border-radius: 0.7rem;
-}
-
-.notebookImageContainer {
-  width: 100%;
-  position: relative;
-  max-height: 170px;
-
-  .notebookImage {
-    height: auto;
-    width: 100%;
-    display: none;
-  }
-}
-
 .backgroundSky {
   .backgroundSkyImage {
     display: flex;
@@ -239,24 +225,6 @@
   height: 72%;
 }
 
-.toggleFacePickerButton {
-  border: 1px solid var(--set1-purple-brdr) !important;
-  position: absolute;
-  height: 4%;
-  width: 4%;
-  z-index: 10;
-}
-
-.toggleFacePickerButton2 {
-  border: 1px solid var(--set1-purple-brdr) !important;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  height: 16%;
-  width: 4%;
-  z-index: 100;
-}
-
 .scene {
   display: flex;
   position: relative;
@@ -285,4 +253,15 @@
     margin-right: auto;
     margin-left: unset;
   }
+}
+
+.editNarrativeContainer {
+  display: flex;
+  border: 1px solid blue !important;
+  background: white;
+  position: absolute;
+  z-index: 100;
+  height: 100%;
+  top: 0px;
+  left: 0px;
 }

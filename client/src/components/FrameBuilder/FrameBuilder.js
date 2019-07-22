@@ -71,13 +71,13 @@ class FrameBuilder extends Component {
       ],
       dialog: [
         {
-          character: creatureName1,
-          characterIndex: 1,
+          character: creatureName0,
+          characterIndex: 0,
           text: `${creatureName1}! ${creatureName1}!!`
         },
         {
-          character: creatureName0,
-          characterIndex: 0,
+          character: creatureName1,
+          characterIndex: 1,
           text: `Hi ${creatureName0}.`
         }
       ]
