@@ -209,8 +209,8 @@ class Frame extends Component {
     const backgroundImageSky = Images.backgrounds["sky01"]
     const backgroundImageHill = Images.backgrounds["hill01"]
     const locationImage = Images.locations[scene.name]
-    const bookImage = Images.sceneView.book
-    const notebookImage = Images.sceneView.notebook
+    // const bookImage = Images.sceneView.book
+    // const notebookImage = Images.sceneView.notebook
 
     const renderedFriends = allCharacters.map((friend, index) => {
       const mood = this.getMood({ name: friend, faces })
@@ -249,7 +249,6 @@ class Frame extends Component {
           </div>
         </div>
 
-        {/* <div className={css.actionButtons}>{actionButtons}</div> */}
         <div className={css.backgroundImageContainer}>
           <div className={css.backgroundGrass}>
             <img
@@ -300,6 +299,12 @@ class Frame extends Component {
         {isEditMode && showFacePicker && (
           <div className={css.girlPickersContainer}>
             {isEditMode && this.renderFacePickers({ allCharacters })}
+            <Button
+              className={css.closeFacePickerButton}
+              onClick={this.toggleFacePicker}
+            >
+              <Icon icon={IconNames.CROSS} />
+            </Button>
           </div>
         )}
       </>

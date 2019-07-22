@@ -1,5 +1,10 @@
 @import "../../Styles/mixins.modules.scss";
 
+.closeFacePickerButton {
+  position: absolute;
+  right: 0px;
+}
+
 .locationLabel {
   @include item-label;
   position: absolute;
