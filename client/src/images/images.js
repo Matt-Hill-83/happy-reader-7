@@ -1,15 +1,3 @@
-// rigged girl - amber
-import amberBlissful from "./rigged-girls/amber/amber-03-blissful.png"
-import amberBody from "./rigged-girls/amber/amber-body.png"
-import amberFrustrated from "./rigged-girls/amber/amber-04-frustrated.png"
-import amberGlad from "./rigged-girls/amber/amber-05-glad.png"
-import amberMad from "./rigged-girls/amber/amber-08-mad.png"
-import amberNormal from "./rigged-girls/amber/amber-01-normal.png"
-import amberScared from "./rigged-girls/amber/amber-07-scared.png"
-import amberShocked from "./rigged-girls/amber/amber-09-shocked.png"
-import amberSneaky from "./rigged-girls/amber/amber-02-sneaky.png"
-import amberSurprised from "./rigged-girls/amber/amber-06-surprised.png"
-
 //locations
 import barn from "./locations/barn.png"
 import bees from "./locations/bees.png"
@@ -87,6 +75,27 @@ import liz2 from "./rigged-girls/liz/png/liz-2.png"
 import liz3 from "./rigged-girls/liz/png/liz-3.png"
 import liz4 from "./rigged-girls/liz/png/liz-4.png"
 import liz5 from "./rigged-girls/liz/png/liz-5.png"
+import liz6 from "./rigged-girls/liz/png/liz-6.png"
+import liz7 from "./rigged-girls/liz/png/liz-7.png"
+import liz8 from "./rigged-girls/liz/png/liz-8.png"
+import liz9 from "./rigged-girls/liz/png/liz-9.png"
+import liz10 from "./rigged-girls/liz/png/liz-10.png"
+import liz11 from "./rigged-girls/liz/png/liz-11.png"
+import liz12 from "./rigged-girls/liz/png/liz-12.png"
+import liz13 from "./rigged-girls/liz/png/liz-13.png"
+import liz14 from "./rigged-girls/liz/png/liz-14.png"
+import liz15 from "./rigged-girls/liz/png/liz-15.png"
+import liz16 from "./rigged-girls/liz/png/liz-16.png"
+import liz17 from "./rigged-girls/liz/png/liz-17.png"
+import liz18 from "./rigged-girls/liz/png/liz-18.png"
+import liz19 from "./rigged-girls/liz/png/liz-19.png"
+import liz20 from "./rigged-girls/liz/png/liz-20.png"
+import liz21 from "./rigged-girls/liz/png/liz-21.png"
+import liz22 from "./rigged-girls/liz/png/liz-22.png"
+import liz23 from "./rigged-girls/liz/png/liz-23.png"
+import liz24 from "./rigged-girls/liz/png/liz-24.png"
+import liz25 from "./rigged-girls/liz/png/liz-25.png"
+import liz26 from "./rigged-girls/liz/png/liz-26.png"
 
 // rigged girl - kat
 import katBlissful from "./rigged-girls/kat/kat-blissful.png"
@@ -123,7 +132,34 @@ import key from "./items/key.png"
 import sceneViewBook from "./scene-view/book01.png"
 import sceneViewNotebook from "./scene-view/notebook-01.png"
 
-const liz2Heads = [liz1, liz2, liz3, liz4, liz5]
+const liz2Heads = [
+  liz1,
+  liz2,
+  liz3,
+  liz4,
+  liz5,
+  liz6,
+  liz7,
+  liz8,
+  liz9,
+  liz10,
+  liz11,
+  liz12,
+  liz13,
+  liz14,
+  liz15,
+  liz16,
+  liz17,
+  liz18,
+  liz19,
+  liz20,
+  liz21,
+  liz22,
+  liz23,
+  liz24,
+  liz25,
+  liz26
+]
 
 const posableLiz = {
   name: "liz2",
@@ -136,8 +172,8 @@ const posableLiz = {
 }
 posableLiz.images.heads = liz2Heads.map(image => {
   return {
-    image: katBody,
-    // image: image,
+    // image: katBody,
+    image: image,
     mood: "liz1"
     // mood: image.toString()
   }
@@ -172,6 +208,7 @@ export default {
     liz,
     liz2,
     kat,
+    gonzay,
     // star,
     bug,
     dragon,
