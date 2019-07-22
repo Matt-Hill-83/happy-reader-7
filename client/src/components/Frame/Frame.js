@@ -22,7 +22,7 @@ class Frame extends Component {
   state = {
     showFacePicker: false,
     showNarrativeEditor: true,
-    showDialogEditor: false
+    showDialogEditor: true
   }
 
   componentWillMount() {
@@ -47,8 +47,6 @@ class Frame extends Component {
 
   selectHead = ({ name, head }) => {
     const { updateFrameSet } = this.props
-    console.log("name", name) // zzz
-    console.log("head", toJS(head)) // zzz
 
     const {
       frame,
@@ -65,8 +63,6 @@ class Frame extends Component {
   }
 
   renderFacePicker = ({ character }) => {
-    console.log("character", toJS(character)) // zzz
-
     const girlImages = Images.posableGirls
     const images = girlImages.find(girl => girl.name === character)
 

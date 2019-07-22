@@ -131,8 +131,10 @@ class MainStory extends React.Component {
 
     const validSceneNames = validScenes.map(scene => scene.name)
 
-    const firstScene = validSceneNames[0]
-    const lastScene = validSceneNames[validSceneNames.length - 1]
+    const firstScene = validScenes[0]
+    const lastScene = validScenes[validScenes.length - 1]
+
+    // TODO - this should return an object, not a name
 
     // If no start and finish scenes are marked, choose some, so the program doesn't break
     return terminalScene || (start ? firstScene : lastScene)
@@ -140,6 +142,8 @@ class MainStory extends React.Component {
 
   initWorld = async () => {
     const startScene = this.getTerminalScene({})
+    console.log("startScene", startScene) // zzz
+
     console.log("startScene", toJS(startScene)) // zzz
 
     startScene.showCloud = false
