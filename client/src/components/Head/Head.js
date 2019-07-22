@@ -6,6 +6,8 @@ import { toJS } from "mobx"
 
 class Head extends Component {
   render() {
+    console.log("this.props", this.props) // zzz
+
     const {
       name,
       head: { image, mood, isEditMode },

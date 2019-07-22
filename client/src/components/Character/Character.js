@@ -30,8 +30,10 @@ class Character extends Component {
     const {
       images: { heads, body }
     } = images
+    console.log("heads", toJS(heads)) // zzz
+    console.log("mood", mood) // zzz
 
-    const head = heads.find(head => head.mood === mood)
+    const head = heads.find(head => head.mood === mood) || heads[0]
 
     const className = `${css.headForBody} ${isEditMode ? "" : css.noBorder}`
 

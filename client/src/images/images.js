@@ -49,6 +49,7 @@ import wizard from "./creatures/wizard.png"
 import zombie from "./creatures/zombie.png"
 import liz from "./creatures/jan-02-normal.png"
 import kat from "./rigged-girls/kat/kat-normal.png"
+import gonzay from "./rigged-girls/gonzay/gonzay-pt-mode.png"
 import star from "./creatures/star.png"
 import end from "./creatures/end.png"
 import start from "./creatures/start.png"
@@ -68,17 +69,24 @@ import sky01 from "./backgrounds/sky-01.png"
 import map from "./backgrounds/map-05.jpg"
 import rock from "./backgrounds/rock-2.jpg"
 
-// rigged girl - amber
+// rigged girl - liz
 import janBlissful from "./rigged-girls/jan/jan-09-blissful.png"
 import janBody from "./rigged-girls/jan/jan-body.png"
 import janHappy from "./rigged-girls/jan/jan-07-happy.png"
 import janMad from "./rigged-girls/jan/jan-04-mad.png"
+import janSurprised from "./rigged-girls/jan/jan-04-mad.png"
 import janNormal from "./rigged-girls/jan/jan-02-normal.png"
 import janRepulsed from "./rigged-girls/jan/jan-08-repulsed.png"
 import janScared from "./rigged-girls/jan/jan-01-scared.png"
 import janSneaky from "./rigged-girls/jan/jan-06-sneaky.png"
 import janSorry from "./rigged-girls/jan/jan-05-sorry.png"
-import janSurprised from "./rigged-girls/jan/jan-03-surprised.png"
+
+// liz2
+import liz1 from "./rigged-girls/liz/png/liz-1.png"
+import liz2 from "./rigged-girls/liz/png/liz-2.png"
+import liz3 from "./rigged-girls/liz/png/liz-3.png"
+import liz4 from "./rigged-girls/liz/png/liz-4.png"
+import liz5 from "./rigged-girls/liz/png/liz-5.png"
 
 // rigged girl - kat
 import katBlissful from "./rigged-girls/kat/kat-blissful.png"
@@ -115,6 +123,28 @@ import key from "./items/key.png"
 import sceneViewBook from "./scene-view/book01.png"
 import sceneViewNotebook from "./scene-view/notebook-01.png"
 
+const liz2Heads = [liz1, liz2, liz3, liz4, liz5]
+
+const posableLiz = {
+  name: "liz2",
+  type: "liz2",
+  mood: "liz1",
+  images: {
+    heads: [],
+    body: { image: katBody }
+  }
+}
+posableLiz.images.heads = liz2Heads.map(image => {
+  return {
+    image: katBody,
+    // image: image,
+    mood: "liz1"
+    // mood: image.toString()
+  }
+})
+
+console.log("posableLiz", posableLiz) // zzz
+
 export default {
   locations: {
     slide,
@@ -140,6 +170,8 @@ export default {
   },
   creatures: {
     liz,
+    liz2,
+    kat,
     // star,
     bug,
     dragon,
@@ -156,8 +188,7 @@ export default {
     unicorn,
     // start,
     wizard,
-    zombie,
-    kat
+    zombie
   },
   backgrounds: {
     door,
@@ -181,6 +212,8 @@ export default {
     door
   },
   posableGirls: [
+    posableLiz,
+
     {
       name: "liz",
       type: "liz",
@@ -227,52 +260,7 @@ export default {
         body: { image: janBody }
       }
     },
-    {
-      name: "amber",
-      type: "amber",
-      mood: "frustrated",
-      images: {
-        heads: [
-          {
-            image: amberNormal,
-            mood: "ok"
-          },
-          {
-            image: amberSneaky,
-            mood: "wink"
-          },
-          {
-            image: amberBlissful,
-            mood: "blissful"
-          },
-          {
-            image: amberFrustrated,
-            mood: "frustrated"
-          },
-          {
-            image: amberGlad,
-            mood: "glad"
-          },
-          {
-            image: amberSurprised,
-            mood: "oh my"
-          },
-          {
-            image: amberScared,
-            mood: "scared"
-          },
-          {
-            image: amberMad,
-            mood: "mad"
-          },
-          {
-            image: amberShocked,
-            mood: "shocked"
-          }
-        ],
-        body: { image: amberBody }
-      }
-    },
+
     {
       name: "kat",
       type: "kat",
