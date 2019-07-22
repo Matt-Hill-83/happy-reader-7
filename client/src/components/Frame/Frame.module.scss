@@ -125,7 +125,7 @@
   margin: 0.6rem;
   background: var(--set1-pink-bk);
   border-radius: 0.3rem;
-  width: 95vw;
+  width: 50vw;
 }
 
 .girlPicker {
@@ -144,7 +144,8 @@
   :global {
     [class*="WordGroup_sentenceWord__"] {
       border: 1px solid green !important;
-      font-size: 2.7rem;
+      // font-size: 2.7rem;
+      font-size: 3vmin;
     }
   }
 }

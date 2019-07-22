@@ -58,11 +58,11 @@ class Frame extends Component {
     this.toggleFacePicker()
   }
 
-  renderFacePicker = ({ name, facePickerIndex }) => {
+  renderFacePicker = ({ character }) => {
     const girlImages = Images.posableGirls
+    const images = girlImages.find(girl => girl.name === character)
 
-    const images = girlImages.find(girl => girl.name === name)
-
+    // For characters with no posable images
     if (!images) return null
 
     const {
@@ -71,22 +71,25 @@ class Frame extends Component {
 
     const headImages = heads.map((head, headIndex) => {
       return (
-        <div key={headIndex} onClick={() => this.selectHead({ head, name })}>
-          <Head name={name} head={head} />
+        <div
+          key={headIndex}
+          onClick={() => this.selectHead({ head, name: character })}
+        >
+          <Head name={character} head={head} />
         </div>
       )
     })
 
     return (
-      <div key={facePickerIndex} className={css.girlPickerContainer}>
+      <div className={css.girlPickerContainer}>
         <div className={css.girlPicker}>{headImages}</div>
       </div>
     )
   }
 
-  toggleFacePicker = () => {
+  toggleFacePicker = ({ character }) => {
     const showFacePicker = !this.state.showFacePicker
-    this.setState({ showFacePicker })
+    this.setState({ showFacePicker, facePickerCharacter: character })
   }
 
   renderedDialog = () => {
@@ -219,7 +222,7 @@ class Frame extends Component {
         <div
           className={css.characterContainer}
           key={index}
-          onClick={this.toggleFacePicker}
+          onClick={() => this.toggleFacePicker({ character: friend })}
         >
           <Character name={friend} mood={mood} isEditMode={isEditMode} />
         </div>
@@ -273,15 +276,9 @@ class Frame extends Component {
     )
   }
 
-  renderFacePickers = ({ allCharacters }) => {
-    return allCharacters.map((name, index) => {
-      return this.renderFacePicker({ name, facePickerIndex: index })
-    })
-  }
-
   render() {
     const { isEditMode = true } = this.props
-    const { frame, showFacePicker } = this.state
+    const { frame, showFacePicker, facePickerCharacter } = this.state
 
     const allCharacters = (frame && frame.creatures) || []
 
@@ -298,7 +295,8 @@ class Frame extends Component {
         </div>
         {isEditMode && showFacePicker && (
           <div className={css.girlPickersContainer}>
-            {isEditMode && this.renderFacePickers({ allCharacters })}
+            {isEditMode &&
+              this.renderFacePicker({ character: facePickerCharacter })}
             <Button
               className={css.closeFacePickerButton}
               onClick={this.toggleFacePicker}
