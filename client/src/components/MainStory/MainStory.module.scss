@@ -30,6 +30,11 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 2%;
+  position: absolute;
+  font-size: 62px;
+  z-index: 1;
+
+  @include set-1;
 }
 
 .toggleWorldBuilder {
@@ -43,8 +48,10 @@
   position: absolute;
   z-index: 5;
   background: var(--color-pink);
-  left: 42%;
-  width: 22%;
+  left: 50%;
+  /* width: 22%; */
+  display: flex;
+  transform: translateX(-50%);
 }
 
 .settingButtons {

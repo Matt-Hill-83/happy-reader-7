@@ -129,7 +129,7 @@ class MainStory extends React.Component {
       return toJS(scene).name
     })
 
-    const validSceneNames = validScenes.map(scene => scene.name)
+    // const validSceneNames = validScenes.map(scene => scene.name)
 
     const firstScene = validScenes[0]
     const lastScene = validScenes[validScenes.length - 1]
@@ -300,18 +300,17 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
+        {renderedMapTitle}
         <div className={css.floatingButtons}>
-          {renderedMapTitle}
           <WorldPicker
-            showDelete={true}
-            // showDelete={false}
+            showDelete={false}
             onChangeMap={({ mapId, index }) =>
               this.onChangeMap({ mapId, index })
             }
           />
-          {false && (
-            <div className={css.settingButtons}>{changeCharacterButton}</div>
-          )}
+          <div className={css.settingButtons}>
+            {false && changeCharacterButton}
+          </div>
         </div>
         <div className={css.body}>
           {!this.state.showStory && <FlashCards />}

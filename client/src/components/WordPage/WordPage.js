@@ -90,6 +90,7 @@ class WordPage extends React.Component {
             </Button>
           )}
 
+          {/* TODO - put NEW GAME button here */}
           {isLastFrame && this.renderButtons()}
         </div>
       </div>

@@ -101,6 +101,8 @@ class Frame extends Component {
     const { isEditMode = true } = this.props
     const { story = [] } = frame
 
+    if (!story.length) return null
+
     const renderedNarrative = story.map((line, lineIndex) => {
       if (isEditMode && showNarrativeEditor) {
         return (
