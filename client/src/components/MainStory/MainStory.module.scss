@@ -27,12 +27,18 @@
 
 .mapTitle {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   align-items: flex-start;
-  padding: 2%;
+  padding: 1rem;
   position: absolute;
-  font-size: 62px;
+  font-size: 4vmin;
   z-index: 1;
+  border: 2px solid var(--set1-purple-brdr);
+  background: var(--set1-lav-bk);
+  font-family: fantasy;
+  font-weight: bold;
+  border-radius: 1rem;
+  top: 1rem;
 
   @include set-1;
 }
