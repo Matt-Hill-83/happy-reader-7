@@ -377,7 +377,8 @@ class MainStory extends React.Component {
         className={css.toggleWorldBuilder}
         onClick={this.toggleWorldBuilder}
       >
-        <span> Toggle World Builder </span>
+        <span> t </span>
+        {/* <span> Toggle World Builder </span> */}
       </Button>
     )
 
