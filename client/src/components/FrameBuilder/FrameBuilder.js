@@ -165,7 +165,6 @@ class FrameBuilder extends Component {
 
     return (
       <div className={css.main}>
-        {/* {this.renderLocation()} */}
         {scene && this.renderFrames()}
 
         {scene && (
