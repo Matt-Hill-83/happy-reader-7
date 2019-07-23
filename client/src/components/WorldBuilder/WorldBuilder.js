@@ -738,8 +738,7 @@ class WorldBuilder extends Component {
               updateMap={this.updateMap}
             />
           )}
-          {/* {this.state.editWorld && this.renderSimpleWorld()} */}
-          {!this.state.editWorld && (
+          {!showFrameBuilder && !this.state.editWorld && (
             <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
               {/* Create these with .map() */}
               {this.renderList({
