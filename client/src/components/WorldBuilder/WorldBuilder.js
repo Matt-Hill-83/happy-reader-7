@@ -60,7 +60,9 @@ class WorldBuilder extends Component {
   }
 
   initDraggableStuff = async () => {
-    const { allItems, allScenes } = localStateStore.getPlot()
+    const { allItems = [], allScenes = [] } = localStateStore.getPlot()
+    console.log("allScenes - WB", toJS(allScenes)) // zzz
+
     const allCreatures = localStateStore.getCreatures()
 
     const locations = allScenes.map((item, index) => {

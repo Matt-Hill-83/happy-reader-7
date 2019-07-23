@@ -27,6 +27,9 @@ import WorldPicker from "../WorldPicker/WorldPicker.js"
 
 import css from "./MainStory.module.scss"
 
+const SHOW_WORLD_BUILDER = true
+// const SHOW_WORLD_BUILDER = false
+
 class MainStory extends React.Component {
   state = {
     // showStory: false,
@@ -67,8 +70,9 @@ class MainStory extends React.Component {
       localStateStore.setPage("intro2")
     }
 
-    const showWorldBuilder = localStateStore.getShowWorldBuilder()
-    if (showWorldBuilder) return
+    // const showWorldBuilder = SHOW_WORLD_BUILDER
+    localStateStore.setShowWorldBuilder(SHOW_WORLD_BUILDER)
+    if (SHOW_WORLD_BUILDER) return
 
     this.initWorld()
   }
@@ -238,7 +242,6 @@ class MainStory extends React.Component {
     // TODO - get rid of all this plot stuff
     if (newShowWorldBuilder === false) {
       this.init()
-      // this.updateActiveScene({ activeScene: plot.activeScene })
     }
   }
 

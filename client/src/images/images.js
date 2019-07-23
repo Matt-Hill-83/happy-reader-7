@@ -229,7 +229,7 @@ posableKat.images.heads = katHeads.map(image => {
 export default {
   locations: {
     slide,
-    // swamp,
+    swamp,
     swing,
     bees,
     bog,
