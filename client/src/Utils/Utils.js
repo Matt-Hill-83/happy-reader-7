@@ -147,12 +147,22 @@ export default class Utils {
         {
           character: creatureName0,
           characterIndex: 0,
-          text: `Hi ${creatureName1}.`
+          text: `Hi.`
         },
         {
           character: creatureName1,
           characterIndex: 1,
-          text: `${creatureName0}! ${creatureName0}!!`
+          text: `Hi!`
+        },
+        {
+          character: creatureName1,
+          characterIndex: 0,
+          text: `Hi!`
+        },
+        {
+          character: creatureName1,
+          characterIndex: 1,
+          text: `Hi!`
         }
       ]
     }
