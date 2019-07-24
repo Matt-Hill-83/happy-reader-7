@@ -271,7 +271,7 @@ class Frame extends Component {
 
       return (
         <div
-          className={css.characterContainer}
+          className={`${css.characterContainer}`}
           key={index}
           onClick={() => this.toggleFacePicker({ character: friend })}
         >
@@ -281,7 +281,7 @@ class Frame extends Component {
     })
 
     return (
-      <div className={css.scene}>
+      <div className={`${css.main}  ${isEditMode ? css.editFrame : ""}`}>
         {this.renderBackground()}
         {this.renderLocationImage()}
 

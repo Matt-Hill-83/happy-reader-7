@@ -27,8 +27,8 @@ import WorldPicker from "../WorldPicker/WorldPicker.js"
 
 import css from "./MainStory.module.scss"
 
-// const SHOW_WORLD_BUILDER = true
-const SHOW_WORLD_BUILDER = false
+const SHOW_WORLD_BUILDER = true
+// const SHOW_WORLD_BUILDER = false
 
 class MainStory extends React.Component {
   state = {
@@ -377,8 +377,7 @@ class MainStory extends React.Component {
         className={css.toggleWorldBuilder}
         onClick={this.toggleWorldBuilder}
       >
-        <span> t </span>
-        {/* <span> Toggle World Builder </span> */}
+        <span> /// </span>
       </Button>
     )
 

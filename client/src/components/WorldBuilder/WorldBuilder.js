@@ -580,6 +580,7 @@ class WorldBuilder extends Component {
       title: "Broken Map",
       scenesGrid: scenesGrid,
       order: 0,
+      released: false,
       ignore: false
     }
 

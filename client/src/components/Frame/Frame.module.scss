@@ -1,5 +1,17 @@
 @import "../../Styles/mixins.modules.scss";
 
+.main {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border: 10px solid green !important;
+}
+
+// Resize frames when editing
+.editFrame {
+  border: 10px solid blue !important;
+}
+
 .closeFacePickerButton {
   position: absolute;
   right: 0px;
@@ -139,7 +151,6 @@
   :global {
     [class*="WordGroup_sentenceWord__"] {
       border: 1px solid green !important;
-      // font-size: 2.7rem;
       font-size: 3vmin;
     }
   }
@@ -159,7 +170,7 @@
   min-width: 20vw;
   min-height: 30vw;
   width: 10vw;
-  height: 30vw;
+  height: 35vw;
 }
 
 .girlPickersContainer {
@@ -226,12 +237,6 @@
   height: 72%;
 }
 
-.scene {
-  display: flex;
-  position: relative;
-  overflow: hidden;
-}
-
 .charactersContainer {
   display: flex;
   position: absolute;
@@ -247,18 +252,18 @@
   width: 25%;
 
   &:last-of-type {
-    margin-left: auto;
+    // margin-left: auto;
   }
 
-  &:first-of-type {
-    margin-right: auto;
-    margin-left: unset;
+  &:nth-of-type(3) {
+    margin-left: auto;
+    margin-left: auto;
   }
 }
 
 .editNarrativeContainer {
   display: flex;
-  border: 1px solid blue !important;
+  // border: 1px solid blue !important;
   background: white;
   position: absolute;
   z-index: 100;
