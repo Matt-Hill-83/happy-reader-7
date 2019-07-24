@@ -36,7 +36,6 @@
   [class*="Frame_editingFrame"] {
     min-height: unset;
     height: 20vw;
-    // border: 1px solid red !important;
   }
 }
 
@@ -83,7 +82,7 @@
   z-index: 1;
   padding: 2%;
   width: 100%;
-  bottom: 51%;
+  top: 32%;
   flex-direction: column;
 }
 
@@ -91,13 +90,11 @@
   display: flex;
   z-index: 10;
   flex-direction: column;
-  padding-left: 7%;
   justify-content: flex-end;
-  padding-right: 7%;
   border: 1px solid;
   border-radius: 6px;
   background: white;
-  padding: 1rem;
+  padding: 2%;
   margin-bottom: 1rem;
   position: relative;
 }
@@ -106,15 +103,18 @@
   display: flex;
   z-index: 10;
   flex-direction: column;
-  padding-left: 7%;
   justify-content: flex-end;
-  padding-right: 7%;
   border: 1px solid;
   border-radius: 6px;
   background: white;
-  padding: 1rem;
-  // margin-bottom: 1rem;
+  padding: 2%;
   position: relative;
+
+  :global {
+    [class*="WordGroup_main__"]:last-of-type {
+      margin-bottom: unset;
+    }
+  }
 
   .line {
     margin-bottom: 2%;
@@ -180,9 +180,7 @@
   margin: 0.6rem;
   background: var(--set1-pink-bk);
   border-radius: 0.3rem;
-  /* width: 50vw; */
   height: 100%;
-  /* justify-content: flex-start; */
   align-items: flex-start;
 }
 
@@ -285,7 +283,6 @@
   width: 25%;
 
   &:last-of-type {
-    // margin-left: auto;
   }
 
   &:nth-of-type(3) {
