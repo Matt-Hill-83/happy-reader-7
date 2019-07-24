@@ -314,7 +314,7 @@ class Frame extends Component {
 
           {isEditMode && (
             <Button className={css.closeButton} onClick={this.deleteFrame}>
-              Delete Frame
+              X
             </Button>
           )}
         </div>
