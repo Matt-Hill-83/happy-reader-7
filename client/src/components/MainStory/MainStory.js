@@ -383,7 +383,7 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
-        {toggleWorldBuilderButton}
+        {/* {toggleWorldBuilderButton} */}
         {showWorldBuilder && <WorldBuilder />}
         {!showWorldBuilder && this.renderGame()}
       </div>
