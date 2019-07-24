@@ -301,8 +301,6 @@ class Frame extends Component {
 
     const allCharacters = (frame && frame.creatures) || []
 
-    console.log("isEditMode", isEditMode) // zzz
-
     return (
       <div className={`${css.main} ${isEditMode ? css.editFrame : ""}`}>
         <div

@@ -28,8 +28,6 @@ class LocalStateStore {
 
   getPlot = () => this.plot
   setPlot = plot => {
-    console.log("this.plot", toJS(this.plot)) // zzz
-
     this.plot = plot
   }
 

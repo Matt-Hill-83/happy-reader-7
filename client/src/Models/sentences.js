@@ -28,7 +28,6 @@ const startScene = {
 const locationsFromImages = Object.keys(images.locations)
 const creaturesFromImages = Object.keys(images.creatures)
 const itemsFromImages = Object.keys(images.items)
-console.log("locationsFromImages", toJS(locationsFromImages)) // zzz
 
 const allScenes = locationsFromImages.map(name => {
   return {
@@ -41,8 +40,6 @@ const allScenes = locationsFromImages.map(name => {
     frameSet: { frames: [Utils.getNewFrame({})] }
   }
 })
-
-console.log("allScenes", toJS(allScenes)) // zzz
 
 const allCreatures = creaturesFromImages.map(type => {
   return { type, name: `${type}-creature` }
@@ -57,7 +54,6 @@ localStateStore.setCreatures(allCreatures)
 const allItems = itemsFromImages.map(type => {
   return { type, name: "" }
 })
-console.log("allItems", toJS(allItems)) // zzz
 
 const generatePlot = () => {
   const plot = {
