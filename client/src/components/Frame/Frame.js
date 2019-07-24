@@ -281,7 +281,7 @@ class Frame extends Component {
     })
 
     return (
-      <div className={`${css.main}  ${isEditMode ? css.editFrame : ""}`}>
+      <div className={`${css.scenes}`}>
         {this.renderBackground()}
         {this.renderLocationImage()}
 
@@ -304,7 +304,7 @@ class Frame extends Component {
     console.log("isEditMode", isEditMode) // zzz
 
     return (
-      <>
+      <div className={`${css.main} ${isEditMode ? css.editFrame : ""}`}>
         <div
           className={` ${css.scenesContainer} ${
             isEditMode ? css.editingFrame : ""
@@ -330,7 +330,7 @@ class Frame extends Component {
             </Button>
           </div>
         )}
-      </>
+      </div>
     )
   }
 }

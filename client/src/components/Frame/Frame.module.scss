@@ -1,15 +1,41 @@
 @import "../../Styles/mixins.modules.scss";
 
-.main {
+.scenes {
   display: flex;
   position: relative;
   overflow: hidden;
-  border: 10px solid green !important;
+  // border: 10px solid green !important;
 }
 
 // Resize frames when editing
 .editFrame {
-  border: 10px solid blue !important;
+  // border: 1px solid blue !important;
+
+  [class*="Frame_dialog"] {
+    padding: unset;
+  }
+  [class*="Frame_narrative"] {
+    border: 1px solid red !important;
+    padding: unset;
+    margin-bottom: unset;
+  }
+  [class*="Frame_line"] {
+    padding: unset;
+    margin-bottom: unset !important;
+  }
+  [class*="Character_headForBody"] {
+    bottom: 0;
+  }
+  [class*="Frame_wordsContainer"] {
+    bottom: unset;
+    top: 0%;
+    padding: unset;
+  }
+  [class*="Frame_editingFrame"] {
+    min-height: unset;
+    height: 20vw;
+    border: 1px solid red !important;
+  }
 }
 
 .closeFacePickerButton {
