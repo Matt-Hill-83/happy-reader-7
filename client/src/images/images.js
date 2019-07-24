@@ -57,18 +57,6 @@ import sky01 from "./backgrounds/sky-01.png"
 import map from "./backgrounds/map-05.jpg"
 import rock from "./backgrounds/rock-2.jpg"
 
-// rigged girl - liz
-import janBlissful from "./rigged-girls/jan/jan-09-blissful.png"
-import janBody from "./rigged-girls/jan/jan-body.png"
-import janHappy from "./rigged-girls/jan/jan-07-happy.png"
-import janMad from "./rigged-girls/jan/jan-04-mad.png"
-import janSurprised from "./rigged-girls/jan/jan-04-mad.png"
-import janNormal from "./rigged-girls/jan/jan-02-normal.png"
-import janRepulsed from "./rigged-girls/jan/jan-08-repulsed.png"
-import janScared from "./rigged-girls/jan/jan-01-scared.png"
-import janSneaky from "./rigged-girls/jan/jan-06-sneaky.png"
-import janSorry from "./rigged-girls/jan/jan-05-sorry.png"
-
 // liz2
 import liz1 from "./rigged-girls/liz/png/liz-1.png"
 import liz2 from "./rigged-girls/liz/png/liz-2.png"
@@ -132,7 +120,7 @@ import key from "./items/key.png"
 import sceneViewBook from "./scene-view/book01.png"
 import sceneViewNotebook from "./scene-view/notebook-01.png"
 
-const liz2Heads = [
+const lizHeads = [
   liz1,
   liz2,
   liz3,
@@ -196,7 +184,7 @@ const posableLiz = {
     body: { image: katBody }
   }
 }
-posableLiz.images.heads = liz2Heads.map(image => {
+posableLiz.images.heads = lizHeads.map(image => {
   const regex = `([^/]+?)$`
   const match = image.match(regex)
   const mood = match && match[0]
@@ -219,6 +207,8 @@ const posableKat = {
 posableKat.images.heads = katHeads.map(image => {
   const regex = `([^/]+?)$`
   const match = image.match(regex)
+
+  // We are assigning the file name to the mood since the file names do not contain the mood.
   const mood = match && match[0]
   return {
     image,
@@ -250,7 +240,6 @@ export default {
     waterfall
   },
   creatures: {
-    // liz,
     liz2,
     kat,
     gonzay,
