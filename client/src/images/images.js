@@ -35,11 +35,11 @@ import troll from "./creatures/troll-01.png"
 import unicorn from "./creatures/unicorn-1.png"
 import wizard from "./creatures/wizard.png"
 import zombie from "./creatures/zombie.png"
-import liz from "./creatures/jan-02-normal.png"
 import kat from "./rigged-girls/kat/kat-normal.png"
 import gonzay from "./rigged-girls/gonzay/gonzay-pt-mode.png"
 import star from "./creatures/star.png"
 import end from "./creatures/end.png"
+import poop from "./creatures/poop.png"
 import start from "./creatures/start.png"
 
 //doors
@@ -254,6 +254,7 @@ export default {
     liz2,
     kat,
     gonzay,
+    poop,
     // star,
     bug,
     dragon,

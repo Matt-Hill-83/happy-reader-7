@@ -101,7 +101,9 @@ class Frame extends Component {
     const { isEditMode = true } = this.props
     const { story = [] } = frame
 
-    if (!story.length) return null
+    console.log("story", story) // zzz
+
+    if (!story.length || !story[0]) return null
 
     const renderedNarrative = story.map((line, lineIndex) => {
       if (isEditMode && showNarrativeEditor) {
@@ -299,14 +301,20 @@ class Frame extends Component {
 
     const allCharacters = (frame && frame.creatures) || []
 
+    console.log("isEditMode", isEditMode) // zzz
+
     return (
       <>
-        <div className={css.scenesContainer}>
+        <div
+          className={` ${css.scenesContainer} ${
+            isEditMode ? css.editingFrame : ""
+          }`}
+        >
           {this.renderFrame({ allCharacters })}
 
           {isEditMode && (
             <Button className={css.closeButton} onClick={this.deleteFrame}>
-              <Icon icon={IconNames.CROSS} />
+              Delete Frame
             </Button>
           )}
         </div>

@@ -30,8 +30,6 @@ class Character extends Component {
     const {
       images: { heads, body }
     } = images
-    console.log("heads", toJS(heads)) // zzz
-    console.log("mood", mood) // zzz
 
     const head = heads.find(head => head.mood === mood) || heads[0]
 

@@ -577,7 +577,7 @@ class WorldBuilder extends Component {
 
     const newMap = {
       name: newName,
-      title: "Troll Poop",
+      title: "Broken Map",
       scenesGrid: scenesGrid,
       order: 0,
       ignore: false
@@ -706,29 +706,33 @@ class WorldBuilder extends Component {
 
     return (
       <div className={css.main}>
-        <div className={css.header}>
-          <div className={css.titles}>
-            <div className={css.title}>{`World Builder - world: ${world.data &&
-              world.data.name} - ${world.data && world.data.title}`}</div>
-            <div className={css.subTitle}>
-              {`start: ${world.data && world.data.startScene}`}
-            </div>
-            <div className={css.subTitle}>
-              {`end: ${world.data && world.data.endScene}`}
-            </div>
-            <div className={css.subTitle}>
-              {/* (drag items to create your world...) */}
-              <div className={css.editWorldButtons}>
-                {this.renderSaveMapButton()}
-                {this.renderMapPicker()}
-                <Button
-                  text={"+ New Map"}
-                  onClick={() => this.changeMap({ index: -1 })}
-                />
+        {!showFrameBuilder && (
+          <div className={css.header}>
+            <div className={css.titles}>
+              <div
+                className={css.title}
+              >{`World Builder - world: ${world.data &&
+                world.data.name} - ${world.data && world.data.title}`}</div>
+              <div className={css.subTitle}>
+                {`start: ${world.data && world.data.startScene}`}
+              </div>
+              <div className={css.subTitle}>
+                {`end: ${world.data && world.data.endScene}`}
+              </div>
+              <div className={css.subTitle}>
+                {/* (drag items to create your world...) */}
+                <div className={css.editWorldButtons}>
+                  {this.renderSaveMapButton()}
+                  {this.renderMapPicker()}
+                  <Button
+                    text={"+ New Map"}
+                    onClick={() => this.changeMap({ index: -1 })}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
         <div className={css.content}>
           {showFrameBuilder && (
             <FrameBuilder

@@ -6,8 +6,6 @@ import { toJS } from "mobx"
 
 class Head extends Component {
   render() {
-    console.log("this.props", this.props) // zzz
-
     const {
       name,
       head: { image, mood, isEditMode },
@@ -18,10 +16,6 @@ class Head extends Component {
     if (name === "kat" || name === "liz2") {
       imageClassName = css.girlHeadKat
     }
-
-    // if (name === "liz2") {
-    //   imageClassName = css.girlHeadAmber
-    // }
 
     const imageClass = imageClassName || css.girlHeadAmber
     const containerClass = imageClassName || css.girlHeadAmberContainer
