@@ -45,8 +45,12 @@
   position: absolute;
   display: flex;
   z-index: 1000;
-  left: 0px;
   background-color: transparent !important;
+  // border: 1px solid red;
+  height: 3%;
+  width: 3%;
+  bottom: 1px;
+  right: 0px;
 }
 
 .floatingButtons {

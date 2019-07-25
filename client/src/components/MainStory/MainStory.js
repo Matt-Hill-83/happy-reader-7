@@ -41,7 +41,7 @@ class MainStory extends React.Component {
   }
 
   async componentWillMount() {
-    // I need to make these stored shared singletons
+    // I need to make these stores shared singletons
     await maps.fetch()
     await worldNameStore.fetch()
     await this.init()
@@ -53,7 +53,10 @@ class MainStory extends React.Component {
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
-    savedMaps.forEach(map => {
+    const filteredMaps = savedMaps.filter(map => map.data.released)
+
+    // TODO - I need to get maps by id, not by index, because I'm filtering them.
+    filteredMaps.forEach(map => {
       const grid = this.transformLocationsGridToLocationsMap({
         scenesGrid: map.data.scenesGrid
       })
@@ -61,7 +64,7 @@ class MainStory extends React.Component {
       map.data.grid = grid
     })
 
-    localStateStore.setLocationsMaps(savedMaps)
+    localStateStore.setLocationsMaps(filteredMaps)
 
     if (this.state.showIntro) {
       // localStateStore.setPage("you-picker")
@@ -372,18 +375,18 @@ class MainStory extends React.Component {
     }
 
     const toggleWorldBuilderButton = (
-      <Button
+      <div
         tabIndex={0}
         className={css.toggleWorldBuilder}
         onClick={this.toggleWorldBuilder}
       >
-        <span> /// </span>
-      </Button>
+        <span> / </span>
+      </div>
     )
 
     return (
       <div className={`${css.main} ${className}`}>
-        {/* {toggleWorldBuilderButton} */}
+        {toggleWorldBuilderButton}
         {showWorldBuilder && <WorldBuilder />}
         {!showWorldBuilder && this.renderGame()}
       </div>

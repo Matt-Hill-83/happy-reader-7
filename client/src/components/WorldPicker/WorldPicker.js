@@ -44,11 +44,13 @@ class WorldPicker extends Component {
     const { showDelete } = this.props
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
-    if (!savedMaps[0]) {
+    const filteredMaps = savedMaps.filter(map => map.data.released)
+
+    if (!filteredMaps[0]) {
       return null
     }
 
-    const mapList = savedMaps.map((map, index) => {
+    const mapList = filteredMaps.map((map, index) => {
       const mapId = map.id
       const text = (
         <span
@@ -82,8 +84,6 @@ class WorldPicker extends Component {
   }
 
   render() {
-    console.log("MP - render") // zzz
-
     return <div className={css.main}>{this.renderMapPicker()}</div>
   }
 }

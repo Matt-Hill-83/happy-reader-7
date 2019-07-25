@@ -30,9 +30,18 @@
 }
 
 .mapPickerRow {
+  justify-content: space-between;
+  border: 1px solid green !important;
+  display: inline-flex;
+}
+
+.mapPickerRowButtons {
+  border: 1px solid blue !important;
+}
+
+.mapPickerRowTitle {
   border: 1px solid red !important;
   display: flex;
-  justify-content: space-between;
 }
 
 .editWorldButtons {

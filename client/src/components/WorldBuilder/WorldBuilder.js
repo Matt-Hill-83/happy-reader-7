@@ -24,6 +24,7 @@ import MiniLocation from "../MiniLocation/MiniLocation"
 import Utils from "../../Utils/Utils"
 
 import css from "./WorldBuilder.module.scss"
+import { Checkbox } from "@material-ui/core"
 
 const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
@@ -156,6 +157,23 @@ class WorldBuilder extends Component {
     }
   }
 
+  getMapById = mapId => {
+    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+
+    return savedMaps.find(map => {
+      return map.id === mapId
+    })
+  }
+
+  updateIsReleased = ({ id }) => {
+    const map = this.getMapById(id)
+    console.log("map", toJS(map)) // zzz
+    const released = !map.data.released
+    console.log("released", released) // zzz
+    // map.data.released = !map.data.released
+    map.update({ released })
+  }
+
   renderMapPicker = () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
@@ -164,16 +182,30 @@ class WorldBuilder extends Component {
     }
 
     const mapList = savedMaps.map((map, index) => {
+      const { id } = map
+      const { name, title, released } = map.data
+      // console.log("map.id", map.id) // zzz
+      // console.log("map.data.id", map.data.id) // zzz
+
       const text = (
-        <span
-          className={css.mapPickerRow}
-          onClick={() => this.changeMap({ index })}
-        >
-          {`${map.data.name} - ${map.data.title}`}
-          <span onClick={() => this.onDeleteMap({ map })}>
-            <Icon icon={IconNames.TRASH} />
+        <div className={css.mapPickerRow}>
+          <span
+            className={css.mapPickerRowTitle}
+            onClick={() => this.changeMap({ index })}
+          >
+            {`${name} - ${title}`}
           </span>
-        </span>
+          <div className={css.mapPickerRowButtons}>
+            Released
+            <Checkbox
+              onClick={() => this.updateIsReleased({ id })}
+              checked={released}
+            />
+            <span onClick={() => this.onDeleteMap({ map })}>
+              <Icon icon={IconNames.TRASH} />
+            </span>
+          </div>
+        </div>
       )
       return <MenuItem text={text} />
     })
@@ -663,7 +695,6 @@ class WorldBuilder extends Component {
       >
         {items &&
           items.map((item, index) => {
-            // console.log("item", toJS(item)) // zzz
             if (item === undefined) return null
 
             const { id } = item
@@ -710,10 +741,11 @@ class WorldBuilder extends Component {
         {!showFrameBuilder && (
           <div className={css.header}>
             <div className={css.titles}>
-              <div
-                className={css.title}
-              >{`World Builder - world: ${world.data &&
-                world.data.name} - ${world.data && world.data.title}`}</div>
+              <div className={css.title}>
+                {`World Builder - world: ${world.data &&
+                  world.data.name} - ${world.data && world.data.title}`}
+              </div>
+              <div className={css.isStartSceneCheckBox} />
               <div className={css.subTitle}>
                 {`start: ${world.data && world.data.startScene}`}
               </div>

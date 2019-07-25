@@ -19,6 +19,34 @@ import swing from "./locations/swing.png"
 import tree from "./locations/treehouse.png"
 import waterfall from "./locations/waterfall.png"
 
+// import bug from "./locations/bug.png"
+// import map from "./locations/map.png"
+
+import bag from "./locations/bag.png"
+import bun from "./locations/bun.png"
+import can from "./locations/can.png"
+import cap from "./locations/cap.png"
+import car from "./locations/car.png"
+import cup from "./locations/cup.png"
+import drip from "./locations/drip.png"
+import fan from "./locations/fan.png"
+import fig from "./locations/fig.png"
+import flag from "./locations/flag.png"
+import hoop from "./locations/hoop.png"
+import hug from "./locations/hug.png"
+import jug from "./locations/jug.png"
+import mat from "./locations/mat.png"
+import mop from "./locations/mop.png"
+import mug from "./locations/mug.png"
+import pan from "./locations/pan.png"
+import pin from "./locations/pin.png"
+import rag from "./locations/rag.png"
+import tag from "./locations/tag.png"
+import top from "./locations/top.png"
+import tug from "./locations/tug.png"
+import twig from "./locations/twig.png"
+import van from "./locations/van.png"
+
 // creatures
 import bug from "./creatures/bug.png"
 import dragon from "./creatures/dragon.png"
@@ -41,6 +69,15 @@ import star from "./creatures/star.png"
 import end from "./creatures/end.png"
 import poop from "./creatures/poop.png"
 import start from "./creatures/start.png"
+
+import ant from "./creatures/ant.png"
+import bat from "./creatures/bat.png"
+import bunny from "./creatures/bunny.png"
+import cop from "./creatures/cop.png"
+import cub from "./creatures/cub.png"
+import man from "./creatures/man.png"
+import pug from "./creatures/pug.png"
+import rat from "./creatures/rat.png"
 
 //doors
 import doorGreen from "./doors/doorGreen.png"
@@ -237,7 +274,32 @@ export default {
     tree,
     end,
     bus,
-    waterfall
+    waterfall,
+
+    bag,
+    bun,
+    can,
+    cap,
+    car,
+    cup,
+    drip,
+    fan,
+    fig,
+    flag,
+    hoop,
+    hug,
+    jug,
+    mat,
+    mop,
+    mug,
+    pan,
+    pin,
+    rag,
+    tag,
+    top,
+    tug,
+    // twig,
+    van
   },
   creatures: {
     liz2,
@@ -260,7 +322,15 @@ export default {
     unicorn,
     // start,
     wizard,
-    zombie
+    zombie,
+    ant,
+    bat,
+    bunny,
+    cop,
+    cub,
+    man,
+    pug,
+    rat
   },
   backgrounds: {
     door,

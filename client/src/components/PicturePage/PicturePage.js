@@ -147,7 +147,7 @@ class PicturePage extends React.Component {
           {this.renderStoryPage()}
 
           {this.renderMapPage({})}
-          {this.renderYourItems({})}
+          {false && this.renderYourItems({})}
         </div>
       )
     }
