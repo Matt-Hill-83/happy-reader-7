@@ -11,7 +11,8 @@ import {
   MenuItem,
   Popover,
   PopoverInteractionKind,
-  Position
+  Position,
+  InputGroup
 } from "@blueprintjs/core"
 
 import { IconNames } from "@blueprintjs/icons"
@@ -165,7 +166,7 @@ class WorldBuilder extends Component {
     })
   }
 
-  updateIsReleased = ({ id }) => {
+  updateIsReleasedProperty = ({ id }) => {
     const map = this.getMapById(id)
     console.log("map", toJS(map)) // zzz
     const released = !map.data.released
@@ -198,7 +199,7 @@ class WorldBuilder extends Component {
           <div className={css.mapPickerRowButtons}>
             Released
             <Checkbox
-              onClick={() => this.updateIsReleased({ id })}
+              onClick={() => this.updateIsReleasedProperty({ id })}
               checked={released}
             />
             <span onClick={() => this.onDeleteMap({ map })}>
@@ -731,13 +732,40 @@ class WorldBuilder extends Component {
     )
   }
 
+  onChangeTitle = async ({ event }) => {
+    const { world } = this.state
+
+    world.data.title = event.target.value
+    this.setState({ world })
+  }
+
+  saveTitle = async ({ event }) => {
+    const title = event.target.value
+    await this.updateMap({ title })
+  }
+
   render() {
     console.log("WB - render") // zzz
 
-    const { world, sceneToEdit, showFrameBuilder } = this.state
+    const {
+      world,
+
+      sceneToEdit,
+      showFrameBuilder
+    } = this.state
+
+    const title = world.data.title
+    console.log("title", title) // zzz
 
     return (
       <div className={css.main}>
+        <InputGroup
+          value={title}
+          id="text-input"
+          placeholder="Title"
+          onChange={event => this.onChangeTitle({ event })}
+          onBlur={event => this.saveTitle({ event })}
+        />
         {!showFrameBuilder && (
           <div className={css.header}>
             <div className={css.titles}>

@@ -55,7 +55,6 @@ class FrameBuilder extends Component {
 
   onAddFrame = async () => {
     const {
-      scene,
       scene: { frameSet }
     } = this.state
     const { updateMap } = this.props
@@ -64,19 +63,6 @@ class FrameBuilder extends Component {
     frameSet.frames.push(newFrame)
 
     await updateMap({})
-    // this.setState({ scene })
-  }
-
-  onChangeFrameSetTitle = async ({ event }) => {
-    const frameSet = this.getFrameSet()
-    frameSet.title = event.target.value
-    this.setState({ frameSet })
-  }
-
-  updateFrameSetTitle = async ({ event }) => {
-    const frameSet = this.getFrameSet()
-    frameSet.title = event.target.value
-    this.updateFrameSet({ frameSet })
   }
 
   updateFrameSet = async ({ newProps = {} }) => {

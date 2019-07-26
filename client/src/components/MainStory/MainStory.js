@@ -286,7 +286,7 @@ class MainStory extends React.Component {
 
     const renderedMapTitle = (
       <div className={css.mapTitle}>
-        <span>{`map: ${map.data.name} - ${map.data.title}`}</span>
+        <span>{`map: ${map.data.title}`}</span>
       </div>
     )
 

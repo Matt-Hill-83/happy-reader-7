@@ -56,6 +56,7 @@ class Frame extends Component {
     const thisFace = faces.find(face => face.character === name)
     thisFace.face = head.mood
 
+    //  /TODO - chage to update world maybe?
     updateFrameSet({})
 
     this.setState({ frame })

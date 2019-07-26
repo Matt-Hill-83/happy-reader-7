@@ -57,7 +57,7 @@ class WorldPicker extends Component {
           className={css.mapPickerRow}
           onClick={() => this.changeMap({ index, mapId })}
         >
-          {`${map.data.name} - ${map.data.title}`}
+          {`${map.data.title}`}
           {showDelete && (
             <span onClick={() => this.onDeleteMap({ map })}>
               <Icon icon={IconNames.TRASH} />
