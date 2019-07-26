@@ -284,9 +284,11 @@ class MainStory extends React.Component {
 
     const map = localStateStore.getActiveMap()
 
+    const { title, order } = map.data
+
     const renderedMapTitle = (
       <div className={css.mapTitle}>
-        <span>{`map: ${map.data.title}`}</span>
+        <span>{`map ${order}: ${title}`}</span>
       </div>
     )
 

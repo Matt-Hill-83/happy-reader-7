@@ -169,4 +169,68 @@ export default class Utils {
 
     return newFrame
   }
+
+  static sortDataByKey(data, key, order, tiebreakerKey) {
+    const isAscending = order === "ASC"
+    return data.sort(function(item1, item2) {
+      const val1 = item1[key]
+        ? item1[key]
+            .toString()
+            .trim()
+            .toLowerCase()
+        : ""
+      const val2 = item2[key]
+        ? item2[key]
+            .toString()
+            .trim()
+            .toLowerCase()
+        : ""
+      if (val1 < val2) {
+        return isAscending ? -1 : 1 // Lower if ascending
+      } else if (val1 > val2) {
+        return isAscending ? 1 : -1 // Higher if ascending
+        // for tiebreaker
+      } else if (tiebreakerKey) {
+        const tiebreakerVal1 = item1[tiebreakerKey]
+          ? item1[tiebreakerKey]
+              .toString()
+              .trim()
+              .toLowerCase()
+          : ""
+        const tiebreakerVal2 = item2[tiebreakerKey]
+          ? item2[tiebreakerKey]
+              .toString()
+              .trim()
+              .toLowerCase()
+          : ""
+        if (tiebreakerVal1 < tiebreakerVal2) {
+          return isAscending ? -1 : 1
+        } else if (tiebreakerVal1 > tiebreakerVal2) {
+          return isAscending ? 1 : -1
+        }
+      }
+      return 0
+    })
+  }
+
+  // Sorts array of objects based on the value of a deeply nested property.
+  // Properties should be ordered sequentially in keys array.
+  static sortDataByNestedKey({ data, keys, order }) {
+    function getNestedValue(data, keys) {
+      let result = data
+      keys.forEach(key => (result ? (result = result[key]) : null))
+
+      return result ? result.toString().toLowerCase() : ""
+    }
+
+    const isAscending = order === "ASC"
+    return data.sort(function(item1, item2) {
+      if (getNestedValue(item1, keys) < getNestedValue(item2, keys)) {
+        return isAscending ? -1 : 1 // Lower if ascending
+      } else if (getNestedValue(item1, keys) > getNestedValue(item2, keys)) {
+        return isAscending ? 1 : -1 // Higher if ascending
+      }
+      return 0
+    })
+  }
 }

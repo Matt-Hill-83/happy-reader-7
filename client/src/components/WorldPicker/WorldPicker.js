@@ -4,20 +4,18 @@ import { toJS } from "mobx"
 
 import {
   Button,
-  Dialog,
   Icon,
   Menu,
   MenuItem,
   Popover,
-  PopoverInteractionKind,
   Position
 } from "@blueprintjs/core"
 
 import { IconNames } from "@blueprintjs/icons"
 import { maps } from "../../Stores/InitStores"
+import Utils from "../../Utils/Utils"
 
 import css from "./WorldPicker.module.scss"
-import Utils from "../../Utils/Utils"
 
 class WorldPicker extends Component {
   state = {}
@@ -43,21 +41,28 @@ class WorldPicker extends Component {
   renderMapPicker = () => {
     const { showDelete } = this.props
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-
     const filteredMaps = savedMaps.filter(map => map.data.released)
 
     if (!filteredMaps[0]) {
       return null
     }
 
-    const mapList = filteredMaps.map((map, index) => {
+    const sortedMaps = Utils.sortDataByNestedKey({
+      data: filteredMaps,
+      keys: ["data", "order"],
+      order: "ASC"
+    })
+
+    const mapList = sortedMaps.map((map, index) => {
+      const { title, order } = map.data
+
       const mapId = map.id
       const text = (
         <span
           className={css.mapPickerRow}
           onClick={() => this.changeMap({ index, mapId })}
         >
-          {`${map.data.title}`}
+          {`map ${order}: ${title}`}
           {showDelete && (
             <span onClick={() => this.onDeleteMap({ map })}>
               <Icon icon={IconNames.TRASH} />

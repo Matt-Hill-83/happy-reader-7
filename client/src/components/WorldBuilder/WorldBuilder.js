@@ -766,7 +766,7 @@ class WorldBuilder extends Component {
     } = this.state
 
     const title = (world.data && world.data.title) || ""
-    const order = (world.data && world.data.order) || 0
+    const order = (world.data && world.data.order) || 999
 
     // const { title, order } = toJS(world)
 
