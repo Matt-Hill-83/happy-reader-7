@@ -754,7 +754,7 @@ class WorldBuilder extends Component {
       showFrameBuilder
     } = this.state
 
-    const title = world.data.title
+    const title = (world.data && world.data.title) || ""
     console.log("title", title) // zzz
 
     return (

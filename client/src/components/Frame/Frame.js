@@ -268,6 +268,8 @@ class Frame extends Component {
     const { isEditMode = true } = this.props
 
     const renderedFriends = allCharacters.map((friend, index) => {
+      console.log("friend", toJS(friend)) // zzz
+
       const mood = this.getMood({ name: friend, faces })
 
       return (

@@ -13,7 +13,7 @@ class Head extends Component {
     } = this.props
 
     let imageClassName = ""
-    if (name === "kat" || name === "liz2") {
+    if (name === "kat" || name === "liz2" || name === "chad") {
       imageClassName = css.girlHeadKat
     }
 

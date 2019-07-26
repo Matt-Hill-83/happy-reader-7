@@ -122,6 +122,17 @@ import liz24 from "./rigged-girls/liz/png/liz-24.png"
 import liz25 from "./rigged-girls/liz/png/liz-25.png"
 import liz26 from "./rigged-girls/liz/png/liz-26.png"
 
+// chad2
+import chad01 from "./rigged-girls/chad/chad-01.png"
+import chad02 from "./rigged-girls/chad/chad-02.png"
+import chad03 from "./rigged-girls/chad/chad-03.png"
+import chad04 from "./rigged-girls/chad/chad-04.png"
+import chad05 from "./rigged-girls/chad/chad-05.png"
+import chad06 from "./rigged-girls/chad/chad-06.png"
+import chad07 from "./rigged-girls/chad/chad-07.png"
+import chad08 from "./rigged-girls/chad/chad-08.png"
+import chad09 from "./rigged-girls/chad/chad-09.png"
+
 // rigged girl - kat
 import katBlissful from "./rigged-girls/kat/kat-blissful.png"
 import katBody from "./rigged-girls/jan/jan-body.png"
@@ -186,6 +197,18 @@ const lizHeads = [
   liz26
 ]
 
+const chadHeads = [
+  chad01,
+  chad02,
+  chad03,
+  chad04,
+  chad05,
+  chad06,
+  chad07,
+  chad08,
+  chad09
+]
+
 const katHeads = [
   katBlissful,
   katCringing,
@@ -212,6 +235,30 @@ const katHeads = [
   katWinking
 ]
 
+const posableChad = {
+  name: "chad",
+  type: "chad",
+  mood: "chad1",
+  images: {
+    heads: [],
+    body: { image: katBody }
+  }
+}
+
+posableChad.images.heads = chadHeads.map(image => {
+  const regex = `([^/]+?)$`
+  const match = image.match(regex)
+  const mood = match && match[0]
+  console.log("mood", mood) // zzz
+
+  return {
+    image,
+    mood
+  }
+})
+
+console.log("posableChad", posableChad) // zzz
+
 const posableLiz = {
   name: "liz2",
   type: "liz2",
@@ -221,6 +268,7 @@ const posableLiz = {
     body: { image: katBody }
   }
 }
+
 posableLiz.images.heads = lizHeads.map(image => {
   const regex = `([^/]+?)$`
   const match = image.match(regex)
@@ -252,6 +300,7 @@ posableKat.images.heads = katHeads.map(image => {
     mood
   }
 })
+console.log("posableKat", posableKat) // zzz
 
 export default {
   locations: {
@@ -303,6 +352,7 @@ export default {
   creatures: {
     liz2,
     kat,
+    chad: chad01,
     gonzay,
     poop,
     // star,
@@ -395,7 +445,7 @@ export default {
     doorYellow,
     door
   },
-  posableGirls: [posableLiz, posableKat],
+  posableGirls: [posableLiz, posableKat, posableChad],
   sceneView: {
     book: sceneViewBook,
     notebook: sceneViewNotebook
