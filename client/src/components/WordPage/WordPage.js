@@ -71,6 +71,8 @@ class WordPage extends React.Component {
       isLastFrame = true
     }
 
+    console.log("isLastFrame", isLastFrame) // zzz
+
     const frame = frameSet.frames[frameIndex]
 
     return (
