@@ -612,7 +612,7 @@ class WorldBuilder extends Component {
       name: newName,
       title: "Broken Map",
       scenesGrid: scenesGrid,
-      order: 0,
+      order: 99,
       released: false,
       ignore: false
     }
@@ -734,7 +734,6 @@ class WorldBuilder extends Component {
 
   onChangeTitle = async ({ event }) => {
     const { world } = this.state
-
     world.data.title = event.target.value
     this.setState({ world })
   }
@@ -742,6 +741,18 @@ class WorldBuilder extends Component {
   saveTitle = async ({ event }) => {
     const title = event.target.value
     await this.updateMap({ title })
+  }
+
+  onChangeOrder = async ({ event }) => {
+    const { world } = this.state
+
+    world.data.order = event.target.value
+    this.setState({ world })
+  }
+
+  saveOrder = async ({ event }) => {
+    const order = event.target.value
+    await this.updateMap({ order })
   }
 
   render() {
@@ -755,6 +766,10 @@ class WorldBuilder extends Component {
     } = this.state
 
     const title = (world.data && world.data.title) || ""
+    const order = (world.data && world.data.order) || 0
+
+    // const { title, order } = toJS(world)
+
     console.log("title", title) // zzz
 
     return (
@@ -765,6 +780,13 @@ class WorldBuilder extends Component {
           placeholder="Title"
           onChange={event => this.onChangeTitle({ event })}
           onBlur={event => this.saveTitle({ event })}
+        />
+        <InputGroup
+          value={order}
+          id="text-input"
+          placeholder="Order"
+          onChange={event => this.onChangeOrder({ event })}
+          onBlur={event => this.saveOrder({ event })}
         />
         {!showFrameBuilder && (
           <div className={css.header}>
