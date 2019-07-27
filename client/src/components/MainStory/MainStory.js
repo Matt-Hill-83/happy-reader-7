@@ -175,12 +175,7 @@ class MainStory extends React.Component {
       sceneName: activeSceneName
     })
 
-    if (activeSceneName === endScene.name) {
-      this.setState({ showYouWin: true })
-    }
-
     activeScene.neighborNames = this.getNeighbors({ activeScene, map })
-
     activeScene.showCloud = false
 
     this.setState({ activeScene })
@@ -248,16 +243,12 @@ class MainStory extends React.Component {
     }
   }
 
-  closeYouWin = () => {
+  closeYouWinModal = () => {
     this.setState({ showYouWin: false })
-    // const isLastMap = localStateStore.isLastMap()
+  }
 
-    // if (!isLastMap) {
-    //   localStateStore.incrementActiveLocationsMapIndex()
-    //   const startScene = this.getTerminalScene({})
-
-    //   this.updateActiveScene({ activeScene: startScene })
-    // }
+  openYouWinModal = () => {
+    this.setState({ showYouWin: true })
   }
 
   changeMap = ({ index }) => {
@@ -282,6 +273,10 @@ class MainStory extends React.Component {
       return null
     }
 
+    const { isEndScene } = activeScene
+
+    console.log("isEndScene", isEndScene) // zzz
+
     const map = localStateStore.getActiveMap()
 
     const { title, order } = map.data
@@ -304,8 +299,6 @@ class MainStory extends React.Component {
 
     const isLastMap = localStateStore.isLastMap()
 
-    const youWinMessage = isLastMap ? "You Win!" : "Good Job!"
-
     return (
       <div className={`${css.main} ${className}`}>
         {renderedMapTitle}
@@ -327,21 +320,30 @@ class MainStory extends React.Component {
               <PicturePage
                 updateActiveScene={this.updateActiveScene}
                 activeScene={activeScene}
+                openYouWinModal={this.openYouWinModal}
               />
             </div>
           )}
         </div>
 
-        {false && (
+        {this.state.showYouWin && (
           <Dialog
             isOpen={this.state.showYouWin}
             isCloseButtonShown={true}
             className={css.levelCompleteDialog}
           >
-            <span className={css.levelCompletionMessage}>{youWinMessage}</span>
+            <span
+              className={css.levelCompletionMessage}
+            >{`Choose a new Map`}</span>
+            <WorldPicker
+              showDelete={false}
+              onChangeMap={({ mapId, index }) =>
+                this.onChangeMap({ mapId, index })
+              }
+            />
             <Button
               className={css.levelCompletionButton}
-              onClick={this.closeYouWin}
+              onClick={this.closeYouWinModal}
             >
               GO
             </Button>

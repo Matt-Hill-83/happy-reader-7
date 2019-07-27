@@ -36,23 +36,39 @@ class WordPage extends React.Component {
     this.props.updateActiveScene({ activeScene: newScene })
   }
 
+  openYouWinModal = () => {
+    this.props.openYouWinModal()
+  }
+
   renderButtons = () => {
     const { activeScene } = this.state
     const neighbors = activeScene.neighborNames
 
-    const buttons = neighbors.map((neighbor, i) => {
-      if (!neighbor) {
-        return null
-      }
+    const { isEndScene } = activeScene
 
-      const onClick = () => this.changeLocation({ sceneName: neighbor })
-
+    let buttons
+    if (isEndScene) {
       return (
-        <Button key={i} onClick={onClick} className={css.choiceButton}>
-          {neighbor}
+        <Button onClick={this.openYouWinModal} className={css.newGameButton}>
+          New Game
         </Button>
       )
-    })
+    } else {
+      buttons = neighbors.map((neighbor, i) => {
+        if (!neighbor) {
+          return null
+        }
+
+        const onClick = () => this.changeLocation({ sceneName: neighbor })
+
+        return (
+          <Button key={i} onClick={onClick} className={css.choiceButton}>
+            {neighbor}
+          </Button>
+        )
+      })
+    }
+
     return <div className={css.decisionButtonRow}>GO TO{buttons}</div>
   }
 
@@ -70,8 +86,6 @@ class WordPage extends React.Component {
     if (!frameSet) {
       isLastFrame = true
     }
-
-    console.log("isLastFrame", isLastFrame) // zzz
 
     const frame = frameSet.frames[frameIndex]
 

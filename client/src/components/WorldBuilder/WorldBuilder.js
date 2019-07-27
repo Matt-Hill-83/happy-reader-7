@@ -52,7 +52,6 @@ class WorldBuilder extends Component {
     [SOURCE_CREATURES_PROP_NAME]: [],
     [SOURCE_LOCATIONS_PROP_NAME]: [],
     editWorld: false
-    // editWorld: true
   }
 
   async componentWillMount() {

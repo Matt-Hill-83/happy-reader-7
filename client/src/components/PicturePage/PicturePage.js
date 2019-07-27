@@ -95,17 +95,15 @@ class PicturePage extends React.Component {
   }
 
   renderStoryPage = () => {
-    const { activeScene, updateActiveScene } = this.props
-
-    const activeLocationName = activeScene.name
+    const { activeScene, updateActiveScene, openYouWinModal } = this.props
 
     return (
       <div className={`${css.halfPage} ${css.leftHalf}`}>
         <WordPage
           updateActiveScene={updateActiveScene}
           activeScene={activeScene}
+          openYouWinModal={openYouWinModal}
         />
-        {/* <div className={css.locationHeader}>{`${activeLocationName}`}</div> */}
       </div>
     )
   }
