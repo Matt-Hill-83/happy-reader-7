@@ -81,7 +81,7 @@ class WorldPicker extends Component {
         content={renderedMapList}
         position={Position.BOTTOM}
       >
-        <Button icon="share" text="Load Map" />
+        <Button text="All Maps" />
       </Popover>
     )
 

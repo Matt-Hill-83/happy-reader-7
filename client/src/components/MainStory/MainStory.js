@@ -12,7 +12,6 @@ import IntroPage1 from "../IntroPage1/IntroPage1.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import mySentences from "../../Models/sentences.js"
 import PicturePage from "../PicturePage/PicturePage"
-import StoryPickerPage from "../StoryPickerPage/StoryPickerPage"
 import Utils from "../../Utils/Utils"
 import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 import WorldPicker from "../WorldPicker/WorldPicker.js"
@@ -264,7 +263,14 @@ class MainStory extends React.Component {
     return (
       <div className={`${css.main} ${className}`}>
         {renderedMapTitle}
-        <div className={css.floatingButtons} />
+        <div className={css.floatingButtons}>
+          <WorldPicker
+            showDelete={false}
+            onChangeMap={({ mapId, index }) =>
+              this.onChangeMap({ mapId, index })
+            }
+          />
+        </div>
         <div className={css.body}>
           {!this.state.showStory && <FlashCards />}
           {this.state.showStory && (
@@ -286,7 +292,7 @@ class MainStory extends React.Component {
           >
             <span
               className={css.levelCompletionMessage}
-            >{`Choose a new Map`}</span>
+            >{`Get a new Map`}</span>
             <WorldPicker
               showDelete={false}
               onChangeMap={({ mapId, index }) =>
