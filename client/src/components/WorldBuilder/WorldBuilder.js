@@ -766,8 +766,6 @@ class WorldBuilder extends Component {
       (world.data && world.data.title) || this.previousTitle + " copy"
     const order = (world.data && world.data.order) || 999
 
-    console.log("title", title) // zzz
-
     return (
       <div className={css.main}>
         <InputGroup
