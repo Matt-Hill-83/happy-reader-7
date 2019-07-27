@@ -3,15 +3,7 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
 
-import {
-  Button,
-  Dialog,
-  Menu,
-  MenuItem,
-  Popover,
-  PopoverInteractionKind,
-  Position
-} from "@blueprintjs/core"
+import { Button, Dialog } from "@blueprintjs/core"
 
 import { maps } from "../../Stores/InitStores.js"
 import { worldNameStore } from "../../Stores/FrameSetStore"
@@ -32,16 +24,16 @@ const SHOW_WORLD_BUILDER = false
 
 class MainStory extends React.Component {
   state = {
-    // showStory: false,
     showStory: true,
     activeScene: undefined,
     pages: {},
-    showIntro: false
-    // showIntro: true
+    showIntro: false,
+    showYouWinModal: true
   }
 
   async componentWillMount() {
     // I need to make these stores shared singletons
+    //  Move these to App.js
     await maps.fetch()
     await worldNameStore.fetch()
     await this.init()
@@ -52,7 +44,6 @@ class MainStory extends React.Component {
     mySentences.generatePlot({})
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-
     const filteredMaps = savedMaps.filter(map => map.data.released)
 
     // TODO - I need to get maps by id, not by index, because I'm filtering them.
@@ -66,14 +57,6 @@ class MainStory extends React.Component {
 
     localStateStore.setLocationsMaps(filteredMaps)
 
-    if (this.state.showIntro) {
-      // localStateStore.setPage("you-picker")
-      localStateStore.setPage("story-picker")
-    } else {
-      localStateStore.setPage("intro2")
-    }
-
-    // const showWorldBuilder = SHOW_WORLD_BUILDER
     localStateStore.setShowWorldBuilder(SHOW_WORLD_BUILDER)
     if (SHOW_WORLD_BUILDER) return
 
@@ -136,12 +119,8 @@ class MainStory extends React.Component {
       return toJS(scene).name
     })
 
-    // const validSceneNames = validScenes.map(scene => scene.name)
-
     const firstScene = validScenes[0]
     const lastScene = validScenes[validScenes.length - 1]
-
-    // TODO - this should return an object, not a name
 
     // If no start and finish scenes are marked, choose some, so the program doesn't break
     return terminalScene || (start ? firstScene : lastScene)
@@ -150,13 +129,11 @@ class MainStory extends React.Component {
   initWorld = async () => {
     const startScene = this.getTerminalScene({})
     console.log("startScene", startScene) // zzz
-
     console.log("startScene", toJS(startScene)) // zzz
 
     startScene.showCloud = false
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
-    // localStateStore.setPage("story-picker")
   }
 
   updateActiveScene = ({ activeScene }) => {
@@ -244,11 +221,11 @@ class MainStory extends React.Component {
   }
 
   closeYouWinModal = () => {
-    this.setState({ showYouWin: false })
+    this.setState({ showYouWinModal: false })
   }
 
   openYouWinModal = () => {
-    this.setState({ showYouWin: true })
+    this.setState({ showYouWinModal: true })
   }
 
   changeMap = ({ index }) => {
@@ -274,12 +251,9 @@ class MainStory extends React.Component {
     }
 
     const { isEndScene } = activeScene
-
-    console.log("isEndScene", isEndScene) // zzz
-
     const map = localStateStore.getActiveMap()
-
     const { title, order } = map.data
+    console.log("isEndScene", isEndScene) // zzz
 
     const renderedMapTitle = (
       <div className={css.mapTitle}>
@@ -287,32 +261,10 @@ class MainStory extends React.Component {
       </div>
     )
 
-    const changeCharacterButton = (
-      <Button
-        tabIndex={0}
-        className={css.newStoryBtn}
-        onClick={this.changeCharacter}
-      >
-        <span>Change Character</span>
-      </Button>
-    )
-
-    const isLastMap = localStateStore.isLastMap()
-
     return (
       <div className={`${css.main} ${className}`}>
         {renderedMapTitle}
-        <div className={css.floatingButtons}>
-          <WorldPicker
-            showDelete={false}
-            onChangeMap={({ mapId, index }) =>
-              this.onChangeMap({ mapId, index })
-            }
-          />
-          <div className={css.settingButtons}>
-            {false && changeCharacterButton}
-          </div>
-        </div>
+        <div className={css.floatingButtons} />
         <div className={css.body}>
           {!this.state.showStory && <FlashCards />}
           {this.state.showStory && (
@@ -326,9 +278,9 @@ class MainStory extends React.Component {
           )}
         </div>
 
-        {this.state.showYouWin && (
+        {this.state.showYouWinModal && (
           <Dialog
-            isOpen={this.state.showYouWin}
+            isOpen={this.state.showYouWinModal}
             isCloseButtonShown={true}
             className={css.levelCompleteDialog}
           >
@@ -345,7 +297,7 @@ class MainStory extends React.Component {
               className={css.levelCompletionButton}
               onClick={this.closeYouWinModal}
             >
-              GO
+              PLAY
             </Button>
           </Dialog>
         )}
@@ -369,14 +321,14 @@ class MainStory extends React.Component {
       )
     }
 
-    if (page === "story-picker") {
-      return (
-        <StoryPickerPage
-          className={css.IntroPage1}
-          initWorld={this.initWorld}
-        />
-      )
-    }
+    // if (page === "story-picker") {
+    //   return (
+    //     <StoryPickerPage
+    //       className={css.IntroPage1}
+    //       initWorld={this.initWorld}
+    //     />
+    //   )
+    // }
 
     const toggleWorldBuilderButton = (
       <div
