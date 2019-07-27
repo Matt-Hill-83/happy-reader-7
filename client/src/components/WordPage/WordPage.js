@@ -53,7 +53,7 @@ class WordPage extends React.Component {
         </Button>
       )
     })
-    return <div className={css.decisionButtonRow}>GO TO-a-{buttons}</div>
+    return <div className={css.decisionButtonRow}>GO TO-b-{buttons}</div>
   }
 
   onClickNext = () => {
