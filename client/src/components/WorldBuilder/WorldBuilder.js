@@ -168,10 +168,7 @@ class WorldBuilder extends Component {
 
   updateIsReleasedProperty = ({ id }) => {
     const map = this.getMapById(id)
-    console.log("map", toJS(map)) // zzz
     const released = !map.data.released
-    console.log("released", released) // zzz
-    // map.data.released = !map.data.released
     map.update({ released })
   }
 
@@ -185,8 +182,6 @@ class WorldBuilder extends Component {
     const mapList = savedMaps.map((map, index) => {
       const { id } = map
       const { name, title, released } = map.data
-      // console.log("map.id", map.id) // zzz
-      // console.log("map.data.id", map.data.id) // zzz
 
       const text = (
         <div className={css.mapPickerRow}>
@@ -210,8 +205,6 @@ class WorldBuilder extends Component {
       )
       return <MenuItem text={text} />
     })
-
-    // mapList.push(newMap)
 
     const renderedMapList = <Menu>{mapList}</Menu>
 
