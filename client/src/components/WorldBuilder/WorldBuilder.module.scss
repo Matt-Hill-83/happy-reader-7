@@ -33,15 +33,18 @@
   justify-content: space-between;
   border: 1px solid green !important;
   display: inline-flex;
+  width: 100%;
+  align-items: center;
 }
 
 .mapPickerRowButtons {
-  border: 1px solid blue !important;
+  // border: 1px solid blue !important;
 }
 
 .mapPickerRowTitle {
-  border: 1px solid red !important;
+  // border: 1px solid red !important;
   display: flex;
+  flex: 1;
 }
 
 .editWorldButtons {
@@ -79,6 +82,15 @@
   top: 0px;
   z-index: 1000;
   right: 0px;
+}
+
+.worldPickerDropdownPopover {
+  :global {
+    .bp3-transition-container {
+      z-index: 200;
+      border: 1px solid red !important;
+    }
+  }
 }
 
 .locationGridContainer {

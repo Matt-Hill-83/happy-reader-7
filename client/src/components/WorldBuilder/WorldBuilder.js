@@ -218,6 +218,7 @@ class WorldBuilder extends Component {
     const worldPicker = (
       <Popover
         className={css.worldPickerDropdown}
+        portalClassName={css.worldPickerDropdownPopover}
         content={renderedMapList}
         position={Position.BOTTOM}
       >
@@ -765,10 +766,12 @@ class WorldBuilder extends Component {
       showFrameBuilder
     } = this.state
 
-    const title = (world.data && world.data.title) || "New Story"
-    const order = (world.data && world.data.order) || 999
+    // Record title for when map is copied
+    this.previousTitle = (world.data && world.data.title) || this.previousTitle
 
-    // const { title, order } = toJS(world)
+    const title =
+      (world.data && world.data.title) || this.previousTitle + " copy"
+    const order = (world.data && world.data.order) || 999
 
     console.log("title", title) // zzz
 
