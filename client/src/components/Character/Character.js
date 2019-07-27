@@ -13,12 +13,8 @@ const girlImages = Images.posableGirls
 class Character extends Component {
   render() {
     const { name, mood, isEditMode } = this.props
-    console.log("name", name) // zzz
-
-    console.log("girlImages", girlImages) // zzz
 
     const images = girlImages.find(girl => girl.name === name)
-    console.log("images", toJS(images)) // zzz
 
     // if there are no posable images
     if (!images) {

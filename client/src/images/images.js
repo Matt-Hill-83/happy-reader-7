@@ -257,15 +257,12 @@ posableChad.images.heads = chadHeads.map(image => {
   const regex = `([^/]+?)$`
   const match = image.match(regex)
   const mood = match && match[0]
-  console.log("mood", mood) // zzz
 
   return {
     image,
     mood
   }
 })
-
-console.log("posableChad", posableChad) // zzz
 
 const posableLiz = {
   name: "liz2",
@@ -308,7 +305,6 @@ posableKat.images.heads = katHeads.map(image => {
     mood
   }
 })
-console.log("posableKat", posableKat) // zzz
 
 export default {
   locations: {

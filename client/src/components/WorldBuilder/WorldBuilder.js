@@ -63,7 +63,6 @@ class WorldBuilder extends Component {
 
   initDraggableStuff = async () => {
     const { allItems = [], allScenes = [] } = localStateStore.getPlot()
-    console.log("allScenes - WB", toJS(allScenes)) // zzz
 
     const allCreatures = localStateStore.getCreatures()
 
@@ -353,7 +352,6 @@ class WorldBuilder extends Component {
     destinationId,
     sourceId
   }) => {
-    console.log("creatures --> location") // zzz
     let result = {}
     const sourceList = this.getList({ id: sourceId })
     const destinationList = this.getList({ id: destinationId })
@@ -399,14 +397,10 @@ class WorldBuilder extends Component {
   }
 
   dragFromGridToGrid = ({ source, destination }) => {
-    console.log("grid to grid") // zzz
-
     const { droppableId: sourceId } = source
     let destinationId
 
     if (destination) {
-      console.log("destination", destination) // zzz
-
       destinationId = destination.droppableId
 
       const result = this.move({
@@ -428,8 +422,6 @@ class WorldBuilder extends Component {
       })
 
       if (destinationRow) {
-        console.log("result[destinationId]", result[destinationId]) // zzz
-
         const { scenesGrid } = this.state
         scenesGrid[destinationRow][destinationCol] = result[destinationId]
         scenesGrid[sourceRow][sourceCol] = []
@@ -472,8 +464,6 @@ class WorldBuilder extends Component {
         sourceId
       })
     } else {
-      console.log("from location to grid") // zzz
-
       const result = this.move({
         source: this.getList({ id: sourceId }),
         destination: this.getList({ id: destinationId }),
@@ -499,8 +489,6 @@ class WorldBuilder extends Component {
   }
 
   onDragEnd = result => {
-    console.log("on drag end") // zzz
-
     const {
       source,
       source: { droppableId: sourceId },
@@ -510,9 +498,6 @@ class WorldBuilder extends Component {
     const { prefix: sourcePrefix } = this.getStorageRowColFromId({
       id: sourceId
     })
-
-    console.log("sourceId", sourceId) // zzz
-    console.log("sourcePrefix", sourcePrefix) // zzz
 
     const fromGrid = sourcePrefix === LOCATIONS_PREFIX
 
@@ -530,14 +515,8 @@ class WorldBuilder extends Component {
       id: destinationId
     })
 
-    console.log("destinationId", destinationId) // zzz
-    console.log("destinationId", destinationId) // zzz
-    console.log("destinationPrefix", destinationPrefix) // zzz
-
     // for dragging within a single column
     if (sourceId === destinationId) {
-      console.log("same column") // zzz
-
       const items = this.reorder(
         this.getList({ id: sourceId }),
         source.index,
@@ -673,8 +652,6 @@ class WorldBuilder extends Component {
 
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
-    console.log("updateMap") // zzz
-
     const map = this.state.world
 
     Object.assign(map.data, toJS(newProps))
@@ -750,8 +727,6 @@ class WorldBuilder extends Component {
   }
 
   render() {
-    console.log("WB - render") // zzz
-
     const {
       world,
 

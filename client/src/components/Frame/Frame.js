@@ -102,8 +102,6 @@ class Frame extends Component {
     const { isEditMode = true } = this.props
     const { story = [] } = frame
 
-    console.log("story", story) // zzz
-
     if (!story.length || !story[0]) return null
 
     const renderedNarrative = story.map((line, lineIndex) => {
@@ -268,8 +266,6 @@ class Frame extends Component {
     const { isEditMode = true } = this.props
 
     const renderedFriends = allCharacters.map((friend, index) => {
-      console.log("friend", toJS(friend)) // zzz
-
       const mood = this.getMood({ name: friend, faces })
 
       return (
