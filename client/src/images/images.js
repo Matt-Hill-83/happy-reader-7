@@ -121,6 +121,8 @@ import liz23 from "./rigged-girls/liz/png/liz-23.png"
 import liz24 from "./rigged-girls/liz/png/liz-24.png"
 import liz25 from "./rigged-girls/liz/png/liz-25.png"
 import liz26 from "./rigged-girls/liz/png/liz-26.png"
+import liz27 from "./rigged-girls/liz/png/liz-27.png"
+import liz28 from "./rigged-girls/liz/png/liz-28.png"
 
 // chad2
 import chad01 from "./rigged-girls/chad/chad-01.png"
@@ -158,6 +160,8 @@ import katSurprised from "./rigged-girls/kat/kat-surprised.png"
 import katTired from "./rigged-girls/kat/kat-tired.png"
 import katUnsure from "./rigged-girls/kat/kat-unsure.png"
 import katWinking from "./rigged-girls/kat/kat-winking.png"
+import katPigtails from "./rigged-girls/kat/kat-pigtails.png"
+import katPonytail from "./rigged-girls/kat/kat-ponytail.png"
 //items
 
 import greenKey from "./items/green-key.png"
@@ -194,7 +198,9 @@ const lizHeads = [
   liz23,
   liz24,
   liz25,
-  liz26
+  liz26,
+  liz27,
+  liz28
 ]
 
 const chadHeads = [
@@ -232,7 +238,9 @@ const katHeads = [
   katSurprised,
   katTired,
   katUnsure,
-  katWinking
+  katWinking,
+  katPigtails,
+  katPonytail
 ]
 
 const posableChad = {

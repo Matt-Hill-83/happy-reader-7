@@ -765,7 +765,7 @@ class WorldBuilder extends Component {
       showFrameBuilder
     } = this.state
 
-    const title = (world.data && world.data.title) || ""
+    const title = (world.data && world.data.title) || "New Story"
     const order = (world.data && world.data.order) || 999
 
     // const { title, order } = toJS(world)
