@@ -91,7 +91,12 @@ class MainStory extends React.Component {
 
   getTerminalScene = ({ start = true }) => {
     // TODO, get map from store by mapId, index
-    const map = localStateStore.getActiveMap()
+    // const map = localStateStore.getActiveMap()
+    const mapId = localStateStore.getActiveMapId()
+    console.log("mapId", mapId) // zzz
+
+    const map = Utils.getMapFromId({ id: mapId })
+    console.log("map", map) // zzz
 
     const startScene = map.data.startScene
     console.log("startScene", toJS(startScene)) // zzz
@@ -227,12 +232,15 @@ class MainStory extends React.Component {
     this.setState({ showYouWinModal: true })
   }
 
-  changeMap = ({ index }) => {
-    localStateStore.setActiveLocationsMapIndex(index)
-  }
+  // changeMap = ({ index }) => {
+  //   localStateStore.setActiveLocationsMapIndex(index)
+  // }
 
   onChangeMap = ({ mapId, index }) => {
+    const map = Utils.getMapFromId({ id: mapId })
+
     localStateStore.setActiveLocationsMapIndex(index)
+    localStateStore.setActiveLocationsMapId(mapId)
     this.initWorld()
   }
 

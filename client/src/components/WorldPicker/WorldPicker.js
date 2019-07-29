@@ -18,13 +18,17 @@ import Utils from "../../Utils/Utils"
 import css from "./WorldPicker.module.scss"
 
 class WorldPicker extends Component {
-  state = {}
+  state = { selectedMap: "Pick Map" }
 
   async componentWillMount() {}
 
   changeMap = ({ index, mapId }) => {
     const { onChangeMap } = this.props
+    const map = Utils.getMapFromId({ id: mapId })
+    const mapName = map ? map.data && map.data.title : ""
+
     onChangeMap && onChangeMap({ index, mapId })
+    this.setState({ selectedMap: mapName })
   }
 
   onDeleteMap = async ({ map }) => {
@@ -40,6 +44,7 @@ class WorldPicker extends Component {
 
   renderMapPicker = () => {
     const { showDelete } = this.props
+    const { selectedMap = "All Maps" } = this.state
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     const filteredMaps = savedMaps.filter(map => map.data.released)
 
@@ -66,6 +71,7 @@ class WorldPicker extends Component {
           {showDelete && (
             <span onClick={() => this.onDeleteMap({ map })}>
               <Icon icon={IconNames.TRASH} />
+              <Icon icon={IconNames.TRASH} />
             </span>
           )}
         </span>
@@ -81,11 +87,14 @@ class WorldPicker extends Component {
         content={renderedMapList}
         position={Position.BOTTOM}
       >
-        <Button text="All Maps" />
+        <Button>
+          {`${selectedMap}    `}
+          <Icon icon="caret-down" />
+        </Button>
       </Popover>
     )
 
-    return worldPicker
+    return <div>{worldPicker}</div>
   }
 
   render() {

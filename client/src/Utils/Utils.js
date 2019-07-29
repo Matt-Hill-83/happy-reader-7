@@ -1,5 +1,7 @@
 import myWords from "../Models/words.js"
 import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js"
+import { maps } from "../Stores/InitStores.js"
+import { toJS } from "mobx"
 
 export default class Utils {
   static getCreatureByType = ({ type }) => {
@@ -232,5 +234,18 @@ export default class Utils {
       }
       return 0
     })
+  }
+
+  static getMapFromId = ({ id }) => {
+    const mapsDocs = toJS(maps.docs)
+    const defaultMap = mapsDocs[0]
+    if (!id) return defaultMap
+
+    const foundMap = mapsDocs
+      ? mapsDocs.find(map => map.id === id) || defaultMap
+      : defaultMap
+    console.log("foundMap", foundMap) // zzz
+
+    return foundMap
   }
 }

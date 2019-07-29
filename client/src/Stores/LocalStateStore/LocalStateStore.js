@@ -1,4 +1,5 @@
 import { action, computed, decorate, observable, toJS } from "mobx"
+import Utils from "../../Utils/Utils"
 
 class LocalStateStore {
   page = ""
@@ -10,6 +11,7 @@ class LocalStateStore {
   locationDetails = {}
   activeLocationsMap = []
   activeLocationsMapIndex = 0
+  activeLocationsMapId = null
 
   getLocationDetails = () => this.locationDetails
   setLocationDetails = locationDetails => {
@@ -46,7 +48,9 @@ class LocalStateStore {
     this.creatures = creatures
   }
 
-  getActiveMap = () => this.locationsMaps[this.activeLocationsMapIndex]
+  getActiveMap = () => Utils.getMapFromId({ id: this.activeLocationsMapId })
+  //  this.locationsMaps[this.activeLocationsMapIndex]
+  // getActiveMap = () => this.locationsMaps[this.activeLocationsMapIndex]
 
   incrementActiveLocationsMapIndex = () => {
     this.activeLocationsMapIndex = this.activeLocationsMapIndex + 1
@@ -55,6 +59,11 @@ class LocalStateStore {
   getActiveMapIndex = () => this.activeLocationsMapIndex
   setActiveLocationsMapIndex = activeLocationsMapIndex => {
     this.activeLocationsMapIndex = activeLocationsMapIndex
+  }
+
+  getActiveMapId = () => this.activeLocationsMapId
+  setActiveLocationsMapId = activeLocationsMapId => {
+    this.activeLocationsMapId = activeLocationsMapId
   }
 
   isLastMap = () => {
@@ -70,6 +79,7 @@ class LocalStateStore {
 decorate(LocalStateStore, {
   activelocationsMap: observable,
   activeLocationsMapIndex: observable,
+  activeLocationsMapId: observable,
   creatures: observable,
   locationsMaps: observable,
   page: observable,
