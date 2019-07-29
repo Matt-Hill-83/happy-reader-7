@@ -78,7 +78,7 @@
 
   font-size: 4vmin;
   color: var(--set1-purple-brdr);
-  // min-width: 25%;
+  max-width: 25%;
   padding: 1rem;
   top: 1%;
   left: 1%;
@@ -87,7 +87,7 @@
 .levelCompletionButton {
   display: flex;
   justify-self: center;
-  align-self: flex-end;
+  align-self: center;
 
   font-size: 2vmin;
   // width: 20%;
