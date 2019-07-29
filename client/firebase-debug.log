@@ -1,0 +1,80 @@
+[debug] [2019-07-29T05:37:19.869Z] ----------------------------------------------------------------------
+[debug] [2019-07-29T05:37:19.871Z] Command:       /Users/matthill/.nvm/versions/node/v8.10.0/bin/node /Users/matthill/.nvm/versions/node/v8.10.0/bin/firebase deploy
+[debug] [2019-07-29T05:37:19.872Z] CLI Version:   6.10.0
+[debug] [2019-07-29T05:37:19.872Z] Platform:      darwin
+[debug] [2019-07-29T05:37:19.872Z] Node Version:  v8.10.0
+[debug] [2019-07-29T05:37:19.872Z] Time:          Sun Jul 28 2019 22:37:19 GMT-0700 (PDT)
+[debug] [2019-07-29T05:37:19.872Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-29T05:37:19.888Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-29T05:37:19.888Z] > authorizing via signed-in user
+[debug] [2019-07-29T05:37:19.889Z] [iam] checking project happy-reader-7 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-07-29T05:37:19.890Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/happy-reader-7:testIamPermissions  
+
+[debug] [2019-07-29T05:37:20.434Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-29T05:37:20.436Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/happy-reader-7  
+ 
+[debug] [2019-07-29T05:37:20.778Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'happy-reader-7'...
+[info] 
+[info] i  deploying firestore, hosting
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-07-29T05:37:20.787Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/happy-reader-7:test  
+
+[debug] [2019-07-29T05:37:21.451Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-07-29T05:37:21.988Z] TypeError: Path must be a string. Received undefined
+    at assertPath (path.js:28:11)
+    at Object.resolve (path.js:1171:7)
+    at resolveProjectPath (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/lib/projectPath.js:6:17)
+    at /Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/lib/deploy/hosting/prepare.js:46:36
+    at arrayEach (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:516:11)
+    at Function.forEach (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:9344:14)
+    at module.exports (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/lib/deploy/hosting/prepare.js:29:7)
+    at _chain (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/lib/deploy/index.js:22:40)
+    at /Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/lib/deploy/index.js:25:20
+    at <anonymous>
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2019-07-29T05:37:50.957Z] ----------------------------------------------------------------------
+[debug] [2019-07-29T05:37:50.959Z] Command:       /Users/matthill/.nvm/versions/node/v8.10.0/bin/node /Users/matthill/.nvm/versions/node/v8.10.0/bin/firebase deploy
+[debug] [2019-07-29T05:37:50.959Z] CLI Version:   6.10.0
+[debug] [2019-07-29T05:37:50.959Z] Platform:      darwin
+[debug] [2019-07-29T05:37:50.960Z] Node Version:  v8.10.0
+[debug] [2019-07-29T05:37:50.960Z] Time:          Sun Jul 28 2019 22:37:50 GMT-0700 (PDT)
+[debug] [2019-07-29T05:37:50.960Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-29T05:37:50.969Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-29T05:37:50.970Z] > authorizing via signed-in user
+[debug] [2019-07-29T05:37:50.970Z] [iam] checking project happy-reader-7 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-07-29T05:37:50.972Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/happy-reader-7:testIamPermissions  
+
+[debug] [2019-07-29T05:37:51.298Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-29T05:37:51.300Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/happy-reader-7  
+ 
+[debug] [2019-07-29T05:37:51.514Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'happy-reader-7'...
+[info] 
+[info] i  deploying firestore, hosting
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-07-29T05:37:51.520Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/happy-reader-7:test  
+
+[debug] [2019-07-29T05:37:51.968Z] <<< HTTP RESPONSE 200
+[info] ✔  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-07-29T05:37:52.112Z] TypeError: Path must be a string. Received undefined
+    at assertPath (path.js:28:11)
+    at Object.resolve (path.js:1171:7)
+    at resolveProjectPath (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/lib/projectPath.js:6:17)
+    at /Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/lib/deploy/hosting/prepare.js:46:36
+    at arrayEach (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:516:11)
+    at Function.forEach (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:9344:14)
+    at module.exports (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/lib/deploy/hosting/prepare.js:29:7)
+    at _chain (/Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/lib/deploy/index.js:22:40)
+    at /Users/matthill/.nvm/versions/node/v8.10.0/lib/node_modules/firebase-tools/lib/deploy/index.js:25:20
+    at <anonymous>
+[error] 
+[error] Error: An unexpected error has occurred.
