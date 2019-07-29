@@ -44,7 +44,8 @@ class WorldPicker extends Component {
 
   render() {
     const { showDelete } = this.props
-    const { selectedMap = "All Maps" } = this.state
+    const { selectedMap } = this.state
+
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     const filteredMaps = savedMaps.filter(map => map.data.released)
 
