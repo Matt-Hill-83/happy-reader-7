@@ -132,8 +132,8 @@ class MainStory extends React.Component {
 
   initWorld = async () => {
     const startScene = this.getTerminalScene({})
-    console.log("startScene", startScene) // zzz
-    console.log("startScene", toJS(startScene)) // zzz
+    // console.log("startScene", startScene) // zzz
+    // console.log("startScene", toJS(startScene)) // zzz
 
     startScene.showCloud = false
 
@@ -147,14 +147,14 @@ class MainStory extends React.Component {
 
     const map = localStateStore.getActiveMap()
 
-    const activeSceneName = activeScene.name
+    // const activeSceneName = activeScene.name
     const endScene = this.getTerminalScene({ start: false })
-    console.log("endScene", toJS(endScene)) // zzz
+    // console.log("endScene", toJS(endScene)) // zzz
 
-    localStateStore.setLocationDetails({
-      mapName: map.data.name,
-      sceneName: activeSceneName
-    })
+    // localStateStore.setLocationDetails({
+    //   mapName: map.data.name,
+    //   sceneName: activeSceneName
+    // })
 
     activeScene.neighborNames = this.getNeighbors({ activeScene, map })
     activeScene.showCloud = false
@@ -232,15 +232,8 @@ class MainStory extends React.Component {
     this.setState({ showYouWinModal: true })
   }
 
-  // changeMap = ({ index }) => {
-  //   localStateStore.setActiveLocationsMapIndex(index)
-  // }
-
-  onChangeMap = ({ mapId, index }) => {
-    const map = Utils.getMapFromId({ id: mapId })
-
-    localStateStore.setActiveLocationsMapIndex(index)
-    localStateStore.setActiveLocationsMapId(mapId)
+  onChangeMap = ({ mapId }) => {
+    localStateStore.setActiveMapId(mapId)
     this.initWorld()
   }
 
@@ -260,7 +253,7 @@ class MainStory extends React.Component {
     const { isEndScene } = activeScene
     const map = localStateStore.getActiveMap()
     const { title, order } = map.data
-    console.log("isEndScene", isEndScene) // zzz
+    // console.log("isEndScene", isEndScene) // zzz
 
     const renderedMapTitle = (
       <div className={css.mapTitle}>
@@ -327,22 +320,6 @@ class MainStory extends React.Component {
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
     const { className } = this.props
-    const page = localStateStore.getPage()
-
-    if (page === "you-picker") {
-      return (
-        <IntroPage1 className={css.IntroPage1} initWorld={this.initWorld} />
-      )
-    }
-
-    // if (page === "story-picker") {
-    //   return (
-    //     <StoryPickerPage
-    //       className={css.IntroPage1}
-    //       initWorld={this.initWorld}
-    //     />
-    //   )
-    // }
 
     const toggleWorldBuilderButton = (
       <div

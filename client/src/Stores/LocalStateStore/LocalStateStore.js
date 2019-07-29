@@ -11,12 +11,12 @@ class LocalStateStore {
   locationDetails = {}
   activeLocationsMap = []
   activeLocationsMapIndex = 0
-  activeLocationsMapId = null
+  activeMapId = null
 
-  getLocationDetails = () => this.locationDetails
-  setLocationDetails = locationDetails => {
-    this.locationDetails = locationDetails
-  }
+  // getLocationDetails = () => this.locationDetails
+  // setLocationDetails = locationDetails => {
+  //   this.locationDetails = locationDetails
+  // }
 
   getPage = () => this.page
   setPage = page => {
@@ -48,38 +48,23 @@ class LocalStateStore {
     this.creatures = creatures
   }
 
-  getActiveMap = () => Utils.getMapFromId({ id: this.activeLocationsMapId })
-  //  this.locationsMaps[this.activeLocationsMapIndex]
-  // getActiveMap = () => this.locationsMaps[this.activeLocationsMapIndex]
+  getActiveMap = () => {
+    const map = Utils.getMapFromId({ id: this.activeMapId })
+    console.log("map", toJS(map)) // zzz
 
-  incrementActiveLocationsMapIndex = () => {
-    this.activeLocationsMapIndex = this.activeLocationsMapIndex + 1
+    return map
   }
 
-  getActiveMapIndex = () => this.activeLocationsMapIndex
-  setActiveLocationsMapIndex = activeLocationsMapIndex => {
-    this.activeLocationsMapIndex = activeLocationsMapIndex
-  }
-
-  getActiveMapId = () => this.activeLocationsMapId
-  setActiveLocationsMapId = activeLocationsMapId => {
-    this.activeLocationsMapId = activeLocationsMapId
-  }
-
-  isLastMap = () => {
-    const numLocations = this.locationsMaps.length
-    return this.activeLocationsMapIndex === numLocations - 1
-  }
-
-  addNewLocationsMap = newLocationsMap => {
-    this.locationsMaps.push(newLocationsMap)
+  getActiveMapId = () => this.activeMapId
+  setActiveMapId = activeMapId => {
+    this.activeMapId = activeMapId
   }
 }
 
 decorate(LocalStateStore, {
   activelocationsMap: observable,
   activeLocationsMapIndex: observable,
-  activeLocationsMapId: observable,
+  activeMapId: observable,
   creatures: observable,
   locationsMaps: observable,
   page: observable,
