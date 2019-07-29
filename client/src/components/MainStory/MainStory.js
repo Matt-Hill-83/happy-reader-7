@@ -8,7 +8,6 @@ import { Button, Dialog } from "@blueprintjs/core"
 import { maps } from "../../Stores/InitStores.js"
 import { worldNameStore } from "../../Stores/FrameSetStore"
 import FlashCards from "../FlashCards/FlashCards"
-import IntroPage1 from "../IntroPage1/IntroPage1.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import mySentences from "../../Models/sentences.js"
 import PicturePage from "../PicturePage/PicturePage"
@@ -54,8 +53,7 @@ class MainStory extends React.Component {
       map.data.grid = grid
     })
 
-    localStateStore.setLocationsMaps(filteredMaps)
-
+    localStateStore.setMaps(filteredMaps)
     localStateStore.setShowWorldBuilder(SHOW_WORLD_BUILDER)
     if (SHOW_WORLD_BUILDER) return
 
@@ -208,10 +206,6 @@ class MainStory extends React.Component {
     this.setState({ showStory: !this.state.showStory })
   }
 
-  changeCharacter = () => {
-    localStateStore.setPage("you-picker")
-  }
-
   toggleWorldBuilder = () => {
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
     const newShowWorldBuilder = !showWorldBuilder
@@ -291,9 +285,6 @@ class MainStory extends React.Component {
             isCloseButtonShown={true}
             className={css.levelCompleteDialog}
           >
-            <span
-              className={css.levelCompletionMessage}
-            >{`Get a new Map`}</span>
             <WorldPicker
               showDelete={false}
               onChangeMap={({ mapId, index }) =>

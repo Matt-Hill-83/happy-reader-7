@@ -6,22 +6,12 @@ class LocalStateStore {
   showWorldBuilder = false
   you = {}
   plot = {}
-  locationsMaps = []
+  maps = []
   creatures = []
   locationDetails = {}
   activeLocationsMap = []
   activeLocationsMapIndex = 0
   activeMapId = null
-
-  // getLocationDetails = () => this.locationDetails
-  // setLocationDetails = locationDetails => {
-  //   this.locationDetails = locationDetails
-  // }
-
-  getPage = () => this.page
-  setPage = page => {
-    this.page = page
-  }
 
   getYou = () => this.you
   setYou = you => {
@@ -38,9 +28,9 @@ class LocalStateStore {
     this.showWorldBuilder = showWorldBuilder
   }
 
-  getLocationsMaps = () => this.locationsMaps
-  setLocationsMaps = locationsMaps => {
-    this.locationsMaps = locationsMaps
+  getMaps = () => this.maps
+  setMaps = maps => {
+    this.maps = maps
   }
 
   getCreatures = () => this.creatures
@@ -50,8 +40,6 @@ class LocalStateStore {
 
   getActiveMap = () => {
     const map = Utils.getMapFromId({ id: this.activeMapId })
-    console.log("map", toJS(map)) // zzz
-
     return map
   }
 
@@ -66,7 +54,7 @@ decorate(LocalStateStore, {
   activeLocationsMapIndex: observable,
   activeMapId: observable,
   creatures: observable,
-  locationsMaps: observable,
+  maps: observable,
   page: observable,
   plot: observable,
   showWorldBuilder: observable,

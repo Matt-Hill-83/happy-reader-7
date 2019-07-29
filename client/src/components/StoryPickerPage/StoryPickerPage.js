@@ -52,8 +52,6 @@ class StoryPickerPage extends React.Component {
         creature: this.state.youCreature
       }
     })
-
-    localStateStore.setPage("intro2")
   }
 
   changeYouCreature = ({ event }) => {
@@ -86,15 +84,6 @@ class StoryPickerPage extends React.Component {
       <div className={css.introText}>
         <div className={css.content}>Hi</div>
 
-        {/* <TextField
-          id="outlined-name"
-          label="Name"
-          autoFocus={true}
-          value={youName}
-          onChange={this.changeYouName}
-          margin="normal"
-          variant="outlined"
-        /> */}
         <div className={css.content}>pick a story</div>
 
         <FormControl variant="outlined">

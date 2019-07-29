@@ -1,7 +1,7 @@
-import React from "react";
-import { observer } from "mobx-react";
+import React from "react"
+import { observer } from "mobx-react"
 
-import Images from "../../images/images.js";
+import Images from "../../images/images.js"
 
 import {
   TextField,
@@ -11,37 +11,37 @@ import {
   Select,
   OutlinedInput,
   MenuItem
-} from "@material-ui/core";
+} from "@material-ui/core"
 
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js";
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 
-import css from "./IntroPage1.module.scss";
-import Utils from "../../Utils/Utils.js";
-import myWords from "../../Models/words.js";
+import css from "./IntroPage1.module.scss"
+import Utils from "../../Utils/Utils.js"
+import myWords from "../../Models/words.js"
 
-const { words, wordTypes } = myWords;
+const { words, wordTypes } = myWords
 
 const youCreatureOptions = Utils.getWordsByType({
   words: words,
   type: wordTypes.creature,
   returnName: true
-});
+})
 
-const youCreatureDefault = youCreatureOptions[3];
-const youNameDefault = "Dobby";
+const youCreatureDefault = youCreatureOptions[3]
+const youNameDefault = "Dobby"
 
 class IntroPage1 extends React.Component {
   state = {
     youName: youNameDefault,
     youCreature: youCreatureDefault
-  };
+  }
 
   async componentWillMount() {
-    this.setState({ ...this.props.params });
+    this.setState({ ...this.props.params })
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({ ...newProps.params });
+    this.setState({ ...newProps.params })
   }
 
   finishIntro = () => {
@@ -50,36 +50,34 @@ class IntroPage1 extends React.Component {
         name: this.state.youName,
         creature: this.state.youCreature
       }
-    });
-
-    localStateStore.setPage("intro2");
-  };
+    })
+  }
 
   changeYouCreature = ({ event }) => {
     this.setState({
       youCreature: event.target.value,
       name: event.target.name
-    });
-  };
+    })
+  }
 
   changeYouName = event => {
     this.setState({
       youName: event.target.value
-    });
-  };
+    })
+  }
 
   createYouPickerOptions = () => {
     const renderedMenuItems = youCreatureOptions.map(you => (
       <MenuItem key={you} value={you}>
         {you && you.toUpperCase()}
       </MenuItem>
-    ));
+    ))
 
-    return renderedMenuItems;
-  };
+    return renderedMenuItems
+  }
 
   renderIntroText = () => {
-    const { youName, youCreature } = this.state;
+    const { youName, youCreature } = this.state
 
     return (
       <div className={css.introText}>
@@ -101,7 +99,7 @@ class IntroPage1 extends React.Component {
           <Select
             value={youCreature}
             onChange={event => {
-              this.changeYouCreature({ event });
+              this.changeYouCreature({ event })
             }}
             input={<OutlinedInput id="outlined-age-simple" />}
           >
@@ -110,12 +108,12 @@ class IntroPage1 extends React.Component {
         </FormControl>
         {this.renderYouImage()}
       </div>
-    );
-  };
+    )
+  }
 
   renderYouImage = () => {
-    const { youCreature } = this.state;
-    const youImage = youCreature;
+    const { youCreature } = this.state
+    const youImage = youCreature
 
     return (
       <img
@@ -123,12 +121,12 @@ class IntroPage1 extends React.Component {
         src={Images[youImage]}
         alt={youImage}
       />
-    );
-  };
+    )
+  }
 
   renderBackground = () => {
-    const backgroundImage2 = "forestRight";
-    const backgroundImage1 = "forestLeft";
+    const backgroundImage2 = "forestRight"
+    const backgroundImage1 = "forestLeft"
 
     return (
       <div className={css.backgrounds}>
@@ -143,8 +141,8 @@ class IntroPage1 extends React.Component {
           alt={backgroundImage2}
         />
       </div>
-    );
-  };
+    )
+  }
 
   renderNextButton = () => {
     return (
@@ -156,8 +154,8 @@ class IntroPage1 extends React.Component {
       >
         NEXT
       </Button>
-    );
-  };
+    )
+  }
 
   render() {
     return (
@@ -166,7 +164,7 @@ class IntroPage1 extends React.Component {
         {this.renderIntroText()}
         {this.renderNextButton()}
       </div>
-    );
+    )
   }
 }
-export default observer(IntroPage1);
+export default observer(IntroPage1)

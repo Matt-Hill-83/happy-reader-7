@@ -18,7 +18,7 @@ import Utils from "../../Utils/Utils"
 import css from "./WorldPicker.module.scss"
 
 class WorldPicker extends Component {
-  state = { selectedMap: "Pick Map" }
+  state = { selectedMap: "Get new Map" }
 
   async componentWillMount() {}
 
@@ -42,7 +42,7 @@ class WorldPicker extends Component {
     }
   }
 
-  renderMapPicker = () => {
+  render() {
     const { showDelete } = this.props
     const { selectedMap = "All Maps" } = this.state
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
@@ -63,42 +63,39 @@ class WorldPicker extends Component {
 
       const mapId = map.id
       const text = (
-        <span
-          className={css.mapPickerRow}
-          onClick={() => this.changeMap({ index, mapId })}
-        >
+        <span className={css.mapPickerRow}>
           {`map ${order}: ${title}`}
           {showDelete && (
             <span onClick={() => this.onDeleteMap({ map })}>
-              <Icon icon={IconNames.TRASH} />
               <Icon icon={IconNames.TRASH} />
             </span>
           )}
         </span>
       )
-      return <MenuItem text={text} />
+      return (
+        <MenuItem
+          onClick={() => this.changeMap({ index, mapId })}
+          text={text}
+        />
+      )
     })
 
     const renderedMapList = <Menu>{mapList}</Menu>
 
     const worldPicker = (
       <Popover
-        className={css.worldPickerDropdown}
+        className={css.main}
         content={renderedMapList}
         position={Position.BOTTOM}
       >
-        <Button>
+        <Button className={css.worldPickerButton}>
           {`${selectedMap}    `}
           <Icon icon="caret-down" />
         </Button>
       </Popover>
     )
 
-    return <div>{worldPicker}</div>
-  }
-
-  render() {
-    return <div className={css.main}>{this.renderMapPicker()}</div>
+    return worldPicker
   }
 }
 export default observer(WorldPicker)

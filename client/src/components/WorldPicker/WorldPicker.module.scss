@@ -1,121 +1,24 @@
 @import "../../Styles/mixins.modules.scss";
 
 .main {
+  z-index: 1000;
   display: flex;
-  flex-direction: column;
   flex: 1;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  // border: 1px solid green;
 
   :global {
-    [data-react-beautiful-dnd-draggable] {
-      height: var(--cell-height);
-      width: var(--cell-height);
-      padding: 0px !important;
-      margin: 0px !important;
-
-      img[class*="PicturePage_characterImageMini__"] {
-        display: none;
-      }
+    .bp3-popover-target {
+      // border: 2px solid green !important;
+      // width: 20%;
     }
   }
-
-  .characterImage {
-    @include character-image;
-  }
 }
 
-.mapPickerRow {
-  border: 1px solid red !important;
+.worldPickerButton {
   display: flex;
-  justify-content: space-between;
-}
-
-.editWorldButtons {
-  // position: absolute;
-  // top: 0px;
-  // left: 0px;
-}
-
-.scenesContainer {
-  border: 1px solid red !important;
-  display: flex;
-  height: 100%;
-  width: 100%;
-  flex-direction: column;
-
-  [class*="MiniLocation_main"] {
-    border: 1px solid blue !important;
-    width: 150px;
-    height: 150px;
-  }
-}
-
-.sizerDiv {
-  display: flex;
-  min-width: 150px;
-  min-height: 150px;
-  border: 1px solid green !important;
-}
-
-.rowDiv {
-  display: flex !important;
-  border: 1px solid green !important;
-  display: flex;
-  max-height: 150px;
-}
-
-.worldPickerDropdown {
-  top: 0px;
-  z-index: 1000;
-  right: 0px;
-}
-
-.locationGridContainer {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.scenePropsButton {
-  position: absolute;
-  display: flex;
-  right: 1%;
-}
-
-.source {
-  border: 1px solid green !important;
-  display: flex;
-  margin-right: 100px;
-  max-height: 90vh;
-  overflow: auto;
-}
-
-.destination {
-  border: 1px solid green !important;
-  display: flex;
-  flex: 0;
-  max-height: var(--cell-height);
-  min-height: var(--cell-height);
-}
-
-.targetGrid {
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-
-  .targetRow {
-    display: flex;
-  }
-}
-
-.title {
-  font-size: 30px;
-}
-
-.subTitle {
-  font-size: 24px;
-}
-
-.content {
-  display: flex;
+  color: var(--color-purple);
+  font-size: 4vmin;
 }
