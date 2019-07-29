@@ -1,20 +1,16 @@
 {
   "hosting": {
-    "public": "build",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "hosting": {
-      "headers": [
-        {
-          "source": "**/*.@(jpg|jpeg|gif|png|js)",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "no-cache"
-            }
-          ]
-        }
-      ]
-    }
+    "headers": [
+      {
+        "source": "**/*.@(jpg|jpeg|gif|png|js)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      }
+    ]
   },
   "firestore": {
     "rules": "firestore.rules",
