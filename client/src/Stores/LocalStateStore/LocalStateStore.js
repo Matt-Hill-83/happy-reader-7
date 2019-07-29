@@ -10,7 +10,6 @@ class LocalStateStore {
   creatures = []
   locationDetails = {}
   activeLocationsMap = []
-  activeLocationsMapIndex = 0
   activeMapId = null
 
   getYou = () => this.you
@@ -50,8 +49,6 @@ class LocalStateStore {
 }
 
 decorate(LocalStateStore, {
-  activelocationsMap: observable,
-  activeLocationsMapIndex: observable,
   activeMapId: observable,
   creatures: observable,
   maps: observable,

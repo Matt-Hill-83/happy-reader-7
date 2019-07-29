@@ -145,15 +145,6 @@ class MainStory extends React.Component {
 
     const map = localStateStore.getActiveMap()
 
-    // const activeSceneName = activeScene.name
-    const endScene = this.getTerminalScene({ start: false })
-    // console.log("endScene", toJS(endScene)) // zzz
-
-    // localStateStore.setLocationDetails({
-    //   mapName: map.data.name,
-    //   sceneName: activeSceneName
-    // })
-
     activeScene.neighborNames = this.getNeighbors({ activeScene, map })
     activeScene.showCloud = false
 
