@@ -244,7 +244,6 @@ export default class Utils {
     const foundMap = mapsDocs
       ? mapsDocs.find(map => map.id === id) || defaultMap
       : defaultMap
-    console.log("foundMap", foundMap) // zzz
 
     return foundMap
   }
