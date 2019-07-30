@@ -66,8 +66,18 @@ class Frame extends Component {
     this.toggleFacePicker({})
   }
 
-  onSelectItem = ({ itemId }) => {
-    console.log("itemId", itemId) // zzz
+  // TODO -
+  // TODO -
+  // TODO -
+  // TODO -
+  // TODO -
+  // TODO  - on add item, I need to add it to db as a blank item, and get the itemId.
+  // Then when I edit the item, update that item's item Id
+  // Also, I need to mark which frame I am adding it to and
+  // But start out by just editing existing items, like characters
+
+  onSelectItem = ({ itemId, name }) => {
+    console.log("name", name) // zzz
 
     // const { updateFrameSet } = this.props
 

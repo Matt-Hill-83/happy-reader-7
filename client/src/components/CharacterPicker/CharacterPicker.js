@@ -23,10 +23,9 @@ class CharacterPicker extends Component {
     this.setState({ imageSets })
   }
 
-  selectItem = ({ itemId }) => {
+  selectItem = ({ itemId, name }) => {
     const { onSelectItem } = this.props
-    onSelectItem({ itemId })
-    // this.props.selectItem({ itemId })
+    onSelectItem({ itemId, name })
   }
 
   renderItemPicker = ({ imageSet }) => {
@@ -39,7 +38,7 @@ class CharacterPicker extends Component {
         <div
           className={css.itemImageContainer}
           key={index}
-          onClick={() => this.selectItem({})}
+          onClick={() => this.selectItem({ name: key })}
         >
           <span className={css.itemLabel}>{key}</span>
           <img className={css.itemImage} src={image} alt={"imagex"} />
