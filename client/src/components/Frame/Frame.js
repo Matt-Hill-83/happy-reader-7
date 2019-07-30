@@ -17,12 +17,15 @@ import Images from "../../images/images"
 import WordGroup from "../WordGroup/WordGroup"
 
 import css from "./Frame.module.scss"
+import CharacterPicker from "../CharacterPicker/CharacterPicker"
+import images from "../../images/images"
 
 class Frame extends Component {
   state = {
     showFacePicker: false,
     showNarrativeEditor: true,
-    showDialogEditor: true
+    showDialogEditor: true,
+    showItemPicker: false
   }
 
   componentWillMount() {
@@ -63,6 +66,26 @@ class Frame extends Component {
     this.toggleFacePicker({})
   }
 
+  onSelectItem = ({ itemId }) => {
+    console.log("itemId", itemId) // zzz
+
+    // const { updateFrameSet } = this.props
+
+    // const {
+    //   frame,
+    //   frame: { faces }
+    // } = this.state
+
+    // const thisFace = faces.find(face => face.character === name)
+    // thisFace.face = head.mood
+
+    // //  /TODO - chage to update world maybe?
+    // updateFrameSet({})
+
+    // this.setState({ frame })
+    this.toggleItemPicker({})
+  }
+
   renderFacePicker = ({ character }) => {
     const girlImages = Images.posableGirls
     const images = girlImages.find(girl => girl.name === character)
@@ -96,6 +119,20 @@ class Frame extends Component {
     const showFacePicker = !this.state.showFacePicker
     this.setState({ showFacePicker, facePickerCharacter: character })
   }
+
+  toggleItemPicker = ({ item = null }) => {
+    console.log("item", item) // zzz
+
+    const showItemPicker = !this.state.showItemPicker
+    this.setState({ showItemPicker, itemPickerItem: item })
+  }
+
+  // selectHead = ({ item = null }) => {
+  //   console.log("item", item) // zzz
+
+  //   const showItemPicker = !this.state.showItemPicker
+  //   this.setState({ showItemPicker, itemPickerItem: item })
+  // }
 
   renderNarrative = () => {
     const { frame, showNarrativeEditor } = this.state
@@ -259,7 +296,7 @@ class Frame extends Component {
   }
 
   renderFrame = ({ allCharacters = [] }) => {
-    const { frame } = this.state
+    const { frame, showItemPicker } = this.state
     const { faces = [] } = frame
     if (!frame) return null
 
@@ -275,6 +312,9 @@ class Frame extends Component {
           onClick={() => this.toggleFacePicker({ character: friend })}
         >
           <Character name={friend} mood={mood} isEditMode={isEditMode} />
+          <Button onClick={() => this.toggleItemPicker({ item: friend })}>
+            +++
+          </Button>
         </div>
       )
     })
@@ -296,7 +336,12 @@ class Frame extends Component {
 
   render() {
     const { isEditMode = true } = this.props
-    const { frame, showFacePicker, facePickerCharacter } = this.state
+    const {
+      frame,
+      showFacePicker,
+      showItemPicker,
+      facePickerCharacter
+    } = this.state
 
     const allCharacters = (frame && frame.creatures) || []
 
@@ -326,6 +371,20 @@ class Frame extends Component {
               <Icon icon={IconNames.CROSS} />
             </Button>
           </div>
+        )}
+
+        {showItemPicker && (
+          <CharacterPicker
+            imageSets={[
+              images.creatures,
+              images.locations,
+              images.vehicles,
+              images.items
+            ]}
+            className={css.test}
+            onClose={this.toggleItemPicker}
+            onSelectItem={this.onSelectItem}
+          />
         )}
       </div>
     )
