@@ -308,8 +308,14 @@ class Frame extends Component {
     )
   }
 
-  onUpdateItems = ({ newItems = [] }) => {
-    this.setState({ items: newItems })
+  saveItems = async ({ items = [] }) => {
+    const { frame } = this.state
+    const { updateMap } = this.props
+
+    frame.items = items
+    console.log("items", items) // zzz
+
+    this.setState({ frame }, () => updateMap({}))
   }
 
   renderFrame = ({ allCharacters = [] }) => {
@@ -350,10 +356,10 @@ class Frame extends Component {
     const { isEditMode = true } = this.props
     const {
       frame,
+      frame: { items },
       showFacePicker,
       showItemPicker,
-      facePickerCharacter,
-      items
+      facePickerCharacter
     } = this.state
 
     const allCharacters = (frame && frame.creatures) || []
@@ -371,13 +377,13 @@ class Frame extends Component {
         >
           {this.renderFrame({ allCharacters })}
           {/* {false && this.renderFrame({ allCharacters })} */}
-
           <CrudMachine
             className={css.crudMachine}
             items={items}
             itemRenderer={itemRenderer}
+            saveItems={this.saveItems}
+            title={"items"}
           />
-
           {isEditMode && (
             <Button className={css.closeButton} onClick={this.deleteFrame}>
               X

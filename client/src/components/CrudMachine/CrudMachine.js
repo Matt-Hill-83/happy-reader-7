@@ -37,6 +37,23 @@ class CrudMachine extends Component {
     this.setState({ items: [...items] })
   }
 
+  getNewItem = () => {
+    return { name: "empty" }
+  }
+
+  // cloneItem = async ({ index }) => {}
+
+  addItemIfNone = ({ items }) => {
+    if (items && !items.length) {
+      items.push(this.getNewItem())
+    }
+    return items
+  }
+
+  ////////////////////////////
+  /////////////     CRUD     ///////////////
+  ////////////////////////////
+
   onDeleteItem = ({ index }) => {
     const { items } = this.state
 
@@ -44,20 +61,7 @@ class CrudMachine extends Component {
     const part2 = items.slice(index + 1)
     const part3 = [...part1, ...part2]
 
-    this.setState({ items: part3 })
-  }
-
-  getNewItem = () => {
-    return { name: "empty" }
-  }
-
-  cloneItem = async ({ index }) => {}
-
-  addItemIfNone = ({ items }) => {
-    if (items && !items.length) {
-      items.push(this.getNewItem())
-    }
-    return items
+    this.setState({ items: part3 }, this.saveChanges())
   }
 
   onAddItemBefore = ({ index }) => {
@@ -68,7 +72,10 @@ class CrudMachine extends Component {
     const newItem = this.getNewItem()
     const part3 = [...part1, newItem, ...part2]
 
-    this.setState({ items: part3 })
+    const statePropsToSave = { items: part3 }
+
+    this.setState({ items: part3 }, this.saveChanges())
+    // this.setStateAndSave({ statePropsToSave })
   }
 
   onAddItemAfter = ({ index }) => {
@@ -86,12 +93,20 @@ class CrudMachine extends Component {
     this.toggleItemPicker({ item, index })
   }
 
+  setStateAndSave = ({ statePropsToSave }) => {
+    this.setState({ ...statePropsToSave }, this.saveChanges())
+  }
+
+  //////////
+  //////////
+  //////////
+  //////////
+
   // TODO
   // TODO
   // TODO
   // TODO
-  // TODO - get delete working
-  // TODO - actually save this new items array to the db with the frame
+  // TODO - save this new items array to the db with the frame
   // TODO - show image for selected item
   // TODO - create a local id for use with each new object, before it is saved to the db
 
@@ -103,6 +118,12 @@ class CrudMachine extends Component {
     console.log("name", name) // zzz
 
     this.toggleItemPicker({})
+  }
+
+  saveChanges = () => {
+    const { saveItems } = this.props
+    const { items } = this.state
+    saveItems && saveItems({ items })
   }
 
   toggleItemPicker = ({ index, item = null }) => {
@@ -119,35 +140,40 @@ class CrudMachine extends Component {
     const itemRenderer = this.props.itemRenderer || defaultItemRenderer
 
     const renderedItems = items.map((item, index) => {
+      const isLastItem = index === items.length - 1
+      console.log("isLastItem", isLastItem) // zzz
+
       return (
-        <div className={`${css.itemContainer}`} key={index}>
+        <div
+          className={`${css.itemContainer}`}
+          key={index}
+          onClick={() => this.onEditItem({ item, index })}
+        >
           {itemRenderer({ item })}
 
           <div className={css.buttonsRow} key={index}>
             <Button
-              // icon={IconNames.ADD}
+              icon={IconNames.ADD}
               className={css.itemButton}
               onClick={() => this.onAddItemBefore({ item, index })}
-            >
-              Before
-            </Button>
-            <Button
+            />
+            {/* <Button
               icon={IconNames.EDIT}
               className={css.itemButton}
-              onClick={() => this.onEditItem({ item, index })}
-            />
+              // onClick={() => this.onEditItem({ item, index })}
+            /> */}
             <Button
               icon={IconNames.DELETE}
               className={css.itemButton}
               onClick={() => this.onDeleteItem({ item, index })}
             />
-            <Button
-              // icon={IconNames.ADD}
-              className={`${css.itemButton} ${css.addAfter} add-after`}
-              onClick={() => this.onAddItemAfter({ item, index })}
-            >
-              After
-            </Button>
+            {isLastItem && (
+              <Button
+                icon={IconNames.ADD}
+                className={`${css.itemButton} ${css.addAfter} add-after`}
+                onClick={() => this.onAddItemAfter({ item, index })}
+              />
+            )}
           </div>
         </div>
       )
@@ -158,10 +184,11 @@ class CrudMachine extends Component {
 
   render() {
     const { showItemPicker } = this.state
-    const { className } = this.props
+    const { className, title = "" } = this.props
 
     return (
       <div className={`${css.main} ${className ? className : ""}`}>
+        {title}
         <div className={css.itemsContainer}>{this.renderItems()}</div>
 
         {showItemPicker && (

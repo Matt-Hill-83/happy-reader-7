@@ -11,12 +11,12 @@
     overflow: hidden;
 
     .itemContainer {
-      &:last-of-type {
-        border: 10px solid blue !important;
-        .add-after {
-          border: 3px solid black !important;
-        }
-      }
+      // &:last-of-type {
+      //   border: 10px solid blue !important;
+      //   .add-after {
+      //     border: 3px solid black !important;
+      //   }
+      // }
 
       display: flex;
       border: 1px solid green !important;
@@ -37,23 +37,27 @@
 
       .buttonsRow {
         display: flex;
-        // flex: 1;
         border: 1px solid purple !important;
         position: absolute;
         top: 0;
         right: 0;
+        width: 100%;
 
         .itemButton {
           display: flex;
-          flex: 1;
-          border: 1px solid orange !important;
+          max-width: 38px;
+          margin-left: auto;
+
+          &:first-of-type {
+            margin-left: unset;
+          }
         }
 
-        .addAfter {
-          display: flex;
-          flex: 1;
-          border: 3px solid pink !important;
-        }
+        // .addAfter {
+        //   display: flex;
+        //   flex: 1;
+        //   border: 3px solid pink !important;
+        // }
       }
     }
   }
