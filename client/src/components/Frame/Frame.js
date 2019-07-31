@@ -19,13 +19,15 @@ import WordGroup from "../WordGroup/WordGroup"
 import css from "./Frame.module.scss"
 import CharacterPicker from "../CharacterPicker/CharacterPicker"
 import images from "../../images/images"
+import CrudMachine from "../CrudMachine/CrudMachine"
 
 class Frame extends Component {
   state = {
     showFacePicker: false,
     showNarrativeEditor: true,
     showDialogEditor: true,
-    showItemPicker: false
+    showItemPicker: false,
+    items: []
   }
 
   componentWillMount() {
@@ -305,8 +307,12 @@ class Frame extends Component {
     )
   }
 
+  onUpdateItems = ({ newItems = [] }) => {
+    this.setState({ items: newItems })
+  }
+
   renderFrame = ({ allCharacters = [] }) => {
-    const { frame, showItemPicker } = this.state
+    const { frame } = this.state
     const { faces = [] } = frame
     if (!frame) return null
 
@@ -351,7 +357,8 @@ class Frame extends Component {
       frame,
       showFacePicker,
       showItemPicker,
-      facePickerCharacter
+      facePickerCharacter,
+      items
     } = this.state
 
     const allCharacters = (frame && frame.creatures) || []
@@ -363,7 +370,9 @@ class Frame extends Component {
             isEditMode ? css.editingFrame : ""
           }`}
         >
-          {this.renderFrame({ allCharacters })}
+          {false && this.renderFrame({ allCharacters })}
+
+          <CrudMachine items={items} />
 
           {isEditMode && (
             <Button className={css.closeButton} onClick={this.deleteFrame}>
