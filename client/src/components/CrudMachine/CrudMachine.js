@@ -16,11 +16,12 @@ import { toJS } from "mobx"
 import Images from "../../images/images"
 import WordGroup from "../WordGroup/WordGroup"
 
-import css from "./Frame.module.scss"
 import CharacterPicker from "../CharacterPicker/CharacterPicker"
 import images from "../../images/images"
 
-class Frame extends Component {
+import css from "./CrudMachine.module.scss"
+
+class CrudMachine extends Component {
   state = {
     showFacePicker: false,
     showNarrativeEditor: true,
@@ -306,7 +307,7 @@ class Frame extends Component {
   }
 
   renderFrame = ({ allCharacters = [] }) => {
-    const { frame, showItemPicker } = this.state
+    const { frame } = this.state
     const { faces = [] } = frame
     if (!frame) return null
 
@@ -402,4 +403,4 @@ class Frame extends Component {
   }
 }
 
-export default observer(Frame)
+export default observer(CrudMachine)
