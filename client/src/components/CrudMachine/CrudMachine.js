@@ -36,10 +36,14 @@ class CrudMachine extends Component {
     this.setState({ items: [...items] })
   }
 
-  onDeleteItem = async ({ index }) => {}
+  onDeleteItem = ({ index }) => {
+    const { items } = this.state
 
-  onEditItem = async ({ index, id, item }) => {
-    this.toggleItemPicker({ item, index })
+    const part1 = items.slice(0, index)
+    const part2 = items.slice(index + 1)
+    const part3 = [...part1, ...part2]
+
+    this.setState({ items: part3 })
   }
 
   getNewItem = () => {
@@ -77,13 +81,30 @@ class CrudMachine extends Component {
     this.setState({ items: part3 })
   }
 
+  onEditItem = ({ index, item }) => {
+    this.toggleItemPicker({ item, index })
+  }
+
+  // TODO
+  // TODO
+  // TODO
+  // TODO
+  // TODO - get delete working
+  // TODO - actually save this new items array to the db with the frame
+  // TODO - show image for selected item
+  // TODO - create a local id for use with each new object, before it is saved to the db
+
   onSelectItem = ({ name }) => {
+    const { itemPickerItem } = this.state
+    // I should probably ref this item by id
+    itemPickerItem.name = name
+
     console.log("name", name) // zzz
 
     this.toggleItemPicker({})
   }
 
-  toggleItemPicker = ({ item = null }) => {
+  toggleItemPicker = ({ index, item = null }) => {
     console.log("item", item) // zzz
 
     const showItemPicker = !this.state.showItemPicker
