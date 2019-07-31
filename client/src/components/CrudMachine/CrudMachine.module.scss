@@ -4,7 +4,6 @@
   display: flex;
   flex: 1;
   border: 1px solid red !important;
-
   .itemsContainer {
     display: flex;
     flex: 1;
@@ -12,6 +11,13 @@
     overflow: hidden;
 
     .itemContainer {
+      &:last-of-type {
+        border: 10px solid blue !important;
+        .add-after {
+          border: 3px solid black !important;
+        }
+      }
+
       display: flex;
       border: 1px solid green !important;
       overflow: hidden;
@@ -41,6 +47,12 @@
           display: flex;
           flex: 1;
           border: 1px solid orange !important;
+        }
+
+        .addAfter {
+          display: flex;
+          flex: 1;
+          border: 3px solid pink !important;
         }
       }
     }

@@ -18,6 +18,7 @@ import images from "../../images/images"
 import CharacterPicker from "../CharacterPicker/CharacterPicker"
 
 import css from "./CrudMachine.module.scss"
+import ImageDisplay from "../ImageDisplay/ImageDisplay"
 
 class CrudMachine extends Component {
   state = {
@@ -47,7 +48,7 @@ class CrudMachine extends Component {
   }
 
   getNewItem = () => {
-    return { name: "blank item" }
+    return { name: "empty" }
   }
 
   cloneItem = async ({ index }) => {}
@@ -111,17 +112,15 @@ class CrudMachine extends Component {
     this.setState({ showItemPicker, itemPickerItem: item })
   }
 
-  renderFrame = () => {
+  renderItems = () => {
     const { items } = this.state
+    const { itemRenderer } = this.props
 
     const renderedItems = items.map((item, index) => {
-      const { name } = item
-
       return (
         <div className={`${css.itemContainer}`} key={index}>
-          <div className={`${css.item}`} key={index}>
-            {name}
-          </div>
+          {itemRenderer({ item })}
+          {/* <ImageDisplay item={item} /> */}
           <div className={css.buttonsRow} key={index}>
             <Button
               // icon={IconNames.ADD}
@@ -142,7 +141,7 @@ class CrudMachine extends Component {
             />
             <Button
               // icon={IconNames.ADD}
-              className={css.itemButton}
+              className={`${css.itemButton} ${css.addAfter} add-after`}
               onClick={() => this.onAddItemAfter({ item, index })}
             >
               After
@@ -157,10 +156,11 @@ class CrudMachine extends Component {
 
   render() {
     const { showItemPicker } = this.state
+    const { className } = this.props
 
     return (
-      <div className={`${css.main}`}>
-        <div className={css.itemsContainer}>{this.renderFrame()}</div>
+      <div className={`${css.main} ${className ? className : ""}`}>
+        <div className={css.itemsContainer}>{this.renderItems()}</div>
 
         {showItemPicker && (
           <CharacterPicker

@@ -4,6 +4,14 @@
   z-index: 10;
 }
 
+.crudMachine {
+  border: 10px solid blue !important;
+  position: absolute;
+  top: 16%;
+  width: 100%;
+  z-index: 10;
+}
+
 .scenes {
   display: flex;
   position: relative;
@@ -21,7 +29,6 @@
     padding: unset;
   }
   [class*="Frame_narrative"] {
-    // border: 1px solid red !important;
     padding: unset;
     margin-bottom: unset;
   }

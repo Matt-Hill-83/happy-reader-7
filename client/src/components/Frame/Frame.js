@@ -20,6 +20,7 @@ import css from "./Frame.module.scss"
 import CharacterPicker from "../CharacterPicker/CharacterPicker"
 import images from "../../images/images"
 import CrudMachine from "../CrudMachine/CrudMachine"
+import ImageDisplay from "../ImageDisplay/ImageDisplay"
 
 class Frame extends Component {
   state = {
@@ -326,12 +327,6 @@ class Frame extends Component {
           <div onClick={() => this.toggleFacePicker({ character: friend })}>
             <Character name={friend} mood={mood} isEditMode={isEditMode} />
           </div>
-          <Button
-            className={css.addCharacterButton}
-            onClick={() => this.toggleItemPicker({ item: friend })}
-          >
-            +++
-          </Button>
         </div>
       )
     })
@@ -363,6 +358,10 @@ class Frame extends Component {
 
     const allCharacters = (frame && frame.creatures) || []
 
+    const itemRenderer = ({ item }) => {
+      return <ImageDisplay item={item} />
+    }
+
     return (
       <div className={`${css.main} ${isEditMode ? css.editFrame : ""}`}>
         <div
@@ -370,9 +369,14 @@ class Frame extends Component {
             isEditMode ? css.editingFrame : ""
           }`}
         >
-          {false && this.renderFrame({ allCharacters })}
+          {this.renderFrame({ allCharacters })}
+          {/* {false && this.renderFrame({ allCharacters })} */}
 
-          <CrudMachine items={items} />
+          <CrudMachine
+            className={css.crudMachine}
+            items={items}
+            itemRenderer={itemRenderer}
+          />
 
           {isEditMode && (
             <Button className={css.closeButton} onClick={this.deleteFrame}>
