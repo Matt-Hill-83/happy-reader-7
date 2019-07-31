@@ -42,7 +42,7 @@ class CrudMachine extends Component {
     this.toggleItemPicker({ item, index })
   }
 
-  getNewItem = async () => {
+  getNewItem = () => {
     return { name: "blank item" }
   }
 
@@ -53,6 +53,28 @@ class CrudMachine extends Component {
       items.push(this.getNewItem())
     }
     return items
+  }
+
+  onAddItemBefore = ({ index }) => {
+    const { items } = this.state
+
+    const part1 = items.slice(0, index)
+    const part2 = items.slice(index)
+    const newItem = this.getNewItem()
+    const part3 = [...part1, newItem, ...part2]
+
+    this.setState({ items: part3 })
+  }
+
+  onAddItemAfter = ({ index }) => {
+    const { items } = this.state
+
+    const part1 = items.slice(0, index + 1)
+    const part2 = items.slice(index + 1)
+    const newItem = this.getNewItem()
+    const part3 = [...part1, newItem, ...part2]
+
+    this.setState({ items: part3 })
   }
 
   onSelectItem = ({ name }) => {
@@ -72,17 +94,21 @@ class CrudMachine extends Component {
     const { items } = this.state
 
     const renderedItems = items.map((item, index) => {
+      const { name } = item
+
       return (
         <div className={`${css.itemContainer}`} key={index}>
           <div className={`${css.item}`} key={index}>
-            test
+            {name}
           </div>
           <div className={css.buttonsRow} key={index}>
             <Button
-              icon={IconNames.ADD}
+              // icon={IconNames.ADD}
               className={css.itemButton}
-              // onClick={() => this.toggleItemPicker({ item, index })}
-            />
+              onClick={() => this.onAddItemBefore({ item, index })}
+            >
+              Before
+            </Button>
             <Button
               icon={IconNames.EDIT}
               className={css.itemButton}
@@ -93,6 +119,13 @@ class CrudMachine extends Component {
               className={css.itemButton}
               onClick={() => this.onDeleteItem({ item, index })}
             />
+            <Button
+              // icon={IconNames.ADD}
+              className={css.itemButton}
+              onClick={() => this.onAddItemAfter({ item, index })}
+            >
+              After
+            </Button>
           </div>
         </div>
       )
