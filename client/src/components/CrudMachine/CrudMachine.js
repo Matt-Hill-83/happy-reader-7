@@ -114,13 +114,15 @@ class CrudMachine extends Component {
 
   renderItems = () => {
     const { items } = this.state
-    const { itemRenderer } = this.props
+
+    const defaultItemRenderer = ({ item }) => <ImageDisplay item={item} />
+    const itemRenderer = this.props.itemRenderer || defaultItemRenderer
 
     const renderedItems = items.map((item, index) => {
       return (
         <div className={`${css.itemContainer}`} key={index}>
           {itemRenderer({ item })}
-          {/* <ImageDisplay item={item} /> */}
+
           <div className={css.buttonsRow} key={index}>
             <Button
               // icon={IconNames.ADD}
