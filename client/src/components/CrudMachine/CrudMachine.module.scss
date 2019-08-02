@@ -2,28 +2,26 @@
 
 .main {
   display: flex;
-  flex: 1;
-  border: 1px solid red !important;
+  flex-direction: column;
+  align-items: flex-start;
+
+  border: 2px solid red !important;
+  background: pink;
+  width: min-content;
+
   .itemsContainer {
     display: flex;
     flex: 1;
-    border: 1px solid blue !important;
+    // border: 1px solid blue !important;
     overflow: hidden;
 
     .itemContainer {
-      // &:last-of-type {
-      //   border: 10px solid blue !important;
-      //   .add-after {
-      //     border: 3px solid black !important;
-      //   }
-      // }
-
       display: flex;
       border: 1px solid green !important;
       overflow: hidden;
 
-      height: 200px;
-      width: 200px;
+      height: 100px;
+      width: 100px;
       background: palevioletred;
       align-items: flex-end;
       justify-content: center;
@@ -32,7 +30,7 @@
       .item {
         display: flex;
         flex: 1;
-        border: 1px solid black !important;
+        // border: 1px solid black !important;
       }
 
       .buttonsRow {
@@ -52,12 +50,6 @@
             margin-left: unset;
           }
         }
-
-        // .addAfter {
-        //   display: flex;
-        //   flex: 1;
-        //   border: 3px solid pink !important;
-        // }
       }
     }
   }
