@@ -382,7 +382,7 @@ class Frame extends Component {
             items={items}
             itemRenderer={itemRenderer}
             saveItems={this.saveItems}
-            title={"items"}
+            title={"stuff"}
           />
           {isEditMode && (
             <Button className={css.closeButton} onClick={this.deleteFrame}>

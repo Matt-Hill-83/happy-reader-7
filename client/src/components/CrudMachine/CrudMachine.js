@@ -104,7 +104,7 @@ class CrudMachine extends Component {
 
   // TODO
   // TODO
-  // TODO
+  // TODO - should crud machine double as viewer?  probably.
   // TODO
   // TODO - save this new items array to the db with the frame
   // TODO - show image for selected item
@@ -191,6 +191,8 @@ class CrudMachine extends Component {
     return (
       <div className={`${css.main} ${className ? className : ""}`}>
         {title}
+
+        {/* TODO - pass in itemsContainer component, that can be used elsewhere without all the buttons? */}
         <div className={css.itemsContainer}>{this.renderItems()}</div>
 
         {showItemPicker && (
