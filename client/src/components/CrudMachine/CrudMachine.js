@@ -59,9 +59,10 @@ class CrudMachine extends Component {
 
     const part1 = items.slice(0, index)
     const part2 = items.slice(index + 1)
-    const part3 = [...part1, ...part2]
+    const final = [...part1, ...part2]
 
-    this.setState({ items: part3 }, this.saveChanges())
+    const statePropsToSave = { items: final }
+    this.setStateAndSave({ statePropsToSave })
   }
 
   onAddItemBefore = ({ index }) => {
@@ -70,12 +71,10 @@ class CrudMachine extends Component {
     const part1 = items.slice(0, index)
     const part2 = items.slice(index)
     const newItem = this.getNewItem()
-    const part3 = [...part1, newItem, ...part2]
+    const final = [...part1, newItem, ...part2]
 
-    const statePropsToSave = { items: part3 }
-
-    this.setState({ items: part3 }, this.saveChanges())
-    // this.setStateAndSave({ statePropsToSave })
+    const statePropsToSave = { items: final }
+    this.setStateAndSave({ statePropsToSave })
   }
 
   onAddItemAfter = ({ index }) => {
@@ -84,9 +83,10 @@ class CrudMachine extends Component {
     const part1 = items.slice(0, index + 1)
     const part2 = items.slice(index + 1)
     const newItem = this.getNewItem()
-    const part3 = [...part1, newItem, ...part2]
+    const final = [...part1, newItem, ...part2]
 
-    this.setState({ items: part3 })
+    const statePropsToSave = { items: final }
+    this.setStateAndSave({ statePropsToSave })
   }
 
   onEditItem = ({ index, item }) => {
@@ -94,7 +94,7 @@ class CrudMachine extends Component {
   }
 
   setStateAndSave = ({ statePropsToSave }) => {
-    this.setState({ ...statePropsToSave }, this.saveChanges())
+    this.setState({ ...statePropsToSave }, this.saveChanges)
   }
 
   //////////
@@ -116,11 +116,13 @@ class CrudMachine extends Component {
     itemPickerItem.name = name
 
     console.log("name", name) // zzz
-
+    this.saveChanges()
     this.toggleItemPicker({})
   }
 
   saveChanges = () => {
+    console.log("saveChanges") // zzz
+
     const { saveItems } = this.props
     const { items } = this.state
     saveItems && saveItems({ items })
@@ -147,7 +149,7 @@ class CrudMachine extends Component {
         <div
           className={`${css.itemContainer}`}
           key={index}
-          onClick={() => this.onEditItem({ item, index })}
+          // onClick={() => this.onEditItem({ item, index })}
         >
           {itemRenderer({ item })}
 
@@ -157,11 +159,11 @@ class CrudMachine extends Component {
               className={css.itemButton}
               onClick={() => this.onAddItemBefore({ item, index })}
             />
-            {/* <Button
+            <Button
               icon={IconNames.EDIT}
               className={css.itemButton}
-              // onClick={() => this.onEditItem({ item, index })}
-            /> */}
+              onClick={() => this.onEditItem({ item, index })}
+            />
             <Button
               icon={IconNames.DELETE}
               className={css.itemButton}
