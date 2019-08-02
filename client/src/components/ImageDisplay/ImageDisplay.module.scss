@@ -2,6 +2,43 @@
 
 .main {
   display: flex;
-  flex: 1;
-  border: 1px solid red !important;
+  flex: 1 1;
+
+  height: 100%;
+  width: 100%;
+  background: var(--grass-color);
+
+  .imageContainer {
+    display: flex;
+    flex: 1 1;
+
+    z-index: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+
+    .image {
+      height: 100%;
+      width: auto;
+    }
+
+    .itemLabel {
+      @include item-label;
+      position: absolute;
+      border: 1px solid blue !important;
+      z-index: 10;
+
+      background: var(--light-pink);
+      border-radius: 3px;
+
+      padding: 0 3px;
+      transform: translate(-50%, 25%);
+
+      width: auto;
+
+      left: 50%;
+      top: unset;
+      bottom: 6%;
+    }
+  }
 }

@@ -306,112 +306,124 @@ posableKat.images.heads = katHeads.map(image => {
   }
 })
 
+const locations = {
+  barn,
+  bees,
+  bog,
+  castle,
+  cave,
+  coop,
+  hill,
+  home: house,
+  lake,
+  log,
+  pond,
+  pool,
+  slide,
+  stump,
+  swamp,
+  swing,
+  tree,
+  waterfall,
+  end
+}
+
+const creatures = {
+  // star,
+  // start,
+  // zombie,
+  kat,
+  liz2,
+  gonzay,
+  chad: chad01,
+  ant,
+  bat,
+  bug,
+  bunny,
+  cop,
+  cub,
+  dragon,
+  elf,
+  fairy,
+  girl,
+  goblin,
+  hobbit,
+  hog,
+  man,
+  mermaid,
+  monster,
+  pig,
+  pug,
+  rat,
+  troll,
+  unicorn,
+  wizard
+}
+
+const items = {
+  bag,
+  bun,
+  cap,
+  car,
+  cup,
+  drip,
+  fan,
+  fig,
+  flag,
+  greenKey,
+  hat,
+  hoop,
+  hug,
+  jug,
+  key,
+  mat,
+  mop,
+  mug,
+  pan,
+  pin,
+  poop,
+  rag,
+  tag,
+  top,
+  tug,
+  twig
+}
+
+const vehicles = {
+  car,
+  tug,
+  van,
+  bus
+}
+
+const doors = {
+  doorGreen,
+  doorYellow,
+  door
+}
+
+const backgrounds = {
+  door,
+  cloud,
+  forest,
+  forestLeft,
+  forestRight,
+  map,
+  rock,
+  hill01,
+  sky01
+}
+
+const all = { ...locations, ...creatures, ...items, ...vehicles }
+
 export default {
-  locations: {
-    barn,
-    bees,
-    bog,
-    bus,
-    castle,
-    cave,
-    coop,
-    hill,
-    home: house,
-    lake,
-    log,
-    pond,
-    pool,
-    slide,
-    stump,
-    swamp,
-    swing,
-    tree,
-    waterfall,
-    end
-  },
-  creatures: {
-    // star,
-    // start,
-    // zombie,
-    kat,
-    liz2,
-    gonzay,
-    chad: chad01,
-    ant,
-    bat,
-    bug,
-    bunny,
-    cop,
-    cub,
-    dragon,
-    elf,
-    fairy,
-    girl,
-    goblin,
-    hobbit,
-    hog,
-    man,
-    mermaid,
-    monster,
-    pig,
-    pug,
-    rat,
-    troll,
-    unicorn,
-    wizard
-  },
-
-  items: {
-    bag,
-    bun,
-    cap,
-    car,
-    cup,
-    drip,
-    fan,
-    fig,
-    flag,
-    greenKey,
-    hat,
-    hoop,
-    hug,
-    jug,
-    key,
-    mat,
-    mop,
-    mug,
-    pan,
-    pin,
-    poop,
-    rag,
-    tag,
-    top,
-    tug,
-    twig
-  },
-
-  vehicles: {
-    car,
-    tug,
-    van,
-    bus
-  },
-  doors: {
-    doorGreen,
-    doorYellow,
-    door
-  },
-  backgrounds: {
-    door,
-    cloud,
-    forest,
-    forestLeft,
-    forestRight,
-    map,
-    rock,
-    hill01,
-    sky01
-  },
+  all,
+  locations,
+  creatures,
+  vehicles,
+  items,
+  doors,
+  backgrounds,
   posableGirls: [posableLiz, posableKat, posableChad],
   sceneView: {
     book: sceneViewBook,

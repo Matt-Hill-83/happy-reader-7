@@ -1,7 +1,7 @@
 import { observer } from "mobx-react"
 import React, { Component } from "react"
 
-import images from "../../images/images"
+import Images from "../../images/images"
 
 import css from "./ImageDisplay.module.scss"
 
@@ -18,14 +18,28 @@ class ImageDisplay extends Component {
     this.setState({ items: [...items] })
   }
 
+  renderImage = ({ name }) => {
+    const image = Images.all[name]
+
+    return (
+      <div className={css.imageContainer}>
+        <img className={css.image} src={image} alt={name} />
+        <span className={`${css.itemLabel}`}>{name}</span>
+      </div>
+    )
+  }
+
   render() {
     const {
-      item: { name, id, index }
+      item: { name, id, index, image }
     } = this.props
+
+    console.log("image", image) // zzz
 
     return (
       <div className={`${css.main}`} key={id || index}>
-        {name}
+        {this.renderImage({ name })}
+        {/* {name} */}
       </div>
     )
   }
