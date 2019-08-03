@@ -12,7 +12,7 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import React, { Component } from "react"
 
-import Images from "../../images/images"
+// import Images from "../../images/images"
 import images from "../../images/images"
 
 import CharacterPicker from "../CharacterPicker/CharacterPicker"

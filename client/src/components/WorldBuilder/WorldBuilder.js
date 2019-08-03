@@ -26,6 +26,8 @@ import Utils from "../../Utils/Utils"
 
 import css from "./WorldBuilder.module.scss"
 import { Checkbox } from "@material-ui/core"
+import CrudMachine from "../CrudMachine/CrudMachine"
+import ImageDisplay from "../ImageDisplay/ImageDisplay"
 
 const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
@@ -55,6 +57,7 @@ class WorldBuilder extends Component {
   }
 
   async componentWillMount() {
+    this.createNewGrid()
     this.initDraggableStuff()
     const initialMapIndex = INITIAL_MAP_INDEX
     this.changeMap({ index: initialMapIndex })
@@ -729,31 +732,57 @@ class WorldBuilder extends Component {
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0)
     const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0)
 
-    const gridRows = []
+    const newGrid = []
 
     rows.map((row, rowIndex) => {
       const gridRow = []
       columns.map((col, colIndex) => {
-        gridRow.push(`row-${rowIndex}, col-${colIndex}`)
+        gridRow.push({
+          test: `row-${rowIndex}, col-${colIndex}`,
+          item: { name: "girl" }
+        })
       })
-      gridRows.push(gridRow)
+      newGrid.push(gridRow)
     })
 
-    return gridRows
+    this.setState({ newGrid })
+  }
+
+  saveItems = () => {
+    console.log("saveItems") // zzz
+
+    return
   }
 
   renderNewGrid = () => {
-    const newGrid = this.createNewGrid()
+    // const newGrid = this.createNewGrid()
+
+    const { newGrid } = this.state
+
     console.log("newGrid", newGrid) // zzz
 
+    const itemRenderer = ({ item }) => {
+      return <ImageDisplay item={item} />
+    }
+
     const gridRows = []
+
+    const onSave = this.saveItems
 
     newGrid.map((row, rowIndex) => {
       const gridRow = []
       row.map((col, colIndex) => {
+        const items = [col.item]
+
         gridRow.push(
           <div className={css.gridCell}>
-            {`row-${rowIndex}, col-${colIndex}`}
+            <CrudMachine
+              className={css.crudMachine}
+              items={items}
+              itemRenderer={itemRenderer}
+              saveItems={onSave}
+              // title={"scenes"}
+            />
           </div>
         )
       })

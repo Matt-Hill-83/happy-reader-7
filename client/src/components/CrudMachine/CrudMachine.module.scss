@@ -7,13 +7,15 @@
 
   border: 2px solid red !important;
   background: pink;
-  width: min-content;
+  // width: min-content;
+  width: 100%;
 
   .itemsContainer {
     display: flex;
     flex: 1;
     // border: 1px solid blue !important;
     overflow: hidden;
+    width: 100%;
 
     .itemContainer {
       display: flex;

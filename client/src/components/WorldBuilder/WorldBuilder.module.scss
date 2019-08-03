@@ -1,7 +1,7 @@
 @import "../../Styles/mixins.modules.scss";
 
 .main {
-  --cell-height: 8vh;
+  --cell-height: 12vh;
 
   .newGrid {
     border: 1px solid red !important;
@@ -21,6 +21,15 @@
       overflow: hidden;
       height: var(--cell-height);
       width: var(--cell-height);
+
+      :global {
+        [class*="CrudMachine_itemContainer"] {
+          // border: 10px solid red !important;
+          height: unset;
+          width: unset;
+          width: 100%;
+        }
+      }
     }
   }
 
