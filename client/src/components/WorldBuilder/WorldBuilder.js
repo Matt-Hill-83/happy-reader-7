@@ -624,7 +624,7 @@ class WorldBuilder extends Component {
     this.setState({ sceneToEdit, showFrameBuilder: true })
   }
 
-  onExitFrameBuilder = ({ frames }) => {
+  onExitFrameBuilder = () => {
     this.setState({ sceneToEdit: "", showFrameBuilder: false })
   }
 
@@ -776,9 +776,16 @@ class WorldBuilder extends Component {
         const doorRights = [scene.doorRight]
         const characters = scene.characters
         const items = scene.items
+        scene.frameSet = []
 
         gridRow.push(
           <div className={css.gridCell}>
+            <Button
+              className={css.scenePropsButton}
+              onClick={() => this.editFrame({ sceneToEdit: scene })}
+            >
+              <Icon icon={IconNames.SETTINGS} />
+            </Button>
             <div className={css.locationMachine}>
               <CrudMachine
                 // className={css.crudMachine}
