@@ -5,20 +5,20 @@ import {
   InputGroup,
   FormGroup
 } from "@blueprintjs/core"
-import { FormControl, MenuItem, OutlinedInput, Select } from "@blueprintjs/core"
 
 import { IconNames } from "@blueprintjs/icons"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import React, { Component } from "react"
 
-// import Images from "../../images/images"
 import images from "../../images/images"
 
+import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import CharacterPicker from "../CharacterPicker/CharacterPicker"
 
 import css from "./CrudMachine.module.scss"
-import ImageDisplay from "../ImageDisplay/ImageDisplay"
+
+const DEFAULT_BUTTONS = { trash: true, edit: true, add: true }
 
 class CrudMachine extends Component {
   state = {
@@ -138,6 +138,9 @@ class CrudMachine extends Component {
   renderItems = () => {
     const { items } = this.state
 
+    const { buttons = DEFAULT_BUTTONS } = this.props
+    const { edit, add, trash } = buttons
+
     const defaultItemRenderer = ({ item }) => <ImageDisplay item={item} />
     const itemRenderer = this.props.itemRenderer || defaultItemRenderer
 
@@ -154,22 +157,28 @@ class CrudMachine extends Component {
           {itemRenderer({ item })}
 
           <div className={css.buttonsRow} key={index}>
-            <Button
-              icon={IconNames.ADD}
-              className={css.itemButton}
-              onClick={() => this.onAddItemBefore({ item, index })}
-            />
-            <Button
-              icon={IconNames.EDIT}
-              className={css.itemButton}
-              onClick={() => this.onEditItem({ item, index })}
-            />
-            <Button
-              icon={IconNames.DELETE}
-              className={css.itemButton}
-              onClick={() => this.onDeleteItem({ item, index })}
-            />
-            {isLastItem && (
+            {add && (
+              <Button
+                icon={IconNames.ADD}
+                className={css.itemButton}
+                onClick={() => this.onAddItemBefore({ item, index })}
+              />
+            )}
+            {edit && (
+              <Button
+                icon={IconNames.EDIT}
+                className={css.itemButton}
+                onClick={() => this.onEditItem({ item, index })}
+              />
+            )}
+            {trash && (
+              <Button
+                icon={IconNames.DELETE}
+                className={css.itemButton}
+                onClick={() => this.onDeleteItem({ item, index })}
+              />
+            )}
+            {add && isLastItem && (
               <Button
                 icon={IconNames.ADD}
                 className={`${css.itemButton} ${css.addAfter} add-after`}

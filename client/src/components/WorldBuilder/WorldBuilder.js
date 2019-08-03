@@ -739,7 +739,7 @@ class WorldBuilder extends Component {
       columns.map((col, colIndex) => {
         gridRow.push({
           test: `row-${rowIndex}, col-${colIndex}`,
-          item: { name: "girl" }
+          item: { name: "home" }
         })
       })
       newGrid.push(gridRow)
@@ -769,6 +769,8 @@ class WorldBuilder extends Component {
 
     const onSave = this.saveItems
 
+    const buttons = { add: false, trash: false, edit: true }
+
     newGrid.map((row, rowIndex) => {
       const gridRow = []
       row.map((col, colIndex) => {
@@ -779,6 +781,7 @@ class WorldBuilder extends Component {
             <CrudMachine
               className={css.crudMachine}
               items={items}
+              buttons={buttons}
               itemRenderer={itemRenderer}
               saveItems={onSave}
               // title={"scenes"}
