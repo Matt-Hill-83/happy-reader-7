@@ -1,6 +1,29 @@
 @import "../../Styles/mixins.modules.scss";
 
 .main {
+  --cell-height: 8vh;
+
+  .newGrid {
+    border: 1px solid red !important;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+    .gridRow {
+      display: flex;
+      border: 1px solid blue !important;
+      // overflow: hidden;
+    }
+
+    .gridCell {
+      display: flex;
+      border: 1px solid green !important;
+      overflow: hidden;
+      height: var(--cell-height);
+      width: var(--cell-height);
+    }
+  }
+
   border: 1px solid red !important;
   display: flex;
   flex-direction: column;

@@ -192,7 +192,7 @@ class CrudMachine extends Component {
       <div className={`${css.main} ${className ? className : ""}`}>
         {title}
 
-        {/* TODO - pass in itemsContainer component, that can be used elsewhere without all the buttons? */}
+        {/* TODO - pass in itemsContainer class, that can be used elsewhere without all the buttons? */}
         <div className={css.itemsContainer}>{this.renderItems()}</div>
 
         {showItemPicker && (

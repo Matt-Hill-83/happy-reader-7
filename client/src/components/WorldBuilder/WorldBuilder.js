@@ -31,8 +31,8 @@ const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 8
 const NUM_COLS_LOCATIONS_GRID = 8
-const COLUMN_WIDTH = 150
 
+const COLUMN_WIDTH = 150
 const LOCATIONS_PREFIX = "scenesGrid"
 
 const LOCATIONS_TAG = "location"
@@ -725,6 +725,45 @@ class WorldBuilder extends Component {
     await this.updateMap({ order })
   }
 
+  createNewGrid = () => {
+    const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0)
+    const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0)
+
+    const gridRows = []
+
+    rows.map((row, rowIndex) => {
+      const gridRow = []
+      columns.map((col, colIndex) => {
+        gridRow.push(`row-${rowIndex}, col-${colIndex}`)
+      })
+      gridRows.push(gridRow)
+    })
+
+    return gridRows
+  }
+
+  renderNewGrid = () => {
+    const newGrid = this.createNewGrid()
+    console.log("newGrid", newGrid) // zzz
+
+    const gridRows = []
+
+    newGrid.map((row, rowIndex) => {
+      const gridRow = []
+      row.map((col, colIndex) => {
+        gridRow.push(
+          <div className={css.gridCell}>
+            {`row-${rowIndex}, col-${colIndex}`}
+          </div>
+        )
+      })
+      gridRows.push(<div className={css.gridRow}>{gridRow}</div>)
+    })
+    console.log("gridRows", gridRows) // zzz
+
+    return <div className={css.newGrid}>{gridRows}</div>
+  }
+
   render() {
     const {
       world,
@@ -785,6 +824,7 @@ class WorldBuilder extends Component {
           </div>
         )}
         <div className={css.content}>
+          {this.renderNewGrid()}
           {showFrameBuilder && (
             <FrameBuilder
               world={world}
@@ -793,7 +833,7 @@ class WorldBuilder extends Component {
               updateMap={this.updateMap}
             />
           )}
-          {!showFrameBuilder && !this.state.editWorld && (
+          {false && !showFrameBuilder && !this.state.editWorld && (
             <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
               {/* Create these with .map() */}
               {this.renderList({
@@ -816,11 +856,6 @@ class WorldBuilder extends Component {
                 numRows: NUM_ROWS_LOCATIONS_GRID,
                 prefix: LOCATIONS_PREFIX
               })}
-              {/* {this.createLocationsGridRows({
-              numTargetsInRow: NUM_COLS_LOCATIONS_GRID,
-              numRows: NUM_ROWS_LOCATIONS_GRID,
-              prefix: LOCATIONS_PREFIX
-            })} */}
             </DragDropContext>
           )}
         </div>
