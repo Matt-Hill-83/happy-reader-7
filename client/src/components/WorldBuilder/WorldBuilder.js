@@ -739,6 +739,8 @@ class WorldBuilder extends Component {
       columns.forEach((col, colIndex) => {
         gridRow.push({
           location: { name: "home" },
+          doorRight: { name: "doorYellow" },
+          doorBottom: { name: "doorGreen" },
           characters: [{ name: "kat" }, { name: "girl" }],
           items: [{ name: "hat" }, { name: "bat" }]
         })
@@ -770,6 +772,8 @@ class WorldBuilder extends Component {
       const gridRow = []
       row.forEach(scene => {
         const locations = [scene.location]
+        const doorLefts = [scene.doorLeft]
+        const doorRights = [scene.doorRight]
         const characters = scene.characters
         const items = scene.items
 
@@ -789,7 +793,7 @@ class WorldBuilder extends Component {
               <CrudMachine
                 // className={css.crudMachine}
                 items={characters}
-                buttons={buttons}
+                // buttons={buttons}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
                 // title={"ch"}
@@ -799,7 +803,7 @@ class WorldBuilder extends Component {
               <CrudMachine
                 // className={css.crudMachine}
                 items={items}
-                buttons={buttons}
+                // buttons={buttons}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
                 // title={"it"}
