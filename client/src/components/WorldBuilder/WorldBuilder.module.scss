@@ -1,7 +1,7 @@
 @import "../../Styles/mixins.modules.scss";
 
 .main {
-  --cell-height: 18vh;
+  --cell-height: 30vh;
 
   .newGrid {
     border: 1px solid red !important;
@@ -21,19 +21,43 @@
       overflow: hidden;
       height: var(--cell-height);
       width: var(--cell-height);
+      flex-direction: column;
+      position: relative;
 
       .locationMachine {
-        border: 1px solid blue !important;
-        position: absolute;
-
-        height: 10%;
-        width: 10%;
+        // border: 1px solid blue !important;
+        // width: 30%;
+        height: 30%;
 
         :global {
           [class*="CrudMachine_itemContainer"] {
-            // border: 10px solid red !important;
             height: unset;
-            // width: unset;
+            width: 100%;
+          }
+        }
+      }
+
+      .charactersMachine {
+        // border: 4px solid yellow !important;
+        // width: 30%;
+        height: 30%;
+
+        :global {
+          [class*="CrudMachine_itemContainer"] {
+            height: unset;
+            width: 100%;
+          }
+        }
+      }
+
+      .itemsMachine {
+        // border: 4px solid yellow !important;
+        // width: 30%;
+        height: 30%;
+
+        :global {
+          [class*="CrudMachine_itemContainer"] {
+            height: unset;
             width: 100%;
           }
         }

@@ -31,8 +31,8 @@ import ImageDisplay from "../ImageDisplay/ImageDisplay"
 
 const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
-const NUM_ROWS_LOCATIONS_GRID = 4
-const NUM_COLS_LOCATIONS_GRID = 8
+const NUM_ROWS_LOCATIONS_GRID = 2
+const NUM_COLS_LOCATIONS_GRID = 4
 
 const COLUMN_WIDTH = 150
 const LOCATIONS_PREFIX = "scenesGrid"
@@ -734,12 +734,13 @@ class WorldBuilder extends Component {
 
     const newGrid = []
 
-    rows.map((row, rowIndex) => {
+    rows.forEach((row, rowIndex) => {
       const gridRow = []
-      columns.map((col, colIndex) => {
+      columns.forEach((col, colIndex) => {
         gridRow.push({
-          test: `row-${rowIndex}, col-${colIndex}`,
-          item: { name: "blank" }
+          location: { name: "home" },
+          characters: [{ name: "kat" }, { name: "girl" }],
+          items: [{ name: "hat" }, { name: "bat" }]
         })
       })
       newGrid.push(gridRow)
@@ -765,21 +766,43 @@ class WorldBuilder extends Component {
     const onSave = this.saveItems
     const buttons = { add: false, trash: false, edit: true }
 
-    newGrid.map(row => {
+    newGrid.forEach(row => {
       const gridRow = []
-      row.map(col => {
-        const items = [col.item]
+      row.forEach(scene => {
+        const locations = [scene.location]
+        const characters = scene.characters
+        const items = scene.items
 
         gridRow.push(
           <div className={css.gridCell}>
             <div className={css.locationMachine}>
               <CrudMachine
-                className={css.crudMachine}
+                // className={css.crudMachine}
+                items={locations}
+                buttons={buttons}
+                itemRenderer={itemRenderer}
+                saveItems={onSave}
+                // title={""}
+              />
+            </div>
+            <div className={css.charactersMachine}>
+              <CrudMachine
+                // className={css.crudMachine}
+                items={characters}
+                buttons={buttons}
+                itemRenderer={itemRenderer}
+                saveItems={onSave}
+                // title={"ch"}
+              />
+            </div>
+            <div className={css.itemsMachine}>
+              <CrudMachine
+                // className={css.crudMachine}
                 items={items}
                 buttons={buttons}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
-                title={""}
+                // title={"it"}
               />
             </div>
           </div>
