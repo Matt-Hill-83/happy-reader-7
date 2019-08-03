@@ -31,7 +31,7 @@ import ImageDisplay from "../ImageDisplay/ImageDisplay"
 
 const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
-const NUM_ROWS_LOCATIONS_GRID = 8
+const NUM_ROWS_LOCATIONS_GRID = 4
 const NUM_COLS_LOCATIONS_GRID = 8
 
 const COLUMN_WIDTH = 150
@@ -739,7 +739,7 @@ class WorldBuilder extends Component {
       columns.map((col, colIndex) => {
         gridRow.push({
           test: `row-${rowIndex}, col-${colIndex}`,
-          item: { name: "home" }
+          item: { name: "blank" }
         })
       })
       newGrid.push(gridRow)
@@ -755,37 +755,33 @@ class WorldBuilder extends Component {
   }
 
   renderNewGrid = () => {
-    // const newGrid = this.createNewGrid()
-
     const { newGrid } = this.state
-
-    console.log("newGrid", newGrid) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
     }
 
     const gridRows = []
-
     const onSave = this.saveItems
-
     const buttons = { add: false, trash: false, edit: true }
 
-    newGrid.map((row, rowIndex) => {
+    newGrid.map(row => {
       const gridRow = []
-      row.map((col, colIndex) => {
+      row.map(col => {
         const items = [col.item]
 
         gridRow.push(
           <div className={css.gridCell}>
-            <CrudMachine
-              className={css.crudMachine}
-              items={items}
-              buttons={buttons}
-              itemRenderer={itemRenderer}
-              saveItems={onSave}
-              // title={"scenes"}
-            />
+            <div className={css.locationMachine}>
+              <CrudMachine
+                className={css.crudMachine}
+                items={items}
+                buttons={buttons}
+                itemRenderer={itemRenderer}
+                saveItems={onSave}
+                title={""}
+              />
+            </div>
           </div>
         )
       })
