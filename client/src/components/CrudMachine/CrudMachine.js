@@ -3,7 +3,9 @@ import {
   Icon,
   Position,
   InputGroup,
-  FormGroup
+  FormGroup,
+  Popover,
+  PopoverInteractionKind
 } from "@blueprintjs/core"
 
 import { IconNames } from "@blueprintjs/icons"
@@ -155,37 +157,39 @@ class CrudMachine extends Component {
           // onClick={() => this.onEditItem({ item, index })}
         >
           {itemRenderer({ item })}
-
-          <div className={css.buttonsRow} key={index}>
-            {add && (
-              <Button
-                icon={IconNames.ADD}
-                className={css.itemButton}
-                onClick={() => this.onAddItemBefore({ item, index })}
-              />
-            )}
-            {edit && (
-              <Button
-                icon={IconNames.EDIT}
-                className={css.itemButton}
-                onClick={() => this.onEditItem({ item, index })}
-              />
-            )}
-            {trash && (
-              <Button
-                icon={IconNames.DELETE}
-                className={css.itemButton}
-                onClick={() => this.onDeleteItem({ item, index })}
-              />
-            )}
-            {add && isLastItem && (
-              <Button
-                icon={IconNames.ADD}
-                className={`${css.itemButton} ${css.addAfter} add-after`}
-                onClick={() => this.onAddItemAfter({ item, index })}
-              />
-            )}
-          </div>
+          <Popover interactionKind={PopoverInteractionKind.HOVER}>
+            <div>test</div>
+            <div className={css.buttonsRow} key={index}>
+              {add && (
+                <Button
+                  icon={IconNames.ADD}
+                  className={css.itemButton}
+                  onClick={() => this.onAddItemBefore({ item, index })}
+                />
+              )}
+              {edit && (
+                <Button
+                  icon={IconNames.EDIT}
+                  className={css.itemButton}
+                  onClick={() => this.onEditItem({ item, index })}
+                />
+              )}
+              {trash && (
+                <Button
+                  icon={IconNames.DELETE}
+                  className={css.itemButton}
+                  onClick={() => this.onDeleteItem({ item, index })}
+                />
+              )}
+              {add && isLastItem && (
+                <Button
+                  icon={IconNames.ADD}
+                  className={`${css.itemButton} ${css.addAfter} add-after`}
+                  onClick={() => this.onAddItemAfter({ item, index })}
+                />
+              )}
+            </div>
+          </Popover>
         </div>
       )
     })

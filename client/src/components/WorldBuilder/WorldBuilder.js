@@ -770,7 +770,7 @@ class WorldBuilder extends Component {
     const buttons = { add: false, trash: false, edit: true }
 
     const characterImageSets = [images.creatures]
-
+    const doorImageSets = [images.doors]
     const locationImageSets = [images.locations, images.vehicles, images.items]
 
     newGrid.forEach(row => {
@@ -828,6 +828,7 @@ class WorldBuilder extends Component {
                   items={doorsBottom}
                   itemRenderer={itemRenderer}
                   saveItems={onSave}
+                  imageSets={doorImageSets}
                 />
               </div>
             </div>
@@ -837,6 +838,7 @@ class WorldBuilder extends Component {
                   items={doorsRight}
                   itemRenderer={itemRenderer}
                   saveItems={onSave}
+                  imageSets={doorImageSets}
                 />
               </div>
             </div>
