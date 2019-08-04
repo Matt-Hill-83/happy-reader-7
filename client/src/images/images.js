@@ -364,7 +364,6 @@ const items = {
   bag,
   bun,
   cap,
-  car,
   cup,
   drip,
   fan,
@@ -385,7 +384,6 @@ const items = {
   rag,
   tag,
   top,
-  tug,
   twig
 }
 

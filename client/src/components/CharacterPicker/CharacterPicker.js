@@ -55,14 +55,20 @@ class CharacterPicker extends Component {
 
   render() {
     const { imageSets } = this.state
-    const { onClose } = this.props
+    const { isOpen, onClose } = this.props
 
     const renderedImageSets = imageSets.map((imageSet, index) => {
       return this.renderItemPicker({ imageSet, index })
     })
 
     return (
-      <Dialog isOpen={true} isCloseButtonShown={true} className={css.main}>
+      <Dialog
+        isOpen={isOpen}
+        canEscapeKeyClose={true}
+        isCloseButtonShown={true}
+        className={css.main}
+        // onClose={onClose}
+      >
         {renderedImageSets}
         <Button onClick={() => onClose({})}>Close</Button>
       </Dialog>

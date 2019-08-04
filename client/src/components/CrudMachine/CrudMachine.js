@@ -215,6 +215,7 @@ class CrudMachine extends Component {
 
         {showItemPicker && (
           <CharacterPicker
+            isOpen={showItemPicker}
             imageSets={imageSets}
             className={css.test}
             onClose={this.toggleItemPicker}

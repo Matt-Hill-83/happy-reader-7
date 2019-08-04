@@ -771,6 +771,8 @@ class WorldBuilder extends Component {
 
     const characterImageSets = [images.creatures]
 
+    const locationImageSets = [images.locations, images.vehicles, images.items]
+
     newGrid.forEach(row => {
       const gridRow = []
       row.forEach(scene => {
@@ -796,6 +798,7 @@ class WorldBuilder extends Component {
                 buttons={buttons}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
+                imageSets={locationImageSets}
 
                 // title={""}
               />
