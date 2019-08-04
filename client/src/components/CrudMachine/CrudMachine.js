@@ -56,18 +56,8 @@ class CrudMachine extends Component {
   /////////////     CRUD     ///////////////
   ////////////////////////////
 
-  onDeleteItem = ({ index }) => {
-    const { items } = this.state
-
-    const part1 = items.slice(0, index)
-    const part2 = items.slice(index + 1)
-    const final = [...part1, ...part2]
-
-    const statePropsToSave = { items: final }
-    this.setStateAndSave({ statePropsToSave })
-  }
-
-  onAddItemBefore = ({ index }) => {
+  onAddItemBefore = ({ index, event }) => {
+    event.stopPropagation()
     const { items } = this.state
 
     const part1 = items.slice(0, index)
@@ -78,8 +68,20 @@ class CrudMachine extends Component {
     const statePropsToSave = { items: final }
     this.setStateAndSave({ statePropsToSave })
   }
+  onDeleteItem = ({ index, event }) => {
+    event.stopPropagation()
+    const { items } = this.state
 
-  onAddItemAfter = ({ index }) => {
+    const part1 = items.slice(0, index)
+    const part2 = items.slice(index + 1)
+    const final = [...part1, ...part2]
+
+    const statePropsToSave = { items: final }
+    this.setStateAndSave({ statePropsToSave })
+  }
+
+  onAddItemAfter = ({ index, event }) => {
+    event.stopPropagation()
     const { items } = this.state
 
     const part1 = items.slice(0, index + 1)
@@ -91,7 +93,8 @@ class CrudMachine extends Component {
     this.setStateAndSave({ statePropsToSave })
   }
 
-  onEditItem = ({ index, item }) => {
+  onEditItem = ({ index, item, event }) => {
+    event.stopPropagation()
     this.toggleItemPicker({ item, index })
   }
 
@@ -147,28 +150,28 @@ class CrudMachine extends Component {
           <Button
             icon={IconNames.ADD}
             className={css.itemButton}
-            onClick={() => this.onAddItemBefore({ item, index })}
+            onClick={event => this.onAddItemBefore({ item, index, event })}
           />
         )}
         {edit && (
           <Button
             icon={IconNames.EDIT}
             className={css.itemButton}
-            onClick={() => this.onEditItem({ item, index })}
+            onClick={event => this.onEditItem({ item, index, event })}
           />
         )}
         {trash && (
           <Button
             icon={IconNames.DELETE}
             className={css.itemButton}
-            onClick={() => this.onDeleteItem({ item, index })}
+            onClick={event => this.onDeleteItem({ item, index, event })}
           />
         )}
         {add && isLastItem && (
           <Button
             icon={IconNames.ADD}
             className={`${css.itemButton} ${css.addAfter} add-after`}
-            onClick={() => this.onAddItemAfter({ item, index })}
+            onClick={event => this.onAddItemAfter({ item, index, event })}
           />
         )}
       </div>
@@ -192,7 +195,7 @@ class CrudMachine extends Component {
         <div
           className={`${css.itemContainer}`}
           key={index}
-          onClick={() => this.onEditItem({ item, index })}
+          onClick={event => this.onEditItem({ item, index, event })}
         >
           <Popover
             className={css.crudMachinePopoverWrapper}
