@@ -22,10 +22,11 @@
       overflow: hidden;
 
       height: 100px;
-      width: 100px;
       align-items: flex-end;
       justify-content: center;
       position: relative;
+      max-width: var(--item-width);
+      width: var(--item-width);
 
       .item {
         display: flex;
