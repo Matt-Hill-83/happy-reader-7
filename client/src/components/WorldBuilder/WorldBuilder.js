@@ -33,7 +33,7 @@ import images from "../../images/images"
 const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 2
-const NUM_COLS_LOCATIONS_GRID = 4
+const NUM_COLS_LOCATIONS_GRID = 2
 
 const COLUMN_WIDTH = 150
 const LOCATIONS_PREFIX = "scenesGrid"
@@ -777,8 +777,8 @@ class WorldBuilder extends Component {
       const gridRow = []
       row.forEach(scene => {
         const locations = [scene.location]
-        const doorLefts = [scene.doorLeft]
-        const doorRights = [scene.doorRight]
+        const doorsBottom = [scene.doorBottom]
+        const doorsRight = [scene.doorRight]
         const characters = scene.characters
         const items = scene.items
         scene.frameSet = []
@@ -791,36 +791,54 @@ class WorldBuilder extends Component {
             >
               <Icon icon={IconNames.SETTINGS} />
             </Button>
-            <div className={css.locationMachine}>
-              <CrudMachine
-                // className={css.crudMachine}
-                items={locations}
-                buttons={buttons}
-                itemRenderer={itemRenderer}
-                saveItems={onSave}
-                imageSets={locationImageSets}
+            <div className={css.column1}>
+              <div className={css.locationMachine}>
+                <CrudMachine
+                  // className={css.crudMachine}
+                  items={locations}
+                  buttons={buttons}
+                  itemRenderer={itemRenderer}
+                  saveItems={onSave}
+                  imageSets={locationImageSets}
 
-                // title={""}
-              />
+                  // title={""}
+                />
+              </div>
+              <div className={css.charactersMachine}>
+                <CrudMachine
+                  // className={css.crudMachine}
+                  items={characters}
+                  itemRenderer={itemRenderer}
+                  saveItems={onSave}
+                  imageSets={characterImageSets}
+                  // title={"ch"}
+                />
+              </div>
+              <div className={css.itemsMachine}>
+                <CrudMachine
+                  // className={css.crudMachine}
+                  items={items}
+                  itemRenderer={itemRenderer}
+                  saveItems={onSave}
+                  // title={"it"}
+                />
+              </div>
+              <div className={css.doorsBottomMachine}>
+                <CrudMachine
+                  items={doorsBottom}
+                  itemRenderer={itemRenderer}
+                  saveItems={onSave}
+                />
+              </div>
             </div>
-            <div className={css.charactersMachine}>
-              <CrudMachine
-                // className={css.crudMachine}
-                items={characters}
-                itemRenderer={itemRenderer}
-                saveItems={onSave}
-                imageSets={characterImageSets}
-                // title={"ch"}
-              />
-            </div>
-            <div className={css.itemsMachine}>
-              <CrudMachine
-                // className={css.crudMachine}
-                items={items}
-                itemRenderer={itemRenderer}
-                saveItems={onSave}
-                // title={"it"}
-              />
+            <div className={css.column2}>
+              <div className={css.doorsRightMachine}>
+                <CrudMachine
+                  items={doorsRight}
+                  itemRenderer={itemRenderer}
+                  saveItems={onSave}
+                />
+              </div>
             </div>
           </div>
         )

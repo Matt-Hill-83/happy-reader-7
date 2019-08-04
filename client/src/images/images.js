@@ -412,7 +412,7 @@ const backgrounds = {
   sky01
 }
 
-const all = { ...locations, ...creatures, ...items, ...vehicles }
+const all = { ...locations, ...creatures, ...items, ...vehicles, ...doors }
 
 export default {
   all,

@@ -19,7 +19,7 @@ class ImageDisplay extends Component {
   }
 
   renderImage = ({ name }) => {
-    const image = Images.all[name]
+    const image = this.props.images || Images.all[name]
 
     return (
       <div className={css.imageContainer}>
