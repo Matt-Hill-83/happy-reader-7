@@ -197,6 +197,15 @@ class CrudMachine extends Component {
     const { showItemPicker } = this.state
     const { className, title = "" } = this.props
 
+    const defaultImageSets = [
+      images.creatures,
+      images.locations,
+      images.vehicles,
+      images.items
+    ]
+
+    const imageSets = this.props.imageSets || defaultImageSets
+
     return (
       <div className={`${css.main} ${className ? className : ""}`}>
         {title}
@@ -206,12 +215,7 @@ class CrudMachine extends Component {
 
         {showItemPicker && (
           <CharacterPicker
-            imageSets={[
-              images.creatures,
-              images.locations,
-              images.vehicles,
-              images.items
-            ]}
+            imageSets={imageSets}
             className={css.test}
             onClose={this.toggleItemPicker}
             onSelectItem={this.onSelectItem}

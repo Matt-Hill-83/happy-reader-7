@@ -28,6 +28,7 @@ import css from "./WorldBuilder.module.scss"
 import { Checkbox } from "@material-ui/core"
 import CrudMachine from "../CrudMachine/CrudMachine"
 import ImageDisplay from "../ImageDisplay/ImageDisplay"
+import images from "../../images/images"
 
 const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
@@ -768,6 +769,8 @@ class WorldBuilder extends Component {
     const onSave = this.saveItems
     const buttons = { add: false, trash: false, edit: true }
 
+    const characterImageSets = [images.creatures]
+
     newGrid.forEach(row => {
       const gridRow = []
       row.forEach(scene => {
@@ -793,6 +796,7 @@ class WorldBuilder extends Component {
                 buttons={buttons}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
+
                 // title={""}
               />
             </div>
@@ -800,9 +804,9 @@ class WorldBuilder extends Component {
               <CrudMachine
                 // className={css.crudMachine}
                 items={characters}
-                // buttons={buttons}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
+                imageSets={characterImageSets}
                 // title={"ch"}
               />
             </div>
@@ -810,7 +814,6 @@ class WorldBuilder extends Component {
               <CrudMachine
                 // className={css.crudMachine}
                 items={items}
-                // buttons={buttons}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
                 // title={"it"}
