@@ -10,6 +10,28 @@
   width: 100%;
   height: 100%;
 
+  .crudMachinePopoverWrapper {
+    // border: 10px solid red !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    [class*="bp3-popover-target"] {
+      border: 1px solid green !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+  }
+
   .itemsContainer {
     display: flex;
     flex: 1;

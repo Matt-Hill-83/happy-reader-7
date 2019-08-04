@@ -137,11 +137,49 @@ class CrudMachine extends Component {
     this.setState({ showItemPicker, itemPickerItem: item })
   }
 
+  renderButtons = ({ item, index, isLastItem }) => {
+    const { buttons = DEFAULT_BUTTONS } = this.props
+    const { edit, add, trash } = buttons
+
+    return (
+      <div className={css.buttonsRow} key={index}>
+        {add && (
+          <Button
+            icon={IconNames.ADD}
+            className={css.itemButton}
+            onClick={() => this.onAddItemBefore({ item, index })}
+          />
+        )}
+        {edit && (
+          <Button
+            icon={IconNames.EDIT}
+            className={css.itemButton}
+            onClick={() => this.onEditItem({ item, index })}
+          />
+        )}
+        {trash && (
+          <Button
+            icon={IconNames.DELETE}
+            className={css.itemButton}
+            onClick={() => this.onDeleteItem({ item, index })}
+          />
+        )}
+        {add && isLastItem && (
+          <Button
+            icon={IconNames.ADD}
+            className={`${css.itemButton} ${css.addAfter} add-after`}
+            onClick={() => this.onAddItemAfter({ item, index })}
+          />
+        )}
+      </div>
+    )
+  }
+
   renderItems = () => {
     const { items } = this.state
 
-    const { buttons = DEFAULT_BUTTONS } = this.props
-    const { edit, add, trash } = buttons
+    // const { buttons = DEFAULT_BUTTONS } = this.props
+    // const { edit, add, trash } = buttons
 
     const defaultItemRenderer = ({ item }) => <ImageDisplay item={item} />
     const itemRenderer = this.props.itemRenderer || defaultItemRenderer
@@ -154,41 +192,14 @@ class CrudMachine extends Component {
         <div
           className={`${css.itemContainer}`}
           key={index}
-          // onClick={() => this.onEditItem({ item, index })}
+          onClick={() => this.onEditItem({ item, index })}
         >
-          {itemRenderer({ item })}
-          <Popover interactionKind={PopoverInteractionKind.HOVER}>
-            <div>test</div>
-            <div className={css.buttonsRow} key={index}>
-              {add && (
-                <Button
-                  icon={IconNames.ADD}
-                  className={css.itemButton}
-                  onClick={() => this.onAddItemBefore({ item, index })}
-                />
-              )}
-              {edit && (
-                <Button
-                  icon={IconNames.EDIT}
-                  className={css.itemButton}
-                  onClick={() => this.onEditItem({ item, index })}
-                />
-              )}
-              {trash && (
-                <Button
-                  icon={IconNames.DELETE}
-                  className={css.itemButton}
-                  onClick={() => this.onDeleteItem({ item, index })}
-                />
-              )}
-              {add && isLastItem && (
-                <Button
-                  icon={IconNames.ADD}
-                  className={`${css.itemButton} ${css.addAfter} add-after`}
-                  onClick={() => this.onAddItemAfter({ item, index })}
-                />
-              )}
-            </div>
+          <Popover
+            className={css.crudMachinePopoverWrapper}
+            interactionKind={PopoverInteractionKind.HOVER}
+          >
+            {itemRenderer({ item })}
+            {this.renderButtons({ item, index, isLastItem })}
           </Popover>
         </div>
       )
