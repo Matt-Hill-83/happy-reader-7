@@ -45,56 +45,26 @@
         border: 1px solid red !important;
       }
 
-      .locationMachine {
+      .crudMachine {
         height: var(--item-height);
+        cursor: pointer;
 
-        :global {
-          [class*="CrudMachine_itemContainer"] {
-            height: unset;
-          }
-        }
+        // :global {
+        //   [class*="CrudMachine_itemContainer"] {
+        //     // height: unset;
+        //   }
+        // }
       }
 
       .charactersMachine {
-        height: var(--item-height);
-
-        :global {
-          [class*="CrudMachine_itemContainer"] {
-            height: unset;
-          }
-        }
       }
-
       .doorsBottomMachine {
-        height: var(--item-height);
-        display: flex;
-
-        :global {
-          [class*="CrudMachine_itemContainer"] {
-            height: unset;
-          }
-        }
       }
 
       .doorsRightMachine {
-        height: var(--item-height);
-        display: flex;
-
-        :global {
-          [class*="CrudMachine_itemContainer"] {
-            height: unset;
-          }
-        }
       }
 
       .itemsMachine {
-        height: var(--item-height);
-
-        :global {
-          [class*="CrudMachine_itemContainer"] {
-            height: unset;
-          }
-        }
       }
     }
   }
