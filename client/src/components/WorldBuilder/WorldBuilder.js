@@ -792,55 +792,44 @@ class WorldBuilder extends Component {
               <Icon icon={IconNames.SETTINGS} />
             </Button>
             <div className={css.column1}>
-              <div className={css.locationMachine}>
-                <CrudMachine
-                  // className={css.crudMachine}
-                  items={locations}
-                  buttons={buttons}
-                  itemRenderer={itemRenderer}
-                  saveItems={onSave}
-                  imageSets={locationImageSets}
-
-                  // title={""}
-                />
-              </div>
-              <div className={css.charactersMachine}>
-                <CrudMachine
-                  // className={css.crudMachine}
-                  items={characters}
-                  itemRenderer={itemRenderer}
-                  saveItems={onSave}
-                  imageSets={characterImageSets}
-                  // title={"ch"}
-                />
-              </div>
-              <div className={css.itemsMachine}>
-                <CrudMachine
-                  // className={css.crudMachine}
-                  items={items}
-                  itemRenderer={itemRenderer}
-                  saveItems={onSave}
-                  // title={"it"}
-                />
-              </div>
-              <div className={css.doorsBottomMachine}>
-                <CrudMachine
-                  items={doorsBottom}
-                  itemRenderer={itemRenderer}
-                  saveItems={onSave}
-                  imageSets={doorImageSets}
-                />
-              </div>
+              <CrudMachine
+                className={css.locationMachine}
+                items={locations}
+                buttons={buttons}
+                itemRenderer={itemRenderer}
+                saveItems={onSave}
+                imageSets={locationImageSets}
+              />
+              <CrudMachine
+                className={css.charactersMachine}
+                items={characters}
+                itemRenderer={itemRenderer}
+                saveItems={onSave}
+                imageSets={characterImageSets}
+              />
+              <CrudMachine
+                className={css.itemsMachine}
+                items={items}
+                itemRenderer={itemRenderer}
+                saveItems={onSave}
+              />
+              <CrudMachine
+                className={css.doorsBottomMachine}
+                items={doorsBottom}
+                itemRenderer={itemRenderer}
+                saveItems={onSave}
+                imageSets={doorImageSets}
+              />
             </div>
+
             <div className={css.column2}>
-              <div className={css.doorsRightMachine}>
-                <CrudMachine
-                  items={doorsRight}
-                  itemRenderer={itemRenderer}
-                  saveItems={onSave}
-                  imageSets={doorImageSets}
-                />
-              </div>
+              <CrudMachine
+                className={css.doorsRightMachine}
+                items={doorsRight}
+                itemRenderer={itemRenderer}
+                saveItems={onSave}
+                imageSets={doorImageSets}
+              />
             </div>
           </div>
         )
