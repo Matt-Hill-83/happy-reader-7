@@ -801,20 +801,20 @@ class WorldBuilder extends Component {
                 imageSets={locationImageSets}
               />
               <CrudMachine
-                className={css.charactersMachine}
+                className={css.locationMachine}
                 items={characters}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
                 imageSets={characterImageSets}
               />
               <CrudMachine
-                className={css.itemsMachine}
+                className={css.locationMachine}
                 items={items}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
               />
               <CrudMachine
-                className={css.doorsBottomMachine}
+                className={css.locationMachine}
                 items={doorsBottom}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
@@ -824,7 +824,7 @@ class WorldBuilder extends Component {
 
             <div className={css.column2}>
               <CrudMachine
-                className={css.doorsRightMachine}
+                className={css.locationMachine}
                 items={doorsRight}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
