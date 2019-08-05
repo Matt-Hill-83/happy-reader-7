@@ -18,28 +18,21 @@ class ImageDisplay extends Component {
     this.setState({ items: [...items] })
   }
 
-  renderImage = ({ name }) => {
-    const image = this.props.images || Images.all[name]
-
-    return (
-      <div className={css.imageContainer}>
-        <img className={css.image} src={image} alt={name} />
-        <span className={`${css.itemLabel}`}>{name}</span>
-      </div>
-    )
-  }
-
   render() {
     const {
-      item: { name, id, index, image }
+      item: { name, id, index },
+      showLabel
     } = this.props
 
+    const image = this.props.images || Images.all[name]
     console.log("image", image) // zzz
 
     return (
       <div className={`${css.main}`} key={id || index}>
-        {this.renderImage({ name })}
-        {/* {name} */}
+        <div className={css.imageContainer}>
+          <img className={css.image} src={image} alt={name} />
+          {showLabel && <span className={`${css.itemLabel}`}>{name}</span>}
+        </div>
       </div>
     )
   }

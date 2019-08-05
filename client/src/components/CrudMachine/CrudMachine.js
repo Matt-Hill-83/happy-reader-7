@@ -134,8 +134,6 @@ class CrudMachine extends Component {
   }
 
   toggleItemPicker = ({ index, item = null }) => {
-    console.log("item", item) // zzz
-
     const showItemPicker = !this.state.showItemPicker
     this.setState({ showItemPicker, itemPickerItem: item })
   }
@@ -180,9 +178,6 @@ class CrudMachine extends Component {
 
   renderItems = () => {
     const { items } = this.state
-
-    // const { buttons = DEFAULT_BUTTONS } = this.props
-    // const { edit, add, trash } = buttons
 
     const defaultItemRenderer = ({ item }) => <ImageDisplay item={item} />
     const itemRenderer = this.props.itemRenderer || defaultItemRenderer

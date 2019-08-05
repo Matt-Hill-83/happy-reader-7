@@ -1,7 +1,7 @@
 @import "../../Styles/mixins.modules.scss";
 
 .main {
-  --cell-height: 30vh;
+  --cell-height: 10vh;
   --item-height: 20%;
   --item-width: calc(var(--item-height) * 1);
 
@@ -25,7 +25,7 @@
     .gridCell {
       display: flex;
       border: 1px solid green !important;
-      overflow: hidden;
+      // overflow: hidden;
       height: var(--cell-height);
       width: var(--cell-height);
       position: relative;
@@ -35,16 +35,17 @@
         display: flex;
         flex-direction: column;
         flex: 1;
+        width: 100%;
         // border: 1px solid green !important;
       }
 
-      .column2 {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        flex: 0;
-        // border: 1px solid red !important;
-      }
+      // .column2 {
+      //   display: flex;
+      //   flex-direction: column;
+      //   justify-content: center;
+      //   flex: 0;
+      //   // border: 1px solid red !important;
+      // }
 
       .crudMachine {
         height: var(--item-height);
@@ -60,39 +61,88 @@
       .itemsMachine {
         position: absolute;
         height: var(--item-height);
-        top: 5%;
+        top: 1%;
       }
 
-      // resize crud machine height
-      .locationMachine {
+      .itemBox {
+        [class*="CrudMachine_itemContainer"] {
+          border: 1px solid green;
+          border-radius: 10%;
+          margin: 1%;
+          background: #f5deb3ab;
+
+          &:hover {
+            border: 2px solid green;
+          }
+        }
+      }
+
+      .locationMachine-old {
+        // resize crud machine height
         position: absolute;
         height: 50%;
         align-items: center;
-        bottom: 15%;
+        bottom: 28%;
 
-        :global {
-          // Size the container width
-          [class*="CrudMachine_itemContainer"] {
-            max-width: unset;
-            width: 100%;
-          }
+        // Size the container width
+        [class*="CrudMachine_itemsContainer"] {
+          justify-content: flex-end;
+        }
+
+        [class*="CrudMachine_itemContainer"] {
+          max-width: unset;
+          width: 50%;
+          // padding: 3%;
+          right: 2%;
+        }
+      }
+
+      .locationMachine {
+        height: 100%;
+        width: 100%;
+
+        [class*="CrudMachine_itemContainer"] {
+          max-width: unset;
+          width: 100%;
         }
       }
 
       .doorsBottomMachine {
         position: absolute;
         height: var(--item-height);
-        bottom: 0px;
+        width: var(--item-width);
 
-        :global {
-          // Size the container width
-          [class*="CrudMachine_itemsContainer"] {
-            justify-content: center;
-          }
+        left: 65%;
+        bottom: -11%;
+        z-index: 10;
+
+        [class*="CrudMachine_itemsContainer"] {
+          justify-content: center;
+        }
+
+        [class*="CrudMachine_itemContainer"] {
+          max-width: unset;
+          width: unset;
         }
       }
 
       .doorsRightMachine {
+        position: absolute;
+        height: var(--item-height);
+        width: var(--item-width);
+
+        top: 65%;
+        right: -11%;
+        z-index: 10;
+
+        [class*="CrudMachine_itemsContainer"] {
+          justify-content: center;
+        }
+
+        [class*="CrudMachine_itemContainer"] {
+          max-width: unset;
+          width: unset;
+        }
       }
     }
   }

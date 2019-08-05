@@ -32,8 +32,8 @@ import images from "../../images/images"
 
 const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
-const NUM_ROWS_LOCATIONS_GRID = 2
-const NUM_COLS_LOCATIONS_GRID = 2
+const NUM_ROWS_LOCATIONS_GRID = 6
+const NUM_COLS_LOCATIONS_GRID = 6
 
 const COLUMN_WIDTH = 150
 const LOCATIONS_PREFIX = "scenesGrid"
@@ -801,14 +801,18 @@ class WorldBuilder extends Component {
                 imageSets={locationImageSets}
               />
               <CrudMachine
-                className={`${css.crudMachine} ${css.charactersMachine}`}
+                className={`${css.crudMachine} ${css.itemBox} ${
+                  css.charactersMachine
+                }`}
                 items={characters}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
                 imageSets={characterImageSets}
               />
               <CrudMachine
-                className={`${css.crudMachine} ${css.itemsMachine}`}
+                className={`${css.crudMachine} ${css.itemBox} ${
+                  css.itemsMachine
+                }`}
                 items={items}
                 itemRenderer={itemRenderer}
                 saveItems={onSave}
@@ -820,9 +824,7 @@ class WorldBuilder extends Component {
                 saveItems={onSave}
                 imageSets={doorImageSets}
               />
-            </div>
 
-            <div className={css.column2}>
               <CrudMachine
                 className={`${css.crudMachine} ${css.doorsRightMachine}`}
                 items={doorsRight}
