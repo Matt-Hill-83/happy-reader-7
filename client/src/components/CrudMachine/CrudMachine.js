@@ -167,7 +167,7 @@ class CrudMachine extends Component {
             onClick={event => this.onDeleteItem({ item, index, event })}
           />
         )}
-        {add && isLastItem && (
+        {add && (
           <Button
             icon={IconNames.ADD}
             className={`${css.itemButton} ${css.addAfter} add-after`}
@@ -189,7 +189,6 @@ class CrudMachine extends Component {
 
     const renderedItems = items.map((item, index) => {
       const isLastItem = index === items.length - 1
-      console.log("isLastItem", isLastItem) // zzz
 
       return (
         <div
