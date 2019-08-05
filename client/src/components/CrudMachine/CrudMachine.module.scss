@@ -34,7 +34,7 @@
 
   .itemsContainer {
     display: flex;
-    flex: 1;
+    // flex: 1;
     overflow: hidden;
     width: 100%;
 
@@ -47,8 +47,8 @@
       align-items: flex-end;
       justify-content: center;
       position: relative;
-      max-width: var(--item-width);
-      width: var(--item-width);
+      max-width: calc(var(--item-height) * 1);
+      width: calc(var(--item-height) * 1);
 
       .item {
         display: flex;

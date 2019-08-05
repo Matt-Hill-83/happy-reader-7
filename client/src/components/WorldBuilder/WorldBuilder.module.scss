@@ -2,8 +2,8 @@
 
 .main {
   --cell-height: 30vh;
-  --item-width: 7vh;
-  --item-height: 7vh;
+  --item-height: 30%;
+  --item-width: calc(var(--item-height) * 1);
 
   border: 1px solid red !important;
   display: flex;
@@ -59,23 +59,36 @@
       .charactersMachine {
       }
 
+      // resize crud machine height
       .locationMachine {
+        border: 4px solid yellow !important;
+        // display: flex;
+        position: absolute;
+        height: 50%;
+        align-items: center;
+
+        // width: 80%;
+
         :global {
+          // Size the container
           [class*="CrudMachine_itemContainer"] {
-            max-width: 100%;
-            width: 100%;
+            border: 4px solid green !important;
+            // max-width: 100%;
+            // width: 100%;
+            // width: 80%;
+            // height: 80%;
+            // bottom: 0px;
+            // right: 0px;
           }
+
+          // size the image
           [class*="ImageDisplay_imageContainer"] {
-            height: 55%;
+            border: 4px solid blue !important;
+            // height: 55%;
+            // bottom: 0px;
+            // right: 0px;
           }
         }
-
-        display: flex;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0px;
-        right: 0px;
       }
 
       .doorsBottomMachine {
