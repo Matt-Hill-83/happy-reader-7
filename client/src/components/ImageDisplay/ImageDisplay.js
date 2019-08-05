@@ -30,7 +30,7 @@ class ImageDisplay extends Component {
     return (
       <div className={`${css.main}`} key={id || index}>
         <div className={css.imageContainer}>
-          <img className={css.image} src={image} alt={name} />
+          {image && <img className={css.image} src={image} alt={name} />}
           {showLabel && <span className={`${css.itemLabel}`}>{name}</span>}
         </div>
       </div>

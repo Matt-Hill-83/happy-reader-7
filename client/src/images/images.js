@@ -1,5 +1,6 @@
 //locations
 import barn from "./locations/barn.png"
+import blank from "./locations/blank.png"
 import bees from "./locations/bees.png"
 import bog from "./locations/bog.png"
 import bus from "./locations/bus.png"
@@ -24,7 +25,7 @@ import waterfall from "./locations/waterfall.png"
 
 import bag from "./locations/bag.png"
 import bun from "./locations/bun.png"
-import can from "./locations/can.png"
+// import can from "./locations/can.png"
 import cap from "./locations/cap.png"
 import car from "./locations/car.png"
 import cup from "./locations/cup.png"
@@ -325,7 +326,8 @@ const locations = {
   swing,
   tree,
   waterfall,
-  end
+  end,
+  blank
 }
 
 const creatures = {
