@@ -247,4 +247,18 @@ export default class Utils {
 
     return foundMap
   }
+
+  static generateUuid() {
+    const sepStr = "-"
+    let date = new Date().getTime()
+    const uuid = `xxxxxxxx${sepStr}xxxx${sepStr}4xxx${sepStr}yxxx${sepStr}xxxxxxxxxxxx`.replace(
+      /[xy]/g,
+      c => {
+        const randNum = (date + Math.random() * 16) % 16 | 0
+        date = Math.floor(date / 16)
+        return (c === "x" ? randNum : (randNum & 0x3) | 0x8).toString(16)
+      }
+    )
+    return uuid
+  }
 }

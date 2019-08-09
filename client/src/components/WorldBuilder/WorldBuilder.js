@@ -32,8 +32,8 @@ import images from "../../images/images"
 
 const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
-const NUM_ROWS_LOCATIONS_GRID = 6
-const NUM_COLS_LOCATIONS_GRID = 6
+const NUM_ROWS_LOCATIONS_GRID = 2
+const NUM_COLS_LOCATIONS_GRID = 2
 
 const COLUMN_WIDTH = 150
 const LOCATIONS_PREFIX = "scenesGrid"
@@ -738,7 +738,10 @@ class WorldBuilder extends Component {
     rows.forEach((row, rowIndex) => {
       const gridRow = []
       columns.forEach((col, colIndex) => {
+        const id = Utils.generateUuid()
+
         gridRow.push({
+          id,
           location: { name: "blank" },
           doorRight: { name: "doorYellow" },
           doorBottom: { name: "doorGreen" },
@@ -754,8 +757,12 @@ class WorldBuilder extends Component {
 
   saveItems = () => {
     console.log("saveItems") // zzz
-
+    this.worldBuilderCallback()
     return
+  }
+
+  worldBuilderCallback = () => {
+    this.setState({ forceUpdate: new Date() })
   }
 
   renderNewGrid = () => {
@@ -783,24 +790,35 @@ class WorldBuilder extends Component {
         const items = scene.items
         scene.frameSet = []
 
+        console.log("scene.location", scene.location) // zzz
+        const hideScene = scene.location && scene.location.name === "blank"
+        console.log("hideScene", hideScene) // zzz
+
+        // This is not re-rendering when I make a change
+        // I need to push the change back to the original definition via a uuid
+
         gridRow.push(
           <div className={css.gridCell}>
-            <Button
-              className={css.scenePropsButton}
-              onClick={() => this.editFrame({ sceneToEdit: scene })}
-            >
-              <Icon icon={IconNames.SETTINGS} />
-            </Button>
+            {!hideScene && (
+              <Button
+                className={css.scenePropsButton}
+                onClick={() => this.editFrame({ sceneToEdit: scene })}
+              >
+                <Icon icon={IconNames.SETTINGS} />
+              </Button>
+            )}
+            <CrudMachine
+              worldBuilderCallback={this.worldBuilderCallback}
+              className={`${css.crudMachine} ${css.locationMachine}`}
+              items={locations}
+              buttons={buttons}
+              itemRenderer={itemRenderer}
+              saveItems={onSave}
+              imageSets={locationImageSets}
+            />
             <div className={css.column1}>
               <CrudMachine
-                className={`${css.crudMachine} ${css.locationMachine}`}
-                items={locations}
-                buttons={buttons}
-                itemRenderer={itemRenderer}
-                saveItems={onSave}
-                imageSets={locationImageSets}
-              />
-              <CrudMachine
+                worldBuilderCallback={this.worldBuilderCallback}
                 className={`${css.crudMachine} ${css.itemBox} ${
                   css.charactersMachine
                 }`}
@@ -810,6 +828,7 @@ class WorldBuilder extends Component {
                 imageSets={characterImageSets}
               />
               <CrudMachine
+                worldBuilderCallback={this.worldBuilderCallback}
                 className={`${css.crudMachine} ${css.itemBox} ${
                   css.itemsMachine
                 }`}
@@ -818,6 +837,7 @@ class WorldBuilder extends Component {
                 saveItems={onSave}
               />
               <CrudMachine
+                worldBuilderCallback={this.worldBuilderCallback}
                 className={`${css.crudMachine} ${css.doorsBottomMachine}`}
                 items={doorsBottom}
                 itemRenderer={itemRenderer}
@@ -826,6 +846,7 @@ class WorldBuilder extends Component {
               />
 
               <CrudMachine
+                worldBuilderCallback={this.worldBuilderCallback}
                 className={`${css.crudMachine} ${css.doorsRightMachine}`}
                 items={doorsRight}
                 itemRenderer={itemRenderer}

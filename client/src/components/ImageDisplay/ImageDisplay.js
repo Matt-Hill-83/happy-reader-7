@@ -25,7 +25,6 @@ class ImageDisplay extends Component {
     } = this.props
 
     const image = this.props.images || Images.all[name]
-    console.log("image", image) // zzz
 
     return (
       <div className={`${css.main}`} key={id || index}>

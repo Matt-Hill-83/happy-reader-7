@@ -69,8 +69,8 @@ class CharacterPicker extends Component {
         className={css.main}
         // onClose={onClose}
       >
-        {renderedImageSets}
         <Button onClick={() => onClose({})}>Close</Button>
+        {renderedImageSets}
       </Dialog>
     )
   }
