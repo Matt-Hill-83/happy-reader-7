@@ -739,7 +739,7 @@ class WorldBuilder extends Component {
       const gridRow = []
       columns.forEach((col, colIndex) => {
         gridRow.push({
-          location: { name: "home" },
+          location: { name: "blank" },
           doorRight: { name: "doorYellow" },
           doorBottom: { name: "doorGreen" },
           characters: [{ name: "kat" }, { name: "girl" }],
