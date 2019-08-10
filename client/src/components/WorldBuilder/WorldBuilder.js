@@ -30,7 +30,7 @@ import CrudMachine from "../CrudMachine/CrudMachine"
 import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import images from "../../images/images"
 
-const INITIAL_MAP_INDEX = 0
+const INITIAL_MAP_INDEX = 5
 // const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 2
 const NUM_COLS_LOCATIONS_GRID = 2
@@ -58,7 +58,8 @@ class WorldBuilder extends Component {
   }
 
   async componentWillMount() {
-    this.createNewGrid()
+    // const newGrid = this.createNewGrid()
+    // this.setState({ newGrid })
     this.initDraggableStuff()
     const initialMapIndex = INITIAL_MAP_INDEX
     this.changeMap({ index: initialMapIndex })
@@ -138,9 +139,14 @@ class WorldBuilder extends Component {
     // new map
     if (index === -1) {
       scenesGrid = this.preAllocateArrays({})
+      const newGrid = this.createNewGrid()
       const name = "My New World"
-      world = { scenesGrid, name }
+      world = { scenesGrid, name, newGrid }
       this.setState({ scenesGrid, world }, this.saveMap)
+
+      // TODO - I should save the new world here.
+      // TODO - I should save the new world here.
+      // TODO - I should save the new world here.
     } else {
       scenesGrid = world.data.scenesGrid
       this.setState({ scenesGrid, world })
@@ -656,6 +662,7 @@ class WorldBuilder extends Component {
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
     const map = this.state.world
+    console.log("newProps", newProps) // zzz
 
     Object.assign(map.data, toJS(newProps))
     delete map.data.grid
@@ -746,27 +753,83 @@ class WorldBuilder extends Component {
           doorRight: { name: "doorYellow" },
           doorBottom: { name: "doorGreen" },
           characters: [{ name: "kat" }, { name: "girl" }],
-          items: [{ name: "hat" }, { name: "bat" }]
+          items: [{ name: "hat" }, { name: "bat" }],
+          frameSet: []
         })
       })
       newGrid.push(gridRow)
     })
-
-    this.setState({ newGrid })
+    return newGrid
   }
 
-  saveItems = () => {
+  flattenGridForSave = ({ grid }) => {
+    const outputArray = []
+    grid.forEach(row => {
+      const newRow = {}
+      row.forEach((scene, index) => {
+        newRow[index] = scene
+      })
+      outputArray.push(newRow)
+    })
+    // console.log("outputArray", toJS(outputArray)) // zzz
+    return outputArray
+  }
+
+  unFlattenGridAfterLoad = ({ grid }) => {}
+
+  saveItems = async () => {
     console.log("saveItems") // zzz
-    this.worldBuilderCallback()
+    console.log("this.state", this.state) // zzz
+
+    // const newGrid = this.createNewGrid()
+
+    // const flattenedGrid = this.flattenGridForSave({ grid: newGrid })
+    // console.log("flattenedGrid", flattenedGrid) // zzz
+
+    // const { world, newGrid } = this.state
+    // world.newGrid = newGrid
+    // console.log("world", toJS(world)) // zzz
+
+    // console.log("world.data.newGrid", world.data.newGrid) // zzz
+
+    // const flatGrid = JSON.stringify(world.newGrid)
+    // console.log("flatGrid", flatGrid) // zzz
+
+    await this.updateMap({})
+    // await this.updateMap({ newProps: { newGrid2: flattenedGrid } })
+
+    this.forceUpdateWorldBuilder()
     return
   }
 
-  worldBuilderCallback = () => {
+  forceUpdateWorldBuilder = () => {
     this.setState({ forceUpdate: new Date() })
   }
 
   renderNewGrid = () => {
+    console.log("renderNewGrid-----------------------------") // zzz
+    const { world } = this.state
+
+    const savedGrid = world.data.newGrid2
+    // const savedGrid = world.data.newGrid
+    console.log("savedGrid", toJS(savedGrid)) // zzz
+
+    // const inflatedGrid = JSON.parse(savedGrid)
+    // console.log("inflatedGrid", inflatedGrid) // zzz
+
+    const gridExists =
+      savedGrid && savedGrid[0] && savedGrid[0][0] && savedGrid[0][0].id
+    console.log("gridExists", gridExists) // zzz
+
     const { newGrid } = this.state
+
+    const grid = gridExists ? savedGrid : newGrid
+
+    console.log("grid", toJS(grid)) // zzz
+
+    console.log("grid[0][0]", grid[0][0].location.name) // zzz
+
+    console.log("newGrid", newGrid) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -780,22 +843,21 @@ class WorldBuilder extends Component {
     const doorImageSets = [images.doors]
     const locationImageSets = [images.locations, images.vehicles, images.items]
 
-    newGrid.forEach(row => {
+    grid.forEach(row => {
       const gridRow = []
-      row.forEach(scene => {
+
+      const numItemsInRow = Object.keys(row).length
+      console.log("numItemsInRow", numItemsInRow) // zzz
+
+      Object.values(row).forEach(scene => {
         const locations = [scene.location]
         const doorsBottom = [scene.doorBottom]
         const doorsRight = [scene.doorRight]
         const characters = scene.characters
         const items = scene.items
-        scene.frameSet = []
+        // scene.frameSet = []
 
-        console.log("scene.location", scene.location) // zzz
         const hideScene = scene.location && scene.location.name === "blank"
-        console.log("hideScene", hideScene) // zzz
-
-        // This is not re-rendering when I make a change
-        // I need to push the change back to the original definition via a uuid
 
         gridRow.push(
           <div className={css.gridCell}>
@@ -807,52 +869,62 @@ class WorldBuilder extends Component {
                 <Icon icon={IconNames.SETTINGS} />
               </Button>
             )}
-            <CrudMachine
-              worldBuilderCallback={this.worldBuilderCallback}
-              className={`${css.crudMachine} ${css.locationMachine}`}
-              items={locations}
-              buttons={buttons}
-              itemRenderer={itemRenderer}
-              saveItems={onSave}
-              imageSets={locationImageSets}
-            />
             <div className={css.column1}>
-              <CrudMachine
-                worldBuilderCallback={this.worldBuilderCallback}
-                className={`${css.crudMachine} ${css.itemBox} ${
-                  css.charactersMachine
-                }`}
-                items={characters}
-                itemRenderer={itemRenderer}
-                saveItems={onSave}
-                imageSets={characterImageSets}
-              />
-              <CrudMachine
-                worldBuilderCallback={this.worldBuilderCallback}
-                className={`${css.crudMachine} ${css.itemBox} ${
-                  css.itemsMachine
-                }`}
-                items={items}
-                itemRenderer={itemRenderer}
-                saveItems={onSave}
-              />
-              <CrudMachine
-                worldBuilderCallback={this.worldBuilderCallback}
-                className={`${css.crudMachine} ${css.doorsBottomMachine}`}
-                items={doorsBottom}
-                itemRenderer={itemRenderer}
-                saveItems={onSave}
-                imageSets={doorImageSets}
-              />
+              {
+                <CrudMachine
+                  forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
+                  className={`${css.crudMachine} ${css.locationMachine}`}
+                  items={locations}
+                  buttons={buttons}
+                  itemRenderer={itemRenderer}
+                  saveItems={onSave}
+                  imageSets={locationImageSets}
+                />
+              }
+              {!hideScene && (
+                <CrudMachine
+                  forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
+                  className={`${css.crudMachine} ${css.itemBox} ${
+                    css.charactersMachine
+                  }`}
+                  items={characters}
+                  itemRenderer={itemRenderer}
+                  saveItems={onSave}
+                  imageSets={characterImageSets}
+                />
+              )}
+              {!hideScene && (
+                <CrudMachine
+                  forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
+                  className={`${css.crudMachine} ${css.itemBox} ${
+                    css.itemsMachine
+                  }`}
+                  items={items}
+                  itemRenderer={itemRenderer}
+                  saveItems={onSave}
+                />
+              )}
+              {!hideScene && (
+                <CrudMachine
+                  forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
+                  className={`${css.crudMachine} ${css.doorsBottomMachine}`}
+                  items={doorsBottom}
+                  itemRenderer={itemRenderer}
+                  saveItems={onSave}
+                  imageSets={doorImageSets}
+                />
+              )}
 
-              <CrudMachine
-                worldBuilderCallback={this.worldBuilderCallback}
-                className={`${css.crudMachine} ${css.doorsRightMachine}`}
-                items={doorsRight}
-                itemRenderer={itemRenderer}
-                saveItems={onSave}
-                imageSets={doorImageSets}
-              />
+              {!hideScene && (
+                <CrudMachine
+                  forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
+                  className={`${css.crudMachine} ${css.doorsRightMachine}`}
+                  items={doorsRight}
+                  itemRenderer={itemRenderer}
+                  saveItems={onSave}
+                  imageSets={doorImageSets}
+                />
+              )}
             </div>
           </div>
         )
@@ -865,12 +937,9 @@ class WorldBuilder extends Component {
   }
 
   render() {
-    const {
-      world,
+    const { world, sceneToEdit, showFrameBuilder } = this.state
 
-      sceneToEdit,
-      showFrameBuilder
-    } = this.state
+    console.log("------------------------------------world", toJS(world.data)) // zzz
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle
