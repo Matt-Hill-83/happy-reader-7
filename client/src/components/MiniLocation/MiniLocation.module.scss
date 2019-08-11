@@ -202,9 +202,11 @@
     justify-content: center;
 
     position: relative;
-    height: 100%;
     overflow: hidden;
-    width: 100%;
+    // height: 100%;
+    // width: 100%;
+    height: 150px;
+    width: 150px;
   }
 
   .locationTitle {
