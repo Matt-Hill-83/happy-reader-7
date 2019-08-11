@@ -377,13 +377,15 @@ class Frame extends Component {
         >
           {this.renderFrame({ allCharacters })}
           {/* {false && this.renderFrame({ allCharacters })} */}
-          <CrudMachine
-            className={css.crudMachine}
-            items={items}
-            itemRenderer={itemRenderer}
-            saveItems={this.saveItems}
-            title={"stuff"}
-          />
+          {isEditMode && (
+            <CrudMachine
+              className={css.crudMachine}
+              items={items}
+              itemRenderer={itemRenderer}
+              saveItems={this.saveItems}
+              title={"stuff"}
+            />
+          )}
           {isEditMode && (
             <Button className={css.closeButton} onClick={this.deleteFrame}>
               X
