@@ -15,22 +15,22 @@ import {
   InputGroup
 } from "@blueprintjs/core"
 
+import { Checkbox } from "@material-ui/core"
 import { IconNames } from "@blueprintjs/icons"
+
 import { maps } from "../../Stores/InitStores"
 import { worldNameStore } from "../../Stores/FrameSetStore"
+import CrudMachine from "../CrudMachine/CrudMachine"
 import FrameBuilder from "../FrameBuilder/FrameBuilder"
-import Images from "../../images/images"
+import ImageDisplay from "../ImageDisplay/ImageDisplay"
+import images from "../../images/images"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import MiniLocation from "../MiniLocation/MiniLocation"
 import Utils from "../../Utils/Utils"
 
 import css from "./WorldBuilder.module.scss"
-import { Checkbox } from "@material-ui/core"
-import CrudMachine from "../CrudMachine/CrudMachine"
-import ImageDisplay from "../ImageDisplay/ImageDisplay"
-import images from "../../images/images"
 
-const INITIAL_MAP_INDEX = 5
+const INITIAL_MAP_INDEX = 6
 // const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 2
 const NUM_COLS_LOCATIONS_GRID = 2
@@ -86,7 +86,7 @@ class WorldBuilder extends Component {
     const creatureObjects = allCreatures.map((item, index) => {
       const { type, name } = item
 
-      const image = Images.creatures[type]
+      const image = images.creatures[type]
       const id = `${CREATURES_TAG}-${index}`
 
       return {
@@ -107,7 +107,7 @@ class WorldBuilder extends Component {
     const itemObjects = allItems.map((item, index) => {
       const { type, name } = item
 
-      const image = Images.items[type]
+      const image = images.items[type]
       const id = `${ITEMS_TAG}-${index}`
 
       return {
@@ -662,7 +662,6 @@ class WorldBuilder extends Component {
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
     const map = this.state.world
-    console.log("newProps", newProps) // zzz
 
     Object.assign(map.data, toJS(newProps))
     delete map.data.grid
@@ -754,7 +753,7 @@ class WorldBuilder extends Component {
           doorBottom: { name: "doorGreen" },
           characters: [{ name: "kat" }, { name: "girl" }],
           items: [{ name: "hat" }, { name: "bat" }],
-          frameSet: []
+          frameSet: { frames: [] }
         })
       })
       newGrid.push(gridRow)
@@ -771,35 +770,14 @@ class WorldBuilder extends Component {
       })
       outputArray.push(newRow)
     })
-    // console.log("outputArray", toJS(outputArray)) // zzz
     return outputArray
   }
 
   unFlattenGridAfterLoad = ({ grid }) => {}
 
   saveItems = async () => {
-    console.log("saveItems") // zzz
-    console.log("this.state", this.state) // zzz
-
-    // const newGrid = this.createNewGrid()
-
-    // const flattenedGrid = this.flattenGridForSave({ grid: newGrid })
-    // console.log("flattenedGrid", flattenedGrid) // zzz
-
-    // const { world, newGrid } = this.state
-    // world.newGrid = newGrid
-    // console.log("world", toJS(world)) // zzz
-
-    // console.log("world.data.newGrid", world.data.newGrid) // zzz
-
-    // const flatGrid = JSON.stringify(world.newGrid)
-    // console.log("flatGrid", flatGrid) // zzz
-
     await this.updateMap({})
-    // await this.updateMap({ newProps: { newGrid2: flattenedGrid } })
-
     this.forceUpdateWorldBuilder()
-    return
   }
 
   forceUpdateWorldBuilder = () => {
@@ -807,29 +785,16 @@ class WorldBuilder extends Component {
   }
 
   renderNewGrid = () => {
-    console.log("renderNewGrid-----------------------------") // zzz
     const { world } = this.state
 
     const savedGrid = world.data.newGrid2
-    // const savedGrid = world.data.newGrid
-    console.log("savedGrid", toJS(savedGrid)) // zzz
-
-    // const inflatedGrid = JSON.parse(savedGrid)
-    // console.log("inflatedGrid", inflatedGrid) // zzz
 
     const gridExists =
       savedGrid && savedGrid[0] && savedGrid[0][0] && savedGrid[0][0].id
-    console.log("gridExists", gridExists) // zzz
 
     const { newGrid } = this.state
 
     const grid = gridExists ? savedGrid : newGrid
-
-    console.log("grid", toJS(grid)) // zzz
-
-    console.log("grid[0][0]", grid[0][0].location.name) // zzz
-
-    console.log("newGrid", newGrid) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -846,16 +811,12 @@ class WorldBuilder extends Component {
     grid.forEach(row => {
       const gridRow = []
 
-      const numItemsInRow = Object.keys(row).length
-      console.log("numItemsInRow", numItemsInRow) // zzz
-
       Object.values(row).forEach(scene => {
         const locations = [scene.location]
         const doorsBottom = [scene.doorBottom]
         const doorsRight = [scene.doorRight]
         const characters = scene.characters
         const items = scene.items
-        // scene.frameSet = []
 
         const hideScene = scene.location && scene.location.name === "blank"
 
@@ -931,15 +892,12 @@ class WorldBuilder extends Component {
       })
       gridRows.push(<div className={css.gridRow}>{gridRow}</div>)
     })
-    console.log("gridRows", gridRows) // zzz
 
     return <div className={css.newGrid}>{gridRows}</div>
   }
 
   render() {
     const { world, sceneToEdit, showFrameBuilder } = this.state
-
-    console.log("------------------------------------world", toJS(world.data)) // zzz
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle

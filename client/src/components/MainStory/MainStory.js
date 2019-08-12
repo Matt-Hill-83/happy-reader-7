@@ -17,8 +17,8 @@ import WorldPicker from "../WorldPicker/WorldPicker.js"
 
 import css from "./MainStory.module.scss"
 
-// const SHOW_WORLD_BUILDER = true
-const SHOW_WORLD_BUILDER = false
+const SHOW_WORLD_BUILDER = true
+// const SHOW_WORLD_BUILDER = false
 
 class MainStory extends React.Component {
   state = {
@@ -34,7 +34,12 @@ class MainStory extends React.Component {
     //  Move these to App.js
     await maps.fetch()
     await worldNameStore.fetch()
+
+    localStateStore.setActiveMapId("MB1dQKZKDqa6ZZJokFS9")
+    console.log("init done") // zzz
     await this.init()
+    console.log("init done") // zzz
+    this.setState({ forceUpdate: "test" })
   }
 
   init = async () => {
@@ -46,11 +51,23 @@ class MainStory extends React.Component {
 
     // TODO - I need to get maps by id, not by index, because I'm filtering them.
     filteredMaps.forEach(map => {
-      const grid = this.transformLocationsGridToLocationsMap({
-        scenesGrid: map.data.scenesGrid
-      })
+      const newGrid = toJS(map.data.newGrid2)
+      console.log("newGrid", newGrid) // zzz
 
-      map.data.grid = grid
+      if (newGrid) {
+        this.version2 = true
+        const grid = this.transformLocationsGridToLocationsMap2({
+          scenesGrid: map.data.newGrid2
+        })
+        map.data.grid = grid
+        console.log("grid", grid) // zzz
+      } else {
+        const grid = this.transformLocationsGridToLocationsMap({
+          scenesGrid: map.data.scenesGrid
+        })
+
+        map.data.grid = grid
+      }
     })
 
     localStateStore.setMaps(filteredMaps)
@@ -87,20 +104,102 @@ class MainStory extends React.Component {
     return locationsMap
   }
 
-  getTerminalScene = ({ start = true }) => {
-    // TODO, get map from store by mapId, index
-    // const map = localStateStore.getActiveMap()
+  transformLocationsGridToLocationsMap2 = ({ scenesGrid }) => {
+    const locationsMap = []
+
+    console.log("scenesGrid", toJS(scenesGrid)) // zzz
+
+    const numRows = scenesGrid.length
+    const numCols = Object.values(Object.values(scenesGrid)[0]).length
+
+    console.log("numRows", numRows) // zzz
+    console.log("numCols", numCols) // zzz
+
+    const rows = Array(numRows).fill(0)
+    const columns = Array(numCols).fill(0)
+
+    rows.map((row, rowIndex) => {
+      const newRow = []
+
+      columns.map((col, colIndex) => {
+        const rowName = rowIndex
+        const colName = colIndex
+
+        const newCell = toJS(scenesGrid[rowName][colName])
+        console.log("newCell", newCell) // zzz
+
+        // const scene = (newCell[0] && toJS(newCell[0].scene)) || {}
+
+        newRow.push(newCell)
+      })
+      locationsMap.push(newRow)
+    })
+    console.log("locationsMap", toJS(locationsMap)) // zzz
+
+    return locationsMap
+  }
+
+  getTerminalScene2 = ({ start = true }) => {
+    console.log("getTerminalScene2") // zzz
+
     const mapId = localStateStore.getActiveMapId()
-    console.log("mapId", mapId) // zzz
+    // console.log("mapId", mapId) // zzz
 
     const map = Utils.getMapFromId({ id: mapId })
-    console.log("map", map) // zzz
+    // console.log("map", map) // zzz
 
     const startScene = map.data.startScene
     console.log("startScene", toJS(startScene)) // zzz
 
     const endScene = map.data.endScene
     console.log("endScene", toJS(endScene)) // zzz
+
+    const grid = _get(map, "data.grid") || []
+    const allScenes = grid.flat()
+
+    // hacky way to retroactively assign startScene and endScene to each scene
+    allScenes.forEach(scene => {
+      console.log("scene.location.name", scene.location.name) // zzz
+      console.log("startScene", startScene) // zzz
+
+      scene.isStartScene = scene.location.name === startScene
+      scene.isEndScene = scene.location.name === endScene
+    })
+    console.log("allScenes", toJS(allScenes)) // zzz
+
+    const terminalScene = allScenes.find(scene => {
+      if (scene.isStartScene || scene.isEndScene) {
+        return start ? scene.isStartScene : scene.isEndScene
+      }
+    })
+
+    /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
+    const validScenes = allScenes.filter(scene => {
+      return toJS(scene).name
+    })
+
+    const firstScene = validScenes[0]
+    const lastScene = validScenes[validScenes.length - 1]
+
+    // If no start and finish scenes are marked, choose some, so the program doesn't break
+    return terminalScene || (start ? firstScene : lastScene)
+  }
+
+  getTerminalScene = ({ start = true }) => {
+    // for compatability with new format
+    if (this.version2) {
+      return this.getTerminalScene2({ start })
+    }
+
+    // TODO, get map from store by mapId, index
+    // const map = localStateStore.getActiveMap()
+    const mapId = localStateStore.getActiveMapId()
+
+    const map = Utils.getMapFromId({ id: mapId })
+
+    const startScene = map.data.startScene
+
+    const endScene = map.data.endScene
 
     const grid = _get(map, "data.grid") || []
     const allScenes = grid.flat()
@@ -116,7 +215,7 @@ class MainStory extends React.Component {
         return start ? scene.isStartScene : scene.isEndScene
       }
     })
-
+    /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
     const validScenes = allScenes.filter(scene => {
       return toJS(scene).name
     })
@@ -130,8 +229,7 @@ class MainStory extends React.Component {
 
   initWorld = async () => {
     const startScene = this.getTerminalScene({})
-    // console.log("startScene", startScene) // zzz
-    // console.log("startScene", toJS(startScene)) // zzz
+    console.log("startScene", toJS(startScene)) // zzz
 
     startScene.showCloud = false
 
@@ -139,16 +237,82 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
-    if (!activeScene.name) {
-      return
+    console.log("activeScene--------------------", toJS(activeScene)) // zzz
+
+    if (this.version2) {
+      if (!activeScene.location.name) {
+        return
+      }
+    } else {
+      if (!activeScene.name) {
+        return
+      }
     }
 
     const map = localStateStore.getActiveMap()
 
-    activeScene.neighborNames = this.getNeighbors({ activeScene, map })
+    if (this.version2 === true) {
+      activeScene.neighborNames = this.getNeighbors2({ activeScene, map })
+      console.log("activeScene.neighborNames", activeScene.neighborNames) // zzz
+    } else {
+      activeScene.neighborNames = this.getNeighbors({ activeScene, map })
+      console.log("activeScene.neighborNames", activeScene.neighborNames) // zzz
+    }
+
     activeScene.showCloud = false
+    console.log("activeScene++++++++++++++++++++", toJS(activeScene)) // zzz
 
     this.setState({ activeScene })
+  }
+
+  getNeighbors2 = ({ activeScene, map }) => {
+    console.log("getNeighbors2") // zzz
+
+    const activeSceneName = activeScene.location.name
+    console.log("activeSceneName-----------------", activeSceneName) // zzz
+
+    const neighbors = []
+    const neighborsArray = []
+
+    console.log("map.data.grid", toJS(map.data.grid)) // zzz
+
+    // create a map of all the locations for future use
+    map.data.grid.forEach((row, rowIndex) => {
+      row.forEach((location, locationIndex) => {
+        location = location || {}
+
+        neighborsArray.push({
+          name: location.location.name,
+          position: { x: rowIndex, y: locationIndex }
+        })
+      })
+    })
+
+    console.log("neighborsArray", toJS(neighborsArray)) // zzz
+
+    const currentLocation = neighborsArray.find(item => {
+      return item.name === activeSceneName
+    })
+
+    const currentPosition = currentLocation.position
+
+    neighbors.push({ x: currentPosition.x - 1, y: currentPosition.y })
+    neighbors.push({ x: currentPosition.x + 1, y: currentPosition.y })
+    neighbors.push({ x: currentPosition.x, y: currentPosition.y + 1 })
+    neighbors.push({ x: currentPosition.x, y: currentPosition.y - 1 })
+
+    const neighborNames = []
+
+    neighbors.forEach(neighbor => {
+      neighborsArray.forEach(item => {
+        if (item.position.x === neighbor.x && item.position.y === neighbor.y) {
+          neighborNames.push(item.name)
+        }
+      })
+    })
+    console.log("neighborNames", toJS(neighborNames)) // zzz
+
+    return neighborNames
   }
 
   getNeighbors = ({ activeScene, map }) => {
@@ -218,7 +382,11 @@ class MainStory extends React.Component {
   }
 
   onChangeMap = ({ mapId }) => {
+    console.log("onChangeMap----------------------------") // zzz
+
     localStateStore.setActiveMapId(mapId)
+    console.log("mapId", mapId) // zzz
+
     this.initWorld()
   }
 
@@ -235,9 +403,11 @@ class MainStory extends React.Component {
       return null
     }
 
-    const { isEndScene } = activeScene
+    // const { isEndScene } = activeScene
     const map = localStateStore.getActiveMap()
     const { title, order } = map.data
+    console.log("title", title) // zzz
+
     // console.log("isEndScene", isEndScene) // zzz
 
     const renderedMapTitle = (
@@ -295,6 +465,10 @@ class MainStory extends React.Component {
   }
 
   render() {
+    console.log("render MS") // zzz
+    const mapId = localStateStore.getActiveMapId()
+    console.log("mapId", mapId) // zzz
+
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     if (!savedMaps.length) {
       return null

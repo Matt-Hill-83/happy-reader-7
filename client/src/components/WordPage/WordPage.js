@@ -82,12 +82,13 @@ class WordPage extends React.Component {
     const { activeScene, frameIndex } = this.state
     const frameSet = activeScene.frameSet
 
-    let isLastFrame = frameIndex >= frameSet.frames.length - 1
+    let isLastFrame =
+      frameSet.frames && frameIndex >= frameSet.frames.length - 1
     if (!frameSet) {
       isLastFrame = true
     }
 
-    const frame = frameSet.frames[frameIndex]
+    const frame = frameSet.frames && frameSet.frames[frameIndex]
 
     return (
       <div className={css.textPage}>
