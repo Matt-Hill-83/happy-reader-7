@@ -17,8 +17,8 @@ import WorldPicker from "../WorldPicker/WorldPicker.js"
 
 import css from "./MainStory.module.scss"
 
-const SHOW_WORLD_BUILDER = true
-// const SHOW_WORLD_BUILDER = false
+// const SHOW_WORLD_BUILDER = true
+const SHOW_WORLD_BUILDER = false
 
 class MainStory extends React.Component {
   state = {
@@ -35,7 +35,7 @@ class MainStory extends React.Component {
     await maps.fetch()
     await worldNameStore.fetch()
 
-    localStateStore.setActiveMapId("MB1dQKZKDqa6ZZJokFS9")
+    localStateStore.setActiveMapId("8xQeZ6UVydjKFiFtEHDr")
     console.log("init done") // zzz
     await this.init()
     console.log("init done") // zzz
@@ -173,7 +173,6 @@ class MainStory extends React.Component {
       }
     })
 
-    /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
     const validScenes = allScenes.filter(scene => {
       return toJS(scene).name
     })
@@ -215,7 +214,6 @@ class MainStory extends React.Component {
         return start ? scene.isStartScene : scene.isEndScene
       }
     })
-    /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
     const validScenes = allScenes.filter(scene => {
       return toJS(scene).name
     })

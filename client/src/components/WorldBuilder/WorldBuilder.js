@@ -30,7 +30,7 @@ import Utils from "../../Utils/Utils"
 
 import css from "./WorldBuilder.module.scss"
 
-const INITIAL_MAP_INDEX = 6
+const INITIAL_MAP_INDEX = 2
 // const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 2
 const NUM_COLS_LOCATIONS_GRID = 2
@@ -58,8 +58,10 @@ class WorldBuilder extends Component {
   }
 
   async componentWillMount() {
-    // const newGrid = this.createNewGrid()
-    // this.setState({ newGrid })
+    // This is a bad place for this, but it is working to have a new grid ready for when you don't have a grid.
+    const newGrid = this.createNewGrid()
+    this.setState({ newGrid })
+
     this.initDraggableStuff()
     const initialMapIndex = INITIAL_MAP_INDEX
     this.changeMap({ index: initialMapIndex })
@@ -776,6 +778,8 @@ class WorldBuilder extends Component {
   unFlattenGridAfterLoad = ({ grid }) => {}
 
   saveItems = async () => {
+    console.log("saveItems") // zzz
+
     await this.updateMap({})
     this.forceUpdateWorldBuilder()
   }
@@ -786,15 +790,22 @@ class WorldBuilder extends Component {
 
   renderNewGrid = () => {
     const { world } = this.state
+    let grid
 
     const savedGrid = world.data.newGrid2
 
     const gridExists =
       savedGrid && savedGrid[0] && savedGrid[0][0] && savedGrid[0][0].id
 
-    const { newGrid } = this.state
+    if (!gridExists) {
+      const { newGrid } = this.state
+      grid = newGrid
 
-    const grid = gridExists ? savedGrid : newGrid
+      const flatGrid = this.flattenGridForSave({ grid: newGrid })
+      world.data.newGrid2 = flatGrid
+    } else {
+      grid = savedGrid
+    }
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -898,6 +909,7 @@ class WorldBuilder extends Component {
 
   render() {
     const { world, sceneToEdit, showFrameBuilder } = this.state
+    console.log("world", toJS(world)) // zzz
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle

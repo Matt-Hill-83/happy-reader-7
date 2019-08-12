@@ -356,11 +356,22 @@ class Frame extends Component {
     const { isEditMode = true } = this.props
     const {
       frame,
-      frame: { items },
       showFacePicker,
       showItemPicker,
       facePickerCharacter
     } = this.state
+
+    if (!frame) {
+      return null
+    }
+
+    // TODO -  I need put in a dummy frame for when there is none.
+    // TODO -  I need put in a dummy frame for when there is none.
+    // TODO -  I need put in a dummy frame for when there is none.
+    // TODO -  I need put in a dummy frame for when there is none.
+    // TODO -  I need put in a dummy frame for when there is none.
+    // TODO -  I need put in a dummy frame for when there is none.
+    const items = (frame && frame.items) || []
 
     const allCharacters = (frame && frame.creatures) || []
 
