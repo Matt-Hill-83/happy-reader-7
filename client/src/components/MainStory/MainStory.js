@@ -245,11 +245,11 @@ class MainStory extends React.Component {
     console.log("activeScene--------------------", toJS(activeScene)) // zzz
 
     if (this.version2) {
-      if (!activeScene.location.name) {
+      if (!activeScene || !activeScene.location.name) {
         return
       }
     } else {
-      if (!activeScene.name) {
+      if (!activeScene || !activeScene.name) {
         return
       }
     }
@@ -440,6 +440,7 @@ class MainStory extends React.Component {
                 updateActiveScene={this.updateActiveScene}
                 activeScene={activeScene}
                 openYouWinModal={this.openYouWinModal}
+                version2={this.version2}
               />
             </div>
           )}
