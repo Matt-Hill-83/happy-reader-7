@@ -361,6 +361,8 @@ class Frame extends Component {
       facePickerCharacter
     } = this.state
 
+    console.log("frame", frame) // zzz
+
     if (!frame) {
       return null
     }

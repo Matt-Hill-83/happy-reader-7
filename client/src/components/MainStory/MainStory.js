@@ -55,13 +55,14 @@ class MainStory extends React.Component {
       console.log("newGrid", newGrid) // zzz
 
       if (newGrid) {
-        this.version2 = true
+        // this.version2 = true
         const grid = this.transformLocationsGridToLocationsMap2({
           scenesGrid: map.data.newGrid2
         })
         map.data.grid = grid
         console.log("grid", grid) // zzz
       } else {
+        // this.version2 = false
         const grid = this.transformLocationsGridToLocationsMap({
           scenesGrid: map.data.scenesGrid
         })
@@ -159,7 +160,7 @@ class MainStory extends React.Component {
 
     // hacky way to retroactively assign startScene and endScene to each scene
     allScenes.forEach(scene => {
-      console.log("scene.location.name", scene.location.name) // zzz
+      console.log("scene.location.name", scene.name || scene.location.name) // zzz
       console.log("startScene", startScene) // zzz
 
       scene.isStartScene = scene.location.name === startScene
@@ -187,17 +188,14 @@ class MainStory extends React.Component {
   getTerminalScene = ({ start = true }) => {
     // for compatability with new format
     if (this.version2) {
+      console.log("is version2") // zzz
+
       return this.getTerminalScene2({ start })
     }
 
-    // TODO, get map from store by mapId, index
-    // const map = localStateStore.getActiveMap()
     const mapId = localStateStore.getActiveMapId()
-
     const map = Utils.getMapFromId({ id: mapId })
-
     const startScene = map.data.startScene
-
     const endScene = map.data.endScene
 
     const grid = _get(map, "data.grid") || []
@@ -226,6 +224,16 @@ class MainStory extends React.Component {
   }
 
   initWorld = async () => {
+    const mapId = localStateStore.getActiveMapId()
+    const map = Utils.getMapFromId({ id: mapId })
+
+    const newGrid = toJS(map.data.newGrid2)
+    if (newGrid) {
+      this.version2 = true
+    } else {
+      this.version2 = false
+    }
+
     const startScene = this.getTerminalScene({})
     console.log("startScene", toJS(startScene)) // zzz
 
