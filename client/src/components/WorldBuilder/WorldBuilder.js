@@ -30,7 +30,7 @@ import Utils from "../../Utils/Utils"
 
 import css from "./WorldBuilder.module.scss"
 
-const INITIAL_MAP_INDEX = 2
+const INITIAL_MAP_INDEX = 7
 // const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 2
 const NUM_COLS_LOCATIONS_GRID = 2
@@ -748,6 +748,45 @@ class WorldBuilder extends Component {
       columns.forEach((col, colIndex) => {
         const id = Utils.generateUuid()
 
+        const dummyFrame = {
+          creatures: ["kat"],
+          dialog: [
+            {
+              character: "kat",
+              characterIndex: 0,
+              text: "We can play."
+            },
+            {
+              character: "creature 1",
+              characterIndex: 1,
+              text: ""
+            },
+            {
+              character: "creature 1",
+              characterIndex: 0,
+              text: ""
+            },
+            {
+              character: "creature 1",
+              characterIndex: 1,
+              text: ""
+            }
+          ],
+          faces: [
+            {
+              character: "creature 1",
+              characterIndex: 1,
+              face: "happy"
+            },
+            {
+              character: "kat",
+              characterIndex: 0,
+              face: "kat-happy.9e02afab.png"
+            }
+          ],
+          story: ["I am Kat"]
+        }
+
         gridRow.push({
           id,
           location: { name: "blank" },
@@ -755,7 +794,7 @@ class WorldBuilder extends Component {
           doorBottom: { name: "doorGreen" },
           characters: [{ name: "kat" }, { name: "girl" }],
           items: [{ name: "hat" }, { name: "bat" }],
-          frameSet: { frames: [] }
+          frameSet: { frames: [dummyFrame] }
         })
       })
       newGrid.push(gridRow)
@@ -913,6 +952,7 @@ class WorldBuilder extends Component {
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle
+    console.log("world.id", toJS(world.id)) // zzz
 
     const title =
       (world.data && world.data.title) || this.previousTitle + " copy"

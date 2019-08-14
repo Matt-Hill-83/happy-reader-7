@@ -20,6 +20,7 @@ import css from "./MainStory.module.scss"
 // const SHOW_WORLD_BUILDER = true
 const SHOW_WORLD_BUILDER = false
 
+const MAP_FOR_TESTING = "fhcxrDUHB1L2Jk05UAPP"
 class MainStory extends React.Component {
   state = {
     showStory: true,
@@ -35,7 +36,7 @@ class MainStory extends React.Component {
     await maps.fetch()
     await worldNameStore.fetch()
 
-    localStateStore.setActiveMapId("8xQeZ6UVydjKFiFtEHDr")
+    localStateStore.setActiveMapId(MAP_FOR_TESTING)
     console.log("init done") // zzz
     await this.init()
     console.log("init done") // zzz
@@ -55,14 +56,12 @@ class MainStory extends React.Component {
       console.log("newGrid", newGrid) // zzz
 
       if (newGrid) {
-        // this.version2 = true
         const grid = this.transformLocationsGridToLocationsMap2({
           scenesGrid: map.data.newGrid2
         })
         map.data.grid = grid
         console.log("grid", grid) // zzz
       } else {
-        // this.version2 = false
         const grid = this.transformLocationsGridToLocationsMap({
           scenesGrid: map.data.scenesGrid
         })
