@@ -231,10 +231,21 @@ class MiniLocation extends React.Component {
       className,
       showLabel = true,
       id,
-      isEditMode
+      isEditMode,
+      version2
     } = this.props
 
-    const { items = [], name: locationName, creatures = [] } = location
+    const { items = [], creatures = [] } = location
+    console.log("location", toJS(location)) // zzz
+
+    let locationName = ""
+    if (version2) {
+      locationName = location.location.name
+    } else {
+      locationName = location.name
+    }
+    console.log("locationName", locationName) // zzz
+
     const localClass = isActive ? css.activeClass : ""
     const locationImage = Images.locations[locationName]
 

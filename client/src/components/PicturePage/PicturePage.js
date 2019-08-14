@@ -62,6 +62,7 @@ class PicturePage extends React.Component {
     location: scene,
     className = ""
   }) => {
+    console.log("renderMiniLocation") // zzz
     // TODO - this should come from state
     const { activeScene, version2 } = this.props
     const { name: sceneName } = scene
@@ -74,6 +75,7 @@ class PicturePage extends React.Component {
     }
 
     const id = `${colIndex}-${rowIndex}`
+    console.log("scene", toJS(scene)) // zzz
 
     return (
       <MiniLocation
@@ -82,6 +84,7 @@ class PicturePage extends React.Component {
         location={scene}
         isActive={isActive}
         className={className}
+        version2={version2}
       />
     )
   }
