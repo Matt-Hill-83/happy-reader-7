@@ -236,7 +236,6 @@ class MiniLocation extends React.Component {
     } = this.props
 
     const { items = [], creatures = [] } = location
-    console.log("location", toJS(location)) // zzz
 
     let locationName = ""
     if (version2) {
@@ -244,7 +243,9 @@ class MiniLocation extends React.Component {
     } else {
       locationName = location.name
     }
-    console.log("locationName", locationName) // zzz
+
+    locationName && console.log("locationName", locationName) // zzz
+    locationName && console.log("location", toJS(location)) // zzz
 
     const localClass = isActive ? css.activeClass : ""
     const locationImage = Images.all[locationName]
