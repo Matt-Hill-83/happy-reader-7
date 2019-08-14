@@ -36,7 +36,7 @@ class MainStory extends React.Component {
     await maps.fetch()
     await worldNameStore.fetch()
 
-    localStateStore.setActiveMapId(MAP_FOR_TESTING)
+    // localStateStore.setActiveMapId(MAP_FOR_TESTING)
     await this.init()
     this.setState({ forceUpdate: "test" })
   }
