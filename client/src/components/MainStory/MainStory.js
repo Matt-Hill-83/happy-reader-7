@@ -37,9 +37,7 @@ class MainStory extends React.Component {
     await worldNameStore.fetch()
 
     localStateStore.setActiveMapId(MAP_FOR_TESTING)
-    console.log("init done") // zzz
     await this.init()
-    console.log("init done") // zzz
     this.setState({ forceUpdate: "test" })
   }
 
@@ -53,14 +51,12 @@ class MainStory extends React.Component {
     // TODO - I need to get maps by id, not by index, because I'm filtering them.
     filteredMaps.forEach(map => {
       const newGrid = toJS(map.data.newGrid2)
-      console.log("newGrid", newGrid) // zzz
 
       if (newGrid) {
         const grid = this.transformLocationsGridToLocationsMap2({
           scenesGrid: map.data.newGrid2
         })
         map.data.grid = grid
-        console.log("grid", grid) // zzz
       } else {
         const grid = this.transformLocationsGridToLocationsMap({
           scenesGrid: map.data.scenesGrid
@@ -107,13 +103,8 @@ class MainStory extends React.Component {
   transformLocationsGridToLocationsMap2 = ({ scenesGrid }) => {
     const locationsMap = []
 
-    console.log("scenesGrid", toJS(scenesGrid)) // zzz
-
     const numRows = scenesGrid.length
     const numCols = Object.values(Object.values(scenesGrid)[0]).length
-
-    console.log("numRows", numRows) // zzz
-    console.log("numCols", numCols) // zzz
 
     const rows = Array(numRows).fill(0)
     const columns = Array(numCols).fill(0)
@@ -126,7 +117,6 @@ class MainStory extends React.Component {
         const colName = colIndex
 
         const newCell = toJS(scenesGrid[rowName][colName])
-        console.log("newCell", newCell) // zzz
 
         // const scene = (newCell[0] && toJS(newCell[0].scene)) || {}
 
@@ -134,38 +124,27 @@ class MainStory extends React.Component {
       })
       locationsMap.push(newRow)
     })
-    console.log("locationsMap", toJS(locationsMap)) // zzz
 
     return locationsMap
   }
 
   getTerminalScene2 = ({ start = true }) => {
-    console.log("getTerminalScene2") // zzz
-
     const mapId = localStateStore.getActiveMapId()
-    // console.log("mapId", mapId) // zzz
 
     const map = Utils.getMapFromId({ id: mapId })
-    // console.log("map", map) // zzz
 
     const startScene = map.data.startScene
-    console.log("startScene", toJS(startScene)) // zzz
 
     const endScene = map.data.endScene
-    console.log("endScene", toJS(endScene)) // zzz
 
     const grid = _get(map, "data.grid") || []
     const allScenes = grid.flat()
 
     // hacky way to retroactively assign startScene and endScene to each scene
     allScenes.forEach(scene => {
-      console.log("scene.location.name", scene.name || scene.location.name) // zzz
-      console.log("startScene", startScene) // zzz
-
       scene.isStartScene = scene.location.name === startScene
       scene.isEndScene = scene.location.name === endScene
     })
-    console.log("allScenes", toJS(allScenes)) // zzz
 
     const terminalScene = allScenes.find(scene => {
       if (scene.isStartScene || scene.isEndScene) {
@@ -187,8 +166,6 @@ class MainStory extends React.Component {
   getTerminalScene = ({ start = true }) => {
     // for compatability with new format
     if (this.version2) {
-      console.log("is version2") // zzz
-
       return this.getTerminalScene2({ start })
     }
 
@@ -234,7 +211,6 @@ class MainStory extends React.Component {
     }
 
     const startScene = this.getTerminalScene({})
-    console.log("startScene", toJS(startScene)) // zzz
 
     startScene.showCloud = false
 
@@ -242,8 +218,6 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
-    console.log("activeScene--------------------", toJS(activeScene)) // zzz
-
     if (this.version2) {
       if (!activeScene || !activeScene.location.name) {
         return
@@ -258,28 +232,20 @@ class MainStory extends React.Component {
 
     if (this.version2 === true) {
       activeScene.neighborNames = this.getNeighbors2({ activeScene, map })
-      console.log("activeScene.neighborNames", activeScene.neighborNames) // zzz
     } else {
       activeScene.neighborNames = this.getNeighbors({ activeScene, map })
-      console.log("activeScene.neighborNames", activeScene.neighborNames) // zzz
     }
 
     activeScene.showCloud = false
-    console.log("activeScene++++++++++++++++++++", toJS(activeScene)) // zzz
 
     this.setState({ activeScene })
   }
 
   getNeighbors2 = ({ activeScene, map }) => {
-    console.log("getNeighbors2") // zzz
-
     const activeSceneName = activeScene.location.name
-    console.log("activeSceneName-----------------", activeSceneName) // zzz
 
     const neighbors = []
     const neighborsArray = []
-
-    console.log("map.data.grid", toJS(map.data.grid)) // zzz
 
     // create a map of all the locations for future use
     map.data.grid.forEach((row, rowIndex) => {
@@ -292,8 +258,6 @@ class MainStory extends React.Component {
         })
       })
     })
-
-    console.log("neighborsArray", toJS(neighborsArray)) // zzz
 
     const currentLocation = neighborsArray.find(item => {
       return item.name === activeSceneName
@@ -315,7 +279,6 @@ class MainStory extends React.Component {
         }
       })
     })
-    console.log("neighborNames", toJS(neighborNames)) // zzz
 
     return neighborNames
   }
@@ -387,10 +350,7 @@ class MainStory extends React.Component {
   }
 
   onChangeMap = ({ mapId }) => {
-    console.log("onChangeMap----------------------------") // zzz
-
     localStateStore.setActiveMapId(mapId)
-    console.log("mapId", mapId) // zzz
 
     this.initWorld()
   }
@@ -411,9 +371,6 @@ class MainStory extends React.Component {
     // const { isEndScene } = activeScene
     const map = localStateStore.getActiveMap()
     const { title, order } = map.data
-    console.log("title", title) // zzz
-
-    // console.log("isEndScene", isEndScene) // zzz
 
     const renderedMapTitle = (
       <div className={css.mapTitle}>
@@ -471,9 +428,7 @@ class MainStory extends React.Component {
   }
 
   render() {
-    console.log("render MS") // zzz
     const mapId = localStateStore.getActiveMapId()
-    console.log("mapId", mapId) // zzz
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     if (!savedMaps.length) {
