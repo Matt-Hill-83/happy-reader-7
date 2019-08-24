@@ -52,6 +52,8 @@ class WordPage extends React.Component {
     const { activeScene } = this.state
     const neighbors = activeScene.neighborNames
 
+    console.log("activeScene", activeScene) // zzz
+
     const { isEndScene } = activeScene
 
     let buttons

@@ -194,11 +194,14 @@
 
   position: relative;
 
-  // height: 100%;
   height: var(--story-item-height);
+  width: var(--story-item-width);
+
   min-height: var(--story-item-height);
   min-width: var(--story-item-width);
-  width: var(--story-item-width);
+
+  max-height: var(--story-item-height);
+  max-width: var(--story-item-width);
 
   .imagesBox {
     display: flex;
