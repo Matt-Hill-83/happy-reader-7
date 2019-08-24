@@ -20,7 +20,7 @@ import css from "./MainStory.module.scss"
 // const SHOW_WORLD_BUILDER = true
 const SHOW_WORLD_BUILDER = false
 
-const MAP_FOR_TESTING = "fhcxrDUHB1L2Jk05UAPP"
+const MAP_FOR_TESTING = "VcFANrSQYzY7VdOiV5UU"
 class MainStory extends React.Component {
   state = {
     showStory: true,
@@ -36,7 +36,7 @@ class MainStory extends React.Component {
     await maps.fetch()
     await worldNameStore.fetch()
 
-    // localStateStore.setActiveMapId(MAP_FOR_TESTING)
+    localStateStore.setActiveMapId(MAP_FOR_TESTING)
     await this.init()
     this.setState({ forceUpdate: "test" })
   }
@@ -137,14 +137,27 @@ class MainStory extends React.Component {
 
     const endScene = map.data.endScene
 
-    const grid = _get(map, "data.grid") || []
-    const allScenes = grid.flat()
-
-    // hacky way to retroactively assign startScene and endScene to each scene
-    allScenes.forEach(scene => {
-      scene.isStartScene = scene.location.name === startScene
-      scene.isEndScene = scene.location.name === endScene
-    })
+    let allScenes = []
+    if (this.version2) {
+      const grid = _get(map, "data.newGrid2") || []
+      allScenes = grid.flat()
+      allScenes = allScenes.map(scene => {
+        return scene[0]
+      })
+      // hacky way to retroactively assign startScene and endScene to each scene
+      allScenes.forEach(scene => {
+        scene.isStartScene = scene.location.name === startScene
+        scene.isEndScene = scene.location.name === endScene
+      })
+    } else {
+      const grid = _get(map, "data.grid") || []
+      allScenes = grid.flat()
+      // hacky way to retroactively assign startScene and endScene to each scene
+      allScenes.forEach(scene => {
+        scene.isStartScene = scene.location.name === startScene
+        scene.isEndScene = scene.location.name === endScene
+      })
+    }
 
     const terminalScene = allScenes.find(scene => {
       if (scene.isStartScene || scene.isEndScene) {
@@ -159,6 +172,7 @@ class MainStory extends React.Component {
     const firstScene = validScenes[0]
     const lastScene = validScenes[validScenes.length - 1]
 
+    /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
     // If no start and finish scenes are marked, choose some, so the program doesn't break
     return terminalScene || (start ? firstScene : lastScene)
   }

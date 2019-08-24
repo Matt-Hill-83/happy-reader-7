@@ -33,7 +33,7 @@ import css from "./WorldBuilder.module.scss"
 const INITIAL_MAP_INDEX = 7
 // const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 2
-const NUM_COLS_LOCATIONS_GRID = 2
+const NUM_COLS_LOCATIONS_GRID = 5
 
 const COLUMN_WIDTH = 150
 const LOCATIONS_PREFIX = "scenesGrid"
@@ -584,6 +584,8 @@ class WorldBuilder extends Component {
   }
 
   saveMap = async () => {
+    console.log("saveMap") // zzz
+
     const { scenesGrid } = this.state
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
