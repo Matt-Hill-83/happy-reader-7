@@ -1083,7 +1083,6 @@ class WorldBuilder extends Component {
               end:
               {this.renderEndScenePicker()}
               <div className={css.subTitle}>
-                {/* (drag items to create your world...) */}
                 <div className={css.editWorldButtons}>
                   {/* {this.renderSaveMapButton()} */}
                   {this.renderMapPicker()}
