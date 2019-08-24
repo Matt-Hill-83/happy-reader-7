@@ -237,6 +237,8 @@ class MiniLocation extends React.Component {
 
     const { items = [], creatures = [] } = location
 
+    console.log("items", toJS(items)) // zzz
+
     let locationName = ""
     if (version2) {
       locationName = location.location.name
@@ -244,8 +246,9 @@ class MiniLocation extends React.Component {
       locationName = location.name
     }
 
-    locationName && console.log("locationName", locationName) // zzz
     locationName && console.log("location", toJS(location)) // zzz
+
+    const isBlank = locationName === "blank"
 
     const localClass = isActive ? css.activeClass : ""
     const locationImage = Images.all[locationName]
@@ -255,10 +258,26 @@ class MiniLocation extends React.Component {
     const cloudImage = Images.backgrounds["cloud"]
     const defaultDoorImage = Images.backgrounds["door"]
 
-    const renderedItems = items.map(item => {
-      const renderedItem = Images.items[item]
-      return <img className={css.itemImage} src={renderedItem} alt={"imagex"} />
-    })
+    console.log("iIages.all", toJS(Images.all)) // zzz
+
+    let renderedItems
+    if (version2) {
+      renderedItems = items.map(item => {
+        const renderedItem = Images.all[item.name]
+        return (
+          <img className={css.itemImage} src={renderedItem} alt={"imagex"} />
+        )
+      })
+    } else {
+      renderedItems = items.map(item => {
+        const renderedItem = Images.items[item]
+        return (
+          <img className={css.itemImage} src={renderedItem} alt={"imagex"} />
+        )
+      })
+    }
+
+    console.log("renderedItems", renderedItems) // zzz
 
     if (!locationName) {
       return (
@@ -296,7 +315,7 @@ class MiniLocation extends React.Component {
           <img className={css.rockImage} src={rockImage} alt={"imagex"} />
         </div>
         <div className={css.grassImage} />
-        {!isEditMode && showCloud && (
+        {!isBlank && !isEditMode && showCloud && (
           <div className={css.cloudImageContainer}>
             <img className={css.cloudImage} src={cloudImage} alt={"imagex"} />
           </div>
@@ -326,7 +345,9 @@ class MiniLocation extends React.Component {
         <div className={css.characters}>
           {this.renderCharacters({ creatures, isActive })}
         </div>
-        {showLabel && <span className={css.locationTitle}>{locationName}</span>}
+        {!isBlank && showLabel && (
+          <span className={css.locationTitle}>{locationName}</span>
+        )}
       </div>
     )
   }

@@ -130,11 +130,9 @@ class MainStory extends React.Component {
 
   getTerminalScene2 = ({ start = true }) => {
     const mapId = localStateStore.getActiveMapId()
-
     const map = Utils.getMapFromId({ id: mapId })
 
     const startScene = map.data.startScene
-
     const endScene = map.data.endScene
 
     let allScenes = []
@@ -172,7 +170,6 @@ class MainStory extends React.Component {
     const firstScene = validScenes[0]
     const lastScene = validScenes[validScenes.length - 1]
 
-    /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
     // If no start and finish scenes are marked, choose some, so the program doesn't break
     return terminalScene || (start ? firstScene : lastScene)
   }
