@@ -141,7 +141,8 @@
 .miniLocationsGrid {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+
   position: absolute;
 
   left: 10%;
@@ -163,9 +164,5 @@
 
 .miniLocationsRow {
   display: flex;
-  flex: 1 1;
-  justify-content: space-between;
-  align-items: center;
-
   position: relative;
 }

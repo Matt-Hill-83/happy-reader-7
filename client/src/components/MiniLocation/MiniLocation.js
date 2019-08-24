@@ -237,16 +237,12 @@ class MiniLocation extends React.Component {
 
     const { items = [], creatures = [] } = location
 
-    console.log("items", toJS(items)) // zzz
-
     let locationName = ""
     if (version2) {
       locationName = location.location.name
     } else {
       locationName = location.name
     }
-
-    locationName && console.log("location", toJS(location)) // zzz
 
     const isBlank = locationName === "blank"
 
@@ -257,8 +253,6 @@ class MiniLocation extends React.Component {
     const rockImage = Images.backgrounds["rock"]
     const cloudImage = Images.backgrounds["cloud"]
     const defaultDoorImage = Images.backgrounds["door"]
-
-    console.log("iIages.all", toJS(Images.all)) // zzz
 
     let renderedItems
     if (version2) {
@@ -276,8 +270,6 @@ class MiniLocation extends React.Component {
         )
       })
     }
-
-    console.log("renderedItems", renderedItems) // zzz
 
     if (!locationName) {
       return (
@@ -299,7 +291,7 @@ class MiniLocation extends React.Component {
           this.props.location.isStartScene ? css.isStartScene : ""
         } ${localClass} `}
       >
-        {isEditMode && (
+        {/* {isEditMode && (
           <div className={css.isStartSceneCheckBox}>
             Start
             <Checkbox onClick={this.checkIsStartScene} checked={isStartScene} />
@@ -310,11 +302,13 @@ class MiniLocation extends React.Component {
             End
             <Checkbox onClick={this.checkIsEndScene} checked={isEndScene} />
           </div>
+        )} */}
+        {!isBlank && (
+          <div className={css.rockImage}>
+            <img className={css.rockImage} src={rockImage} alt={"imagex"} />
+          </div>
         )}
-        <div className={css.rockImage}>
-          <img className={css.rockImage} src={rockImage} alt={"imagex"} />
-        </div>
-        <div className={css.grassImage} />
+        {!isBlank && <div className={css.grassImage} />}
         {!isBlank && !isEditMode && showCloud && (
           <div className={css.cloudImageContainer}>
             <img className={css.cloudImage} src={cloudImage} alt={"imagex"} />
@@ -334,17 +328,21 @@ class MiniLocation extends React.Component {
             defaultDoorImage: defaultDoorImage
           })}
 
-        <div className={css.imagesBox}>
-          <img
-            className={css.miniLocationImage}
-            src={locationImage}
-            alt={"imagex"}
-          />
-        </div>
-        {renderedItems || null}
-        <div className={css.characters}>
-          {this.renderCharacters({ creatures, isActive })}
-        </div>
+        {!isBlank && (
+          <div className={css.imagesBox}>
+            <img
+              className={css.miniLocationImage}
+              src={locationImage}
+              alt={"imagex"}
+            />
+          </div>
+        )}
+        {(!isBlank && renderedItems) || null}
+        {!isBlank && (
+          <div className={css.characters}>
+            {this.renderCharacters({ creatures, isActive })}
+          </div>
+        )}
         {!isBlank && showLabel && (
           <span className={css.locationTitle}>{locationName}</span>
         )}

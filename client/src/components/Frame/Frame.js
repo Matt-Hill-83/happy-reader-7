@@ -80,8 +80,6 @@ class Frame extends Component {
   // But start out by just editing existing items, like characters
 
   onSelectItem = ({ itemId, name }) => {
-    console.log("name", name) // zzz
-
     // const { updateFrameSet } = this.props
 
     // const {
@@ -134,14 +132,11 @@ class Frame extends Component {
   }
 
   toggleItemPicker = ({ item = null }) => {
-    console.log("item", item) // zzz
-
     const showItemPicker = !this.state.showItemPicker
     this.setState({ showItemPicker, itemPickerItem: item })
   }
 
   // selectHead = ({ item = null }) => {
-  //   console.log("item", item) // zzz
 
   //   const showItemPicker = !this.state.showItemPicker
   //   this.setState({ showItemPicker, itemPickerItem: item })
@@ -313,7 +308,6 @@ class Frame extends Component {
     const { updateMap } = this.props
 
     frame.items = items
-    console.log("items", items) // zzz
 
     this.setState({ frame }, () => updateMap({}))
   }
@@ -360,8 +354,6 @@ class Frame extends Component {
       showItemPicker,
       facePickerCharacter
     } = this.state
-
-    console.log("frame", frame) // zzz
 
     if (!frame) {
       return null

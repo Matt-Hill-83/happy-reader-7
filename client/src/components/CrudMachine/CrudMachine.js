@@ -120,14 +120,11 @@ class CrudMachine extends Component {
     // I should probably ref this item by id
     itemPickerItem.name = name
 
-    console.log("name", name) // zzz
     this.saveChanges()
     this.toggleItemPicker({})
   }
 
   saveChanges = () => {
-    console.log("saveChanges") // zzz
-
     const { saveItems } = this.props
     const { items } = this.state
     saveItems && saveItems({ items })

@@ -26,11 +26,7 @@ class WordPage extends React.Component {
   }
 
   changeLocation = ({ sceneName }) => {
-    console.log("changeLocation") // zzz
-    console.log("sceneName", sceneName) // zzz
-
     const { version2 } = this.props
-    console.log("version2", version2) // zzz
 
     this.setState({ frameIndex: 0 })
 
