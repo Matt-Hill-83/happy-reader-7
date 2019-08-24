@@ -232,6 +232,102 @@ class WorldBuilder extends Component {
     return worldPicker
   }
 
+  renderStartScenePicker = () => {
+    const map = this.state.world
+    if (!map) return null
+
+    const { startScene } = map.data
+
+    const scenesList =
+      Utils.getArrayOfScenes({ scenesGrid: map.data.newGrid2 }) || []
+
+    const renderedSceneNames = scenesList.map((scene, index) => {
+      const { name } = scene.location
+
+      const changeScene = ({ name }) => {
+        scenesList.forEach(scene => (scene.isStartScene = false))
+        scene.isStartScene = true
+        map.data.startScene = name
+        this.updateMap({ newProps: { ...map.data } })
+      }
+
+      const text = (
+        <div className={css.mapPickerRow}>
+          <span
+            className={css.mapPickerRowTitle}
+            onClick={() => changeScene({ name })}
+          >
+            {name}
+          </span>
+        </div>
+      )
+      return <MenuItem key={index} text={text} />
+    })
+
+    const renderedMapList = <Menu>{renderedSceneNames}</Menu>
+
+    const scenePicker = (
+      <Popover
+        className={css.worldPickerDropdown}
+        portalClassName={css.worldPickerDropdownPopover}
+        content={renderedMapList}
+        position={Position.BOTTOM}
+      >
+        <Button icon="share" text={`${startScene || "Start Scene"}`} />
+      </Popover>
+    )
+
+    return scenePicker
+  }
+
+  renderEndScenePicker = () => {
+    const map = this.state.world
+    if (!map) return null
+
+    const { endScene } = map.data
+
+    const scenesList =
+      Utils.getArrayOfScenes({ scenesGrid: map.data.newGrid2 }) || []
+
+    const renderedSceneNames = scenesList.map((scene, index) => {
+      const { name } = scene.location
+
+      const changeScene = ({ name }) => {
+        scenesList.forEach(scene => (scene.isEndScene = false))
+        scene.isEndScene = true
+        map.data.endScene = name
+        this.updateMap({ newProps: { ...map.data } })
+      }
+
+      const text = (
+        <div className={css.mapPickerRow}>
+          <span
+            className={css.mapPickerRowTitle}
+            onClick={() => changeScene({ name })}
+          >
+            {name}
+          </span>
+        </div>
+      )
+      return <MenuItem key={index} text={text} />
+    })
+
+    const renderedMapList = <Menu>{renderedSceneNames}</Menu>
+
+    const scenePicker = (
+      <Popover
+        className={css.worldPickerDropdown}
+        portalClassName={css.worldPickerDropdownPopover}
+        content={renderedMapList}
+        position={Position.BOTTOM}
+      >
+        <Button icon="share" text={`${endScene || "End Scene"}`} />
+      </Popover>
+    )
+
+    return scenePicker
+  }
+
   // a little function to help us with reordering the result
   reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list)
@@ -606,14 +702,14 @@ class WorldBuilder extends Component {
     maps.add(newMap)
   }
 
-  renderSaveMapButton = () => {
-    return (
-      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
-        <span> Save Map </span>
-        <Icon color={"purple"} icon={IconNames.SAVED} />
-      </Button>
-    )
-  }
+  // renderSaveMapButton = () => {
+  //   return (
+  //     <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
+  //       <span> Save Map </span>
+  //       <Icon color={"purple"} icon={IconNames.SAVED} />
+  //     </Button>
+  //   )
+  // }
 
   renderList = ({ droppableId, items, className }) => {
     return (
@@ -983,17 +1079,21 @@ class WorldBuilder extends Component {
                 {`World Builder - world: ${world.data &&
                   world.data.name} - ${world.data && world.data.title}`}
               </div>
-              <div className={css.isStartSceneCheckBox} />
-              <div className={css.subTitle}>
+              start:
+              {this.renderStartScenePicker()}
+              end:
+              {this.renderEndScenePicker()}
+              {/* <div className={css.isStartSceneCheckBox} /> */}
+              {/* <div className={css.subTitle}>
                 {`start: ${world.data && world.data.startScene}`}
               </div>
               <div className={css.subTitle}>
                 {`end: ${world.data && world.data.endScene}`}
-              </div>
+              </div> */}
               <div className={css.subTitle}>
                 {/* (drag items to create your world...) */}
                 <div className={css.editWorldButtons}>
-                  {this.renderSaveMapButton()}
+                  {/* {this.renderSaveMapButton()} */}
                   {this.renderMapPicker()}
                   <Button
                     text={"+ New Map"}

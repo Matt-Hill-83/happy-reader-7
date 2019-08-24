@@ -90,7 +90,7 @@ class WorldPicker extends Component {
         position={Position.BOTTOM}
       >
         <Button className={css.worldPickerButton}>
-          {`${selectedMap}    `}
+          {selectedMap}
           <Icon icon="caret-down" />
         </Button>
       </Popover>

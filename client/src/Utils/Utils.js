@@ -248,6 +248,14 @@ export default class Utils {
     return foundMap
   }
 
+  static getArrayOfScenes = ({ scenesGrid }) => {
+    const scenes = []
+    scenesGrid.forEach(row => {
+      Object.values(row).forEach(scene => scenes.push(scene))
+    })
+    return scenes
+  }
+
   static generateUuid() {
     const sepStr = "-"
     let date = new Date().getTime()

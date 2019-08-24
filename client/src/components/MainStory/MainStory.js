@@ -17,8 +17,8 @@ import WorldPicker from "../WorldPicker/WorldPicker.js"
 
 import css from "./MainStory.module.scss"
 
-// const SHOW_WORLD_BUILDER = true
-const SHOW_WORLD_BUILDER = false
+const SHOW_WORLD_BUILDER = true
+// const SHOW_WORLD_BUILDER = false
 
 const MAP_FOR_TESTING = "VcFANrSQYzY7VdOiV5UU"
 class MainStory extends React.Component {
@@ -139,6 +139,11 @@ class MainStory extends React.Component {
     if (this.version2) {
       const grid = _get(map, "data.newGrid2") || []
       allScenes = grid.flat()
+
+      // Integrate this fix
+      // const scenesList =
+      // Utils.getArrayOfScenes({ scenesGrid: map.data.newGrid2 }) || []
+
       allScenes = allScenes.map(scene => {
         return scene[0]
       })
