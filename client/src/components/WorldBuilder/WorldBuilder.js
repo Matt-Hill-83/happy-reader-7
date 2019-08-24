@@ -1076,20 +1076,12 @@ class WorldBuilder extends Component {
           <div className={css.header}>
             <div className={css.titles}>
               <div className={css.title}>
-                {`World Builder - world: ${world.data &&
-                  world.data.name} - ${world.data && world.data.title}`}
+                {`World Builder - world: ${world.data && world.data.name}`}
               </div>
               start:
               {this.renderStartScenePicker()}
               end:
               {this.renderEndScenePicker()}
-              {/* <div className={css.isStartSceneCheckBox} /> */}
-              {/* <div className={css.subTitle}>
-                {`start: ${world.data && world.data.startScene}`}
-              </div>
-              <div className={css.subTitle}>
-                {`end: ${world.data && world.data.endScene}`}
-              </div> */}
               <div className={css.subTitle}>
                 {/* (drag items to create your world...) */}
                 <div className={css.editWorldButtons}>

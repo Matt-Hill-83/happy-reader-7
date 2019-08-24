@@ -17,8 +17,8 @@ import WorldPicker from "../WorldPicker/WorldPicker.js"
 
 import css from "./MainStory.module.scss"
 
-const SHOW_WORLD_BUILDER = true
-// const SHOW_WORLD_BUILDER = false
+// const SHOW_WORLD_BUILDER = true
+const SHOW_WORLD_BUILDER = false
 
 const MAP_FOR_TESTING = "VcFANrSQYzY7VdOiV5UU"
 class MainStory extends React.Component {

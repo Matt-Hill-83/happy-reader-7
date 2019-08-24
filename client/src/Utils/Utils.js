@@ -249,6 +249,8 @@ export default class Utils {
   }
 
   static getArrayOfScenes = ({ scenesGrid }) => {
+    if (!scenesGrid) return []
+
     const scenes = []
     scenesGrid.forEach(row => {
       Object.values(row).forEach(scene => scenes.push(scene))
