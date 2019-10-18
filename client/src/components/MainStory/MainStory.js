@@ -20,7 +20,7 @@ import css from "./MainStory.module.scss"
 // const SHOW_WORLD_BUILDER = true
 const SHOW_WORLD_BUILDER = false
 
-const MAP_FOR_TESTING = "VcFANrSQYzY7VdOiV5UU"
+const MAP_FOR_TESTING = "DXkNDp3u8iHvTN5OCzOK"
 class MainStory extends React.Component {
   state = {
     showStory: true,
