@@ -20,7 +20,7 @@ import css from "./MainStory.module.scss"
 // const SHOW_WORLD_BUILDER = true
 const SHOW_WORLD_BUILDER = false
 
-const MAP_FOR_TESTING = "DXkNDp3u8iHvTN5OCzOK"
+// const MAP_FOR_TESTING = "DXkNDp3u8iHvTN5OCzOK"
 class MainStory extends React.Component {
   state = {
     showStory: true,
@@ -36,7 +36,19 @@ class MainStory extends React.Component {
     await maps.fetch()
     await worldNameStore.fetch()
 
-    localStateStore.setActiveMapId(MAP_FOR_TESTING)
+    let mapId = "not set"
+    console.log("maps", toJS(maps)) // zzz
+
+    if (maps.docs && maps.docs[0]) {
+      mapId = maps.docs[0].id
+
+      console.log("maps.docs", toJS(maps.docs)) // zzz
+
+      console.log("mapId", mapId) // zzz
+
+      // localStateStore.setActiveMapId(mapId)
+    }
+    // localStateStore.setActiveMapId(MAP_FOR_TESTING)
     await this.init()
     this.setState({ forceUpdate: "test" })
   }
@@ -45,6 +57,7 @@ class MainStory extends React.Component {
     // TODO - what does this do exactly, init some constants?
     mySentences.generatePlot({})
 
+    Utils.getFirstReleasedMap()
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     const filteredMaps = savedMaps.filter(map => map.data.released)
 
@@ -67,7 +80,7 @@ class MainStory extends React.Component {
     })
 
     localStateStore.setMaps(filteredMaps)
-    localStateStore.setShowWorldBuilder(SHOW_WORLD_BUILDER)
+    // localStateStore.setShowWorldBuilder(SHOW_WORLD_BUILDER)
     if (SHOW_WORLD_BUILDER) return
 
     this.initWorld()
@@ -129,7 +142,11 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene2 = ({ start = true }) => {
+    console.log("getTerminalScene2") // zzz
+
     const mapId = localStateStore.getActiveMapId()
+    console.log("mapId", mapId) // zzz
+
     const map = Utils.getMapFromId({ id: mapId })
 
     const startScene = map.data.startScene
@@ -180,6 +197,8 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene = ({ start = true }) => {
+    console.log("getTerminalScene") // zzz
+
     // for compatability with new format
     if (this.version2) {
       return this.getTerminalScene2({ start })
@@ -216,10 +235,15 @@ class MainStory extends React.Component {
   }
 
   initWorld = async () => {
+    console.log("initWorld") // zzz
+
     const mapId = localStateStore.getActiveMapId()
+    console.log("mapId", mapId) // zzz
+
     const map = Utils.getMapFromId({ id: mapId })
 
     const newGrid = toJS(map.data.newGrid2)
+    // if (true || newGrid) {
     if (newGrid) {
       this.version2 = true
     } else {

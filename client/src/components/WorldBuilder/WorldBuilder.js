@@ -5,12 +5,10 @@ import { toJS } from "mobx"
 
 import {
   Button,
-  Dialog,
   Icon,
   Menu,
   MenuItem,
   Popover,
-  PopoverInteractionKind,
   Position,
   InputGroup
 } from "@blueprintjs/core"
@@ -30,7 +28,7 @@ import Utils from "../../Utils/Utils"
 
 import css from "./WorldBuilder.module.scss"
 
-const INITIAL_MAP_INDEX = 7
+const INITIAL_MAP_INDEX = 1
 // const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 2
 const NUM_COLS_LOCATIONS_GRID = 5
@@ -136,6 +134,11 @@ class WorldBuilder extends Component {
   changeMap = ({ index }) => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     let world = savedMaps[index]
+    console.log("index", index) // zzz
+    console.log("savedMaps", savedMaps) // zzz
+
+    console.log("world", world) // zzz
+
     let scenesGrid
 
     // new map
@@ -236,6 +239,10 @@ class WorldBuilder extends Component {
     const map = this.state.world
     if (!map) return null
 
+    if (!map.data) {
+      return null
+    }
+
     const { startScene } = map.data
 
     const scenesList =
@@ -283,6 +290,10 @@ class WorldBuilder extends Component {
   renderEndScenePicker = () => {
     const map = this.state.world
     if (!map) return null
+
+    if (!map.data) {
+      return null
+    }
 
     const { endScene } = map.data
 
@@ -993,9 +1004,7 @@ class WorldBuilder extends Component {
               {!hideScene && (
                 <CrudMachine
                   forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
-                  className={`${css.crudMachine} ${css.itemBox} ${
-                    css.charactersMachine
-                  }`}
+                  className={`${css.crudMachine} ${css.itemBox} ${css.charactersMachine}`}
                   items={characters}
                   itemRenderer={itemRenderer}
                   saveItems={onSave}
@@ -1005,9 +1014,7 @@ class WorldBuilder extends Component {
               {!hideScene && (
                 <CrudMachine
                   forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
-                  className={`${css.crudMachine} ${css.itemBox} ${
-                    css.itemsMachine
-                  }`}
+                  className={`${css.crudMachine} ${css.itemBox} ${css.itemsMachine}`}
                   items={items}
                   itemRenderer={itemRenderer}
                   saveItems={onSave}
