@@ -63,15 +63,11 @@ class PicturePage extends React.Component {
     className = ""
   }) => {
     // TODO - this should come from state
-    const { activeScene, version2 } = this.props
+    const { activeScene } = this.props
     const { name: sceneName } = scene
     let isActive
 
-    if (version2) {
-      isActive = sceneName === activeScene.location.name
-    } else {
-      isActive = sceneName === activeScene.name
-    }
+    isActive = sceneName === activeScene.location.name
 
     const id = `${colIndex}-${rowIndex}`
 
@@ -82,7 +78,6 @@ class PicturePage extends React.Component {
         location={scene}
         isActive={isActive}
         className={className}
-        version2={version2}
       />
     )
   }
@@ -103,12 +98,7 @@ class PicturePage extends React.Component {
   }
 
   renderStoryPage = () => {
-    const {
-      activeScene,
-      updateActiveScene,
-      openYouWinModal,
-      version2
-    } = this.props
+    const { activeScene, updateActiveScene, openYouWinModal } = this.props
 
     return (
       <div className={`${css.halfPage} ${css.leftHalf}`}>
@@ -116,7 +106,6 @@ class PicturePage extends React.Component {
           updateActiveScene={updateActiveScene}
           activeScene={activeScene}
           openYouWinModal={openYouWinModal}
-          version2={version2}
         />
       </div>
     )

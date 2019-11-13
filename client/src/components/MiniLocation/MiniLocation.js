@@ -223,7 +223,7 @@ class MiniLocation extends React.Component {
   }
 
   render() {
-    const { isStartScene, isEndScene } = this.state
+    // const { isStartScene, isEndScene } = this.state
     const {
       location,
       location: { showCloud = true },
@@ -231,18 +231,13 @@ class MiniLocation extends React.Component {
       className,
       showLabel = true,
       id,
-      isEditMode,
-      version2
+      isEditMode
     } = this.props
 
     const { items = [], creatures = [] } = location
 
     let locationName = ""
-    if (version2) {
-      locationName = location.location.name
-    } else {
-      locationName = location.name
-    }
+    locationName = location.location.name
 
     const isBlank = locationName === "blank"
 
@@ -255,21 +250,10 @@ class MiniLocation extends React.Component {
     const defaultDoorImage = Images.backgrounds["door"]
 
     let renderedItems
-    if (version2) {
-      renderedItems = items.map(item => {
-        const renderedItem = Images.all[item.name]
-        return (
-          <img className={css.itemImage} src={renderedItem} alt={"imagex"} />
-        )
-      })
-    } else {
-      renderedItems = items.map(item => {
-        const renderedItem = Images.items[item]
-        return (
-          <img className={css.itemImage} src={renderedItem} alt={"imagex"} />
-        )
-      })
-    }
+    renderedItems = items.map(item => {
+      const renderedItem = Images.all[item.name]
+      return <img className={css.itemImage} src={renderedItem} alt={"imagex"} />
+    })
 
     if (!locationName) {
       return (

@@ -1,4 +1,3 @@
-import { Draggable, Droppable } from "react-beautiful-dnd"
 import React, { Component } from "react"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
@@ -33,8 +32,6 @@ const NUM_COLS_LOCATIONS_GRID = 5
 
 const COLUMN_WIDTH = 150
 
-const LOCATIONS_TAG = "location"
-
 const SOURCE_CREATURES_PROP_NAME = "sourceCreatures"
 const SOURCE_LOCATIONS_PROP_NAME = "sourceLocations"
 const SOURCE_ITEMS_PROP_NAME = "sourceItems"
@@ -67,11 +64,6 @@ class WorldBuilder extends Component {
 
     // new map
     if (index === -1) {
-      // scenesGrid = this.preAllocateArrays({})
-      // const newGrid = this.createNewGrid()
-      // const name = "My New World"
-      // world = { scenesGrid, name, newGrid }
-      // console.log("world - new", world) // zzz
       this.saveNewMap()
       return
     } else {
@@ -267,108 +259,10 @@ class WorldBuilder extends Component {
     return scenePicker
   }
 
-  // a little function to help us with reordering the result
-  reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list)
-    const [removed] = result.splice(startIndex, 1)
-    result.splice(endIndex, 0, removed)
-
-    return result
-  }
-
-  /**
-   * Moves an item from one list to another list.
-   */
-  move = ({ source, destination, droppableSource, droppableDestination }) => {
-    const sourceClone = Array.from(source)
-    const destClone = Array.from(destination)
-    const [removed] = sourceClone.splice(droppableSource.index, 1)
-
-    const removedFromDest = destClone.splice(0, destClone.length, removed)
-    sourceClone.push(...removedFromDest)
-
-    const result = {}
-    result[droppableSource.droppableId] = sourceClone
-    result[droppableDestination.droppableId] = destClone
-
-    return result
-  }
-
-  removeItem = ({ source, droppableSource }) => {
-    // TODO - put removed item back in master list
-    const sourceClone = Array.from(source)
-    // const destClone = Array.from(destination)
-    sourceClone.splice(droppableSource.index, 1)
-    // const [removed] = sourceClone.splice(droppableSource.index, 1)
-
-    // const removedFromDest = destClone.splice(0, destClone.length, removed)
-    // sourceClone.push(...removedFromDest)
-
-    const result = {}
-    result[droppableSource.droppableId] = sourceClone
-    // result[droppableDestination.droppableId] = destClone
-
-    return result
-  }
-
-  getItemStyle = (isDragging, draggableStyle) => ({
-    // some basic styles to make the items look a bit nicer
-    userSelect: "none",
-    padding: 0,
-    margin: 0,
-
-    // change background color if dragging
-    background: isDragging ? "lightgreen" : "grey",
-
-    // styles we need to apply on draggables
-    ...draggableStyle
-  })
-
-  getListStyle = isDraggingOver => ({
-    background: isDraggingOver ? "lightblue" : "lightgrey",
-    padding: 0,
-    width: COLUMN_WIDTH
-  })
-
-  preAllocateArrays = ({ savedGrid }) => {
-    const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0)
-    const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0)
-
-    const scenesGrid = {}
-
-    rows.map((row, rowIndex) => {
-      const rowName = `row-${rowIndex}`
-      scenesGrid[rowName] = {}
-      columns.map((col, colIndex) => {
-        const colName = `col-${colIndex}`
-
-        scenesGrid[rowName][colName] = savedGrid
-          ? { scene: savedGrid[rowIndex][colIndex] }
-          : []
-
-        if (savedGrid) {
-          const savedScene = savedGrid[rowIndex][colIndex]
-          if (savedScene) {
-            scenesGrid[rowName][colName] = [
-              {
-                scene: savedScene,
-                id: `location-${colIndex + 1}`
-              }
-            ]
-          }
-        } else {
-          scenesGrid[rowName][colName] = []
-        }
-      })
-    })
-
-    return scenesGrid
-  }
-
   saveNewMap = async () => {
     console.log("saveNewMap---------------------------------->>>>>>") // zzz
 
-    const scenesGrid = this.preAllocateArrays({})
+    // const scenesGrid = this.preAllocateArrays({})
     const newGrid = this.createNewGrid()
 
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
@@ -383,13 +277,10 @@ class WorldBuilder extends Component {
     const newMap = {
       name: newName,
       title: "Test Map",
-      scenesGrid,
       newGrid2,
       released: false,
       ignore: false
     }
-
-    // const { newGrid } = this.state
 
     console.log("maps.docs.length", maps.docs.length) // zzz
 
@@ -450,18 +341,6 @@ class WorldBuilder extends Component {
     const title = event.target.value
     await this.updateMap({ title })
   }
-
-  // onChangeOrder = async ({ event }) => {
-  //   const { world } = this.state
-
-  //   world.data.order = event.target.value
-  //   this.setState({ world })
-  // }
-
-  // saveOrder = async ({ event }) => {
-  //   const order = event.target.value
-  //   await this.updateMap({ order })
-  // }
 
   createNewGrid = () => {
     console.log("createNewGrid+++++++++++++++++++++++++++++") // zzz
@@ -669,7 +548,6 @@ class WorldBuilder extends Component {
 
     const title =
       (world.data && world.data.title) || this.previousTitle + " copy"
-    const order = (world.data && world.data.order) || 999
 
     return (
       <div className={css.main}>
@@ -680,13 +558,7 @@ class WorldBuilder extends Component {
           onChange={event => this.onChangeTitle({ event })}
           onBlur={event => this.saveTitle({ event })}
         />
-        {/* <InputGroup
-          value={order}
-          id="text-input"
-          placeholder="Order"
-          onChange={event => this.onChangeOrder({ event })}
-          onBlur={event => this.saveOrder({ event })}
-        /> */}
+
         {!showFrameBuilder && (
           <div className={css.header}>
             <div className={css.titles}>
