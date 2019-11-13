@@ -368,9 +368,6 @@ class WorldBuilder extends Component {
   saveNewMap = async () => {
     console.log("saveNewMap---------------------------------->>>>>>") // zzz
 
-    // const { scenesGrid } = this.state
-    // console.log("scenesGrid", scenesGrid) // zzz
-
     const scenesGrid = this.preAllocateArrays({})
     const newGrid = this.createNewGrid()
 
