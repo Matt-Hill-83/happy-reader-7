@@ -46,10 +46,14 @@ class MainStory extends React.Component {
 
       console.log("mapId", mapId) // zzz
 
-      // localStateStore.setActiveMapId(mapId)
+      const defaultMap = Utils.getFirstReleasedMap()
+      console.log("defaultMap.id", defaultMap.id) // zzz
+
+      localStateStore.setActiveMapId(mapId)
     }
     // localStateStore.setActiveMapId(MAP_FOR_TESTING)
     await this.init()
+
     this.setState({ forceUpdate: "test" })
   }
 
@@ -243,16 +247,19 @@ class MainStory extends React.Component {
     const map = Utils.getMapFromId({ id: mapId })
 
     const newGrid = toJS(map.data.newGrid2)
-    // if (true || newGrid) {
-    if (newGrid) {
-      this.version2 = true
-    } else {
-      this.version2 = false
-    }
+    console.log("newgGid", newGrid) // zzz
+
+    this.version2 = true
+
+    // if (newGrid) {
+    //   this.version2 = true
+    // } else {
+    //   this.version2 = false
+    // }
 
     const startScene = this.getTerminalScene({})
 
-    startScene.showCloud = false
+    // startScene.showCloud = false
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
   }
@@ -273,7 +280,7 @@ class MainStory extends React.Component {
     if (this.version2 === true) {
       activeScene.neighborNames = this.getNeighbors2({ activeScene, map })
     } else {
-      activeScene.neighborNames = this.getNeighbors({ activeScene, map })
+      // activeScene.neighborNames = this.getNeighbors({ activeScene, map })
     }
 
     activeScene.showCloud = false
@@ -468,9 +475,11 @@ class MainStory extends React.Component {
   }
 
   render() {
-    const mapId = localStateStore.getActiveMapId()
+    // const mapId = localStateStore.getActiveMapId()
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    console.log("savedMaps", savedMaps) // zzz
+
     if (!savedMaps.length) {
       return null
     }

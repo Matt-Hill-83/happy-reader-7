@@ -938,9 +938,12 @@ class WorldBuilder extends Component {
 
   renderNewGrid = () => {
     const { world } = this.state
+    console.log("world", world) // zzz
+
     let grid
 
-    const savedGrid = world.data.newGrid2
+    const savedGrid = world.data && world.data.newGrid2
+    console.log("savedGrid", toJS(savedGrid)) // zzz
 
     const gridExists =
       savedGrid && savedGrid[0] && savedGrid[0][0] && savedGrid[0][0].id
@@ -950,7 +953,9 @@ class WorldBuilder extends Component {
       grid = newGrid
 
       const flatGrid = this.flattenGridForSave({ grid: newGrid })
-      world.data.newGrid2 = flatGrid
+      console.log("world 2", world) // zzz
+      world.newGrid2 = flatGrid
+      // world.data.newGrid2 = flatGrid
     } else {
       grid = savedGrid
     }

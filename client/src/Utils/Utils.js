@@ -240,7 +240,6 @@ export default class Utils {
     const mapsDocs = toJS(maps.docs)
     // const defaultMap = mapsDocs[0]
     const defaultMap = this.getFirstReleasedMap() || {}
-    console.log("defaultMap", toJS(defaultMap)) // zzz
 
     if (!id) return defaultMap
 
@@ -249,15 +248,18 @@ export default class Utils {
       ? filteredMaps.find(map => map.id === id)
       : defaultMap
 
-    console.log("foundMap", foundMap) // zzz
-
     return foundMap
   }
 
   static getFirstReleasedMap = () => {
     const mapsDocs = toJS(maps.docs)
-    const filteredMaps = mapsDocs.filter(map => map.data.released)
-    return filteredMaps[1]
+    const filteredMaps = mapsDocs.filter(map => {
+      console.log("map.data.title", map.data.title) // zzz
+      console.log("map.data.released", map.data.released) // zzz
+
+      return map.data.released
+    })
+    return filteredMaps[0]
   }
 
   static getArrayOfScenes = ({ scenesGrid }) => {
