@@ -252,7 +252,6 @@ class WorldBuilder extends Component {
 
     const renderedSceneNames = filteredScenesList.map((scene, index) => {
       const { name } = scene.location
-      console.log("name", name) // zzz
 
       const changeScene = ({ name }) => {
         scenesList.forEach(scene => (scene.isStartScene = false))
@@ -303,7 +302,9 @@ class WorldBuilder extends Component {
     const scenesList =
       Utils.getArrayOfScenes({ scenesGrid: map.data.newGrid2 }) || []
 
-    const renderedSceneNames = scenesList.map((scene, index) => {
+    const filteredScenesList = Utils.getNonBlankScenes({ scenesList })
+
+    const renderedSceneNames = filteredScenesList.map((scene, index) => {
       const { name } = scene.location
 
       const changeScene = ({ name }) => {
