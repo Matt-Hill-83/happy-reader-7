@@ -28,7 +28,7 @@ import Utils from "../../Utils/Utils"
 
 import css from "./WorldBuilder.module.scss"
 
-const INITIAL_MAP_INDEX = 1
+const INITIAL_MAP_INDEX = 0
 // const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 2
 const NUM_COLS_LOCATIONS_GRID = 5
@@ -942,6 +942,8 @@ class WorldBuilder extends Component {
   }
 
   flattenGridForSave = ({ grid }) => {
+    console.log("grid.forEach(row => {") // zzz
+
     const outputArray = []
     grid.forEach(row => {
       const newRow = {}
@@ -970,33 +972,8 @@ class WorldBuilder extends Component {
     const { world } = this.state
     console.log("world    - rng", world) // zzz
 
-    let grid
+    const grid = world.data && world.data.newGrid2
 
-    const savedGrid = world.data && world.data.newGrid2
-    // console.log("world.data-------------------", world.data) // zzz
-
-    // console.log("savedGrid", toJS(savedGrid)) // zzz
-
-    // const gridExists =
-    //   savedGrid && savedGrid[0] && savedGrid[0][0] && savedGrid[0][0].id
-
-    // console.log("gridExists", gridExists) // zzz
-
-    // // This should be moved to a better location.
-    // if (!gridExists) {
-    //   const { newGrid } = this.state
-    //   grid = newGrid
-
-    //   const flatGrid = this.flattenGridForSave({ grid: newGrid })
-    //   world.newGrid2 = flatGrid
-    //   console.log("world", world) // zzz
-
-    //   world.data.newGrid2 = flatGrid
-    // } else {
-    //   grid = savedGrid
-    // }
-
-    grid = savedGrid
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
     }
