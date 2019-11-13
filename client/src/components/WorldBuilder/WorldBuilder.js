@@ -252,9 +252,6 @@ class WorldBuilder extends Component {
   saveNewMap = async () => {
     console.log("saveNewMap---------------------------------->>>>>>") // zzz
 
-    // const scenesGrid = this.preAllocateArrays({})
-    const newGrid = this.createNewGrid()
-
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
@@ -262,13 +259,13 @@ class WorldBuilder extends Component {
       previousMapName: newName
     })
 
-    const newGrid2 = this.flattenGridForSave({ grid: newGrid })
+    const newGrid2 = this.flattenGridForSave({ grid: this.createNewGrid() })
 
     const newMap = {
       name: newName,
       title: "Test Map",
       newGrid2,
-      released: false,
+      released: true,
       ignore: false
     }
 
