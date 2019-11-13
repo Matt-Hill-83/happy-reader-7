@@ -30,21 +30,11 @@ const INITIAL_MAP_INDEX = 0
 const NUM_ROWS_LOCATIONS_GRID = 2
 const NUM_COLS_LOCATIONS_GRID = 5
 
-const COLUMN_WIDTH = 150
-
-const SOURCE_CREATURES_PROP_NAME = "sourceCreatures"
-const SOURCE_LOCATIONS_PROP_NAME = "sourceLocations"
-const SOURCE_ITEMS_PROP_NAME = "sourceItems"
-
 class WorldBuilder extends Component {
   state = {
     world: {},
     sceneToEdit: null,
-    showFrameBuilder: false,
-    [SOURCE_ITEMS_PROP_NAME]: [],
-    [SOURCE_CREATURES_PROP_NAME]: [],
-    [SOURCE_LOCATIONS_PROP_NAME]: [],
-    editWorld: false
+    showFrameBuilder: false
   }
 
   async componentWillMount() {
