@@ -147,13 +147,22 @@ class WorldBuilder extends Component {
       const newGrid = this.createNewGrid()
       const name = "My New World"
       world = { scenesGrid, name, newGrid }
-      this.setState({ scenesGrid, world }, this.saveMap)
+      console.log("world - new", world) // zzz
+      this.saveMap()
+      // this.setState({ scenesGrid, world }, this.saveMap)
+      return
+      // it is autosaved when created.  I need to set the new map to the active map by id
+      // TODO - I should save the new world here.
+      // TODO - I should save the new world here.
+      // TODO - I should save the new world here.
 
-      // TODO - I should save the new world here.
-      // TODO - I should save the new world here.
-      // TODO - I should save the new world here.
+      const mapId = localStateStore.getActiveMapId()
+      const map = Utils.getMapFromId({ id: mapId })
     } else {
       scenesGrid = world.data.scenesGrid
+
+      console.log("world - existing", world) // zzz
+
       this.setState({ scenesGrid, world })
     }
 
@@ -695,9 +704,11 @@ class WorldBuilder extends Component {
   }
 
   saveMap = async () => {
-    console.log("saveMap") // zzz
+    console.log("saveMap---------------------------------->>>>>>") // zzz
 
     const { scenesGrid } = this.state
+    console.log("scenesGrid", scenesGrid) // zzz
+
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
@@ -707,14 +718,27 @@ class WorldBuilder extends Component {
 
     const newMap = {
       name: newName,
-      title: "Broken Map",
+      title: "Broken Map a",
       scenesGrid: scenesGrid,
-      order: 99,
+      // order: 99,
       released: false,
       ignore: false
     }
 
-    maps.add(newMap)
+    const { newGrid } = this.state
+
+    const flatGrid = this.flattenGridForSave({ grid: newGrid })
+
+    newMap.newGrid2 = flatGrid
+
+    console.log("maps.docs.length", maps.docs.length) // zzz
+
+    const newMapReturned = await maps.add(newMap)
+
+    this.setState({ world: newMapReturned })
+    console.log("newMapReturned.id", newMapReturned.id) // zzz
+
+    console.log("maps.docs.length", maps.docs.length) // zzz
   }
 
   renderSaveMapButton = () => {
@@ -851,6 +875,8 @@ class WorldBuilder extends Component {
   }
 
   createNewGrid = () => {
+    console.log("createNewGrid+++++++++++++++++++++++++++++") // zzz
+
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0)
     const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0)
 
@@ -942,30 +968,35 @@ class WorldBuilder extends Component {
 
   renderNewGrid = () => {
     const { world } = this.state
-    console.log("world", world) // zzz
+    console.log("world    - rng", world) // zzz
 
     let grid
 
     const savedGrid = world.data && world.data.newGrid2
-    console.log("world.data-------------------", world.data) // zzz
+    // console.log("world.data-------------------", world.data) // zzz
 
-    console.log("savedGrid", toJS(savedGrid)) // zzz
+    // console.log("savedGrid", toJS(savedGrid)) // zzz
 
-    const gridExists =
-      savedGrid && savedGrid[0] && savedGrid[0][0] && savedGrid[0][0].id
+    // const gridExists =
+    //   savedGrid && savedGrid[0] && savedGrid[0][0] && savedGrid[0][0].id
 
-    if (!gridExists) {
-      const { newGrid } = this.state
-      grid = newGrid
+    // console.log("gridExists", gridExists) // zzz
 
-      const flatGrid = this.flattenGridForSave({ grid: newGrid })
-      console.log("world 2", world) // zzz
-      // world.newGrid2 = flatGrid
-      world.data.newGrid2 = flatGrid
-    } else {
-      grid = savedGrid
-    }
+    // // This should be moved to a better location.
+    // if (!gridExists) {
+    //   const { newGrid } = this.state
+    //   grid = newGrid
 
+    //   const flatGrid = this.flattenGridForSave({ grid: newGrid })
+    //   world.newGrid2 = flatGrid
+    //   console.log("world", world) // zzz
+
+    //   world.data.newGrid2 = flatGrid
+    // } else {
+    //   grid = savedGrid
+    // }
+
+    grid = savedGrid
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
     }
@@ -1123,31 +1154,6 @@ class WorldBuilder extends Component {
               onExitFrameBuilder={frame => this.onExitFrameBuilder({ frame })}
               updateMap={this.updateMap}
             />
-          )}
-          {false && !showFrameBuilder && !this.state.editWorld && (
-            <DragDropContext className={css.main} onDragEnd={this.onDragEnd}>
-              {/* Create these with .map() */}
-              {this.renderList({
-                droppableId: SOURCE_CREATURES_PROP_NAME,
-                items: this.state[SOURCE_CREATURES_PROP_NAME],
-                className: css.source
-              })}
-              {this.renderList({
-                droppableId: SOURCE_LOCATIONS_PROP_NAME,
-                items: this.state[SOURCE_LOCATIONS_PROP_NAME],
-                className: css.source
-              })}
-              {/* {this.renderList({
-              droppableId: SOURCE_ITEMS_PROP_NAME,
-              items: this.state[SOURCE_ITEMS_PROP_NAME],
-              className: css.source
-            })} */}
-              {this.createLocationsGridRows({
-                numTargetsInRow: NUM_COLS_LOCATIONS_GRID,
-                numRows: NUM_ROWS_LOCATIONS_GRID,
-                prefix: LOCATIONS_PREFIX
-              })}
-            </DragDropContext>
           )}
         </div>
       </div>

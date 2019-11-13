@@ -254,11 +254,6 @@ export default class Utils {
   static getFirstReleasedMap = () => {
     const mapsDocs = toJS(maps.docs)
     const filteredMaps = mapsDocs.filter(map => {
-      if (map.data.released) {
-        // console.log("map.data.title", map.data.title) // zzz
-        // console.log("map.data.released", map.data.released) // zzz
-      }
-
       return map.data.released
     })
     return filteredMaps[0]
@@ -290,7 +285,6 @@ export default class Utils {
 
   static getNonBlankScenes({ scenesList }) {
     return scenesList.filter(scene => {
-      console.log("scene", scene) // zzz
       return scene && scene.location && scene.location.name !== "blank"
     })
   }

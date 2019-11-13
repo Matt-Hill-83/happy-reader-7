@@ -64,18 +64,21 @@ class MainStory extends React.Component {
     filteredMaps.forEach(map => {
       const newGrid = toJS(map.data.newGrid2)
 
+      console.log("newGrid", newGrid) // zzz
+
       if (newGrid) {
         const grid = this.transformLocationsGridToLocationsMap2({
           scenesGrid: map.data.newGrid2
         })
         map.data.grid = grid
-      } else {
-        const grid = this.transformLocationsGridToLocationsMap({
-          scenesGrid: map.data.scenesGrid
-        })
-
-        map.data.grid = grid
       }
+      // else {
+      //   const grid = this.transformLocationsGridToLocationsMap({
+      //     scenesGrid: map.data.scenesGrid
+      //   })
+
+      //   map.data.grid = grid
+      // }
     })
 
     localStateStore.setMaps(filteredMaps)
@@ -85,32 +88,32 @@ class MainStory extends React.Component {
     this.initWorld()
   }
 
-  transformLocationsGridToLocationsMap = ({ scenesGrid }) => {
-    const locationsMap = []
+  // transformLocationsGridToLocationsMap = ({ scenesGrid }) => {
+  //   const locationsMap = []
 
-    const numRows = Object.values(scenesGrid).length
-    const numCols = Object.values(Object.values(scenesGrid)[0]).length
+  //   const numRows = Object.values(scenesGrid).length
+  //   const numCols = Object.values(Object.values(scenesGrid)[0]).length
 
-    const rows = Array(numRows).fill(0)
-    const columns = Array(numCols).fill(0)
+  //   const rows = Array(numRows).fill(0)
+  //   const columns = Array(numCols).fill(0)
 
-    rows.map((row, rowIndex) => {
-      const newRow = []
+  //   rows.map((row, rowIndex) => {
+  //     const newRow = []
 
-      columns.map((col, colIndex) => {
-        const rowName = `row-${rowIndex}`
-        const colName = `col-${colIndex}`
+  //     columns.map((col, colIndex) => {
+  //       const rowName = `row-${rowIndex}`
+  //       const colName = `col-${colIndex}`
 
-        const newCell = scenesGrid[rowName][colName]
-        const scene = (newCell[0] && toJS(newCell[0].scene)) || {}
+  //       const newCell = scenesGrid[rowName][colName]
+  //       const scene = (newCell[0] && toJS(newCell[0].scene)) || {}
 
-        newRow.push(scene)
-      })
-      locationsMap.push(newRow)
-    })
+  //       newRow.push(scene)
+  //     })
+  //     locationsMap.push(newRow)
+  //   })
 
-    return locationsMap
-  }
+  //   return locationsMap
+  // }
 
   transformLocationsGridToLocationsMap2 = ({ scenesGrid }) => {
     const locationsMap = []
@@ -142,7 +145,6 @@ class MainStory extends React.Component {
 
   getTerminalScene2 = ({ start = true }) => {
     const mapId = localStateStore.getActiveMapId()
-
     const map = Utils.getMapFromId({ id: mapId })
 
     const startScene = map.data.startScene
@@ -204,6 +206,8 @@ class MainStory extends React.Component {
     const endScene = map.data.endScene
 
     const grid = _get(map, "data.grid") || []
+    console.log("map.data----------------", map.data) // zzz
+
     const allScenes = grid.flat()
 
     // hacky way to retroactively assign startScene and endScene to each scene
@@ -217,6 +221,7 @@ class MainStory extends React.Component {
         return start ? scene.isStartScene : scene.isEndScene
       }
     })
+
     const validScenes = allScenes.filter(scene => {
       return toJS(scene).name
     })
@@ -229,11 +234,11 @@ class MainStory extends React.Component {
   }
 
   initWorld = async () => {
-    const mapId = localStateStore.getActiveMapId()
+    // const mapId = localStateStore.getActiveMapId()
 
-    const map = Utils.getMapFromId({ id: mapId })
+    // const map = Utils.getMapFromId({ id: mapId })
 
-    const newGrid = toJS(map.data.newGrid2)
+    // const newGrid = toJS(map.data.newGrid2)
 
     this.version2 = true
 
@@ -466,7 +471,7 @@ class MainStory extends React.Component {
     // const mapId = localStateStore.getActiveMapId()
     const activeMap = localStateStore.getActiveMap()
 
-    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    // const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
     if (!activeMap || !activeMap.data || !activeMap.data.title) {
       // if (!savedMaps.length) {
@@ -485,7 +490,7 @@ class MainStory extends React.Component {
         className={css.toggleWorldBuilder}
         onClick={this.toggleWorldBuilder}
       >
-        <span> / </span>
+        <span> AAAAAAA </span>
       </div>
     )
 
