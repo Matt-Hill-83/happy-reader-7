@@ -155,14 +155,14 @@ class MainStory extends React.Component {
 
     const map = localStateStore.getActiveMap()
 
-    activeScene.neighborNames = this.getNeighbors2({ activeScene, map })
+    activeScene.neighborNames = this.getNeighbors({ activeScene, map })
 
     activeScene.showCloud = false
 
     this.setState({ activeScene })
   }
 
-  getNeighbors2 = ({ activeScene, map }) => {
+  getNeighbors = ({ activeScene, map }) => {
     const activeSceneName = activeScene.location.name
 
     const neighbors = []
@@ -203,48 +203,6 @@ class MainStory extends React.Component {
 
     return neighborNames
   }
-
-  // getNeighbors = ({ activeScene, map }) => {
-  //   const activeSceneName = activeScene.name
-
-  //   const neighbors = []
-  //   const neighborsArray = []
-
-  //   // create a map of all the locations for future use
-  //   map.data.grid.forEach((row, rowIndex) => {
-  //     row.forEach((location, locationIndex) => {
-  //       location = location || {}
-
-  //       neighborsArray.push({
-  //         name: location.name,
-  //         position: { x: rowIndex, y: locationIndex }
-  //       })
-  //     })
-  //   })
-
-  //   const currentLocation = neighborsArray.find(item => {
-  //     return item.name === activeSceneName
-  //   })
-
-  //   const currentPosition = currentLocation.position
-
-  //   neighbors.push({ x: currentPosition.x - 1, y: currentPosition.y })
-  //   neighbors.push({ x: currentPosition.x + 1, y: currentPosition.y })
-  //   neighbors.push({ x: currentPosition.x, y: currentPosition.y + 1 })
-  //   neighbors.push({ x: currentPosition.x, y: currentPosition.y - 1 })
-
-  //   const neighborNames = []
-
-  //   neighbors.forEach(neighbor => {
-  //     neighborsArray.forEach(item => {
-  //       if (item.position.x === neighbor.x && item.position.y === neighbor.y) {
-  //         neighborNames.push(item.name)
-  //       }
-  //     })
-  //   })
-
-  //   return neighborNames
-  // }
 
   toggleFlashCards = () => {
     this.setState({ showStory: !this.state.showStory })
