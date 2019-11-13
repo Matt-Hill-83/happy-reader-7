@@ -254,8 +254,10 @@ export default class Utils {
   static getFirstReleasedMap = () => {
     const mapsDocs = toJS(maps.docs)
     const filteredMaps = mapsDocs.filter(map => {
-      console.log("map.data.title", map.data.title) // zzz
-      console.log("map.data.released", map.data.released) // zzz
+      if (map.data.released) {
+        // console.log("map.data.title", map.data.title) // zzz
+        // console.log("map.data.released", map.data.released) // zzz
+      }
 
       return map.data.released
     })

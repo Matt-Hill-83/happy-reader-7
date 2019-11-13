@@ -37,21 +37,17 @@ class MainStory extends React.Component {
     await worldNameStore.fetch()
 
     let mapId = "not set"
-    console.log("maps", toJS(maps)) // zzz
 
     if (maps.docs && maps.docs[0]) {
-      mapId = maps.docs[0].id
-
-      console.log("maps.docs", toJS(maps.docs)) // zzz
-
-      console.log("mapId", mapId) // zzz
-
       const defaultMap = Utils.getFirstReleasedMap()
-      console.log("defaultMap.id", defaultMap.id) // zzz
+      console.log("defaultMap.data.title", defaultMap.data.title) // zzz
+      console.log("defaultMap----------------------", defaultMap) // zzz
+
+      mapId = _get(defaultMap, "id")
+      console.log("mapId", mapId) // zzz
 
       localStateStore.setActiveMapId(mapId)
     }
-    // localStateStore.setActiveMapId(MAP_FOR_TESTING)
     await this.init()
 
     this.setState({ forceUpdate: "test" })
@@ -146,10 +142,7 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene2 = ({ start = true }) => {
-    console.log("getTerminalScene2") // zzz
-
     const mapId = localStateStore.getActiveMapId()
-    console.log("mapId", mapId) // zzz
 
     const map = Utils.getMapFromId({ id: mapId })
 
@@ -201,8 +194,6 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene = ({ start = true }) => {
-    console.log("getTerminalScene") // zzz
-
     // for compatability with new format
     if (this.version2) {
       return this.getTerminalScene2({ start })
@@ -239,15 +230,11 @@ class MainStory extends React.Component {
   }
 
   initWorld = async () => {
-    console.log("initWorld") // zzz
-
     const mapId = localStateStore.getActiveMapId()
-    console.log("mapId", mapId) // zzz
 
     const map = Utils.getMapFromId({ id: mapId })
 
     const newGrid = toJS(map.data.newGrid2)
-    console.log("newgGid", newGrid) // zzz
 
     this.version2 = true
 
@@ -476,13 +463,17 @@ class MainStory extends React.Component {
 
   render() {
     // const mapId = localStateStore.getActiveMapId()
+    const activeMap = localStateStore.getActiveMap()
 
-    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    console.log("savedMaps", savedMaps) // zzz
+    // const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
-    if (!savedMaps.length) {
+    if (!activeMap || !activeMap.data || !activeMap.data.title) {
+      // if (!savedMaps.length) {
+      console.log("bad map") // zzz
+
       return null
     }
+    console.log("activeMap.data.title", activeMap.data.title) // zzz
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
     const { className } = this.props
