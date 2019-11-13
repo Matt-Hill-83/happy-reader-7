@@ -287,4 +287,11 @@ export default class Utils {
     )
     return uuid
   }
+
+  static getNonBlankScenes({ scenesList }) {
+    return scenesList.filter(scene => {
+      console.log("scene", scene) // zzz
+      return scene && scene.location && scene.location.name !== "blank"
+    })
+  }
 }

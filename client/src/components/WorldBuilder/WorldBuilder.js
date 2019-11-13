@@ -248,8 +248,11 @@ class WorldBuilder extends Component {
     const scenesList =
       Utils.getArrayOfScenes({ scenesGrid: map.data.newGrid2 }) || []
 
-    const renderedSceneNames = scenesList.map((scene, index) => {
+    const filteredScenesList = Utils.getNonBlankScenes({ scenesList })
+
+    const renderedSceneNames = filteredScenesList.map((scene, index) => {
       const { name } = scene.location
+      console.log("name", name) // zzz
 
       const changeScene = ({ name }) => {
         scenesList.forEach(scene => (scene.isStartScene = false))
@@ -923,10 +926,10 @@ class WorldBuilder extends Component {
     return outputArray
   }
 
-  unFlattenGridAfterLoad = ({ grid }) => {}
+  // unFlattenGridAfterLoad = ({ grid }) => {}
 
   saveItems = async () => {
-    console.log("saveItems") // zzz
+    console.log("saveItems+++++++++++++++++++++++++++++++++++++") // zzz
 
     await this.updateMap({})
     this.forceUpdateWorldBuilder()
@@ -1089,6 +1092,7 @@ class WorldBuilder extends Component {
             <div className={css.titles}>
               <div className={css.title}>
                 {`World Builder - world: ${world.data && world.data.name}`}
+                {`${world.data && world.data.title}`}
               </div>
               start:
               {this.renderStartScenePicker()}
