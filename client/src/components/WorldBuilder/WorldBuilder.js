@@ -22,7 +22,6 @@ import CrudMachine from "../CrudMachine/CrudMachine"
 import FrameBuilder from "../FrameBuilder/FrameBuilder"
 import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import images from "../../images/images"
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import MiniLocation from "../MiniLocation/MiniLocation"
 import Utils from "../../Utils/Utils"
 
@@ -33,11 +32,8 @@ const NUM_ROWS_LOCATIONS_GRID = 2
 const NUM_COLS_LOCATIONS_GRID = 5
 
 const COLUMN_WIDTH = 150
-const LOCATIONS_PREFIX = "scenesGrid"
 
 const LOCATIONS_TAG = "location"
-const CREATURES_TAG = "creature"
-const ITEMS_TAG = "item"
 
 const SOURCE_CREATURES_PROP_NAME = "sourceCreatures"
 const SOURCE_LOCATIONS_PROP_NAME = "sourceLocations"
@@ -55,79 +51,8 @@ class WorldBuilder extends Component {
   }
 
   async componentWillMount() {
-    // This is a bad place for this, but it is working to have a new grid ready for when you don't have a grid.
-    const newGrid = this.createNewGrid()
-    this.setState({ newGrid })
-
-    this.initDraggableStuff()
     const initialMapIndex = INITIAL_MAP_INDEX
     this.changeMap({ index: initialMapIndex })
-  }
-
-  initDraggableStuff = async () => {
-    const { allItems = [], allScenes = [] } = localStateStore.getPlot()
-
-    const allCreatures = localStateStore.getCreatures()
-
-    const locations = allScenes.map((item, index) => {
-      return {
-        id: `${LOCATIONS_TAG}-${index}`,
-        scene: item
-      }
-    })
-
-    // generate placeholders for output grid in state
-    const scenesGrid = this.preAllocateArrays({})
-
-    // Instead of making different containers, why not dump all items together and sort them by tag?
-    // And instead of removing from the list, just mark them as not visible.
-    // And don't generate the content here, generate the content at render time.
-    const creatureObjects = allCreatures.map((item, index) => {
-      const { type, name } = item
-
-      const image = images.creatures[type]
-      const id = `${CREATURES_TAG}-${index}`
-
-      return {
-        id,
-        // save an object here, that stores all the object properties, separate from the content
-        properties: item,
-        type,
-        name,
-        content: (
-          <div className={css.characterImage}>
-            <img src={image} alt={`${CREATURES_TAG}`} />
-            <span className={css.characterLabel}>{type}</span>
-          </div>
-        )
-      }
-    })
-
-    const itemObjects = allItems.map((item, index) => {
-      const { type, name } = item
-
-      const image = images.items[type]
-      const id = `${ITEMS_TAG}-${index}`
-
-      return {
-        id,
-        type,
-        name,
-        content: (
-          <div className={css.characterImage}>
-            <img src={image} alt={"item"} />
-            <span className={css.characterLabel}>{type}</span>
-          </div>
-        )
-      }
-    })
-
-    this.setState({
-      [SOURCE_ITEMS_PROP_NAME]: itemObjects,
-      [SOURCE_LOCATIONS_PROP_NAME]: locations,
-      [SOURCE_CREATURES_PROP_NAME]: creatureObjects,
-      scenesGrid
-    })
   }
 
   changeMap = ({ index }) => {
@@ -142,21 +67,13 @@ class WorldBuilder extends Component {
 
     // new map
     if (index === -1) {
-      scenesGrid = this.preAllocateArrays({})
-      const newGrid = this.createNewGrid()
-      const name = "My New World"
-      world = { scenesGrid, name, newGrid }
-      console.log("world - new", world) // zzz
-      this.saveMap()
-      // this.setState({ scenesGrid, world }, this.saveMap)
+      // scenesGrid = this.preAllocateArrays({})
+      // const newGrid = this.createNewGrid()
+      // const name = "My New World"
+      // world = { scenesGrid, name, newGrid }
+      // console.log("world - new", world) // zzz
+      this.saveNewMap()
       return
-      // it is autosaved when created.  I need to set the new map to the active map by id
-      // TODO - I should save the new world here.
-      // TODO - I should save the new world here.
-      // TODO - I should save the new world here.
-
-      const mapId = localStateStore.getActiveMapId()
-      const map = Utils.getMapFromId({ id: mapId })
     } else {
       scenesGrid = world.data.scenesGrid
 
@@ -251,10 +168,9 @@ class WorldBuilder extends Component {
       return null
     }
 
-    const { startScene } = map.data
+    const { startScene, newGrid2 } = map.data
 
-    const scenesList =
-      Utils.getArrayOfScenes({ scenesGrid: map.data.newGrid2 }) || []
+    const scenesList = Utils.getArrayOfScenes({ scenesGrid: newGrid2 }) || []
 
     const filteredScenesList = Utils.getNonBlankScenes({ scenesList })
 
@@ -449,264 +365,14 @@ class WorldBuilder extends Component {
     return scenesGrid
   }
 
-  getList = ({ id }) => {
-    if (
-      id === SOURCE_ITEMS_PROP_NAME ||
-      id === SOURCE_LOCATIONS_PROP_NAME ||
-      id === SOURCE_CREATURES_PROP_NAME
-    ) {
-      return this.state[id]
-    } else {
-      const { row, col, prefix } = this.getStorageRowColFromId({ id })
+  saveNewMap = async () => {
+    console.log("saveNewMap---------------------------------->>>>>>") // zzz
 
-      if (prefix === LOCATIONS_PREFIX) {
-        return this.state.scenesGrid[row][col]
-      }
-    }
-  }
+    // const { scenesGrid } = this.state
+    // console.log("scenesGrid", scenesGrid) // zzz
 
-  getStorageRowColFromId = ({ id }) => {
-    const regex = /(?<prefix>.*)-(?<row>row-[0-9])-(?<col>col-[0-9])/
-    const idMatch = id.match(regex)
-
-    if (idMatch != null && idMatch.groups) {
-      return idMatch.groups
-    } else {
-      return {}
-    }
-  }
-
-  dragFromCreatureToGrid = ({
-    source,
-    destination,
-    destinationId,
-    sourceId
-  }) => {
-    let result = {}
-    const sourceList = this.getList({ id: sourceId })
-    const destinationList = this.getList({ id: destinationId })
-    const droppableSource = source
-    // const droppableDestination = destination;
-
-    const sourceListClone = Array.from(sourceList)
-    const destListClone = Array.from(destinationList)
-
-    const [removed] = sourceListClone.splice(droppableSource.index, 1)
-    if (!destListClone[0]) {
-      return
-    }
-
-    // There should be a separate object in the draggable object that preserves all the item props
-    // separate from the renderd content
-    destListClone[0].scene.creatures.push({ ...removed.properties })
-    // destListClone[0].scene.creatures.push({ type: removed.type });
-
-    // const removedFromDest = destListClone.splice(
-    //   0,
-    //   destListClone.length,
-    //   removed
-    // );
-    // do this different
-    // sourceListClone.push(...removedFromDest);
-
-    // result[sourceId] = sourceListClone
-    result[sourceId] = sourceList
-    result[destinationId] = destListClone
-
-    const { row, col } = this.getStorageRowColFromId({
-      id: destinationId
-    })
-
-    const { scenesGrid } = this.state
-    scenesGrid[row][col] = result[destinationId]
-
-    this.setState({
-      [sourceId]: result[sourceId],
-      scenesGrid
-    })
-  }
-
-  dragFromGridToGrid = ({ source, destination }) => {
-    const { droppableId: sourceId } = source
-    let destinationId
-
-    if (destination) {
-      destinationId = destination.droppableId
-
-      const result = this.move({
-        source: this.getList({ id: sourceId }),
-        destination: this.getList({ id: destinationId }),
-        droppableSource: source,
-        droppableDestination: destination
-      })
-
-      const { row: sourceRow, col: sourceCol } = this.getStorageRowColFromId({
-        id: sourceId
-      })
-
-      const {
-        row: destinationRow,
-        col: destinationCol
-      } = this.getStorageRowColFromId({
-        id: destinationId
-      })
-
-      if (destinationRow) {
-        const { scenesGrid } = this.state
-        scenesGrid[destinationRow][destinationCol] = result[destinationId]
-        scenesGrid[sourceRow][sourceCol] = []
-
-        this.setState({
-          scenesGrid
-        })
-      }
-    } else {
-      // const result = this.removeItem({
-      //   source: this.getList({ id: sourceId }),
-      //   droppableSource: source
-      // })
-
-      const { row: sourceRow, col: sourceCol } = this.getStorageRowColFromId({
-        id: sourceId
-      })
-
-      const { scenesGrid } = this.state
-      scenesGrid[sourceRow][sourceCol] = []
-
-      this.setState({
-        scenesGrid
-      })
-    }
-    this.updateMap({})
-  }
-
-  dropInNewList = ({ source, destination, destinationId, sourceId }) => {
-    // dragging a creature to a different destination
-    // TODO -  should specifically reference scenesGrid
-    if (
-      sourceId === SOURCE_CREATURES_PROP_NAME &&
-      destinationId !== SOURCE_CREATURES_PROP_NAME
-    ) {
-      this.dragFromCreatureToGrid({
-        source,
-        destination,
-        destinationId,
-        sourceId
-      })
-    } else {
-      const result = this.move({
-        source: this.getList({ id: sourceId }),
-        destination: this.getList({ id: destinationId }),
-        droppableSource: source,
-        droppableDestination: destination
-      })
-
-      // TODO - dragging from grid to main list is broken.
-      const { row, col } = this.getStorageRowColFromId({
-        id: destinationId
-      })
-
-      if (row) {
-        const { scenesGrid } = this.state
-        scenesGrid[row][col] = result[destinationId]
-
-        this.setState({
-          [sourceId]: result[sourceId],
-          scenesGrid
-        })
-      }
-    }
-  }
-
-  onDragEnd = result => {
-    const {
-      source,
-      source: { droppableId: sourceId },
-      destination
-    } = result
-
-    const { prefix: sourcePrefix } = this.getStorageRowColFromId({
-      id: sourceId
-    })
-
-    const fromGrid = sourcePrefix === LOCATIONS_PREFIX
-
-    if (fromGrid) {
-      this.dragFromGridToGrid({ source, destination })
-    }
-
-    // dropped outside the list
-    if (!destination) {
-      return
-    }
-
-    const { droppableId: destinationId } = destination
-    const { prefix: destinationPrefix } = this.getStorageRowColFromId({
-      id: destinationId
-    })
-
-    // for dragging within a single column
-    if (sourceId === destinationId) {
-      const items = this.reorder(
-        this.getList({ id: sourceId }),
-        source.index,
-        destination.index
-      )
-
-      let state = { items }
-
-      this.setState(state)
-    } else {
-      this.dropInNewList({ source, destination, destinationId, sourceId })
-    }
-    this.updateMap({})
-  }
-
-  createLocationsGridRows = ({ numTargetsInRow, numRows, prefix }) => {
-    const targetArraysRows = []
-    for (let rowIndex = 0; rowIndex < numRows; rowIndex++) {
-      const newRow = this.createLocationsGridRow({
-        numTargetsInRow,
-        rowIndex,
-        prefix
-      })
-      targetArraysRows.push(<div className={css.targetRow}>{newRow}</div>)
-    }
-    return <div className={css.targetGrid}>{targetArraysRows}</div>
-  }
-
-  createLocationsGridRow = ({ numTargetsInRow, rowIndex, prefix }) => {
-    const targetArrays = []
-    for (let colIndex = 0; colIndex < numTargetsInRow; colIndex++) {
-      const arrayName = this.createStoragePropertyName({
-        rowIndex,
-        colIndex,
-        prefix
-      })
-
-      const { row, col } = this.getStorageRowColFromId({ id: arrayName })
-
-      const newTargetArray = this.renderList({
-        droppableId: arrayName,
-        items: this.state.scenesGrid[row][col],
-        className: css.destination
-      })
-
-      targetArrays.push(newTargetArray)
-    }
-
-    return targetArrays
-  }
-
-  createStoragePropertyName = ({ rowIndex, colIndex, prefix = "item" }) => {
-    return `${prefix}-row-${rowIndex}-col-${colIndex}`
-  }
-
-  saveMap = async () => {
-    console.log("saveMap---------------------------------->>>>>>") // zzz
-
-    const { scenesGrid } = this.state
-    console.log("scenesGrid", scenesGrid) // zzz
+    const scenesGrid = this.preAllocateArrays({})
+    const newGrid = this.createNewGrid()
 
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
@@ -715,54 +381,25 @@ class WorldBuilder extends Component {
       previousMapName: newName
     })
 
+    const newGrid2 = this.flattenGridForSave({ grid: newGrid })
+
     const newMap = {
       name: newName,
-      title: "Broken Map a",
-      scenesGrid: scenesGrid,
-      // order: 99,
+      title: "Test Map",
+      scenesGrid,
+      newGrid2,
       released: false,
       ignore: false
     }
 
-    const { newGrid } = this.state
-
-    const flatGrid = this.flattenGridForSave({ grid: newGrid })
-
-    newMap.newGrid2 = flatGrid
+    // const { newGrid } = this.state
 
     console.log("maps.docs.length", maps.docs.length) // zzz
 
     const newMapReturned = await maps.add(newMap)
 
     this.setState({ world: newMapReturned })
-    console.log("newMapReturned.id", newMapReturned.id) // zzz
-
     console.log("maps.docs.length", maps.docs.length) // zzz
-  }
-
-  renderSaveMapButton = () => {
-    return (
-      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
-        <span> Save Map </span>
-        <Icon color={"purple"} icon={IconNames.SAVED} />
-      </Button>
-    )
-  }
-
-  renderList = ({ droppableId, items, className }) => {
-    return (
-      <div className={className}>
-        <Droppable droppableId={droppableId}>
-          {(provided, snapshot) =>
-            this.renderItems({
-              provided,
-              snapshot,
-              items
-            })
-          }
-        </Droppable>
-      </div>
-    )
   }
 
   editFrame = ({ sceneToEdit }) => {
@@ -806,50 +443,6 @@ class WorldBuilder extends Component {
     await map.update(map.data)
   }
 
-  renderItems = ({ provided, snapshot, items }) => {
-    return (
-      <div
-        ref={provided.innerRef}
-        style={this.getListStyle(snapshot.isDraggingOver)}
-      >
-        {items &&
-          items.map((item, index) => {
-            if (item === undefined) return null
-
-            const { id } = item
-            let content = <span>content missing</span>
-
-            // define a render function in each item type
-            if (id.includes(LOCATIONS_TAG)) {
-              content = this.renderLocation({ item })
-            } else {
-              // this content should be generated on the fly.
-              content = item.content
-            }
-
-            return (
-              <Draggable key={item.id} draggableId={item.id} index={index}>
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    style={this.getItemStyle(
-                      snapshot.isDragging,
-                      provided.draggableProps.style
-                    )}
-                  >
-                    {content}
-                  </div>
-                )}
-              </Draggable>
-            )
-          })}
-        {provided.placeholder}
-      </div>
-    )
-  }
-
   onChangeTitle = async ({ event }) => {
     const { world } = this.state
     world.data.title = event.target.value
@@ -861,17 +454,17 @@ class WorldBuilder extends Component {
     await this.updateMap({ title })
   }
 
-  onChangeOrder = async ({ event }) => {
-    const { world } = this.state
+  // onChangeOrder = async ({ event }) => {
+  //   const { world } = this.state
 
-    world.data.order = event.target.value
-    this.setState({ world })
-  }
+  //   world.data.order = event.target.value
+  //   this.setState({ world })
+  // }
 
-  saveOrder = async ({ event }) => {
-    const order = event.target.value
-    await this.updateMap({ order })
-  }
+  // saveOrder = async ({ event }) => {
+  //   const order = event.target.value
+  //   await this.updateMap({ order })
+  // }
 
   createNewGrid = () => {
     console.log("createNewGrid+++++++++++++++++++++++++++++") // zzz
@@ -941,7 +534,7 @@ class WorldBuilder extends Component {
   }
 
   flattenGridForSave = ({ grid }) => {
-    console.log("grid.forEach(row => {") // zzz
+    console.log("flattenGridForSave") // zzz
 
     const outputArray = []
     grid.forEach(row => {
@@ -1090,13 +683,13 @@ class WorldBuilder extends Component {
           onChange={event => this.onChangeTitle({ event })}
           onBlur={event => this.saveTitle({ event })}
         />
-        <InputGroup
+        {/* <InputGroup
           value={order}
           id="text-input"
           placeholder="Order"
           onChange={event => this.onChangeOrder({ event })}
           onBlur={event => this.saveOrder({ event })}
-        />
+        /> */}
         {!showFrameBuilder && (
           <div className={css.header}>
             <div className={css.titles}>
@@ -1110,7 +703,7 @@ class WorldBuilder extends Component {
               {this.renderEndScenePicker()}
               <div className={css.subTitle}>
                 <div className={css.editWorldButtons}>
-                  {this.renderSaveMapButton()}
+                  {/* {this.renderSaveMapButton()} */}
                   {this.renderMapPicker()}
                   <Button
                     text={"+ New Map"}
