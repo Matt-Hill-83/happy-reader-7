@@ -1,4 +1,4 @@
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
+import { Draggable, Droppable } from "react-beautiful-dnd"
 import React, { Component } from "react"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
@@ -29,7 +29,6 @@ import Utils from "../../Utils/Utils"
 import css from "./WorldBuilder.module.scss"
 
 const INITIAL_MAP_INDEX = 0
-// const INITIAL_MAP_INDEX = -1
 const NUM_ROWS_LOCATIONS_GRID = 2
 const NUM_COLS_LOCATIONS_GRID = 5
 
