@@ -20,7 +20,6 @@ import css from "./MainStory.module.scss"
 // const SHOW_WORLD_BUILDER = true
 const SHOW_WORLD_BUILDER = false
 
-// const MAP_FOR_TESTING = "DXkNDp3u8iHvTN5OCzOK"
 class MainStory extends React.Component {
   state = {
     showStory: true,
@@ -80,7 +79,7 @@ class MainStory extends React.Component {
     })
 
     localStateStore.setMaps(filteredMaps)
-    // localStateStore.setShowWorldBuilder(SHOW_WORLD_BUILDER)
+    localStateStore.setShowWorldBuilder(SHOW_WORLD_BUILDER)
     if (SHOW_WORLD_BUILDER) return
 
     this.initWorld()
@@ -246,7 +245,7 @@ class MainStory extends React.Component {
 
     const startScene = this.getTerminalScene({})
 
-    // startScene.showCloud = false
+    startScene.showCloud = false
 
     this.updateActiveScene({ activeScene: toJS(startScene) })
   }
@@ -391,6 +390,8 @@ class MainStory extends React.Component {
 
   renderGame = () => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    console.log("savedMaps", savedMaps) // zzz
+
     if (!savedMaps.length) {
       return null
     }
@@ -465,7 +466,7 @@ class MainStory extends React.Component {
     // const mapId = localStateStore.getActiveMapId()
     const activeMap = localStateStore.getActiveMap()
 
-    // const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
     if (!activeMap || !activeMap.data || !activeMap.data.title) {
       // if (!savedMaps.length) {

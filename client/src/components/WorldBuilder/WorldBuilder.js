@@ -717,14 +717,14 @@ class WorldBuilder extends Component {
     maps.add(newMap)
   }
 
-  // renderSaveMapButton = () => {
-  //   return (
-  //     <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
-  //       <span> Save Map </span>
-  //       <Icon color={"purple"} icon={IconNames.SAVED} />
-  //     </Button>
-  //   )
-  // }
+  renderSaveMapButton = () => {
+    return (
+      <Button tabIndex={0} className={css.newStoryBtn} onClick={this.saveMap}>
+        <span> Save Map </span>
+        <Icon color={"purple"} icon={IconNames.SAVED} />
+      </Button>
+    )
+  }
 
   renderList = ({ droppableId, items, className }) => {
     return (
@@ -947,6 +947,8 @@ class WorldBuilder extends Component {
     let grid
 
     const savedGrid = world.data && world.data.newGrid2
+    console.log("world.data-------------------", world.data) // zzz
+
     console.log("savedGrid", toJS(savedGrid)) // zzz
 
     const gridExists =
@@ -958,8 +960,8 @@ class WorldBuilder extends Component {
 
       const flatGrid = this.flattenGridForSave({ grid: newGrid })
       console.log("world 2", world) // zzz
-      world.newGrid2 = flatGrid
-      // world.data.newGrid2 = flatGrid
+      // world.newGrid2 = flatGrid
+      world.data.newGrid2 = flatGrid
     } else {
       grid = savedGrid
     }
@@ -1093,7 +1095,7 @@ class WorldBuilder extends Component {
             <div className={css.titles}>
               <div className={css.title}>
                 {`World Builder - world: ${world.data && world.data.name}`}
-                {`${world.data && world.data.title}`}
+                {` --- ${world.id}`}
               </div>
               start:
               {this.renderStartScenePicker()}
@@ -1101,7 +1103,7 @@ class WorldBuilder extends Component {
               {this.renderEndScenePicker()}
               <div className={css.subTitle}>
                 <div className={css.editWorldButtons}>
-                  {/* {this.renderSaveMapButton()} */}
+                  {this.renderSaveMapButton()}
                   {this.renderMapPicker()}
                   <Button
                     text={"+ New Map"}
