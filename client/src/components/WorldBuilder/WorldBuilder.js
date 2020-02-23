@@ -343,7 +343,7 @@ class WorldBuilder extends Component {
         const id = Utils.generateUuid()
 
         const dummyFrame = {
-          creatures: ["kat"],
+          creatures: ["kat", "liz2"],
           dialog: [
             {
               character: "kat",
@@ -351,24 +351,24 @@ class WorldBuilder extends Component {
               text: "We can play."
             },
             {
-              character: "creature 1",
+              character: "liz2",
               characterIndex: 1,
               text: ""
             },
             {
-              character: "creature 1",
+              character: "liz2",
               characterIndex: 0,
               text: ""
             },
             {
-              character: "creature 1",
+              character: "liz2",
               characterIndex: 1,
               text: ""
             }
           ],
           faces: [
             {
-              character: "creature 1",
+              character: "liz2",
               characterIndex: 1,
               face: "happy"
             },
@@ -453,6 +453,8 @@ class WorldBuilder extends Component {
 
         const hideScene = scene.location && scene.location.name === "blank"
 
+        console.log("characters", toJS(characters)) // zzz
+
         gridRow.push(
           <div className={css.gridCell}>
             {!hideScene && (
@@ -531,7 +533,6 @@ class WorldBuilder extends Component {
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle
-    console.log("world.id", toJS(world.id)) // zzz
 
     const title =
       (world.data && world.data.title) || this.previousTitle + " copy"
@@ -559,7 +560,6 @@ class WorldBuilder extends Component {
               {this.renderEndScenePicker()}
               <div className={css.subTitle}>
                 <div className={css.editWorldButtons}>
-                  {/* {this.renderSaveMapButton()} */}
                   {this.renderMapPicker()}
                   <Button
                     text={"+ New Map"}

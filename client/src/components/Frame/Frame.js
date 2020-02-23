@@ -127,6 +127,9 @@ class Frame extends Component {
   }
 
   toggleFacePicker = ({ character }) => {
+    console.log("toggleFacePicker") // zzz
+    console.log("character", character) // zzz
+
     const showFacePicker = !this.state.showFacePicker
     this.setState({ showFacePicker, facePickerCharacter: character })
   }
@@ -326,6 +329,7 @@ class Frame extends Component {
         <div className={`${css.characterContainer}`} key={index}>
           <div onClick={() => this.toggleFacePicker({ character: friend })}>
             <Character name={friend} mood={mood} isEditMode={isEditMode} />
+            test
           </div>
         </div>
       )
@@ -368,6 +372,7 @@ class Frame extends Component {
     const items = (frame && frame.items) || []
 
     const allCharacters = (frame && frame.creatures) || []
+    console.log("frame", toJS(frame)) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -381,7 +386,6 @@ class Frame extends Component {
           }`}
         >
           {this.renderFrame({ allCharacters })}
-          {/* {false && this.renderFrame({ allCharacters })} */}
           {isEditMode && (
             <CrudMachine
               className={css.crudMachine}
