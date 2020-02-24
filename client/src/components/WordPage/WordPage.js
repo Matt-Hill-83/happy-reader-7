@@ -44,14 +44,10 @@ class WordPage extends React.Component {
 
   renderButtons = () => {
     const { activeScene } = this.state
-    console.log("activeScene", toJS(activeScene)) // zzz
 
     const neighbors = activeScene.neighborNames
 
     const filteredNeighbors = neighbors.filter(item => item !== "blank")
-    console.log("filteredNeighbors", filteredNeighbors) // zzz
-
-    console.log("activeScene", activeScene) // zzz
 
     const { isEndScene } = activeScene
 

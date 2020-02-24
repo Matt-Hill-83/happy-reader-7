@@ -285,30 +285,6 @@ class WorldBuilder extends Component {
     this.setState({ sceneToEdit: "", showFrameBuilder: false })
   }
 
-  renderLocation = ({ item }) => {
-    const { scene, id, name = "" } = item
-
-    const content = (
-      <div className={css.locationGridContainer}>
-        <MiniLocation
-          id={id}
-          key={name}
-          location={scene}
-          isEditMode={true}
-          updateMap={this.updateMap}
-        />
-        <Button
-          className={css.scenePropsButton}
-          onClick={() => this.editFrame({ sceneToEdit: scene })}
-        >
-          <Icon icon={IconNames.SETTINGS} />
-        </Button>
-      </div>
-    )
-
-    return content
-  }
-
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
     const map = this.state.world

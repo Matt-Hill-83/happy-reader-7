@@ -2,7 +2,6 @@ import _get from "lodash.get"
 import { Button, Menu, MenuItem, Popover, Position } from "@blueprintjs/core"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
-import LineTo from "react-lineto"
 import React from "react"
 
 import Images from "../../images/images.js"
@@ -17,20 +16,6 @@ class PicturePage extends React.Component {
   constructor(props) {
     super(props)
     this.canvasRef = React.createRef()
-  }
-
-  renderYouMini = () => {
-    const you = localStateStore.getYou()
-
-    const youImage = you.creature
-
-    return (
-      <img
-        className={`${css.characterImageMini} ${css.characterYouMini}`}
-        src={Images.creatures[youImage]}
-        alt={youImage}
-      />
-    )
   }
 
   renderSceneRows = () => {
@@ -51,50 +36,43 @@ class PicturePage extends React.Component {
   }
 
   createSingleRow = ({ locationRow, rowIndex }) => {
-    return locationRow.map((location, colIndex) => {
-      return this.renderMiniLocation({ location, colIndex, rowIndex })
+    return locationRow.map((scene, colIndex) => {
+      return this.renderMiniLocation({ scene, colIndex, rowIndex })
     })
   }
 
-  renderMiniLocation = ({
-    colIndex = 0,
-    rowIndex = 0,
-    location: scene,
-    className = ""
-  }) => {
+  renderMiniLocation = ({ colIndex = 0, rowIndex = 0, scene }) => {
+    // console.log("") // zzz
+    // console.log("renderMiniLocation-------------------------") // zzz
+
     // TODO - this should come from state
     const { activeScene } = this.props
-    const { name: sceneName } = scene
+    const sceneName = scene.location.name
+    // const { name: sceneName } = scene
     let isActive
+    console.log("activeScene - Picture Page", toJS(activeScene)) // zzz
+    console.log("scene", toJS(scene)) // zzz
+
+    // TODO - scene does not have the showCloud Prop
+    // TODO - scene does not have the showCloud Prop
+    // TODO - scene does not have the showCloud Prop
+    // TODO - scene does not have the showCloud Prop
+    // TODO - scene does not have the showCloud Prop
+    // TODO - scene does not have the showCloud Prop
 
     isActive = sceneName === activeScene.location.name
+    // scene.isActive = isActive
+    console.log("isActive - PP_________________________________", isActive) // zzz
+    console.log("sceneName", sceneName) // zzz
+
+    // This prop is not being applied correctly in MainStory.js
+    // scene.showCloud = !isActive
 
     const id = `${colIndex}-${rowIndex}`
 
     return (
-      <MiniLocation
-        id={id}
-        key={sceneName}
-        location={scene}
-        isActive={isActive}
-        className={className}
-      />
+      <MiniLocation id={id} key={sceneName} scene={scene} isActive={isActive} />
     )
-  }
-
-  createArrows = ({ locationName }) => {
-    const { activeScene } = this.props
-
-    if (!activeScene) {
-      return null
-    }
-    const neighborNames = activeScene.neighbors || []
-
-    const arrows = neighborNames.map(location => {
-      return <LineTo className={css.lineTo} from={locationName} to={location} />
-    })
-
-    return arrows
   }
 
   renderStoryPage = () => {

@@ -111,7 +111,11 @@ class MainStory extends React.Component {
 
     const grid = _get(map, "data.newGrid2") || []
 
+    // I think this is breaking the refs, so assigned props are not retained
     const flatGrid = toJS(grid).flat()
+    console.log("flatGrid", flatGrid) // zzz
+
+    console.log("flatGrid[0][0]", flatGrid[0][0]) // zzz
 
     // Integrate this fix
     let scenesList = Utils.getArrayOfScenes({ scenesGrid: flatGrid }) || []
@@ -142,16 +146,26 @@ class MainStory extends React.Component {
 
   initWorld = async () => {
     const startScene = this.getTerminalScene({})
+    console.log("") // zzz
 
+    console.log("startScene ---- mainstory.js", toJS(startScene)) // zzz
+
+    // For some reason this is not referencing the object in the grid, and the showCloud prop is not persisting.
     startScene.showCloud = false
 
-    this.updateActiveScene({ activeScene: toJS(startScene) })
+    // this.updateActiveScene({ activeScene: toJS(startScene) })
+    this.updateActiveScene({ activeScene: startScene })
   }
 
   updateActiveScene = ({ activeScene }) => {
+    console.log("") // zzz
+
+    console.log("activeScene - update active scene - Main Story", activeScene) // zzz
+
     if (!activeScene || !activeScene.location.name) {
       return
     }
+    console.log("activeScene.location.name", activeScene.location.name) // zzz
 
     const map = localStateStore.getActiveMap()
 
@@ -159,7 +173,9 @@ class MainStory extends React.Component {
 
     activeScene.showCloud = false
 
+    // I should set to the store and not to state
     this.setState({ activeScene })
+    // this.setState({ forceUpdate: Math.random() })
   }
 
   getNeighbors = ({ activeScene, map }) => {

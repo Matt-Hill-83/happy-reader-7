@@ -127,8 +127,8 @@ class Frame extends Component {
   }
 
   toggleFacePicker = ({ character }) => {
-    console.log("toggleFacePicker") // zzz
-    console.log("character", character) // zzz
+    // console.log("toggleFacePicker") // zzz
+    // console.log("character", character) // zzz
 
     const showFacePicker = !this.state.showFacePicker
     this.setState({ showFacePicker, facePickerCharacter: character })
@@ -372,7 +372,7 @@ class Frame extends Component {
     const items = (frame && frame.items) || []
 
     const allCharacters = (frame && frame.creatures) || []
-    console.log("frame", toJS(frame)) // zzz
+    // console.log("frame", toJS(frame)) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />

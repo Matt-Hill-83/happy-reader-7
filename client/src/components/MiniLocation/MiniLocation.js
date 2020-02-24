@@ -54,7 +54,7 @@ class MiniLocation extends React.Component {
 
   async componentWillMount() {
     const {
-      location: { doors },
+      scene: { doors },
       isStartScene,
       isEndScene
     } = this.props
@@ -68,7 +68,7 @@ class MiniLocation extends React.Component {
 
   componentWillReceiveProps(newProps) {
     const {
-      location: { doors },
+      scene: { doors },
       isStartScene,
       isEndScene
     } = newProps
@@ -205,28 +205,28 @@ class MiniLocation extends React.Component {
   }
 
   checkIsStartScene = () => {
-    const { location } = this.props
-    location.isStartScene = !this.state.isStartScene
+    const { scene } = this.props
+    scene.isStartScene = !this.state.isStartScene
 
     this.props.updateMap &&
-      this.props.updateMap({ newProps: { startScene: location.name } })
+      this.props.updateMap({ newProps: { startScene: scene.name } })
     this.setState({ isStartScene: !this.state.isStartScene })
   }
 
   checkIsEndScene = () => {
-    const { location } = this.props
-    location.isEndScene = !this.state.isEndScene
+    const { scene } = this.props
+    scene.isEndScene = !this.state.isEndScene
 
     this.props.updateMap &&
-      this.props.updateMap({ newProps: { endScene: location.name } })
+      this.props.updateMap({ newProps: { endScene: scene.name } })
     this.setState({ isEndScene: !this.state.isEndScene })
   }
 
   render() {
     // const { isStartScene, isEndScene } = this.state
     const {
-      location,
-      location: { showCloud = true },
+      scene,
+      scene: { showCloud = true },
       isActive,
       className,
       showLabel = true,
@@ -234,10 +234,19 @@ class MiniLocation extends React.Component {
       isEditMode
     } = this.props
 
-    const { items = [], creatures = [] } = location
+    // let showCloud = scene.showCloud || true
+    console.log("isActive", isActive) // zzz
 
-    let locationName = ""
-    locationName = location.location.name
+    // if (isActive) {
+    //   showCloud = false
+    // }
+    console.log("minilocation++++++++++") // zzz
+
+    console.log("scene", toJS(scene)) // zzz
+    const { items = [], creatures = [] } = scene
+
+    // let locationName = ""
+    const locationName = scene.location.name
 
     const isBlank = locationName === "blank"
 
@@ -272,7 +281,7 @@ class MiniLocation extends React.Component {
         key={id}
         id={id}
         className={`${css.main} ${className} ${
-          this.props.location.isStartScene ? css.isStartScene : ""
+          this.props.scene.isStartScene ? css.isStartScene : ""
         } ${localClass} `}
       >
         {/* {isEditMode && (
