@@ -51,7 +51,6 @@ class PicturePage extends React.Component {
     // const { name: sceneName } = scene
     let isActive
     console.log("activeScene - Picture Page", toJS(activeScene)) // zzz
-    console.log("scene", toJS(scene)) // zzz
 
     // TODO - scene does not have the showCloud Prop
     // TODO - scene does not have the showCloud Prop
@@ -63,6 +62,7 @@ class PicturePage extends React.Component {
     isActive = sceneName === activeScene.location.name
     // scene.isActive = isActive
     console.log("isActive - PP_________________________________", isActive) // zzz
+    console.log("scene", toJS(scene)) // zzz
     console.log("sceneName", sceneName) // zzz
 
     // This prop is not being applied correctly in MainStory.js

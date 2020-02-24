@@ -59,8 +59,6 @@ class MainStory extends React.Component {
 
     // TODO - I need to get maps by id, not by index, because I'm filtering them.
     filteredMaps.forEach(map => {
-      const newGrid = toJS(map.data.newGrid2)
-
       const grid = this.transformLocationsGridToLocationsMap({
         scenesGrid: map.data.newGrid2
       })
@@ -110,12 +108,17 @@ class MainStory extends React.Component {
     const endScene = map.data.endScene
 
     const grid = _get(map, "data.newGrid2") || []
+    // const grid  =[]
 
     // I think this is breaking the refs, so assigned props are not retained
     const flatGrid = toJS(grid).flat()
-    console.log("flatGrid", flatGrid) // zzz
+    // const flatGrid = []
+    // console.log("grid", grid) // zzz
+    // grid.forEach(row => {
+    //   console.log("row", row) // zzz
 
-    console.log("flatGrid[0][0]", flatGrid[0][0]) // zzz
+    //   flatGrid.push(row)
+    // })
 
     // Integrate this fix
     let scenesList = Utils.getArrayOfScenes({ scenesGrid: flatGrid }) || []

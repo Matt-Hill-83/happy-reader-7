@@ -226,20 +226,24 @@ class MiniLocation extends React.Component {
     // const { isStartScene, isEndScene } = this.state
     const {
       scene,
-      scene: { showCloud = true },
+      // scene: { showCloud = true },
       isActive,
+      isStartScene,
       className,
       showLabel = true,
       id,
       isEditMode
     } = this.props
 
-    // let showCloud = scene.showCloud || true
-    console.log("isActive", isActive) // zzz
+    let showCloud = scene.showCloud
+    if (showCloud === undefined) {
+      showCloud = true
+    }
+    console.log("isStartScene", isStartScene) // zzz
 
-    // if (isActive) {
-    //   showCloud = false
-    // }
+    if (scene.isStartScene) {
+      showCloud = false
+    }
     console.log("minilocation++++++++++") // zzz
 
     console.log("scene", toJS(scene)) // zzz
