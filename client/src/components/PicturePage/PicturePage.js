@@ -42,28 +42,13 @@ class PicturePage extends React.Component {
   }
 
   renderMiniLocation = ({ colIndex = 0, rowIndex = 0, scene }) => {
-    // console.log("") // zzz
-    // console.log("renderMiniLocation-------------------------") // zzz
-
     // TODO - this should come from state
     const { activeScene } = this.props
     const sceneName = scene.location.name
     // const { name: sceneName } = scene
     let isActive
-    console.log("activeScene - Picture Page", toJS(activeScene)) // zzz
-
-    // TODO - scene does not have the showCloud Prop
-    // TODO - scene does not have the showCloud Prop
-    // TODO - scene does not have the showCloud Prop
-    // TODO - scene does not have the showCloud Prop
-    // TODO - scene does not have the showCloud Prop
-    // TODO - scene does not have the showCloud Prop
 
     isActive = sceneName === activeScene.location.name
-    // scene.isActive = isActive
-    console.log("isActive - PP_________________________________", isActive) // zzz
-    console.log("scene", toJS(scene)) // zzz
-    console.log("sceneName", sceneName) // zzz
 
     // This prop is not being applied correctly in MainStory.js
     // scene.showCloud = !isActive
