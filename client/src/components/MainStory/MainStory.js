@@ -111,14 +111,15 @@ class MainStory extends React.Component {
     // const grid  =[]
 
     // I think this is breaking the refs, so assigned props are not retained
-    const flatGrid = toJS(grid).flat()
-    // const flatGrid = []
-    // console.log("grid", grid) // zzz
-    // grid.forEach(row => {
-    //   console.log("row", row) // zzz
 
-    //   flatGrid.push(row)
-    // })
+    // Re-install firebase
+    // TODO: create a setGrid function to update grid in store
+    // TODO: create a setGrid function to update grid in store
+    // TODO: create a setGrid function to update grid in store
+    // TODO: create a setGrid function to update grid in store
+    // TODO: create a setGrid function to update grid in store
+    // TODO: create a setGrid function to update grid in store
+    const flatGrid = toJS(grid).flat()
 
     // Integrate this fix
     let scenesList = Utils.getArrayOfScenes({ scenesGrid: flatGrid }) || []
@@ -149,9 +150,6 @@ class MainStory extends React.Component {
 
   initWorld = async () => {
     const startScene = this.getTerminalScene({})
-    console.log("") // zzz
-
-    console.log("startScene ---- mainstory.js", toJS(startScene)) // zzz
 
     // For some reason this is not referencing the object in the grid, and the showCloud prop is not persisting.
     startScene.showCloud = false
@@ -161,14 +159,9 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
-    console.log("") // zzz
-
-    console.log("activeScene - update active scene - Main Story", activeScene) // zzz
-
     if (!activeScene || !activeScene.location.name) {
       return
     }
-    console.log("activeScene.location.name", activeScene.location.name) // zzz
 
     const map = localStateStore.getActiveMap()
 
