@@ -16,7 +16,7 @@ const { words, wordTypes } = myWords
 const youCreatureOptions = Utils.getWordsByType({
   words: words,
   type: wordTypes.creature,
-  returnName: true
+  returnName: true,
 })
 
 const youCreatureDefault = youCreatureOptions[3]
@@ -27,7 +27,7 @@ class MiniLocation extends React.Component {
     left: { image: "doorGreen", open: true },
     right: { image: "doorGreen", open: false },
     top: { image: "doorGreen", open: true },
-    bottom: { image: "doorGreen", open: true }
+    bottom: { image: "doorGreen", open: true },
   }
 
   renderYouMini = () => {
@@ -48,7 +48,7 @@ class MiniLocation extends React.Component {
   changeDoor = ({ event }) => {
     this.setState({
       youCreature: event.target.value,
-      name: event.target.name
+      name: event.target.name,
     })
   }
 
@@ -56,7 +56,7 @@ class MiniLocation extends React.Component {
     const {
       scene: { doors },
       isStartScene,
-      isEndScene
+      isEndScene,
     } = this.props
 
     this.setState({ isStartScene, isEndScene })
@@ -70,7 +70,7 @@ class MiniLocation extends React.Component {
     const {
       scene: { doors },
       isStartScene,
-      isEndScene
+      isEndScene,
     } = newProps
 
     // TODO - do all this for end scene
@@ -88,7 +88,7 @@ class MiniLocation extends React.Component {
   state = {
     doors: this.defaultDoorIsOpen,
     youName: youNameDefault,
-    youCreature: youCreatureDefault
+    youCreature: youCreatureDefault,
   }
 
   onButtonClick = ({ position }) => {
@@ -163,7 +163,7 @@ class MiniLocation extends React.Component {
           <Select
             className={css.doorPickerDropdown}
             value={defaultDoorName}
-            onChange={event => {
+            onChange={(event) => {
               this.changeDoor({ event })
             }}
             input={<OutlinedInput id="outlined-age-simple" />}
@@ -179,7 +179,7 @@ class MiniLocation extends React.Component {
     // Hide start star
     // const filteredCretures = creatures.filter(cr => cr.type !== "start")
 
-    const renderedCharacters = creatures.map(creature => {
+    const renderedCharacters = creatures.map((creature) => {
       // const renderedCharacters = filteredCretures.map(creature => {
       const creatureType = creature && creature.type
 
@@ -229,7 +229,7 @@ class MiniLocation extends React.Component {
       className,
       showLabel = true,
       id,
-      isEditMode
+      isEditMode,
     } = this.props
 
     let showCloud = scene.showCloud
@@ -243,35 +243,25 @@ class MiniLocation extends React.Component {
 
     const { items = [], creatures = [] } = scene
 
-    // let locationName = ""
     const locationName = scene.location.name
 
     const isBlank = locationName === "blank"
 
     const localClass = isActive ? css.activeClass : ""
     const locationImage = Images.all[locationName]
-    // const locationImage = Images.locations[locationName]
 
     const rockImage = Images.backgrounds["rock"]
     const cloudImage = Images.backgrounds["cloud"]
     const defaultDoorImage = Images.backgrounds["door"]
 
     let renderedItems
-    renderedItems = items.map(item => {
+    renderedItems = items.map((item) => {
       const renderedItem = Images.all[item.name]
       return <img className={css.itemImage} src={renderedItem} alt={"imagex"} />
     })
 
     if (!locationName) {
-      return (
-        <div className={`${css.main} ${className} ${localClass}`}>
-          {/* {!isEditMode && showCloud && (
-            <div className={css.cloudImageContainer}>
-              <img className={css.cloudImage} src={cloudImage} alt={"imagex"} />
-            </div>
-          )} */}
-        </div>
-      )
+      return <div className={`${css.main} ${className} ${localClass}`}></div>
     }
 
     return (
@@ -309,14 +299,14 @@ class MiniLocation extends React.Component {
           this.renderButton({
             position: "right",
             className: css.rightDoor,
-            defaultDoorImage: defaultDoorImage
+            defaultDoorImage: defaultDoorImage,
           })}
 
         {false &&
           this.renderButton({
             position: "bottom",
             className: css.bottomDoor,
-            defaultDoorImage: defaultDoorImage
+            defaultDoorImage: defaultDoorImage,
           })}
 
         {!isBlank && (

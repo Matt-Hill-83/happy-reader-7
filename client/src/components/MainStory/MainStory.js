@@ -26,7 +26,7 @@ class MainStory extends React.Component {
     activeScene: undefined,
     pages: {},
     showIntro: false,
-    showYouWinModal: true
+    showYouWinModal: true,
   }
 
   async componentWillMount() {
@@ -35,18 +35,22 @@ class MainStory extends React.Component {
     await maps.fetch()
     await worldNameStore.fetch()
 
-    let mapId = "not set"
+    // let mapId = "not set"
 
     if (maps.docs && maps.docs[0]) {
       const defaultMap = Utils.getFirstReleasedMap()
 
-      mapId = _get(defaultMap, "id")
+      const mapId = _get(defaultMap, "id")
 
       localStateStore.setActiveMapId(mapId)
     }
     await this.init()
 
     this.setState({ forceUpdate: "test" })
+    // temp code DELETE ME!!! (start) - zzz
+
+    // this.toggleWorldBuilder()
+    // temp code DELETE ME!!! (end)
   }
 
   init = async () => {
@@ -55,12 +59,12 @@ class MainStory extends React.Component {
 
     Utils.getFirstReleasedMap()
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    const filteredMaps = savedMaps.filter(map => map.data.released)
+    const filteredMaps = savedMaps.filter((map) => map.data.released)
 
     // TODO - I need to get maps by id, not by index, because I'm filtering them.
-    filteredMaps.forEach(map => {
+    filteredMaps.forEach((map) => {
       const grid = this.transformLocationsGridToLocationsMap({
-        scenesGrid: map.data.newGrid2
+        scenesGrid: map.data.newGrid2,
       })
       map.data.grid = grid
     })
@@ -123,21 +127,21 @@ class MainStory extends React.Component {
 
     // Integrate this fix
     let scenesList = Utils.getArrayOfScenes({ scenesGrid: flatGrid }) || []
-    scenesList = scenesList.filter(scene => scene.location.name !== "blank")
+    scenesList = scenesList.filter((scene) => scene.location.name !== "blank")
 
     // hacky way to retroactively assign startScene and endScene to each scene
-    scenesList.forEach(scene => {
+    scenesList.forEach((scene) => {
       scene.isStartScene = scene.location.name === startScene
       scene.isEndScene = scene.location.name === endScene
     })
 
-    const terminalScene = scenesList.find(scene => {
+    const terminalScene = scenesList.find((scene) => {
       if (scene.isStartScene || scene.isEndScene) {
         return start ? scene.isStartScene : scene.isEndScene
       }
     })
 
-    const validScenes = scenesList.filter(scene => {
+    const validScenes = scenesList.filter((scene) => {
       return toJS(scene).name
     })
 
@@ -150,11 +154,11 @@ class MainStory extends React.Component {
 
   initWorld = async () => {
     const startScene = this.getTerminalScene({})
+    if (!startScene) return
 
     // For some reason this is not referencing the object in the grid, and the showCloud prop is not persisting.
     startScene.showCloud = false
 
-    // this.updateActiveScene({ activeScene: toJS(startScene) })
     this.updateActiveScene({ activeScene: startScene })
   }
 
@@ -171,7 +175,6 @@ class MainStory extends React.Component {
 
     // I should set to the store and not to state
     this.setState({ activeScene })
-    // this.setState({ forceUpdate: Math.random() })
   }
 
   getNeighbors = ({ activeScene, map }) => {
@@ -187,12 +190,12 @@ class MainStory extends React.Component {
 
         neighborsArray.push({
           name: location.location.name,
-          position: { x: rowIndex, y: locationIndex }
+          position: { x: rowIndex, y: locationIndex },
         })
       })
     })
 
-    const currentLocation = neighborsArray.find(item => {
+    const currentLocation = neighborsArray.find((item) => {
       return item.name === activeSceneName
     })
 
@@ -205,8 +208,8 @@ class MainStory extends React.Component {
 
     const neighborNames = []
 
-    neighbors.forEach(neighbor => {
-      neighborsArray.forEach(item => {
+    neighbors.forEach((neighbor) => {
+      neighborsArray.forEach((item) => {
         if (item.position.x === neighbor.x && item.position.y === neighbor.y) {
           neighborNames.push(item.name)
         }
@@ -260,7 +263,6 @@ class MainStory extends React.Component {
       return null
     }
 
-    // const { isEndScene } = activeScene
     const map = localStateStore.getActiveMap()
     const { title, order } = map.data
 

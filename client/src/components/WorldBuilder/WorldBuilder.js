@@ -9,7 +9,7 @@ import {
   MenuItem,
   Popover,
   Position,
-  InputGroup
+  InputGroup,
 } from "@blueprintjs/core"
 
 import { Checkbox } from "@material-ui/core"
@@ -21,7 +21,6 @@ import CrudMachine from "../CrudMachine/CrudMachine"
 import FrameBuilder from "../FrameBuilder/FrameBuilder"
 import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import images from "../../images/images"
-import MiniLocation from "../MiniLocation/MiniLocation"
 import Utils from "../../Utils/Utils"
 
 import css from "./WorldBuilder.module.scss"
@@ -34,7 +33,7 @@ class WorldBuilder extends Component {
   state = {
     world: {},
     sceneToEdit: null,
-    showFrameBuilder: false
+    showFrameBuilder: false,
   }
 
   async componentWillMount() {
@@ -43,6 +42,8 @@ class WorldBuilder extends Component {
   }
 
   changeMap = ({ index }) => {
+    console.log("changeMap") // zzz
+
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     let world = savedMaps[index]
     console.log("index", index) // zzz
@@ -78,10 +79,10 @@ class WorldBuilder extends Component {
     }
   }
 
-  getMapById = mapId => {
+  getMapById = (mapId) => {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
-    return savedMaps.find(map => {
+    return savedMaps.find((map) => {
       return map.id === mapId
     })
   }
@@ -93,6 +94,8 @@ class WorldBuilder extends Component {
   }
 
   renderMapPicker = () => {
+    console.log("renderMapPicker") // zzz
+
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
     if (!savedMaps[0]) {
@@ -160,7 +163,7 @@ class WorldBuilder extends Component {
       const { name } = scene.location
 
       const changeScene = ({ name }) => {
-        scenesList.forEach(scene => (scene.isStartScene = false))
+        scenesList.forEach((scene) => (scene.isStartScene = false))
         scene.isStartScene = true
         map.data.startScene = name
         this.updateMap({ newProps: { ...map.data } })
@@ -214,7 +217,7 @@ class WorldBuilder extends Component {
       const { name } = scene.location
 
       const changeScene = ({ name }) => {
-        scenesList.forEach(scene => (scene.isEndScene = false))
+        scenesList.forEach((scene) => (scene.isEndScene = false))
         scene.isEndScene = true
         map.data.endScene = name
         this.updateMap({ newProps: { ...map.data } })
@@ -256,7 +259,7 @@ class WorldBuilder extends Component {
 
     const newName = previousMapName + 1
     await worldNameStore.docs[0].update({
-      previousMapName: newName
+      previousMapName: newName,
     })
 
     const newGrid2 = this.flattenGridForSave({ grid: this.createNewGrid() })
@@ -266,7 +269,7 @@ class WorldBuilder extends Component {
       title: "Test Map",
       newGrid2,
       released: true,
-      ignore: false
+      ignore: false,
     }
 
     console.log("maps.docs.length", maps.docs.length) // zzz
@@ -324,37 +327,37 @@ class WorldBuilder extends Component {
             {
               character: "kat",
               characterIndex: 0,
-              text: "We can play."
+              text: "We can play.",
             },
             {
               character: "liz2",
               characterIndex: 1,
-              text: ""
+              text: "",
             },
             {
               character: "liz2",
               characterIndex: 0,
-              text: ""
+              text: "",
             },
             {
               character: "liz2",
               characterIndex: 1,
-              text: ""
-            }
+              text: "",
+            },
           ],
           faces: [
             {
               character: "liz2",
               characterIndex: 1,
-              face: "happy"
+              face: "happy",
             },
             {
               character: "kat",
               characterIndex: 0,
-              face: "kat-happy.9e02afab.png"
-            }
+              face: "kat-happy.9e02afab.png",
+            },
           ],
-          story: ["I am Kat"]
+          story: ["I am Kat"],
         }
 
         gridRow.push({
@@ -364,7 +367,7 @@ class WorldBuilder extends Component {
           doorBottom: { name: "doorGreen" },
           characters: [{ name: "kat" }, { name: "girl" }],
           items: [{ name: "hat" }, { name: "bat" }],
-          frameSet: { frames: [dummyFrame] }
+          frameSet: { frames: [dummyFrame] },
         })
       })
       newGrid.push(gridRow)
@@ -376,7 +379,7 @@ class WorldBuilder extends Component {
     console.log("flattenGridForSave") // zzz
 
     const outputArray = []
-    grid.forEach(row => {
+    grid.forEach((row) => {
       const newRow = {}
       row.forEach((scene, index) => {
         newRow[index] = scene
@@ -417,10 +420,10 @@ class WorldBuilder extends Component {
     const doorImageSets = [images.doors]
     const locationImageSets = [images.locations, images.vehicles, images.items]
 
-    grid.forEach(row => {
+    grid.forEach((row) => {
       const gridRow = []
 
-      Object.values(row).forEach(scene => {
+      Object.values(row).forEach((scene) => {
         const locations = [scene.location]
         const doorsBottom = [scene.doorBottom]
         const doorsRight = [scene.doorRight]
@@ -519,8 +522,8 @@ class WorldBuilder extends Component {
           value={title}
           id="text-input"
           placeholder="Title"
-          onChange={event => this.onChangeTitle({ event })}
-          onBlur={event => this.saveTitle({ event })}
+          onChange={(event) => this.onChangeTitle({ event })}
+          onBlur={(event) => this.saveTitle({ event })}
         />
 
         {!showFrameBuilder && (
@@ -552,7 +555,7 @@ class WorldBuilder extends Component {
             <FrameBuilder
               world={world}
               scene={sceneToEdit}
-              onExitFrameBuilder={frame => this.onExitFrameBuilder({ frame })}
+              onExitFrameBuilder={(frame) => this.onExitFrameBuilder({ frame })}
               updateMap={this.updateMap}
             />
           )}
