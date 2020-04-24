@@ -12,7 +12,7 @@ import css from "./WordPage.module.scss"
 class WordPage extends React.Component {
   state = {
     activeScene: undefined,
-    frameIndex: 0
+    frameIndex: 0,
   }
 
   async componentWillMount() {
@@ -33,7 +33,7 @@ class WordPage extends React.Component {
     const allScenes = grid.flat()
     let newScene
 
-    newScene = allScenes.find(scene => scene.location.name === sceneName)
+    newScene = allScenes.find((scene) => scene.location.name === sceneName)
 
     this.props.updateActiveScene({ activeScene: newScene })
   }
@@ -47,7 +47,7 @@ class WordPage extends React.Component {
 
     const neighbors = activeScene.neighborNames
 
-    const filteredNeighbors = neighbors.filter(item => item !== "blank")
+    const filteredNeighbors = neighbors.filter((item) => item !== "blank")
 
     const { isEndScene } = activeScene
 
@@ -79,7 +79,7 @@ class WordPage extends React.Component {
 
   onClickNext = () => {
     this.setState({
-      frameIndex: this.state.frameIndex + 1
+      frameIndex: this.state.frameIndex + 1,
     })
   }
 
@@ -93,13 +93,13 @@ class WordPage extends React.Component {
       isLastFrame = true
     }
 
-    const frame = frameSet.frames && frameSet.frames[frameIndex]
+    // const frame = frameSet.frames && frameSet.frames[frameIndex]
 
     return (
       <div className={css.textPage}>
         <Frame
-          index={frameIndex}
-          frame={frame}
+          frameIndex={frameIndex}
+          // frame={frame}
           scene={activeScene}
           isEditMode={false}
         />

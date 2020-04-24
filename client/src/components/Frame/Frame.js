@@ -3,7 +3,7 @@ import {
   Icon,
   Position,
   InputGroup,
-  FormGroup
+  FormGroup,
 } from "@blueprintjs/core"
 import React, { Component } from "react"
 
@@ -28,16 +28,20 @@ class Frame extends Component {
     showNarrativeEditor: true,
     showDialogEditor: true,
     showItemPicker: false,
-    items: []
+    items: [],
   }
 
   componentWillMount() {
-    const { frame } = this.props
+    const { frameIndex, scene = {} } = this.props
+    const frameSet = scene.frameSet
+    const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
     this.setState({ frame })
   }
 
   componentWillReceiveProps(newProps) {
-    const { frame } = newProps
+    const { frameIndex, scene = {} } = newProps
+    const frameSet = scene.frameSet
+    const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
     this.setState({ frame })
   }
 
@@ -56,10 +60,10 @@ class Frame extends Component {
 
     const {
       frame,
-      frame: { faces }
+      frame: { faces },
     } = this.state
 
-    const thisFace = faces.find(face => face.character === name)
+    const thisFace = faces.find((face) => face.character === name)
     thisFace.face = head.mood
 
     //  /TODO - chage to update world maybe?
@@ -99,13 +103,13 @@ class Frame extends Component {
 
   renderFacePicker = ({ character }) => {
     const girlImages = Images.posableGirls
-    const images = girlImages.find(girl => girl.name === character)
+    const images = girlImages.find((girl) => girl.name === character)
 
     // For characters with no posable images
     if (!images) return null
 
     const {
-      images: { heads }
+      images: { heads },
     } = images
 
     const headImages = heads.map((head, headIndex) => {
@@ -159,8 +163,8 @@ class Frame extends Component {
             value={line}
             id="text-input"
             placeholder="Placeholder text"
-            onChange={event => this.onChangeNarrative({ event, lineIndex })}
-            onBlur={event => this.saveNarrative({ event })}
+            onChange={(event) => this.onChangeNarrative({ event, lineIndex })}
+            onBlur={(event) => this.saveNarrative({ event })}
           />
         )
       } else {
@@ -204,8 +208,8 @@ class Frame extends Component {
             value={text}
             id="text-input"
             placeholder="Placeholder text"
-            onChange={event => this.onChangeDialog({ event, lineIndex })}
-            onBlur={event => this.saveNarrative({ event })}
+            onChange={(event) => this.onChangeDialog({ event, lineIndex })}
+            onBlur={(event) => this.saveNarrative({ event })}
           />
         )
       } else {
@@ -247,7 +251,7 @@ class Frame extends Component {
 
   getMood = ({ name, faces }) => {
     let mood = "ok"
-    const newMood = faces && faces.find(face => face.character === name)
+    const newMood = faces && faces.find((face) => face.character === name)
     mood = (newMood && newMood.face) || mood
     return mood
   }
@@ -329,11 +333,11 @@ class Frame extends Component {
         <div className={`${css.characterContainer}`} key={index}>
           <div onClick={() => this.toggleFacePicker({ character: friend })}>
             <Character name={friend} mood={mood} isEditMode={isEditMode} />
-            test
           </div>
         </div>
       )
     })
+    console.log("frame", toJS(frame)) // zzz
 
     return (
       <div className={`${css.scenes}`}>
@@ -352,11 +356,13 @@ class Frame extends Component {
 
   render() {
     const { isEditMode = true } = this.props
+    console.log("this.props", this.props) // zzz
+
     const {
       frame,
       showFacePicker,
       showItemPicker,
-      facePickerCharacter
+      facePickerCharacter,
     } = this.state
 
     if (!frame) {
@@ -372,7 +378,7 @@ class Frame extends Component {
     const items = (frame && frame.items) || []
 
     const allCharacters = (frame && frame.creatures) || []
-    // console.log("frame", toJS(frame)) // zzz
+    console.log("frame", toJS(frame)) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -420,7 +426,7 @@ class Frame extends Component {
               images.creatures,
               images.locations,
               images.vehicles,
-              images.items
+              images.items,
             ]}
             className={css.test}
             onClose={this.toggleItemPicker}

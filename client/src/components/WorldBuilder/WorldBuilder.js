@@ -26,8 +26,8 @@ import Utils from "../../Utils/Utils"
 import css from "./WorldBuilder.module.scss"
 
 const INITIAL_MAP_INDEX = 0
-const NUM_ROWS_LOCATIONS_GRID = 2
-const NUM_COLS_LOCATIONS_GRID = 5
+const NUM_ROWS_LOCATIONS_GRID = 5
+const NUM_COLS_LOCATIONS_GRID = 9
 
 class WorldBuilder extends Component {
   state = {
