@@ -355,7 +355,7 @@ class Frame extends Component {
   }
 
   render() {
-    const { isEditMode = true } = this.props
+    const { isEditMode = true, scene } = this.props
     console.log("this.props", this.props) // zzz
 
     const {
@@ -375,9 +375,17 @@ class Frame extends Component {
     // TODO -  I need put in a dummy frame for when there is none.
     // TODO -  I need put in a dummy frame for when there is none.
     // TODO -  I need put in a dummy frame for when there is none.
-    const items = (frame && frame.items) || []
+    const items = frame.items || []
 
-    const allCharacters = (frame && frame.creatures) || []
+    // const allCharacters = frame.creatures || []
+    console.log("frame.creatures", frame.creatures) // zzz
+
+    console.log("scene.characters", scene.characters) // zzz
+
+    const allCharacters =
+      (scene.characters && scene.characters.map((item) => item.name)) || []
+    console.log("allCharacters", allCharacters) // zzz
+
     console.log("frame", toJS(frame)) // zzz
 
     const itemRenderer = ({ item }) => {

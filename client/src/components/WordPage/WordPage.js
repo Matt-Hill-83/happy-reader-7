@@ -86,6 +86,7 @@ class WordPage extends React.Component {
   render() {
     const { activeScene, frameIndex } = this.state
     const frameSet = activeScene.frameSet
+    console.log("activeScene", toJS(activeScene)) // zzz
 
     let isLastFrame =
       frameSet.frames && frameIndex >= frameSet.frames.length - 1
