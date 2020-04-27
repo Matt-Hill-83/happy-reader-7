@@ -296,7 +296,7 @@ class MainStory extends React.Component {
           )}
         </div>
 
-        {this.state.showYouWinModal && (
+        {false && this.state.showYouWinModal && (
           <Dialog
             isOpen={this.state.showYouWinModal}
             isCloseButtonShown={true}
