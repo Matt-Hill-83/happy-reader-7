@@ -5,7 +5,7 @@ import {
   InputGroup,
   FormGroup,
   Popover,
-  PopoverInteractionKind
+  PopoverInteractionKind,
 } from "@blueprintjs/core"
 
 import { IconNames } from "@blueprintjs/icons"
@@ -24,7 +24,7 @@ const DEFAULT_BUTTONS = { trash: true, edit: true, add: true }
 
 class CrudMachine extends Component {
   state = {
-    items: []
+    items: [],
   }
 
   componentWillMount() {
@@ -68,6 +68,7 @@ class CrudMachine extends Component {
     const statePropsToSave = { items: final }
     this.setStateAndSave({ statePropsToSave })
   }
+
   onDeleteItem = ({ index, event }) => {
     event.stopPropagation()
     const { items } = this.state
@@ -76,7 +77,14 @@ class CrudMachine extends Component {
     const part2 = items.slice(index + 1)
     const final = [...part1, ...part2]
 
-    const statePropsToSave = { items: final }
+    console.log("final", toJS(final)) // zzz
+
+    const statePropsToSave = {
+      [this.props.propNameForItems]: final,
+      items: final,
+    }
+    console.log("statePropsToSave", statePropsToSave) // zzz
+
     this.setStateAndSave({ statePropsToSave })
   }
 
@@ -99,21 +107,15 @@ class CrudMachine extends Component {
   }
 
   setStateAndSave = ({ statePropsToSave }) => {
-    this.setState({ ...statePropsToSave }, this.saveChanges)
+    console.log(
+      "setStateAndSave------------------------------statePropsToSave",
+      statePropsToSave
+    ) // zzz
+
+    this.setState({ ...statePropsToSave }, () =>
+      this.saveChanges({ statePropsToSave })
+    )
   }
-
-  //////////
-  //////////
-  //////////
-  //////////
-
-  // TODO
-  // TODO
-  // TODO - should crud machine double as viewer?  probably.
-  // TODO
-  // TODO - save this new items array to the db with the frame
-  // TODO - show image for selected item
-  // TODO - create a local id for use with each new object, before it is saved to the db
 
   onSelectItem = ({ name }) => {
     const { itemPickerItem } = this.state
@@ -127,7 +129,12 @@ class CrudMachine extends Component {
   saveChanges = () => {
     const { saveItems } = this.props
     const { items } = this.state
-    saveItems && saveItems({ items })
+    console.log("items", toJS(items)) // zzz
+
+    console.log("this.state.statePropsToSave", this.state.statePropsToSave) // zzz
+    console.log("this.props.propNameForItems", this.props.propNameForItems) // zzz
+
+    saveItems && saveItems({ [this.props.propNameForItems]: items })
   }
 
   toggleItemPicker = ({ index, item = null }) => {
@@ -145,28 +152,28 @@ class CrudMachine extends Component {
           <Button
             icon={IconNames.ADD}
             className={css.itemButton}
-            onClick={event => this.onAddItemBefore({ item, index, event })}
+            onClick={(event) => this.onAddItemBefore({ item, index, event })}
           />
         )}
         {edit && (
           <Button
             icon={IconNames.EDIT}
             className={css.itemButton}
-            onClick={event => this.onEditItem({ item, index, event })}
+            onClick={(event) => this.onEditItem({ item, index, event })}
           />
         )}
         {trash && (
           <Button
             icon={IconNames.DELETE}
             className={css.itemButton}
-            onClick={event => this.onDeleteItem({ item, index, event })}
+            onClick={(event) => this.onDeleteItem({ item, index, event })}
           />
         )}
         {add && (
           <Button
             icon={IconNames.ADD}
             className={`${css.itemButton} ${css.addAfter} add-after`}
-            onClick={event => this.onAddItemAfter({ item, index, event })}
+            onClick={(event) => this.onAddItemAfter({ item, index, event })}
           />
         )}
       </div>
@@ -175,6 +182,8 @@ class CrudMachine extends Component {
 
   renderItems = () => {
     const { items } = this.state
+    console.log("this.state.items", this.state.items) // zzz
+    console.log("this.state.items.length", this.state.items.length) // zzz
 
     const defaultItemRenderer = ({ item }) => <ImageDisplay item={item} />
     const itemRenderer = this.props.itemRenderer || defaultItemRenderer
@@ -186,7 +195,7 @@ class CrudMachine extends Component {
         <div
           className={`${css.itemContainer}`}
           key={index}
-          onClick={event => this.onEditItem({ item, index, event })}
+          onClick={(event) => this.onEditItem({ item, index, event })}
         >
           <Popover
             className={css.crudMachinePopoverWrapper}
@@ -210,7 +219,7 @@ class CrudMachine extends Component {
       images.creatures,
       images.locations,
       images.vehicles,
-      images.items
+      images.items,
     ]
 
     const imageSets = this.props.imageSets || defaultImageSets

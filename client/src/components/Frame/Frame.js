@@ -39,6 +39,9 @@ class Frame extends Component {
   }
 
   componentWillReceiveProps(newProps) {
+    console.log("Frame ----->>>>>>>componentWillReceiveProps") // zzz
+    console.log("newProps", newProps) // zzz
+
     const { frameIndex, scene = {} } = newProps
     const frameSet = scene.frameSet
     const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]

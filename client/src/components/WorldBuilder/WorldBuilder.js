@@ -290,11 +290,19 @@ class WorldBuilder extends Component {
 
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
+    console.log("updateMap") // zzz
+
+    console.log("newProps", newProps) // zzz
+
     const map = this.state.world
 
     Object.assign(map.data, toJS(newProps))
+    console.log("map.data", toJS(map.data)) // zzz
+
     delete map.data.grid
     await map.update(map.data)
+
+    console.log("map.data", toJS(map.data)) // zzz
   }
 
   onChangeTitle = async ({ event }) => {
@@ -391,14 +399,24 @@ class WorldBuilder extends Component {
 
   // unFlattenGridAfterLoad = ({ grid }) => {}
 
-  saveItems = async () => {
+  saveItems = async (statePropsToSave) => {
+    // TODO - data is correct up to here on Delete
+    // TODO - data is correct up to here on Delete
+    // TODO - data is correct up to here on Delete
+    // TODO - data is correct up to here on Delete
+    // TODO - data is correct up to here on Delete
+    // TODO - data is correct up to here on Delete
+    console.log("statePropsToSave", statePropsToSave) // zzz
+
     console.log("saveItems+++++++++++++++++++++++++++++++++++++") // zzz
 
-    await this.updateMap({})
+    await this.updateMap({ newProps: statePropsToSave })
     this.forceUpdateWorldBuilder()
   }
 
   forceUpdateWorldBuilder = () => {
+    console.log("forceUpdateWorldBuilder") // zzz
+
     this.setState({ forceUpdate: new Date() })
   }
 
@@ -461,6 +479,7 @@ class WorldBuilder extends Component {
                   forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
                   className={`${css.crudMachine} ${css.itemBox} ${css.charactersMachine}`}
                   items={characters}
+                  propNameForItems={"characters"}
                   itemRenderer={itemRenderer}
                   saveItems={onSave}
                   imageSets={characterImageSets}
@@ -507,8 +526,28 @@ class WorldBuilder extends Component {
   }
 
   render() {
+    console.log(
+      "render - World Builder ------------------------------------------------>>>"
+    ) // zzz
+
     const { world, sceneToEdit, showFrameBuilder } = this.state
     console.log("world", toJS(world)) // zzz
+
+    console.log("world.data.items", toJS(world.data.items)) // zzz
+    console.log(
+      "world.data.characters[0].name",
+      world.data.characters && world.data.characters[0].name
+    ) // zzz
+    console.log(
+      "world.data.characters[1] && world.data.characters[1].name",
+      world.data.characters &&
+        world.data.characters[1] &&
+        world.data.characters[1].name
+    ) // zzz
+    console.log(
+      "world.data.characters.length",
+      world.data.characters && world.data.characters.length
+    ) // zzz
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle
