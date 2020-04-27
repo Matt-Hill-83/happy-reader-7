@@ -326,7 +326,7 @@ class Frame extends Component {
     })
   }
 
-  renderFrame = ({ allCharacters = [] }) => {
+  renderFriends = ({ allCharacters = [] }) => {
     const { frame } = this.state
     const { faces = [] } = frame
     if (!frame) return null
@@ -336,7 +336,7 @@ class Frame extends Component {
     const { isEditMode = true } = this.props
     console.log("this.props.scene.items", toJS(this.props.scene.items)) // zzz
 
-    const renderedFriends = allCharacters.map((friend, index) => {
+    return allCharacters.map((friend, index) => {
       const mood = this.getMood({ name: friend, faces })
 
       return (
@@ -347,8 +347,15 @@ class Frame extends Component {
         </div>
       )
     })
+  }
+
+  renderFrame = ({ allCharacters = [] }) => {
+    const { frame } = this.state
+
+    if (!frame) return null
 
     const renderedItems = this.renderItems()
+    const renderedFriends = this.renderFriends({ allCharacters })
 
     return (
       <div className={`${css.scenes}`}>
