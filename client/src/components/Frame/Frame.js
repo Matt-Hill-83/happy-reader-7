@@ -143,12 +143,6 @@ class Frame extends Component {
     this.setState({ showItemPicker, itemPickerItem: item })
   }
 
-  // selectHead = ({ item = null }) => {
-
-  //   const showItemPicker = !this.state.showItemPicker
-  //   this.setState({ showItemPicker, itemPickerItem: item })
-  // }
-
   renderNarrative = () => {
     const { frame, showNarrativeEditor } = this.state
     const { isEditMode = true } = this.props
@@ -320,6 +314,18 @@ class Frame extends Component {
     this.setState({ frame }, () => updateMap({}))
   }
 
+  renderItems = () => {
+    const items = _get(this.props.scene.items) || []
+
+    return items.map((item, index) => {
+      console.log("item", toJS(item)) // zzz
+
+      return (
+        <ImageDisplay className={css.itemContainer} item={{ name: "man" }} />
+      )
+    })
+  }
+
   renderFrame = ({ allCharacters = [] }) => {
     const { frame } = this.state
     const { faces = [] } = frame
@@ -329,8 +335,6 @@ class Frame extends Component {
 
     const { isEditMode = true } = this.props
     console.log("this.props.scene.items", toJS(this.props.scene.items)) // zzz
-
-    const items = _get(this.props.scene.items) || []
 
     const renderedFriends = allCharacters.map((friend, index) => {
       const mood = this.getMood({ name: friend, faces })
@@ -344,13 +348,7 @@ class Frame extends Component {
       )
     })
 
-    const renderedItems = items.map((item, index) => {
-      console.log("item", toJS(item)) // zzz
-
-      return (
-        <ImageDisplay className={css.itemContainer} item={{ name: "man" }} />
-      )
-    })
+    const renderedItems = this.renderItems()
 
     return (
       <div className={`${css.scenes}`}>
