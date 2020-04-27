@@ -77,13 +77,10 @@ class CrudMachine extends Component {
     const part2 = items.slice(index + 1)
     const final = [...part1, ...part2]
 
-    console.log("final", toJS(final)) // zzz
-
     const statePropsToSave = {
       [this.props.propNameForItems]: final,
       items: final,
     }
-    console.log("statePropsToSave", statePropsToSave) // zzz
 
     this.setStateAndSave({ statePropsToSave })
   }
@@ -111,7 +108,6 @@ class CrudMachine extends Component {
       "setStateAndSave------------------------------statePropsToSave",
       statePropsToSave
     ) // zzz
-
     this.setState({ ...statePropsToSave }, () =>
       this.saveChanges({ statePropsToSave })
     )
@@ -129,10 +125,6 @@ class CrudMachine extends Component {
   saveChanges = () => {
     const { saveItems } = this.props
     const { items } = this.state
-    console.log("items", toJS(items)) // zzz
-
-    console.log("this.state.statePropsToSave", this.state.statePropsToSave) // zzz
-    console.log("this.props.propNameForItems", this.props.propNameForItems) // zzz
 
     saveItems && saveItems({ [this.props.propNameForItems]: items })
   }
@@ -182,8 +174,6 @@ class CrudMachine extends Component {
 
   renderItems = () => {
     const { items } = this.state
-    console.log("this.state.items", this.state.items) // zzz
-    console.log("this.state.items.length", this.state.items.length) // zzz
 
     const defaultItemRenderer = ({ item }) => <ImageDisplay item={item} />
     const itemRenderer = this.props.itemRenderer || defaultItemRenderer

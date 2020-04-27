@@ -12,6 +12,7 @@ import Head from "../Head/Head"
 import { IconNames } from "@blueprintjs/icons"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
+import _get from "lodash.get"
 
 import Images from "../../images/images"
 import WordGroup from "../WordGroup/WordGroup"
@@ -39,9 +40,6 @@ class Frame extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log("Frame ----->>>>>>>componentWillReceiveProps") // zzz
-    console.log("newProps", newProps) // zzz
-
     const { frameIndex, scene = {} } = newProps
     const frameSet = scene.frameSet
     const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
@@ -65,6 +63,8 @@ class Frame extends Component {
       frame,
       frame: { faces },
     } = this.state
+
+    console.log("faces", toJS(faces)) // zzz
 
     const thisFace = faces.find((face) => face.character === name)
     thisFace.face = head.mood
@@ -134,9 +134,6 @@ class Frame extends Component {
   }
 
   toggleFacePicker = ({ character }) => {
-    // console.log("toggleFacePicker") // zzz
-    // console.log("character", character) // zzz
-
     const showFacePicker = !this.state.showFacePicker
     this.setState({ showFacePicker, facePickerCharacter: character })
   }
@@ -278,6 +275,7 @@ class Frame extends Component {
   renderLocationImage = () => {
     const { scene = true } = this.props
     const locationImage = Images.locations[scene.name]
+
     return (
       <div className={css.locationImageContainer}>
         <img className={css.locationImage} src={locationImage} alt={"imagex"} />
@@ -327,7 +325,12 @@ class Frame extends Component {
     const { faces = [] } = frame
     if (!frame) return null
 
+    console.log("frame", toJS(frame)) // zzz
+
     const { isEditMode = true } = this.props
+    console.log("this.props.scene.items", toJS(this.props.scene.items)) // zzz
+
+    const items = _get(this.props.scene.items) || []
 
     const renderedFriends = allCharacters.map((friend, index) => {
       const mood = this.getMood({ name: friend, faces })
@@ -340,7 +343,14 @@ class Frame extends Component {
         </div>
       )
     })
-    console.log("frame", toJS(frame)) // zzz
+
+    const renderedItems = items.map((item, index) => {
+      console.log("item", toJS(item)) // zzz
+
+      return (
+        <ImageDisplay className={css.itemContainer} item={{ name: "man" }} />
+      )
+    })
 
     return (
       <div className={`${css.scenes}`}>
@@ -351,7 +361,7 @@ class Frame extends Component {
           {this.renderNarrative()}
           {this.renderDialog()}
         </div>
-
+        <div className={css.itemsContainer}>{renderedItems}</div>
         <div className={css.charactersContainer}>{renderedFriends}</div>
       </div>
     )
@@ -359,7 +369,6 @@ class Frame extends Component {
 
   render() {
     const { isEditMode = true, scene } = this.props
-    console.log("this.props", this.props) // zzz
 
     const {
       frame,
@@ -381,15 +390,9 @@ class Frame extends Component {
     const items = frame.items || []
 
     // const allCharacters = frame.creatures || []
-    console.log("frame.creatures", frame.creatures) // zzz
-
-    console.log("scene.characters", scene.characters) // zzz
 
     const allCharacters =
       (scene.characters && scene.characters.map((item) => item.name)) || []
-    console.log("allCharacters", allCharacters) // zzz
-
-    console.log("frame", toJS(frame)) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -431,7 +434,7 @@ class Frame extends Component {
           </div>
         )}
 
-        {showItemPicker && (
+        {isEditMode && showItemPicker && (
           <CharacterPicker
             imageSets={[
               images.creatures,

@@ -19,17 +19,13 @@ class PicturePage extends React.Component {
   }
 
   renderSceneRows = () => {
-    console.log("renderSceneRows") // zzz
-
     const map = localStateStore.getActiveMap()
     const scenesGrid = map.data.grid
-    console.log("scenesGrid", toJS(scenesGrid)) // zzz
 
     const miniLocationsGrid =
       scenesGrid &&
       scenesGrid.map((locationRow, rowIndex) => {
         const singleRow = this.createSingleRow({ locationRow, rowIndex })
-        console.log("singleRow", singleRow) // zzz
 
         return (
           <div key={rowIndex} className={css.miniLocationsRow}>
@@ -42,11 +38,7 @@ class PicturePage extends React.Component {
   }
 
   createSingleRow = ({ locationRow, rowIndex }) => {
-    console.log("createSingleRow") // zzz
-
     return locationRow.map((scene, colIndex) => {
-      console.log("colIndex", colIndex) // zzz
-
       return this.renderMiniLocation({ scene, colIndex, rowIndex })
     })
   }
@@ -64,7 +56,6 @@ class PicturePage extends React.Component {
     // scene.showCloud = !isActive
 
     const id = `${colIndex}-${rowIndex}`
-    console.log("id", id) // zzz
 
     return (
       // This wrapper div seems to be required to make things render withought ghost divs being included in the list.

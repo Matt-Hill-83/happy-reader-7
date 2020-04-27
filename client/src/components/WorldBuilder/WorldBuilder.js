@@ -42,14 +42,8 @@ class WorldBuilder extends Component {
   }
 
   changeMap = ({ index }) => {
-    console.log("changeMap") // zzz
-
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     let world = savedMaps[index]
-    console.log("index", index) // zzz
-    console.log("savedMaps", savedMaps) // zzz
-
-    console.log("world", world) // zzz
 
     let scenesGrid
 
@@ -59,8 +53,6 @@ class WorldBuilder extends Component {
       return
     } else {
       scenesGrid = world.data.scenesGrid
-
-      console.log("world - existing", world) // zzz
 
       this.setState({ scenesGrid, world })
     }
@@ -94,8 +86,6 @@ class WorldBuilder extends Component {
   }
 
   renderMapPicker = () => {
-    console.log("renderMapPicker") // zzz
-
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
     if (!savedMaps[0]) {
@@ -253,8 +243,6 @@ class WorldBuilder extends Component {
   }
 
   saveNewMap = async () => {
-    console.log("saveNewMap---------------------------------->>>>>>") // zzz
-
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
@@ -272,12 +260,9 @@ class WorldBuilder extends Component {
       ignore: false,
     }
 
-    console.log("maps.docs.length", maps.docs.length) // zzz
-
     const newMapReturned = await maps.add(newMap)
 
     this.setState({ world: newMapReturned })
-    console.log("maps.docs.length", maps.docs.length) // zzz
   }
 
   editFrame = ({ sceneToEdit }) => {
@@ -290,19 +275,12 @@ class WorldBuilder extends Component {
 
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
-    console.log("updateMap") // zzz
-
-    console.log("newProps", newProps) // zzz
-
     const map = this.state.world
 
     Object.assign(map.data, toJS(newProps))
-    console.log("map.data", toJS(map.data)) // zzz
 
     delete map.data.grid
     await map.update(map.data)
-
-    console.log("map.data", toJS(map.data)) // zzz
   }
 
   onChangeTitle = async ({ event }) => {
@@ -317,8 +295,6 @@ class WorldBuilder extends Component {
   }
 
   createNewGrid = () => {
-    console.log("createNewGrid+++++++++++++++++++++++++++++") // zzz
-
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0)
     const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0)
 
@@ -373,7 +349,7 @@ class WorldBuilder extends Component {
           location: { name: "blank" },
           doorRight: { name: "doorYellow" },
           doorBottom: { name: "doorGreen" },
-          characters: [{ name: "kat" }, { name: "girl" }],
+          characters: [{ name: "kat" }, { name: "liz2" }],
           items: [{ name: "hat" }, { name: "bat" }],
           frameSet: { frames: [dummyFrame] },
         })
@@ -384,8 +360,6 @@ class WorldBuilder extends Component {
   }
 
   flattenGridForSave = ({ grid }) => {
-    console.log("flattenGridForSave") // zzz
-
     const outputArray = []
     grid.forEach((row) => {
       const newRow = {}
@@ -406,23 +380,17 @@ class WorldBuilder extends Component {
     // TODO - data is correct up to here on Delete
     // TODO - data is correct up to here on Delete
     // TODO - data is correct up to here on Delete
-    console.log("statePropsToSave", statePropsToSave) // zzz
-
-    console.log("saveItems+++++++++++++++++++++++++++++++++++++") // zzz
 
     await this.updateMap({ newProps: statePropsToSave })
     this.forceUpdateWorldBuilder()
   }
 
   forceUpdateWorldBuilder = () => {
-    console.log("forceUpdateWorldBuilder") // zzz
-
     this.setState({ forceUpdate: new Date() })
   }
 
   renderNewGrid = () => {
     const { world } = this.state
-    console.log("world    - rng", world) // zzz
 
     const grid = world.data && world.data.newGrid2
 
@@ -449,8 +417,6 @@ class WorldBuilder extends Component {
         const items = scene.items
 
         const hideScene = scene.location && scene.location.name === "blank"
-
-        console.log("characters", toJS(characters)) // zzz
 
         gridRow.push(
           <div className={css.gridCell}>
@@ -526,28 +492,7 @@ class WorldBuilder extends Component {
   }
 
   render() {
-    console.log(
-      "render - World Builder ------------------------------------------------>>>"
-    ) // zzz
-
     const { world, sceneToEdit, showFrameBuilder } = this.state
-    console.log("world", toJS(world)) // zzz
-
-    console.log("world.data.items", toJS(world.data.items)) // zzz
-    console.log(
-      "world.data.characters[0].name",
-      world.data.characters && world.data.characters[0].name
-    ) // zzz
-    console.log(
-      "world.data.characters[1] && world.data.characters[1].name",
-      world.data.characters &&
-        world.data.characters[1] &&
-        world.data.characters[1].name
-    ) // zzz
-    console.log(
-      "world.data.characters.length",
-      world.data.characters && world.data.characters.length
-    ) // zzz
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle

@@ -7,11 +7,11 @@ export default class Utils {
   static getCreatureByType = ({ type }) => {
     const allCreatures = localStateStore.getCreatures()
 
-    return allCreatures.find(creature => creature.type === type)
+    return allCreatures.find((creature) => creature.type === type)
   }
 
-  static removeFavorites = words =>
-    words.filter(word => {
+  static removeFavorites = (words) =>
+    words.filter((word) => {
       if (word.data) {
         return !word.data.isFavorite
       }
@@ -19,7 +19,7 @@ export default class Utils {
     })
 
   static getWordsByType = ({ words, type, returnName = false }) => {
-    const items = words.filter(word => {
+    const items = words.filter((word) => {
       if (word.data) {
         return word.data.type === type
       }
@@ -28,7 +28,7 @@ export default class Utils {
     })
 
     if (returnName) {
-      return items.map(item => item.name)
+      return items.map((item) => item.name)
     } else {
       return items
     }
@@ -39,7 +39,7 @@ export default class Utils {
       return
     }
 
-    return words.filter(word => {
+    return words.filter((word) => {
       if (word.data) {
         return word.data.family === family
       }
@@ -49,7 +49,7 @@ export default class Utils {
   }
 
   static getWordsByFavorite = ({ words }) => {
-    return words.filter(word => {
+    return words.filter((word) => {
       if (word.data) {
         return word.data.isFavorite === true
       }
@@ -61,17 +61,17 @@ export default class Utils {
     items[Math.floor(Math.random() * items.length)]
 
   static unreserveItems = ({ items }) => {
-    items && items.forEach(item => (item.isReserved = false))
+    items && items.forEach((item) => (item.isReserved = false))
   }
 
   static getRandomWordByType = ({ words, type }) => {
-    const output = this.getWordsByType({ words, type }).map(word => word.name)
+    const output = this.getWordsByType({ words, type }).map((word) => word.name)
 
     return this.getRandomItem({ items: output })
   }
 
   static reserveRandomItem = ({ items }) => {
-    const freshItems = items.filter(item => !item.isUsed && !item.isReserved)
+    const freshItems = items.filter((item) => !item.isUsed && !item.isReserved)
 
     // When all the items are used
     if (freshItems.length === 0) {
@@ -88,7 +88,7 @@ export default class Utils {
 
     const items = this.getWordsByType({ words, type })
 
-    const freshItems = items.filter(item => !item.isUsed)
+    const freshItems = items.filter((item) => !item.isUsed)
 
     // When all the items are used
     if (freshItems.length === 0) {
@@ -106,7 +106,7 @@ export default class Utils {
 
     const items = this.getWordsByType({ words, type })
 
-    const freshItems = items.filter(item => !item.isUsed && !item.isReserved)
+    const freshItems = items.filter((item) => !item.isUsed && !item.isReserved)
 
     // When all the items are used
     if (freshItems.length === 0) {
@@ -121,7 +121,7 @@ export default class Utils {
   static getItemsFromDbObj = ({ dbList }) => {
     const items = dbList.docs
 
-    const filteredItems = items && items.filter(item => !item.data.ignore)
+    const filteredItems = items && items.filter((item) => !item.data.ignore)
     return filteredItems || []
   }
 
@@ -131,42 +131,42 @@ export default class Utils {
     let allCharacters = [yourName]
 
     if (characters && characters.length) {
-      const friendNames = characters.map(creature => creature.type)
+      const friendNames = characters.map((creature) => creature.type)
       allCharacters.push(...friendNames)
     }
 
     const creatureName0 = allCharacters[0] || "creature0"
-    const creatureName1 = allCharacters[1] || "creature 1"
+    const creatureName1 = allCharacters[1] || "liz2"
 
     const newFrame = {
       creatures: allCharacters,
       story: [`${creatureName0} is happy.`],
       faces: [
         { character: creatureName1, characterIndex: 1, face: "happy" },
-        { character: creatureName0, characterIndex: 0, face: "happy" }
+        { character: creatureName0, characterIndex: 0, face: "happy" },
       ],
       dialog: [
         {
           character: creatureName0,
           characterIndex: 0,
-          text: `Hi.`
+          text: `Hi.`,
         },
         {
           character: creatureName1,
           characterIndex: 1,
-          text: `Hi!`
+          text: `Hi!`,
         },
         {
           character: creatureName1,
           characterIndex: 0,
-          text: `Hi!`
+          text: `Hi!`,
         },
         {
           character: creatureName1,
           characterIndex: 1,
-          text: `Hi!`
-        }
-      ]
+          text: `Hi!`,
+        },
+      ],
     }
 
     return newFrame
@@ -174,19 +174,9 @@ export default class Utils {
 
   static sortDataByKey(data, key, order, tiebreakerKey) {
     const isAscending = order === "ASC"
-    return data.sort(function(item1, item2) {
-      const val1 = item1[key]
-        ? item1[key]
-            .toString()
-            .trim()
-            .toLowerCase()
-        : ""
-      const val2 = item2[key]
-        ? item2[key]
-            .toString()
-            .trim()
-            .toLowerCase()
-        : ""
+    return data.sort(function (item1, item2) {
+      const val1 = item1[key] ? item1[key].toString().trim().toLowerCase() : ""
+      const val2 = item2[key] ? item2[key].toString().trim().toLowerCase() : ""
       if (val1 < val2) {
         return isAscending ? -1 : 1 // Lower if ascending
       } else if (val1 > val2) {
@@ -194,16 +184,10 @@ export default class Utils {
         // for tiebreaker
       } else if (tiebreakerKey) {
         const tiebreakerVal1 = item1[tiebreakerKey]
-          ? item1[tiebreakerKey]
-              .toString()
-              .trim()
-              .toLowerCase()
+          ? item1[tiebreakerKey].toString().trim().toLowerCase()
           : ""
         const tiebreakerVal2 = item2[tiebreakerKey]
-          ? item2[tiebreakerKey]
-              .toString()
-              .trim()
-              .toLowerCase()
+          ? item2[tiebreakerKey].toString().trim().toLowerCase()
           : ""
         if (tiebreakerVal1 < tiebreakerVal2) {
           return isAscending ? -1 : 1
@@ -220,13 +204,13 @@ export default class Utils {
   static sortDataByNestedKey({ data, keys, order }) {
     function getNestedValue(data, keys) {
       let result = data
-      keys.forEach(key => (result ? (result = result[key]) : null))
+      keys.forEach((key) => (result ? (result = result[key]) : null))
 
       return result ? result.toString().toLowerCase() : ""
     }
 
     const isAscending = order === "ASC"
-    return data.sort(function(item1, item2) {
+    return data.sort(function (item1, item2) {
       if (getNestedValue(item1, keys) < getNestedValue(item2, keys)) {
         return isAscending ? -1 : 1 // Lower if ascending
       } else if (getNestedValue(item1, keys) > getNestedValue(item2, keys)) {
@@ -243,9 +227,9 @@ export default class Utils {
 
     if (!id) return defaultMap
 
-    const filteredMaps = mapsDocs.filter(map => map.data.released)
+    const filteredMaps = mapsDocs.filter((map) => map.data.released)
     const foundMap = filteredMaps
-      ? filteredMaps.find(map => map.id === id)
+      ? filteredMaps.find((map) => map.id === id)
       : defaultMap
 
     return foundMap
@@ -253,7 +237,7 @@ export default class Utils {
 
   static getFirstReleasedMap = () => {
     const mapsDocs = toJS(maps.docs)
-    const filteredMaps = mapsDocs.filter(map => {
+    const filteredMaps = mapsDocs.filter((map) => {
       return map.data.released
     })
     return filteredMaps[0]
@@ -263,8 +247,8 @@ export default class Utils {
     if (!scenesGrid) return []
 
     const scenes = []
-    scenesGrid.forEach(row => {
-      Object.values(row).forEach(scene => scenes.push(scene))
+    scenesGrid.forEach((row) => {
+      Object.values(row).forEach((scene) => scenes.push(scene))
     })
     return scenes
   }
@@ -274,7 +258,7 @@ export default class Utils {
     let date = new Date().getTime()
     const uuid = `xxxxxxxx${sepStr}xxxx${sepStr}4xxx${sepStr}yxxx${sepStr}xxxxxxxxxxxx`.replace(
       /[xy]/g,
-      c => {
+      (c) => {
         const randNum = (date + Math.random() * 16) % 16 | 0
         date = Math.floor(date / 16)
         return (c === "x" ? randNum : (randNum & 0x3) | 0x8).toString(16)
@@ -284,7 +268,7 @@ export default class Utils {
   }
 
   static getNonBlankScenes({ scenesList }) {
-    return scenesList.filter(scene => {
+    return scenesList.filter((scene) => {
       return scene && scene.location && scene.location.name !== "blank"
     })
   }

@@ -4,6 +4,18 @@
   z-index: 10;
 }
 
+.itemsContainer {
+  display: flex;
+  width: 100%;
+  border: 4px solid blue !important;
+}
+
+.itemContainer {
+  display: flex;
+  width: 100%;
+  border: 4px solid red !important;
+}
+
 .crudMachine {
   border: 10px solid blue !important;
   position: absolute;
