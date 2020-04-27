@@ -315,13 +315,19 @@ class Frame extends Component {
   }
 
   renderItems = () => {
-    const items = _get(this.props.scene.items) || []
+    const items = _get(this, "props.scene.items") || []
+    console.log("this.props", toJS(this.props)) // zzz
 
-    return items.map((item, index) => {
+    console.log("items", items) // zzz
+
+    return items.map((item) => {
       console.log("item", toJS(item)) // zzz
 
       return (
-        <ImageDisplay className={css.itemContainer} item={{ name: "man" }} />
+        <ImageDisplay
+          className={css.itemContainer}
+          item={{ name: item.name }}
+        />
       )
     })
   }
@@ -331,10 +337,7 @@ class Frame extends Component {
     const { faces = [] } = frame
     if (!frame) return null
 
-    console.log("frame", toJS(frame)) // zzz
-
     const { isEditMode = true } = this.props
-    console.log("this.props.scene.items", toJS(this.props.scene.items)) // zzz
 
     return allCharacters.map((friend, index) => {
       const mood = this.getMood({ name: friend, faces })
