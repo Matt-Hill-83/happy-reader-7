@@ -268,7 +268,10 @@ class Frame extends Component {
 
   renderLocationImage = () => {
     const { scene = true } = this.props
-    const locationImage = Images.locations[scene.name]
+    const locationImage =
+      Images.locations[_get(this.props, "scene.location.name")]
+
+    console.log("scene", toJS(scene)) // zzz
 
     return (
       <div className={css.locationImageContainer}>
@@ -323,12 +326,9 @@ class Frame extends Component {
     return items.map((item) => {
       console.log("item", toJS(item)) // zzz
 
-      return (
-        <ImageDisplay
-          className={css.itemContainer}
-          item={{ name: item.name }}
-        />
-      )
+      const { name } = item
+
+      return <ImageDisplay className={css.itemContainer} item={{ name }} />
     })
   }
 
@@ -365,12 +365,17 @@ class Frame extends Component {
         {this.renderBackground()}
         {this.renderLocationImage()}
 
-        <div className={css.wordsContainer}>
-          {this.renderNarrative()}
-          {this.renderDialog()}
+        <div className={css.relativePositionedContent}>
+          <div className={css.wordsContainer}>
+            {this.renderNarrative()}
+            {this.renderDialog()}
+          </div>
+
+          <div className={css.imageGroups}>
+            <div className={css.itemsContainer}>{renderedItems}</div>
+            <div className={css.charactersContainer}>{renderedFriends}</div>
+          </div>
         </div>
-        <div className={css.itemsContainer}>{renderedItems}</div>
-        <div className={css.charactersContainer}>{renderedFriends}</div>
       </div>
     )
   }
