@@ -3,7 +3,8 @@ import { Button, Menu, MenuItem, Popover, Position } from "@blueprintjs/core"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import React from "react"
-import { findDOMNode } from "react-dom"
+// import { findDOMNode } from "react-dom"
+import cx from "classnames"
 
 import Images from "../../images/images.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
@@ -86,14 +87,13 @@ class PicturePage extends React.Component {
     )
   }
 
-  scrollHorizontal = () => {
+  scrollHorizontal = ({ reverse = false }) => {
     const container = document.querySelector(
       "[class*='PicturePage_innerMapScroller']"
     )
-    console.log("container", container) // zzz
 
     if (container) {
-      container.scrollLeft += 50
+      container.scrollLeft += 50 * (reverse ? -1 : 1)
     }
   }
 
@@ -104,15 +104,15 @@ class PicturePage extends React.Component {
       <div className={`${css.halfPage} ${css.rightHalf}`}>
         <div className={`${css.mapScroller}`}>
           <Button
-            className={css.button}
-            onClick={() => this.scrollHorizontal()}
+            className={cx(css.scrollButton, css.leftScrollButton)}
+            onClick={() => this.scrollHorizontal({ reverse: true })}
           >
             Back
           </Button>
 
           <Button
-            className={css.button}
-            onClick={() => this.scrollHorizontal()}
+            className={cx(css.scrollButton, css.rightScrollButton)}
+            onClick={() => this.scrollHorizontal({})}
           >
             Forward
           </Button>

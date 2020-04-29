@@ -3,17 +3,25 @@
 .main {
   position: relative;
   display: flex;
+  height: 100%;
   width: 100%;
   overflow: hidden;
 
-  .button {
+  .scrollButton {
     border: 3px solid red !important;
-    height: 200px;
+    height: 100px;
     width: 200px;
     position: absolute;
+    bottom: 0px;
   }
 
-  height: 100%;
+  .leftScrollButton {
+    left: 10px;
+  }
+
+  .rightScrollButton {
+    right: 10px;
+  }
 
   .halfPage {
     display: flex;
@@ -143,19 +151,17 @@
   display: flex;
   position: relative;
   min-width: 100%;
-  border: 4px solid red !important;
 }
 
 .innerMapScroller {
-  border: 8px solid black !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: absolute;
-  left: 10%;
-  right: 10%;
-  top: 10%;
-  bottom: 10%;
+  left: 5%;
+  right: 5%;
+  top: 5%;
+  bottom: 5%;
   border-radius: 1%;
   overflow: hidden;
   overflow-x: scroll;
@@ -166,33 +172,9 @@
   flex-direction: column;
   justify-content: center;
 
-  border: 4px solid blue !important;
   overflow: visible;
   width: fit-content;
 }
-
-// .miniLocationsGrid::-webkit-scrollbar {
-//   -webkit-appearance: none;
-// }
-
-// .miniLocationsGrid::-webkit-scrollbar:vertical {
-//   width: 11px;
-// }
-
-// .miniLocationsGrid::-webkit-scrollbar:horizontal {
-//   height: 11px;
-// }
-
-// .miniLocationsGrid::-webkit-scrollbar-thumb {
-//   border-radius: 8px;
-//   border: 2px solid red; /* should match background, can't be transparent */
-//   background-color: rgba(0, 0, 0, 0.5);
-// }
-
-// .miniLocationsGrid::-webkit-scrollbar-track {
-//   background-color: green;
-//   border-radius: 8px;
-// }
 
 .miniActiveLocation {
   position: absolute;
@@ -205,6 +187,28 @@
 .miniLocationsRow {
   display: flex;
   position: relative;
-  border: 5px solid orange;
   width: fit-content;
+}
+
+.innerMapScroller::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.innerMapScroller::-webkit-scrollbar:vertical {
+  width: 24px;
+}
+
+.innerMapScroller::-webkit-scrollbar:horizontal {
+  height: 24px;
+}
+
+.innerMapScroller::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.innerMapScroller::-webkit-scrollbar-track {
+  background-color: #fff;
+  border-radius: 8px;
 }

@@ -274,7 +274,7 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
-        {renderedMapTitle}
+        {/* {renderedMapTitle} */}
         <div className={css.floatingButtons}>
           <WorldPicker
             showDelete={false}
