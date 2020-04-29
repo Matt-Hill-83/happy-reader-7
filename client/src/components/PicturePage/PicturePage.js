@@ -86,34 +86,14 @@ class PicturePage extends React.Component {
     )
   }
 
-  onClose = () => {
-    this.scrollToBottom()
-
-    // const node = findDOMNode(this)
-    // console.log("node", node) // zzz
-    // const mainEl = node.querySelector("[class*='PicturePage_mapScroller']")
-    // console.log("mainEl", mainEl) // zzz
-
-    // if (this.props.selected) {
-    //   node.scrollTop = 0
-    // }
-
-    // if (node.hasChildNodes() && node.childNodes[0].hasChildNodes()) {
-    //   node.childNodes[0].childNodes[0].scrollTop = 0
-    // }
-  }
-
-  scrollToBottom = () => {
+  scrollHorizontal = () => {
     const container = document.querySelector(
       "[class*='PicturePage_innerMapScroller']"
     )
     console.log("container", container) // zzz
 
-    // const message = document.getElementsByClassName(css.message)[0]
-
     if (container) {
-      container.scrollLeft = 300
-      container.scrollTop = 100
+      container.scrollLeft += 50
     }
   }
 
@@ -123,8 +103,18 @@ class PicturePage extends React.Component {
     return (
       <div className={`${css.halfPage} ${css.rightHalf}`}>
         <div className={`${css.mapScroller}`}>
-          <Button className={css.button} onClick={() => this.onClose({})}>
-            Close
+          <Button
+            className={css.button}
+            onClick={() => this.scrollHorizontal()}
+          >
+            Back
+          </Button>
+
+          <Button
+            className={css.button}
+            onClick={() => this.scrollHorizontal()}
+          >
+            Forward
           </Button>
           <img className={css.backgroundImage} src={mapImage} alt={"bk"} />
           <div className={`${css.innerMapScroller}`}>
