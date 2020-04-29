@@ -6,6 +6,13 @@
   width: 100%;
   overflow: hidden;
 
+  .button {
+    border: 3px solid red !important;
+    height: 200px;
+    width: 200px;
+    position: absolute;
+  }
+
   height: 100%;
 
   .halfPage {
@@ -136,6 +143,22 @@
   display: flex;
   position: relative;
   min-width: 100%;
+  border: 4px solid red !important;
+}
+
+.innerMapScroller {
+  border: 8px solid black !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 10%;
+  bottom: 10%;
+  border-radius: 1%;
+  overflow: hidden;
+  overflow-x: scroll;
 }
 
 .miniLocationsGrid {
@@ -143,16 +166,33 @@
   flex-direction: column;
   justify-content: center;
 
-  position: absolute;
-
-  left: 10%;
-  right: 10%;
-  top: 10%;
-  bottom: 10%;
-
-  border-radius: 1%;
-  overflow: hidden;
+  border: 4px solid blue !important;
+  overflow: visible;
+  width: fit-content;
 }
+
+// .miniLocationsGrid::-webkit-scrollbar {
+//   -webkit-appearance: none;
+// }
+
+// .miniLocationsGrid::-webkit-scrollbar:vertical {
+//   width: 11px;
+// }
+
+// .miniLocationsGrid::-webkit-scrollbar:horizontal {
+//   height: 11px;
+// }
+
+// .miniLocationsGrid::-webkit-scrollbar-thumb {
+//   border-radius: 8px;
+//   border: 2px solid red; /* should match background, can't be transparent */
+//   background-color: rgba(0, 0, 0, 0.5);
+// }
+
+// .miniLocationsGrid::-webkit-scrollbar-track {
+//   background-color: green;
+//   border-radius: 8px;
+// }
 
 .miniActiveLocation {
   position: absolute;
@@ -165,4 +205,6 @@
 .miniLocationsRow {
   display: flex;
   position: relative;
+  border: 5px solid orange;
+  width: fit-content;
 }

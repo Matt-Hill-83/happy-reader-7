@@ -3,6 +3,7 @@ import { Button, Menu, MenuItem, Popover, Position } from "@blueprintjs/core"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import React from "react"
+import { findDOMNode } from "react-dom"
 
 import Images from "../../images/images.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
@@ -85,14 +86,50 @@ class PicturePage extends React.Component {
     )
   }
 
+  onClose = () => {
+    this.scrollToBottom()
+
+    // const node = findDOMNode(this)
+    // console.log("node", node) // zzz
+    // const mainEl = node.querySelector("[class*='PicturePage_mapScroller']")
+    // console.log("mainEl", mainEl) // zzz
+
+    // if (this.props.selected) {
+    //   node.scrollTop = 0
+    // }
+
+    // if (node.hasChildNodes() && node.childNodes[0].hasChildNodes()) {
+    //   node.childNodes[0].childNodes[0].scrollTop = 0
+    // }
+  }
+
+  scrollToBottom = () => {
+    const container = document.querySelector(
+      "[class*='PicturePage_innerMapScroller']"
+    )
+    console.log("container", container) // zzz
+
+    // const message = document.getElementsByClassName(css.message)[0]
+
+    if (container) {
+      container.scrollLeft = 300
+      container.scrollTop = 100
+    }
+  }
+
   renderMapPage = ({}) => {
     const mapImage = Images.backgrounds["map"]
 
     return (
       <div className={`${css.halfPage} ${css.rightHalf}`}>
         <div className={`${css.mapScroller}`}>
+          <Button className={css.button} onClick={() => this.onClose({})}>
+            Close
+          </Button>
           <img className={css.backgroundImage} src={mapImage} alt={"bk"} />
-          {this.renderSceneRows()}
+          <div className={`${css.innerMapScroller}`}>
+            {this.renderSceneRows()}
+          </div>
         </div>
       </div>
     )
