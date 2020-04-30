@@ -14,11 +14,12 @@ class Character extends Component {
   render() {
     const { name, mood, isEditMode } = this.props
 
-    const images = girlImages.find(girl => girl.name === name)
+    const images = girlImages.find((girl) => girl.name === name)
 
     // if there are no posable images
     if (!images) {
       const image = Images.creatures[name]
+      if (!image) return null
       return (
         <div className={css.characterContainer}>
           <img className={css.characterImage} src={image} alt={"imagex"} />
@@ -28,10 +29,10 @@ class Character extends Component {
 
     // else...
     const {
-      images: { heads, body }
+      images: { heads, body },
     } = images
 
-    const head = heads.find(head => head.mood === mood) || heads[0]
+    const head = heads.find((head) => head.mood === mood) || heads[0]
 
     const className = `${css.headForBody} ${isEditMode ? "" : css.noBorder}`
 
