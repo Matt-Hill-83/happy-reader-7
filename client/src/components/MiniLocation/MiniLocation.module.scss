@@ -1,13 +1,11 @@
 @import "../../Styles/mixins.modules.scss";
 
 .charactersContainer {
-  // border: 1px solid red !important;
   overflow: hidden;
   z-index: 10;
   width: 100%;
 
   > div {
-    // border: 1px solid blue !important;
     display: flex;
     display: inline-flex;
     height: 100%;
@@ -24,11 +22,13 @@
   left: 10%;
 }
 
+.isBlank {
+  border: none !important;
+}
+
 .isStartScene {
   :global {
     [class*="MiniLocation_grassImage"] {
-      // border: 2px solid blue !important;
-      // background: var(--color-pink);
     }
   }
 }
@@ -36,7 +36,6 @@
 .activeClass {
   :global {
     [class*="MiniLocation_grassImage"] {
-      // border: 2px solid red !important;
       background: var(--color-yellow);
       border-radius: 11px;
       overflow: hidden;
@@ -67,12 +66,12 @@
 
 .cloudImageContainer {
   display: flex;
-  // border: 1px solid red !important;
-
   position: absolute;
   z-index: 100;
   height: 100%;
+  border-radius: 11px;
   width: 100%;
+  overflow: hidden;
 }
 
 .cloudImage {
@@ -84,17 +83,15 @@
 
 .doorPickerContainer {
   display: flex;
-
   position: absolute;
   z-index: 5;
   background: transparent;
   cursor: pointer;
+  z-index: 1000;
 }
 
 .rightDoor {
-  // border: 1px solid orange !important;
-  display: flex;
-  right: -20%;
+  right: -36%;
   top: 50%;
   transform: translate(0, -50%);
 
@@ -104,7 +101,22 @@
   }
 
   .doorImage {
-    // border: 1px solid green !important;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.leftDoor {
+  left: -20%;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  &.door-open {
+    width: 20%;
+    height: 20%;
+  }
+
+  .doorImage {
     width: 100%;
     height: auto;
   }
@@ -112,7 +124,7 @@
 
 .bottomDoor {
   // border: 1px solid blue !important;
-  display: flex;
+  // display: flex;
   bottom: 0px;
   left: 50%;
   transform: translate(-50%, 50%);
@@ -196,8 +208,6 @@
   overflow: hidden;
   position: relative;
 
-  margin-right: 4px;
-  margin-bottom: 4px;
   border: 1px solid green;
   border-radius: 9%;
 
@@ -209,6 +219,11 @@
 
   max-height: var(--story-item-height);
   max-width: var(--story-item-width);
+
+  margin-right: 43px;
+  margin-bottom: 15px;
+
+  overflow: visible;
 
   .imagesBox {
     display: flex;
@@ -223,10 +238,14 @@
 
   .locationTitle {
     @include item-label;
-    top: 2%;
+    position: absolute;
+    border: 1px solid red !important;
+    background: var(--light-pink);
+    border-radius: 3px;
+    padding: 0 3px;
+    left: 4%;
+    top: 4%;
     z-index: 101;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   .miniLocationImage {
@@ -250,12 +269,31 @@
   }
 }
 
-.rockImage {
+.rightPath {
   position: absolute;
   display: flex;
-  width: 100%;
-  height: 100%;
-  display: none;
+  height: 27%;
+  width: 50%;
+  right: -42%;
+  z-index: 1000;
+  background: #a5d088;
+  border-top: 1px solid green;
+  border-bottom: 1px solid green;
+  background: var(--color-yellow);
+  // background: lightblue;
+}
+
+.bottomPath {
+  position: absolute;
+  display: flex;
+  height: 25%;
+  width: 27%;
+  bottom: -22%;
+  z-index: 1000;
+  background: #a5d088;
+  border-right: 1px solid green;
+  border-left: 1px solid green;
+  background: var(--color-yellow);
 }
 
 .grassImage {
@@ -264,5 +302,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: var(--grass-color);
+  // background: var(--grass-color);
+  background: var(--color-yellow);
+  border-radius: 11px;
 }

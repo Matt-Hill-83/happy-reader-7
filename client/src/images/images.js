@@ -70,6 +70,7 @@ import star from "./creatures/star.png"
 import end from "./creatures/end.png"
 import poop from "./creatures/poop.png"
 import start from "./creatures/start.png"
+import rori from "./creatures/rori-front-01.png"
 
 import ant from "./creatures/ant.png"
 import bat from "./creatures/bat.png"
@@ -387,6 +388,7 @@ const items = {
   pan,
   pin,
   poop,
+  rori,
   rag,
   tag,
   top,

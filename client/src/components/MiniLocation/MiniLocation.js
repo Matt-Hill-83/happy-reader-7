@@ -270,35 +270,38 @@ class MiniLocation extends React.Component {
         id={id}
         className={`${css.main} ${className} ${
           this.props.scene.isStartScene ? css.isStartScene : ""
-        } ${localClass} `}
+        } ${isBlank ? css.isBlank : ""} ${localClass} `}
       >
-        {/* {isEditMode && (
-          <div className={css.isStartSceneCheckBox}>
-            Start
-            <Checkbox onClick={this.checkIsStartScene} checked={isStartScene} />
+        {/* this is the right path */}
+        {!isBlank && (
+          <div className={css.rightPath}>
+            {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
           </div>
         )}
-        {isEditMode && (
-          <div className={css.isEndSceneCheckBox}>
-            End
-            <Checkbox onClick={this.checkIsEndScene} checked={isEndScene} />
-          </div>
-        )} */}
+
         {!isBlank && (
-          <div className={css.rockImage}>
-            <img className={css.rockImage} src={rockImage} alt={"imagex"} />
+          <div className={css.bottomPath}>
+            {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
           </div>
         )}
         {!isBlank && <div className={css.grassImage} />}
         {!isBlank && !isEditMode && showCloud && (
           <div className={css.cloudImageContainer}>
+            {/* <img className={css.cloudImage} src={rockImage} alt={"imagex"} /> */}
             <img className={css.cloudImage} src={cloudImage} alt={"imagex"} />
           </div>
         )}
-        {false &&
+        {!isBlank &&
           this.renderButton({
             position: "right",
             className: css.rightDoor,
+            defaultDoorImage: defaultDoorImage,
+          })}
+
+        {false &&
+          this.renderButton({
+            position: "left",
+            className: css.leftDoor,
             defaultDoorImage: defaultDoorImage,
           })}
 

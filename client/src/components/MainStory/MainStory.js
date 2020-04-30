@@ -47,7 +47,7 @@ class MainStory extends React.Component {
     this.setState({ forceUpdate: "test" })
     // temp code DELETE ME!!! (start) - zzz
 
-    this.toggleWorldBuilder()
+    // this.toggleWorldBuilder()
     // temp code DELETE ME!!! (end)
   }
 
