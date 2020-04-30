@@ -163,6 +163,9 @@ class MainStory extends React.Component {
   }
 
   updateActiveScene = ({ activeScene }) => {
+    console.log("updateActiveScene") // zzz
+    console.log("activeScene", activeScene) // zzz
+
     if (!activeScene || !activeScene.location.name) {
       return
     }

@@ -49,7 +49,6 @@ class PicturePage extends React.Component {
     // TODO - this should come from state
     const { activeScene } = this.props
     const sceneName = scene.location.name
-    // const { name: sceneName } = scene
     let isActive
 
     isActive = sceneName === activeScene.location.name
@@ -58,11 +57,10 @@ class PicturePage extends React.Component {
     // scene.showCloud = !isActive
 
     const id = `${colIndex}-${rowIndex}`
-
+    const onClick = () => this.props.updateActiveScene({ activeScene: scene })
     return (
       // This wrapper div seems to be required to make things render withought ghost divs being included in the list.
-      <div>
-        {/* {`${id}`} */}
+      <div onClick={onClick}>
         <MiniLocation
           id={id}
           key={sceneName}
