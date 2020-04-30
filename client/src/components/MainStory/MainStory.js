@@ -35,8 +35,6 @@ class MainStory extends React.Component {
     await maps.fetch()
     await worldNameStore.fetch()
 
-    // let mapId = "not set"
-
     if (maps.docs && maps.docs[0]) {
       const defaultMap = Utils.getFirstReleasedMap()
 
@@ -49,7 +47,7 @@ class MainStory extends React.Component {
     this.setState({ forceUpdate: "test" })
     // temp code DELETE ME!!! (start) - zzz
 
-    // this.toggleWorldBuilder()
+    this.toggleWorldBuilder()
     // temp code DELETE ME!!! (end)
   }
 
@@ -93,9 +91,6 @@ class MainStory extends React.Component {
         const colName = colIndex
 
         const newCell = toJS(scenesGrid[rowName][colName])
-
-        // const scene = (newCell[0] && toJS(newCell[0].scene)) || {}
-
         newRow.push(newCell)
       })
       locationsMap.push(newRow)
@@ -266,18 +261,8 @@ class MainStory extends React.Component {
       return null
     }
 
-    const map = localStateStore.getActiveMap()
-    const { title, order } = map.data
-
-    const renderedMapTitle = (
-      <div className={css.mapTitle}>
-        <span>{`map ${order}: ${title}`}</span>
-      </div>
-    )
-
     return (
       <div className={`${css.main} ${className}`}>
-        {/* {renderedMapTitle} */}
         <div className={css.floatingButtons}>
           <WorldPicker
             showDelete={false}

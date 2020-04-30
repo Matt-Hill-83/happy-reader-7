@@ -508,6 +508,7 @@ class WorldBuilder extends Component {
           placeholder="Title"
           onChange={(event) => this.onChangeTitle({ event })}
           onBlur={(event) => this.saveTitle({ event })}
+          className={css.titleInput}
         />
 
         {!showFrameBuilder && (
@@ -534,7 +535,7 @@ class WorldBuilder extends Component {
           </div>
         )}
         <div className={css.content}>
-          {this.renderNewGrid()}
+          {!showFrameBuilder && this.renderNewGrid()}
           {showFrameBuilder && (
             <FrameBuilder
               world={world}

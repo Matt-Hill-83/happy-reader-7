@@ -414,8 +414,6 @@ class Frame extends Component {
     // TODO -  I need put in a dummy frame for when there is none.
     const items = frame.items || []
 
-    // const allCharacters = frame.creatures || []
-
     const allCharacters =
       (scene.characters && scene.characters.map((item) => item.name)) || []
 
@@ -431,7 +429,7 @@ class Frame extends Component {
           }`}
         >
           {this.renderFrame({ allCharacters })}
-          {isEditMode && (
+          {false && isEditMode && (
             <CrudMachine
               className={css.crudMachine}
               items={items}

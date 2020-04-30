@@ -44,14 +44,11 @@ class WordPage extends React.Component {
 
   renderButtons = () => {
     const { activeScene } = this.state
-
     const neighbors = activeScene.neighborNames
-
     const filteredNeighbors = neighbors.filter((item) => item !== "blank")
-
     const { isEndScene } = activeScene
-
     let buttons
+
     if (isEndScene) {
       return (
         <Button onClick={this.openYouWinModal} className={css.newGameButton}>
@@ -86,7 +83,6 @@ class WordPage extends React.Component {
   render() {
     const { activeScene, frameIndex } = this.state
     const frameSet = activeScene.frameSet
-    console.log("activeScene", toJS(activeScene)) // zzz
 
     let isLastFrame =
       frameSet.frames && frameIndex >= frameSet.frames.length - 1
@@ -94,16 +90,9 @@ class WordPage extends React.Component {
       isLastFrame = true
     }
 
-    // const frame = frameSet.frames && frameSet.frames[frameIndex]
-
     return (
       <div className={css.textPage}>
-        <Frame
-          frameIndex={frameIndex}
-          // frame={frame}
-          scene={activeScene}
-          isEditMode={false}
-        />
+        <Frame frameIndex={frameIndex} scene={activeScene} isEditMode={false} />
         <div className={css.buttonRow}>
           {!isLastFrame && (
             <Button onClick={this.onClickNext} className={css.choiceButton}>
@@ -111,8 +100,7 @@ class WordPage extends React.Component {
             </Button>
           )}
 
-          {/* TODO - put NEW GAME button here */}
-          {isLastFrame && this.renderButtons()}
+          {/* {isLastFrame && this.renderButtons()} */}
         </div>
       </div>
     )

@@ -258,10 +258,10 @@
   border: 1px solid blue;
   display: flex;
   position: relative;
-  min-width: 31vw;
   min-height: 30vw;
-  // height: 35vw;
+  /* min-width: 0vw; */
   width: 100%;
+  min-width: 290px;
 }
 
 .locationImageContainer {

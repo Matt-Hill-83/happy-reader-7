@@ -5,7 +5,7 @@ import {
   Icon,
   InputGroup,
   Position,
-  Checkbox
+  Checkbox,
 } from "@blueprintjs/core"
 
 import React, { Component } from "react"
@@ -25,7 +25,7 @@ class FrameBuilder extends Component {
     frames: [],
     frameSet: "",
     isStartScene: false,
-    isEndScene: false
+    isEndScene: false,
   }
 
   componentWillMount() {
@@ -47,7 +47,7 @@ class FrameBuilder extends Component {
 
   getNewFrame = () => {
     const {
-      scene: { creatures = [] }
+      scene: { creatures = [] },
     } = this.state
 
     return Utils.getNewFrame({ characters: creatures })
@@ -55,7 +55,7 @@ class FrameBuilder extends Component {
 
   onAddFrame = async () => {
     const {
-      scene: { frameSet }
+      scene: { frameSet },
     } = this.state
     const { updateMap } = this.props
 
@@ -77,8 +77,8 @@ class FrameBuilder extends Component {
     const {
       scene,
       scene: {
-        frameSet: { frames }
-      }
+        frameSet: { frames },
+      },
     } = this.state
 
     const { updateMap } = this.props
@@ -107,7 +107,7 @@ class FrameBuilder extends Component {
     return {
       name: "test",
       title: "test",
-      frames: [this.getNewFrame()]
+      frames: [this.getNewFrame()],
     }
   }
 
@@ -115,7 +115,7 @@ class FrameBuilder extends Component {
     const {
       scene,
       scene: { frameSet },
-      updateMap
+      updateMap,
     } = this.props
 
     if (!frameSet) {
@@ -130,7 +130,7 @@ class FrameBuilder extends Component {
     }
     if (!frames) return []
 
-    const renderedFrames = frames.map((frame, index) => {
+    return frames.map((frame, index) => {
       return (
         <Frame
           frame={frame}
@@ -142,8 +142,6 @@ class FrameBuilder extends Component {
         />
       )
     })
-
-    return renderedFrames
   }
 
   render() {
@@ -151,10 +149,12 @@ class FrameBuilder extends Component {
 
     return (
       <div className={css.main}>
-        {scene && this.renderFrames()}
-
         {scene && (
           <div className={css.buttonContainer}>
+            <Button className={css.closeButton} onClick={this.onAddFrame}>
+              <Icon icon={IconNames.CLOSE} />
+              Add Frame
+            </Button>
             <Button
               className={css.closeButton}
               onClick={this.onExitFrameBuilder}
@@ -162,11 +162,10 @@ class FrameBuilder extends Component {
               <Icon icon={IconNames.CLOSE} />
               Close
             </Button>
-            <Button className={css.closeButton} onClick={this.onAddFrame}>
-              <Icon icon={IconNames.CLOSE} />
-              Add Frame
-            </Button>
           </div>
+        )}
+        {scene && (
+          <div className={css.framesContainer}>{this.renderFrames()}</div>
         )}
       </div>
     )
