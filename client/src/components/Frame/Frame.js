@@ -118,6 +118,7 @@ class Frame extends Component {
     const headImages = heads.map((head, headIndex) => {
       return (
         <div
+          className={css.girlHead}
           key={headIndex}
           onClick={() => this.selectHead({ head, name: character })}
         >

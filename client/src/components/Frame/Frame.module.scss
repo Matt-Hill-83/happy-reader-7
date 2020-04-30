@@ -1,5 +1,13 @@
 @import "../../Styles/mixins.modules.scss";
 
+.girlHead {
+  // border: 3px solid red !important;
+}
+
+.girlHead:nth-of-type(4n) {
+  margin-right: 24px;
+}
+
 .addCharacterButton {
   z-index: 10;
 }
@@ -84,8 +92,6 @@
     padding: unset;
   }
   [class*="Frame_editingFrame"] {
-    // min-height: unset;
-    // height: 20vw;
   }
 }
 
@@ -209,9 +215,10 @@
   background: var(--set1-lav-bk);
   margin: 24px;
   border-radius: 5px;
-  z-index: 1000;
+  z-index: 2000;
   position: absolute;
   top: 0px;
+  width: 30%;
 }
 
 .girlPickerContainer {
