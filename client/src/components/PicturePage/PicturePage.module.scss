@@ -7,12 +7,29 @@
   width: 100%;
   overflow: hidden;
 
-  .scrollButton {
-    border: 3px solid red !important;
-    height: 100px;
-    width: 200px;
-    position: absolute;
+  .scrollButtons {
+    border: 1px solid blue !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     bottom: 0px;
+    border-radius: 10px;
+  }
+
+  .scrollButton {
+    // position: absolute;
+    bottom: 0px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .windowScrollButtonImage {
+    display: flex;
+    height: 60px;
+    width: auto;
   }
 
   .leftScrollButton {
@@ -36,6 +53,7 @@
 
   .rightHalf {
     flex: 2;
+    width: 65vw;
   }
 
   .sceneList {
@@ -81,7 +99,9 @@
     display: flex;
 
     width: 100%;
-    height: auto;
+    height: 100%;
+    position: absolute;
+    // height: auto;
   }
 
   .locationHeader {
@@ -150,44 +170,21 @@
 .mapScroller {
   display: flex;
   position: relative;
-  min-width: 100%;
+  flex-direction: column;
+  border: 8px solid brown !important;
+  width: 90%;
+  overflow: auto;
+  justify-content: center;
+  margin: 7% 5%;
 }
 
 .innerMapScroller {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   position: absolute;
-  left: 5%;
-  right: 5%;
-  top: 5%;
-  bottom: 5%;
-  border-radius: 1%;
   overflow: hidden;
   overflow-x: scroll;
-}
-
-.miniLocationsGrid {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  overflow: visible;
-  width: fit-content;
-}
-
-.miniActiveLocation {
-  position: absolute;
-  bottom: 16% !important;
-  left: 50% !important;
-  transform: translateX(-50%);
-  height: 46%;
-}
-
-.miniLocationsRow {
-  display: flex;
   position: relative;
-  width: fit-content;
 }
 
 .innerMapScroller::-webkit-scrollbar {
@@ -211,4 +208,30 @@
 .innerMapScroller::-webkit-scrollbar-track {
   background-color: #fff;
   border-radius: 8px;
+}
+
+.miniLocationsGrid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: visible;
+  width: fit-content;
+  border: 4px solid blue !important;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.miniActiveLocation {
+  position: absolute;
+  bottom: 16% !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+  height: 46%;
+}
+
+.miniLocationsRow {
+  display: flex;
+  position: relative;
+  width: fit-content;
 }

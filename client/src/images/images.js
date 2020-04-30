@@ -95,6 +95,10 @@ import sky01 from "./backgrounds/sky-01.png"
 import map from "./backgrounds/map-05.jpg"
 import rock from "./backgrounds/rock-2.jpg"
 
+// buttons
+import leftArrow from "./backgrounds/left-arrow-01.png"
+import rightArrow from "./backgrounds/right-arrow-01.png"
+
 // liz2
 import liz1 from "./rigged-girls/liz/png/liz-1.png"
 import liz2 from "./rigged-girls/liz/png/liz-2.png"
@@ -201,7 +205,7 @@ const lizHeads = [
   liz25,
   liz26,
   liz27,
-  liz28
+  liz28,
 ]
 
 const chadHeads = [
@@ -213,7 +217,7 @@ const chadHeads = [
   chad06,
   chad07,
   chad08,
-  chad09
+  chad09,
 ]
 
 const katHeads = [
@@ -241,7 +245,7 @@ const katHeads = [
   katUnsure,
   katWinking,
   katPigtails,
-  katPonytail
+  katPonytail,
 ]
 
 const posableChad = {
@@ -250,18 +254,18 @@ const posableChad = {
   mood: "chad1",
   images: {
     heads: [],
-    body: { image: katBody }
-  }
+    body: { image: katBody },
+  },
 }
 
-posableChad.images.heads = chadHeads.map(image => {
+posableChad.images.heads = chadHeads.map((image) => {
   const regex = `([^/]+?)$`
   const match = image.match(regex)
   const mood = match && match[0]
 
   return {
     image,
-    mood
+    mood,
   }
 })
 
@@ -271,18 +275,18 @@ const posableLiz = {
   mood: "liz1",
   images: {
     heads: [],
-    body: { image: katBody }
-  }
+    body: { image: katBody },
+  },
 }
 
-posableLiz.images.heads = lizHeads.map(image => {
+posableLiz.images.heads = lizHeads.map((image) => {
   const regex = `([^/]+?)$`
   const match = image.match(regex)
   const mood = match && match[0]
 
   return {
     image,
-    mood
+    mood,
   }
 })
 
@@ -292,10 +296,10 @@ const posableKat = {
   mood: "kat",
   images: {
     heads: [],
-    body: { image: katBody }
-  }
+    body: { image: katBody },
+  },
 }
-posableKat.images.heads = katHeads.map(image => {
+posableKat.images.heads = katHeads.map((image) => {
   const regex = `([^/]+?)$`
   const match = image.match(regex)
 
@@ -303,7 +307,7 @@ posableKat.images.heads = katHeads.map(image => {
   const mood = match && match[0]
   return {
     image,
-    mood
+    mood,
   }
 })
 
@@ -327,7 +331,7 @@ const locations = {
   tree,
   waterfall,
   end,
-  blank
+  blank,
 }
 
 const creatures = {
@@ -359,7 +363,7 @@ const creatures = {
   rat,
   troll,
   unicorn,
-  wizard
+  wizard,
 }
 
 const items = {
@@ -386,20 +390,20 @@ const items = {
   rag,
   tag,
   top,
-  twig
+  twig,
 }
 
 const vehicles = {
   car,
   tug,
   van,
-  bus
+  bus,
 }
 
 const doors = {
   doorGreen,
   doorYellow,
-  door
+  door,
 }
 
 const backgrounds = {
@@ -410,8 +414,10 @@ const backgrounds = {
   forestRight,
   map,
   rock,
+  leftArrow,
+  rightArrow,
   hill01,
-  sky01
+  sky01,
 }
 
 const all = { ...locations, ...creatures, ...items, ...vehicles, ...doors }
@@ -427,6 +433,6 @@ export default {
   posableGirls: [posableLiz, posableKat, posableChad],
   sceneView: {
     book: sceneViewBook,
-    notebook: sceneViewNotebook
-  }
+    notebook: sceneViewNotebook,
+  },
 }

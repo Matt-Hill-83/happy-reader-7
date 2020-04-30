@@ -93,32 +93,44 @@ class PicturePage extends React.Component {
     )
 
     if (container) {
-      container.scrollLeft += 50 * (reverse ? -1 : 1)
+      container.scrollLeft += 100 * (reverse ? -1 : 1)
     }
   }
 
-  renderMapPage = ({}) => {
+  renderMapPage = () => {
     const mapImage = Images.backgrounds["map"]
+    const leftArrow = Images.backgrounds["leftArrow"]
+    const rightArrow = Images.backgrounds["rightArrow"]
 
     return (
       <div className={`${css.halfPage} ${css.rightHalf}`}>
+        <img className={css.backgroundImage} src={mapImage} alt={"bk"} />
         <div className={`${css.mapScroller}`}>
-          <Button
-            className={cx(css.scrollButton, css.leftScrollButton)}
-            onClick={() => this.scrollHorizontal({ reverse: true })}
-          >
-            Back
-          </Button>
-
-          <Button
-            className={cx(css.scrollButton, css.rightScrollButton)}
-            onClick={() => this.scrollHorizontal({})}
-          >
-            Forward
-          </Button>
-          <img className={css.backgroundImage} src={mapImage} alt={"bk"} />
           <div className={`${css.innerMapScroller}`}>
             {this.renderSceneRows()}
+          </div>
+          <div className={css.scrollButtons}>
+            <Button
+              className={cx(css.scrollButton, css.leftScrollButton)}
+              onClick={() => this.scrollHorizontal({ reverse: true })}
+            >
+              <img
+                className={css.windowScrollButtonImage}
+                src={leftArrow}
+                alt={"bk"}
+              />
+            </Button>
+
+            <Button
+              className={cx(css.scrollButton, css.rightScrollButton)}
+              onClick={() => this.scrollHorizontal({})}
+            >
+              <img
+                className={css.windowScrollButtonImage}
+                src={rightArrow}
+                alt={"bk"}
+              />
+            </Button>
           </div>
         </div>
       </div>
@@ -140,13 +152,12 @@ class PicturePage extends React.Component {
   render() {
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
 
-    if (showWorldBuilder) {
-    } else {
+    if (!showWorldBuilder) {
       return (
         <div className={`${css.main}`}>
           {this.renderStoryPage()}
 
-          {this.renderMapPage({})}
+          {this.renderMapPage()}
           {false && this.renderYourItems({})}
         </div>
       )
