@@ -93,7 +93,7 @@ class PicturePage extends React.Component {
     )
 
     if (container) {
-      container.scrollLeft += 130 * (reverse ? -1 : 1)
+      container.scrollLeft += 135 * (reverse ? -1 : 1)
     }
   }
 
