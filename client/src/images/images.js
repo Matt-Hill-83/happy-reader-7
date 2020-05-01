@@ -361,6 +361,7 @@ const creatures = {
   monster,
   pig,
   pug,
+  rori,
   rat,
   troll,
   unicorn,

@@ -274,61 +274,69 @@ class MiniLocation extends React.Component {
       >
         {/* this is the right path */}
         {!isBlank && (
-          <div className={css.rightPath}>
-            {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
-          </div>
-        )}
+          <div className={css.container}>
+            {!isBlank && (
+              <div className={css.rightPath}>
+                {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
+              </div>
+            )}
 
-        {!isBlank && (
-          <div className={css.bottomPath}>
-            {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
-          </div>
-        )}
-        {!isBlank && <div className={css.grassImage} />}
-        {!isBlank && !isEditMode && showCloud && (
-          <div className={css.cloudImageContainer}>
-            {/* <img className={css.cloudImage} src={rockImage} alt={"imagex"} /> */}
-            <img className={css.cloudImage} src={cloudImage} alt={"imagex"} />
-          </div>
-        )}
-        {!isBlank &&
-          this.renderButton({
-            position: "right",
-            className: css.rightDoor,
-            defaultDoorImage: defaultDoorImage,
-          })}
+            {!isBlank && (
+              <div className={css.bottomPath}>
+                {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
+              </div>
+            )}
+            {!isBlank && <div className={css.grassImage} />}
+            {!isBlank && !isEditMode && showCloud && (
+              <div className={css.cloudImageContainer}>
+                {/* <img className={css.cloudImage} src={rockImage} alt={"imagex"} /> */}
+                <img
+                  className={css.cloudImage}
+                  src={cloudImage}
+                  alt={"imagex"}
+                />
+              </div>
+            )}
+            {!isBlank &&
+              this.renderButton({
+                position: "right",
+                className: css.rightDoor,
+                defaultDoorImage: defaultDoorImage,
+              })}
 
-        {false &&
-          this.renderButton({
-            position: "left",
-            className: css.leftDoor,
-            defaultDoorImage: defaultDoorImage,
-          })}
+            {false &&
+              this.renderButton({
+                position: "left",
+                className: css.leftDoor,
+                defaultDoorImage: defaultDoorImage,
+              })}
 
-        {false &&
-          this.renderButton({
-            position: "bottom",
-            className: css.bottomDoor,
-            defaultDoorImage: defaultDoorImage,
-          })}
+            {false &&
+              this.renderButton({
+                position: "bottom",
+                className: css.bottomDoor,
+                defaultDoorImage: defaultDoorImage,
+              })}
 
-        {!isBlank && (
-          <div className={css.imagesBox}>
-            <img
-              className={css.miniLocationImage}
-              src={locationImage}
-              alt={"imagex"}
-            />
+            {!isBlank && (
+              <div className={css.imagesBox}>
+                <img
+                  className={css.miniLocationImage}
+                  src={locationImage}
+                  alt={"imagex"}
+                />
+              </div>
+            )}
+            {(!isBlank && renderedItems) || null}
+            {!isBlank && (
+              <div className={css.characters}>
+                {this.renderCharacters({ creatures, isActive })}
+              </div>
+            )}
+            {!isBlank && showLabel && (
+              <span className={css.locationTitle}>{locationName}</span>
+            )}
           </div>
-        )}
-        {(!isBlank && renderedItems) || null}
-        {!isBlank && (
-          <div className={css.characters}>
-            {this.renderCharacters({ creatures, isActive })}
-          </div>
-        )}
-        {!isBlank && showLabel && (
-          <span className={css.locationTitle}>{locationName}</span>
         )}
       </div>
     )
