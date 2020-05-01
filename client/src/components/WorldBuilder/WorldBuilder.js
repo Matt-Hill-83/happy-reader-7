@@ -290,7 +290,7 @@ class WorldBuilder extends Component {
 
     console.log("gridHash", toJS(gridHash)) // zzz
 
-    return outputArray
+    return gridHash
   }
 
   editFrame = ({ sceneToEdit }) => {

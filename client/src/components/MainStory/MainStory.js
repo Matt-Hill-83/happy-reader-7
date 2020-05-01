@@ -102,6 +102,7 @@ class MainStory extends React.Component {
   getTerminalScene = ({ start = true }) => {
     const mapId = localStateStore.getActiveMapId()
     const map = Utils.getMapFromId({ id: mapId })
+    console.log("map.data.newGrid3,", toJS(map.data.newGrid3)) // zzz
 
     const startScene = map.data.startScene
     const endScene = map.data.endScene

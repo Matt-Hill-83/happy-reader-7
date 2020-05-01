@@ -232,7 +232,12 @@ class MiniLocation extends React.Component {
       isEditMode,
     } = this.props
 
-    // console.log("this.props.scene", toJS(this.props.scene)) // zzz
+    const { isLastCol, isLastRow } = scene
+    console.log("isLastRow", isLastRow) // zzz
+    console.log("isLastCol", isLastCol) // zzz
+
+    console.log("miniLocation") // zzz
+    console.log("this.props.scene", toJS(this.props.scene)) // zzz
 
     let showCloud = scene.showCloud
     if (showCloud === undefined) {
@@ -274,16 +279,15 @@ class MiniLocation extends React.Component {
           this.props.scene.isStartScene ? css.isStartScene : ""
         } ${isBlank ? css.isBlank : ""} ${localClass} `}
       >
-        {/* this is the right path */}
         {!isBlank && (
           <div className={css.container}>
-            <div className={css.rightPath}></div>
-            <div className={css.bottomPath}></div>
+            {/* Paths that connect scenes */}
+            {!isLastCol && <div className={css.rightPath}></div>}
+            {!isLastRow && <div className={css.bottomPath}></div>}
             {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
             <div className={css.grassImage} />
             {!isEditMode && showCloud && (
               <div className={css.cloudImageContainer}>
-                {/* <img className={css.cloudImage} src={rockImage} alt={"imagex"} /> */}
                 <img
                   className={css.cloudImage}
                   src={cloudImage}
@@ -291,11 +295,14 @@ class MiniLocation extends React.Component {
                 />
               </div>
             )}
-            {this.renderButton({
-              position: "right",
-              className: css.rightDoor,
-              defaultDoorImage: defaultDoorImage,
-            })}
+
+            {/* Right door */}
+            {!isLastCol &&
+              this.renderButton({
+                position: "right",
+                className: css.rightDoor,
+                defaultDoorImage: defaultDoorImage,
+              })}
             {false &&
               this.renderButton({
                 position: "left",
