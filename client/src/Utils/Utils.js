@@ -235,6 +235,21 @@ export default class Utils {
     return foundMap
   }
 
+  static getSceneFromId = ({ id }) => {
+    const mapsDocs = toJS(maps.docs)
+    // const defaultMap = mapsDocs[0]
+    const defaultMap = this.getFirstReleasedMap() || {}
+
+    if (!id) return defaultMap
+
+    const filteredMaps = mapsDocs.filter((map) => map.data.released)
+    const foundMap = filteredMaps
+      ? filteredMaps.find((map) => map.id === id)
+      : defaultMap
+
+    return foundMap
+  }
+
   static getFirstReleasedMap = () => {
     const mapsDocs = toJS(maps.docs)
     const filteredMaps = mapsDocs.filter((map) => {

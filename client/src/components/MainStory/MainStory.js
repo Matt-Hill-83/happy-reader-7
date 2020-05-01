@@ -148,7 +148,15 @@ class MainStory extends React.Component {
   }
 
   initWorld = async () => {
+    console.log("initWorld") // zzz
+
     const startScene = this.getTerminalScene({})
+    console.log("startScene", startScene) // zzz
+
+    localStateStore.setActiveSceneId(startScene.id)
+    const test = localStateStore.getActiveSceneId()
+    console.log("test", toJS(test)) // zzz
+
     if (!startScene) return
 
     // For some reason this is not referencing the object in the grid, and the showCloud prop is not persisting.
@@ -199,10 +207,19 @@ class MainStory extends React.Component {
 
     const currentPosition = currentLocation.position
 
-    neighbors.push({ x: currentPosition.x - 1, y: currentPosition.y })
-    neighbors.push({ x: currentPosition.x + 1, y: currentPosition.y })
-    neighbors.push({ x: currentPosition.x, y: currentPosition.y + 1 })
-    neighbors.push({ x: currentPosition.x, y: currentPosition.y - 1 })
+    const neighborPositions = {
+      left: { x: currentPosition.x - 1, y: currentPosition.y },
+      right: { x: currentPosition.x + 1, y: currentPosition.y },
+      bottom: { x: currentPosition.x, y: currentPosition.y + 1 },
+      top: { x: currentPosition.x, y: currentPosition.y - 1 },
+    }
+
+    neighbors.push(neighborPositions.top)
+    neighbors.push(neighborPositions.bottom)
+    neighbors.push(neighborPositions.left)
+    neighbors.push(neighborPositions.right)
+
+    activeScene.neighborPositions = neighborPositions
 
     const neighborNames = []
 
@@ -213,6 +230,8 @@ class MainStory extends React.Component {
         }
       })
     })
+
+    console.log("neighbors", neighbors) // zzz
 
     return neighborNames
   }
@@ -309,14 +328,9 @@ class MainStory extends React.Component {
   }
 
   render() {
-    // const mapId = localStateStore.getActiveMapId()
     const activeMap = localStateStore.getActiveMap()
 
-    // const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-
     if (!activeMap || !activeMap.data || !activeMap.data.title) {
-      // if (!savedMaps.length) {
-
       return null
     }
 

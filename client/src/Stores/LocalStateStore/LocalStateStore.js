@@ -13,27 +13,27 @@ class LocalStateStore {
   activeMapId = null
 
   getYou = () => this.you
-  setYou = you => {
+  setYou = (you) => {
     this.you = you
   }
 
   getPlot = () => this.plot
-  setPlot = plot => {
+  setPlot = (plot) => {
     this.plot = plot
   }
 
   getShowWorldBuilder = () => this.showWorldBuilder
-  setShowWorldBuilder = showWorldBuilder => {
+  setShowWorldBuilder = (showWorldBuilder) => {
     this.showWorldBuilder = showWorldBuilder
   }
 
   // getMaps = () => this.maps
-  setMaps = maps => {
+  setMaps = (maps) => {
     this.maps = maps
   }
 
   getCreatures = () => this.creatures
-  setCreatures = creatures => {
+  setCreatures = (creatures) => {
     this.creatures = creatures
   }
 
@@ -43,8 +43,13 @@ class LocalStateStore {
   }
 
   getActiveMapId = () => this.activeMapId
-  setActiveMapId = activeMapId => {
+  setActiveMapId = (activeMapId) => {
     this.activeMapId = activeMapId
+  }
+
+  getActiveSceneId = () => this.activeSceneId
+  setActiveSceneId = (activeSceneId) => {
+    this.activeSceneId = activeSceneId
   }
 }
 
@@ -56,7 +61,7 @@ decorate(LocalStateStore, {
   plot: observable,
   showWorldBuilder: observable,
   you: observable,
-  locationDetails: observable
+  locationDetails: observable,
 })
 
 const localStateStore = new LocalStateStore()

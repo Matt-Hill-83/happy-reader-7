@@ -58,6 +58,7 @@ class PicturePage extends React.Component {
 
     const id = `${colIndex}-${rowIndex}`
     const onClick = () => this.props.updateActiveScene({ activeScene: scene })
+
     return (
       // This wrapper div seems to be required to make things render withought ghost divs being included in the list.
       <div onClick={onClick}>

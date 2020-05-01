@@ -232,6 +232,8 @@ class MiniLocation extends React.Component {
       isEditMode,
     } = this.props
 
+    // console.log("this.props.scene", toJS(this.props.scene)) // zzz
+
     let showCloud = scene.showCloud
     if (showCloud === undefined) {
       showCloud = true

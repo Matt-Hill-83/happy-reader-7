@@ -26,8 +26,10 @@ import Utils from "../../Utils/Utils"
 import css from "./WorldBuilder.module.scss"
 
 const INITIAL_MAP_INDEX = 0
-const NUM_ROWS_LOCATIONS_GRID = 5
-const NUM_COLS_LOCATIONS_GRID = 20
+const NUM_ROWS_LOCATIONS_GRID = 2
+const NUM_COLS_LOCATIONS_GRID = 3
+// const NUM_ROWS_LOCATIONS_GRID = 5
+// const NUM_COLS_LOCATIONS_GRID = 20
 
 class WorldBuilder extends Component {
   state = {
@@ -251,11 +253,16 @@ class WorldBuilder extends Component {
     })
 
     const newGrid2 = this.flattenGridForSave({ grid: this.createNewGrid() })
+    console.log("newGrid2", newGrid2) // zzz
+
+    const newGrid3 = this.flattenGridForSave3({ grid: this.createNewGrid() })
+    console.log("newGrid3", newGrid3) // zzz
 
     const newMap = {
       name: newName,
       title: "Test Map",
       newGrid2,
+      newGrid3,
       released: true,
       ignore: false,
     }
@@ -263,6 +270,27 @@ class WorldBuilder extends Component {
     const newMapReturned = await maps.add(newMap)
 
     this.setState({ world: newMapReturned })
+  }
+
+  flattenGridForSave3 = ({ grid }) => {
+    const gridHash = {}
+    const outputArray = []
+
+    grid.forEach((row) => {
+      const newRow = {}
+      row.forEach((scene, index) => {
+        newRow[index] = scene
+        console.log("scene.id", scene.id) // zzz
+
+        // new
+        gridHash[scene.id] = scene
+      })
+      outputArray.push(newRow)
+    })
+
+    console.log("gridHash", toJS(gridHash)) // zzz
+
+    return outputArray
   }
 
   editFrame = ({ sceneToEdit }) => {
@@ -276,6 +304,7 @@ class WorldBuilder extends Component {
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
     const map = this.state.world
+    console.log("map.data", toJS(map.data)) // zzz
 
     Object.assign(map.data, toJS(newProps))
 
@@ -344,7 +373,14 @@ class WorldBuilder extends Component {
           story: ["I am Kat"],
         }
 
+        const coordinates = { x: colIndex, y: rowIndex }
+        const isLastRow = rowIndex === NUM_ROWS_LOCATIONS_GRID - 1
+        const isLastCol = colIndex === NUM_COLS_LOCATIONS_GRID - 1
+
         gridRow.push({
+          isLastRow,
+          isLastCol,
+          coordinates,
           id,
           location: { name: "blank" },
           doorRight: { name: "doorYellow" },
@@ -370,8 +406,6 @@ class WorldBuilder extends Component {
     })
     return outputArray
   }
-
-  // unFlattenGridAfterLoad = ({ grid }) => {}
 
   saveItems = async (statePropsToSave) => {
     // TODO - data is correct up to here on Delete

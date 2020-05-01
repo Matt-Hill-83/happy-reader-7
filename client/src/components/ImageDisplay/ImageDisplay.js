@@ -12,7 +12,6 @@ class ImageDisplay extends Component {
   componentWillMount() {
     let { items = [] } = this.props
     this.setState({ items: [...items] })
-    console.log("items", toJS(items)) // zzz
   }
 
   componentWillReceiveProps(newProps) {
@@ -26,10 +25,8 @@ class ImageDisplay extends Component {
       showLabel,
       className,
     } = this.props
-    console.log("name---------------------------------------------", name) // zzz
 
     const image = this.props.images || Images.all[name]
-    console.log("image", toJS(image)) // zzz
 
     return (
       <div

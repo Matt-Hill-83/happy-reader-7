@@ -64,8 +64,6 @@ class Frame extends Component {
       frame: { faces },
     } = this.state
 
-    console.log("faces", toJS(faces)) // zzz
-
     const thisFace = faces.find((face) => face.character === name)
     thisFace.face = head.mood
 
@@ -272,8 +270,6 @@ class Frame extends Component {
     const locationImage =
       Images.locations[_get(this.props, "scene.location.name")]
 
-    console.log("scene", toJS(scene)) // zzz
-
     return (
       <div className={css.locationImageContainer}>
         <img className={css.locationImage} src={locationImage} alt={"imagex"} />
@@ -320,13 +316,8 @@ class Frame extends Component {
 
   renderItems = () => {
     const items = _get(this, "props.scene.items") || []
-    console.log("this.props", toJS(this.props)) // zzz
-
-    console.log("items", items) // zzz
 
     return items.map((item) => {
-      console.log("item", toJS(item)) // zzz
-
       const { name } = item
 
       return <ImageDisplay className={css.itemContainer} item={{ name }} />
@@ -344,12 +335,10 @@ class Frame extends Component {
       (scene.characters && scene.characters.map((item) => item.name)) || []
 
     const allItems = (scene.items && scene.items.map((item) => item.name)) || []
-
+    
     // temp code DELETE ME!!! (start) - zzz
     allCharacters.push(...allItems)
     // temp code DELETE ME!!! (end)
-
-    console.log("allCharacters", toJS(allCharacters)) // zzz
 
     return allCharacters.map((friend, index) => {
       const mood = this.getMood({ name: friend, faces })
