@@ -275,19 +275,11 @@ class MiniLocation extends React.Component {
         {/* this is the right path */}
         {!isBlank && (
           <div className={css.container}>
-            {!isBlank && (
-              <div className={css.rightPath}>
-                {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
-              </div>
-            )}
-
-            {!isBlank && (
-              <div className={css.bottomPath}>
-                {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
-              </div>
-            )}
-            {!isBlank && <div className={css.grassImage} />}
-            {!isBlank && !isEditMode && showCloud && (
+            <div className={css.rightPath}></div>
+            <div className={css.bottomPath}></div>
+            {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
+            <div className={css.grassImage} />
+            {!isEditMode && showCloud && (
               <div className={css.cloudImageContainer}>
                 {/* <img className={css.cloudImage} src={rockImage} alt={"imagex"} /> */}
                 <img
@@ -297,43 +289,37 @@ class MiniLocation extends React.Component {
                 />
               </div>
             )}
-            {!isBlank &&
-              this.renderButton({
-                position: "right",
-                className: css.rightDoor,
-                defaultDoorImage: defaultDoorImage,
-              })}
-
+            {this.renderButton({
+              position: "right",
+              className: css.rightDoor,
+              defaultDoorImage: defaultDoorImage,
+            })}
             {false &&
               this.renderButton({
                 position: "left",
                 className: css.leftDoor,
                 defaultDoorImage: defaultDoorImage,
               })}
-
             {false &&
               this.renderButton({
                 position: "bottom",
                 className: css.bottomDoor,
                 defaultDoorImage: defaultDoorImage,
               })}
+            <div className={css.imagesBox}>
+              <img
+                className={css.miniLocationImage}
+                src={locationImage}
+                alt={"imagex"}
+              />
+            </div>
+            {renderedItems || null}
 
-            {!isBlank && (
-              <div className={css.imagesBox}>
-                <img
-                  className={css.miniLocationImage}
-                  src={locationImage}
-                  alt={"imagex"}
-                />
-              </div>
-            )}
-            {(!isBlank && renderedItems) || null}
-            {!isBlank && (
-              <div className={css.characters}>
-                {this.renderCharacters({ creatures, isActive })}
-              </div>
-            )}
-            {!isBlank && showLabel && (
+            <div className={css.characters}>
+              {this.renderCharacters({ creatures, isActive })}
+            </div>
+
+            {showLabel && (
               <span className={css.locationTitle}>{locationName}</span>
             )}
           </div>
