@@ -191,6 +191,8 @@ class WorldBuilder extends Component {
   }
 
   renderEndScenePicker = () => {
+    console.log("renderEndScenePicker") // zzz
+
     const map = this.state.world
     if (!map) return null
 
@@ -207,11 +209,23 @@ class WorldBuilder extends Component {
 
     const renderedSceneNames = filteredScenesList.map((scene, index) => {
       const { name } = scene.location
+      // const startSceneId = scene.id
+      // console.log("startSceneId", startSceneId) // zzz
 
       const changeScene = ({ name }) => {
+        console.log("changeScene") // zzz
+
         scenesList.forEach((scene) => (scene.isEndScene = false))
         scene.isEndScene = true
+        scene.endSceneId = "endSceneId"
         map.data.endScene = name
+        // TODO: add endsceneId to map object and then consumem in MainStory
+        // TODO: add endsceneId to map object and then consumem in MainStory
+        // TODO: add endsceneId to map object and then consumem in MainStory
+        // TODO: add endsceneId to map object and then consumem in MainStory
+        // TODO: add endsceneId to map object and then consumem in MainStory
+
+        // map.data.endSceneId = endSceneId
         this.updateMap({ newProps: { ...map.data } })
       }
 

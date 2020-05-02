@@ -106,8 +106,14 @@ class MainStory extends React.Component {
 
     const startScene = map.data.startScene
     const endScene = map.data.endScene
+    const endSceneId = map.data.endSceneId
+
+    console.log("endSceneId", endSceneId) // zzz
 
     const grid = _get(map, "data.newGrid2") || []
+    const grid3 = _get(map, "data.newGrid3") || {}
+    console.log("grid3", toJS(grid3)) // zzz
+
     // const grid  =[]
 
     // I think this is breaking the refs, so assigned props are not retained
