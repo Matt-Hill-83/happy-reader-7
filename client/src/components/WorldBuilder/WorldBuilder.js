@@ -217,7 +217,7 @@ class WorldBuilder extends Component {
 
         scenesList.forEach((scene) => (scene.isEndScene = false))
         scene.isEndScene = true
-        scene.endSceneId = "endSceneId"
+        map.data.endSceneId = "endSceneId"
         map.data.endScene = name
         // TODO: add endsceneId to map object and then consumem in MainStory
         // TODO: add endsceneId to map object and then consumem in MainStory
@@ -226,6 +226,7 @@ class WorldBuilder extends Component {
         // TODO: add endsceneId to map object and then consumem in MainStory
 
         // map.data.endSceneId = endSceneId
+        // this.updateMap({ newProps: map.data })
         this.updateMap({ newProps: { ...map.data } })
       }
 
@@ -265,11 +266,17 @@ class WorldBuilder extends Component {
     await worldNameStore.docs[0].update({
       previousMapName: newName,
     })
-
-    const newGrid2 = this.flattenGridForSave({ grid: this.createNewGrid() })
+    const grid = this.createNewGrid()
+    const newGrid2 = this.flattenGridForSave({ grid })
     console.log("newGrid2", newGrid2) // zzz
 
-    const newGrid3 = this.flattenGridForSave3({ grid: this.createNewGrid() })
+    // const newGrid3 = this.flattenGridForSave3({ grid: this.createNewGrid() })
+    // console.log("newGrid3", newGrid3) // zzz
+
+    // const testGrid = this.createNewGrid()
+    // const newGrid3 = []
+    const newGrid3 = grid.flat()
+
     console.log("newGrid3", newGrid3) // zzz
 
     const newMap = {
@@ -286,26 +293,26 @@ class WorldBuilder extends Component {
     this.setState({ world: newMapReturned })
   }
 
-  flattenGridForSave3 = ({ grid }) => {
-    const gridHash = {}
-    const outputArray = []
+  // flattenGridForSave3 = ({ grid }) => {
+  //   const gridHash = {}
+  //   const outputArray = []
 
-    grid.forEach((row) => {
-      const newRow = {}
-      row.forEach((scene, index) => {
-        newRow[index] = scene
-        console.log("scene.id", scene.id) // zzz
+  //   grid.forEach((row) => {
+  //     const newRow = {}
+  //     row.forEach((scene, index) => {
+  //       newRow[index] = scene
+  //       console.log("scene.id", scene.id) // zzz
 
-        // new
-        gridHash[scene.id] = scene
-      })
-      outputArray.push(newRow)
-    })
+  //       // new
+  //       gridHash[scene.id] = scene
+  //     })
+  //     outputArray.push(newRow)
+  //   })
 
-    console.log("gridHash", toJS(gridHash)) // zzz
+  //   console.log("gridHash", toJS(gridHash)) // zzz
 
-    return gridHash
-  }
+  //   return gridHash
+  // }
 
   editFrame = ({ sceneToEdit }) => {
     this.setState({ sceneToEdit, showFrameBuilder: true })
@@ -317,12 +324,43 @@ class WorldBuilder extends Component {
 
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
+    console.log("updateMap") // zzz
+
     const map = this.state.world
     console.log("map.data", toJS(map.data)) // zzz
-
     Object.assign(map.data, toJS(newProps))
+    const test = toJS(map.data.newGrid2) || []
+    const test2 = test.flat(2)
+    console.log("test2", test2) // zzz
 
+    console.log("test", test) // zzz
+
+    const newGrid4 = []
+
+    // need to convert back to an array of objects, or never convert to weird nested object at all
+    // need to convert back to an array of objects, or never convert to weird nested object at all
+    // need to convert back to an array of objects, or never convert to weird nested object at all
+    // need to convert back to an array of objects, or never convert to weird nested object at all
+    // need to convert back to an array of objects, or never convert to weird nested object at all
+    map.data.newGrid2.forEach((row, rowIndex) => {
+      for (const scene in row) {
+        if (row.hasOwnProperty(scene)) {
+          const element = row[scene]
+          console.log("element", element) // zzz
+          newGrid4.push(element)
+        }
+      }
+    })
+
+    // const newGrid4 = (map.data.newGrid2 && map.data.newGrid2.flat(2)) || []
+    console.log("newGrid4", toJS(newGrid4)) // zzz
+
+    map.data.newGrid4 = newGrid4
+
+    /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
     delete map.data.grid
+    console.log("map.data", toJS(map.data)) // zzz
+
     await map.update(map.data)
   }
 

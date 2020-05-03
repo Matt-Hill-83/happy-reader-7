@@ -61,6 +61,9 @@ class MainStory extends React.Component {
 
     // TODO - I need to get maps by id, not by index, because I'm filtering them.
     filteredMaps.forEach((map) => {
+      console.log("map.data------------------->>>>", map.data) // zzz
+      console.log("map.data", toJS(map.data)) // zzz
+
       const grid = this.transformLocationsGridToLocationsMap({
         scenesGrid: map.data.newGrid2,
       })
@@ -99,19 +102,40 @@ class MainStory extends React.Component {
     return locationsMap
   }
 
+  // getSceneFromGrid3ById = ({ id }) => {
+
+  //   console.log("map.data.newGrid3,", toJS(map.data.newGrid3)) // zzz
+
+  //   scenes
+  //   for (const property in object) {
+  //     console.log(`${property}: ${object[property]}`);
+  //   }
+
+  // }
+
   getTerminalScene = ({ start = true }) => {
     const mapId = localStateStore.getActiveMapId()
     const map = Utils.getMapFromId({ id: mapId })
-    console.log("map.data.newGrid3,", toJS(map.data.newGrid3)) // zzz
+    // console.log("map.data.newGrid3,", toJS(map.data.newGrid3)) // zzz
 
     const startScene = map.data.startScene
     const endScene = map.data.endScene
     const endSceneId = map.data.endSceneId
+    console.log("endScene", endScene) // zzz
+    console.log("startScene", startScene) // zzz
 
     console.log("endSceneId", endSceneId) // zzz
 
     const grid = _get(map, "data.newGrid2") || []
     const grid3 = _get(map, "data.newGrid3") || {}
+
+    console.log("map.data", toJS(map.data)) // zzz
+
+    console.log("-----------") // zzz
+    console.log("-----------") // zzz
+    console.log("-----------") // zzz
+    console.log("grid", toJS(grid)) // zzz
+
     console.log("grid3", toJS(grid3)) // zzz
 
     // const grid  =[]
@@ -159,12 +183,11 @@ class MainStory extends React.Component {
 
     const startScene = this.getTerminalScene({})
     console.log("startScene", startScene) // zzz
+    if (!startScene) return
 
     localStateStore.setActiveSceneId(startScene.id)
     const test = localStateStore.getActiveSceneId()
     console.log("test", toJS(test)) // zzz
-
-    if (!startScene) return
 
     // For some reason this is not referencing the object in the grid, and the showCloud prop is not persisting.
     startScene.showCloud = false
