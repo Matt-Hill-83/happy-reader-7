@@ -34,7 +34,6 @@ const NUM_COLS_LOCATIONS_GRID = 3
 
 class WorldBuilder extends Component {
   state = {
-    world: {},
     sceneToEdit: null,
     showFrameBuilder: false,
   }
@@ -47,6 +46,8 @@ class WorldBuilder extends Component {
   }
 
   changeMap = ({ index }) => {
+    console.log("changeMap") // zzz
+
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     let world = savedMaps[index]
 
@@ -56,8 +57,6 @@ class WorldBuilder extends Component {
       return
     } else {
       console.log("world.data", toJS(world.data)) // zzz
-
-      // this.setState({ world })
 
       const test = Utils.reCreateGridFromGridData({ map: world })
       console.log("test", test) // zzz
@@ -175,7 +174,6 @@ class WorldBuilder extends Component {
   }
 
   renderTerminalScenePicker = ({ isStartScene }) => {
-    // const map = this.state.world
     const map = localStateStore.getMapBuilderWorld()
     if (!map) return null
 
@@ -275,7 +273,6 @@ class WorldBuilder extends Component {
 
     console.log("updateMap") // zzz
 
-    // const map = this.state.world
     const map = localStateStore.getMapBuilderWorld()
     Object.assign(map.data, toJS(newProps))
 
@@ -300,7 +297,6 @@ class WorldBuilder extends Component {
   }
 
   onChangeTitle = async ({ event }) => {
-    // const { world } = this.state
     const world = localStateStore.getMapBuilderWorld()
     world.data.title = event.target.value
     localStateStore.setMapBuilderWorld(world)
