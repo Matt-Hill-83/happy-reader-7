@@ -154,18 +154,20 @@ class WorldBuilder extends Component {
     const renderedSceneNames = filteredScenesList.map((scene, index) => {
       const { name } = scene.location
 
-      const changeScene = ({ name }) => {
-        scenesList.forEach((scene) => (scene.isStartScene = false))
-        scene.isStartScene = true
-        map.data.startScene = name
-        this.updateMap({ newProps: { ...map.data } })
-      }
-
+      const isStartScene = true
       const text = (
         <div className={css.mapPickerRow}>
           <span
             className={css.mapPickerRowTitle}
-            onClick={() => changeScene({ name })}
+            onClick={() =>
+              this.changeTerminalScene({
+                name,
+                scenesList,
+                scene,
+                map,
+                isStartScene,
+              })
+            }
           >
             {name}
           </span>
@@ -190,20 +192,31 @@ class WorldBuilder extends Component {
     return scenePicker
   }
 
-  changeScene = ({ name, scenesList, scene, map }) => {
+  changeTerminalScene = ({ name, scenesList, scene, map, isStartScene }) => {
     console.log("changeScene") // zzz
 
     scenesList.forEach((scene) => {
-      scene.isEndScene = false
+      if (isStartScene) {
+        scene.isStartScene = false
+      } else {
+        scene.isEndScene = false
+      }
     })
 
-    scene.isEndScene = true
-    map.data.endSceneId = scene.id
-    map.data.endScene = name
+    if (isStartScene) {
+      scene.isStartScene = true
+      map.data.startSceneId = scene.id
+      map.data.startScene = name
+    } else {
+      scene.isEndScene = true
+      map.data.endSceneId = scene.id
+      map.data.endScene = name
+    }
+
     this.updateMap({ newProps: { ...map.data } })
   }
 
-  renderEndScenePicker = () => {
+  renderEndScenePicker = ({ isStartScene }) => {
     console.log("renderEndScenePicker") // zzz
 
     const map = this.state.world
@@ -227,7 +240,15 @@ class WorldBuilder extends Component {
         <div className={css.mapPickerRow}>
           <span
             className={css.mapPickerRowTitle}
-            onClick={() => this.changeScene({ name, scenesList, scene, map })}
+            onClick={() =>
+              this.changeTerminalScene({
+                name,
+                scenesList,
+                scene,
+                map,
+                isStartScene,
+              })
+            }
           >
             {name}
           </span>
@@ -583,9 +604,9 @@ class WorldBuilder extends Component {
                 {` --- ${world.id}`}
               </div>
               start:
-              {this.renderStartScenePicker()}
+              {this.renderStartScenePicker({ isStartScene: true })}
               end:
-              {this.renderEndScenePicker()}
+              {this.renderEndScenePicker({ isStartScene: false })}
               <div className={css.subTitle}>
                 <div className={css.editWorldButtons}>
                   {this.renderMapPicker()}

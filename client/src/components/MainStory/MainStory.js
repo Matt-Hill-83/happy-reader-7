@@ -119,7 +119,9 @@ class MainStory extends React.Component {
     // console.log("map.data.newGrid3,", toJS(map.data.newGrid3)) // zzz
 
     const startScene = map.data.startScene
-    // const endScene = map.data.endScene
+    const endScene2 = map.data.endScene
+    console.log("endScene2", endScene2) // zzz
+
     const endSceneId = map.data.endSceneId
     // console.log("endScene", endScene) // zzz
     console.log("startScene", startScene) // zzz
