@@ -23,6 +23,7 @@ import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import images from "../../images/images"
 import Utils from "../../Utils/Utils"
 
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import css from "./WorldBuilder.module.scss"
 
 const INITIAL_MAP_INDEX = 0
@@ -39,6 +40,8 @@ class WorldBuilder extends Component {
   }
 
   async componentWillMount() {
+    console.log("localStateStore", localStateStore) // zzz
+
     const initialMapIndex = INITIAL_MAP_INDEX
     this.changeMap({ index: initialMapIndex })
   }
@@ -47,16 +50,26 @@ class WorldBuilder extends Component {
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     let world = savedMaps[index]
 
-    let scenesGrid
-
     // new map
     if (index === -1) {
       this.saveNewMap()
       return
     } else {
-      scenesGrid = world.data.scenesGrid
+      console.log("world.data", toJS(world.data)) // zzz
 
-      this.setState({ scenesGrid, world })
+      // this.setState({ world })
+
+      const test = Utils.reCreateGridFromGridData({ map: world })
+      console.log("test", test) // zzz
+
+      localStateStore.setMapBuilderGrid(test)
+      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
+      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
+      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
+      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
+      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
+      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
+      localStateStore.setMapBuilderWorld(world)
     }
 
     // TODO:  I could just set the index to state
@@ -162,7 +175,8 @@ class WorldBuilder extends Component {
   }
 
   renderTerminalScenePicker = ({ isStartScene }) => {
-    const map = this.state.world
+    // const map = this.state.world
+    const map = localStateStore.getMapBuilderWorld()
     if (!map) return null
 
     if (!map.data) {
@@ -223,6 +237,11 @@ class WorldBuilder extends Component {
     this.setState({ sceneToEdit: "", showFrameBuilder: false })
   }
 
+  // TODO: I need to preserve all the grid locations locally, because when I click on them, I
+  // need to know what their coordinates are.
+
+  // I need to create or recreate the grid to the local store and then convert it to newGrid5 only when I save
+
   saveNewMap = async () => {
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
@@ -234,13 +253,13 @@ class WorldBuilder extends Component {
 
     const newGrid5 = []
 
-    const newGrid2 = this.flattenGridForSave({ grid })
-    console.log("newGrid2", newGrid2) // zzz
+    localStateStore.setMapBuilderGrid(grid)
 
     const newMap = {
       name: newName,
       title: "Test Map",
-      newGrid2,
+      // newGrid2: grid,
+      // newGrid2: this.flattenGridForSave({ grid }),
       newGrid5,
       released: true,
       ignore: false,
@@ -248,28 +267,44 @@ class WorldBuilder extends Component {
     }
 
     const newMapReturned = await maps.add(newMap)
-
+    localStateStore.setMapBuilderWorld(newMapReturned)
     this.setState({ world: newMapReturned })
   }
 
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
-    const map = this.state.world
+    console.log("newProps", newProps) // zzz
+
+    console.log("updateMap") // zzz
+
+    // const map = this.state.world
+    const map = localStateStore.getMapBuilderWorld()
     Object.assign(map.data, toJS(newProps))
 
     const newGrid5 = []
 
-    map.data.newGrid2.forEach((row) => {
-      for (const scene in row) {
-        if (row.hasOwnProperty(scene)) {
-          const element = row[scene]
+    const mapBuilderGrid = localStateStore.getMapBuilderGrid()
+    console.log("mapBuilderGrid", toJS(mapBuilderGrid)) // zzz
 
-          if (element.location.name && element.location.name !== "blank") {
-            newGrid5.push(element)
-          }
+    mapBuilderGrid.forEach((row) => {
+      row.forEach((col) => {
+        if (col.location.name && col.location.name !== "blank") {
+          newGrid5.push(col)
         }
-      }
+      })
     })
+
+    // map.data.newGrid2.forEach((row) => {
+    //   for (const scene in row) {
+    //     if (row.hasOwnProperty(scene)) {
+    //       const element = row[scene]
+
+    //       if (element.location.name && element.location.name !== "blank") {
+    //         newGrid5.push(element)
+    //       }
+    //     }
+    //   }
+    // })
 
     map.data.newGrid5 = newGrid5
     delete map.data.grid
@@ -279,8 +314,10 @@ class WorldBuilder extends Component {
   }
 
   onChangeTitle = async ({ event }) => {
-    const { world } = this.state
+    // const { world } = this.state
+    const world = localStateStore.getMapBuilderWorld()
     world.data.title = event.target.value
+    localStateStore.setMapBuilderWorld(world)
     this.setState({ world })
   }
 
@@ -366,43 +403,6 @@ class WorldBuilder extends Component {
     return { grid, gridDimensions }
   }
 
-  reCreateGridFromGridData = ({ world }) => {
-    const {
-      data: { gridDimensions, newGrid5 },
-    } = world
-
-    const rows = Array(gridDimensions.numRows).fill(0)
-    const columns = Array(gridDimensions.numCols).fill(0)
-    const grid = []
-
-    const blankScene = {
-      location: { name: "blank" },
-      doorRight: { name: "doorYellow" },
-      doorBottom: { name: "doorGreen" },
-      characters: [{ name: "kat" }, { name: "liz2" }],
-      items: [{ name: "hat" }, { name: "bat" }],
-      frameSet: { frames: [] },
-    }
-
-    rows.forEach((row, rowIndex) => {
-      const gridRow = []
-      columns.forEach((col, colIndex) => {
-        const sceneObj =
-          newGrid5.find((scene) => {
-            return (
-              scene.coordinates.x === rowIndex &&
-              scene.coordinates.y === colIndex
-            )
-          }) || blankScene
-
-        gridRow.push(sceneObj)
-      })
-      grid.push(gridRow)
-    })
-
-    return grid
-  }
-
   flattenGridForSave = ({ grid }) => {
     const outputArray = []
     grid.forEach((row) => {
@@ -416,13 +416,6 @@ class WorldBuilder extends Component {
   }
 
   saveItems = async (statePropsToSave) => {
-    // TODO - data is correct up to here on Delete
-    // TODO - data is correct up to here on Delete
-    // TODO - data is correct up to here on Delete
-    // TODO - data is correct up to here on Delete
-    // TODO - data is correct up to here on Delete
-    // TODO - data is correct up to here on Delete
-
     await this.updateMap({ newProps: statePropsToSave })
     this.forceUpdateWorldBuilder()
   }
@@ -432,9 +425,8 @@ class WorldBuilder extends Component {
   }
 
   renderNewGrid = () => {
-    const { world } = this.state
-
-    const grid2 = this.reCreateGridFromGridData({ world })
+    const world = localStateStore.getMapBuilderWorld()
+    const grid2 = Utils.reCreateGridFromGridData({ map: world })
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />

@@ -258,16 +258,6 @@ export default class Utils {
     return filteredMaps[0]
   }
 
-  static getArrayOfScenes = ({ scenesGrid }) => {
-    if (!scenesGrid) return []
-
-    const scenes = []
-    scenesGrid.forEach((row) => {
-      Object.values(row).forEach((scene) => scenes.push(scene))
-    })
-    return scenes
-  }
-
   static generateUuid() {
     const sepStr = "-"
     let date = new Date().getTime()
@@ -286,5 +276,37 @@ export default class Utils {
     return scenesList.filter((scene) => {
       return scene && scene.location && scene.location.name !== "blank"
     })
+  }
+
+  static reCreateGridFromGridData = ({ map }) => {
+    const {
+      data: { gridDimensions, newGrid5 },
+    } = map
+
+    const rows = Array(gridDimensions.numRows).fill(0)
+    const columns = Array(gridDimensions.numCols).fill(0)
+    const grid = []
+
+    const blankScene = {
+      location: { name: "blank" },
+    }
+
+    rows.forEach((row, rowIndex) => {
+      const gridRow = []
+      columns.forEach((col, colIndex) => {
+        const sceneObj =
+          newGrid5.find((scene) => {
+            return (
+              scene.coordinates.x === rowIndex &&
+              scene.coordinates.y === colIndex
+            )
+          }) || blankScene
+
+        gridRow.push(sceneObj)
+      })
+      grid.push(gridRow)
+    })
+
+    return grid
   }
 }

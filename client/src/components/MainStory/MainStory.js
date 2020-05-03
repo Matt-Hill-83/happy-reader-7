@@ -64,9 +64,13 @@ class MainStory extends React.Component {
       console.log("map.data------------------->>>>", map.data) // zzz
       console.log("map.data", toJS(map.data)) // zzz
 
-      const grid = this.transformLocationsGridToLocationsMap({
-        scenesGrid: map.data.newGrid2,
+      console.log("map.data.newGrid5", toJS(map.data.newGrid5)) // zzz
+
+      const grid = Utils.reCreateGridFromGridData({
+        map,
       })
+      console.log("grid", toJS(grid)) // zzz
+
       map.data.grid = grid
     })
 
@@ -75,31 +79,6 @@ class MainStory extends React.Component {
     if (SHOW_WORLD_BUILDER) return
 
     this.initWorld()
-  }
-
-  transformLocationsGridToLocationsMap = ({ scenesGrid }) => {
-    const locationsMap = []
-
-    const numRows = scenesGrid.length
-    const numCols = Object.values(Object.values(scenesGrid)[0]).length
-
-    const rows = Array(numRows).fill(0)
-    const columns = Array(numCols).fill(0)
-
-    rows.map((row, rowIndex) => {
-      const newRow = []
-
-      columns.map((col, colIndex) => {
-        const rowName = rowIndex
-        const colName = colIndex
-
-        const newCell = toJS(scenesGrid[rowName][colName])
-        newRow.push(newCell)
-      })
-      locationsMap.push(newRow)
-    })
-
-    return locationsMap
   }
 
   getTerminalScene = ({ start = true }) => {
@@ -114,7 +93,6 @@ class MainStory extends React.Component {
     const endSceneId = map.data.endSceneId
     const startSceneId = map.data.startSceneId
 
-    const grid = _get(map, "data.newGrid2") || []
     const grid5 = _get(map, "data.newGrid5") || []
     const endScene = grid5.find((item) => item.id === endSceneId)
     const startScene = grid5.find((item) => item.id === startSceneId)
@@ -125,20 +103,8 @@ class MainStory extends React.Component {
     console.log("-----------") // zzz
     console.log("-----------") // zzz
     console.log("-----------") // zzz
-    console.log("grid", toJS(grid)) // zzz
-
-    const flatGrid = toJS(grid).flat()
-
-    // Integrate this fix
-    let scenesList = Utils.getArrayOfScenes({ scenesGrid: flatGrid }) || []
-    scenesList = scenesList.filter((scene) => scene.location.name !== "blank")
 
     const validScenes = grid5
-
-    // const validScenes = scenesList.filter((scene) => {
-    //   return toJS(scene).name
-    // })
-
     const firstScene = validScenes[0]
     const lastScene = validScenes[validScenes.length - 1]
 

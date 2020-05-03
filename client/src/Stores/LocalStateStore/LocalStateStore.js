@@ -10,11 +10,22 @@ class LocalStateStore {
   creatures = []
   locationDetails = {}
   activeLocationsMap = []
+  mapBuilderGrid = []
   activeMapId = null
 
   getYou = () => this.you
   setYou = (you) => {
     this.you = you
+  }
+
+  getMapBuilderGrid = () => this.mapBuilderGrid
+  setMapBuilderGrid = (mapBuilderGrid) => {
+    this.mapBuilderGrid = mapBuilderGrid
+  }
+
+  getMapBuilderWorld = () => this.mapBuilderWorld
+  setMapBuilderWorld = (mapBuilderWorld) => {
+    this.mapBuilderWorld = mapBuilderWorld
   }
 
   getPlot = () => this.plot
@@ -57,6 +68,8 @@ decorate(LocalStateStore, {
   activeMapId: observable,
   creatures: observable,
   maps: observable,
+  mapBuilderGrid: observable,
+  mapBuilderWorld: observable,
   page: observable,
   plot: observable,
   showWorldBuilder: observable,

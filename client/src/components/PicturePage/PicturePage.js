@@ -22,11 +22,11 @@ class PicturePage extends React.Component {
 
   renderSceneRows = () => {
     const map = localStateStore.getActiveMap()
-    const scenesGrid = map.data.grid
+    const grid = map.data.grid
 
     const miniLocationsGrid =
-      scenesGrid &&
-      scenesGrid.map((locationRow, rowIndex) => {
+      grid &&
+      grid.map((locationRow, rowIndex) => {
         const singleRow = this.createSingleRow({ locationRow, rowIndex })
 
         return (
