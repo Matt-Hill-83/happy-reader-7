@@ -169,18 +169,13 @@ class WorldBuilder extends Component {
       return null
     }
 
-    const { startScene, endScene, newGrid4 } = map.data
-    // const { startScene, endScene, newGrid2 } = map.data
+    const { startScene, endScene, newGrid5 } = map.data
 
     const buttonText = isStartScene
       ? `${startScene || "Start Scene"}`
       : `${endScene || "End Scene"}`
 
-    // const scenesList = Utils.getArrayOfScenes({ scenesGrid: newGrid2 }) || []
-
-    // const filteredScenesList = Utils.getNonBlankScenes({ scenesList })
-
-    const renderedSceneNames = newGrid4.map((scene, index) => {
+    const renderedSceneNames = newGrid5.map((scene, index) => {
       const { name } = scene.location
 
       const text = (
@@ -190,8 +185,7 @@ class WorldBuilder extends Component {
             onClick={() =>
               this.changeTerminalScene({
                 name,
-                // newGrid4,
-                scenesList: newGrid4,
+                scenesList: newGrid5,
                 scene,
                 map,
                 isStartScene,
@@ -239,7 +233,6 @@ class WorldBuilder extends Component {
     const { grid, gridDimensions } = this.createNewGrid()
 
     const newGrid5 = []
-    // const newGrid5 = this.flattenGrid2({ grid })
 
     const newGrid2 = this.flattenGridForSave({ grid })
     console.log("newGrid2", newGrid2) // zzz
@@ -259,42 +252,26 @@ class WorldBuilder extends Component {
     this.setState({ world: newMapReturned })
   }
 
-  flattenGrid2 = ({ grid }) => {
-    const newGrid5 = []
-
-    grid.forEach((row) => {
-      for (const scene in row) {
-        if (row.hasOwnProperty(scene)) {
-          const element = row[scene]
-
-          if (element.location.name && element.location.name !== "blank")
-            newGrid5.push(element)
-        }
-      }
-    })
-
-    console.log("newGrid5", toJS(newGrid5)) // zzz
-  }
-
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
     const map = this.state.world
     Object.assign(map.data, toJS(newProps))
 
-    const newGrid4 = []
+    const newGrid5 = []
 
     map.data.newGrid2.forEach((row) => {
       for (const scene in row) {
         if (row.hasOwnProperty(scene)) {
           const element = row[scene]
 
-          if (element.location.name && element.location.name !== "blank")
-            newGrid4.push(element)
+          if (element.location.name && element.location.name !== "blank") {
+            newGrid5.push(element)
+          }
         }
       }
     })
 
-    map.data.newGrid4 = newGrid4
+    map.data.newGrid5 = newGrid5
     delete map.data.grid
     console.log("map.data", toJS(map.data)) // zzz
 
@@ -389,15 +366,10 @@ class WorldBuilder extends Component {
     return { grid, gridDimensions }
   }
 
-  createGridFromGridData = ({ world }) => {
-    console.log("world", toJS(world)) // zzz
-
+  reCreateGridFromGridData = ({ world }) => {
     const {
-      data: { gridDimensions, newGrid4 },
+      data: { gridDimensions, newGrid5 },
     } = world
-
-    console.log("newGrid4", toJS(newGrid4)) // zzz
-    console.log("gridDimensions", gridDimensions) // zzz
 
     const rows = Array(gridDimensions.numRows).fill(0)
     const columns = Array(gridDimensions.numCols).fill(0)
@@ -416,24 +388,17 @@ class WorldBuilder extends Component {
       const gridRow = []
       columns.forEach((col, colIndex) => {
         const sceneObj =
-          newGrid4.find((scene) => {
-            console.log("rowIndex", rowIndex) // zzz
-            console.log("colIndex", colIndex) // zzz
-
+          newGrid5.find((scene) => {
             return (
               scene.coordinates.x === rowIndex &&
               scene.coordinates.y === colIndex
             )
           }) || blankScene
 
-        console.log("sceneObj", toJS(sceneObj)) // zzz
-        console.log("sceneObj.coordinates", toJS(sceneObj.coordinates)) // zzz
-
         gridRow.push(sceneObj)
       })
       grid.push(gridRow)
     })
-    console.log("grid", toJS(grid)) // zzz
 
     return grid
   }
@@ -469,8 +434,7 @@ class WorldBuilder extends Component {
   renderNewGrid = () => {
     const { world } = this.state
 
-    // const grid = world.data && world.data.newGrid2
-    const grid2 = this.createGridFromGridData({ world })
+    const grid2 = this.reCreateGridFromGridData({ world })
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -485,7 +449,6 @@ class WorldBuilder extends Component {
     const locationImageSets = [images.locations, images.vehicles, images.items]
 
     grid2.forEach((row) => {
-      // grid.forEach((row) => {
       const gridRow = []
 
       Object.values(row).forEach((scene) => {

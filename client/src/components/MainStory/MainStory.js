@@ -108,17 +108,16 @@ class MainStory extends React.Component {
 
     const startScene2 = map.data.startScene
     const endScene2 = map.data.endScene
+    console.log("startScene2", startScene2) // zzz
     console.log("endScene2", endScene2) // zzz
 
     const endSceneId = map.data.endSceneId
     const startSceneId = map.data.startSceneId
-    console.log("startScene2", startScene2) // zzz
-    console.log("endSceneId", endSceneId) // zzz
 
     const grid = _get(map, "data.newGrid2") || []
-    const grid4 = _get(map, "data.newGrid4") || []
-    const endScene = grid4.find((item) => item.id === endSceneId)
-    const startScene = grid4.find((item) => item.id === startSceneId)
+    const grid5 = _get(map, "data.newGrid5") || []
+    const endScene = grid5.find((item) => item.id === endSceneId)
+    const startScene = grid5.find((item) => item.id === startSceneId)
 
     const terminalScene = start ? startScene : endScene
     console.log("map.data", toJS(map.data)) // zzz
@@ -134,9 +133,11 @@ class MainStory extends React.Component {
     let scenesList = Utils.getArrayOfScenes({ scenesGrid: flatGrid }) || []
     scenesList = scenesList.filter((scene) => scene.location.name !== "blank")
 
-    const validScenes = scenesList.filter((scene) => {
-      return toJS(scene).name
-    })
+    const validScenes = grid5
+
+    // const validScenes = scenesList.filter((scene) => {
+    //   return toJS(scene).name
+    // })
 
     const firstScene = validScenes[0]
     const lastScene = validScenes[validScenes.length - 1]
