@@ -258,8 +258,6 @@ class WorldBuilder extends Component {
     const newMap = {
       name: newName,
       title: "Test Map",
-      // newGrid2: grid,
-      // newGrid2: this.flattenGridForSave({ grid }),
       newGrid5,
       released: true,
       ignore: false,
@@ -293,18 +291,6 @@ class WorldBuilder extends Component {
         }
       })
     })
-
-    // map.data.newGrid2.forEach((row) => {
-    //   for (const scene in row) {
-    //     if (row.hasOwnProperty(scene)) {
-    //       const element = row[scene]
-
-    //       if (element.location.name && element.location.name !== "blank") {
-    //         newGrid5.push(element)
-    //       }
-    //     }
-    //   }
-    // })
 
     map.data.newGrid5 = newGrid5
     delete map.data.grid
