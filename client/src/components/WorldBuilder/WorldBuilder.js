@@ -169,17 +169,18 @@ class WorldBuilder extends Component {
       return null
     }
 
-    const { startScene, endScene, newGrid2 } = map.data
+    const { startScene, endScene, newGrid4 } = map.data
+    // const { startScene, endScene, newGrid2 } = map.data
 
     const buttonText = isStartScene
       ? `${startScene || "Start Scene"}`
       : `${endScene || "End Scene"}`
 
-    const scenesList = Utils.getArrayOfScenes({ scenesGrid: newGrid2 }) || []
+    // const scenesList = Utils.getArrayOfScenes({ scenesGrid: newGrid2 }) || []
 
-    const filteredScenesList = Utils.getNonBlankScenes({ scenesList })
+    // const filteredScenesList = Utils.getNonBlankScenes({ scenesList })
 
-    const renderedSceneNames = filteredScenesList.map((scene, index) => {
+    const renderedSceneNames = newGrid4.map((scene, index) => {
       const { name } = scene.location
 
       const text = (
@@ -189,7 +190,8 @@ class WorldBuilder extends Component {
             onClick={() =>
               this.changeTerminalScene({
                 name,
-                scenesList,
+                // newGrid4,
+                scenesList: newGrid4,
                 scene,
                 map,
                 isStartScene,
@@ -467,7 +469,7 @@ class WorldBuilder extends Component {
   renderNewGrid = () => {
     const { world } = this.state
 
-    const grid = world.data && world.data.newGrid2
+    // const grid = world.data && world.data.newGrid2
     const grid2 = this.createGridFromGridData({ world })
 
     const itemRenderer = ({ item }) => {
