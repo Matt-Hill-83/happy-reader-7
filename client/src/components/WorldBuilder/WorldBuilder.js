@@ -137,61 +137,6 @@ class WorldBuilder extends Component {
     return worldPicker
   }
 
-  renderStartScenePicker = () => {
-    const map = this.state.world
-    if (!map) return null
-
-    if (!map.data) {
-      return null
-    }
-
-    const { startScene, newGrid2 } = map.data
-
-    const scenesList = Utils.getArrayOfScenes({ scenesGrid: newGrid2 }) || []
-
-    const filteredScenesList = Utils.getNonBlankScenes({ scenesList })
-
-    const renderedSceneNames = filteredScenesList.map((scene, index) => {
-      const { name } = scene.location
-
-      const isStartScene = true
-      const text = (
-        <div className={css.mapPickerRow}>
-          <span
-            className={css.mapPickerRowTitle}
-            onClick={() =>
-              this.changeTerminalScene({
-                name,
-                scenesList,
-                scene,
-                map,
-                isStartScene,
-              })
-            }
-          >
-            {name}
-          </span>
-        </div>
-      )
-      return <MenuItem key={index} text={text} />
-    })
-
-    const renderedMapList = <Menu>{renderedSceneNames}</Menu>
-
-    const scenePicker = (
-      <Popover
-        className={css.worldPickerDropdown}
-        portalClassName={css.worldPickerDropdownPopover}
-        content={renderedMapList}
-        position={Position.BOTTOM}
-      >
-        <Button icon="share" text={`${startScene || "Start Scene"}`} />
-      </Popover>
-    )
-
-    return scenePicker
-  }
-
   changeTerminalScene = ({ name, scenesList, scene, map, isStartScene }) => {
     console.log("changeScene") // zzz
 
@@ -216,9 +161,7 @@ class WorldBuilder extends Component {
     this.updateMap({ newProps: { ...map.data } })
   }
 
-  renderEndScenePicker = ({ isStartScene }) => {
-    console.log("renderEndScenePicker") // zzz
-
+  renderTerminalScenePicker = ({ isStartScene }) => {
     const map = this.state.world
     if (!map) return null
 
@@ -226,10 +169,13 @@ class WorldBuilder extends Component {
       return null
     }
 
-    const { endScene } = map.data
+    const { startScene, endScene, newGrid2 } = map.data
 
-    const scenesList =
-      Utils.getArrayOfScenes({ scenesGrid: map.data.newGrid2 }) || []
+    const buttonText = isStartScene
+      ? `${startScene || "Start Scene"}`
+      : `${endScene || "End Scene"}`
+
+    const scenesList = Utils.getArrayOfScenes({ scenesGrid: newGrid2 }) || []
 
     const filteredScenesList = Utils.getNonBlankScenes({ scenesList })
 
@@ -266,7 +212,7 @@ class WorldBuilder extends Component {
         content={renderedMapList}
         position={Position.BOTTOM}
       >
-        <Button icon="share" text={`${endScene || "End Scene"}`} />
+        <Button icon="share" text={buttonText} />
       </Popover>
     )
 
@@ -604,9 +550,9 @@ class WorldBuilder extends Component {
                 {` --- ${world.id}`}
               </div>
               start:
-              {this.renderStartScenePicker({ isStartScene: true })}
+              {this.renderTerminalScenePicker({ isStartScene: true })}
               end:
-              {this.renderEndScenePicker({ isStartScene: false })}
+              {this.renderTerminalScenePicker({ isStartScene: false })}
               <div className={css.subTitle}>
                 <div className={css.editWorldButtons}>
                   {this.renderMapPicker()}
