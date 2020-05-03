@@ -190,6 +190,19 @@ class WorldBuilder extends Component {
     return scenePicker
   }
 
+  changeScene = ({ name, scenesList, scene, map }) => {
+    console.log("changeScene") // zzz
+
+    scenesList.forEach((scene) => {
+      scene.isEndScene = false
+    })
+
+    scene.isEndScene = true
+    map.data.endSceneId = scene.id
+    map.data.endScene = name
+    this.updateMap({ newProps: { ...map.data } })
+  }
+
   renderEndScenePicker = () => {
     console.log("renderEndScenePicker") // zzz
 
@@ -209,32 +222,12 @@ class WorldBuilder extends Component {
 
     const renderedSceneNames = filteredScenesList.map((scene, index) => {
       const { name } = scene.location
-      // const startSceneId = scene.id
-      // console.log("startSceneId", startSceneId) // zzz
-
-      const changeScene = ({ name }) => {
-        console.log("changeScene") // zzz
-
-        scenesList.forEach((scene) => (scene.isEndScene = false))
-        scene.isEndScene = true
-        map.data.endSceneId = "endSceneId"
-        map.data.endScene = name
-        // TODO: add endsceneId to map object and then consumem in MainStory
-        // TODO: add endsceneId to map object and then consumem in MainStory
-        // TODO: add endsceneId to map object and then consumem in MainStory
-        // TODO: add endsceneId to map object and then consumem in MainStory
-        // TODO: add endsceneId to map object and then consumem in MainStory
-
-        // map.data.endSceneId = endSceneId
-        // this.updateMap({ newProps: map.data })
-        this.updateMap({ newProps: { ...map.data } })
-      }
 
       const text = (
         <div className={css.mapPickerRow}>
           <span
             className={css.mapPickerRowTitle}
-            onClick={() => changeScene({ name })}
+            onClick={() => this.changeScene({ name, scenesList, scene, map })}
           >
             {name}
           </span>
@@ -266,53 +259,29 @@ class WorldBuilder extends Component {
     await worldNameStore.docs[0].update({
       previousMapName: newName,
     })
-    const grid = this.createNewGrid()
+    const { grid, gridDimensions } = this.createNewGrid()
+
     const newGrid2 = this.flattenGridForSave({ grid })
     console.log("newGrid2", newGrid2) // zzz
 
-    // const newGrid3 = this.flattenGridForSave3({ grid: this.createNewGrid() })
-    // console.log("newGrid3", newGrid3) // zzz
+    // const newGrid3 = grid.flat()
 
-    // const testGrid = this.createNewGrid()
-    // const newGrid3 = []
-    const newGrid3 = grid.flat()
-
-    console.log("newGrid3", newGrid3) // zzz
+    // // console.log("newGrid3", newGrid3) // zzz
 
     const newMap = {
       name: newName,
       title: "Test Map",
       newGrid2,
-      newGrid3,
+      // newGrid3,
       released: true,
       ignore: false,
+      gridDimensions,
     }
 
     const newMapReturned = await maps.add(newMap)
 
     this.setState({ world: newMapReturned })
   }
-
-  // flattenGridForSave3 = ({ grid }) => {
-  //   const gridHash = {}
-  //   const outputArray = []
-
-  //   grid.forEach((row) => {
-  //     const newRow = {}
-  //     row.forEach((scene, index) => {
-  //       newRow[index] = scene
-  //       console.log("scene.id", scene.id) // zzz
-
-  //       // new
-  //       gridHash[scene.id] = scene
-  //     })
-  //     outputArray.push(newRow)
-  //   })
-
-  //   console.log("gridHash", toJS(gridHash)) // zzz
-
-  //   return gridHash
-  // }
 
   editFrame = ({ sceneToEdit }) => {
     this.setState({ sceneToEdit, showFrameBuilder: true })
@@ -355,9 +324,13 @@ class WorldBuilder extends Component {
     // const newGrid4 = (map.data.newGrid2 && map.data.newGrid2.flat(2)) || []
     console.log("newGrid4", toJS(newGrid4)) // zzz
 
-    map.data.newGrid4 = newGrid4
+    const numRows = 4
+    const numCols = 4
 
-    /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
+    map.data.newGrid4 = newGrid4
+    map.data.gridDimensions = { numRows, numCols }
+
+    // /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
     delete map.data.grid
     console.log("map.data", toJS(map.data)) // zzz
 
@@ -379,7 +352,12 @@ class WorldBuilder extends Component {
     const rows = Array(NUM_ROWS_LOCATIONS_GRID).fill(0)
     const columns = Array(NUM_COLS_LOCATIONS_GRID).fill(0)
 
-    const newGrid = []
+    const gridDimensions = {
+      numRows: NUM_ROWS_LOCATIONS_GRID,
+      numCols: NUM_COLS_LOCATIONS_GRID,
+    }
+
+    const grid = []
 
     rows.forEach((row, rowIndex) => {
       const gridRow = []
@@ -442,9 +420,9 @@ class WorldBuilder extends Component {
           frameSet: { frames: [dummyFrame] },
         })
       })
-      newGrid.push(gridRow)
+      grid.push(gridRow)
     })
-    return newGrid
+    return { grid, gridDimensions }
   }
 
   flattenGridForSave = ({ grid }) => {
