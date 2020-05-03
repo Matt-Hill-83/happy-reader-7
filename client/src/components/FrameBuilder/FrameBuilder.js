@@ -24,18 +24,16 @@ class FrameBuilder extends Component {
   state = {
     frames: [],
     frameSet: "",
-    isStartScene: false,
-    isEndScene: false,
   }
 
   componentWillMount() {
-    const { isStartScene, isEndScene, scene } = this.props
-    this.setState({ isStartScene, isEndScene, scene })
+    const { scene } = this.props
+    this.setState({ scene })
   }
 
   componentWillReceiveProps(newProps) {
-    const { isStartScene, isEndScene, scene } = newProps
-    this.setState({ isStartScene, isEndScene, scene })
+    const { scene } = newProps
+    this.setState({ scene })
   }
 
   onExitFrameBuilder = () => {

@@ -102,37 +102,25 @@ class MainStory extends React.Component {
     return locationsMap
   }
 
-  // getSceneFromGrid3ById = ({ id }) => {
-
-  //   console.log("map.data.newGrid3,", toJS(map.data.newGrid3)) // zzz
-
-  //   scenes
-  //   for (const property in object) {
-  //     console.log(`${property}: ${object[property]}`);
-  //   }
-
-  // }
-
   getTerminalScene = ({ start = true }) => {
     const mapId = localStateStore.getActiveMapId()
     const map = Utils.getMapFromId({ id: mapId })
-    // console.log("map.data.newGrid3,", toJS(map.data.newGrid3)) // zzz
 
-    const startScene = map.data.startScene
+    const startScene2 = map.data.startScene
     const endScene2 = map.data.endScene
     console.log("endScene2", endScene2) // zzz
 
     const endSceneId = map.data.endSceneId
-    // console.log("endScene", endScene) // zzz
-    console.log("startScene", startScene) // zzz
-
+    const startSceneId = map.data.startSceneId
+    console.log("startScene2", startScene2) // zzz
     console.log("endSceneId", endSceneId) // zzz
 
     const grid = _get(map, "data.newGrid2") || []
-    const grid4 = _get(map, "data.newGrid4") || {}
+    const grid4 = _get(map, "data.newGrid4") || []
     const endScene = grid4.find((item) => item.id === endSceneId)
-    // console.log("test", toJS(test)) // zzz
+    const startScene = grid4.find((item) => item.id === startSceneId)
 
+    const terminalScene = start ? startScene : endScene
     console.log("map.data", toJS(map.data)) // zzz
 
     console.log("-----------") // zzz
@@ -140,36 +128,11 @@ class MainStory extends React.Component {
     console.log("-----------") // zzz
     console.log("grid", toJS(grid)) // zzz
 
-    // // console.log("grid3", toJS(grid3)) // zzz
-
-    // const grid  =[]
-
-    // I think this is breaking the refs, so assigned props are not retained
-
-    // Re-install firebase
-    // TODO: create a setGrid function to update grid in store
-    // TODO: create a setGrid function to update grid in store
-    // TODO: create a setGrid function to update grid in store
-    // TODO: create a setGrid function to update grid in store
-    // TODO: create a setGrid function to update grid in store
-    // TODO: create a setGrid function to update grid in store
     const flatGrid = toJS(grid).flat()
 
     // Integrate this fix
     let scenesList = Utils.getArrayOfScenes({ scenesGrid: flatGrid }) || []
     scenesList = scenesList.filter((scene) => scene.location.name !== "blank")
-
-    // hacky way to retroactively assign startScene and endScene to each scene
-    scenesList.forEach((scene) => {
-      scene.isStartScene = scene.location.name === startScene
-      scene.isEndScene = scene.location.name === endScene
-    })
-
-    const terminalScene = scenesList.find((scene) => {
-      if (scene.isStartScene || scene.isEndScene) {
-        return start ? scene.isStartScene : scene.isEndScene
-      }
-    })
 
     const validScenes = scenesList.filter((scene) => {
       return toJS(scene).name
@@ -182,71 +145,6 @@ class MainStory extends React.Component {
     return terminalScene || (start ? firstScene : lastScene)
   }
 
-  // getTerminalScene = ({ start = true }) => {
-  //   const mapId = localStateStore.getActiveMapId()
-  //   const map = Utils.getMapFromId({ id: mapId })
-  //   // console.log("map.data.newGrid3,", toJS(map.data.newGrid3)) // zzz
-
-  //   const startScene = map.data.startScene
-  //   const endScene = map.data.endScene
-  //   const endSceneId = map.data.endSceneId
-  //   console.log("endScene", endScene) // zzz
-  //   console.log("startScene", startScene) // zzz
-
-  //   console.log("endSceneId", endSceneId) // zzz
-
-  //   const grid = _get(map, "data.newGrid2") || []
-  //   // const grid3 = _get(map, "data.newGrid3") || {}
-
-  //   console.log("map.data", toJS(map.data)) // zzz
-
-  //   console.log("-----------") // zzz
-  //   console.log("-----------") // zzz
-  //   console.log("-----------") // zzz
-  //   console.log("grid", toJS(grid)) // zzz
-
-  //   // // console.log("grid3", toJS(grid3)) // zzz
-
-  //   // const grid  =[]
-
-  //   // I think this is breaking the refs, so assigned props are not retained
-
-  //   // Re-install firebase
-  //   // TODO: create a setGrid function to update grid in store
-  //   // TODO: create a setGrid function to update grid in store
-  //   // TODO: create a setGrid function to update grid in store
-  //   // TODO: create a setGrid function to update grid in store
-  //   // TODO: create a setGrid function to update grid in store
-  //   // TODO: create a setGrid function to update grid in store
-  //   const flatGrid = toJS(grid).flat()
-
-  //   // Integrate this fix
-  //   let scenesList = Utils.getArrayOfScenes({ scenesGrid: flatGrid }) || []
-  //   scenesList = scenesList.filter((scene) => scene.location.name !== "blank")
-
-  //   // hacky way to retroactively assign startScene and endScene to each scene
-  //   scenesList.forEach((scene) => {
-  //     scene.isStartScene = scene.location.name === startScene
-  //     scene.isEndScene = scene.location.name === endScene
-  //   })
-
-  //   const terminalScene = scenesList.find((scene) => {
-  //     if (scene.isStartScene || scene.isEndScene) {
-  //       return start ? scene.isStartScene : scene.isEndScene
-  //     }
-  //   })
-
-  //   const validScenes = scenesList.filter((scene) => {
-  //     return toJS(scene).name
-  //   })
-
-  //   const firstScene = validScenes[0]
-  //   const lastScene = validScenes[validScenes.length - 1]
-
-  //   // If no start and finish scenes are marked, choose some, so the program doesn't break
-  //   return terminalScene || (start ? firstScene : lastScene)
-  // }
-
   initWorld = async () => {
     console.log("initWorld") // zzz
 
@@ -255,8 +153,6 @@ class MainStory extends React.Component {
     if (!startScene) return
 
     localStateStore.setActiveSceneId(startScene.id)
-    const test = localStateStore.getActiveSceneId()
-    console.log("test", toJS(test)) // zzz
 
     // For some reason this is not referencing the object in the grid, and the showCloud prop is not persisting.
     startScene.showCloud = false
