@@ -8,7 +8,7 @@ import {
   Menu,
   MenuItem,
   Popover,
-  Position
+  Position,
 } from "@blueprintjs/core"
 
 import { IconNames } from "@blueprintjs/icons"
@@ -47,7 +47,7 @@ class WorldPicker extends Component {
     const { selectedMap } = this.state
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    const filteredMaps = savedMaps.filter(map => map.data.released)
+    const filteredMaps = savedMaps.filter((map) => map.data.released)
 
     if (!filteredMaps[0]) {
       return null
@@ -56,16 +56,17 @@ class WorldPicker extends Component {
     const sortedMaps = Utils.sortDataByNestedKey({
       data: filteredMaps,
       keys: ["data", "order"],
-      order: "ASC"
+      order: "ASC",
     })
 
     const mapList = sortedMaps.map((map, index) => {
-      const { title, order } = map.data
+      const { title, name } = map.data
+      console.log("map.data", toJS(map.data)) // zzz
 
       const mapId = map.id
       const text = (
         <span className={css.mapPickerRow}>
-          {`map ${order}: ${title}`}
+          {`map ${name}: ${title}`}
           {showDelete && (
             <span onClick={() => this.onDeleteMap({ map })}>
               <Icon icon={IconNames.TRASH} />

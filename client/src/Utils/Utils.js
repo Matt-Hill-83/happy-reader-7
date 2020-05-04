@@ -278,11 +278,12 @@ export default class Utils {
     })
   }
 
-  static reCreateGridFromGridData = ({ map }) => {
-    const {
-      data: { gridDimensions, newGrid5 },
-    } = map
+  // static reCreateGridFromGridData = ({ map }) => {
+  //   const {
+  //     data: { gridDimensions, newGrid5 },
+  //   } = map
 
+  static reCreateGridFromGridData = ({ gridDimensions, newGrid5 }) => {
     const rows = Array(gridDimensions.numRows).fill(0)
     const columns = Array(gridDimensions.numCols).fill(0)
     const grid = []
@@ -296,6 +297,9 @@ export default class Utils {
       columns.forEach((col, colIndex) => {
         const sceneObj =
           newGrid5.find((scene) => {
+            if (!scene.coordinates) {
+              return blankScene
+            }
             return (
               scene.coordinates.x === rowIndex &&
               scene.coordinates.y === colIndex

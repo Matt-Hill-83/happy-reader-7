@@ -58,7 +58,11 @@ class WorldBuilder extends Component {
     } else {
       console.log("world.data", toJS(world.data)) // zzz
 
-      const test = Utils.reCreateGridFromGridData({ map: world })
+      const {
+        data: { gridDimensions, newGrid5 },
+      } = world
+
+      const test = Utils.reCreateGridFromGridData({ gridDimensions, newGrid5 })
       console.log("test", test) // zzz
 
       localStateStore.setMapBuilderGrid(test)
@@ -100,6 +104,8 @@ class WorldBuilder extends Component {
   }
 
   renderMapPicker = () => {
+    console.log("renderMapPicker") // zzz
+
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
     if (!savedMaps[0]) {
@@ -241,6 +247,8 @@ class WorldBuilder extends Component {
   // I need to create or recreate the grid to the local store and then convert it to newGrid5 only when I save
 
   saveNewMap = async () => {
+    console.log("saveNewMap") // zzz
+
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
@@ -264,7 +272,7 @@ class WorldBuilder extends Component {
 
     const newMapReturned = await maps.add(newMap)
     localStateStore.setMapBuilderWorld(newMapReturned)
-    this.setState({ world: newMapReturned })
+    // this.setState({ world: newMapReturned })
   }
 
   // TODO - make this global Util
@@ -276,8 +284,10 @@ class WorldBuilder extends Component {
     const map = localStateStore.getMapBuilderWorld()
     Object.assign(map.data, toJS(newProps))
 
-    const newGrid5 = []
+    // trim down the grid to just the non-bank scenes and make them accessible by id, instead of
+    // defined by the 2 array position
 
+    const newGrid5 = []
     const mapBuilderGrid = localStateStore.getMapBuilderGrid()
     console.log("mapBuilderGrid", toJS(mapBuilderGrid)) // zzz
 
@@ -407,8 +417,10 @@ class WorldBuilder extends Component {
   }
 
   renderNewGrid = () => {
-    const world = localStateStore.getMapBuilderWorld()
-    const grid2 = Utils.reCreateGridFromGridData({ map: world })
+    // const world = localStateStore.getMapBuilderWorld()
+
+    const grid2 = localStateStore.getMapBuilderGrid()
+    console.log("grid2", toJS(grid2)) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -508,7 +520,8 @@ class WorldBuilder extends Component {
   }
 
   render() {
-    const { world, sceneToEdit, showFrameBuilder } = this.state
+    const { sceneToEdit, showFrameBuilder } = this.state
+    const world = localStateStore.getMapBuilderWorld()
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle

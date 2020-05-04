@@ -66,8 +66,13 @@ class MainStory extends React.Component {
 
       console.log("map.data.newGrid5", toJS(map.data.newGrid5)) // zzz
 
+      const {
+        data: { gridDimensions, newGrid5 },
+      } = map
+
       const grid = Utils.reCreateGridFromGridData({
-        map,
+        gridDimensions,
+        newGrid5,
       })
       console.log("grid", toJS(grid)) // zzz
 
