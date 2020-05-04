@@ -38,11 +38,9 @@ class WorldBuilder extends Component {
     showFrameBuilder: false,
   }
 
+  // Changing this to DidMount breaks things
   async componentWillMount() {
-    console.log("localStateStore", localStateStore) // zzz
-
-    const initialMapIndex = INITIAL_MAP_INDEX
-    this.changeMap({ index: initialMapIndex })
+    this.changeMap({ index: INITIAL_MAP_INDEX })
   }
 
   changeMap = ({ index }) => {
@@ -62,20 +60,15 @@ class WorldBuilder extends Component {
         data: { gridDimensions, newGrid5 },
       } = world
 
-      const test = Utils.reCreateGridFromGridData({ gridDimensions, newGrid5 })
-      console.log("test", test) // zzz
+      const reCreatedScenesGrid = Utils.reCreateGridFromGridData({
+        gridDimensions,
+        newGrid5,
+      })
+      console.log("reCreatedScenesGrid", reCreatedScenesGrid) // zzz
 
-      localStateStore.setWorldBuilderSceneGrid(test)
-      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
-      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
-      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
-      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
-      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
-      // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
+      localStateStore.setWorldBuilderScenesGrid(reCreatedScenesGrid)
       localStateStore.setWorldBuilderWorld(world)
     }
-
-    // TODO:  I could just set the index to state
   }
 
   onDeleteMap = async ({ map }) => {
@@ -259,7 +252,7 @@ class WorldBuilder extends Component {
 
     const newGrid5 = []
 
-    localStateStore.setWorldBuilderSceneGrid(grid)
+    localStateStore.setWorldBuilderScenesGrid(grid)
 
     const newMap = {
       name: newName,
@@ -288,7 +281,7 @@ class WorldBuilder extends Component {
     // defined by the 2 array position
 
     const newGrid5 = []
-    const mapBuilderGrid = localStateStore.getWorldBuilderSceneGrid()
+    const mapBuilderGrid = localStateStore.getWorldBuilderScenesGrid()
     console.log("mapBuilderGrid", toJS(mapBuilderGrid)) // zzz
 
     mapBuilderGrid.forEach((row) => {
@@ -419,7 +412,7 @@ class WorldBuilder extends Component {
   renderNewGrid = () => {
     // const world = localStateStore.getWorldBuilderWorld()
 
-    const grid2 = localStateStore.getWorldBuilderSceneGrid()
+    const grid2 = localStateStore.getWorldBuilderScenesGrid()
     console.log("grid2", toJS(grid2)) // zzz
 
     const itemRenderer = ({ item }) => {

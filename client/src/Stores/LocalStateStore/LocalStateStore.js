@@ -18,8 +18,8 @@ class LocalStateStore {
     this.you = you
   }
 
-  getWorldBuilderSceneGrid = () => this.mapBuilderGrid
-  setWorldBuilderSceneGrid = (mapBuilderGrid) => {
+  getWorldBuilderScenesGrid = () => this.mapBuilderGrid
+  setWorldBuilderScenesGrid = (mapBuilderGrid) => {
     this.mapBuilderGrid = mapBuilderGrid
   }
 
