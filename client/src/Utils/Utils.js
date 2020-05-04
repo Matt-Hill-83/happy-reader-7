@@ -272,14 +272,75 @@ export default class Utils {
     return uuid
   }
 
+  static getBlankScene = ({ props }) => {
+    const dummyFrame = {
+      creatures: ["kat", "liz2"],
+      dialog: [
+        {
+          character: "kat",
+          characterIndex: 0,
+          text: "We can play.",
+        },
+        {
+          character: "liz2",
+          characterIndex: 1,
+          text: "",
+        },
+        {
+          character: "liz2",
+          characterIndex: 0,
+          text: "",
+        },
+        {
+          character: "liz2",
+          characterIndex: 1,
+          text: "",
+        },
+      ],
+      faces: [
+        {
+          character: "liz2",
+          characterIndex: 1,
+          face: "happy",
+        },
+        {
+          character: "kat",
+          characterIndex: 0,
+          face: "kat-happy.9e02afab.png",
+        },
+      ],
+      story: ["I am Kat"],
+    }
+
+    const blankScene = {
+      location: { name: "blank" },
+      doorRight: { name: "doorYellow" },
+      doorBottom: { name: "doorGreen" },
+      characters: [{ name: "kat" }, { name: "liz2" }],
+      items: [{ name: "hat" }, { name: "bat" }],
+      frameSet: { frames: [dummyFrame] },
+    }
+
+    props && Object.assign(blankScene, props)
+    return blankScene
+  }
+
   static reCreateGridFromCondensedGrid = ({ gridDimensions, newGrid5 }) => {
     const rows = Array(gridDimensions.numRows).fill(0)
     const columns = Array(gridDimensions.numCols).fill(0)
     const grid = []
 
-    const blankScene = {
-      location: { name: "blank" },
-    }
+    const blankScene = Utils.getBlankScene({})
+    console.log("blankScene", blankScene) // zzz
+
+    // const blankScene = {
+    //   location: { name: "blank" },
+    //   doorRight: { name: "doorYellow" },
+    //   doorBottom: { name: "doorGreen" },
+    //   characters: [{ name: "kat" }, { name: "liz2" }],
+    //   items: [{ name: "hat" }, { name: "bat" }],
+    //   frameSet: { frames: [] },
+    // }
 
     rows.forEach((row, rowIndex) => {
       const gridRow = []

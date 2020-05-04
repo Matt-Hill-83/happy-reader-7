@@ -172,6 +172,7 @@ class WorldBuilder extends Component {
     this.updateMap({ newProps: { ...map.data } })
   }
 
+  // turn this into a component
   renderTerminalScenePicker = ({ isStartScene }) => {
     const map = localStateStore.getWorldBuilderWorld()
     if (!map) return null
@@ -308,61 +309,60 @@ class WorldBuilder extends Component {
       columns.forEach((col, colIndex) => {
         const id = Utils.generateUuid()
 
-        const dummyFrame = {
-          creatures: ["kat", "liz2"],
-          dialog: [
-            {
-              character: "kat",
-              characterIndex: 0,
-              text: "We can play.",
-            },
-            {
-              character: "liz2",
-              characterIndex: 1,
-              text: "",
-            },
-            {
-              character: "liz2",
-              characterIndex: 0,
-              text: "",
-            },
-            {
-              character: "liz2",
-              characterIndex: 1,
-              text: "",
-            },
-          ],
-          faces: [
-            {
-              character: "liz2",
-              characterIndex: 1,
-              face: "happy",
-            },
-            {
-              character: "kat",
-              characterIndex: 0,
-              face: "kat-happy.9e02afab.png",
-            },
-          ],
-          story: ["I am Kat"],
-        }
+        // const dummyFrame = {
+        //   creatures: ["kat", "liz2"],
+        //   dialog: [
+        //     {
+        //       character: "kat",
+        //       characterIndex: 0,
+        //       text: "We can play.",
+        //     },
+        //     {
+        //       character: "liz2",
+        //       characterIndex: 1,
+        //       text: "",
+        //     },
+        //     {
+        //       character: "liz2",
+        //       characterIndex: 0,
+        //       text: "",
+        //     },
+        //     {
+        //       character: "liz2",
+        //       characterIndex: 1,
+        //       text: "",
+        //     },
+        //   ],
+        //   faces: [
+        //     {
+        //       character: "liz2",
+        //       characterIndex: 1,
+        //       face: "happy",
+        //     },
+        //     {
+        //       character: "kat",
+        //       characterIndex: 0,
+        //       face: "kat-happy.9e02afab.png",
+        //     },
+        //   ],
+        //   story: ["I am Kat"],
+        // }
 
         const coordinates = { x: colIndex, y: rowIndex }
+        // const coordinates = { x: colIndex, y: rowIndex }
         const isLastRow = rowIndex === NUM_ROWS_LOCATIONS_GRID - 1
         const isLastCol = colIndex === NUM_COLS_LOCATIONS_GRID - 1
 
-        gridRow.push({
+        const props = {
           isLastRow,
           isLastCol,
           coordinates,
           id,
-          location: { name: "blank" },
-          doorRight: { name: "doorYellow" },
-          doorBottom: { name: "doorGreen" },
-          characters: [{ name: "kat" }, { name: "liz2" }],
-          items: [{ name: "hat" }, { name: "bat" }],
-          frameSet: { frames: [dummyFrame] },
-        })
+        }
+
+        const blankScene = Utils.getBlankScene({ props })
+
+        gridRow.push(blankScene)
       })
       grid.push(gridRow)
     })
