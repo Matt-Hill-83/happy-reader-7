@@ -488,17 +488,19 @@ class WorldBuilder extends Component {
             </div>
           </div>
         )}
-        <div className={css.content}>
-          {!showFrameBuilder && this.renderNewGrid()}
-          {showFrameBuilder && (
+        {!showFrameBuilder && (
+          <div className={css.content}>{this.renderNewGrid()}</div>
+        )}
+        {showFrameBuilder && (
+          <div className={css.content2}>
             <FrameBuilder
               world={world}
               scene={sceneToEdit}
               onExitFrameBuilder={(frame) => this.onExitFrameBuilder({ frame })}
               updateMap={this.updateMap}
             />
-          )}
-        </div>
+          </div>
+        )}
       </div>
     )
   }

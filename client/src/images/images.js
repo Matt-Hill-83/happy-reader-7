@@ -20,12 +20,8 @@ import swing from "./locations/swing.png"
 import tree from "./locations/treehouse.png"
 import waterfall from "./locations/waterfall.png"
 
-// import bug from "./locations/bug.png"
-// import map from "./locations/map.png"
-
 import bag from "./locations/bag.png"
 import bun from "./locations/bun.png"
-// import can from "./locations/can.png"
 import cap from "./locations/cap.png"
 import car from "./locations/car.png"
 import cup from "./locations/cup.png"
@@ -71,6 +67,7 @@ import end from "./creatures/end.png"
 import poop from "./creatures/poop.png"
 import start from "./creatures/start.png"
 import rori from "./creatures/rori-front-01.png"
+import random from "./creatures/random.png"
 
 import ant from "./creatures/ant.png"
 import bat from "./creatures/bat.png"
@@ -336,9 +333,6 @@ const locations = {
 }
 
 const creatures = {
-  // star,
-  // start,
-  // zombie,
   kat,
   liz2,
   gonzay,
@@ -362,6 +356,7 @@ const creatures = {
   pig,
   pug,
   rori,
+  random,
   rat,
   troll,
   unicorn,

@@ -63,7 +63,7 @@ class FrameBuilder extends Component {
     await updateMap({})
   }
 
-  updateFrameSet = async ({ newProps = {} }) => {
+  updateFrameSet = async () => {
     const { updateMap } = this.props
     const frameSet = this.state
 
