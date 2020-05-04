@@ -66,8 +66,8 @@ class WorldBuilder extends Component {
       })
       console.log("reCreatedScenesGrid", reCreatedScenesGrid) // zzz
 
-      localStateStore.setWorldBuilderScenesGrid(reCreatedScenesGrid)
       localStateStore.setWorldBuilderWorld(world)
+      localStateStore.setWorldBuilderScenesGrid(reCreatedScenesGrid)
     }
   }
 
@@ -265,34 +265,39 @@ class WorldBuilder extends Component {
 
     const newMapReturned = await maps.add(newMap)
     localStateStore.setWorldBuilderWorld(newMapReturned)
-    // this.setState({ world: newMapReturned })
   }
 
-  // TODO - make this global Util
-  updateMap = async ({ newProps }) => {
-    console.log("newProps", newProps) // zzz
-
-    console.log("updateMap") // zzz
-
-    const map = localStateStore.getWorldBuilderWorld()
-    Object.assign(map.data, toJS(newProps))
-
+  createCondensedGridFromGrid = () => {
     // trim down the grid to just the non-bank scenes and make them accessible by id, instead of
     // defined by the 2 array position
 
-    const newGrid5 = []
+    const condensedGrid = []
     const mapBuilderGrid = localStateStore.getWorldBuilderScenesGrid()
     console.log("mapBuilderGrid", toJS(mapBuilderGrid)) // zzz
 
     mapBuilderGrid.forEach((row) => {
       row.forEach((col) => {
         if (col.location.name && col.location.name !== "blank") {
-          newGrid5.push(col)
+          condensedGrid.push(col)
         }
       })
     })
 
-    map.data.newGrid5 = newGrid5
+    return condensedGrid
+  }
+
+  // TODO - make this global Util
+  updateMap = async ({ newProps }) => {
+    console.log("updateMap") // zzz
+    console.log("newProps", { newProps }) // zzz
+
+    const map = localStateStore.getWorldBuilderWorld()
+    Object.assign(map.data, toJS(newProps))
+
+    map.data.newGrid5 = this.createCondensedGridFromGrid()
+
+    console.log("map.data.grid", toJS(map.data.grid)) // zzz
+
     delete map.data.grid
     console.log("map.data", toJS(map.data)) // zzz
 
@@ -410,8 +415,6 @@ class WorldBuilder extends Component {
   }
 
   renderNewGrid = () => {
-    // const world = localStateStore.getWorldBuilderWorld()
-
     const grid2 = localStateStore.getWorldBuilderScenesGrid()
     console.log("grid2", toJS(grid2)) // zzz
 
