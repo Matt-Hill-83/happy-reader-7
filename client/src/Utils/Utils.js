@@ -272,7 +272,7 @@ export default class Utils {
     return uuid
   }
 
-  static reCreateGridFromGridData = ({ gridDimensions, newGrid5 }) => {
+  static reCreateGridFromCondensedGrid = ({ gridDimensions, newGrid5 }) => {
     const rows = Array(gridDimensions.numRows).fill(0)
     const columns = Array(gridDimensions.numCols).fill(0)
     const grid = []
@@ -301,5 +301,24 @@ export default class Utils {
     })
 
     return grid
+  }
+
+  static createCondensedGridFromGrid = () => {
+    // trim down the grid to just the non-bank scenes and make them accessible by id, instead of
+    // defined by the 2 array position
+
+    const condensedGrid = []
+    const mapBuilderGrid = localStateStore.getWorldBuilderScenesGrid()
+    console.log("mapBuilderGrid", toJS(mapBuilderGrid)) // zzz
+
+    mapBuilderGrid.forEach((row) => {
+      row.forEach((col) => {
+        if (col.location.name && col.location.name !== "blank") {
+          condensedGrid.push(col)
+        }
+      })
+    })
+
+    return condensedGrid
   }
 }

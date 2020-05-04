@@ -60,7 +60,7 @@ class WorldBuilder extends Component {
         data: { gridDimensions, newGrid5 },
       } = world
 
-      const reCreatedScenesGrid = Utils.reCreateGridFromGridData({
+      const reCreatedScenesGrid = Utils.reCreateGridFromCondensedGrid({
         gridDimensions,
         newGrid5,
       })
@@ -234,11 +234,6 @@ class WorldBuilder extends Component {
     this.setState({ sceneToEdit: "", showFrameBuilder: false })
   }
 
-  // TODO: I need to preserve all the grid locations locally, because when I click on them, I
-  // need to know what their coordinates are.
-
-  // I need to create or recreate the grid to the local store and then convert it to newGrid5 only when I save
-
   saveNewMap = async () => {
     console.log("saveNewMap") // zzz
 
@@ -267,25 +262,6 @@ class WorldBuilder extends Component {
     localStateStore.setWorldBuilderWorld(newMapReturned)
   }
 
-  createCondensedGridFromGrid = () => {
-    // trim down the grid to just the non-bank scenes and make them accessible by id, instead of
-    // defined by the 2 array position
-
-    const condensedGrid = []
-    const mapBuilderGrid = localStateStore.getWorldBuilderScenesGrid()
-    console.log("mapBuilderGrid", toJS(mapBuilderGrid)) // zzz
-
-    mapBuilderGrid.forEach((row) => {
-      row.forEach((col) => {
-        if (col.location.name && col.location.name !== "blank") {
-          condensedGrid.push(col)
-        }
-      })
-    })
-
-    return condensedGrid
-  }
-
   // TODO - make this global Util
   updateMap = async ({ newProps }) => {
     console.log("updateMap") // zzz
@@ -294,7 +270,7 @@ class WorldBuilder extends Component {
     const map = localStateStore.getWorldBuilderWorld()
     Object.assign(map.data, toJS(newProps))
 
-    map.data.newGrid5 = this.createCondensedGridFromGrid()
+    map.data.newGrid5 = Utils.createCondensedGridFromGrid()
 
     console.log("map.data.grid", toJS(map.data.grid)) // zzz
 
@@ -391,18 +367,6 @@ class WorldBuilder extends Component {
       grid.push(gridRow)
     })
     return { grid, gridDimensions }
-  }
-
-  flattenGridForSave = ({ grid }) => {
-    const outputArray = []
-    grid.forEach((row) => {
-      const newRow = {}
-      row.forEach((scene, index) => {
-        newRow[index] = scene
-      })
-      outputArray.push(newRow)
-    })
-    return outputArray
   }
 
   saveItems = async (statePropsToSave) => {

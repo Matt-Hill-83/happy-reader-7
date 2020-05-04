@@ -70,7 +70,7 @@ class MainStory extends React.Component {
         data: { gridDimensions, newGrid5 },
       } = map
 
-      const grid = Utils.reCreateGridFromGridData({
+      const grid = Utils.reCreateGridFromCondensedGrid({
         gridDimensions,
         newGrid5,
       })
