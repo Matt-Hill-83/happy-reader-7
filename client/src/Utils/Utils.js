@@ -333,15 +333,6 @@ export default class Utils {
     const blankScene = Utils.getBlankScene({})
     console.log("blankScene", blankScene) // zzz
 
-    // const blankScene = {
-    //   location: { name: "blank" },
-    //   doorRight: { name: "doorYellow" },
-    //   doorBottom: { name: "doorGreen" },
-    //   characters: [{ name: "kat" }, { name: "liz2" }],
-    //   items: [{ name: "hat" }, { name: "bat" }],
-    //   frameSet: { frames: [] },
-    // }
-
     rows.forEach((row, rowIndex) => {
       const gridRow = []
       columns.forEach((col, colIndex) => {
@@ -351,8 +342,8 @@ export default class Utils {
               return blankScene
             }
             return (
-              scene.coordinates.x === rowIndex &&
-              scene.coordinates.y === colIndex
+              scene.coordinates.y === rowIndex &&
+              scene.coordinates.x === colIndex
             )
           }) || blankScene
 

@@ -309,47 +309,7 @@ class WorldBuilder extends Component {
       columns.forEach((col, colIndex) => {
         const id = Utils.generateUuid()
 
-        // const dummyFrame = {
-        //   creatures: ["kat", "liz2"],
-        //   dialog: [
-        //     {
-        //       character: "kat",
-        //       characterIndex: 0,
-        //       text: "We can play.",
-        //     },
-        //     {
-        //       character: "liz2",
-        //       characterIndex: 1,
-        //       text: "",
-        //     },
-        //     {
-        //       character: "liz2",
-        //       characterIndex: 0,
-        //       text: "",
-        //     },
-        //     {
-        //       character: "liz2",
-        //       characterIndex: 1,
-        //       text: "",
-        //     },
-        //   ],
-        //   faces: [
-        //     {
-        //       character: "liz2",
-        //       characterIndex: 1,
-        //       face: "happy",
-        //     },
-        //     {
-        //       character: "kat",
-        //       characterIndex: 0,
-        //       face: "kat-happy.9e02afab.png",
-        //     },
-        //   ],
-        //   story: ["I am Kat"],
-        // }
-
         const coordinates = { x: colIndex, y: rowIndex }
-        // const coordinates = { x: colIndex, y: rowIndex }
         const isLastRow = rowIndex === NUM_ROWS_LOCATIONS_GRID - 1
         const isLastCol = colIndex === NUM_COLS_LOCATIONS_GRID - 1
 
