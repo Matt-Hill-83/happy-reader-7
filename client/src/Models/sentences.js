@@ -12,7 +12,7 @@ const generateYou = ({ you = {} }) => {
     name: yourName,
     creature: yourName,
     items: [],
-    mood: "normal"
+    mood: "normal",
   }
   const modifiedYou = Object.assign(defaultYou, you)
 
@@ -22,26 +22,26 @@ const generateYou = ({ you = {} }) => {
 generateYou({})
 
 const startScene = {
-  name: homeLocation
+  name: homeLocation,
 }
 
-const locationsFromImages = Object.keys(images.locations)
+// const locationsFromImages = Object.keys(images.locations)
 const creaturesFromImages = Object.keys(images.creatures)
 const itemsFromImages = Object.keys(images.items)
 
-const allScenes = locationsFromImages.map(name => {
-  return {
-    name,
-    doors: {
-      right: { open: true },
-      bottom: { open: false }
-    },
-    creatures: [],
-    frameSet: { frames: [Utils.getNewFrame({})] }
-  }
-})
+// const allScenes = locationsFromImages.map((name) => {
+//   return {
+//     name,
+//     doors: {
+//       right: { open: true },
+//       bottom: { open: false },
+//     },
+//     creatures: [],
+//     frameSet: { frames: [Utils.getNewFrame({})] },
+//   }
+// })
 
-const allCreatures = creaturesFromImages.map(type => {
+const allCreatures = creaturesFromImages.map((type) => {
   return { type, name: `${type}-creature` }
 })
 
@@ -51,15 +51,15 @@ const posableGirls = images.posableGirls
 allCreatures.push(...posableGirls)
 localStateStore.setCreatures(allCreatures)
 
-const allItems = itemsFromImages.map(type => {
+const allItems = itemsFromImages.map((type) => {
   return { type, name: "" }
 })
 
 const generatePlot = () => {
   const plot = {
     activeScene: startScene,
-    allScenes,
-    allItems
+    // allScenes,
+    allItems,
   }
 
   localStateStore.setPlot(plot)

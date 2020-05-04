@@ -317,7 +317,7 @@ export default class Utils {
       doorRight: { name: "doorYellow" },
       doorBottom: { name: "doorGreen" },
       characters: [{ name: "kat" }, { name: "liz2" }],
-      items: [{ name: "hat" }, { name: "bat" }],
+      items: [{ name: "hat" }, { name: "pig" }],
       frameSet: { frames: [dummyFrame] },
     }
 
@@ -342,8 +342,10 @@ export default class Utils {
               return blankScene
             }
             return (
-              scene.coordinates.y === rowIndex &&
-              scene.coordinates.x === colIndex
+              (scene.coordinates.y === rowIndex &&
+                scene.coordinates.x === colIndex) ||
+              (scene.coordinates.row === rowIndex &&
+                scene.coordinates.col === colIndex)
             )
           }) || blankScene
 

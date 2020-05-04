@@ -309,7 +309,12 @@ class WorldBuilder extends Component {
       columns.forEach((col, colIndex) => {
         const id = Utils.generateUuid()
 
-        const coordinates = { x: colIndex, y: rowIndex }
+        const coordinates = {
+          x: colIndex,
+          y: rowIndex,
+          col: colIndex,
+          row: rowIndex,
+        }
         const isLastRow = rowIndex === NUM_ROWS_LOCATIONS_GRID - 1
         const isLastCol = colIndex === NUM_COLS_LOCATIONS_GRID - 1
 
