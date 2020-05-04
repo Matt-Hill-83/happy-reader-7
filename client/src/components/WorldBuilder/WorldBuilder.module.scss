@@ -15,7 +15,7 @@
     border: 1px solid red !important;
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    overflow: scroll;
 
     .gridRow {
       display: flex;
@@ -26,6 +26,8 @@
       border: 1px solid green !important;
       height: var(--cell-height);
       width: var(--cell-height);
+      min-height: var(--cell-height);
+      min-width: var(--cell-height);
       position: relative;
       background-color: var(--grass-color);
 
@@ -271,7 +273,7 @@
   justify-content: flex-start;
 
   height: 100%;
-  width: 100vw;
-  max-width: 100vw;
+  width: 98vw;
+  max-width: 98vw;
   overflow: hidden;
 }
