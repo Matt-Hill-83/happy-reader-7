@@ -19,12 +19,12 @@ class LocalStateStore {
   }
 
   getMapBuilderGrid = () => this.mapBuilderGrid
-  setMapBuilderGrid = (mapBuilderGrid) => {
+  setWorldBuilderSceneGrid = (mapBuilderGrid) => {
     this.mapBuilderGrid = mapBuilderGrid
   }
 
-  getMapBuilderWorld = () => this.mapBuilderWorld
-  setMapBuilderWorld = (mapBuilderWorld) => {
+  getWorldBuilderWorld = () => this.mapBuilderWorld
+  setWorldBuilderWorld = (mapBuilderWorld) => {
     this.mapBuilderWorld = mapBuilderWorld
   }
 

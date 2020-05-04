@@ -272,17 +272,6 @@ export default class Utils {
     return uuid
   }
 
-  static getNonBlankScenes({ scenesList }) {
-    return scenesList.filter((scene) => {
-      return scene && scene.location && scene.location.name !== "blank"
-    })
-  }
-
-  // static reCreateGridFromGridData = ({ map }) => {
-  //   const {
-  //     data: { gridDimensions, newGrid5 },
-  //   } = map
-
   static reCreateGridFromGridData = ({ gridDimensions, newGrid5 }) => {
     const rows = Array(gridDimensions.numRows).fill(0)
     const columns = Array(gridDimensions.numCols).fill(0)

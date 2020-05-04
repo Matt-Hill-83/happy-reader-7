@@ -65,14 +65,14 @@ class WorldBuilder extends Component {
       const test = Utils.reCreateGridFromGridData({ gridDimensions, newGrid5 })
       console.log("test", test) // zzz
 
-      localStateStore.setMapBuilderGrid(test)
+      localStateStore.setWorldBuilderSceneGrid(test)
       // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
       // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
       // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
       // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
       // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
       // TODO: here is where I need to reconstitute the newData5 and persist it in the local store
-      localStateStore.setMapBuilderWorld(world)
+      localStateStore.setWorldBuilderWorld(world)
     }
 
     // TODO:  I could just set the index to state
@@ -180,7 +180,7 @@ class WorldBuilder extends Component {
   }
 
   renderTerminalScenePicker = ({ isStartScene }) => {
-    const map = localStateStore.getMapBuilderWorld()
+    const map = localStateStore.getWorldBuilderWorld()
     if (!map) return null
 
     if (!map.data) {
@@ -259,7 +259,7 @@ class WorldBuilder extends Component {
 
     const newGrid5 = []
 
-    localStateStore.setMapBuilderGrid(grid)
+    localStateStore.setWorldBuilderSceneGrid(grid)
 
     const newMap = {
       name: newName,
@@ -271,7 +271,7 @@ class WorldBuilder extends Component {
     }
 
     const newMapReturned = await maps.add(newMap)
-    localStateStore.setMapBuilderWorld(newMapReturned)
+    localStateStore.setWorldBuilderWorld(newMapReturned)
     // this.setState({ world: newMapReturned })
   }
 
@@ -281,7 +281,7 @@ class WorldBuilder extends Component {
 
     console.log("updateMap") // zzz
 
-    const map = localStateStore.getMapBuilderWorld()
+    const map = localStateStore.getWorldBuilderWorld()
     Object.assign(map.data, toJS(newProps))
 
     // trim down the grid to just the non-bank scenes and make them accessible by id, instead of
@@ -307,9 +307,9 @@ class WorldBuilder extends Component {
   }
 
   onChangeTitle = async ({ event }) => {
-    const world = localStateStore.getMapBuilderWorld()
+    const world = localStateStore.getWorldBuilderWorld()
     world.data.title = event.target.value
-    localStateStore.setMapBuilderWorld(world)
+    localStateStore.setWorldBuilderWorld(world)
     this.setState({ world })
   }
 
@@ -417,7 +417,7 @@ class WorldBuilder extends Component {
   }
 
   renderNewGrid = () => {
-    // const world = localStateStore.getMapBuilderWorld()
+    // const world = localStateStore.getWorldBuilderWorld()
 
     const grid2 = localStateStore.getMapBuilderGrid()
     console.log("grid2", toJS(grid2)) // zzz
@@ -521,7 +521,7 @@ class WorldBuilder extends Component {
 
   render() {
     const { sceneToEdit, showFrameBuilder } = this.state
-    const world = localStateStore.getMapBuilderWorld()
+    const world = localStateStore.getWorldBuilderWorld()
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle
