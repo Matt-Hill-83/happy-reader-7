@@ -288,7 +288,7 @@ class WorldBuilder extends Component {
     // defined by the 2 array position
 
     const newGrid5 = []
-    const mapBuilderGrid = localStateStore.getMapBuilderGrid()
+    const mapBuilderGrid = localStateStore.getWorldBuilderSceneGrid()
     console.log("mapBuilderGrid", toJS(mapBuilderGrid)) // zzz
 
     mapBuilderGrid.forEach((row) => {
@@ -419,7 +419,7 @@ class WorldBuilder extends Component {
   renderNewGrid = () => {
     // const world = localStateStore.getWorldBuilderWorld()
 
-    const grid2 = localStateStore.getMapBuilderGrid()
+    const grid2 = localStateStore.getWorldBuilderSceneGrid()
     console.log("grid2", toJS(grid2)) // zzz
 
     const itemRenderer = ({ item }) => {
