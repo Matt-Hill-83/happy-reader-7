@@ -233,7 +233,6 @@ class WorldBuilder extends Component {
 
     delete map.data.grid
     console.log("map.data", toJS(map.data)) // zzz
-    /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
     await map.update(map.data)
   }
 
@@ -288,31 +287,17 @@ class WorldBuilder extends Component {
     return { grid, gridDimensions }
   }
 
-  onSaveLocation = async (statePropsToSave) => {
-    console.log("") // zzz
-    console.log("") // zzz
-
-    console.log("onSaveLocation-------------------------------") // zzz
-    console.log("statePropsToSave", toJS(statePropsToSave)) // zzz
-
-    await this.updateMap({ newProps: statePropsToSave })
-    // this.forceUpdateWorldBuilder()
-  }
-
-  saveItems = async (statePropsToSave) => {
-    console.log("") // zzz
-    console.log("") // zzz
-
-    console.log("saveItems-------------------------------") // zzz
-    console.log("statePropsToSave", toJS(statePropsToSave)) // zzz
-
+  saveItems = async () => {
     await this.updateMap({})
-    // await this.updateMap({ newProps: statePropsToSave })
-    // this.forceUpdateWorldBuilder()
   }
 
-  forceUpdateWorldBuilder = () => {
-    this.setState({ forceUpdate: new Date() })
+  generateRandomLocation = ({ location, locationNames }) => {
+    const randomName =
+      locationNames[Math.floor(Math.random() * locationNames.length)]
+    console.log("randomName", toJS(randomName)) // zzz
+
+    location.name = randomName
+    this.updateMap({})
   }
 
   // TODO: on save, Crudmachine shoud return the mutated list and a callback should save it
@@ -335,6 +320,11 @@ class WorldBuilder extends Component {
     const doorImageSets = [images.doors]
     const locationImageSets = [images.locations, images.vehicles, images.items]
 
+    console.log("locationImageSets", toJS(locationImageSets)) // zzz
+
+    const locationNames = Object.keys(images.locations)
+    console.log("locationNames", toJS(locationNames)) // zzz
+
     scenesGrid.forEach((row) => {
       const gridRow = []
 
@@ -349,17 +339,35 @@ class WorldBuilder extends Component {
 
         const hideScene = scene.location && scene.location.name === "blank"
 
-        const locationPicker = (
+        const locationCrudMachine = (
           <CrudMachine
             className={`${css.crudMachine} ${css.locationMachine}`}
             items={locations}
             onEditItem={this.onEditLocation}
             buttons={buttons}
             itemRenderer={itemRenderer}
-            saveItems={this.onSaveLocation}
+            saveItems={onSave}
             imageSets={locationImageSets}
           />
         )
+
+        const randomLocationGenerator = (
+          <div
+            className={`${css.crudMachine} ${css.locationMachine}`}
+            onClick={() =>
+              this.generateRandomLocation({
+                location: scene.location,
+                locationNames,
+              })
+            }
+          />
+        )
+
+        const locationPicker =
+          scene.location.name === "blank"
+            ? // const locationPicker = this.state.generateRandomLocation
+              randomLocationGenerator
+            : locationCrudMachine
 
         gridRow.push(
           <div className={css.gridCell}>
