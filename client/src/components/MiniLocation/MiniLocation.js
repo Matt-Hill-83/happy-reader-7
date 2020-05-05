@@ -266,6 +266,8 @@ class MiniLocation extends React.Component {
       return <div className={`${css.main} ${className} ${localClass}`}></div>
     }
 
+    console.log("scene", toJS(scene)) // zzz
+
     return (
       <div
         key={id}
@@ -292,7 +294,8 @@ class MiniLocation extends React.Component {
             )}
 
             {/* Right door */}
-            {!isLastCol &&
+            {false &&
+              !isLastCol &&
               this.renderButton({
                 position: "right",
                 className: css.rightDoor,

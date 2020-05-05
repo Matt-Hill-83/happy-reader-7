@@ -100,7 +100,7 @@ class WordPage extends React.Component {
             </Button>
           )}
 
-          {/* {isLastFrame && this.renderButtons()} */}
+          {isLastFrame && this.renderButtons()}
         </div>
       </div>
     )
