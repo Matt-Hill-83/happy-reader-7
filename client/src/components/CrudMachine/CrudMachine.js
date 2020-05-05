@@ -126,6 +126,7 @@ class CrudMachine extends Component {
     const { saveItems } = this.props
     const { items } = this.state
 
+    // this isn't working correctly
     saveItems && saveItems({ [this.props.propNameForItems]: items })
   }
 

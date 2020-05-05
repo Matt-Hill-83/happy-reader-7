@@ -233,11 +233,6 @@ class MiniLocation extends React.Component {
     } = this.props
 
     const { isLastCol, isLastRow } = scene
-    console.log("isLastRow", isLastRow) // zzz
-    console.log("isLastCol", isLastCol) // zzz
-
-    console.log("miniLocation") // zzz
-    console.log("this.props.scene", toJS(this.props.scene)) // zzz
 
     let showCloud = scene.showCloud
     if (showCloud === undefined) {

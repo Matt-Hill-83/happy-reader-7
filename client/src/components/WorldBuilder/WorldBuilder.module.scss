@@ -155,24 +155,24 @@
   }
 }
 
-.mapPickerRow {
-  justify-content: space-between;
-  border: 1px solid green !important;
-  display: inline-flex;
-  width: 100%;
-  align-items: center;
-}
+// .mapPickerRow {
+//   justify-content: space-between;
+//   border: 1px solid green !important;
+//   display: inline-flex;
+//   width: 100%;
+//   align-items: center;
+// }
 
-.mapPickerRowButtons {
-}
+// .mapPickerRowButtons {
+// }
 
-.mapPickerRowTitle {
-  display: flex;
-  flex: 1;
-}
+// .mapPickerRowTitle {
+//   display: flex;
+//   flex: 1;
+// }
 
-.editWorldButtons {
-}
+// .editWorldButtons {
+// }
 
 .scenesContainer {
   border: 1px solid red !important;
@@ -267,6 +267,19 @@
 
 .content {
   border: 1px solid blue !important;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  height: 100%;
+  width: 98vw;
+  max-width: 98vw;
+  overflow: hidden;
+}
+
+.content2 {
+  border: 1px solid purple !important;
 
   display: flex;
   align-items: flex-start;

@@ -16,6 +16,7 @@ import { maps } from "../../Stores/InitStores"
 import Utils from "../../Utils/Utils"
 
 import css from "./WorldPicker.module.scss"
+import { Checkbox } from "material-ui"
 
 class WorldPicker extends Component {
   state = { selectedMap: "Get new Map" }
@@ -43,7 +44,7 @@ class WorldPicker extends Component {
   }
 
   render() {
-    const { showDelete } = this.props
+    const { showReleased, showDelete } = this.props
     const { selectedMap } = this.state
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
@@ -60,18 +61,31 @@ class WorldPicker extends Component {
     })
 
     const mapList = sortedMaps.map((map, index) => {
-      const { title, name } = map.data
+      const { id } = map
+      const { name, title, released } = map.data
+      const { updateIsReleasedProperty } = this.props
       console.log("map.data", toJS(map.data)) // zzz
 
       const mapId = map.id
       const text = (
         <span className={css.mapPickerRow}>
           {`map ${name}: ${title}`}
-          {showDelete && (
-            <span onClick={() => this.onDeleteMap({ map })}>
-              <Icon icon={IconNames.TRASH} />
-            </span>
-          )}
+          <div className={css.mapPickerRowButtons}>
+            {showReleased && (
+              <span className={"test"}>
+                Released
+                <Checkbox
+                  onClick={() => updateIsReleasedProperty({ id })}
+                  checked={released}
+                />
+              </span>
+            )}
+            {showDelete && (
+              <span onClick={() => this.onDeleteMap({ map })}>
+                <Icon icon={IconNames.TRASH} />
+              </span>
+            )}
+          </div>
         </span>
       )
       return (

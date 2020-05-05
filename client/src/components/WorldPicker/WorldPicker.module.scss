@@ -18,3 +18,19 @@
   color: var(--color-purple);
   font-size: 4vmin;
 }
+
+.mapPickerRowTitle {
+  display: flex;
+  flex: 1;
+}
+
+.mapPickerRow {
+  justify-content: space-between;
+  border: 1px solid green !important;
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+}
+
+.mapPickerRowButtons {
+}

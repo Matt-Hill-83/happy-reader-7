@@ -25,12 +25,13 @@ import Utils from "../../Utils/Utils"
 
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import css from "./WorldBuilder.module.scss"
+import WorldPicker from "../WorldPicker/WorldPicker"
 
 const INITIAL_MAP_INDEX = 0
-// const NUM_ROWS_LOCATIONS_GRID = 2
-// const NUM_COLS_LOCATIONS_GRID = 3
-const NUM_ROWS_LOCATIONS_GRID = 5
-const NUM_COLS_LOCATIONS_GRID = 20
+const NUM_ROWS_LOCATIONS_GRID = 2
+const NUM_COLS_LOCATIONS_GRID = 3
+// const NUM_ROWS_LOCATIONS_GRID = 5
+// const NUM_COLS_LOCATIONS_GRID = 20
 
 class WorldBuilder extends Component {
   state = {
@@ -40,11 +41,11 @@ class WorldBuilder extends Component {
 
   // Changing this to DidMount breaks things
   async componentWillMount() {
-    this.changeMap({ index: INITIAL_MAP_INDEX })
+    this.onChangeMap({ index: INITIAL_MAP_INDEX })
   }
 
-  changeMap = ({ index }) => {
-    console.log("changeMap") // zzz
+  onChangeMap = ({ index }) => {
+    console.log("onChangeMap") // zzz
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     let world = savedMaps[index]
@@ -68,6 +69,14 @@ class WorldBuilder extends Component {
 
       localStateStore.setWorldBuilderWorld(world)
       localStateStore.setWorldBuilderScenesGrid(reCreatedScenesGrid)
+
+      // temp code DELETE ME!!! (start) - zzz
+      const test1 = localStateStore.getWorldBuilderScenesGrid()
+      console.log(
+        "test1[0][0].location.name----------------------",
+        test1[0][0].location.name
+      ) // zzz
+      // temp code DELETE ME!!! (end)
     }
   }
 
@@ -96,57 +105,57 @@ class WorldBuilder extends Component {
     map.update({ released })
   }
 
-  renderMapPicker = () => {
-    console.log("renderMapPicker") // zzz
+  // renderMapPicker = () => {
+  //   console.log("renderMapPicker") // zzz
 
-    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+  //   const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
-    if (!savedMaps[0]) {
-      return null
-    }
+  //   if (!savedMaps[0]) {
+  //     return null
+  //   }
 
-    const mapList = savedMaps.map((map, index) => {
-      const { id } = map
-      const { name, title, released } = map.data
+  //   const mapList = savedMaps.map((map, index) => {
+  //     const { id } = map
+  //     const { name, title, released } = map.data
 
-      const text = (
-        <div className={css.mapPickerRow}>
-          <span
-            className={css.mapPickerRowTitle}
-            onClick={() => this.changeMap({ index })}
-          >
-            {`${name} - ${title}`}
-          </span>
-          <div className={css.mapPickerRowButtons}>
-            Released
-            <Checkbox
-              onClick={() => this.updateIsReleasedProperty({ id })}
-              checked={released}
-            />
-            <span onClick={() => this.onDeleteMap({ map })}>
-              <Icon icon={IconNames.TRASH} />
-            </span>
-          </div>
-        </div>
-      )
-      return <MenuItem text={text} />
-    })
+  //     const text = (
+  //       <div className={css.mapPickerRow}>
+  //         <span
+  //           className={css.mapPickerRowTitle}
+  //           onClick={() => this.onChangeMap({ mapId: id, index })}
+  //         >
+  //           {`${name} - ${title}`}
+  //         </span>
+  //         <div className={css.mapPickerRowButtons}>
+  //           Released
+  //           <Checkbox
+  //             onClick={() => this.updateIsReleasedProperty({ id })}
+  //             checked={released}
+  //           />
+  //           <span onClick={() => this.onDeleteMap({ map })}>
+  //             <Icon icon={IconNames.TRASH} />
+  //           </span>
+  //         </div>
+  //       </div>
+  //     )
+  //     return <MenuItem text={text} />
+  //   })
 
-    const renderedMapList = <Menu>{mapList}</Menu>
+  //   const renderedMapList = <Menu>{mapList}</Menu>
 
-    const worldPicker = (
-      <Popover
-        className={css.worldPickerDropdown}
-        portalClassName={css.worldPickerDropdownPopover}
-        content={renderedMapList}
-        position={Position.BOTTOM}
-      >
-        <Button icon="share" text="Load Map" />
-      </Popover>
-    )
+  //   const worldPicker = (
+  //     <Popover
+  //       className={css.worldPickerDropdown}
+  //       portalClassName={css.worldPickerDropdownPopover}
+  //       content={renderedMapList}
+  //       position={Position.BOTTOM}
+  //     >
+  //       <Button icon="share" text="Load Map" />
+  //     </Popover>
+  //   )
 
-    return worldPicker
-  }
+  //   return worldPicker
+  // }
 
   changeTerminalScene = ({ name, scenesList, scene, map, isStartScene }) => {
     console.log("changeScene") // zzz
@@ -277,7 +286,7 @@ class WorldBuilder extends Component {
 
     delete map.data.grid
     console.log("map.data", toJS(map.data)) // zzz
-
+    /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
     await map.update(map.data)
   }
 
@@ -310,8 +319,8 @@ class WorldBuilder extends Component {
         const id = Utils.generateUuid()
 
         const coordinates = {
-          x: colIndex,
-          y: rowIndex,
+          // x: colIndex,
+          // y: rowIndex,
           col: colIndex,
           row: rowIndex,
         }
@@ -448,6 +457,14 @@ class WorldBuilder extends Component {
     const { sceneToEdit, showFrameBuilder } = this.state
     const world = localStateStore.getWorldBuilderWorld()
 
+    // temp code DELETE ME!!! (start) - zzz
+    const test2 = localStateStore.getWorldBuilderScenesGrid()
+    console.log(
+      "test2[0][0].location.name----------------------",
+      test2[0][0].location.name
+    ) // zzz
+    // temp code DELETE ME!!! (end)
+
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle
 
@@ -478,10 +495,21 @@ class WorldBuilder extends Component {
               {this.renderTerminalScenePicker({ isStartScene: false })}
               <div className={css.subTitle}>
                 <div className={css.editWorldButtons}>
-                  {this.renderMapPicker()}
+                  {/* {this.renderMapPicker()} */}
+
+                  <WorldPicker
+                    showDelete={true}
+                    showReleased={true}
+                    updateIsReleasedProperty={this.updateIsReleasedProperty}
+                    onChangeMap={({ mapId, index }) =>
+                      this.onChangeMap({ mapId, index })
+                    }
+                    showDelete={true}
+                  />
+
                   <Button
                     text={"+ New Map"}
-                    onClick={() => this.changeMap({ index: -1 })}
+                    onClick={() => this.onChangeMap({ index: -1 })}
                   />
                 </div>
               </div>

@@ -272,7 +272,7 @@ export default class Utils {
     return uuid
   }
 
-  static getBlankScene = ({ props }) => {
+  static getDummyFrame = ({ props }) => {
     const dummyFrame = {
       creatures: ["kat", "liz2"],
       dialog: [
@@ -311,6 +311,13 @@ export default class Utils {
       ],
       story: ["I am Kat"],
     }
+    props && Object.assign(dummyFrame, props)
+
+    return dummyFrame
+  }
+
+  static getBlankScene = ({ props }) => {
+    const dummyFrame = this.getDummyFrame({ props: {} })
 
     const blankScene = {
       location: { name: "blank" },
@@ -330,8 +337,8 @@ export default class Utils {
     const columns = Array(gridDimensions.numCols).fill(0)
     const grid = []
 
-    const blankScene = Utils.getBlankScene({})
-    console.log("blankScene", blankScene) // zzz
+    // const blankScene = Utils.getBlankScene({})
+    // console.log("blankScene", blankScene) // zzz
 
     rows.forEach((row, rowIndex) => {
       const gridRow = []
@@ -339,15 +346,19 @@ export default class Utils {
         const sceneObj =
           newGrid5.find((scene) => {
             if (!scene.coordinates) {
-              return blankScene
+              return Utils.getBlankScene({})
             }
             return (
-              (scene.coordinates.y === rowIndex &&
-                scene.coordinates.x === colIndex) ||
-              (scene.coordinates.row === rowIndex &&
-                scene.coordinates.col === colIndex)
+              scene.coordinates.row === rowIndex &&
+              scene.coordinates.col === colIndex
             )
-          }) || blankScene
+            // return (
+            //   (scene.coordinates.y === rowIndex &&
+            //     scene.coordinates.x === colIndex) ||
+            //   (scene.coordinates.row === rowIndex &&
+            //     scene.coordinates.col === colIndex)
+            // )
+          }) || Utils.getBlankScene({})
 
         gridRow.push(sceneObj)
       })
