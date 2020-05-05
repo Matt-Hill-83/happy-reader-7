@@ -319,13 +319,18 @@ export default class Utils {
   static getBlankScene = ({ props }) => {
     const dummyFrame = this.getDummyFrame({ props: {} })
 
+    const id = Utils.generateUuid()
+
     const blankScene = {
+      isStartScene: false,
+      isEndScene: false,
       location: { name: "blank" },
       doorRight: { name: "doorYellow" },
       doorBottom: { name: "doorGreen" },
       characters: [{ name: "kat" }, { name: "liz2" }],
       items: [{ name: "hat" }, { name: "pig" }],
       frameSet: { frames: [dummyFrame] },
+      id,
     }
 
     props && Object.assign(blankScene, props)
@@ -333,32 +338,38 @@ export default class Utils {
   }
 
   static reCreateGridFromCondensedGrid = ({ gridDimensions, newGrid5 }) => {
-    const rows = Array(gridDimensions.numRows).fill(0)
-    const columns = Array(gridDimensions.numCols).fill(0)
-    const grid = []
+    const { numRows, numCols } = gridDimensions
 
-    // const blankScene = Utils.getBlankScene({})
-    // console.log("blankScene", blankScene) // zzz
+    const rows = Array(numRows).fill(0)
+    const columns = Array(numCols).fill(0)
+    const grid = []
 
     rows.forEach((row, rowIndex) => {
       const gridRow = []
       columns.forEach((col, colIndex) => {
+        const coordinates = {
+          col: colIndex,
+          row: rowIndex,
+        }
+        const isLastRow = rowIndex === numRows - 1
+        const isLastCol = colIndex === numCols - 1
+
+        const props = {
+          isLastRow,
+          isLastCol,
+          coordinates,
+        }
+
         const sceneObj =
           newGrid5.find((scene) => {
             if (!scene.coordinates) {
-              return Utils.getBlankScene({})
+              return Utils.getBlankScene({ props })
             }
             return (
               scene.coordinates.row === rowIndex &&
               scene.coordinates.col === colIndex
             )
-            // return (
-            //   (scene.coordinates.y === rowIndex &&
-            //     scene.coordinates.x === colIndex) ||
-            //   (scene.coordinates.row === rowIndex &&
-            //     scene.coordinates.col === colIndex)
-            // )
-          }) || Utils.getBlankScene({})
+          }) || Utils.getBlankScene({ props })
 
         gridRow.push(sceneObj)
       })

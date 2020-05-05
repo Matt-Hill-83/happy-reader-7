@@ -28,20 +28,14 @@ class LocalStateStore {
     this.mapBuilderWorld = mapBuilderWorld
   }
 
-  getPlot = () => this.plot
-  setPlot = (plot) => {
-    this.plot = plot
-  }
-
   getShowWorldBuilder = () => this.showWorldBuilder
   setShowWorldBuilder = (showWorldBuilder) => {
     this.showWorldBuilder = showWorldBuilder
   }
 
-  // getMaps = () => this.maps
-  setMaps = (maps) => {
-    this.maps = maps
-  }
+  // setMaps = (maps) => {
+  //   this.maps = maps
+  // }
 
   getCreatures = () => this.creatures
   setCreatures = (creatures) => {

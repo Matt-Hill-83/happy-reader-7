@@ -9,7 +9,6 @@ import { maps } from "../../Stores/InitStores.js"
 import { worldNameStore } from "../../Stores/FrameSetStore"
 import FlashCards from "../FlashCards/FlashCards"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
-import mySentences from "../../Models/sentences.js"
 import PicturePage from "../PicturePage/PicturePage"
 import Utils from "../../Utils/Utils"
 import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
@@ -42,19 +41,17 @@ class MainStory extends React.Component {
 
       localStateStore.setActiveMapId(mapId)
     }
-    await this.init()
+
+    if (SHOW_WORLD_BUILDER) {
+      this.toggleWorldBuilder()
+    } else {
+      await this.init()
+    }
 
     this.setState({ forceUpdate: "test" })
-    // temp code DELETE ME!!! (start) - zzz
-
-    this.toggleWorldBuilder()
-    // temp code DELETE ME!!! (end)
   }
 
   init = async () => {
-    // TODO - what does this do exactly, init some constants?
-    mySentences.generatePlot({})
-
     Utils.getFirstReleasedMap()
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     const filteredMaps = savedMaps.filter((map) => map.data.released)
@@ -79,7 +76,7 @@ class MainStory extends React.Component {
       map.data.grid = grid
     })
 
-    localStateStore.setMaps(filteredMaps)
+    // localStateStore.setMaps(filteredMaps)
     localStateStore.setShowWorldBuilder(SHOW_WORLD_BUILDER)
     if (SHOW_WORLD_BUILDER) return
 
@@ -216,7 +213,6 @@ class MainStory extends React.Component {
 
     localStateStore.setShowWorldBuilder(newShowWorldBuilder)
 
-    // TODO - get rid of all this plot stuff
     if (newShowWorldBuilder === false) {
       this.init()
     }

@@ -12,7 +12,6 @@ import {
   InputGroup,
 } from "@blueprintjs/core"
 
-import { Checkbox } from "@material-ui/core"
 import { IconNames } from "@blueprintjs/icons"
 
 import { maps } from "../../Stores/InitStores"
@@ -46,20 +45,29 @@ class WorldBuilder extends Component {
 
   onChangeMap = ({ index }) => {
     console.log("onChangeMap") // zzz
-
-    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    let world = savedMaps[index]
+    console.log("") // zzz
+    console.log("") // zzz
 
     // new map
     if (index === -1) {
-      this.saveNewMap()
+      this.addNewMap()
       return
     } else {
-      console.log("world.data", toJS(world.data)) // zzz
+      const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+      let world = savedMaps[index]
+      console.log(
+        "world.data++++++++++++++++++++++++++++++++++++++++++",
+        toJS(world.data)
+      ) // zzz
+      // temp code DELETE ME!!! (start) - zzz
+      const test0 = world.data.newGrid5
+      console.log("test0", toJS(test0)) // zzz
 
       const {
         data: { gridDimensions, newGrid5 },
       } = world
+
+      console.log("newGrid5", toJS(newGrid5)) // zzz
 
       const reCreatedScenesGrid = Utils.reCreateGridFromCondensedGrid({
         gridDimensions,
@@ -192,8 +200,10 @@ class WorldBuilder extends Component {
     this.setState({ sceneToEdit: "", showFrameBuilder: false })
   }
 
-  saveNewMap = async () => {
-    console.log("saveNewMap") // zzz
+  addNewMap = async () => {
+    console.log("") // zzz
+    console.log("") // zzz
+    console.log("addNewMap----------------------------------") // zzz
 
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
@@ -234,7 +244,7 @@ class WorldBuilder extends Component {
 
     delete map.data.grid
     console.log("map.data", toJS(map.data)) // zzz
-    /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
+    /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
     await map.update(map.data)
   }
 
@@ -267,8 +277,6 @@ class WorldBuilder extends Component {
         const id = Utils.generateUuid()
 
         const coordinates = {
-          // x: colIndex,
-          // y: rowIndex,
           col: colIndex,
           row: rowIndex,
         }

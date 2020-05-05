@@ -55,14 +55,15 @@ const allItems = itemsFromImages.map((type) => {
   return { type, name: "" }
 })
 
-const generatePlot = () => {
-  const plot = {
-    activeScene: startScene,
-    // allScenes,
-    allItems,
-  }
+// const generatePlot = () => {
+//   const plot = {
+//     activeScene: startScene,
+//     // allScenes,
+//     allItems,
+//   }
 
-  localStateStore.setPlot(plot)
-}
+//   localStateStore.setPlot(plot)
+// }
 
-export default { generatePlot }
+export default {}
+// export default { generatePlot }

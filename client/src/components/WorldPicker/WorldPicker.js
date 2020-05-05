@@ -19,7 +19,7 @@ import css from "./WorldPicker.module.scss"
 import { Checkbox } from "material-ui"
 
 class WorldPicker extends Component {
-  state = { selectedMap: "Get new Map" }
+  state = { selectedMap: "Select Map" }
 
   async componentWillMount() {}
 
@@ -46,9 +46,11 @@ class WorldPicker extends Component {
   render() {
     const { showReleased, showDelete } = this.props
     const { selectedMap } = this.state
-
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-    const filteredMaps = savedMaps.filter((map) => map.data.released)
+
+    const filteredMaps = showReleased
+      ? savedMaps
+      : savedMaps.filter((map) => map.data.released)
 
     if (!filteredMaps[0]) {
       return null
@@ -64,7 +66,6 @@ class WorldPicker extends Component {
       const { id } = map
       const { name, title, released } = map.data
       const { updateIsReleasedProperty } = this.props
-      console.log("map.data", toJS(map.data)) // zzz
 
       const mapId = map.id
       const text = (
