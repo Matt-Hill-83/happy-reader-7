@@ -105,58 +105,6 @@ class WorldBuilder extends Component {
     map.update({ released })
   }
 
-  // renderMapPicker = () => {
-  //   console.log("renderMapPicker") // zzz
-
-  //   const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-
-  //   if (!savedMaps[0]) {
-  //     return null
-  //   }
-
-  //   const mapList = savedMaps.map((map, index) => {
-  //     const { id } = map
-  //     const { name, title, released } = map.data
-
-  //     const text = (
-  //       <div className={css.mapPickerRow}>
-  //         <span
-  //           className={css.mapPickerRowTitle}
-  //           onClick={() => this.onChangeMap({ mapId: id, index })}
-  //         >
-  //           {`${name} - ${title}`}
-  //         </span>
-  //         <div className={css.mapPickerRowButtons}>
-  //           Released
-  //           <Checkbox
-  //             onClick={() => this.updateIsReleasedProperty({ id })}
-  //             checked={released}
-  //           />
-  //           <span onClick={() => this.onDeleteMap({ map })}>
-  //             <Icon icon={IconNames.TRASH} />
-  //           </span>
-  //         </div>
-  //       </div>
-  //     )
-  //     return <MenuItem text={text} />
-  //   })
-
-  //   const renderedMapList = <Menu>{mapList}</Menu>
-
-  //   const worldPicker = (
-  //     <Popover
-  //       className={css.worldPickerDropdown}
-  //       portalClassName={css.worldPickerDropdownPopover}
-  //       content={renderedMapList}
-  //       position={Position.BOTTOM}
-  //     >
-  //       <Button icon="share" text="Load Map" />
-  //     </Popover>
-  //   )
-
-  //   return worldPicker
-  // }
-
   changeTerminalScene = ({ name, scenesList, scene, map, isStartScene }) => {
     console.log("changeScene") // zzz
 
@@ -286,7 +234,7 @@ class WorldBuilder extends Component {
 
     delete map.data.grid
     console.log("map.data", toJS(map.data)) // zzz
-    /* eslint-disable */ debugger /* zzz */ /* eslint-ensable */
+    /* eslint-disable */ debugger /* eslint-ensable */ /* zzz */
     await map.update(map.data)
   }
 
@@ -495,8 +443,6 @@ class WorldBuilder extends Component {
               {this.renderTerminalScenePicker({ isStartScene: false })}
               <div className={css.subTitle}>
                 <div className={css.editWorldButtons}>
-                  {/* {this.renderMapPicker()} */}
-
                   <WorldPicker
                     showDelete={true}
                     showReleased={true}
