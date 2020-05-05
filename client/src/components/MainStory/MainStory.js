@@ -21,8 +21,6 @@ const SHOW_WORLD_BUILDER = false
 class MainStory extends React.Component {
   state = {
     activeScene: undefined,
-    pages: {},
-    showIntro: false,
     showYouWinModal: true,
   }
 
@@ -46,7 +44,7 @@ class MainStory extends React.Component {
       await this.init()
     }
 
-    this.setState({ forceUpdate: "test" })
+    // this.setState({ forceUpdate: "test" })
   }
 
   init = async () => {

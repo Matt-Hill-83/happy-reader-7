@@ -104,10 +104,6 @@ class CrudMachine extends Component {
   }
 
   setStateAndSave = ({ statePropsToSave }) => {
-    console.log(
-      "setStateAndSave------------------------------statePropsToSave",
-      statePropsToSave
-    ) // zzz
     this.setState({ ...statePropsToSave }, () =>
       this.saveChanges({ statePropsToSave })
     )
@@ -125,9 +121,9 @@ class CrudMachine extends Component {
   saveChanges = () => {
     const { saveItems } = this.props
     const { items } = this.state
+    console.log("items", toJS(items)) // zzz
 
-    // this isn't working correctly
-    saveItems && saveItems({ [this.props.propNameForItems]: items })
+    saveItems && saveItems({})
   }
 
   toggleItemPicker = ({ index, item = null }) => {

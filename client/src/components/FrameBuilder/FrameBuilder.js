@@ -1,12 +1,4 @@
-import {
-  Button,
-  ButtonGroup,
-  FormGroup,
-  Icon,
-  InputGroup,
-  Position,
-  Checkbox,
-} from "@blueprintjs/core"
+import { Button, Icon } from "@blueprintjs/core"
 
 import React, { Component } from "react"
 
@@ -126,7 +118,6 @@ class FrameBuilder extends Component {
       frames = [this.getNewFrame()]
       updateMap({})
     }
-    if (!frames) return []
 
     return frames.map((frame, index) => {
       return (

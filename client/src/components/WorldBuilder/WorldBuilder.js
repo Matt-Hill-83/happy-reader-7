@@ -27,10 +27,10 @@ import css from "./WorldBuilder.module.scss"
 import WorldPicker from "../WorldPicker/WorldPicker"
 
 const INITIAL_MAP_INDEX = 0
-const NUM_ROWS_LOCATIONS_GRID = 2
-const NUM_COLS_LOCATIONS_GRID = 3
-// const NUM_ROWS_LOCATIONS_GRID = 5
-// const NUM_COLS_LOCATIONS_GRID = 20
+// const NUM_ROWS_LOCATIONS_GRID = 2
+// const NUM_COLS_LOCATIONS_GRID = 3
+const NUM_ROWS_LOCATIONS_GRID = 5
+const NUM_COLS_LOCATIONS_GRID = 20
 
 class WorldBuilder extends Component {
   state = {
@@ -59,9 +59,6 @@ class WorldBuilder extends Component {
         "world.data++++++++++++++++++++++++++++++++++++++++++",
         toJS(world.data)
       ) // zzz
-      // temp code DELETE ME!!! (start) - zzz
-      const test0 = world.data.newGrid5
-      console.log("test0", toJS(test0)) // zzz
 
       const {
         data: { gridDimensions, newGrid5 },
@@ -77,14 +74,6 @@ class WorldBuilder extends Component {
 
       localStateStore.setWorldBuilderWorld(world)
       localStateStore.setWorldBuilderScenesGrid(reCreatedScenesGrid)
-
-      // temp code DELETE ME!!! (start) - zzz
-      const test1 = localStateStore.getWorldBuilderScenesGrid()
-      console.log(
-        "test1[0][0].location.name----------------------",
-        test1[0][0].location.name
-      ) // zzz
-      // temp code DELETE ME!!! (end)
     }
   }
 
@@ -192,7 +181,7 @@ class WorldBuilder extends Component {
     return scenePicker
   }
 
-  editFrame = ({ sceneToEdit }) => {
+  editFrameSet = ({ sceneToEdit }) => {
     this.setState({ sceneToEdit, showFrameBuilder: true })
   }
 
@@ -231,7 +220,7 @@ class WorldBuilder extends Component {
   }
 
   // TODO - make this global Util
-  updateMap = async ({ newProps }) => {
+  updateMap = async ({ newProps = {} }) => {
     console.log("updateMap") // zzz
     console.log("newProps", { newProps }) // zzz
 
@@ -299,18 +288,40 @@ class WorldBuilder extends Component {
     return { grid, gridDimensions }
   }
 
-  saveItems = async (statePropsToSave) => {
+  onSaveLocation = async (statePropsToSave) => {
+    console.log("") // zzz
+    console.log("") // zzz
+
+    console.log("onSaveLocation-------------------------------") // zzz
+    console.log("statePropsToSave", toJS(statePropsToSave)) // zzz
+
     await this.updateMap({ newProps: statePropsToSave })
-    this.forceUpdateWorldBuilder()
+    // this.forceUpdateWorldBuilder()
+  }
+
+  saveItems = async (statePropsToSave) => {
+    console.log("") // zzz
+    console.log("") // zzz
+
+    console.log("saveItems-------------------------------") // zzz
+    console.log("statePropsToSave", toJS(statePropsToSave)) // zzz
+
+    await this.updateMap({})
+    // await this.updateMap({ newProps: statePropsToSave })
+    // this.forceUpdateWorldBuilder()
   }
 
   forceUpdateWorldBuilder = () => {
     this.setState({ forceUpdate: new Date() })
   }
 
+  // TODO: on save, Crudmachine shoud return the mutated list and a callback should save it
+  // in the appropriate place.
+  // Right now, CrudMachine simply mutates a reference and calls a generic update.
+  // Which is why you can change an item, but you can't add an item.
   renderNewGrid = () => {
-    const grid2 = localStateStore.getWorldBuilderScenesGrid()
-    console.log("grid2", toJS(grid2)) // zzz
+    const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
+    console.log("scenesGrid", toJS(scenesGrid)) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -324,46 +335,48 @@ class WorldBuilder extends Component {
     const doorImageSets = [images.doors]
     const locationImageSets = [images.locations, images.vehicles, images.items]
 
-    grid2.forEach((row) => {
+    scenesGrid.forEach((row) => {
       const gridRow = []
 
-      Object.values(row).forEach((scene) => {
+      row.forEach((scene) => {
         const locations = [scene.location]
         const doorsBottom = [scene.doorBottom]
         const doorsRight = [scene.doorRight]
         const characters = scene.characters
         const items = scene.items
 
+        console.log("locations", locations) // zzz
+
         const hideScene = scene.location && scene.location.name === "blank"
+
+        const locationPicker = (
+          <CrudMachine
+            className={`${css.crudMachine} ${css.locationMachine}`}
+            items={locations}
+            onEditItem={this.onEditLocation}
+            buttons={buttons}
+            itemRenderer={itemRenderer}
+            saveItems={this.onSaveLocation}
+            imageSets={locationImageSets}
+          />
+        )
 
         gridRow.push(
           <div className={css.gridCell}>
             {!hideScene && (
               <Button
                 className={css.scenePropsButton}
-                onClick={() => this.editFrame({ sceneToEdit: scene })}
+                onClick={() => this.editFrameSet({ sceneToEdit: scene })}
               >
                 <Icon icon={IconNames.SETTINGS} />
               </Button>
             )}
             <div className={css.column1}>
-              {
-                <CrudMachine
-                  forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
-                  className={`${css.crudMachine} ${css.locationMachine}`}
-                  items={locations}
-                  buttons={buttons}
-                  itemRenderer={itemRenderer}
-                  saveItems={onSave}
-                  imageSets={locationImageSets}
-                />
-              }
+              {locationPicker}
               {!hideScene && (
                 <CrudMachine
-                  forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
                   className={`${css.crudMachine} ${css.itemBox} ${css.charactersMachine}`}
                   items={characters}
-                  propNameForItems={"characters"}
                   itemRenderer={itemRenderer}
                   saveItems={onSave}
                   imageSets={characterImageSets}
@@ -371,7 +384,6 @@ class WorldBuilder extends Component {
               )}
               {!hideScene && (
                 <CrudMachine
-                  forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
                   className={`${css.crudMachine} ${css.itemBox} ${css.itemsMachine}`}
                   items={items}
                   itemRenderer={itemRenderer}
@@ -380,7 +392,6 @@ class WorldBuilder extends Component {
               )}
               {!hideScene && (
                 <CrudMachine
-                  forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
                   className={`${css.crudMachine} ${css.doorsBottomMachine}`}
                   items={doorsBottom}
                   itemRenderer={itemRenderer}
@@ -391,7 +402,6 @@ class WorldBuilder extends Component {
 
               {!hideScene && (
                 <CrudMachine
-                  forceUpdateWorldBuilder={this.forceUpdateWorldBuilder}
                   className={`${css.crudMachine} ${css.doorsRightMachine}`}
                   items={doorsRight}
                   itemRenderer={itemRenderer}

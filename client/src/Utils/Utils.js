@@ -250,13 +250,8 @@ export default class Utils {
     return foundMap
   }
 
-  static getFirstReleasedMap = () => {
-    const mapsDocs = toJS(maps.docs)
-    const filteredMaps = mapsDocs.filter((map) => {
-      return map.data.released
-    })
-    return filteredMaps[0]
-  }
+  static getFirstReleasedMap = () =>
+    toJS(maps.docs).find((map) => map.data.released)
 
   static generateUuid() {
     const sepStr = "-"
