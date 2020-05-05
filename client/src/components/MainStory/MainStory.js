@@ -7,7 +7,6 @@ import { Button, Dialog } from "@blueprintjs/core"
 
 import { maps } from "../../Stores/InitStores.js"
 import { worldNameStore } from "../../Stores/FrameSetStore"
-import FlashCards from "../FlashCards/FlashCards"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import PicturePage from "../PicturePage/PicturePage"
 import Utils from "../../Utils/Utils"
@@ -21,7 +20,6 @@ const SHOW_WORLD_BUILDER = false
 
 class MainStory extends React.Component {
   state = {
-    showStory: true,
     activeScene: undefined,
     pages: {},
     showIntro: false,
@@ -76,7 +74,6 @@ class MainStory extends React.Component {
       map.data.grid = grid
     })
 
-    // localStateStore.setMaps(filteredMaps)
     localStateStore.setShowWorldBuilder(SHOW_WORLD_BUILDER)
     if (SHOW_WORLD_BUILDER) return
 
@@ -203,10 +200,6 @@ class MainStory extends React.Component {
     return neighborNames
   }
 
-  toggleFlashCards = () => {
-    this.setState({ showStory: !this.state.showStory })
-  }
-
   toggleWorldBuilder = () => {
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
     const newShowWorldBuilder = !showWorldBuilder
@@ -232,13 +225,29 @@ class MainStory extends React.Component {
     this.initWorld()
   }
 
+  renderYouWinModal = () => {
+    return (
+      <Dialog
+        isOpen={this.state.showYouWinModal}
+        isCloseButtonShown={true}
+        className={css.levelCompleteDialog}
+      >
+        <WorldPicker
+          showDelete={false}
+          onChangeMap={({ mapId, index }) => this.onChangeMap({ mapId, index })}
+        />
+        <Button
+          className={css.levelCompletionButton}
+          onClick={this.closeYouWinModal}
+        >
+          PLAY
+        </Button>
+      </Dialog>
+    )
+  }
+
   renderGame = () => {
-    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-
-    if (!savedMaps.length) {
-      return null
-    }
-
+    // Determine whether this is desktop or mobile
     const { className } = this.props
     const { activeScene } = this.state
 
@@ -257,38 +266,17 @@ class MainStory extends React.Component {
           />
         </div>
         <div className={css.body}>
-          {!this.state.showStory && <FlashCards />}
-          {this.state.showStory && (
-            <div className={css.storyBox}>
-              <PicturePage
-                updateActiveScene={this.updateActiveScene}
-                activeScene={activeScene}
-                openYouWinModal={this.openYouWinModal}
-              />
-            </div>
-          )}
+          <div className={css.storyBox}>
+            <PicturePage
+              updateActiveScene={this.updateActiveScene}
+              activeScene={activeScene}
+              openYouWinModal={this.openYouWinModal}
+            />
+          </div>
         </div>
 
-        {false && this.state.showYouWinModal && (
-          <Dialog
-            isOpen={this.state.showYouWinModal}
-            isCloseButtonShown={true}
-            className={css.levelCompleteDialog}
-          >
-            <WorldPicker
-              showDelete={false}
-              onChangeMap={({ mapId, index }) =>
-                this.onChangeMap({ mapId, index })
-              }
-            />
-            <Button
-              className={css.levelCompletionButton}
-              onClick={this.closeYouWinModal}
-            >
-              PLAY
-            </Button>
-          </Dialog>
-        )}
+        {/* this is commented bc it is annoying, but I need to put it back later.... maybe */}
+        {false && this.state.showYouWinModal && this.renderYouWinModal()}
       </div>
     )
   }
