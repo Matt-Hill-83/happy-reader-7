@@ -63,6 +63,9 @@ class Frame extends Component {
       frame,
       frame: { faces },
     } = this.state
+    console.log("frame", toJS(frame)) // zzz
+
+    console.log("faces", toJS(faces)) // zzz
 
     const thisFace = faces.find((face) => face.character === name)
     thisFace.face = head.mood
@@ -85,20 +88,6 @@ class Frame extends Component {
   // But start out by just editing existing items, like characters
 
   onSelectItem = ({ itemId, name }) => {
-    // const { updateFrameSet } = this.props
-
-    // const {
-    //   frame,
-    //   frame: { faces }
-    // } = this.state
-
-    // const thisFace = faces.find(face => face.character === name)
-    // thisFace.face = head.mood
-
-    // //  /TODO - chage to update world maybe?
-    // updateFrameSet({})
-
-    // this.setState({ frame })
     this.toggleItemPicker({})
   }
 
@@ -335,7 +324,7 @@ class Frame extends Component {
       (scene.characters && scene.characters.map((item) => item.name)) || []
 
     const allItems = (scene.items && scene.items.map((item) => item.name)) || []
-    
+
     // temp code DELETE ME!!! (start) - zzz
     allCharacters.push(...allItems)
     // temp code DELETE ME!!! (end)

@@ -120,6 +120,8 @@ export default class Utils {
   }
 
   static getNewFrame = ({ characters }) => {
+    console.log("characters", toJS(characters)) // zzz
+
     const you = localStateStore.getYou()
     const yourName = you.name
     let allCharacters = [yourName]
@@ -129,11 +131,16 @@ export default class Utils {
       allCharacters.push(...friendNames)
     }
 
-    const creatureName0 = allCharacters[0] || "creature0"
+    const creatureName0 = allCharacters[0] || "kat"
     const creatureName1 = allCharacters[1] || "liz2"
 
     const newFrame = {
-      creatures: allCharacters,
+      // this is a hacky fix
+      // this is a hacky fix
+      // this is a hacky fix
+      // this is a hacky fix
+      creatures: ["kat", "liz2"],
+      // creatures: allCharacters,
       story: [`${creatureName0} is happy.`],
       faces: [
         { character: creatureName1, characterIndex: 1, face: "happy" },
@@ -162,6 +169,7 @@ export default class Utils {
         },
       ],
     }
+    console.log("newFrame", toJS(newFrame)) // zzz
 
     return newFrame
   }

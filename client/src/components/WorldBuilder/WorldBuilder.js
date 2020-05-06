@@ -222,10 +222,11 @@ class WorldBuilder extends Component {
   // TODO - make this global Util
   updateMap = async ({ newProps = {} }) => {
     console.log("updateMap") // zzz
-    console.log("newProps", { newProps }) // zzz
+    console.log("newProps", newProps) // zzz
 
     const map = localStateStore.getWorldBuilderWorld()
     Object.assign(map.data, toJS(newProps))
+    console.log("map", toJS(map)) // zzz
 
     map.data.newGrid5 = Utils.createCondensedGridFromGrid()
 
