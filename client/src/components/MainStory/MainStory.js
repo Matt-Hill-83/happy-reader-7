@@ -86,9 +86,6 @@ class MainStory extends React.Component {
     )
 
     const terminalScene = start ? startScene : endScene
-    // console.log("map.data", toJS(map.data)) // zzz
-
-    console.log("-----------") // zzz
     console.log("-----------") // zzz
     console.log("-----------") // zzz
 
@@ -106,10 +103,6 @@ class MainStory extends React.Component {
     if (!startScene) return
 
     localStateStore.setActiveSceneId(startScene.id)
-
-    // For some reason this is not referencing the object in the grid, and the showCloud prop is not persisting.
-    // startScene.showCloud = false
-
     this.updateActiveScene({ activeScene: startScene })
   }
 
@@ -121,56 +114,11 @@ class MainStory extends React.Component {
       return
     }
 
-    const map = localStateStore.getActiveMap()
-    activeScene.neighborNames = this.getNeighbors({ activeScene, map })
+    // activeScene.neighborNames = this.getNeighbors({ activeScene })
     activeScene.showCloud = false
 
     // I should set to the store and not to state
     this.setState({ activeScene })
-  }
-
-  getNeighbors = ({ activeScene }) => {
-    const neighbors = []
-    // const neighborsArray = []
-
-    const grid = localStateStore.getActiveMapGrid()
-    console.log("grid", toJS(grid)) // zzz
-
-    console.log("activeScene", toJS(activeScene)) // zzz
-
-    const { coordinates } = activeScene
-
-    // TODO: add flag for whether neighbor exists in that position
-    const neighborPositions = {
-      left: { row: coordinates.row - 1, col: coordinates.col },
-      right: { row: coordinates.row + 1, col: coordinates.col },
-      bottom: { row: coordinates.row, col: coordinates.col + 1 },
-      top: { row: coordinates.row, col: coordinates.col - 1 },
-    }
-
-    const leftNeighbor = 5
-    console.log("neighborPositions", toJS(neighborPositions)) // zzz
-
-    neighbors.push(neighborPositions.top)
-    neighbors.push(neighborPositions.bottom)
-    neighbors.push(neighborPositions.left)
-    neighbors.push(neighborPositions.right)
-
-    activeScene.neighborPositions = neighborPositions
-
-    const neighborNames = []
-
-    // neighbors.forEach((neighbor) => {
-    //   neighborsArray.forEach((item) => {
-    //     if (item.position.x === neighbor.x && item.position.y === neighbor.y) {
-    //       neighborNames.push(item.name)
-    //     }
-    //   })
-    // })
-
-    // console.log("neighbors", neighbors) // zzz
-
-    return neighborNames
   }
 
   toggleWorldBuilder = () => {

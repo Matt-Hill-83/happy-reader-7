@@ -386,4 +386,78 @@ export default class Utils {
 
     return condensedGrid
   }
+
+  static getNeighbor = ({ coordinates, direction }) => {
+    const grid = localStateStore.getActiveMapGrid()
+
+    console.log("direction", toJS(direction)) // zzz
+    console.log("coordinates", toJS(coordinates)) // zzz
+
+    const neighborPositions = {
+      [Utils.neighborPositionsEnum.left]: {
+        row: coordinates.row,
+        col: coordinates.col - 1,
+      },
+      [Utils.neighborPositionsEnum.right]: {
+        row: coordinates.row,
+        col: coordinates.col + 1,
+      },
+      [Utils.neighborPositionsEnum.bottom]: {
+        row: coordinates.row + 1,
+        col: coordinates.col,
+      },
+      [Utils.neighborPositionsEnum.top]: {
+        row: coordinates.row - 1,
+        col: coordinates.col,
+      },
+    }
+
+    return grid.find((item) => {
+      return (
+        (item.coordinates.row === neighborPositions[direction]["row"] &&
+          item.coordinates.col === neighborPositions[direction]["col"]) ||
+        null
+      )
+    })
+  }
+
+  static neighborPositionsEnum = {
+    left: "left",
+    right: "right",
+    bottom: "bottom",
+    top: "top",
+  }
+
+  static getNeighbors = ({ coordinates }) => {
+    const directions = Object.keys(Utils.neighborPositionsEnum)
+    const neighbors = {}
+
+    directions.forEach((direction) => {
+      neighbors[direction] = Utils.getNeighbor({
+        coordinates,
+        direction,
+      })
+    })
+
+    console.log("neighbors", toJS(neighbors)) // zzz
+    return neighbors
+  }
+
+  static getNeighborNames = ({ coordinates }) => {
+    const neighbors = Utils.getNeighbors({ coordinates })
+    console.log("neighbors", toJS(neighbors)) // zzz
+
+    const neighborNames = []
+    for (const item in neighbors) {
+      console.log("item", toJS(item)) // zzz
+      const neighbor = neighbors[item]
+
+      if (neighbor) {
+        neighborNames.push(neighbor.location.name)
+      }
+    }
+    console.log("neighborNames", toJS(neighborNames)) // zzz
+
+    return neighborNames
+  }
 }

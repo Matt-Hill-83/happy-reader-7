@@ -8,6 +8,7 @@ import Frame from "../Frame/Frame.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 
 import css from "./WordPage.module.scss"
+import Utils from "../../Utils/Utils.js"
 
 class WordPage extends React.Component {
   state = {
@@ -33,15 +34,8 @@ class WordPage extends React.Component {
   changeLocation = ({ sceneName }) => {
     this.setState({ frameIndex: 0 })
 
-    // const map = localStateStore.getActiveMap()
-    // const grid = _get(map, "data.grid") || []
     const grid = localStateStore.getActiveMapGrid()
-    // const allScenes = grid.flat()
-    let newScene
-
-    newScene = grid.find((scene) => scene.location.name === sceneName)
-    // newScene = allScenes.find((scene) => scene.location.name === sceneName)
-
+    const newScene = grid.find((scene) => scene.location.name === sceneName)
     this.props.updateActiveScene({ activeScene: newScene })
   }
 
@@ -50,11 +44,16 @@ class WordPage extends React.Component {
   }
 
   renderButtons = () => {
-    const { activeScene } = this.state
-    const neighbors = activeScene.neighborNames
+    const {
+      activeScene: { isEndScene, coordinates },
+    } = this.state
+
+    const neighbors = Utils.getNeighborNames({
+      coordinates,
+    })
+    console.log("neighbors", toJS(neighbors)) // zzz
+
     const filteredNeighbors = neighbors.filter((item) => item !== "blank")
-    const { isEndScene } = activeScene
-    let buttons
 
     if (isEndScene) {
       return (
@@ -62,21 +61,21 @@ class WordPage extends React.Component {
           New Game
         </Button>
       )
-    } else {
-      buttons = filteredNeighbors.map((neighbor, i) => {
-        if (!neighbor) {
-          return null
-        }
-
-        const onClick = () => this.changeLocation({ sceneName: neighbor })
-
-        return (
-          <Button key={i} onClick={onClick} className={css.choiceButton}>
-            {neighbor}
-          </Button>
-        )
-      })
     }
+
+    const buttons = filteredNeighbors.map((neighbor, i) => {
+      if (!neighbor) {
+        return null
+      }
+
+      const onClick = () => this.changeLocation({ sceneName: neighbor })
+
+      return (
+        <Button key={i} onClick={onClick} className={css.choiceButton}>
+          {neighbor}
+        </Button>
+      )
+    })
 
     return <div className={css.decisionButtonRow}>GO TO{buttons}</div>
   }
