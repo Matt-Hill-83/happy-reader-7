@@ -53,9 +53,6 @@ class PicturePage extends React.Component {
 
     isActive = sceneName === activeScene.location.name
 
-    // This prop is not being applied correctly in MainStory.js
-    // scene.showCloud = !isActive
-
     const id = `${colIndex}-${rowIndex}`
     const onClick = () => this.props.updateActiveScene({ activeScene: scene })
 

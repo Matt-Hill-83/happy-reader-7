@@ -102,7 +102,7 @@ class WordPage extends React.Component {
         <div className={css.buttonRow}>
           {!isLastFrame && (
             <Button onClick={this.onClickNext} className={css.choiceButton}>
-              NEXT--
+              NEXT
             </Button>
           )}
 

@@ -194,16 +194,11 @@ class MiniLocation extends React.Component {
     const neighbors = Utils.getNeighbors({ coordinates })
     console.log("neighbors", toJS(neighbors)) // zzz
 
-    const { isLastCol, isLastRow } = scene
+    // let showCloud = scene.showCloud
 
-    let showCloud = scene.showCloud
-    if (showCloud === undefined) {
-      showCloud = true
-    }
-
-    if (scene.isStartScene) {
-      showCloud = false
-    }
+    // if (scene.isStartScene) {
+    const showCloud = false
+    // }
 
     const { items = [], creatures = [] } = scene
 
@@ -258,7 +253,6 @@ class MiniLocation extends React.Component {
 
             {/* Right door */}
             {false &&
-              !isLastCol &&
               this.renderButton({
                 position: "right",
                 className: css.rightDoor,
