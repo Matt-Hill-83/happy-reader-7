@@ -266,7 +266,9 @@ class MiniLocation extends React.Component {
       return <div className={`${css.main} ${className} ${localClass}`}></div>
     }
 
-    console.log("scene", toJS(scene)) // zzz
+    if (scene.neighborNames) {
+      console.log("scene", toJS(scene)) // zzz
+    }
 
     return (
       <div

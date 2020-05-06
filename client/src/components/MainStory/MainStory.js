@@ -43,8 +43,6 @@ class MainStory extends React.Component {
     } else {
       await this.init()
     }
-
-    // this.setState({ forceUpdate: "test" })
   }
 
   init = async () => {
@@ -54,11 +52,6 @@ class MainStory extends React.Component {
 
     // TODO - I need to get maps by id, not by index, because I'm filtering them.
     filteredMaps.forEach((map) => {
-      console.log("map.data------------------->>>>", map.data) // zzz
-      console.log("map.data", toJS(map.data)) // zzz
-
-      console.log("map.data.newGrid5", toJS(map.data.newGrid5)) // zzz
-
       const {
         data: { gridDimensions, newGrid5 },
       } = map
@@ -67,7 +60,6 @@ class MainStory extends React.Component {
         gridDimensions,
         newGrid5,
       })
-      console.log("grid", toJS(grid)) // zzz
 
       map.data.grid = grid
     })
@@ -79,31 +71,29 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene = ({ start = true }) => {
-    const mapId = localStateStore.getActiveMapId()
-    const map = Utils.getMapFromId({ id: mapId })
+    const map = localStateStore.getActiveMap()
 
     const startScene2 = map.data.startScene
     const endScene2 = map.data.endScene
     console.log("startScene2", startScene2) // zzz
     console.log("endScene2", endScene2) // zzz
 
-    const endSceneId = map.data.endSceneId
-    const startSceneId = map.data.startSceneId
+    const scenesGrid = _get(map, "data.newGrid5") || []
 
-    const grid5 = _get(map, "data.newGrid5") || []
-    const endScene = grid5.find((item) => item.id === endSceneId)
-    const startScene = grid5.find((item) => item.id === startSceneId)
+    const endScene = scenesGrid.find((item) => item.id === map.data.endSceneId)
+    const startScene = scenesGrid.find(
+      (item) => item.id === map.data.startSceneId
+    )
 
     const terminalScene = start ? startScene : endScene
-    console.log("map.data", toJS(map.data)) // zzz
+    // console.log("map.data", toJS(map.data)) // zzz
 
     console.log("-----------") // zzz
     console.log("-----------") // zzz
     console.log("-----------") // zzz
 
-    const validScenes = grid5
-    const firstScene = validScenes[0]
-    const lastScene = validScenes[validScenes.length - 1]
+    const firstScene = scenesGrid[0]
+    const lastScene = scenesGrid[scenesGrid.length - 1]
 
     // If no start and finish scenes are marked, choose some, so the program doesn't break
     return terminalScene || (start ? firstScene : lastScene)
@@ -113,13 +103,12 @@ class MainStory extends React.Component {
     console.log("initWorld") // zzz
 
     const startScene = this.getTerminalScene({})
-    console.log("startScene", startScene) // zzz
     if (!startScene) return
 
     localStateStore.setActiveSceneId(startScene.id)
 
     // For some reason this is not referencing the object in the grid, and the showCloud prop is not persisting.
-    startScene.showCloud = false
+    // startScene.showCloud = false
 
     this.updateActiveScene({ activeScene: startScene })
   }
@@ -133,48 +122,34 @@ class MainStory extends React.Component {
     }
 
     const map = localStateStore.getActiveMap()
-
     activeScene.neighborNames = this.getNeighbors({ activeScene, map })
-
     activeScene.showCloud = false
 
     // I should set to the store and not to state
     this.setState({ activeScene })
   }
 
-  getNeighbors = ({ activeScene, map }) => {
-    const activeSceneName = activeScene.location.name
-
+  getNeighbors = ({ activeScene }) => {
     const neighbors = []
-    const neighborsArray = []
+    // const neighborsArray = []
 
-    // create a map of all the locations for future use
-    map.data.grid.forEach((row, rowIndex) => {
-      row.forEach((location, locationIndex) => {
-        location = location || {}
+    const grid = localStateStore.getActiveMapGrid()
+    console.log("grid", toJS(grid)) // zzz
 
-        neighborsArray.push({
-          name: location.location.name,
-          position: { x: rowIndex, y: locationIndex },
-        })
-      })
-    })
+    console.log("activeScene", toJS(activeScene)) // zzz
 
-    const currentLocation = neighborsArray.find((item) => {
-      return item.name === activeSceneName
-    })
+    const { coordinates } = activeScene
 
-    if (!currentLocation) {
-      return []
-    }
-    const currentPosition = currentLocation.position
-
+    // TODO: add flag for whether neighbor exists in that position
     const neighborPositions = {
-      left: { x: currentPosition.x - 1, y: currentPosition.y },
-      right: { x: currentPosition.x + 1, y: currentPosition.y },
-      bottom: { x: currentPosition.x, y: currentPosition.y + 1 },
-      top: { x: currentPosition.x, y: currentPosition.y - 1 },
+      left: { row: coordinates.row - 1, col: coordinates.col },
+      right: { row: coordinates.row + 1, col: coordinates.col },
+      bottom: { row: coordinates.row, col: coordinates.col + 1 },
+      top: { row: coordinates.row, col: coordinates.col - 1 },
     }
+
+    const leftNeighbor = 5
+    console.log("neighborPositions", toJS(neighborPositions)) // zzz
 
     neighbors.push(neighborPositions.top)
     neighbors.push(neighborPositions.bottom)
@@ -185,15 +160,15 @@ class MainStory extends React.Component {
 
     const neighborNames = []
 
-    neighbors.forEach((neighbor) => {
-      neighborsArray.forEach((item) => {
-        if (item.position.x === neighbor.x && item.position.y === neighbor.y) {
-          neighborNames.push(item.name)
-        }
-      })
-    })
+    // neighbors.forEach((neighbor) => {
+    //   neighborsArray.forEach((item) => {
+    //     if (item.position.x === neighbor.x && item.position.y === neighbor.y) {
+    //       neighborNames.push(item.name)
+    //     }
+    //   })
+    // })
 
-    console.log("neighbors", neighbors) // zzz
+    // console.log("neighbors", neighbors) // zzz
 
     return neighborNames
   }
@@ -248,6 +223,7 @@ class MainStory extends React.Component {
     // Determine whether this is desktop or mobile
     const { className } = this.props
     const { activeScene } = this.state
+    console.log("activeScene", toJS(activeScene)) // zzz
 
     if (!activeScene) {
       return null

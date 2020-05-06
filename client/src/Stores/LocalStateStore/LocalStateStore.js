@@ -33,18 +33,18 @@ class LocalStateStore {
     this.showWorldBuilder = showWorldBuilder
   }
 
-  // setMaps = (maps) => {
-  //   this.maps = maps
+  // setCreatures = (creatures) => {
+  //   this.creatures = creatures
   // }
-
-  getCreatures = () => this.creatures
-  setCreatures = (creatures) => {
-    this.creatures = creatures
-  }
 
   getActiveMap = () => {
     const map = Utils.getMapFromId({ id: this.activeMapId })
     return map
+  }
+
+  getActiveMapGrid = () => {
+    const map = Utils.getMapFromId({ id: this.activeMapId })
+    return map.data.newGrid5 || []
   }
 
   getActiveMapId = () => this.activeMapId

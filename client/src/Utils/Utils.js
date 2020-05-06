@@ -4,12 +4,6 @@ import { maps } from "../Stores/InitStores.js"
 import { toJS } from "mobx"
 
 export default class Utils {
-  static getCreatureByType = ({ type }) => {
-    const allCreatures = localStateStore.getCreatures()
-
-    return allCreatures.find((creature) => creature.type === type)
-  }
-
   static removeFavorites = (words) =>
     words.filter((word) => {
       if (word.data) {

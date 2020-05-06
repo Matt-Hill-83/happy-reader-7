@@ -25,15 +25,22 @@ class WordPage extends React.Component {
     this.setState({ activeScene })
   }
 
+  // TODO: change scene should be done by sceneId
+  // TODO: change scene should be done by sceneId
+  // TODO: change scene should be done by sceneId
+  // TODO: change scene should be done by sceneId
+  // TODO: change scene should be done by sceneId
   changeLocation = ({ sceneName }) => {
     this.setState({ frameIndex: 0 })
 
-    const map = localStateStore.getActiveMap()
-    const grid = _get(map, "data.grid") || []
-    const allScenes = grid.flat()
+    // const map = localStateStore.getActiveMap()
+    // const grid = _get(map, "data.grid") || []
+    const grid = localStateStore.getActiveMapGrid()
+    // const allScenes = grid.flat()
     let newScene
 
-    newScene = allScenes.find((scene) => scene.location.name === sceneName)
+    newScene = grid.find((scene) => scene.location.name === sceneName)
+    // newScene = allScenes.find((scene) => scene.location.name === sceneName)
 
     this.props.updateActiveScene({ activeScene: newScene })
   }
