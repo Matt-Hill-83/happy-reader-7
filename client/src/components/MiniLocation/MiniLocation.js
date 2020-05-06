@@ -231,6 +231,11 @@ class MiniLocation extends React.Component {
       id,
       isEditMode,
     } = this.props
+    console.log("scene", toJS(scene)) // zzz
+
+    const { coordinates } = scene
+    const neighbors = Utils.getNeighbors({ coordinates })
+    console.log("neighbors", toJS(neighbors)) // zzz
 
     const { isLastCol, isLastRow } = scene
 
@@ -266,9 +271,8 @@ class MiniLocation extends React.Component {
       return <div className={`${css.main} ${className} ${localClass}`}></div>
     }
 
-    if (scene.neighborNames) {
-      console.log("scene", toJS(scene)) // zzz
-    }
+    const showBottomPath = neighbors[Utils.neighborPositionsEnum.bottom]
+    const showRightPath = neighbors[Utils.neighborPositionsEnum.right]
 
     return (
       <div
@@ -281,8 +285,8 @@ class MiniLocation extends React.Component {
         {!isBlank && (
           <div className={css.container}>
             {/* Paths that connect scenes */}
-            {!isLastCol && <div className={css.rightPath}></div>}
-            {!isLastRow && <div className={css.bottomPath}></div>}
+            {showRightPath && <div className={css.rightPath}></div>}
+            {showBottomPath && <div className={css.bottomPath}></div>}
             {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
             <div className={css.grassImage} />
             {!isEditMode && showCloud && (
