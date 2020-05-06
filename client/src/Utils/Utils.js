@@ -374,7 +374,6 @@ export default class Utils {
 
     const condensedGrid = []
     const mapBuilderGrid = localStateStore.getWorldBuilderScenesGrid()
-    console.log("mapBuilderGrid", toJS(mapBuilderGrid)) // zzz
 
     mapBuilderGrid.forEach((row) => {
       row.forEach((col) => {
@@ -389,9 +388,6 @@ export default class Utils {
 
   static getNeighbor = ({ coordinates, direction }) => {
     const grid = localStateStore.getActiveMapGrid()
-
-    console.log("direction", toJS(direction)) // zzz
-    console.log("coordinates", toJS(coordinates)) // zzz
 
     const neighborPositions = {
       [Utils.neighborPositionsEnum.left]: {
@@ -439,24 +435,20 @@ export default class Utils {
       })
     })
 
-    console.log("neighbors", toJS(neighbors)) // zzz
     return neighbors
   }
 
   static getNeighborNames = ({ coordinates }) => {
     const neighbors = Utils.getNeighbors({ coordinates })
-    console.log("neighbors", toJS(neighbors)) // zzz
 
     const neighborNames = []
     for (const item in neighbors) {
-      console.log("item", toJS(item)) // zzz
       const neighbor = neighbors[item]
 
       if (neighbor) {
         neighborNames.push(neighbor.location.name)
       }
     }
-    console.log("neighborNames", toJS(neighborNames)) // zzz
 
     return neighborNames
   }

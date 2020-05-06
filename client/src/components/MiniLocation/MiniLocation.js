@@ -116,49 +116,10 @@ class MiniLocation extends React.Component {
   }
 
   renderButton = ({ position, className, defaultDoorImage }) => {
-    let hasDoor = false
-    let renderedDoorImage
-
-    // const doors = [
-    //   {
-    //     right: { image: "doorYellow", open: true },
-    //     bottom: { image: "doorYellow", open: false }
-    //   }
-    // ];
-
-    const doorImage =
-      this.state.doors[position] && this.state.doors[position]["image"]
-
-    const doorIsOpen =
-      this.state.doors[position] && this.state.doors[position]["open"]
-
-    if (position === "bottom" || position === "right") {
-      hasDoor = this.state.doors[position] !== undefined
-
-      if (hasDoor) {
-        renderedDoorImage = doorImage
-          ? Images.doors[doorImage]
-          : defaultDoorImage
-      }
-    }
-
     const defaultDoorName = "door"
 
     return (
       <div className={`${className} ${css.doorPickerContainer}`}>
-        {/* <Button
-          onClick={() => this.onButtonClick({ position })}
-          className={`${doorIsOpen ? "door-open" : ""}`}
-        >
-          {hasDoor && !doorIsOpen && (
-            <img
-              className={css.doorImage}
-              src={renderedDoorImage}
-              alt={"imagex"}
-            />
-          )}
-        </Button> */}
-
         <FormControl variant="outlined">
           <Select
             className={css.doorPickerDropdown}
@@ -176,11 +137,7 @@ class MiniLocation extends React.Component {
   }
 
   renderCharacters = ({ isActive, creatures }) => {
-    // Hide start star
-    // const filteredCretures = creatures.filter(cr => cr.type !== "start")
-
     const renderedCharacters = creatures.map((creature) => {
-      // const renderedCharacters = filteredCretures.map(creature => {
       const creatureType = creature && creature.type
 
       const image = Images.creatures[creatureType] || null
