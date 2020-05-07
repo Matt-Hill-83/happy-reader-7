@@ -188,22 +188,13 @@ class MiniLocation extends React.Component {
       id,
       isEditMode,
     } = this.props
-    console.log("scene", toJS(scene)) // zzz
 
     const { coordinates } = scene
     const neighbors = Utils.getNeighbors({ coordinates })
-    console.log("neighbors", toJS(neighbors)) // zzz
 
-    // let showCloud = scene.showCloud
-
-    // if (scene.isStartScene) {
     const showCloud = false
-    // }
-
     const { items = [], creatures = [] } = scene
-
     const locationName = scene.location.name
-
     const isBlank = locationName === "blank"
 
     const localClass = isActive ? css.activeClass : ""

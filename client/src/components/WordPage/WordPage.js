@@ -86,9 +86,35 @@ class WordPage extends React.Component {
   //   })
   // }
 
+  incrementFrameIndex = (reset) => {
+    let newIndex
+
+    if (reset) {
+      newIndex = 0
+    } else {
+      newIndex = this.state.frameIndex + 1
+    }
+
+    this.setState({
+      frameIndex: newIndex,
+    })
+  }
+
   render() {
-    const { activeScene, frameIndex } = this.state
+    console.log("render WP----------------------------->") // zzz
+    console.log("") // zzz
+    console.log("") // zzz
+    const { activeScene, openYouWinModal } = this.props
+    const { frameIndex } = this.state
+
     const frameSet = activeScene.frameSet
+    const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
+
+    const activeFrameIndex = localStateStore.getActiveFrameIndex()
+    console.log("activeFrameIndex", toJS(activeFrameIndex)) // zzz
+
+    // const { activeScene, frameIndex } = this.state
+    // const frameSet = activeScene.frameSet
 
     let isLastFrame =
       frameSet.frames && frameIndex >= frameSet.frames.length - 1
@@ -100,6 +126,10 @@ class WordPage extends React.Component {
       <div className={css.textPage}>
         <FrameViewer
           frameIndex={frameIndex}
+          openYouWinModal={openYouWinModal}
+          incrementFrameIndex={this.incrementFrameIndex}
+          isLastFrame={isLastFrame}
+          frame={frame}
           scene={activeScene}
           isEditMode={false}
           updateActiveScene={this.props.updateActiveScene}

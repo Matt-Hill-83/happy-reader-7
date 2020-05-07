@@ -27,106 +27,22 @@ class FrameViewer extends Component {
     showNarrativeEditor: true,
     showDialogEditor: true,
     showItemPicker: false,
+    // frameIndex: 0,
     items: [],
   }
 
   componentWillMount() {
-    const { frameIndex, scene = {} } = this.props
-    const frameSet = scene.frameSet
-    const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
+    const { frame } = this.props
+    // const frameSet = scene.frameSet
+    // const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
     this.setState({ frame })
   }
 
   componentWillReceiveProps(newProps) {
-    const { frameIndex, scene = {} } = newProps
-    const frameSet = scene.frameSet
-    const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
+    const { frame } = newProps
+    // const frameSet = scene.frameSet
+    // const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
     this.setState({ frame })
-  }
-
-  deleteFrame = async () => {
-    const { deleteFrame, frameIndex } = this.props
-    await deleteFrame({ frameIndex })
-  }
-
-  cloneFrame = async () => {
-    const { cloneFrame, frameIndex } = this.props
-    await cloneFrame({ frameIndex })
-  }
-
-  selectHead = ({ name, head }) => {
-    const { updateFrameSet } = this.props
-
-    const {
-      frame,
-      frame: { faces },
-    } = this.state
-    console.log("frame", toJS(frame)) // zzz
-
-    console.log("faces", toJS(faces)) // zzz
-
-    const thisFace = faces.find((face) => face.character === name)
-    thisFace.face = head.mood
-
-    //  /TODO - chage to update world maybe?
-    updateFrameSet({})
-
-    this.setState({ frame })
-    this.toggleFacePicker({})
-  }
-
-  // TODO -
-  // TODO -
-  // TODO -
-  // TODO -
-  // TODO -
-  // TODO  - on add item, I need to add it to db as a blank item, and get the itemId.
-  // Then when I edit the item, update that item's item Id
-  // Also, I need to mark which frame I am adding it to and
-  // But start out by just editing existing items, like characters
-
-  onSelectItem = ({ itemId, name }) => {
-    this.toggleItemPicker({})
-  }
-
-  renderFacePicker = ({ character }) => {
-    const girlImages = Images.posableGirls
-    const images = girlImages.find((girl) => girl.name === character)
-
-    // For characters with no posable images
-    if (!images) return null
-
-    const {
-      images: { heads },
-    } = images
-
-    const headImages = heads.map((head, headIndex) => {
-      return (
-        <div
-          className={css.girlHead}
-          key={headIndex}
-          onClick={() => this.selectHead({ head, name: character })}
-        >
-          <Head name={character} head={head} />
-        </div>
-      )
-    })
-
-    return (
-      <div className={css.girlPickerContainer}>
-        <div className={css.girlPicker}>{headImages}</div>
-      </div>
-    )
-  }
-
-  toggleFacePicker = ({ character }) => {
-    const showFacePicker = !this.state.showFacePicker
-    this.setState({ showFacePicker, facePickerCharacter: character })
-  }
-
-  toggleItemPicker = ({ item = null }) => {
-    const showItemPicker = !this.state.showItemPicker
-    this.setState({ showItemPicker, itemPickerItem: item })
   }
 
   renderNarrative = () => {
@@ -165,36 +81,11 @@ class FrameViewer extends Component {
     return <div className={css.dialog}>{renderedDialogs}</div>
   }
 
-  onChangeDialog = ({ event, lineIndex }) => {
-    const { frame } = this.state
-    const dialog = (frame && frame.dialog) || []
-
-    const newLine = event.target.value
-    dialog[lineIndex]["text"] = newLine
-    this.setState({ frame })
-  }
-
   getMood = ({ name, faces }) => {
     let mood = "ok"
     const newMood = faces && faces.find((face) => face.character === name)
     mood = (newMood && newMood.face) || mood
     return mood
-  }
-
-  editNarrative = async () => {
-    this.setState({ showNarrativeEditor: true })
-  }
-
-  saveNarrative = async () => {
-    const { updateMap } = this.props
-    await updateMap({})
-  }
-
-  onChangeNarrative = ({ event, lineIndex }) => {
-    const { frame } = this.state
-    const newLine = event.target.value
-    frame.story[lineIndex] = newLine
-    this.setState({ frame })
   }
 
   renderLocationImage = () => {
@@ -230,15 +121,6 @@ class FrameViewer extends Component {
         </div>
       </div>
     )
-  }
-
-  saveItems = async ({ items = [] }) => {
-    const { frame } = this.state
-    const { updateMap } = this.props
-
-    frame.items = items
-
-    this.setState({ frame }, () => updateMap({}))
   }
 
   renderItems = () => {
@@ -281,19 +163,10 @@ class FrameViewer extends Component {
   }
 
   renderButtonRow = () => {
-    const { frameIndex } = this.props
+    const { isLastFrame } = this.props
 
     const activeScene = localStateStore.getActiveScene()
     console.log("activeScene", toJS(activeScene)) // zzz
-
-    const frameSet = activeScene.frameSet
-    // const frameSet = activeScene.frameSet
-
-    let isLastFrame =
-      frameSet.frames && frameIndex >= frameSet.frames.length - 1
-    if (!frameSet) {
-      isLastFrame = true
-    }
 
     return (
       <div className={css.buttonRow}>
@@ -309,9 +182,7 @@ class FrameViewer extends Component {
   }
 
   onClickNext = () => {
-    this.setState({
-      frameIndex: this.state.frameIndex + 1,
-    })
+    this.props.incrementFrameIndex()
   }
 
   openYouWinModal = () => {
@@ -325,14 +196,11 @@ class FrameViewer extends Component {
   // TODO: change scene should be done by sceneId
   // TODO: change scene should be done by sceneId
   changeLocation = ({ sceneName }) => {
-    this.setState({ frameIndex: 0 })
-
     const grid = localStateStore.getActiveMapGrid()
     const newScene = grid.find((scene) => scene.location.name === sceneName)
     console.log("newScene", toJS(newScene)) // zzz
 
-    // localStateStore.setActiveSceneId(newScene.id)
-
+    this.props.incrementFrameIndex(true)
     this.props.updateActiveScene({ activeScene: newScene })
   }
 
