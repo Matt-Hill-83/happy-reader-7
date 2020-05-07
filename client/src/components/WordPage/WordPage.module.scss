@@ -17,34 +17,34 @@
   }
 }
 
-.choiceButton {
-  @include set-1;
-  display: flex;
-  align-items: center;
-  flex: 1 1;
-  font-size: 22px;
-  margin: 1px;
-  font-size: 2.5vh;
-  border-radius: 1vh;
-  max-width: 275px;
-  min-width: 150px;
-}
+// .choiceButton {
+//   @include set-1;
+//   display: flex;
+//   align-items: center;
+//   flex: 1 1;
+//   font-size: 22px;
+//   margin: 1px;
+//   font-size: 2.5vh;
+//   border-radius: 1vh;
+//   max-width: 275px;
+//   min-width: 150px;
+// }
 
-.newGameButton {
-  @include set-1;
-  display: flex;
-  align-items: center;
-  flex: 1 1;
-  font-size: 22px;
-  text-transform: capitalize;
-  margin: 1px;
-  font-size: 2.5vh;
-  border-radius: 1vh;
-  max-width: 275px;
-  min-width: 150px;
-  background: var(--color-yellow) !important;
-  margin-left: auto;
-}
+// .newGameButton {
+//   @include set-1;
+//   display: flex;
+//   align-items: center;
+//   flex: 1 1;
+//   font-size: 22px;
+//   text-transform: capitalize;
+//   margin: 1px;
+//   font-size: 2.5vh;
+//   border-radius: 1vh;
+//   max-width: 275px;
+//   min-width: 150px;
+//   background: var(--color-yellow) !important;
+//   margin-left: auto;
+// }
 
 .story {
   display: flex;

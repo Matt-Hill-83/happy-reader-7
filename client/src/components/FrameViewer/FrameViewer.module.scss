@@ -1,11 +1,14 @@
 @import "../../Styles/mixins.modules.scss";
 
-.girlHead {
-  // border: 3px solid red !important;
-}
+.nextPageButtonRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
 
-.girlHead:nth-of-type(4n) {
-  // margin-right: 24px;
+  height: 50px;
+  font-size: 36px !important;
+  font-weight: bold !important;
+  justify-content: flex-end;
 }
 
 .buttonRow {
@@ -42,6 +45,8 @@
   flex-direction: column;
   border: 4px solid red !important;
   margin-top: 25%;
+  margin-top: 6%;
+  height: 42%;
 }
 
 .itemsContainer {
@@ -335,16 +340,14 @@
 }
 
 .choiceButton {
-  @include set-1;
+  border: 1px solid var(--set1-purple-brdr);
+  background: var(--set1-lav-bk);
   display: flex;
   align-items: center;
-  flex: 1 1;
   font-size: 22px;
-  margin: 1px;
-  font-size: 2.5vh;
-  border-radius: 1vh;
-  max-width: 275px;
-  min-width: 150px;
+  margin-top: 1%;
+  font-size: 2vh;
+  border-radius: 7px;
 }
 
 .newGameButton {

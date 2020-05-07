@@ -151,10 +151,10 @@ class FrameViewer extends Component {
     const { isLastFrame } = this.props
 
     return (
-      <div className={css.buttonRow}>
+      <div className={css.nextPageButtonRow}>
         {!isLastFrame && (
           <Button onClick={this.onClickNext} className={css.choiceButton}>
-            NEXT
+            Next Page
           </Button>
         )}
       </div>
@@ -248,12 +248,12 @@ class FrameViewer extends Component {
         {this.renderLocationImage()}
 
         <div className={css.relativePositionedContent}>
-          {this.renderButtonRow()}
           <div className={css.wordsContainer}>
             {this.renderNarrative()}
             {this.renderDialog()}
+            {this.renderButtonRow()}
           </div>
-          {this.renderButtonRow2()}
+          {/* {this.renderButtonRow2()} */}
           <div className={css.imageGroups}>
             {/* uncomment this when more than 2 characters can be added */}
             {/* <div className={css.itemsContainer}>{renderedItems}</div> */}
