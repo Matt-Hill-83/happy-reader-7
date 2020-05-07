@@ -42,6 +42,8 @@ class PicturePage extends React.Component {
 
   renderMiniLocation = ({ colIndex = 0, rowIndex = 0, scene }) => {
     const { activeScene } = this.props
+    console.log("scene", toJS(scene)) // zzz
+
     const sceneName = scene.location.name
     let isActive
 

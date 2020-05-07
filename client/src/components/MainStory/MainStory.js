@@ -122,7 +122,7 @@ class MainStory extends React.Component {
     console.log("activeScene.id", toJS(activeScene.id)) // zzz
 
     localStateStore.setActiveSceneId(sceneId)
-    localStateStore.setActiveSceneId(activeScene.id)
+    // localStateStore.setActiveSceneId(activeScene.id)
     this.setState({ activeScene })
   }
 
@@ -175,7 +175,9 @@ class MainStory extends React.Component {
   renderGame = () => {
     // Determine whether this is desktop or mobile
     const { className } = this.props
-    const { activeScene } = this.state
+    // const { activeScene } = this.state
+
+    const activeScene = localStateStore.getActiveScene()
     console.log("activeScene", toJS(activeScene)) // zzz
 
     if (!activeScene) {
