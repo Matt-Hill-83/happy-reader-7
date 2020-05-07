@@ -219,7 +219,7 @@ class MainStory extends React.Component {
         className={css.toggleWorldBuilder}
         onClick={this.toggleWorldBuilder}
       >
-        <span> AAAAAAA </span>
+        <span> MAP EDITOR </span>
       </div>
     )
 

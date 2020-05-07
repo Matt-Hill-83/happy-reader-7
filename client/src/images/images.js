@@ -46,6 +46,10 @@ import van from "./locations/van.png"
 
 // creatures
 import bug from "./creatures/bug.png"
+import princess_alibera from "./creatures/princess_alibera.png"
+import drake from "./creatures/drake.png"
+import cat_king from "./creatures/cat_king.gif"
+import rori_nice from "./creatures/rori_nice.png"
 import dragon from "./creatures/dragon.png"
 import elf from "./creatures/elf-1.png"
 import fairy from "./creatures/fairy.png"
@@ -340,6 +344,10 @@ const creatures = {
   ant,
   bat,
   bug,
+  princess_alibera,
+  drake,
+  cat_king,
+  rori_nice,
   bunny,
   cop,
   cub,

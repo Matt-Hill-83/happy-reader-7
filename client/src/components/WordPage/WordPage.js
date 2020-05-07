@@ -4,7 +4,7 @@ import _get from "lodash.get"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 
-import Frame from "../Frame/Frame.js"
+import FrameViewer from "../FrameViewer/FrameViewer.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 
 import css from "./WordPage.module.scss"
@@ -98,7 +98,11 @@ class WordPage extends React.Component {
 
     return (
       <div className={css.textPage}>
-        <Frame frameIndex={frameIndex} scene={activeScene} isEditMode={false} />
+        <FrameViewer
+          frameIndex={frameIndex}
+          scene={activeScene}
+          isEditMode={false}
+        />
         <div className={css.buttonRow}>
           {!isLastFrame && (
             <Button onClick={this.onClickNext} className={css.choiceButton}>
