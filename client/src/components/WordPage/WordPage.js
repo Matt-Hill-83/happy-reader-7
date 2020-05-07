@@ -10,16 +10,6 @@ import css from "./WordPage.module.scss"
 import Utils from "../../Utils/Utils.js"
 
 class WordPage extends React.Component {
-  state = {}
-
-  async componentWillMount() {}
-
-  componentWillReceiveProps(newProps) {}
-
-  incrementFrameIndex = (reset) => {
-    // localStateStore.incrementActiveFrameIndex(reset)
-  }
-
   render() {
     console.log("render WP----------------------------->") // zzz
     console.log("") // zzz
@@ -30,15 +20,14 @@ class WordPage extends React.Component {
     console.log("activeFrameIndex", toJS(activeFrameIndex)) // zzz
     // console.log("activeFrameIndex2", activeFrameIndex2) // zzz
 
+    console.log("activeScene ----WP", toJS(activeScene)) // zzz
+
     const frameSet = activeScene.frameSet
     const frame =
       frameSet && frameSet.frames && frameSet.frames[activeFrameIndex]
 
     let isLastFrame =
       frameSet.frames && activeFrameIndex >= frameSet.frames.length - 1
-    if (!frameSet) {
-      isLastFrame = true
-    }
 
     return (
       <div className={css.textPage}>

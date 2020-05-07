@@ -195,13 +195,13 @@ class FrameViewer extends Component {
   // TODO: change scene should be done by sceneId
   // TODO: change scene should be done by sceneId
   // TODO: change scene should be done by sceneId
-  changeLocation = ({ sceneName }) => {
+  changeLocation = ({ sceneName, sceneId }) => {
     const grid = localStateStore.getActiveMapGrid()
     const newScene = grid.find((scene) => scene.location.name === sceneName)
     console.log("newScene", toJS(newScene)) // zzz
 
     localStateStore.incrementActiveFrameIndex(true)
-    this.props.updateActiveScene({ activeScene: newScene })
+    this.props.updateActiveScene({ activeScene: newScene, sceneId })
   }
 
   renderButtons = () => {
@@ -210,12 +210,22 @@ class FrameViewer extends Component {
 
     const { isEndScene, coordinates } = activeScene
 
-    const neighbors = Utils.getNeighborNames({
+    const neighbors = Utils.getNeighbors({
       coordinates,
     })
-    console.log("neighbors", toJS(neighbors)) // zzz
+    const neighborsArray = []
+    for (const item in neighbors) {
+      if (neighbors[item]) {
+        neighborsArray.push(neighbors[item])
+      }
+    }
 
-    const filteredNeighbors = neighbors.filter((item) => item !== "blank")
+    // const neighbors = Utils.getNeighborNames({
+    //   coordinates,
+    // })
+    console.log("neighborsArray", toJS(neighborsArray)) // zzz
+
+    // const filteredNeighbors = neighbors.filter((item) => item !== "blank")
 
     if (isEndScene) {
       return (
@@ -225,16 +235,23 @@ class FrameViewer extends Component {
       )
     }
 
-    const buttons = filteredNeighbors.map((neighbor, i) => {
+    const buttons = neighborsArray.map((neighbor, i) => {
+      console.log("neighbor", toJS(neighbor)) // zzz
+      const neighborName = _get(neighbor, "location.name") || ""
+
       if (!neighbor) {
         return null
       }
 
-      const onClick = () => this.changeLocation({ sceneName: neighbor })
+      const onClick = () =>
+        this.changeLocation({
+          sceneName: neighborName,
+          sceneId: neighbor.id,
+        })
 
       return (
         <Button key={i} onClick={onClick} className={css.choiceButton}>
-          {neighbor}
+          {neighborName}
         </Button>
       )
     })

@@ -106,7 +106,7 @@ class MainStory extends React.Component {
     this.updateActiveScene({ activeScene: startScene })
   }
 
-  updateActiveScene = ({ activeScene }) => {
+  updateActiveScene = ({ activeScene, sceneId }) => {
     console.log("updateActiveScene") // zzz
     console.log("activeScene", activeScene) // zzz
 
@@ -114,10 +114,15 @@ class MainStory extends React.Component {
       return
     }
 
-    // activeScene.neighborNames = this.getNeighbors({ activeScene })
     activeScene.showCloud = false
 
+    console.log("sceneId", toJS(sceneId)) // zzz
+
     // I should set to the store and not to state
+    console.log("activeScene.id", toJS(activeScene.id)) // zzz
+
+    localStateStore.setActiveSceneId(sceneId)
+    localStateStore.setActiveSceneId(activeScene.id)
     this.setState({ activeScene })
   }
 

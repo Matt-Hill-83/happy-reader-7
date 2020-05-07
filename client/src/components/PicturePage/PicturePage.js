@@ -65,6 +65,7 @@ class PicturePage extends React.Component {
 
   renderStoryPage = () => {
     const { activeScene, updateActiveScene, openYouWinModal } = this.props
+    console.log("activeScene ----PP", toJS(activeScene)) // zzz
 
     return (
       <div className={`${css.halfPage} ${css.leftHalf}`}>
@@ -140,6 +141,10 @@ class PicturePage extends React.Component {
   }
 
   render() {
+    console.log("render ---------------PP") // zzz
+    const { activeScene, updateActiveScene, openYouWinModal } = this.props
+    console.log("activeScene ----PP", toJS(activeScene)) // zzz
+
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
 
     if (!showWorldBuilder) {
