@@ -48,9 +48,24 @@ class LocalStateStore {
     this.activeMapId = activeMapId
   }
 
+  getActiveFrameIndex = () => this.activeFrameIndex
+  setActiveFrameIndex = (activeFrameIndex) => {
+    this.activeFrameIndex = activeFrameIndex
+  }
+
   getActiveSceneId = () => this.activeSceneId
   setActiveSceneId = (activeSceneId) => {
     this.activeSceneId = activeSceneId
+  }
+
+  getActiveScene = () => {
+    const activeSceneId = this.getActiveSceneId()
+    console.log("activeSceneId", toJS(activeSceneId)) // zzz
+
+    const scenesGrid = this.getActiveMapGrid()
+    const activeScene = scenesGrid.find((item) => item.id === activeSceneId)
+    console.log("activeScene", toJS(activeScene)) // zzz
+    return activeScene
   }
 }
 

@@ -9,7 +9,6 @@ import React, { Component } from "react"
 
 import Character from "../Character/Character"
 import Head from "../Head/Head"
-import { IconNames } from "@blueprintjs/icons"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
@@ -18,10 +17,9 @@ import Images from "../../images/images"
 import WordGroup from "../WordGroup/WordGroup"
 
 import css from "./FrameViewer.module.scss"
-import CharacterPicker from "../CharacterPicker/CharacterPicker"
-import images from "../../images/images"
-import CrudMachine from "../CrudMachine/CrudMachine"
 import ImageDisplay from "../ImageDisplay/ImageDisplay"
+import Utils from "../../Utils/Utils"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 
 class FrameViewer extends Component {
   state = {
@@ -132,48 +130,20 @@ class FrameViewer extends Component {
   }
 
   renderNarrative = () => {
-    const { frame, showNarrativeEditor } = this.state
-    const { isEditMode = true } = this.props
+    const { frame } = this.state
     const { story = [] } = frame
 
     if (!story.length || !story[0]) return null
 
     const renderedNarrative = story.map((line, lineIndex) => {
-      if (isEditMode && showNarrativeEditor) {
-        return (
-          <InputGroup
-            value={line}
-            id="text-input"
-            placeholder="Placeholder text"
-            onChange={(event) => this.onChangeNarrative({ event, lineIndex })}
-            onBlur={(event) => this.saveNarrative({ event })}
-          />
-        )
-      } else {
-        return <WordGroup story={[line]} className={css.narrativeClass} />
-      }
+      return <WordGroup story={[line]} className={css.narrativeClass} />
     })
 
-    return (
-      <div className={css.narrative}>
-        {renderedNarrative}
-        {isEditMode && (
-          <Button
-            className={css.closeButton}
-            onClick={() =>
-              this.setState({ showNarrativeEditor: !showNarrativeEditor })
-            }
-          >
-            <Icon icon={IconNames.EDIT} />
-          </Button>
-        )}
-      </div>
-    )
+    return <div className={css.narrative}>{renderedNarrative}</div>
   }
 
   renderDialog = () => {
-    const { isEditMode = true } = this.props
-    const { showDialogEditor, frame } = this.state
+    const { frame } = this.state
     const dialog = (frame && frame.dialog) || []
 
     const renderedDialogs = dialog.map((line, lineIndex) => {
@@ -183,43 +153,16 @@ class FrameViewer extends Component {
 
       const className = `character${characterIndex}`
 
-      if (isEditMode && showDialogEditor) {
-        return (
-          <InputGroup
-            className={`${css.line} ${css[className]}`}
-            value={text}
-            id="text-input"
-            placeholder="Placeholder text"
-            onChange={(event) => this.onChangeDialog({ event, lineIndex })}
-            onBlur={(event) => this.saveNarrative({ event })}
-          />
-        )
-      } else {
-        return (
-          <WordGroup
-            index={lineIndex}
-            story={[text]}
-            className={`${css.line} ${css[className]}`}
-          />
-        )
-      }
+      return (
+        <WordGroup
+          index={lineIndex}
+          story={[text]}
+          className={`${css.line} ${css[className]}`}
+        />
+      )
     })
 
-    return (
-      <div className={css.dialog}>
-        {renderedDialogs}
-        {isEditMode && (
-          <Button
-            className={css.closeButton}
-            onClick={() =>
-              this.setState({ showDialogEditor: !showDialogEditor })
-            }
-          >
-            <Icon icon={IconNames.EDIT} />
-          </Button>
-        )}
-      </div>
-    )
+    return <div className={css.dialog}>{renderedDialogs}</div>
   }
 
   onChangeDialog = ({ event, lineIndex }) => {
@@ -268,7 +211,6 @@ class FrameViewer extends Component {
   }
 
   renderBackground = () => {
-    const { isEditMode = true } = this.props
     const backgroundImageSky = Images.backgrounds["sky01"]
     const backgroundImageHill = Images.backgrounds["hill01"]
 
@@ -276,16 +218,12 @@ class FrameViewer extends Component {
       <div className={css.backgroundImageContainer}>
         <div className={css.backgroundGrass}>
           <img
-            className={`${css.backgroundGrassImage} ${
-              isEditMode ? css.isEditMode : ""
-            }`}
+            className={`${css.backgroundGrassImage}`}
             src={backgroundImageSky}
             alt={`backgroundImage`}
           />
           <img
-            className={`${css.backgroundGrassHill} ${
-              isEditMode ? css.isEditMode : ""
-            }`}
+            className={css.backgroundGrassHill}
             src={backgroundImageHill}
             alt={`backgroundImage`}
           />
@@ -314,7 +252,7 @@ class FrameViewer extends Component {
   }
 
   renderFriends = () => {
-    const { isEditMode = true, scene } = this.props
+    const { scene } = this.props
 
     const { frame } = this.state
     const { faces = [] } = frame
@@ -335,11 +273,77 @@ class FrameViewer extends Component {
       return (
         <div className={`${css.characterContainer}`} key={index}>
           <div onClick={() => this.toggleFacePicker({ character: friend })}>
-            <Character name={friend} mood={mood} isEditMode={isEditMode} />
+            <Character name={friend} mood={mood} isEditMode={false} />
           </div>
         </div>
       )
     })
+  }
+
+  renderButtonRow = () => {
+    const frameIndex = 0
+
+    const activeScene = localStateStore.getActiveScene()
+    console.log("activeScene", toJS(activeScene)) // zzz
+
+    const frameSet = activeScene.frameSet
+    // const frameSet = activeScene.frameSet
+
+    let isLastFrame =
+      frameSet.frames && frameIndex >= frameSet.frames.length - 1
+    if (!frameSet) {
+      isLastFrame = true
+    }
+
+    return (
+      <div className={css.buttonRow}>
+        {!isLastFrame && (
+          <Button onClick={this.onClickNext} className={css.choiceButton}>
+            NEXT
+          </Button>
+        )}
+
+        {isLastFrame && this.renderButtons()}
+      </div>
+    )
+  }
+
+  renderButtons = () => {
+    const activeScene = localStateStore.getActiveScene()
+    console.log("activeScene", toJS(activeScene)) // zzz
+
+    const { isEndScene, coordinates } = activeScene
+
+    const neighbors = Utils.getNeighborNames({
+      coordinates,
+    })
+    console.log("neighbors", toJS(neighbors)) // zzz
+
+    const filteredNeighbors = neighbors.filter((item) => item !== "blank")
+
+    if (isEndScene) {
+      return (
+        <Button onClick={this.openYouWinModal} className={css.newGameButton}>
+          New Game
+        </Button>
+      )
+    }
+
+    const buttons = filteredNeighbors.map((neighbor, i) => {
+      if (!neighbor) {
+        return null
+      }
+
+      const onClick = () => this.changeLocation({ sceneName: neighbor })
+
+      return (
+        <Button key={i} onClick={onClick} className={css.choiceButton}>
+          {neighbor}
+        </Button>
+      )
+    })
+
+    return <div className={css.decisionButtonRow}>GO TO{buttons}</div>
   }
 
   renderFrame = () => {
@@ -360,7 +364,7 @@ class FrameViewer extends Component {
             {this.renderNarrative()}
             {this.renderDialog()}
           </div>
-
+          {this.renderButtonRow()}
           <div className={css.imageGroups}>
             {/* uncomment this when more than 2 characters can be added */}
             {/* <div className={css.itemsContainer}>{renderedItems}</div> */}
@@ -372,14 +376,10 @@ class FrameViewer extends Component {
   }
 
   render() {
-    const { isEditMode = true, scene } = this.props
+    const { scene } = this.props
+    console.log("scene", toJS(scene)) // zzz
 
-    const {
-      frame,
-      showFacePicker,
-      showItemPicker,
-      facePickerCharacter,
-    } = this.state
+    const { frame } = this.state
 
     if (!frame) {
       return null
@@ -401,54 +401,10 @@ class FrameViewer extends Component {
     }
 
     return (
-      <div className={`${css.main} ${isEditMode ? css.editFrame : ""}`}>
-        <div
-          className={` ${css.scenesContainer} ${
-            isEditMode ? css.editingFrame : ""
-          }`}
-        >
+      <div className={css.main}>
+        <div className={css.scenesContainer}>
           {this.renderFrame({ allCharacters })}
-          {false && isEditMode && (
-            <CrudMachine
-              className={css.crudMachine}
-              items={items}
-              itemRenderer={itemRenderer}
-              saveItems={this.saveItems}
-              title={"stuff"}
-            />
-          )}
-          {isEditMode && (
-            <Button className={css.closeButton} onClick={this.deleteFrame}>
-              X
-            </Button>
-          )}
         </div>
-        {isEditMode && showFacePicker && (
-          <div className={css.girlPickersContainer}>
-            {isEditMode &&
-              this.renderFacePicker({ character: facePickerCharacter })}
-            <Button
-              className={css.closeFacePickerButton}
-              onClick={() => this.toggleFacePicker({})}
-            >
-              <Icon icon={IconNames.CROSS} />
-            </Button>
-          </div>
-        )}
-
-        {isEditMode && showItemPicker && (
-          <CharacterPicker
-            imageSets={[
-              images.creatures,
-              images.locations,
-              images.vehicles,
-              images.items,
-            ]}
-            className={css.test}
-            onClose={this.toggleItemPicker}
-            onSelectItem={this.onSelectItem}
-          />
-        )}
       </div>
     )
   }

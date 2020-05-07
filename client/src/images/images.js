@@ -19,6 +19,7 @@ import swamp from "./locations/swamp.png"
 import swing from "./locations/swing.png"
 import tree from "./locations/treehouse.png"
 import waterfall from "./locations/waterfall.png"
+import road_left_right from "./locations/road_left_right.png"
 
 import bag from "./locations/bag.png"
 import bun from "./locations/bun.png"
@@ -331,6 +332,7 @@ const locations = {
   swamp,
   swing,
   tree,
+  // road_left_right,
   waterfall,
   end,
   blank,
