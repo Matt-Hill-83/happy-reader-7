@@ -53,6 +53,17 @@ class LocalStateStore {
   setActiveFrameIndex = (activeFrameIndex) => {
     this.activeFrameIndex = activeFrameIndex
   }
+  incrementActiveFrameIndex = (reset) => {
+    let newIndex
+
+    if (reset) {
+      newIndex = 0
+    } else {
+      newIndex = this.getActiveFrameIndex() + 1
+    }
+
+    this.setActiveFrameIndex(newIndex)
+  }
 
   getActiveSceneId = () => this.activeSceneId
   setActiveSceneId = (activeSceneId) => {

@@ -1,4 +1,3 @@
-import { Button } from "@blueprintjs/core"
 import React from "react"
 import _get from "lodash.get"
 import { observer } from "mobx-react"
@@ -18,23 +17,14 @@ class WordPage extends React.Component {
   componentWillReceiveProps(newProps) {}
 
   incrementFrameIndex = (reset) => {
-    let newIndex
-
-    if (reset) {
-      newIndex = 0
-    } else {
-      newIndex = localStateStore.getActiveFrameIndex() + 1
-    }
-
-    localStateStore.setActiveFrameIndex(newIndex)
-    // this.forceUpdate({ test: new Date() })
+    // localStateStore.incrementActiveFrameIndex(reset)
   }
 
   render() {
     console.log("render WP----------------------------->") // zzz
     console.log("") // zzz
     console.log("") // zzz
-    const { activeScene, openYouWinModal } = this.props
+    const { activeScene, openYouWinModal, updateActiveScene } = this.props
     const activeFrameIndex = localStateStore.getActiveFrameIndex()
     // const activeFrameIndex2 = localStateStore.activeFrameIndex
     console.log("activeFrameIndex", toJS(activeFrameIndex)) // zzz
@@ -53,14 +43,13 @@ class WordPage extends React.Component {
     return (
       <div className={css.textPage}>
         <FrameViewer
-          frameIndex={activeFrameIndex}
-          openYouWinModal={openYouWinModal}
-          onClickNext={this.incrementFrameIndex}
-          isLastFrame={isLastFrame}
           frame={frame}
-          scene={activeScene}
           isEditMode={false}
-          updateActiveScene={this.props.updateActiveScene}
+          isLastFrame={isLastFrame}
+          onClickNext={this.incrementFrameIndex}
+          openYouWinModal={openYouWinModal}
+          scene={activeScene}
+          updateActiveScene={updateActiveScene}
         />
       </div>
     )
