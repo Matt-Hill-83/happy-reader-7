@@ -31,60 +31,60 @@ class WordPage extends React.Component {
   // TODO: change scene should be done by sceneId
   // TODO: change scene should be done by sceneId
   // TODO: change scene should be done by sceneId
-  changeLocation = ({ sceneName }) => {
-    this.setState({ frameIndex: 0 })
+  // changeLocation = ({ sceneName }) => {
+  //   this.setState({ frameIndex: 0 })
 
-    const grid = localStateStore.getActiveMapGrid()
-    const newScene = grid.find((scene) => scene.location.name === sceneName)
-    this.props.updateActiveScene({ activeScene: newScene })
-  }
+  //   const grid = localStateStore.getActiveMapGrid()
+  //   const newScene = grid.find((scene) => scene.location.name === sceneName)
+  //   this.props.updateActiveScene({ activeScene: newScene })
+  // }
 
   openYouWinModal = () => {
     this.props.openYouWinModal()
   }
 
-  renderButtons = () => {
-    const {
-      activeScene: { isEndScene, coordinates },
-    } = this.state
+  // renderButtons = () => {
+  //   const {
+  //     activeScene: { isEndScene, coordinates },
+  //   } = this.state
 
-    const neighbors = Utils.getNeighborNames({
-      coordinates,
-    })
-    console.log("neighbors", toJS(neighbors)) // zzz
+  //   const neighbors = Utils.getNeighborNames({
+  //     coordinates,
+  //   })
+  //   console.log("neighbors", toJS(neighbors)) // zzz
 
-    const filteredNeighbors = neighbors.filter((item) => item !== "blank")
+  //   const filteredNeighbors = neighbors.filter((item) => item !== "blank")
 
-    if (isEndScene) {
-      return (
-        <Button onClick={this.openYouWinModal} className={css.newGameButton}>
-          New Game
-        </Button>
-      )
-    }
+  //   if (isEndScene) {
+  //     return (
+  //       <Button onClick={this.openYouWinModal} className={css.newGameButton}>
+  //         New Game
+  //       </Button>
+  //     )
+  //   }
 
-    const buttons = filteredNeighbors.map((neighbor, i) => {
-      if (!neighbor) {
-        return null
-      }
+  //   const buttons = filteredNeighbors.map((neighbor, i) => {
+  //     if (!neighbor) {
+  //       return null
+  //     }
 
-      const onClick = () => this.changeLocation({ sceneName: neighbor })
+  //     const onClick = () => this.changeLocation({ sceneName: neighbor })
 
-      return (
-        <Button key={i} onClick={onClick} className={css.choiceButton}>
-          {neighbor}
-        </Button>
-      )
-    })
+  //     return (
+  //       <Button key={i} onClick={onClick} className={css.choiceButton}>
+  //         {neighbor}
+  //       </Button>
+  //     )
+  //   })
 
-    return <div className={css.decisionButtonRow}>GO TO{buttons}</div>
-  }
+  //   return <div className={css.decisionButtonRow}>GO TO{buttons}</div>
+  // }
 
-  onClickNext = () => {
-    this.setState({
-      frameIndex: this.state.frameIndex + 1,
-    })
-  }
+  // onClickNext = () => {
+  //   this.setState({
+  //     frameIndex: this.state.frameIndex + 1,
+  //   })
+  // }
 
   render() {
     const { activeScene, frameIndex } = this.state
@@ -102,6 +102,7 @@ class WordPage extends React.Component {
           frameIndex={frameIndex}
           scene={activeScene}
           isEditMode={false}
+          updateActiveScene={this.props.updateActiveScene}
         />
         {/* <div className={css.buttonRow}>
           {!isLastFrame && (

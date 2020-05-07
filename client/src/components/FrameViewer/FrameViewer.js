@@ -281,7 +281,7 @@ class FrameViewer extends Component {
   }
 
   renderButtonRow = () => {
-    const frameIndex = 0
+    const { frameIndex } = this.props
 
     const activeScene = localStateStore.getActiveScene()
     console.log("activeScene", toJS(activeScene)) // zzz
@@ -306,6 +306,34 @@ class FrameViewer extends Component {
         {isLastFrame && this.renderButtons()}
       </div>
     )
+  }
+
+  onClickNext = () => {
+    this.setState({
+      frameIndex: this.state.frameIndex + 1,
+    })
+  }
+
+  openYouWinModal = () => {
+    this.props.openYouWinModal()
+    console.log("this.props.openYouWinModal", toJS(this.props.openYouWinModal)) // zzz
+  }
+
+  // TODO: change scene should be done by sceneId
+  // TODO: change scene should be done by sceneId
+  // TODO: change scene should be done by sceneId
+  // TODO: change scene should be done by sceneId
+  // TODO: change scene should be done by sceneId
+  changeLocation = ({ sceneName }) => {
+    this.setState({ frameIndex: 0 })
+
+    const grid = localStateStore.getActiveMapGrid()
+    const newScene = grid.find((scene) => scene.location.name === sceneName)
+    console.log("newScene", toJS(newScene)) // zzz
+
+    // localStateStore.setActiveSceneId(newScene.id)
+
+    this.props.updateActiveScene({ activeScene: newScene })
   }
 
   renderButtons = () => {

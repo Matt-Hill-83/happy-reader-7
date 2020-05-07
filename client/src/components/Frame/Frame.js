@@ -156,36 +156,6 @@ class Frame extends Component {
     })
   }
 
-  renderButtonRow = () => {
-    const { frame, frameIndex = 0 } = this.state
-    const { isEditMode = true } = this.props
-    const { story = [] } = frame
-
-    const test = Utils.getActiveScene()
-    console.log("test", toJS(test)) // zzz
-
-    const frameSet = test.frameSet
-    // const frameSet = activeScene.frameSet
-
-    let isLastFrame =
-      frameSet.frames && frameIndex >= frameSet.frames.length - 1
-    if (!frameSet) {
-      isLastFrame = true
-    }
-
-    return (
-      <div className={css.buttonRow}>
-        {!isLastFrame && (
-          <Button onClick={this.onClickNext} className={css.choiceButton}>
-            NEXT
-          </Button>
-        )}
-
-        {isLastFrame && this.renderButtons()}
-      </div>
-    )
-  }
-
   renderDialog = () => {
     const { isEditMode = true } = this.props
     const { showDialogEditor, frame } = this.state
@@ -375,9 +345,7 @@ class Frame extends Component {
             {this.renderNarrative()}
             {this.renderDialog()}
           </div>
-          test1
-          {this.renderButtonRow()}
-          test2
+
           <div className={css.imageGroups}>
             {/* uncomment this when more than 2 characters can be added */}
             {/* <div className={css.itemsContainer}>{renderedItems}</div> */}
