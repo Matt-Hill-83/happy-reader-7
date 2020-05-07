@@ -42,17 +42,11 @@ class PicturePage extends React.Component {
 
   renderMiniLocation = ({ colIndex = 0, rowIndex = 0, scene }) => {
     const { activeScene } = this.props
-    console.log("scene", toJS(scene)) // zzz
-
-    const sceneName = scene.location.name
-    let isActive
-
-    isActive = sceneName === activeScene.location.name
+    const isActive = scene.id === activeScene.id ? true : false
 
     const id = `${colIndex}-${rowIndex}`
     const onClick = () =>
       this.props.updateActiveScene({
-        // activeScene: scene,
         sceneId: scene.id,
       })
 

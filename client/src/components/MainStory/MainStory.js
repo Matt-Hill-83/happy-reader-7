@@ -100,13 +100,10 @@ class MainStory extends React.Component {
     const startScene = this.getTerminalScene({})
     if (!startScene) return
 
-    this.updateActiveScene({ activeScene: startScene, sceneId: startScene.id })
+    this.updateActiveScene({ sceneId: startScene.id })
   }
 
   updateActiveScene = ({ sceneId }) => {
-    console.log("updateActiveScene") // zzz
-    console.log("sceneId", toJS(sceneId)) // zzz
-
     localStateStore.setActiveSceneId(sceneId)
     // this.setState({ update: new Date() })
   }

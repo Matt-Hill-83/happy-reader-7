@@ -196,7 +196,7 @@ class FrameViewer extends Component {
     console.log("newScene", toJS(newScene)) // zzz
 
     localStateStore.incrementActiveFrameIndex(true)
-    this.props.updateActiveScene({ activeScene: newScene, sceneId })
+    this.props.updateActiveScene({ sceneId })
   }
 
   renderButtons = () => {
