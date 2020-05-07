@@ -91,13 +91,6 @@ class MiniLocation extends React.Component {
     youCreature: youCreatureDefault,
   }
 
-  onButtonClick = ({ position }) => {
-    const doors = this.state.doors
-
-    doors[position]["open"] = !doors[position]["open"]
-    this.setState({ doors })
-  }
-
   createDoorPickerOptions = () => {
     const doors = ["doorYellow", "door", "doorGreen"]
     const renderedMenuItems = doors.map((door, index) => {
@@ -115,7 +108,7 @@ class MiniLocation extends React.Component {
     return renderedMenuItems
   }
 
-  renderButton = ({ position, className, defaultDoorImage }) => {
+  renderButton = ({ className }) => {
     const defaultDoorName = "door"
 
     return (

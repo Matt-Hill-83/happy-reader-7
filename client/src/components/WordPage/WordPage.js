@@ -12,14 +12,8 @@ import Utils from "../../Utils/Utils.js"
 class WordPage extends React.Component {
   render() {
     console.log("render WP----------------------------->") // zzz
-    console.log("") // zzz
-    console.log("") // zzz
     const { activeScene, openYouWinModal, updateActiveScene } = this.props
     const activeFrameIndex = localStateStore.getActiveFrameIndex()
-    // const activeFrameIndex2 = localStateStore.activeFrameIndex
-    console.log("activeFrameIndex", toJS(activeFrameIndex)) // zzz
-    // console.log("activeFrameIndex2", activeFrameIndex2) // zzz
-
     console.log("activeScene ----WP", toJS(activeScene)) // zzz
 
     const frameSet = activeScene.frameSet

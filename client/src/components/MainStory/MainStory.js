@@ -86,8 +86,6 @@ class MainStory extends React.Component {
     )
 
     const terminalScene = start ? startScene : endScene
-    console.log("-----------") // zzz
-    console.log("-----------") // zzz
 
     const firstScene = scenesGrid[0]
     const lastScene = scenesGrid[scenesGrid.length - 1]
@@ -102,20 +100,15 @@ class MainStory extends React.Component {
     const startScene = this.getTerminalScene({})
     if (!startScene) return
 
-    // localStateStore.setActiveSceneId(startScene.id)
     this.updateActiveScene({ activeScene: startScene, sceneId: startScene.id })
   }
 
-  updateActiveScene = ({ activeScene, sceneId }) => {
+  updateActiveScene = ({ sceneId }) => {
     console.log("updateActiveScene") // zzz
-    console.log("activeScene", activeScene) // zzz
+    console.log("sceneId", toJS(sceneId)) // zzz
 
-    if (!activeScene || !activeScene.location.name) {
-      return
-    }
-
-    activeScene.showCloud = false
     localStateStore.setActiveSceneId(sceneId)
+    // this.setState({ update: new Date() })
   }
 
   toggleWorldBuilder = () => {
@@ -167,10 +160,7 @@ class MainStory extends React.Component {
   renderGame = () => {
     // Determine whether this is desktop or mobile
     const { className } = this.props
-
     const activeScene = localStateStore.getActiveScene()
-    // const activeScene = localStateStore.activeScene
-    console.log("activeScene", toJS(activeScene)) // zzz
 
     if (!activeScene) {
       return null
@@ -203,7 +193,6 @@ class MainStory extends React.Component {
   }
 
   render() {
-    console.log("render - MS--------------->>>") // zzz
     console.log("render - MS--------------->>>") // zzz
 
     const activeMap = localStateStore.getActiveMap()

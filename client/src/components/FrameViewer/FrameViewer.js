@@ -190,11 +190,6 @@ class FrameViewer extends Component {
     console.log("this.props.openYouWinModal", toJS(this.props.openYouWinModal)) // zzz
   }
 
-  // TODO: change scene should be done by sceneId
-  // TODO: change scene should be done by sceneId
-  // TODO: change scene should be done by sceneId
-  // TODO: change scene should be done by sceneId
-  // TODO: change scene should be done by sceneId
   changeLocation = ({ sceneName, sceneId }) => {
     const grid = localStateStore.getActiveMapGrid()
     const newScene = grid.find((scene) => scene.location.name === sceneName)

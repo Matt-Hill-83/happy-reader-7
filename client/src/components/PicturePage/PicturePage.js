@@ -52,19 +52,14 @@ class PicturePage extends React.Component {
     const id = `${colIndex}-${rowIndex}`
     const onClick = () =>
       this.props.updateActiveScene({
-        activeScene: scene,
-        sceneId: activeScene.id,
+        // activeScene: scene,
+        sceneId: scene.id,
       })
 
     return (
       // This wrapper div seems to be required to make things render withought ghost divs being included in the list.
       <div onClick={onClick}>
-        <MiniLocation
-          id={id}
-          key={sceneName}
-          scene={scene}
-          isActive={isActive}
-        />
+        <MiniLocation id={id} key={id} scene={scene} isActive={isActive} />
       </div>
     )
   }
