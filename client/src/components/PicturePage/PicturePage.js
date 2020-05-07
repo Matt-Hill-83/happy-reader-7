@@ -15,11 +15,6 @@ import WordPage from "../WordPage/WordPage.js"
 import css from "./PicturePage.module.scss"
 
 class PicturePage extends React.Component {
-  constructor(props) {
-    super(props)
-    this.canvasRef = React.createRef()
-  }
-
   renderSceneRows = () => {
     const map = localStateStore.getActiveMap()
     const grid = map.data.grid
@@ -46,7 +41,6 @@ class PicturePage extends React.Component {
   }
 
   renderMiniLocation = ({ colIndex = 0, rowIndex = 0, scene }) => {
-    // TODO - this should come from state
     const { activeScene } = this.props
     const sceneName = scene.location.name
     let isActive

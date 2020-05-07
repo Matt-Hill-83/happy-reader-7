@@ -11,80 +11,11 @@ import css from "./WordPage.module.scss"
 import Utils from "../../Utils/Utils.js"
 
 class WordPage extends React.Component {
-  state = {
-    activeScene: undefined,
-    frameIndex: 0,
-  }
+  state = {}
 
-  async componentWillMount() {
-    const { activeScene } = this.props
-    this.setState({ activeScene })
-  }
+  async componentWillMount() {}
 
-  componentWillReceiveProps(newProps) {
-    const { activeScene } = newProps
-    this.setState({ activeScene })
-  }
-
-  // TODO: change scene should be done by sceneId
-  // TODO: change scene should be done by sceneId
-  // TODO: change scene should be done by sceneId
-  // TODO: change scene should be done by sceneId
-  // TODO: change scene should be done by sceneId
-  // changeLocation = ({ sceneName }) => {
-  //   this.setState({ frameIndex: 0 })
-
-  //   const grid = localStateStore.getActiveMapGrid()
-  //   const newScene = grid.find((scene) => scene.location.name === sceneName)
-  //   this.props.updateActiveScene({ activeScene: newScene })
-  // }
-
-  openYouWinModal = () => {
-    this.props.openYouWinModal()
-  }
-
-  // renderButtons = () => {
-  //   const {
-  //     activeScene: { isEndScene, coordinates },
-  //   } = this.state
-
-  //   const neighbors = Utils.getNeighborNames({
-  //     coordinates,
-  //   })
-  //   console.log("neighbors", toJS(neighbors)) // zzz
-
-  //   const filteredNeighbors = neighbors.filter((item) => item !== "blank")
-
-  //   if (isEndScene) {
-  //     return (
-  //       <Button onClick={this.openYouWinModal} className={css.newGameButton}>
-  //         New Game
-  //       </Button>
-  //     )
-  //   }
-
-  //   const buttons = filteredNeighbors.map((neighbor, i) => {
-  //     if (!neighbor) {
-  //       return null
-  //     }
-
-  //     const onClick = () => this.changeLocation({ sceneName: neighbor })
-
-  //     return (
-  //       <Button key={i} onClick={onClick} className={css.choiceButton}>
-  //         {neighbor}
-  //       </Button>
-  //     )
-  //   })
-
-  //   return <div className={css.decisionButtonRow}>GO TO{buttons}</div>
-  // }
-
-  // onClickNext = () => {
-  //   this.setState({
-  //     frameIndex: this.state.frameIndex + 1,
-  //   })
-  // }
+  componentWillReceiveProps(newProps) {}
 
   incrementFrameIndex = (reset) => {
     let newIndex
@@ -92,12 +23,11 @@ class WordPage extends React.Component {
     if (reset) {
       newIndex = 0
     } else {
-      newIndex = this.state.frameIndex + 1
+      newIndex = localStateStore.getActiveFrameIndex() + 1
     }
 
-    this.setState({
-      frameIndex: newIndex,
-    })
+    localStateStore.setActiveFrameIndex(newIndex)
+    // this.forceUpdate({ test: new Date() })
   }
 
   render() {
@@ -105,19 +35,17 @@ class WordPage extends React.Component {
     console.log("") // zzz
     console.log("") // zzz
     const { activeScene, openYouWinModal } = this.props
-    const { frameIndex } = this.state
+    const activeFrameIndex = localStateStore.getActiveFrameIndex()
+    // const activeFrameIndex2 = localStateStore.activeFrameIndex
+    console.log("activeFrameIndex", toJS(activeFrameIndex)) // zzz
+    // console.log("activeFrameIndex2", activeFrameIndex2) // zzz
 
     const frameSet = activeScene.frameSet
-    const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
-
-    const activeFrameIndex = localStateStore.getActiveFrameIndex()
-    console.log("activeFrameIndex", toJS(activeFrameIndex)) // zzz
-
-    // const { activeScene, frameIndex } = this.state
-    // const frameSet = activeScene.frameSet
+    const frame =
+      frameSet && frameSet.frames && frameSet.frames[activeFrameIndex]
 
     let isLastFrame =
-      frameSet.frames && frameIndex >= frameSet.frames.length - 1
+      frameSet.frames && activeFrameIndex >= frameSet.frames.length - 1
     if (!frameSet) {
       isLastFrame = true
     }
@@ -125,24 +53,15 @@ class WordPage extends React.Component {
     return (
       <div className={css.textPage}>
         <FrameViewer
-          frameIndex={frameIndex}
+          frameIndex={activeFrameIndex}
           openYouWinModal={openYouWinModal}
-          incrementFrameIndex={this.incrementFrameIndex}
+          onClickNext={this.incrementFrameIndex}
           isLastFrame={isLastFrame}
           frame={frame}
           scene={activeScene}
           isEditMode={false}
           updateActiveScene={this.props.updateActiveScene}
         />
-        {/* <div className={css.buttonRow}>
-          {!isLastFrame && (
-            <Button onClick={this.onClickNext} className={css.choiceButton}>
-              NEXT
-            </Button>
-          )}
-
-          {isLastFrame && this.renderButtons()}
-        </div> */}
       </div>
     )
   }

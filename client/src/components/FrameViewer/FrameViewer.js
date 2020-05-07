@@ -182,7 +182,7 @@ class FrameViewer extends Component {
   }
 
   onClickNext = () => {
-    this.props.incrementFrameIndex()
+    this.props.onClickNext()
   }
 
   openYouWinModal = () => {
@@ -200,7 +200,7 @@ class FrameViewer extends Component {
     const newScene = grid.find((scene) => scene.location.name === sceneName)
     console.log("newScene", toJS(newScene)) // zzz
 
-    this.props.incrementFrameIndex(true)
+    this.props.onClickNext(true)
     this.props.updateActiveScene({ activeScene: newScene })
   }
 
@@ -272,6 +272,8 @@ class FrameViewer extends Component {
   }
 
   render() {
+    console.log("render Frame Viewer----------------->>>") // zzz
+
     const { scene } = this.props
     console.log("scene", toJS(scene)) // zzz
 
