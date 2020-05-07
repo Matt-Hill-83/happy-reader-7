@@ -252,8 +252,8 @@ class FrameViewer extends Component {
           <div className={css.wordsContainer}>
             {this.renderNarrative()}
             {this.renderDialog()}
-            {this.renderButtonRow()}
           </div>
+          {this.renderButtonRow()}
           {this.renderButtonRow2()}
           <div className={css.imageGroups}>
             {/* uncomment this when more than 2 characters can be added */}
