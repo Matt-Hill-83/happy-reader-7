@@ -220,13 +220,6 @@ class FrameViewer extends Component {
       }
     }
 
-    // const neighbors = Utils.getNeighborNames({
-    //   coordinates,
-    // })
-    console.log("neighborsArray", toJS(neighborsArray)) // zzz
-
-    // const filteredNeighbors = neighbors.filter((item) => item !== "blank")
-
     if (isEndScene) {
       return (
         <Button onClick={this.openYouWinModal} className={css.newGameButton}>

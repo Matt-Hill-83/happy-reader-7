@@ -48,7 +48,11 @@ class PicturePage extends React.Component {
     isActive = sceneName === activeScene.location.name
 
     const id = `${colIndex}-${rowIndex}`
-    const onClick = () => this.props.updateActiveScene({ activeScene: scene })
+    const onClick = () =>
+      this.props.updateActiveScene({
+        activeScene: scene,
+        sceneId: activeScene.id,
+      })
 
     return (
       // This wrapper div seems to be required to make things render withought ghost divs being included in the list.
@@ -142,7 +146,7 @@ class PicturePage extends React.Component {
 
   render() {
     console.log("render ---------------PP") // zzz
-    const { activeScene, updateActiveScene, openYouWinModal } = this.props
+    const { activeScene } = this.props
     console.log("activeScene ----PP", toJS(activeScene)) // zzz
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
