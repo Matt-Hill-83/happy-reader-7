@@ -150,8 +150,6 @@ class FrameViewer extends Component {
   renderButtonRow = () => {
     const { isLastFrame } = this.props
 
-    const activeScene = localStateStore.getActiveScene()
-
     return (
       <div className={css.buttonRow}>
         {!isLastFrame && (
@@ -159,9 +157,15 @@ class FrameViewer extends Component {
             NEXT
           </Button>
         )}
-
-        {isLastFrame && this.renderButtons()}
       </div>
+    )
+  }
+
+  renderButtonRow2 = () => {
+    const { isLastFrame } = this.props
+
+    return (
+      <div className={css.buttonRow}>{isLastFrame && this.renderButtons()}</div>
     )
   }
 
@@ -244,11 +248,12 @@ class FrameViewer extends Component {
         {this.renderLocationImage()}
 
         <div className={css.relativePositionedContent}>
+          {this.renderButtonRow()}
           <div className={css.wordsContainer}>
             {this.renderNarrative()}
             {this.renderDialog()}
           </div>
-          {this.renderButtonRow()}
+          {this.renderButtonRow2()}
           <div className={css.imageGroups}>
             {/* uncomment this when more than 2 characters can be added */}
             {/* <div className={css.itemsContainer}>{renderedItems}</div> */}
@@ -261,10 +266,7 @@ class FrameViewer extends Component {
 
   render() {
     console.log("render Frame Viewer----------------->>>") // zzz
-
     const { scene } = this.props
-    // console.log("scene", toJS(scene)) // zzz
-
     const { frame } = this.props
 
     if (!frame) {
