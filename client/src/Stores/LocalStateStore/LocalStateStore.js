@@ -13,6 +13,7 @@ class LocalStateStore {
   mapBuilderGrid = []
   activeMapId = null
   activeFrameIndex = 0
+  activeSceneId = null
 
   getYou = () => this.you
   setYou = (you) => {
@@ -93,6 +94,7 @@ decorate(LocalStateStore, {
   you: observable,
   locationDetails: observable,
   activeFrameIndex: observable,
+  activeSceneId: observable,
 })
 
 const localStateStore = new LocalStateStore()

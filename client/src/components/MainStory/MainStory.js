@@ -115,15 +115,7 @@ class MainStory extends React.Component {
     }
 
     activeScene.showCloud = false
-
-    console.log("sceneId", toJS(sceneId)) // zzz
-
-    // I should set to the store and not to state
-    console.log("activeScene.id", toJS(activeScene.id)) // zzz
-
     localStateStore.setActiveSceneId(sceneId)
-    // localStateStore.setActiveSceneId(activeScene.id)
-    this.setState({ activeScene })
   }
 
   toggleWorldBuilder = () => {
@@ -175,9 +167,9 @@ class MainStory extends React.Component {
   renderGame = () => {
     // Determine whether this is desktop or mobile
     const { className } = this.props
-    // const { activeScene } = this.state
 
     const activeScene = localStateStore.getActiveScene()
+    // const activeScene = localStateStore.activeScene
     console.log("activeScene", toJS(activeScene)) // zzz
 
     if (!activeScene) {
@@ -211,6 +203,9 @@ class MainStory extends React.Component {
   }
 
   render() {
+    console.log("render - MS--------------->>>") // zzz
+    console.log("render - MS--------------->>>") // zzz
+
     const activeMap = localStateStore.getActiveMap()
 
     if (!activeMap || !activeMap.data || !activeMap.data.title) {
