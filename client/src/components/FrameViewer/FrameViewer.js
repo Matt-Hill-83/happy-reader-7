@@ -27,26 +27,11 @@ class FrameViewer extends Component {
     showNarrativeEditor: true,
     showDialogEditor: true,
     showItemPicker: false,
-    // frameIndex: 0,
     items: [],
   }
 
-  componentWillMount() {
-    const { frame } = this.props
-    // const frameSet = scene.frameSet
-    // const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
-    this.setState({ frame })
-  }
-
-  componentWillReceiveProps(newProps) {
-    const { frame } = newProps
-    // const frameSet = scene.frameSet
-    // const frame = frameSet && frameSet.frames && frameSet.frames[frameIndex]
-    this.setState({ frame })
-  }
-
   renderNarrative = () => {
-    const { frame } = this.state
+    const { frame } = this.props
     const { story = [] } = frame
 
     if (!story.length || !story[0]) return null
@@ -59,7 +44,7 @@ class FrameViewer extends Component {
   }
 
   renderDialog = () => {
-    const { frame } = this.state
+    const { frame } = this.props
     const dialog = (frame && frame.dialog) || []
 
     const renderedDialogs = dialog.map((line, lineIndex) => {
@@ -136,7 +121,7 @@ class FrameViewer extends Component {
   renderFriends = () => {
     const { scene } = this.props
 
-    const { frame } = this.state
+    const { frame } = this.props
     const { faces = [] } = frame
     if (!frame) return null
 
@@ -166,7 +151,6 @@ class FrameViewer extends Component {
     const { isLastFrame } = this.props
 
     const activeScene = localStateStore.getActiveScene()
-    console.log("activeScene", toJS(activeScene)) // zzz
 
     return (
       <div className={css.buttonRow}>
@@ -187,7 +171,6 @@ class FrameViewer extends Component {
 
   openYouWinModal = () => {
     this.props.openYouWinModal()
-    console.log("this.props.openYouWinModal", toJS(this.props.openYouWinModal)) // zzz
   }
 
   changeLocation = ({ sceneName, sceneId }) => {
@@ -248,7 +231,7 @@ class FrameViewer extends Component {
   }
 
   renderFrame = () => {
-    const { frame } = this.state
+    const { frame } = this.props
 
     if (!frame) return null
 
@@ -280,20 +263,14 @@ class FrameViewer extends Component {
     console.log("render Frame Viewer----------------->>>") // zzz
 
     const { scene } = this.props
-    console.log("scene", toJS(scene)) // zzz
+    // console.log("scene", toJS(scene)) // zzz
 
-    const { frame } = this.state
+    const { frame } = this.props
 
     if (!frame) {
       return null
     }
 
-    // TODO -  I need put in a dummy frame for when there is none.
-    // TODO -  I need put in a dummy frame for when there is none.
-    // TODO -  I need put in a dummy frame for when there is none.
-    // TODO -  I need put in a dummy frame for when there is none.
-    // TODO -  I need put in a dummy frame for when there is none.
-    // TODO -  I need put in a dummy frame for when there is none.
     const items = frame.items || []
 
     const allCharacters =

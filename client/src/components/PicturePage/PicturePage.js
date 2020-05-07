@@ -1,9 +1,8 @@
 import _get from "lodash.get"
-import { Button, Menu, MenuItem, Popover, Position } from "@blueprintjs/core"
+import { Button } from "@blueprintjs/core"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import React from "react"
-// import { findDOMNode } from "react-dom"
 import cx from "classnames"
 
 import Images from "../../images/images.js"
