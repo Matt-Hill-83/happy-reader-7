@@ -165,7 +165,8 @@ class FrameViewer extends Component {
     const { isLastFrame } = this.props
 
     return (
-      <div className={css.buttonRow}>{isLastFrame && this.renderButtons()}</div>
+      <div className={css.buttonRow}>{this.renderButtons()}</div>
+      // <div className={css.buttonRow}>{isLastFrame && this.renderButtons()}</div>
     )
   }
 
@@ -253,7 +254,7 @@ class FrameViewer extends Component {
             {this.renderDialog()}
             {this.renderButtonRow()}
           </div>
-          {/* {this.renderButtonRow2()} */}
+          {this.renderButtonRow2()}
           <div className={css.imageGroups}>
             {/* uncomment this when more than 2 characters can be added */}
             {/* <div className={css.itemsContainer}>{renderedItems}</div> */}

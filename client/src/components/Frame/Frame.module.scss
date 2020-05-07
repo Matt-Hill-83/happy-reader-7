@@ -1,13 +1,5 @@
 @import "../../Styles/mixins.modules.scss";
 
-.girlHead {
-  // border: 3px solid red !important;
-}
-
-.girlHead:nth-of-type(4n) {
-  // margin-right: 24px;
-}
-
 .addCharacterButton {
   z-index: 10;
 }
