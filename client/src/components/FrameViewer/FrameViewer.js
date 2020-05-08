@@ -14,6 +14,7 @@ import css from "./FrameViewer.module.scss"
 import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import Utils from "../../Utils/Utils"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
+import ArrowNavigator from "../ArrowNavigator/ArrowNavigator"
 
 class FrameViewer extends Component {
   state = {
@@ -154,12 +155,7 @@ class FrameViewer extends Component {
   }
 
   navigationButtonRow = () => {
-    // const { isLastFrame } = this.props
-    // if (!isLastFrame) {
-    //   return null
-    // }
-
-    return <div className={css.navigationButtonRow}>{this.renderButtons()}</div>
+    return this.renderArrowNavigator()
   }
 
   onClickNext = () => {
@@ -175,58 +171,25 @@ class FrameViewer extends Component {
     this.props.updateActiveScene({ sceneId })
   }
 
-  renderButtons = () => {
+  renderArrowNavigator = () => {
     const activeScene = localStateStore.getActiveScene()
+    const { updateActiveScene } = this.props
+    const { isEndScene } = activeScene
 
-    const { isEndScene, coordinates } = activeScene
+    // if (isEndScene) {
+    //   return (
+    //     <Button onClick={this.openYouWinModal} className={css.newGameButton}>
+    //       New Game
+    //     </Button>
+    //   )
+    // }
 
-    const neighbors = Utils.getNeighbors({
-      coordinates,
-    })
-
-    if (isEndScene) {
-      return (
-        <Button onClick={this.openYouWinModal} className={css.newGameButton}>
-          New Game
-        </Button>
-      )
-    }
-
-    const buttons = Object.keys(neighbors).map((neighborKey, i) => {
-      const neighbor = neighbors[neighborKey]
-
-      const neighborName = _get(neighbor, "location.name") || ""
-
-      const onClick = () =>
-        this.changeLocation({
-          sceneId: neighbor.id,
-        })
-
-      const classNames = {
-        left: css.sceneLeft,
-        right: css.sceneRight,
-        top: css.sceneTop,
-        bottom: css.sceneBottom,
-      }
-
-      const className = classNames[neighborKey]
-
-      return (
-        <Button
-          key={i}
-          onClick={onClick}
-          className={cx(css.choiceButton, className)}
-        >
-          {neighborName}
-        </Button>
-      )
-    })
-
-    const fourArrows = Images.backgrounds["four_arrows"]
     return (
-      <div className={css.decisionButtonRow}>
-        <img className={css.fourArrowsImage} src={fourArrows} alt={"imagex"} />
-        {buttons}
+      <div className={css.navigationButtonRow}>
+        <ArrowNavigator
+          activeScene={activeScene}
+          updateActiveScene={updateActiveScene}
+        />
       </div>
     )
   }

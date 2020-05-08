@@ -135,7 +135,6 @@ class FrameBuilder extends Component {
 
   render() {
     const { scene } = this.props
-    console.log("scene", toJS(scene)) // zzz
     if (!scene) {
       return null
     }
