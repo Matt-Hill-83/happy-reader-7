@@ -154,21 +154,12 @@ class FrameViewer extends Component {
     )
   }
 
-  navigationButtonRow = () => {
-    return this.renderArrowNavigator()
-  }
-
   onClickNext = () => {
     localStateStore.incrementActiveFrameIndex()
   }
 
   openYouWinModal = () => {
     this.props.openYouWinModal()
-  }
-
-  changeLocation = ({ sceneId }) => {
-    localStateStore.incrementActiveFrameIndex(true)
-    this.props.updateActiveScene({ sceneId })
   }
 
   renderArrowNavigator = () => {
@@ -213,7 +204,7 @@ class FrameViewer extends Component {
             {this.renderDialog()}
           </div>
           <div className={css.buttonsContainer}>
-            {this.navigationButtonRow()}
+            {this.renderArrowNavigator()}
             {this.nextButtonRow()}
           </div>
           <div className={css.imageGroups}>

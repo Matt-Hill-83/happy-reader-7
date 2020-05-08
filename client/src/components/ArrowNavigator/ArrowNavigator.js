@@ -57,7 +57,7 @@ class ArrowNavigator extends Component {
 
     const fourArrows = Images.backgrounds["four_arrows"]
     return (
-      <div className={css.decisionButtonRow}>
+      <div className={css.arrowNavigatorContainer}>
         <img className={css.fourArrowsImage} src={fourArrows} alt={"imagex"} />
         {buttons}
       </div>
