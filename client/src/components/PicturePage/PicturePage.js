@@ -51,7 +51,7 @@ class PicturePage extends React.Component {
 
     return (
       // This wrapper div seems to be required to make things render withought ghost divs being included in the list.
-      <div onClick={onClick}>
+      <div onClick={onClick} className={css.minilocationWrapper}>
         <MiniLocation id={id} key={id} scene={scene} isActive={isActive} />
       </div>
     )
