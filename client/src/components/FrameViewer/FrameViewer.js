@@ -6,6 +6,7 @@ import {
   FormGroup,
 } from "@blueprintjs/core"
 import React, { Component } from "react"
+import cx from "classnames"
 
 import Character from "../Character/Character"
 import Head from "../Head/Head"
@@ -147,7 +148,7 @@ class FrameViewer extends Component {
     })
   }
 
-  renderButtonRow = () => {
+  nextButtonRow = () => {
     const { isLastFrame } = this.props
 
     return (
@@ -161,13 +162,13 @@ class FrameViewer extends Component {
     )
   }
 
-  renderButtonRow2 = () => {
+  navigationButtonRow = () => {
     const { isLastFrame } = this.props
+    if (!isLastFrame) {
+      return null
+    }
 
-    return (
-      <div className={css.buttonRow}>{this.renderButtons()}</div>
-      // <div className={css.buttonRow}>{isLastFrame && this.renderButtons()}</div>
-    )
+    return <div className={css.navigationButtonRow}>{this.renderButtons()}</div>
   }
 
   onClickNext = () => {
@@ -196,6 +197,8 @@ class FrameViewer extends Component {
     const neighbors = Utils.getNeighbors({
       coordinates,
     })
+    console.log("neighbors", toJS(neighbors)) // zzz
+
     const neighborsArray = []
     for (const item in neighbors) {
       if (neighbors[item]) {
@@ -211,13 +214,15 @@ class FrameViewer extends Component {
       )
     }
 
-    const buttons = neighborsArray.map((neighbor, i) => {
-      console.log("neighbor", toJS(neighbor)) // zzz
-      const neighborName = _get(neighbor, "location.name") || ""
+    console.log("neighborsArray", toJS(neighborsArray)) // zzz
 
-      if (!neighbor) {
-        return null
-      }
+    const buttons = Object.keys(neighbors).map((neighborKey, i) => {
+      console.log("neighborKey", toJS(neighborKey)) // zzz
+      const neighbor = neighbors[neighborKey]
+      console.log("neighbor", toJS(neighbor)) // zzz
+
+      const neighborName = _get(neighbor, "location.name") || ""
+      console.log("neighborName------------------------->>>", neighborName) // zzz
 
       const onClick = () =>
         this.changeLocation({
@@ -225,14 +230,36 @@ class FrameViewer extends Component {
           sceneId: neighbor.id,
         })
 
+      const classNames = {
+        left: css.sceneLeft,
+        right: css.sceneRight,
+        top: css.sceneTop,
+        bottom: css.sceneBottom,
+      }
+
+      const className = classNames[neighborKey]
+
+      console.log("className", className) // zzz
+
       return (
-        <Button key={i} onClick={onClick} className={css.choiceButton}>
+        <Button
+          key={i}
+          onClick={onClick}
+          className={cx(css.choiceButton, className)}
+        >
           {neighborName}
         </Button>
       )
     })
 
-    return <div className={css.decisionButtonRow}>GO TO{buttons}</div>
+    const fourArrows = Images.backgrounds["four_arrows"]
+    return (
+      <div className={css.decisionButtonRow}>
+        <img className={css.fourArrowsImage} src={fourArrows} alt={"imagex"} />
+        {/* <span className={css.goToText}>Go To</span> */}
+        {buttons}
+      </div>
+    )
   }
 
   renderFrame = () => {
@@ -253,8 +280,10 @@ class FrameViewer extends Component {
             {this.renderNarrative()}
             {this.renderDialog()}
           </div>
-          {this.renderButtonRow()}
-          {this.renderButtonRow2()}
+          <div className={css.buttonsContainer}>
+            {this.navigationButtonRow()}
+            {this.nextButtonRow()}
+          </div>
           <div className={css.imageGroups}>
             {/* uncomment this when more than 2 characters can be added */}
             {/* <div className={css.itemsContainer}>{renderedItems}</div> */}

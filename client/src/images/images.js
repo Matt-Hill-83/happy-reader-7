@@ -51,6 +51,8 @@ import princess_alibera from "./creatures/princess_alibera.png"
 import drake from "./creatures/drake.png"
 import cat_king from "./creatures/cat_king.gif"
 import rori_nice from "./creatures/rori_nice.png"
+import queen_hashami from "./creatures/queen_hashami.png"
+
 import dragon from "./creatures/dragon.png"
 import elf from "./creatures/elf-1.png"
 import fairy from "./creatures/fairy.png"
@@ -97,6 +99,7 @@ import hill01 from "./backgrounds/hill-02.png"
 import sky01 from "./backgrounds/sky-01.png"
 import map from "./backgrounds/map-05.jpg"
 import rock from "./backgrounds/rock-2.jpg"
+import four_arrows from "./backgrounds/four_arrows.png"
 
 // buttons
 import leftArrow from "./backgrounds/left-arrow-01.png"
@@ -350,6 +353,7 @@ const creatures = {
   drake,
   cat_king,
   rori_nice,
+  queen_hashami,
   bunny,
   cop,
   cub,
@@ -422,6 +426,7 @@ const backgrounds = {
   forestRight,
   map,
   rock,
+  four_arrows,
   leftArrow,
   rightArrow,
   hill01,
