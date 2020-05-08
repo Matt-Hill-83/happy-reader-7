@@ -145,7 +145,7 @@ class FrameViewer extends Component {
     return (
       <div className={css.nextPageButtonRow}>
         {!isLastFrame && (
-          <Button onClick={this.onClickNext} className={css.choiceButton}>
+          <Button onClick={this.onClickNext} className={css.nextButton}>
             Next Page
           </Button>
         )}
@@ -154,10 +154,10 @@ class FrameViewer extends Component {
   }
 
   navigationButtonRow = () => {
-    const { isLastFrame } = this.props
-    if (!isLastFrame) {
-      return null
-    }
+    // const { isLastFrame } = this.props
+    // if (!isLastFrame) {
+    //   return null
+    // }
 
     return <div className={css.navigationButtonRow}>{this.renderButtons()}</div>
   }

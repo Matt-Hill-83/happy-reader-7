@@ -93,14 +93,6 @@
   z-index: 1000;
 }
 
-.actionButtons {
-  border: 1px solid red !important;
-  position: absolute;
-  bottom: 1%;
-  display: flex;
-  width: 100%;
-}
-
 .wordsContainer {
   display: flex;
   z-index: 1;
@@ -111,7 +103,6 @@
   border-radius: 6px;
   background: white;
   padding: 2%;
-  // margin-bottom: 2rem;
 }
 
 .narrative {
@@ -119,10 +110,8 @@
   z-index: 10;
   flex-direction: column;
   justify-content: flex-end;
-  // border: 1px solid;
   border-radius: 6px;
   background: white;
-  // padding: 2%;
   margin-bottom: 1rem;
   position: relative;
 }
@@ -132,10 +121,8 @@
   z-index: 10;
   flex-direction: column;
   justify-content: flex-end;
-  // border: 1px solid;
   border-radius: 6px;
   background: white;
-  // padding: 2%;
   position: relative;
 
   :global {
@@ -168,7 +155,6 @@
     }
   }
 
-  // TODO - move colors to colors.css
   .character0 {
     border: 1px solid #ff005c !important;
     background: #ffcee6;
@@ -276,7 +262,9 @@
 .charactersContainer {
   display: flex;
   width: 100%;
-  margin-top: 11%;
+  position: relative;
+  margin-top: auto;
+  height: 25vh;
 }
 
 .characterContainer {
@@ -294,7 +282,6 @@
 }
 
 .buttonsContainer {
-  border: 1px solid red !important;
   display: flex;
 }
 
@@ -324,13 +311,11 @@
 .nextPageButtonRow {
   display: flex;
   align-items: center;
-  /* width: 100%; */
   height: 50px;
   font-size: 36px !important;
   font-weight: bold !important;
   justify-content: flex-end;
   border: 1px solid blue !important;
-  align-self: flex-end;
   margin-left: auto;
 }
 
@@ -338,7 +323,6 @@
   display: flex;
   justify-content: space-around;
   position: relative;
-  // bottom: 2%;
   z-index: 10;
   background: var(--set1-pink-bk);
   border: 2px solid var(--set1-purple-brdr);
@@ -361,13 +345,23 @@
   height: 14vh;
   width: 18vh;
   margin-left: auto;
+  border-radius: 7px;
+  overflow: hidden;
 }
 
 .fourArrowsImage {
   display: flex;
-  border: 4px solid red !important;
   height: 100%;
   width: 100%;
+  margin-top: -1%;
+}
+
+.nextButton {
+  border: 1px solid var(--set1-purple-brdr);
+  background: var(--set1-lav-bk);
+  display: flex;
+  align-items: center;
+  font-size: 1.4vh;
 }
 
 .choiceButton {
@@ -375,14 +369,17 @@
   background: var(--set1-lav-bk);
   display: flex;
   align-items: center;
-  font-size: 1.4vh;
   border-radius: 7px;
   height: unset;
-  // padding-top: 0px !important;
-  // padding-bottom: 0px !important;
-  // padding-left: 3px;
   padding: 3px !important;
   min-width: 20%;
+  height: 24px;
+  min-height: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  text-align: center;
 }
 
 .sceneLeft {
