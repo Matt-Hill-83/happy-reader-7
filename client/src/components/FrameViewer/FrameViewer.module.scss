@@ -270,13 +270,9 @@
 .characterContainer {
   display: flex;
   height: 100%;
-  width: 25%;
-
-  &:last-of-type {
-  }
+  width: 16%;
 
   &:nth-of-type(3) {
-    margin-left: auto;
     margin-left: auto;
   }
 }
@@ -372,7 +368,7 @@
   border-radius: 7px;
   height: unset;
   padding: 3px !important;
-  min-width: 20%;
+  min-width: 25%;
   height: 24px;
   min-height: unset;
   display: flex;
