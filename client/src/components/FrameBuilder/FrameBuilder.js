@@ -135,27 +135,25 @@ class FrameBuilder extends Component {
 
   render() {
     const { scene } = this.props
+    console.log("scene", toJS(scene)) // zzz
+    if (!scene) {
+      return null
+    }
 
     return (
       <div className={css.main}>
-        {scene && (
-          <div className={css.buttonContainer}>
-            <Button className={css.closeButton} onClick={this.onAddFrame}>
-              <Icon icon={IconNames.CLOSE} />
-              Add Frame
-            </Button>
-            <Button
-              className={css.closeButton}
-              onClick={this.onExitFrameBuilder}
-            >
-              <Icon icon={IconNames.CLOSE} />
-              Close
-            </Button>
-          </div>
-        )}
-        {scene && (
-          <div className={css.framesContainer}>{this.renderFrames()}</div>
-        )}
+        <div className={css.sceneName}>{scene.location.name}</div>
+        <div className={css.buttonContainer}>
+          <Button className={css.closeButton} onClick={this.onAddFrame}>
+            <Icon icon={IconNames.CLOSE} />
+            Add Frame
+          </Button>
+          <Button className={css.closeButton} onClick={this.onExitFrameBuilder}>
+            <Icon icon={IconNames.CLOSE} />
+            Close
+          </Button>
+        </div>
+        <div className={css.framesContainer}>{this.renderFrames()}</div>
       </div>
     )
   }
