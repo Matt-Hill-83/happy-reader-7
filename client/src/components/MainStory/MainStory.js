@@ -15,8 +15,9 @@ import WorldPicker from "../WorldPicker/WorldPicker.js"
 
 import css from "./MainStory.module.scss"
 
-const SHOW_WORLD_BUILDER = true
-// const SHOW_WORLD_BUILDER = false
+let SHOW_WORLD_BUILDER
+SHOW_WORLD_BUILDER = true
+SHOW_WORLD_BUILDER = false
 
 class MainStory extends React.Component {
   state = {
