@@ -1,15 +1,8 @@
-import {
-  Button,
-  Icon,
-  Position,
-  InputGroup,
-  FormGroup,
-} from "@blueprintjs/core"
+import { Button } from "@blueprintjs/core"
 import React, { Component } from "react"
 import cx from "classnames"
 
 import Character from "../Character/Character"
-import Head from "../Head/Head"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
@@ -120,9 +113,7 @@ class FrameViewer extends Component {
   }
 
   renderFriends = () => {
-    const { scene } = this.props
-
-    const { frame } = this.props
+    const { scene, frame } = this.props
     const { faces = [] } = frame
     if (!frame) return null
 
@@ -131,7 +122,7 @@ class FrameViewer extends Component {
 
     const allItems = (scene.items && scene.items.map((item) => item.name)) || []
 
-    // temp code DELETE ME!!! (start) - zzz
+    // temp code DELETE ME!!! (start)
     allCharacters.push(...allItems)
     // temp code DELETE ME!!! (end)
 
@@ -179,32 +170,19 @@ class FrameViewer extends Component {
     this.props.openYouWinModal()
   }
 
-  changeLocation = ({ sceneName, sceneId }) => {
-    const grid = localStateStore.getActiveMapGrid()
-    const newScene = grid.find((scene) => scene.location.name === sceneName)
-    console.log("newScene", toJS(newScene)) // zzz
-
+  changeLocation = ({ sceneId }) => {
     localStateStore.incrementActiveFrameIndex(true)
     this.props.updateActiveScene({ sceneId })
   }
 
   renderButtons = () => {
     const activeScene = localStateStore.getActiveScene()
-    console.log("activeScene", toJS(activeScene)) // zzz
 
     const { isEndScene, coordinates } = activeScene
 
     const neighbors = Utils.getNeighbors({
       coordinates,
     })
-    console.log("neighbors", toJS(neighbors)) // zzz
-
-    const neighborsArray = []
-    for (const item in neighbors) {
-      if (neighbors[item]) {
-        neighborsArray.push(neighbors[item])
-      }
-    }
 
     if (isEndScene) {
       return (
@@ -214,19 +192,13 @@ class FrameViewer extends Component {
       )
     }
 
-    console.log("neighborsArray", toJS(neighborsArray)) // zzz
-
     const buttons = Object.keys(neighbors).map((neighborKey, i) => {
-      console.log("neighborKey", toJS(neighborKey)) // zzz
       const neighbor = neighbors[neighborKey]
-      console.log("neighbor", toJS(neighbor)) // zzz
 
       const neighborName = _get(neighbor, "location.name") || ""
-      console.log("neighborName------------------------->>>", neighborName) // zzz
 
       const onClick = () =>
         this.changeLocation({
-          sceneName: neighborName,
           sceneId: neighbor.id,
         })
 
@@ -238,8 +210,6 @@ class FrameViewer extends Component {
       }
 
       const className = classNames[neighborKey]
-
-      console.log("className", className) // zzz
 
       return (
         <Button
@@ -256,7 +226,6 @@ class FrameViewer extends Component {
     return (
       <div className={css.decisionButtonRow}>
         <img className={css.fourArrowsImage} src={fourArrows} alt={"imagex"} />
-        {/* <span className={css.goToText}>Go To</span> */}
         {buttons}
       </div>
     )
@@ -295,7 +264,6 @@ class FrameViewer extends Component {
   }
 
   render() {
-    console.log("render Frame Viewer----------------->>>") // zzz
     const { scene } = this.props
     const { frame } = this.props
 
