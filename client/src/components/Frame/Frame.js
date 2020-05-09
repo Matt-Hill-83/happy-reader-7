@@ -346,7 +346,7 @@ class Frame extends Component {
             {this.renderDialog()}
           </div>
 
-          <div className={css.imageGroups}>
+          <div className={css.imageGroupsContainer}>
             {/* uncomment this when more than 2 characters can be added */}
             {/* <div className={css.itemsContainer}>{renderedItems}</div> */}
             <div className={css.charactersContainer}>{renderedFriends}</div>

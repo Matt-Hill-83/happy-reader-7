@@ -56,8 +56,10 @@ class ArrowNavigator extends Component {
     })
 
     const fourArrows = Images.backgrounds["four_arrows"]
+    const diamond2 = Images.backgrounds["diamond2"]
     return (
       <div className={css.arrowNavigatorContainer}>
+        <img className={css.diamond2Image} src={diamond2} alt={"imagex"} />
         <img className={css.fourArrowsImage} src={fourArrows} alt={"imagex"} />
         {buttons}
       </div>

@@ -176,7 +176,7 @@ class FrameViewer extends Component {
     // }
 
     return (
-      <div className={css.navigationButtonRow}>
+      <div className={css.arrowNavigatorBox}>
         <ArrowNavigator
           activeScene={activeScene}
           updateActiveScene={updateActiveScene}
@@ -199,15 +199,21 @@ class FrameViewer extends Component {
         {this.renderLocationImage()}
 
         <div className={css.relativePositionedContent}>
-          <div className={css.wordsContainer}>
-            {this.renderNarrative()}
-            {this.renderDialog()}
+          <div className={css.wordsAndButtons}>
+            {/* <div className={css.buttonsContainer}>
+              {this.renderArrowNavigator()}
+              {this.nextButtonRow()}
+            </div> */}
+            <div className={css.wordsContainer}>
+              {this.renderNarrative()}
+              {this.renderDialog()}
+            </div>
+            <div className={css.buttonsContainer}>
+              {this.renderArrowNavigator()}
+              {this.nextButtonRow()}
+            </div>
           </div>
-          <div className={css.buttonsContainer}>
-            {this.renderArrowNavigator()}
-            {this.nextButtonRow()}
-          </div>
-          <div className={css.imageGroups}>
+          <div className={css.imageGroupsContainer}>
             {/* uncomment this when more than 2 characters can be added */}
             {/* <div className={css.itemsContainer}>{renderedItems}</div> */}
             <div className={css.charactersContainer}>{renderedFriends}</div>
@@ -218,8 +224,7 @@ class FrameViewer extends Component {
   }
 
   render() {
-    const { scene } = this.props
-    const { frame } = this.props
+    const { scene, frame } = this.props
 
     if (!frame) {
       return null
