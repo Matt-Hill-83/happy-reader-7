@@ -1,7 +1,22 @@
 @import "../../Styles/mixins.modules.scss";
 
-.addCharacterButton {
+.sceneName {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 1.6vh;
+  text-transform: capitalize;
+  background: white;
+  width: fit-content;
+  padding: 0px 1vh;
+  border-radius: 0.4vh;
+  border: 1px solid purple;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background: #dedede;
+  border-bottom: none;
+  margin-bottom: -1px;
   z-index: 10;
+  border-bottom: 1px solid grey;
 }
 
 .relativePositionedContent {
@@ -89,6 +104,7 @@
   background: white;
   min-height: 30vh;
   overflow: hidden;
+  border-top-left-radius: 0px;
 }
 
 .narrative {
@@ -97,10 +113,8 @@
   justify-content: flex-end;
   position: relative;
   z-index: 10;
-  background: white;
-  margin-bottom: 1rem;
   background: #dedede;
-  padding: 2%;
+  padding: 0.2vh 0vh;
 }
 
 .dialog {
@@ -134,8 +148,9 @@
 
   .character1 {
     border: 1px solid orange !important;
-    color: #8610ff;
-    background: #f7e59a;
+    // color: #8610ff;
+    // background: #f7e59a;
+    background: #f7e59a5e;
     margin-left: auto;
 
     [class*="WordGroup_sentence__"] {
@@ -145,8 +160,8 @@
 
   .character0 {
     border: 1px solid #ff005c !important;
-    background: #ffcee6;
-    color: #8610ff;
+    background: #ffcee685;
+    // color: #8610ff;
 
     [class*="WordGroup_sentence__"] {
       justify-content: flex-start;
@@ -255,11 +270,10 @@
   align-items: center;
   font-size: 36px !important;
   font-weight: bold !important;
-  justify-content: flex-end;
   margin-left: auto;
-  justify-items: flex-end;
-  display: flex;
   height: 40px;
+  margin-right: 1vh;
+  margin-top: auto;
 }
 
 .nextButton {

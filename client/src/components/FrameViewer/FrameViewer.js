@@ -17,13 +17,7 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import ArrowNavigator from "../ArrowNavigator/ArrowNavigator"
 
 class FrameViewer extends Component {
-  state = {
-    showFacePicker: false,
-    showNarrativeEditor: true,
-    showDialogEditor: true,
-    showItemPicker: false,
-    items: [],
-  }
+  state = {}
 
   renderNarrative = () => {
     const { frame } = this.props
@@ -69,14 +63,13 @@ class FrameViewer extends Component {
   }
 
   renderLocationImage = () => {
-    const { scene = true } = this.props
     const locationImage =
       Images.locations[_get(this.props, "scene.location.name")]
 
     return (
       <div className={css.locationImageContainer}>
         <img className={css.locationImage} src={locationImage} alt={"imagex"} />
-        <span className={`${css.locationLabel}`}>{scene.name}</span>
+        {/* <span className={`${css.locationLabel}`}>{scene.location.name}</span> */}
       </div>
     )
   }
@@ -158,18 +151,14 @@ class FrameViewer extends Component {
     localStateStore.incrementActiveFrameIndex()
   }
 
-  openYouWinModal = () => {
-    this.props.openYouWinModal()
-  }
-
   renderArrowNavigator = () => {
     const activeScene = localStateStore.getActiveScene()
-    const { updateActiveScene } = this.props
+    const { updateActiveScene, openYouWinModal } = this.props
     const { isEndScene } = activeScene
 
     if (isEndScene) {
       return (
-        <Button onClick={this.openYouWinModal} className={css.newGameButton}>
+        <Button onClick={openYouWinModal} className={css.newGameButton}>
           New Game
         </Button>
       )
@@ -186,10 +175,9 @@ class FrameViewer extends Component {
   }
 
   renderFrame = () => {
-    const { frame } = this.props
+    const { scene } = this.props
 
-    if (!frame) return null
-
+    const sceneName = scene.location.name
     const renderedItems = this.renderItems()
     const renderedFriends = this.renderFriends()
 
@@ -200,13 +188,14 @@ class FrameViewer extends Component {
 
         <div className={css.relativePositionedContent}>
           <div className={css.wordsAndButtons}>
+            <div className={css.sceneName}>{sceneName}</div>
             <div className={css.wordsContainer}>
               {this.renderNarrative()}
               {this.renderDialog()}
+              {this.nextButtonRow()}
             </div>
             <div className={css.buttonsContainer}>
               {this.renderArrowNavigator()}
-              {this.nextButtonRow()}
             </div>
           </div>
           <div className={css.imageGroupsContainer}>
@@ -220,26 +209,15 @@ class FrameViewer extends Component {
   }
 
   render() {
-    const { scene, frame } = this.props
+    const { frame } = this.props
 
     if (!frame) {
       return null
     }
 
-    const items = frame.items || []
-
-    const allCharacters =
-      (scene.characters && scene.characters.map((item) => item.name)) || []
-
-    const itemRenderer = ({ item }) => {
-      return <ImageDisplay item={item} />
-    }
-
     return (
       <div className={css.main}>
-        <div className={css.scenesContainer}>
-          {this.renderFrame({ allCharacters })}
-        </div>
+        <div className={css.scenesContainer}>{this.renderFrame()}</div>
       </div>
     )
   }

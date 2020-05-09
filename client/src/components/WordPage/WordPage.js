@@ -25,7 +25,6 @@ class WordPage extends React.Component {
       <div className={css.textPage}>
         <FrameViewer
           frame={frame}
-          isEditMode={false}
           isLastFrame={isLastFrame}
           onClickNext={this.incrementFrameIndex}
           openYouWinModal={openYouWinModal}
