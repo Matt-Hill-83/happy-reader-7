@@ -3,6 +3,7 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
 import Images from "../../images/images.js"
+import cx from "classnames"
 
 import { Button, Dialog } from "@blueprintjs/core"
 
@@ -34,7 +35,7 @@ class QuestDialog extends React.Component {
       closeYouWinModal,
       showReleased,
       showYouWinModal,
-      changeMap,
+      onChangeMap,
     } = this.props
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
@@ -49,18 +50,17 @@ class QuestDialog extends React.Component {
     })
 
     const mapList = sortedMaps.map((map, index) => {
-      const { id } = map
-      const { name, title } = map.data
+      const { title } = map.data
 
       const mapId = map.id
       const text = (
         <div className={css.questRow}>
-          <div className={css.questName}>{title}</div>
-          <div className={css.questStatus}> not complete</div>
-          <div className={css.dragonPoints}>100 gold</div>
+          <div className={cx(css.tableCell, css.questName)}>{title}</div>
+          <div className={cx(css.tableCell, css.dragonPoints)}>100 gold</div>
+          <div className={cx(css.tableCell, css.questStatus)}>X</div>
         </div>
       )
-      return <div onClick={() => changeMap({ index, mapId })}>{text}</div>
+      return <div onClick={() => onChangeMap({ index, mapId })}>{text}</div>
     })
 
     const cloudImage = Images.backgrounds["splashScreen01"]
@@ -71,27 +71,36 @@ class QuestDialog extends React.Component {
         isCloseButtonShown={true}
         className={css.main}
       >
-        <img className={css.cloudImage} src={cloudImage} alt={"imagex"} />
+        <img className={css.backgroundImage} src={cloudImage} alt={"imagex"} />
         <div className={css.questPage}>
           <div className={css.header}>
             <span className={css.gameTitle}>Troll Bones</span>
-            <span className={css.playerStats}>Your Trophys</span>
+          </div>
+          <div className={css.playerStatsSection}>
+            <div className={css.playerStatsRow}>
+              <span className={css.playerStatsKey}>Gold Coins</span>
+              <span className={css.playerStatsValue}>500</span>
+            </div>
+            <div className={css.playerStatsRow}>
+              <span className={css.playerStatsKey}>Trophies</span>
+              <span className={css.playerStatsValue}>500</span>
+            </div>
           </div>
           <div className={css.content}>
             <div className={css.questTable}>
               <div className={css.tableHeader}>
-                <div className={css.name}></div>
-                <div className={css.status}></div>
-                <div className={css.gold}></div>
+                <div className={cx(css.tableCell, css.name)}>name</div>
+                <div className={cx(css.tableCell, css.status)}>completed</div>
+                <div className={cx(css.tableCell, css.gold)}>Prize</div>
               </div>
               {mapList}
             </div>
           </div>
         </div>
-        {/*
+
         <Button className={css.playButton} onClick={closeYouWinModal}>
           PLAY
-        </Button> */}
+        </Button>
       </Dialog>
     )
   }

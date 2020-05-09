@@ -1,6 +1,8 @@
 @import "../../Styles/mixins.modules.scss";
 
 .main {
+  --pink-background: #e6e6fa57;
+
   border: 2px solid var(--set1-purple-brdr);
   background: var(--light-pink);
   display: flex;
@@ -17,6 +19,14 @@
   left: 25%;
   height: 70vh;
   width: 70vw;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .playButton {
@@ -33,7 +43,6 @@
   display: flex;
 }
 
-// quest stuff
 .questPage {
   display: flex;
   border: 1px solid blue !important;
@@ -45,13 +54,26 @@
 
 .header {
   display: flex;
-  border: 1px solid black !important;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  color: black;
+  background: var(--pink-background);
+  border-radius: 0.5vh;
+  width: fit-content;
+  align-self: center;
+}
+
+.playerStatsSection {
+  display: flex;
+  border: 1px solid black !important;
   color: black;
   background: lavender;
   border-radius: 0.5vh;
+  flex-direction: column;
+  align-self: flex-end;
+  padding: 0.6vh 0.9vh;
+  font-size: 2vh;
+  width: 25%;
 }
 
 .gameTitle {
@@ -60,6 +82,8 @@
   justify-content: center;
   align-items: center;
   color: black;
+  padding: 0 1vh;
+  border-radius: 0.5vh;
 }
 
 .content {
@@ -68,6 +92,24 @@
   width: 100%;
   flex: 1;
   padding: 1vh;
+}
+
+.playerStatsRow {
+  display: flex;
+  border: 1px solid red !important;
+}
+
+.playerStatsKey {
+  display: flex;
+  border: 1px solid red !important;
+  width: 80%;
+  white-space: nowrap;
+}
+
+.playerStatsValue {
+  display: flex;
+  border: 1px solid red !important;
+  width: 20%;
 }
 
 .questTable {
@@ -90,7 +132,7 @@
   flex: 1;
 
   &:hover {
-    background-color: black;
+    background-color: blue;
     cursor: pointer;
   }
 }
@@ -102,16 +144,17 @@
   height: 20px;
 }
 
-.questStatus {
+.tableCell {
   display: flex;
   border-right: 1px solid blue !important;
   width: 100%;
   flex: 1;
 }
 
+.questStatus {
+  display: flex;
+}
+
 .questName {
   display: flex;
-  border-right: 1px solid blue !important;
-  width: 100%;
-  flex: 1;
 }

@@ -135,7 +135,12 @@ class MainStory extends React.Component {
   renderYouWinModal = () => {
     const { showYouWinModal } = this.state
 
-    return <QuestDialog showYouWinModal={showYouWinModal}></QuestDialog>
+    return (
+      <QuestDialog
+        showYouWinModal={showYouWinModal}
+        onChangeMap={this.onChangeMap}
+      ></QuestDialog>
+    )
   }
 
   renderGame = () => {
