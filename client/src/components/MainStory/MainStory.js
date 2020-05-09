@@ -6,12 +6,11 @@ import _get from "lodash.get"
 import { Button, Dialog } from "@blueprintjs/core"
 
 import { maps } from "../../Stores/InitStores.js"
-import { worldNameStore } from "../../Stores/FrameSetStore"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import PicturePage from "../PicturePage/PicturePage"
 import Utils from "../../Utils/Utils"
 import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
-import WorldPicker from "../WorldPicker/WorldPicker.js"
+import QuestDialog from "../QuestDialog/QuestDialog.js"
 
 import css from "./MainStory.module.scss"
 
@@ -29,7 +28,7 @@ class MainStory extends React.Component {
     // I need to make these stores shared singletons
     //  Move these to App.js
     await maps.fetch()
-    await worldNameStore.fetch()
+    // await worldNameStore.fetch()
 
     if (maps.docs && maps.docs[0]) {
       const defaultMap = Utils.getFirstReleasedMap()
@@ -134,24 +133,9 @@ class MainStory extends React.Component {
   }
 
   renderYouWinModal = () => {
-    return (
-      <Dialog
-        isOpen={this.state.showYouWinModal}
-        isCloseButtonShown={true}
-        className={css.levelCompleteDialog}
-      >
-        <WorldPicker
-          showDelete={false}
-          onChangeMap={({ mapId, index }) => this.onChangeMap({ mapId, index })}
-        />
-        <Button
-          className={css.levelCompletionButton}
-          onClick={this.closeYouWinModal}
-        >
-          PLAY
-        </Button>
-      </Dialog>
-    )
+    const { showYouWinModal } = this.state
+
+    return <QuestDialog showYouWinModal={showYouWinModal}></QuestDialog>
   }
 
   renderGame = () => {
@@ -166,12 +150,12 @@ class MainStory extends React.Component {
     return (
       <div className={`${css.main} ${className}`}>
         <div className={css.floatingButtons}>
-          <WorldPicker
+          {/* <WorldPicker
             showDelete={false}
             onChangeMap={({ mapId, index }) =>
               this.onChangeMap({ mapId, index })
             }
-          />
+          /> */}
         </div>
         <div className={css.body}>
           <div className={css.storyBox}>

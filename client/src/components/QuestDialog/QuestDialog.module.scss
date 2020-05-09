@@ -1,0 +1,117 @@
+@import "../../Styles/mixins.modules.scss";
+
+.main {
+  border: 2px solid var(--set1-purple-brdr);
+  background: var(--light-pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  border: 2px solid var(--set1-purple-brdr);
+  background: var(--light-pink);
+  font-size: 4vmin;
+  color: var(--set1-purple-brdr);
+  max-width: 50%;
+  padding: 1rem;
+  top: 6%;
+  left: 25%;
+  height: 70vh;
+  width: 70vw;
+}
+
+.playButton {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+
+  font-size: 2vmin;
+  background-color: var(--color-purple) !important;
+  margin-top: 2%;
+}
+
+.levelCompletionMessage {
+  display: flex;
+}
+
+// quest stuff
+.questPage {
+  display: flex;
+  border: 1px solid blue !important;
+  width: 100%;
+  flex: 1;
+  flex-direction: column;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  border: 1px solid black !important;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: black;
+  background: lavender;
+  border-radius: 0.5vh;
+}
+
+.gameTitle {
+  display: flex;
+  border: 1px solid green !important;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.content {
+  display: flex;
+  border: 1px solid green !important;
+  width: 100%;
+  flex: 1;
+  padding: 1vh;
+}
+
+.questTable {
+  display: flex;
+  border: 1px solid red !important;
+  width: 100%;
+  flex: 1 1;
+  margin-top: 2vh;
+  flex-direction: column;
+  background: #e9f0ff;
+  font-size: 24px;
+  color: black;
+}
+
+.questRow {
+  display: flex;
+  border: 1px solid green !important;
+  border-bottom: none;
+  width: 100%;
+  flex: 1;
+
+  &:hover {
+    background-color: black;
+    cursor: pointer;
+  }
+}
+
+.tableHeader {
+  display: flex;
+  border: 1px solid brown !important;
+  width: 100%;
+  height: 20px;
+}
+
+.questStatus {
+  display: flex;
+  border-right: 1px solid blue !important;
+  width: 100%;
+  flex: 1;
+}
+
+.questName {
+  display: flex;
+  border-right: 1px solid blue !important;
+  width: 100%;
+  flex: 1;
+}

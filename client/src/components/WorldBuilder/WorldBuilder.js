@@ -477,7 +477,6 @@ class WorldBuilder extends Component {
                     onChangeMap={({ mapId, index }) =>
                       this.onChangeMap({ mapId, index })
                     }
-                    showDelete={true}
                   />
 
                   <Button

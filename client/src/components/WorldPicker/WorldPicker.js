@@ -21,8 +21,6 @@ import { Checkbox } from "material-ui"
 class WorldPicker extends Component {
   state = { selectedMap: "Select Map" }
 
-  async componentWillMount() {}
-
   changeMap = ({ index, mapId }) => {
     const { onChangeMap } = this.props
     const map = Utils.getMapFromId({ id: mapId })
@@ -56,9 +54,12 @@ class WorldPicker extends Component {
       return null
     }
 
+    console.log("filteredMaps", toJS(filteredMaps)) // zzz
+
     const sortedMaps = Utils.sortDataByNestedKey({
       data: filteredMaps,
-      keys: ["data", "order"],
+      keys: ["data", "title"],
+      // keys: ["data", "order"],
       order: "ASC",
     })
 
