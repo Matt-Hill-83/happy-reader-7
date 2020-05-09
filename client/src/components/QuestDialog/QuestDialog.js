@@ -2,6 +2,7 @@ import React from "react"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
+import Images from "../../images/images.js"
 
 import { Button, Dialog } from "@blueprintjs/core"
 
@@ -62,12 +63,15 @@ class QuestDialog extends React.Component {
       return <div onClick={() => changeMap({ index, mapId })}>{text}</div>
     })
 
+    const cloudImage = Images.backgrounds["splashScreen01"]
+
     return (
       <Dialog
         isOpen={showYouWinModal}
         isCloseButtonShown={true}
         className={css.main}
       >
+        <img className={css.cloudImage} src={cloudImage} alt={"imagex"} />
         <div className={css.questPage}>
           <div className={css.header}>
             <span className={css.gameTitle}>Troll Bones</span>
