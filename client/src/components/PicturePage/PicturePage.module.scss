@@ -7,40 +7,9 @@
   width: 100%;
   overflow: hidden;
 
-  .scrollButtons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    bottom: 0px;
-    border-radius: 10px;
-    margin-top: 0.5%;
-  }
-
-  .scrollButton {
-    bottom: 0px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .windowScrollButtonImage {
-    display: flex;
-    height: 60px;
-    width: auto;
-  }
-
-  .leftScrollButton {
-  }
-
-  .rightScrollButton {
-  }
-
   .halfPage {
     display: flex;
     position: relative;
-    border: 2px solid var(--set1-purple-brdr);
   }
 
   .leftHalf {
@@ -160,6 +129,30 @@
       height: 250px !important;
     }
   }
+}
+
+.scrollButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  bottom: 0px;
+  border-radius: 10px;
+  margin-top: 0.5%;
+}
+
+.scrollButton {
+  bottom: 0px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.windowScrollButtonImage {
+  display: flex;
+  height: 60px;
+  width: auto;
 }
 
 .mapScroller {

@@ -83,25 +83,24 @@
 .wordsContainer {
   display: flex;
   z-index: 1;
-  padding: 2%;
   flex-direction: column;
   border: 1px solid purple !important;
   border-radius: 6px;
   background: white;
-  min-height: 30%;
-  height: 23vh;
-  flex: 1;
+  min-height: 30vh;
+  overflow: hidden;
 }
 
 .narrative {
   display: flex;
-  z-index: 10;
   flex-direction: column;
   justify-content: flex-end;
-  border-radius: 6px;
+  position: relative;
+  z-index: 10;
   background: white;
   margin-bottom: 1rem;
-  position: relative;
+  background: #dedede;
+  padding: 2%;
 }
 
 .dialog {
@@ -112,6 +111,7 @@
   border-radius: 6px;
   background: white;
   position: relative;
+  padding: 2%;
 
   :global {
     [class*="WordGroup_main__"]:last-of-type {
