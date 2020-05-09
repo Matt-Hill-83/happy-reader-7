@@ -2,24 +2,19 @@
 
 .main {
   --pink-background: #e6e6fa57;
-
-  border: 2px solid var(--set1-purple-brdr);
   background: var(--light-pink);
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  border: 2px solid var(--set1-purple-brdr);
   background: var(--light-pink);
-  font-size: 4vmin;
   color: var(--set1-purple-brdr);
-  max-width: 50%;
-  padding: 1rem;
-  top: 6%;
-  left: 25%;
-  height: 70vh;
+  padding: 1vh;
+  height: 80vh;
   width: 70vw;
   overflow: hidden;
+  margin: unset;
+  border: 2px solid black !important;
 }
 
 .backgroundImage {
@@ -31,12 +26,11 @@
 
 .playButton {
   display: flex;
-  justify-self: center;
-  align-self: center;
-
-  font-size: 2vmin;
+  font-size: 5vh;
   background-color: var(--color-purple) !important;
-  margin-top: 2%;
+  z-index: 1;
+  font-family: fantasy;
+  padding: 2%;
 }
 
 .levelCompletionMessage {
@@ -45,10 +39,10 @@
 
 .questPage {
   display: flex;
-  border: 1px solid blue !important;
-  width: 100%;
-  flex: 1;
   flex-direction: column;
+  flex: 1;
+  /* border: 1px solid blue !important; */
+  width: 100%;
   position: relative;
 }
 
@@ -64,97 +58,112 @@
 }
 
 .playerStatsSection {
+  position: absolute;
   display: flex;
+  align-self: flex-end;
+  flex-direction: column;
   border: 1px solid black !important;
   color: black;
   background: lavender;
   border-radius: 0.5vh;
-  flex-direction: column;
-  align-self: flex-end;
   padding: 0.6vh 0.9vh;
   font-size: 2vh;
-  width: 25%;
+  width: 17%;
+  right: 1vh;
+  top: 1vh;
 }
 
 .gameTitle {
   display: flex;
-  border: 1px solid green !important;
+  border: 1px solid black !important;
   justify-content: center;
   align-items: center;
   color: black;
   padding: 0 1vh;
   border-radius: 0.5vh;
+  font-size: 6vh;
 }
 
 .content {
   display: flex;
-  border: 1px solid green !important;
-  width: 100%;
-  flex: 1;
-  padding: 1vh;
+  border: 1px solid black !important;
+  width: 82%;
+  margin-top: 5%;
+  padding: 0 1vh;
+  background: var(--pink-background);
+  border-radius: 0.8vh;
+  background: whitesmoke;
+  align-self: center;
 }
 
 .playerStatsRow {
   display: flex;
-  border: 1px solid red !important;
 }
 
 .playerStatsKey {
   display: flex;
-  border: 1px solid red !important;
   width: 80%;
   white-space: nowrap;
 }
 
 .playerStatsValue {
   display: flex;
-  border: 1px solid red !important;
   width: 20%;
 }
 
 .questTable {
   display: flex;
-  border: 1px solid red !important;
   width: 100%;
   flex: 1 1;
-  margin-top: 2vh;
+
   flex-direction: column;
-  background: #e9f0ff;
   font-size: 24px;
   color: black;
+  padding: 2.5vh;
 }
 
 .questRow {
   display: flex;
-  border: 1px solid green !important;
+  border: 1px solid #cecece !important;
   border-bottom: none;
   width: 100%;
-  flex: 1;
+  flex: 1 1;
+  background: #e9f0ff;
+  margin-bottom: 1vh;
+  border-radius: 0.6vh;
 
   &:hover {
-    background-color: blue;
+    background-color: #cacade;
     cursor: pointer;
   }
 }
 
 .tableHeader {
   display: flex;
-  border: 1px solid brown !important;
+  margin-bottom: 1%;
   width: 100%;
-  height: 20px;
+  border-bottom: 2px solid grey;
 }
 
 .tableCell {
   display: flex;
-  border-right: 1px solid blue !important;
-  width: 100%;
-  flex: 1;
+  padding: 0.4vh 1.2vh;
 }
 
+.name,
+.questName {
+  flex: 1 1;
+  display: flex;
+}
+
+.dragonPoints,
+.gold,
+.status,
 .questStatus {
   display: flex;
+  width: 18%;
 }
 
-.questName {
-  display: flex;
+.status {
+  justify-content: center;
 }

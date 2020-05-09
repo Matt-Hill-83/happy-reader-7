@@ -56,7 +56,7 @@ class QuestDialog extends React.Component {
       const text = (
         <div className={css.questRow}>
           <div className={cx(css.tableCell, css.questName)}>{title}</div>
-          <div className={cx(css.tableCell, css.dragonPoints)}>100 gold</div>
+          <div className={cx(css.tableCell, css.dragonPoints)}>100 </div>
           <div className={cx(css.tableCell, css.questStatus)}>X</div>
         </div>
       )
@@ -64,6 +64,14 @@ class QuestDialog extends React.Component {
     })
 
     const cloudImage = Images.backgrounds["splashScreen01"]
+
+    const tableHeader = (
+      <div className={cx(css.tableHeader)}>
+        <div className={cx(css.tableCell, css.name)}>Name</div>
+        <div className={cx(css.tableCell, css.gold)}>Gold</div>
+        <div className={cx(css.tableCell, css.status)}>Completed</div>
+      </div>
+    )
 
     return (
       <Dialog
@@ -74,25 +82,21 @@ class QuestDialog extends React.Component {
         <img className={css.backgroundImage} src={cloudImage} alt={"imagex"} />
         <div className={css.questPage}>
           <div className={css.header}>
-            <span className={css.gameTitle}>Troll Bones</span>
+            <span className={css.gameTitle}>Dress Quest</span>
           </div>
           <div className={css.playerStatsSection}>
             <div className={css.playerStatsRow}>
-              <span className={css.playerStatsKey}>Gold Coins</span>
+              <span className={css.playerStatsKey}>Gold</span>
               <span className={css.playerStatsValue}>500</span>
             </div>
             <div className={css.playerStatsRow}>
               <span className={css.playerStatsKey}>Trophies</span>
-              <span className={css.playerStatsValue}>500</span>
+              <span className={css.playerStatsValue}>2</span>
             </div>
           </div>
           <div className={css.content}>
             <div className={css.questTable}>
-              <div className={css.tableHeader}>
-                <div className={cx(css.tableCell, css.name)}>name</div>
-                <div className={cx(css.tableCell, css.status)}>completed</div>
-                <div className={cx(css.tableCell, css.gold)}>Prize</div>
-              </div>
+              {tableHeader}
               {mapList}
             </div>
           </div>

@@ -119,6 +119,8 @@ class MainStory extends React.Component {
   }
 
   closeYouWinModal = () => {
+    console.log("closeYouWinModal") // zzz
+
     this.setState({ showYouWinModal: false })
   }
 
@@ -137,6 +139,7 @@ class MainStory extends React.Component {
 
     return (
       <QuestDialog
+        closeYouWinModal={this.closeYouWinModal}
         showYouWinModal={showYouWinModal}
         onChangeMap={this.onChangeMap}
       ></QuestDialog>
