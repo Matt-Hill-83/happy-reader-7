@@ -167,13 +167,13 @@ class FrameViewer extends Component {
     const { updateActiveScene } = this.props
     const { isEndScene } = activeScene
 
-    // if (isEndScene) {
-    //   return (
-    //     <Button onClick={this.openYouWinModal} className={css.newGameButton}>
-    //       New Game
-    //     </Button>
-    //   )
-    // }
+    if (isEndScene) {
+      return (
+        <Button onClick={this.openYouWinModal} className={css.newGameButton}>
+          New Game
+        </Button>
+      )
+    }
 
     return (
       <div className={css.arrowNavigatorBox}>
@@ -200,10 +200,6 @@ class FrameViewer extends Component {
 
         <div className={css.relativePositionedContent}>
           <div className={css.wordsAndButtons}>
-            {/* <div className={css.buttonsContainer}>
-              {this.renderArrowNavigator()}
-              {this.nextButtonRow()}
-            </div> */}
             <div className={css.wordsContainer}>
               {this.renderNarrative()}
               {this.renderDialog()}

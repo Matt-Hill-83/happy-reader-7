@@ -291,13 +291,6 @@
   margin-left: auto;
 }
 
-.goToText {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  align-self: center;
-}
-
 .nextPageButtonRow {
   display: flex;
   align-items: center;
@@ -306,6 +299,16 @@
   justify-content: flex-end;
   margin-left: auto;
   justify-items: flex-end;
+  display: flex;
+  height: 40px;
+}
+
+.nextButton {
+  border: 1px solid var(--set1-purple-brdr);
+  background: var(--set1-lav-bk);
+  display: flex;
+  align-items: center;
+  font-size: 1.4vh;
 }
 
 .arrowNavigatorBox {
@@ -313,8 +316,6 @@
   align-items: center;
   width: 100%;
   font-size: 36px !important;
-  background-color: var(--set1-pink-bk) !important;
-  color: purple !important;
   font-weight: bold !important;
   width: 40%;
   height: 14vh;
@@ -325,12 +326,4 @@
   transform: translateX(-50%);
   margin-top: 1%;
   background: none !important;
-}
-
-.nextButton {
-  border: 1px solid var(--set1-purple-brdr);
-  background: var(--set1-lav-bk);
-  display: flex;
-  align-items: center;
-  font-size: 1.4vh;
 }
