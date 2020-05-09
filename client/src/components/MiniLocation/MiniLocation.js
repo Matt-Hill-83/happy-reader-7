@@ -236,16 +236,10 @@ class MiniLocation extends React.Component {
             )}
 
             {/* Right door */}
-            {false &&
+            {true &&
               this.renderButton({
                 position: "right",
                 className: css.rightDoor,
-                defaultDoorImage: defaultDoorImage,
-              })}
-            {false &&
-              this.renderButton({
-                position: "left",
-                className: css.leftDoor,
                 defaultDoorImage: defaultDoorImage,
               })}
             {false &&
@@ -267,9 +261,7 @@ class MiniLocation extends React.Component {
               {this.renderCharacters({ creatures, isActive })}
             </div>
 
-            {showLabel && (
-              <span className={css.locationTitle}>{locationName}</span>
-            )}
+            <span className={css.locationTitle}>{locationName}</span>
           </div>
         )}
       </div>

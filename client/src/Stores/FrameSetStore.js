@@ -1,46 +1,32 @@
 import { Collection, Document } from "firestorter"
 
-import { struct } from "superstruct"
+// import { struct } from "superstruct"
 
-class FrameSets extends Document {
-  constructor(source, options) {
-    super(source, {
-      ...(options || {})
-      // schema: struct({
-      //   name: "string?",
-      //   grid: "string?",
-      //   finished: "boolean?"
-      // })
-    })
-  }
+// class FrameSets extends Document {
+//   constructor(source, options) {
+//     super(source, {
+//       ...(options || {}),
+//     })
+//   }
 
-  getFrameSet = () => this.frameSet
-  setFrameSet = frameSet => {
-    this.frameSet = frameSet
-  }
+//   getFrameSet = () => this.frameSet
+//   setFrameSet = (frameSet) => {
+//     this.frameSet = frameSet
+//   }
 
-  frameSet = {}
-}
+//   frameSet = {}
+// }
 
 class WorldNames extends Document {
   constructor(source, options) {
     super(source, {
-      ...(options || {})
-      // schema: struct({
-      //   name: "string?",
-      //   grid: "string?",
-      //   finished: "boolean?"
-      // })
+      ...(options || {}),
     })
   }
 }
 
-const frameSetStore = new Collection("frameSets", {
-  DocumentClass: FrameSets
-})
-
 const worldNameStore = new Collection("worldNames", {
-  DocumentClass: WorldNames
+  DocumentClass: WorldNames,
 })
 
-export { frameSetStore, worldNameStore }
+export { worldNameStore }

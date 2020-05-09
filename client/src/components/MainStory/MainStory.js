@@ -106,7 +106,6 @@ class MainStory extends React.Component {
 
   updateActiveScene = ({ sceneId }) => {
     localStateStore.setActiveSceneId(sceneId)
-    // this.setState({ update: new Date() })
   }
 
   toggleWorldBuilder = () => {
@@ -185,7 +184,7 @@ class MainStory extends React.Component {
         </div>
 
         {/* this is commented bc it is annoying, but I need to put it back later.... maybe */}
-        {false && this.state.showYouWinModal && this.renderYouWinModal()}
+        {this.state.showYouWinModal && this.renderYouWinModal()}
       </div>
     )
   }
