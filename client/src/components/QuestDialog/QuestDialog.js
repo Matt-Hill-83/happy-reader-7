@@ -83,7 +83,7 @@ class QuestDialog extends React.Component {
         <img className={css.backgroundImage} src={cloudImage} alt={"imagex"} />
         <div className={css.questPage}>
           <div className={css.header}>
-            <span className={css.gameTitle}>Dress Quest</span>
+            <span className={css.gameTitle}>Troll Mash Up</span>
           </div>
           <div className={css.playerStatsSection}>
             <div className={css.playerStatsRow}>

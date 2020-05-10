@@ -77,8 +77,6 @@ class MainStory extends React.Component {
 
     const startScene2 = map.data.startScene
     const endScene2 = map.data.endScene
-    console.log("startScene2", startScene2) // zzz
-    console.log("endScene2", endScene2) // zzz
 
     const scenesGrid = _get(map, "data.newGrid5") || []
 
@@ -97,8 +95,6 @@ class MainStory extends React.Component {
   }
 
   initWorld = async () => {
-    console.log("initWorld") // zzz
-
     const startScene = this.getTerminalScene({})
     if (!startScene) return
 
@@ -121,8 +117,6 @@ class MainStory extends React.Component {
   }
 
   closeYouWinModal = () => {
-    console.log("closeYouWinModal") // zzz
-
     this.setState({ showYouWinModal: false })
   }
 
@@ -149,12 +143,9 @@ class MainStory extends React.Component {
   }
 
   renderGame = () => {
-    console.log("renderGame") // zzz
-
     // Determine whether this is desktop or mobile
     const { className } = this.props
     const activeScene = localStateStore.getActiveScene()
-    console.log("activeScene", toJS(activeScene)) // zzz
 
     if (!activeScene) {
       return null
@@ -180,21 +171,13 @@ class MainStory extends React.Component {
           </div>
         </div>
 
-        {/* this is commented bc it is annoying, but I need to put it back later.... maybe */}
         {this.state.showYouWinModal && this.renderYouWinModal()}
       </div>
     )
   }
 
   render() {
-    console.log("render - MS--------------->>>") // zzz
-
     const activeMap = localStateStore.getActiveMap()
-    console.log("") // zzz
-    console.log("") // zzz
-
-    console.log("activeMap".data, toJS(activeMap.data)) // zzz
-    console.log("activeMap.data", toJS(activeMap.data)) // zzz
 
     if (!activeMap || !activeMap.data || !activeMap.data.title) {
       return null

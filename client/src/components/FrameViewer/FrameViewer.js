@@ -29,7 +29,8 @@ class FrameViewer extends Component {
       return <WordGroup story={[line]} className={css.narrativeClass} />
     })
 
-    return <div className={css.narrative}>{renderedNarrative}</div>
+    return <div className={css.narrative}></div>
+    // return <div className={css.narrative}>{renderedNarrative}</div>
   }
 
   renderDialog = () => {

@@ -87,6 +87,9 @@ import rat from "./creatures/rat.png"
 
 import camperGirl from "./creatures/camper_girl.png"
 import drake01 from "./creatures/drake-01.png"
+import drake02 from "./creatures/drake02.png"
+import rori02 from "./creatures/rori02.png"
+import vulcan01 from "./creatures/vulcan01.png"
 import tiredGirl from "./creatures/tired_girl.png"
 import coldGirl from "./creatures/cold_girl.png"
 
@@ -349,6 +352,7 @@ const locations = {
 }
 
 const creatures = {
+  blank,
   kat,
   liz2,
   gonzay,
@@ -385,11 +389,15 @@ const creatures = {
 
   camperGirl,
   drake01,
+  drake02,
   tiredGirl,
   coldGirl,
+  rori02,
+  vulcan01,
 }
 
 const items = {
+  blank,
   bag,
   bun,
   cap,
