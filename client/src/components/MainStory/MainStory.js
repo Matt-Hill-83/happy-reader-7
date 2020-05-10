@@ -181,7 +181,7 @@ class MainStory extends React.Component {
         </div>
 
         {/* this is commented bc it is annoying, but I need to put it back later.... maybe */}
-        {this.state.showYouWinModal && this.renderYouWinModal()}
+        {/* {this.state.showYouWinModal && this.renderYouWinModal()} */}
       </div>
     )
   }
@@ -190,7 +190,11 @@ class MainStory extends React.Component {
     console.log("render - MS--------------->>>") // zzz
 
     const activeMap = localStateStore.getActiveMap()
+    console.log("") // zzz
+    console.log("") // zzz
+
     console.log("activeMap".data, toJS(activeMap.data)) // zzz
+    console.log("activeMap.data", toJS(activeMap.data)) // zzz
 
     if (!activeMap || !activeMap.data || !activeMap.data.title) {
       return null

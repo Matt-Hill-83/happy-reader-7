@@ -7,6 +7,8 @@ import React from "react"
 import { UserConfigStore } from "./Stores/UserConfigStore"
 import css from "./App.module.scss"
 import getMuiTheme from "material-ui/styles/getMuiTheme"
+import { worldNameStore } from "./Stores/FrameSetStore"
+import { maps } from "./Stores/InitStores"
 // import { useCookies } from "react-cookie"
 
 function App() {
@@ -20,6 +22,9 @@ function App() {
   // if (!cookies.name) {
   //   setCookie("name", newName, { path: "/" })
   // }
+
+  // maps.fetch()
+  // worldNameStore.fetch()
 
   return (
     <MuiThemeProvider muiTheme={muiTheme}>
