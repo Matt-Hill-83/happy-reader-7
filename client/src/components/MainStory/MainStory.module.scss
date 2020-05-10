@@ -51,6 +51,17 @@
   right: 500px;
 }
 
+.toggleNewGame {
+  position: absolute;
+  display: flex;
+  z-index: 1000;
+  background-color: lightyellow !important;
+  height: 3%;
+  width: 3%;
+  top: 1px;
+  right: 600px;
+}
+
 .floatingButtons {
   position: absolute;
   z-index: 5;

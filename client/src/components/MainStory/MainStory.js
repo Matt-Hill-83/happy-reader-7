@@ -22,7 +22,7 @@ SHOW_WORLD_BUILDER = false
 class MainStory extends React.Component {
   state = {
     activeScene: undefined,
-    showYouWinModal: true,
+    showYouWinModal: false,
   }
 
   async componentWillMount() {
@@ -181,7 +181,7 @@ class MainStory extends React.Component {
         </div>
 
         {/* this is commented bc it is annoying, but I need to put it back later.... maybe */}
-        {/* {this.state.showYouWinModal && this.renderYouWinModal()} */}
+        {this.state.showYouWinModal && this.renderYouWinModal()}
       </div>
     )
   }
@@ -213,9 +213,20 @@ class MainStory extends React.Component {
       </div>
     )
 
+    const toggleNewGameButton = (
+      <div
+        tabIndex={0}
+        className={css.toggleNewGame}
+        onClick={this.openYouWinModal}
+      >
+        <span> New Game </span>
+      </div>
+    )
+
     return (
       <div className={`${css.main} ${className}`}>
         {toggleWorldBuilderButton}
+        {toggleNewGameButton}
         {showWorldBuilder && <WorldBuilder />}
         {!showWorldBuilder && this.renderGame()}
       </div>

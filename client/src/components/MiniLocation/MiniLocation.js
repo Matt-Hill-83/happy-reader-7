@@ -236,7 +236,7 @@ class MiniLocation extends React.Component {
             )}
 
             {/* Right door */}
-            {true &&
+            {false &&
               this.renderButton({
                 position: "right",
                 className: css.rightDoor,
