@@ -85,6 +85,11 @@ import man from "./creatures/man.png"
 import pug from "./creatures/pug.png"
 import rat from "./creatures/rat.png"
 
+import camperGirl from "./creatures/camper_girl.png"
+import drake01 from "./creatures/drake-01.png"
+import tiredGirl from "./creatures/tired_girl.png"
+import coldGirl from "./creatures/cold_girl.png"
+
 //doors
 import doorGreen from "./doors/doorGreen.png"
 import doorYellow from "./doors/doorYellow.jpg"
@@ -377,6 +382,11 @@ const creatures = {
   troll,
   unicorn,
   wizard,
+
+  camperGirl,
+  drake01,
+  tiredGirl,
+  coldGirl,
 }
 
 const items = {

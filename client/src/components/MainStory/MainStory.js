@@ -13,6 +13,7 @@ import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 import QuestDialog from "../QuestDialog/QuestDialog.js"
 
 import css from "./MainStory.module.scss"
+import { worldNameStore } from "../../Stores/FrameSetStore.js"
 
 let SHOW_WORLD_BUILDER
 SHOW_WORLD_BUILDER = true
@@ -28,7 +29,8 @@ class MainStory extends React.Component {
     // I need to make these stores shared singletons
     //  Move these to App.js
     await maps.fetch()
-    // await worldNameStore.fetch()
+    // This needs to be here or WorldBuilder won't work.
+    await worldNameStore.fetch()
 
     if (maps.docs && maps.docs[0]) {
       const defaultMap = Utils.getFirstReleasedMap()
@@ -147,9 +149,12 @@ class MainStory extends React.Component {
   }
 
   renderGame = () => {
+    console.log("renderGame") // zzz
+
     // Determine whether this is desktop or mobile
     const { className } = this.props
     const activeScene = localStateStore.getActiveScene()
+    console.log("activeScene", toJS(activeScene)) // zzz
 
     if (!activeScene) {
       return null
@@ -185,6 +190,7 @@ class MainStory extends React.Component {
     console.log("render - MS--------------->>>") // zzz
 
     const activeMap = localStateStore.getActiveMap()
+    console.log("activeMap".data, toJS(activeMap.data)) // zzz
 
     if (!activeMap || !activeMap.data || !activeMap.data.title) {
       return null

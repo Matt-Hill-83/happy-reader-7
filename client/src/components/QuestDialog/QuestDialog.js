@@ -37,6 +37,7 @@ class QuestDialog extends React.Component {
       showYouWinModal,
       onChangeMap,
     } = this.props
+
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
     const filteredMaps = showReleased
@@ -92,6 +93,10 @@ class QuestDialog extends React.Component {
             <div className={css.playerStatsRow}>
               <span className={css.playerStatsKey}>Trophies</span>
               <span className={css.playerStatsValue}>2</span>
+            </div>
+            <div className={css.playerStatsRow}>
+              <span className={css.playerStatsKey}>Quests Won</span>
+              <span className={css.playerStatsValue}>0</span>
             </div>
           </div>
           <div className={css.content}>

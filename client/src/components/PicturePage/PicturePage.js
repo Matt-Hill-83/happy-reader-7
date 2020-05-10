@@ -15,6 +15,8 @@ import css from "./PicturePage.module.scss"
 
 class PicturePage extends React.Component {
   renderSceneRows = () => {
+    console.log("renderSceneRows") // zzz
+
     const map = localStateStore.getActiveMap()
     const grid = map.data.grid
 

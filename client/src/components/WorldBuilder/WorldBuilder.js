@@ -194,6 +194,7 @@ class WorldBuilder extends Component {
     console.log("") // zzz
     console.log("addNewMap----------------------------------") // zzz
 
+    // const previousMapName = 100
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
