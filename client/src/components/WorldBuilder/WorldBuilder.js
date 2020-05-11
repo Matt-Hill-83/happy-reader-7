@@ -50,11 +50,11 @@ class WorldBuilder extends Component {
 
     // new map
     if (index === -1) {
-      this.addNewMap()
+      this.addNewWorld()
       return
     } else {
-      const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-      let world = savedMaps[index]
+      const savedWorlds = Utils.getItemsFromDbObj({ dbList: maps })
+      let world = savedWorlds[index]
       console.log(
         "world.data++++++++++++++++++++++++++++++++++++++++++",
         toJS(world.data)
@@ -89,9 +89,9 @@ class WorldBuilder extends Component {
   }
 
   getMapById = (mapId) => {
-    const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
+    const savedWorlds = Utils.getItemsFromDbObj({ dbList: maps })
 
-    return savedMaps.find((map) => {
+    return savedWorlds.find((map) => {
       return map.id === mapId
     })
   }
@@ -189,10 +189,10 @@ class WorldBuilder extends Component {
     this.setState({ sceneToEdit: "", showFrameBuilder: false })
   }
 
-  addNewMap = async () => {
+  addNewWorld = async () => {
     console.log("") // zzz
     console.log("") // zzz
-    console.log("addNewMap----------------------------------") // zzz
+    console.log("addNewWorld----------------------------------") // zzz
 
     // const previousMapName = 100
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
@@ -200,6 +200,8 @@ class WorldBuilder extends Component {
     const newName = previousMapName + 1
     await worldNameStore.docs[0].update({
       previousMapName: newName,
+      // Transitioning to this new name
+      previousWorld: newName,
     })
     const { grid, gridDimensions } = this.createNewGrid()
 
