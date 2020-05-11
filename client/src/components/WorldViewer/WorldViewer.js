@@ -8,8 +8,6 @@ import cx from "classnames"
 import Images from "../../images/images.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import MiniLocation from "../MiniLocation/MiniLocation.js"
-import Utils from "../../Utils/Utils.js"
-import WordPage from "../WordPage/WordPage.js"
 
 import css from "./WorldViewer.module.scss"
 

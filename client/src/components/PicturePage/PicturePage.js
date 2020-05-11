@@ -15,49 +15,6 @@ import css from "./PicturePage.module.scss"
 import WorldViewer from "../WorldViewer/WorldViewer.js"
 
 class PicturePage extends React.Component {
-  renderSceneRows = () => {
-    const map = localStateStore.getActiveWorld()
-    const grid = map.data.grid
-
-    const miniLocationsGrid =
-      grid &&
-      grid.map((locationRow, rowIndex) => {
-        const singleRow = this.createSingleRow({ locationRow, rowIndex })
-
-        return (
-          <div key={rowIndex} className={css.miniLocationsRow}>
-            {singleRow}
-          </div>
-        )
-      })
-
-    return <div className={css.miniLocationsGrid}>{miniLocationsGrid}</div>
-  }
-
-  createSingleRow = ({ locationRow, rowIndex }) => {
-    return locationRow.map((scene, colIndex) => {
-      return this.renderMiniLocation({ scene, colIndex, rowIndex })
-    })
-  }
-
-  renderMiniLocation = ({ colIndex = 0, rowIndex = 0, scene }) => {
-    const { activeScene, updateActiveScene } = this.props
-    const isActive = scene.id === activeScene.id ? true : false
-
-    const id = `${colIndex}-${rowIndex}`
-    const onClick = () =>
-      updateActiveScene({
-        sceneId: scene.id,
-      })
-
-    return (
-      // This wrapper div seems to be required to make things render withought ghost divs being included in the list.
-      <div onClick={onClick} className={css.minilocationWrapper}>
-        <MiniLocation id={id} key={id} scene={scene} isActive={isActive} />
-      </div>
-    )
-  }
-
   renderStoryPage = () => {
     const { activeScene, updateActiveScene, openYouWinModal } = this.props
 
@@ -68,56 +25,6 @@ class PicturePage extends React.Component {
           activeScene={activeScene}
           openYouWinModal={openYouWinModal}
         />
-      </div>
-    )
-  }
-
-  scrollHorizontal = ({ reverse = false }) => {
-    const container = document.querySelector(
-      "[class*='PicturePage_innerMapScroller']"
-    )
-
-    if (container) {
-      container.scrollLeft += 135 * (reverse ? -1 : 1)
-    }
-  }
-
-  renderMapPage = () => {
-    const mapImage = Images.backgrounds["map"]
-    const leftArrow = Images.backgrounds["leftArrow"]
-    const rightArrow = Images.backgrounds["rightArrow"]
-
-    return (
-      <div className={`${css.halfPage} ${css.rightHalf}`}>
-        <img className={css.backgroundImage} src={mapImage} alt={"bk"} />
-        <div className={`${css.mapScroller}`}>
-          <div className={`${css.innerMapScroller}`}>
-            {this.renderSceneRows()}
-          </div>
-          <div className={css.scrollButtons}>
-            <Button
-              className={cx(css.scrollButton, css.leftScrollButton)}
-              onClick={() => this.scrollHorizontal({ reverse: true })}
-            >
-              <img
-                className={css.windowScrollButtonImage}
-                src={leftArrow}
-                alt={"bk"}
-              />
-            </Button>
-
-            <Button
-              className={cx(css.scrollButton, css.rightScrollButton)}
-              onClick={() => this.scrollHorizontal({})}
-            >
-              <img
-                className={css.windowScrollButtonImage}
-                src={rightArrow}
-                alt={"bk"}
-              />
-            </Button>
-          </div>
-        </div>
       </div>
     )
   }

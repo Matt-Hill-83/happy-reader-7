@@ -2,17 +2,17 @@ import React from "react"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
+import { ButtonGroup, Button } from "@blueprintjs/core"
 
 import { maps } from "../../Stores/InitStores.js"
+import { worldNameStore } from "../../Stores/FrameSetStore.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import PicturePage from "../PicturePage/PicturePage"
+import QuestDialog from "../QuestDialog/QuestDialog.js"
 import Utils from "../../Utils/Utils"
 import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
-import QuestDialog from "../QuestDialog/QuestDialog.js"
-import { worldNameStore } from "../../Stores/FrameSetStore.js"
 
 import css from "./MainStory.module.scss"
-import { ButtonGroup, Button } from "@blueprintjs/core"
 
 let isProdRelease
 isProdRelease = false
@@ -39,9 +39,7 @@ class MainStory extends React.Component {
 
     if (maps.docs && maps.docs[0]) {
       const defaultMap = Utils.getFirstReleasedMap()
-
       const mapId = _get(defaultMap, "id")
-
       localStateStore.setActiveMapId(mapId)
     }
 
