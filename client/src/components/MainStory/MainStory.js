@@ -3,8 +3,6 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
 
-import { Button, Dialog } from "@blueprintjs/core"
-
 import { maps } from "../../Stores/InitStores.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import PicturePage from "../PicturePage/PicturePage"
