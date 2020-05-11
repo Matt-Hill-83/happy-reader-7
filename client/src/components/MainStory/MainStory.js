@@ -151,7 +151,10 @@ class MainStory extends React.Component {
   }
 
   render() {
+    const { className } = this.props
     const activeWorld = localStateStore.getActiveWorld()
+    const showWorldBuilder = localStateStore.getShowWorldBuilder()
+
     if (!activeWorld || !activeWorld.data || !activeWorld.data.title) {
       return null
     }
@@ -161,29 +164,14 @@ class MainStory extends React.Component {
       return null
     }
 
-    const showWorldBuilder = localStateStore.getShowWorldBuilder()
-    const { className } = this.props
-
-    console.log("activeWorld------------------", toJS(activeWorld)) // zzz
-
-    const renderWorldName = (
-      <div tabIndex={0} className={css.worldTitle}>
-        <span> {activeWorld.data.title} </span>
-      </div>
-    )
-
     return (
       <div className={`${css.main} ${className}`}>
         <div className={css.floatingButtons}>
-          <ButtonGroup
-            color="primary"
-            aria-label="outlined primary button group"
-          >
+          <ButtonGroup color="primary">
             <Button onClick={this.openYouWinModal}>New Game</Button>
             <Button onClick={this.toggleWorldBuilder}>World Builder</Button>
           </ButtonGroup>
         </div>
-        {renderWorldName}
         {showWorldBuilder && <WorldBuilder />}
         {!showWorldBuilder && (
           <PicturePage

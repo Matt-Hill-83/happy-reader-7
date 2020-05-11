@@ -39,22 +39,30 @@ class PicturePage extends React.Component {
 
   render() {
     const { activeScene, updateActiveScene } = this.props
+    const activeWorld = localStateStore.getActiveWorld()
 
-    const showWorldBuilder = localStateStore.getShowWorldBuilder()
-
-    if (!showWorldBuilder) {
-      return (
-        <div className={`${css.main}`}>
-          {this.renderStoryPage()}
-
-          <WorldViewer
-            updateActiveScene={updateActiveScene}
-            activeScene={activeScene}
-          ></WorldViewer>
-          {false && this.renderYourItems({})}
-        </div>
-      )
+    if (!activeWorld || !activeWorld.data || !activeWorld.data.title) {
+      return null
     }
+
+    const renderWorldName = (
+      <div tabIndex={0} className={css.worldTitle}>
+        <span> {activeWorld.data.title} </span>
+      </div>
+    )
+
+    return (
+      <div className={`${css.main}`}>
+        {renderWorldName}
+        {this.renderStoryPage()}
+
+        <WorldViewer
+          updateActiveScene={updateActiveScene}
+          activeScene={activeScene}
+        ></WorldViewer>
+        {false && this.renderYourItems({})}
+      </div>
+    )
   }
 }
 export default observer(PicturePage)
