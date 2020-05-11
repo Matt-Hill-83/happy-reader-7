@@ -15,6 +15,10 @@ import QuestDialog from "../QuestDialog/QuestDialog.js"
 import css from "./MainStory.module.scss"
 import { worldNameStore } from "../../Stores/FrameSetStore.js"
 
+let isProdRelease
+isProdRelease = false
+isProdRelease = true
+
 let SHOW_WORLD_BUILDER
 SHOW_WORLD_BUILDER = true
 SHOW_WORLD_BUILDER = false
@@ -26,6 +30,8 @@ class MainStory extends React.Component {
   }
 
   async componentWillMount() {
+    localStateStore.setIsProdRelease(isProdRelease)
+
     // I need to make these stores shared singletons
     //  Move these to App.js
     await maps.fetch()

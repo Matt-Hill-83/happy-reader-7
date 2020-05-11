@@ -50,10 +50,16 @@ class LocalStateStore {
     this.activeMapId = activeMapId
   }
 
+  getIsProdRelease = () => this.isProdRelease
+  setIsProdRelease = (isProdRelease) => {
+    this.isProdRelease = isProdRelease
+  }
+
   getActiveFrameIndex = () => this.activeFrameIndex
   setActiveFrameIndex = (activeFrameIndex) => {
     this.activeFrameIndex = activeFrameIndex
   }
+
   incrementActiveFrameIndex = (reset) => {
     let newIndex
 

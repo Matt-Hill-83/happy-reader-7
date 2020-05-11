@@ -164,6 +164,12 @@
   width: 18%;
 }
 
+.questStatus {
+  display: flex;
+  width: 18%;
+  justify-content: flex-end;
+}
+
 .status {
   justify-content: center;
 }

@@ -31,23 +31,23 @@ class QuestDialog extends React.Component {
   }
 
   render = () => {
-    const {
-      closeYouWinModal,
-      showReleased,
-      showProd,
-      showYouWinModal,
-      onChangeWorld,
-    } = this.props
+    const { closeYouWinModal, showYouWinModal, onChangeWorld } = this.props
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
-    const filteredMaps = showProd
-      ? savedMaps
-      : savedMaps.filter((map) => map.data.releasedToProd)
+    const isProdRelease = localStateStore.getIsProdRelease()
 
-    // const filteredMaps = showReleased
-    //   ? savedMaps
-    //   : savedMaps.filter((map) => map.data.released)
+    let filteredMaps = []
+
+    if (isProdRelease) {
+      filteredMaps = savedMaps.filter((map) => {
+        return map.data.releasedToProd
+      })
+    } else {
+      filteredMaps = savedMaps.filter((map) => {
+        return map.data.released || map.data.releasedToProd
+      })
+    }
 
     const sortedMaps = Utils.sortDataByNestedKey({
       data: filteredMaps,
@@ -63,7 +63,7 @@ class QuestDialog extends React.Component {
         <div className={css.questRow}>
           <div className={cx(css.tableCell, css.questName)}>{title}</div>
           <div className={cx(css.tableCell, css.dragonPoints)}>100 </div>
-          <div className={cx(css.tableCell, css.questStatus)}>X</div>
+          <div className={cx(css.tableCell, css.questStatus)}>✅</div>
         </div>
       )
       return <div onClick={() => onChangeWorld({ index, mapId })}>{text}</div>
