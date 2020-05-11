@@ -127,10 +127,6 @@ class MainStory extends React.Component {
     this.setState({ showYouWinModal: true })
   }
 
-  // toggleShowProd = () => {
-  //   this.setState({ showProd: !this.state.showProd })
-  // }
-
   onChangeWorld = ({ mapId }) => {
     localStateStore.setActiveMapId(mapId)
 
@@ -150,6 +146,17 @@ class MainStory extends React.Component {
     )
   }
 
+  renderButtons = () => {
+    return (
+      <div className={css.floatingButtons}>
+        <ButtonGroup color="primary">
+          <Button onClick={this.openYouWinModal}>New Game</Button>
+          <Button onClick={this.toggleWorldBuilder}>World Builder</Button>
+        </ButtonGroup>
+      </div>
+    )
+  }
+
   render() {
     const { className } = this.props
     const activeWorld = localStateStore.getActiveWorld()
@@ -166,13 +173,10 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
-        <div className={css.floatingButtons}>
-          <ButtonGroup color="primary">
-            <Button onClick={this.openYouWinModal}>New Game</Button>
-            <Button onClick={this.toggleWorldBuilder}>World Builder</Button>
-          </ButtonGroup>
-        </div>
         {showWorldBuilder && <WorldBuilder />}
+
+        {/* TODO: move this into PicturePage component */}
+        {!showWorldBuilder && this.renderButtons()}
         {!showWorldBuilder && (
           <PicturePage
             updateActiveScene={this.updateActiveScene}
