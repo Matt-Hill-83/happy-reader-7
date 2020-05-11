@@ -150,34 +150,14 @@ class MainStory extends React.Component {
     )
   }
 
-  renderGame = () => {
-    // Determine whether this is desktop or mobile
-    const { className } = this.props
-    const activeScene = localStateStore.getActiveScene()
-
-    if (!activeScene) {
+  render() {
+    const activeWorld = localStateStore.getActiveWorld()
+    if (!activeWorld || !activeWorld.data || !activeWorld.data.title) {
       return null
     }
 
-    return (
-      <div className={`${css.main} ${className}`}>
-        <div className={css.body}>
-          <div className={css.storyBox}>
-            <PicturePage
-              updateActiveScene={this.updateActiveScene}
-              activeScene={activeScene}
-              openYouWinModal={this.openYouWinModal}
-            />
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  render() {
-    const activeWorld = localStateStore.getActiveWorld()
-
-    if (!activeWorld || !activeWorld.data || !activeWorld.data.title) {
+    const activeScene = localStateStore.getActiveScene()
+    if (!activeScene) {
       return null
     }
 
@@ -205,7 +185,13 @@ class MainStory extends React.Component {
         </div>
         {renderWorldName}
         {showWorldBuilder && <WorldBuilder />}
-        {!showWorldBuilder && this.renderGame()}
+        {!showWorldBuilder && (
+          <PicturePage
+            updateActiveScene={this.updateActiveScene}
+            activeScene={activeScene}
+            openYouWinModal={this.openYouWinModal}
+          />
+        )}
         {this.state.showYouWinModal && this.renderYouWinModal()}
       </div>
     )
