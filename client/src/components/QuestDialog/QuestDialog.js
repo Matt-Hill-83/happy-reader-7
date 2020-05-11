@@ -14,21 +14,15 @@ import css from "./QuestDialog.module.scss"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 
 class QuestDialog extends React.Component {
+  state = {}
+
   constructor(props) {
     super(props)
     const showProdInitialValue = localStateStore.getIsProdRelease()
     this.state = { showProd: showProdInitialValue }
-
-    console.log("showProdInitialValue", showProdInitialValue) // zzz
-  }
-
-  state = {
-    // showProd: showProdInitialValue,
   }
 
   toggleShowProd = () => {
-    console.log("toggleShowProd") // zzz
-
     this.setState({ showProd: !this.state.showProd })
   }
 
@@ -87,9 +81,9 @@ class QuestDialog extends React.Component {
         isCloseButtonShown={true}
         className={css.main}
       >
-        <ButtonGroup color="primary" aria-label="outlined primary button group">
+        <ButtonGroup className={css.buttonGroup} color="primary">
           <Button onClick={this.toggleShowProd}>
-            Show Prod- {this.state.showProd}
+            {`Show Prod-${this.state.showProd}`}
           </Button>
         </ButtonGroup>
         <img className={css.backgroundImage} src={cloudImage} alt={"imagex"} />

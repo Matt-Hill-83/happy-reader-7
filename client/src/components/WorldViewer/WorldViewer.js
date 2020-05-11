@@ -11,10 +11,9 @@ import MiniLocation from "../MiniLocation/MiniLocation.js"
 import Utils from "../../Utils/Utils.js"
 import WordPage from "../WordPage/WordPage.js"
 
-import css from "./PicturePage.module.scss"
-import WorldViewer from "../WorldViewer/WorldViewer.js"
+import css from "./WorldViewer.module.scss"
 
-class PicturePage extends React.Component {
+class WorldViewer extends React.Component {
   renderSceneRows = () => {
     const map = localStateStore.getActiveWorld()
     const grid = map.data.grid
@@ -54,20 +53,6 @@ class PicturePage extends React.Component {
       // This wrapper div seems to be required to make things render withought ghost divs being included in the list.
       <div onClick={onClick} className={css.minilocationWrapper}>
         <MiniLocation id={id} key={id} scene={scene} isActive={isActive} />
-      </div>
-    )
-  }
-
-  renderStoryPage = () => {
-    const { activeScene, updateActiveScene, openYouWinModal } = this.props
-
-    return (
-      <div className={`${css.halfPage} ${css.leftHalf}`}>
-        <WordPage
-          updateActiveScene={updateActiveScene}
-          activeScene={activeScene}
-          openYouWinModal={openYouWinModal}
-        />
       </div>
     )
   }
@@ -122,36 +107,20 @@ class PicturePage extends React.Component {
     )
   }
 
-  renderYourItems = () => {
-    const you = localStateStore.getYou()
-    const items = you.items.map((item) => <div>{item}</div>)
-
-    return (
-      <div className={css.yourItems}>
-        <span>My Stuff</span>
-        {items}
-      </div>
-    )
-  }
-
   render() {
-    const { activeScene, updateActiveScene } = this.props
+    console.log("") // zzz
+    console.log("") // zzz
+    console.log("render ---------------WorldViewer") // zzz
+    console.log("render ---------------WorldViewer") // zzz
+    console.log("render ---------------WorldViewer") // zzz
+    const { activeScene } = this.props
+    console.log("activeScene ----PP", toJS(activeScene)) // zzz
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
 
     if (!showWorldBuilder) {
-      return (
-        <div className={`${css.main}`}>
-          {this.renderStoryPage()}
-
-          <WorldViewer
-            updateActiveScene={updateActiveScene}
-            activeScene={activeScene}
-          ></WorldViewer>
-          {false && this.renderYourItems({})}
-        </div>
-      )
+      return <div className={`${css.main}`}>{this.renderMapPage()}</div>
     }
   }
 }
-export default observer(PicturePage)
+export default observer(WorldViewer)

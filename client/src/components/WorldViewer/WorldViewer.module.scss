@@ -1,0 +1,227 @@
+@import "../../Styles/mixins.modules.scss";
+
+.main {
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+  .halfPage {
+    display: flex;
+    position: relative;
+  }
+
+  .leftHalf {
+    width: 50%;
+    max-width: 730px;
+  }
+
+  .rightHalf {
+    flex: 2;
+    width: 65vw;
+  }
+
+  .sceneList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 24px;
+    background: var(--color-pink);
+    padding: 15px;
+    border-radius: 10px;
+    right: 33px;
+
+    .scene {
+      display: flex;
+      align-items: center;
+
+      height: 24px;
+    }
+
+    .sceneName {
+      margin-left: 8px;
+    }
+  }
+
+  .miniLocation {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    width: 90%;
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15%;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .backgroundImage {
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  .locationHeader {
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    font-size: 28px;
+    text-transform: capitalize;
+    background: var(--color-pink);
+    border-radius: 4px;
+    padding: 0 6px;
+    top: 0.5%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .characterImageMini {
+    display: flex;
+    z-index: 3;
+    align-self: flex-end;
+  }
+
+  .character1Mini {
+    bottom: 0px;
+    left: 0%;
+    height: 100%;
+    width: auto;
+  }
+
+  .character1 {
+    bottom: 0px;
+    left: 50px;
+    height: 200px;
+    width: auto;
+  }
+}
+
+.yourItems {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+
+  font-size: 24px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 20;
+  border: 1px solid var(--color-red) !important;
+  color: var(--color-purple);
+  background: var(--color-pink);
+}
+
+.bigMiniImage {
+  position: absolute;
+  display: flex;
+  left: 15%;
+  bottom: 0px;
+
+  :global {
+    [class*="PicturePage_character"] {
+      height: 250px !important;
+    }
+  }
+}
+
+.scrollButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  bottom: 0px;
+  border-radius: 10px;
+  margin-top: 0.5%;
+}
+
+.scrollButton {
+  bottom: 0px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.windowScrollButtonImage {
+  display: flex;
+  height: 60px;
+  width: auto;
+}
+
+.mapScroller {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 90%;
+  overflow: auto;
+  justify-content: center;
+  margin: 7% 5%;
+}
+
+.innerMapScroller {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  overflow: hidden;
+  overflow-x: scroll;
+  position: relative;
+}
+
+.innerMapScroller::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.innerMapScroller::-webkit-scrollbar:vertical {
+  width: 24px;
+}
+
+.innerMapScroller::-webkit-scrollbar:horizontal {
+  height: 0px;
+}
+
+.innerMapScroller::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.innerMapScroller::-webkit-scrollbar-track {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.miniLocationsGrid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: visible;
+  width: fit-content;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.miniActiveLocation {
+  position: absolute;
+  bottom: 16% !important;
+  left: 50% !important;
+  transform: translateX(-50%);
+  height: 46%;
+}
+
+.miniLocationsRow {
+  display: flex;
+  position: relative;
+  width: fit-content;
+}
+
+.minilocationWrapper {
+  // border: 1px solid red !important;
+}
