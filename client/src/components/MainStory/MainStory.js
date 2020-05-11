@@ -9,9 +9,10 @@ import PicturePage from "../PicturePage/PicturePage"
 import Utils from "../../Utils/Utils"
 import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 import QuestDialog from "../QuestDialog/QuestDialog.js"
+import { worldNameStore } from "../../Stores/FrameSetStore.js"
 
 import css from "./MainStory.module.scss"
-import { worldNameStore } from "../../Stores/FrameSetStore.js"
+import { ButtonGroup, Button } from "@blueprintjs/core"
 
 let isProdRelease
 isProdRelease = false
@@ -25,6 +26,7 @@ class MainStory extends React.Component {
   state = {
     activeScene: undefined,
     showYouWinModal: false,
+    showProd: isProdRelease,
   }
 
   async componentWillMount() {
@@ -128,6 +130,10 @@ class MainStory extends React.Component {
     this.setState({ showYouWinModal: true })
   }
 
+  // toggleShowProd = () => {
+  //   this.setState({ showProd: !this.state.showProd })
+  // }
+
   onChangeWorld = ({ mapId }) => {
     localStateStore.setActiveMapId(mapId)
 
@@ -135,10 +141,11 @@ class MainStory extends React.Component {
   }
 
   renderYouWinModal = () => {
-    const { showYouWinModal } = this.state
+    const { showProd, showYouWinModal } = this.state
 
     return (
       <QuestDialog
+        showProd={showProd}
         closeYouWinModal={this.closeYouWinModal}
         showYouWinModal={showYouWinModal}
         onChangeWorld={this.onChangeWorld}
@@ -157,14 +164,6 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
-        <div className={css.floatingButtons}>
-          {/* <WorldPicker
-            showDelete={false}
-            onChangeWorld={({ mapId, index }) =>
-              this.onChangeWorld({ mapId, index })
-            }
-          /> */}
-        </div>
         <div className={css.body}>
           <div className={css.storyBox}>
             <PicturePage
@@ -190,37 +189,28 @@ class MainStory extends React.Component {
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
     const { className } = this.props
 
-    const renderWorldBuilderButton = (
-      <div
-        tabIndex={0}
-        className={css.toggleWorldBuilder}
-        onClick={this.toggleWorldBuilder}
-      >
-        <span> MAP EDITOR </span>
-      </div>
-    )
-
     console.log("activeWorld------------------", toJS(activeWorld)) // zzz
 
     const renderWorldName = (
-      <div tabIndex={0} className={css.renderWorldName}>
+      <div tabIndex={0} className={css.worldTitle}>
         <span> {activeWorld.data.title} </span>
-      </div>
-    )
-    const renderNewGameButton = (
-      <div
-        tabIndex={0}
-        className={css.toggleNewGame}
-        onClick={this.openYouWinModal}
-      >
-        <span> New Game </span>
       </div>
     )
 
     return (
       <div className={`${css.main} ${className}`}>
-        {renderWorldBuilderButton}
-        {renderNewGameButton}
+        <div className={css.floatingButtons}>
+          <ButtonGroup
+            color="primary"
+            aria-label="outlined primary button group"
+          >
+            <Button onClick={this.openYouWinModal}>New Game</Button>
+            <Button onClick={this.toggleShowProd}>
+              Show Prod- {this.state.showProd}
+            </Button>
+            <Button onClick={this.toggleWorldBuilder}>World Builder</Button>
+          </ButtonGroup>
+        </div>
         {renderWorldName}
         {showWorldBuilder && <WorldBuilder />}
         {!showWorldBuilder && this.renderGame()}

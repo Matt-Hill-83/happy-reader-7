@@ -24,23 +24,7 @@
   }
 }
 
-.mapTitle {
-  @include set-1;
-  display: flex;
-  align-items: flex-start;
-  padding: 0.4% 1.5%;
-  position: absolute;
-  font-size: 4vmin;
-  z-index: 2;
-  border: 2px solid var(--set1-purple-brdr);
-  background: var(--set1-lav-bk);
-  font-weight: 700;
-  border-radius: 1rem;
-  top: 1rem;
-  right: 1%;
-}
-
-.toggleWorldBuilder {
+.worldTitle {
   position: absolute;
   display: flex;
   z-index: 1000;
@@ -48,74 +32,15 @@
   height: 3%;
   width: 3%;
   top: 1px;
-  right: 500px;
-}
-
-.toggleNewGame {
-  position: absolute;
-  display: flex;
-  z-index: 1000;
-  background-color: lightyellow !important;
-  height: 3%;
-  width: 3%;
-  top: 1px;
-  right: 600px;
-}
-
-.renderWorldName {
-  position: absolute;
-  display: flex;
-  z-index: 1000;
-  background-color: lightyellow !important;
-  height: 3%;
-  width: 3%;
-  top: 1px;
-  right: 700px;
+  right: 300px;
 }
 
 .floatingButtons {
   position: absolute;
+  display: flex;
   z-index: 5;
-  background: var(--color-pink);
   left: 50%;
-  display: flex;
   transform: translateX(-50%);
-}
-
-.settingButtons {
-  background: var(--color-pink);
-  display: flex;
-  flex-direction: column;
-}
-
-.levelCompleteDialog {
-  border: 2px solid var(--set1-purple-brdr);
-  background: var(--light-pink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  border: 2px solid var(--set1-purple-brdr);
-  background: var(--light-pink);
-  font-size: 4vmin;
-  color: var(--set1-purple-brdr);
-  max-width: 50%;
-  padding: 1rem;
-  top: 6%;
-  left: 25%;
-  height: 70vh;
-  width: 70vw;
-}
-
-.levelCompletionButton {
-  display: flex;
-  justify-self: center;
-  align-self: center;
-
-  font-size: 2vmin;
-  // width: 20%;
-  background-color: var(--color-purple) !important;
-  margin-top: 2%;
 }
 
 .levelCompletionMessage {
