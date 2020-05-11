@@ -73,7 +73,7 @@ class MainStory extends React.Component {
   }
 
   getTerminalScene = ({ start = true }) => {
-    const map = localStateStore.getActiveMap()
+    const map = localStateStore.getActiveWorld()
 
     const startScene2 = map.data.startScene
     const endScene2 = map.data.endScene
@@ -177,7 +177,7 @@ class MainStory extends React.Component {
   }
 
   render() {
-    const activeMap = localStateStore.getActiveMap()
+    const activeMap = localStateStore.getActiveWorld()
 
     if (!activeMap || !activeMap.data || !activeMap.data.title) {
       return null
@@ -196,10 +196,10 @@ class MainStory extends React.Component {
       </div>
     )
 
-    console.log("activeMap", toJS(activeMap)) // zzz
+    console.log("activeMap------------------", toJS(activeMap)) // zzz
 
     const renderWorldName = (
-      <div tabIndex={0} className={css.toggleNewGame}>
+      <div tabIndex={0} className={css.renderWorldName}>
         <span> {activeMap.title} </span>
       </div>
     )

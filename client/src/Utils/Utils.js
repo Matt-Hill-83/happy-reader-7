@@ -305,7 +305,7 @@ export default class Utils {
   }
 
   static getNeighbor = ({ coordinates, direction }) => {
-    const grid = localStateStore.getActiveMapGrid()
+    const grid = localStateStore.getActiveWorldGrid()
 
     const neighborPositions = {
       [Utils.neighborPositionsEnum.left]: {

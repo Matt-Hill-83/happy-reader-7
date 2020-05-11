@@ -64,9 +64,6 @@ class Frame extends Component {
       frame,
       frame: { faces },
     } = this.state
-    console.log("frame", toJS(frame)) // zzz
-
-    console.log("faces", toJS(faces)) // zzz
 
     const thisFace = faces.find((face) => face.character === name)
     thisFace.face = head.mood
@@ -310,7 +307,6 @@ class Frame extends Component {
 
     const allItems = (scene.items && scene.items.map((item) => item.name)) || []
 
-    // temp code DELETE ME!!! (start) - zzz
     allCharacters.push(...allItems)
     // temp code DELETE ME!!! (end)
 

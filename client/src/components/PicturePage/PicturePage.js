@@ -15,7 +15,7 @@ import css from "./PicturePage.module.scss"
 
 class PicturePage extends React.Component {
   renderSceneRows = () => {
-    const map = localStateStore.getActiveMap()
+    const map = localStateStore.getActiveWorld()
     const grid = map.data.grid
 
     const miniLocationsGrid =

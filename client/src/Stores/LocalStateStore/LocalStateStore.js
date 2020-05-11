@@ -35,17 +35,17 @@ class LocalStateStore {
     this.showWorldBuilder = showWorldBuilder
   }
 
-  getActiveMap = () => {
+  getActiveWorld = () => {
     const map = Utils.getMapFromId({ id: this.activeMapId })
     return map
   }
 
-  getActiveMapGrid = () => {
+  getActiveWorldGrid = () => {
     const map = Utils.getMapFromId({ id: this.activeMapId })
     return map.data.newGrid5 || []
   }
 
-  getActiveMapId = () => this.activeMapId
+  getActiveWorldId = () => this.activeMapId
   setActiveMapId = (activeMapId) => {
     this.activeMapId = activeMapId
   }
@@ -75,7 +75,7 @@ class LocalStateStore {
     const activeSceneId = this.getActiveSceneId()
     console.log("activeSceneId", toJS(activeSceneId)) // zzz
 
-    const scenesGrid = this.getActiveMapGrid()
+    const scenesGrid = this.getActiveWorldGrid()
     const activeScene = scenesGrid.find((item) => item.id === activeSceneId)
     console.log("activeScene", toJS(activeScene)) // zzz
     return activeScene
