@@ -40,11 +40,11 @@ class WorldBuilder extends Component {
 
   // Changing this to DidMount breaks things
   async componentWillMount() {
-    this.onChangeMap({ index: INITIAL_MAP_INDEX })
+    this.onChangeWorld({ index: INITIAL_MAP_INDEX })
   }
 
-  onChangeMap = ({ index }) => {
-    console.log("onChangeMap") // zzz
+  onChangeWorld = ({ index }) => {
+    console.log("onChangeWorld") // zzz
     console.log("") // zzz
     console.log("") // zzz
 
@@ -475,14 +475,14 @@ class WorldBuilder extends Component {
                     showDelete={true}
                     showReleased={true}
                     updateIsReleasedProperty={this.updateIsReleasedProperty}
-                    onChangeMap={({ mapId, index }) =>
-                      this.onChangeMap({ mapId, index })
+                    onChangeWorld={({ mapId, index }) =>
+                      this.onChangeWorld({ mapId, index })
                     }
                   />
 
                   <Button
                     text={"+ New Map"}
-                    onClick={() => this.onChangeMap({ index: -1 })}
+                    onClick={() => this.onChangeWorld({ index: -1 })}
                   />
                 </div>
               </div>

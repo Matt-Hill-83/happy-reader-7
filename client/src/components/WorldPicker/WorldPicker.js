@@ -22,11 +22,11 @@ class WorldPicker extends Component {
   state = { selectedMap: "Select Map" }
 
   changeMap = ({ index, mapId }) => {
-    const { onChangeMap } = this.props
+    const { onChangeWorld } = this.props
     const map = Utils.getMapFromId({ id: mapId })
     const mapName = map ? map.data && map.data.title : ""
 
-    onChangeMap && onChangeMap({ index, mapId })
+    onChangeWorld && onChangeWorld({ index, mapId })
     this.setState({ selectedMap: mapName })
   }
 

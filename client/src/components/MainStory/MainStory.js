@@ -124,7 +124,7 @@ class MainStory extends React.Component {
     this.setState({ showYouWinModal: true })
   }
 
-  onChangeMap = ({ mapId }) => {
+  onChangeWorld = ({ mapId }) => {
     localStateStore.setActiveMapId(mapId)
 
     this.initWorld()
@@ -137,7 +137,7 @@ class MainStory extends React.Component {
       <QuestDialog
         closeYouWinModal={this.closeYouWinModal}
         showYouWinModal={showYouWinModal}
-        onChangeMap={this.onChangeMap}
+        onChangeWorld={this.onChangeWorld}
       ></QuestDialog>
     )
   }
@@ -156,8 +156,8 @@ class MainStory extends React.Component {
         <div className={css.floatingButtons}>
           {/* <WorldPicker
             showDelete={false}
-            onChangeMap={({ mapId, index }) =>
-              this.onChangeMap({ mapId, index })
+            onChangeWorld={({ mapId, index }) =>
+              this.onChangeWorld({ mapId, index })
             }
           /> */}
         </div>

@@ -24,7 +24,7 @@ class QuestDialog extends React.Component {
     this.setState({ showYouWinModal: true })
   }
 
-  onChangeMap = ({ mapId }) => {
+  onChangeWorld = ({ mapId }) => {
     localStateStore.setActiveMapId(mapId)
 
     this.initWorld()
@@ -35,7 +35,7 @@ class QuestDialog extends React.Component {
       closeYouWinModal,
       showReleased,
       showYouWinModal,
-      onChangeMap,
+      onChangeWorld,
     } = this.props
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
@@ -61,7 +61,7 @@ class QuestDialog extends React.Component {
           <div className={cx(css.tableCell, css.questStatus)}>X</div>
         </div>
       )
-      return <div onClick={() => onChangeMap({ index, mapId })}>{text}</div>
+      return <div onClick={() => onChangeWorld({ index, mapId })}>{text}</div>
     })
 
     const cloudImage = Images.backgrounds["splashScreen01"]
