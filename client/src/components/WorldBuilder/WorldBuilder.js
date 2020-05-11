@@ -56,11 +56,14 @@ class WorldBuilder extends Component {
       return
     } else {
       const savedWorlds = Utils.getItemsFromDbObj({ dbList: maps })
-      let world = savedWorlds[index]
+      const world = Utils.getMapFromId({ id: mapId })
+      // let world = savedWorlds[index]
+      // let world = savedWorlds[index]
       console.log(
         "world.data++++++++++++++++++++++++++++++++++++++++++",
         toJS(world.data)
       ) // zzz
+      console.log("world.id", world.id) // zzz
 
       const {
         data: { gridDimensions, newGrid5 },
@@ -476,9 +479,10 @@ class WorldBuilder extends Component {
                     showReleasedToProd={true}
                     updateIsReleasedProperty={this.updateIsReleasedProperty}
                     updateReleasedToProd={this.updateReleasedToProd}
-                    onChangeWorld={({ mapId, index }) =>
-                      this.onChangeWorld({ mapId, index })
-                    }
+                    onChangeWorld={this.onChangeWorld}
+                    // onChangeWorld={({ mapId, index }) =>
+                    //   this.onChangeWorld({ mapId, index })
+                    // }
                   />
 
                   <Button

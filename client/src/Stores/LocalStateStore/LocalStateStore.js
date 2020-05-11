@@ -36,8 +36,8 @@ class LocalStateStore {
   }
 
   getActiveWorld = () => {
-    const map = Utils.getMapFromId({ id: this.activeMapId })
-    return map
+    const world = Utils.getMapFromId({ id: this.activeMapId })
+    return world
   }
 
   getActiveWorldGrid = () => {

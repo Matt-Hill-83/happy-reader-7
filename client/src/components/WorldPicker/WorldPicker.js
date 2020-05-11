@@ -24,9 +24,12 @@ class WorldPicker extends Component {
   changeMap = ({ index, mapId }) => {
     const { onChangeWorld } = this.props
     const map = Utils.getMapFromId({ id: mapId })
-    const mapName = map ? map.data && map.data.title : ""
+    console.log("map-------------------WP---", toJS(map)) // zzz
 
-    onChangeWorld && onChangeWorld({ index, mapId })
+    const mapName = map ? map.data && map.data.title : ""
+    console.log("mapId", mapId) // zzz
+
+    onChangeWorld({ index, mapId })
     this.setState({ selectedMap: mapName })
   }
 
@@ -59,7 +62,6 @@ class WorldPicker extends Component {
     const sortedMaps = Utils.sortDataByNestedKey({
       data: filteredMaps,
       keys: ["data", "title"],
-      // keys: ["data", "order"],
       order: "ASC",
     })
 
@@ -71,15 +73,12 @@ class WorldPicker extends Component {
         updateReleasedToProdProperty,
       } = this.props
 
-      console.log("") // zzz
-      console.log("") // zzz
-      console.log("") // zzz
-
       console.log("id", id) // zzz
 
       const text = (
         <span className={css.mapPickerRow}>
           {`map ${name}: ${title}`}
+          {`id: ${id}`}
           <div className={css.mapPickerRowButtons}>
             {showReleased && (
               <span className={"test"}>
