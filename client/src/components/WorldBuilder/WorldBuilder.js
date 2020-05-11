@@ -102,6 +102,12 @@ class WorldBuilder extends Component {
     map.update({ released })
   }
 
+  updateReleasedToProd = ({ id }) => {
+    const map = this.getMapById(id)
+    const releasedToProd = !map.data.releasedToProd
+    map.update({ releasedToProd })
+  }
+
   changeTerminalScene = ({ name, scenesList, scene, map, isStartScene }) => {
     console.log("changeScene") // zzz
 
@@ -214,6 +220,7 @@ class WorldBuilder extends Component {
       title: "Test Map",
       newGrid5,
       released: true,
+      releasedToProd: true,
       ignore: false,
       gridDimensions,
     }
@@ -476,7 +483,9 @@ class WorldBuilder extends Component {
                   <WorldPicker
                     showDelete={true}
                     showReleased={true}
+                    showReleasedToProd={true}
                     updateIsReleasedProperty={this.updateIsReleasedProperty}
+                    updateReleasedToProd={this.updateReleasedToProd}
                     onChangeWorld={({ mapId, index }) =>
                       this.onChangeWorld({ mapId, index })
                     }

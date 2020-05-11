@@ -34,15 +34,20 @@ class QuestDialog extends React.Component {
     const {
       closeYouWinModal,
       showReleased,
+      showProd,
       showYouWinModal,
       onChangeWorld,
     } = this.props
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
 
-    const filteredMaps = showReleased
+    const filteredMaps = showProd
       ? savedMaps
-      : savedMaps.filter((map) => map.data.released)
+      : savedMaps.filter((map) => map.data.releasedToProd)
+
+    // const filteredMaps = showReleased
+    //   ? savedMaps
+    //   : savedMaps.filter((map) => map.data.released)
 
     const sortedMaps = Utils.sortDataByNestedKey({
       data: filteredMaps,

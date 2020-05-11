@@ -177,9 +177,9 @@ class MainStory extends React.Component {
   }
 
   render() {
-    const activeMap = localStateStore.getActiveWorld()
+    const activeWorld = localStateStore.getActiveWorld()
 
-    if (!activeMap || !activeMap.data || !activeMap.data.title) {
+    if (!activeWorld || !activeWorld.data || !activeWorld.data.title) {
       return null
     }
 
@@ -196,11 +196,11 @@ class MainStory extends React.Component {
       </div>
     )
 
-    console.log("activeMap------------------", toJS(activeMap)) // zzz
+    console.log("activeWorld------------------", toJS(activeWorld)) // zzz
 
     const renderWorldName = (
       <div tabIndex={0} className={css.renderWorldName}>
-        <span> {activeMap.title} </span>
+        <span> {activeWorld.data.title} </span>
       </div>
     )
     const renderNewGameButton = (
