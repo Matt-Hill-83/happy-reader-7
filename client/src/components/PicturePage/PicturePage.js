@@ -1,18 +1,14 @@
 import _get from "lodash.get"
-import { Button } from "@blueprintjs/core"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import React from "react"
 import cx from "classnames"
 
-import Images from "../../images/images.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
-import MiniLocation from "../MiniLocation/MiniLocation.js"
-import Utils from "../../Utils/Utils.js"
 import WordPage from "../WordPage/WordPage.js"
+import WorldViewer from "../WorldViewer/WorldViewer.js"
 
 import css from "./PicturePage.module.scss"
-import WorldViewer from "../WorldViewer/WorldViewer.js"
 
 class PicturePage extends React.Component {
   renderStoryPage = () => {
