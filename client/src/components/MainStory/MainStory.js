@@ -176,7 +176,7 @@ class MainStory extends React.Component {
         {showWorldBuilder && <WorldBuilder />}
 
         {/* TODO: move this into StoryMode component */}
-        {!showWorldBuilder && this.renderButtons()}
+        {this.renderButtons()}
         {!showWorldBuilder && (
           <StoryMode
             updateActiveScene={this.updateActiveScene}
