@@ -56,11 +56,13 @@ class StoryMode extends React.Component {
         {renderWorldName}
         {this.renderStoryPage()}
 
-        <WorldViewer
-          updateActiveScene={updateActiveScene}
-          activeScene={activeScene}
-        />
-        {false && this.renderYourItems({})}
+        <div className={`${css.halfPage} ${css.rightHalf}`}>
+          <WorldViewer
+            updateActiveScene={updateActiveScene}
+            activeScene={activeScene}
+          />
+          {false && this.renderYourItems({})}
+        </div>
       </div>
     )
   }

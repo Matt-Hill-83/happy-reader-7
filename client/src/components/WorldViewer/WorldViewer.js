@@ -65,46 +65,6 @@ class WorldViewer extends React.Component {
     }
   }
 
-  // renderMapPage = () => {
-  //   const mapImage = Images.backgrounds["map"]
-  //   const leftArrow = Images.backgrounds["leftArrow"]
-  //   const rightArrow = Images.backgrounds["rightArrow"]
-
-  //   return (
-  //     <div className={`${css.halfPage} ${css.rightHalf}`}>
-  //       <img className={css.backgroundImage} src={mapImage} alt={"bk"} />
-  //       <div className={`${css.mapScroller}`}>
-  //         <div className={`${css.innerMapScroller}`}>
-  //           {this.renderSceneRows()}
-  //         </div>
-  //         <div className={css.scrollButtons}>
-  //           <Button
-  //             className={cx(css.scrollButton, css.leftScrollButton)}
-  //             onClick={() => this.scrollHorizontal({ reverse: true })}
-  //           >
-  //             <img
-  //               className={css.windowScrollButtonImage}
-  //               src={leftArrow}
-  //               alt={"bk"}
-  //             />
-  //           </Button>
-
-  //           <Button
-  //             className={cx(css.scrollButton, css.rightScrollButton)}
-  //             onClick={() => this.scrollHorizontal({})}
-  //           >
-  //             <img
-  //               className={css.windowScrollButtonImage}
-  //               src={rightArrow}
-  //               alt={"bk"}
-  //             />
-  //           </Button>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   )
-  // }
-
   render() {
     console.log("") // zzz
     console.log("") // zzz
@@ -119,39 +79,37 @@ class WorldViewer extends React.Component {
     const rightArrow = Images.backgrounds["rightArrow"]
 
     return (
-      <div className={`${css.main}`}>
-        <div className={`${css.halfPage} ${css.rightHalf}`}>
-          <img className={css.backgroundImage} src={mapImage} alt={"bk"} />
-          <div className={`${css.mapScroller}`}>
-            <div className={`${css.innerMapScroller}`}>
-              {this.renderSceneRows()}
-            </div>
-            <div className={css.scrollButtons}>
-              <Button
-                className={cx(css.scrollButton, css.leftScrollButton)}
-                onClick={() => this.scrollHorizontal({ reverse: true })}
-              >
-                <img
-                  className={css.windowScrollButtonImage}
-                  src={leftArrow}
-                  alt={"bk"}
-                />
-              </Button>
+      <>
+        <img className={css.backgroundImage} src={mapImage} alt={"bk"} />
+        <div className={`${css.mapScroller}`}>
+          <div className={`${css.innerMapScroller}`}>
+            {this.renderSceneRows()}
+          </div>
+          <div className={css.scrollButtons}>
+            <Button
+              className={cx(css.scrollButton, css.leftScrollButton)}
+              onClick={() => this.scrollHorizontal({ reverse: true })}
+            >
+              <img
+                className={css.windowScrollButtonImage}
+                src={leftArrow}
+                alt={"bk"}
+              />
+            </Button>
 
-              <Button
-                className={cx(css.scrollButton, css.rightScrollButton)}
-                onClick={() => this.scrollHorizontal({})}
-              >
-                <img
-                  className={css.windowScrollButtonImage}
-                  src={rightArrow}
-                  alt={"bk"}
-                />
-              </Button>
-            </div>
+            <Button
+              className={cx(css.scrollButton, css.rightScrollButton)}
+              onClick={() => this.scrollHorizontal({})}
+            >
+              <img
+                className={css.windowScrollButtonImage}
+                src={rightArrow}
+                alt={"bk"}
+              />
+            </Button>
           </div>
         </div>
-      </div>
+      </>
     )
   }
 }
