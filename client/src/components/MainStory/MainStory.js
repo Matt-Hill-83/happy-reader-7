@@ -26,7 +26,6 @@ class MainStory extends React.Component {
   state = {
     activeScene: undefined,
     showYouWinModal: false,
-    showProd: isProdRelease,
   }
 
   async componentWillMount() {
@@ -205,9 +204,6 @@ class MainStory extends React.Component {
             aria-label="outlined primary button group"
           >
             <Button onClick={this.openYouWinModal}>New Game</Button>
-            <Button onClick={this.toggleShowProd}>
-              Show Prod- {this.state.showProd}
-            </Button>
             <Button onClick={this.toggleWorldBuilder}>World Builder</Button>
           </ButtonGroup>
         </div>

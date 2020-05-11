@@ -6,29 +6,37 @@ import Images from "../../images/images.js"
 import cx from "classnames"
 
 import { Button, Dialog, ButtonGroup } from "@blueprintjs/core"
-
-import { maps } from "../../Stores/InitStores.js"
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
-
-import css from "./QuestDialog.module.scss"
 import Utils from "../../Utils/Utils.js"
 
+import { maps } from "../../Stores/InitStores.js"
+
+import css from "./QuestDialog.module.scss"
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
+
 class QuestDialog extends React.Component {
+  constructor(props) {
+    super(props)
+    const showProdInitialValue = localStateStore.getIsProdRelease()
+    this.state = { showProd: showProdInitialValue }
+
+    console.log("showProdInitialValue", showProdInitialValue) // zzz
+  }
+
   state = {
-    showProd: true,
+    // showProd: showProdInitialValue,
   }
 
   toggleShowProd = () => {
+    console.log("toggleShowProd") // zzz
+
     this.setState({ showProd: !this.state.showProd })
   }
 
   render = () => {
     const { closeYouWinModal, showYouWinModal, onChangeWorld } = this.props
-
     const { showProd } = this.state
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
-
     let filteredMaps = []
 
     if (showProd) {
