@@ -43,10 +43,12 @@ class WorldBuilder extends Component {
     this.onChangeWorld({ index: INITIAL_MAP_INDEX })
   }
 
-  onChangeWorld = ({ index }) => {
+  onChangeWorld = ({ mapId, index }) => {
     console.log("onChangeWorld") // zzz
     console.log("") // zzz
     console.log("") // zzz
+
+    console.log("mapId", toJS(mapId)) // zzz
 
     // new map
     if (index === -1) {
@@ -317,7 +319,6 @@ class WorldBuilder extends Component {
   // Which is why you can change an item, but you can't add an item.
   renderNewGrid = () => {
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
-    console.log("scenesGrid", toJS(scenesGrid)) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -331,10 +332,7 @@ class WorldBuilder extends Component {
     const doorImageSets = [images.doors]
     const locationImageSets = [images.locations, images.vehicles, images.items]
 
-    console.log("locationImageSets", toJS(locationImageSets)) // zzz
-
     const locationNames = Object.keys(images.locations)
-    console.log("locationNames", toJS(locationNames)) // zzz
 
     scenesGrid.forEach((row) => {
       const gridRow = []
@@ -345,8 +343,6 @@ class WorldBuilder extends Component {
         const doorsRight = [scene.doorRight]
         const characters = scene.characters
         const items = scene.items
-
-        console.log("locations", locations) // zzz
 
         const hideScene = scene.location && scene.location.name === "blank"
 
@@ -439,16 +435,10 @@ class WorldBuilder extends Component {
   }
 
   render() {
+    console.log("render------------------->>>WB") // zzz
+
     const { sceneToEdit, showFrameBuilder } = this.state
     const world = localStateStore.getWorldBuilderWorld()
-
-    // temp code DELETE ME!!! (start) - zzz
-    const test2 = localStateStore.getWorldBuilderScenesGrid()
-    console.log(
-      "test2[0][0].location.name----------------------",
-      test2[0][0].location.name
-    ) // zzz
-    // temp code DELETE ME!!! (end)
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle

@@ -65,13 +65,18 @@ class WorldPicker extends Component {
 
     const mapList = sortedMaps.map((map, index) => {
       const { id } = map
-      const { name, title, released } = map.data
+      const { name, title, released, releasedToProd } = map.data
       const {
         updateIsReleasedProperty,
         updateReleasedToProdProperty,
       } = this.props
 
-      const mapId = map.id
+      console.log("") // zzz
+      console.log("") // zzz
+      console.log("") // zzz
+
+      console.log("id", id) // zzz
+
       const text = (
         <span className={css.mapPickerRow}>
           {`map ${name}: ${title}`}
@@ -90,7 +95,7 @@ class WorldPicker extends Component {
                 To Prod
                 <Checkbox
                   onClick={() => updateReleasedToProdProperty({ id })}
-                  checked={released}
+                  checked={releasedToProd}
                 />
               </span>
             )}
@@ -104,7 +109,7 @@ class WorldPicker extends Component {
       )
       return (
         <MenuItem
-          onClick={() => this.changeMap({ index, mapId })}
+          onClick={() => this.changeMap({ index, mapId: id })}
           text={text}
         />
       )
