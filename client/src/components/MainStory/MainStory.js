@@ -186,7 +186,7 @@ class MainStory extends React.Component {
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
     const { className } = this.props
 
-    const toggleWorldBuilderButton = (
+    const renderWorldBuilderButton = (
       <div
         tabIndex={0}
         className={css.toggleWorldBuilder}
@@ -196,7 +196,14 @@ class MainStory extends React.Component {
       </div>
     )
 
-    const toggleNewGameButton = (
+    console.log("activeMap", toJS(activeMap)) // zzz
+
+    const renderWorldName = (
+      <div tabIndex={0} className={css.toggleNewGame}>
+        <span> {activeMap.title} </span>
+      </div>
+    )
+    const renderNewGameButton = (
       <div
         tabIndex={0}
         className={css.toggleNewGame}
@@ -208,8 +215,9 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
-        {toggleWorldBuilderButton}
-        {toggleNewGameButton}
+        {renderWorldBuilderButton}
+        {renderNewGameButton}
+        {renderWorldName}
         {showWorldBuilder && <WorldBuilder />}
         {!showWorldBuilder && this.renderGame()}
       </div>

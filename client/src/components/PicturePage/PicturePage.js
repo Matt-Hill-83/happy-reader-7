@@ -15,8 +15,6 @@ import css from "./PicturePage.module.scss"
 
 class PicturePage extends React.Component {
   renderSceneRows = () => {
-    console.log("renderSceneRows") // zzz
-
     const map = localStateStore.getActiveMap()
     const grid = map.data.grid
 
@@ -24,7 +22,6 @@ class PicturePage extends React.Component {
       grid &&
       grid.map((locationRow, rowIndex) => {
         const singleRow = this.createSingleRow({ locationRow, rowIndex })
-        console.log("singleRow", toJS(singleRow)) // zzz
 
         return (
           <div key={rowIndex} className={css.miniLocationsRow}>
@@ -37,18 +34,12 @@ class PicturePage extends React.Component {
   }
 
   createSingleRow = ({ locationRow, rowIndex }) => {
-    console.log("rowIndex", rowIndex) // zzz
-
     return locationRow.map((scene, colIndex) => {
-      console.log("colIndex", colIndex) // zzz
-
       return this.renderMiniLocation({ scene, colIndex, rowIndex })
     })
   }
 
   renderMiniLocation = ({ colIndex = 0, rowIndex = 0, scene }) => {
-    console.log("renderMiniLocation") // zzz
-
     const { activeScene } = this.props
     const isActive = scene.id === activeScene.id ? true : false
 
