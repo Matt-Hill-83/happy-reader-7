@@ -170,8 +170,6 @@ class MainStory extends React.Component {
             />
           </div>
         </div>
-
-        {this.state.showYouWinModal && this.renderYouWinModal()}
       </div>
     )
   }
@@ -208,6 +206,7 @@ class MainStory extends React.Component {
         {renderWorldName}
         {showWorldBuilder && <WorldBuilder />}
         {!showWorldBuilder && this.renderGame()}
+        {this.state.showYouWinModal && this.renderYouWinModal()}
       </div>
     )
   }
