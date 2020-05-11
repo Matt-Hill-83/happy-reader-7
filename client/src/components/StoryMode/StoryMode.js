@@ -11,20 +11,6 @@ import WorldViewer from "../WorldViewer/WorldViewer.js"
 import css from "./StoryMode.module.scss"
 
 class StoryMode extends React.Component {
-  renderStoryPage = () => {
-    const { activeScene, updateActiveScene, openYouWinModal } = this.props
-
-    return (
-      <div className={`${css.halfPage} ${css.leftHalf}`}>
-        <WordPage
-          updateActiveScene={updateActiveScene}
-          activeScene={activeScene}
-          openYouWinModal={openYouWinModal}
-        />
-      </div>
-    )
-  }
-
   renderYourItems = () => {
     const you = localStateStore.getYou()
     const items = you.items.map((item) => <div>{item}</div>)
@@ -38,7 +24,7 @@ class StoryMode extends React.Component {
   }
 
   render() {
-    const { activeScene, updateActiveScene } = this.props
+    const { activeScene, updateActiveScene, openYouWinModal } = this.props
     const activeWorld = localStateStore.getActiveWorld()
 
     if (!activeWorld || !activeWorld.data || !activeWorld.data.title) {
@@ -54,14 +40,20 @@ class StoryMode extends React.Component {
     return (
       <div className={`${css.main}`}>
         {renderWorldName}
-        {this.renderStoryPage()}
+        <div className={`${css.halfPage} ${css.leftHalf}`}>
+          <WordPage
+            updateActiveScene={updateActiveScene}
+            activeScene={activeScene}
+            openYouWinModal={openYouWinModal}
+          />
+          {false && this.renderYourItems({})}
+        </div>
 
         <div className={`${css.halfPage} ${css.rightHalf}`}>
           <WorldViewer
             updateActiveScene={updateActiveScene}
             activeScene={activeScene}
           />
-          {false && this.renderYourItems({})}
         </div>
       </div>
     )
