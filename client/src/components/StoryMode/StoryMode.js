@@ -8,9 +8,9 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import WordPage from "../WordPage/WordPage.js"
 import WorldViewer from "../WorldViewer/WorldViewer.js"
 
-import css from "./PicturePage.module.scss"
+import css from "./StoryMode.module.scss"
 
-class PicturePage extends React.Component {
+class StoryMode extends React.Component {
   renderStoryPage = () => {
     const { activeScene, updateActiveScene, openYouWinModal } = this.props
 
@@ -59,10 +59,10 @@ class PicturePage extends React.Component {
         <WorldViewer
           updateActiveScene={updateActiveScene}
           activeScene={activeScene}
-        ></WorldViewer>
+        />
         {false && this.renderYourItems({})}
       </div>
     )
   }
 }
-export default observer(PicturePage)
+export default observer(StoryMode)

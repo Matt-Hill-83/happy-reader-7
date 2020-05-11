@@ -7,7 +7,7 @@ import { ButtonGroup, Button } from "@blueprintjs/core"
 import { maps } from "../../Stores/InitStores.js"
 import { worldNameStore } from "../../Stores/FrameSetStore.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
-import PicturePage from "../PicturePage/PicturePage"
+import StoryMode from "../StoryMode/StoryMode"
 import QuestDialog from "../QuestDialog/QuestDialog.js"
 import Utils from "../../Utils/Utils"
 import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
@@ -175,10 +175,10 @@ class MainStory extends React.Component {
       <div className={`${css.main} ${className}`}>
         {showWorldBuilder && <WorldBuilder />}
 
-        {/* TODO: move this into PicturePage component */}
+        {/* TODO: move this into StoryMode component */}
         {!showWorldBuilder && this.renderButtons()}
         {!showWorldBuilder && (
-          <PicturePage
+          <StoryMode
             updateActiveScene={this.updateActiveScene}
             activeScene={activeScene}
             openYouWinModal={this.openYouWinModal}
