@@ -19,7 +19,6 @@ import swamp from "./locations/swamp.png"
 import swing from "./locations/swing.png"
 import tree from "./locations/treehouse.png"
 import waterfall from "./locations/waterfall.png"
-import road_left_right from "./locations/road_left_right.png"
 
 import bag from "./locations/bag.png"
 import bun from "./locations/bun.png"
@@ -92,6 +91,16 @@ import rori02 from "./creatures/rori02.png"
 import vulcan01 from "./creatures/vulcan01.png"
 import tiredGirl from "./creatures/tired_girl.png"
 import coldGirl from "./creatures/cold_girl.png"
+
+import johnny01 from "./creatures/johnny01.gif"
+import johnny02 from "./creatures/johnny02.png"
+import poppyScared from "./creatures/poppyScared.gif"
+import poppy01 from "./creatures/poppy01.png"
+import lucy from "./creatures/lucy.png"
+import toothless from "./creatures/toothless.png"
+import ash01 from "./creatures/ash01.png"
+import emmet01 from "./creatures/emmet01.png"
+import dennisTheMenace from "./creatures/dennisTheMenace.png"
 
 //doors
 import doorGreen from "./doors/doorGreen.png"
@@ -309,7 +318,7 @@ posableLiz.images.heads = lizHeads.map((image) => {
 const posableKat = {
   name: "kat",
   type: "kat",
-  mood: "kat",
+  mood: "katHappy",
   images: {
     heads: [],
     body: { image: katBody },
@@ -392,6 +401,15 @@ const creatures = {
   drake02,
   tiredGirl,
   coldGirl,
+  // johnny01,
+  johnny02,
+  // poppyScared,
+  poppy01,
+  lucy,
+  toothless,
+  ash01,
+  emmet01,
+  dennisTheMenace,
   rori02,
   vulcan01,
 }

@@ -50,6 +50,7 @@ class FrameBuilder extends Component {
     const { updateMap } = this.props
 
     const newFrame = this.getNewFrame()
+    console.log("newFrame", toJS(newFrame)) // zzz
     frameSet.frames.push(newFrame)
 
     await updateMap({})

@@ -162,6 +162,20 @@ export default class Utils {
     return foundMap
   }
 
+  static getMapFromId2 = ({ id }) => {
+    const mapsDocs = toJS(maps.docs)
+    const defaultMap = this.getFirstReleasedMap() || {}
+
+    if (!id) return defaultMap
+
+    // const filteredMaps = mapsDocs.filter((map) => map.data.released)
+    const foundMap = mapsDocs
+      ? mapsDocs.find((map) => map.id === id)
+      : defaultMap
+
+    return foundMap
+  }
+
   static getFirstReleasedMap = () =>
     toJS(maps.docs).find((map) => map.data.released)
 

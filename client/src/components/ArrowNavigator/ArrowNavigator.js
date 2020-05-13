@@ -30,10 +30,12 @@ class ArrowNavigator extends Component {
 
       const neighborName = _get(neighbor, "location.name") || ""
 
-      const onClick = () =>
-        this.changeLocation({
-          sceneId: neighbor.id,
-        })
+      const onClick = neighbor
+        ? () =>
+            this.changeLocation({
+              sceneId: neighbor.id,
+            })
+        : null
 
       const classNames = {
         left: css.sceneLeft,

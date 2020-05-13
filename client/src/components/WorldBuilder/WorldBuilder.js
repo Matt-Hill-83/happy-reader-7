@@ -43,33 +43,18 @@ class WorldBuilder extends Component {
     this.onChangeWorld({ index: INITIAL_MAP_INDEX })
   }
 
-  onChangeWorld = ({ mapId, index }) => {
-    console.log("onChangeWorld") // zzz
-    console.log("") // zzz
-    console.log("") // zzz
-
-    console.log("mapId", toJS(mapId)) // zzz
-
+  onChangeWorld = ({ mapId, newWorld }) => {
     // new map
-    if (index === -1) {
+    if (newWorld) {
       this.addNewWorld()
       return
     } else {
-      const savedWorlds = Utils.getItemsFromDbObj({ dbList: maps })
-      const world = Utils.getMapFromId({ id: mapId })
-      // let world = savedWorlds[index]
-      // let world = savedWorlds[index]
-      console.log(
-        "world.data++++++++++++++++++++++++++++++++++++++++++",
-        toJS(world.data)
-      ) // zzz
-      console.log("world.id", world.id) // zzz
+      const world = Utils.getMapFromId2({ id: mapId })
+      console.log("world", toJS(world)) // zzz
 
       const {
         data: { gridDimensions, newGrid5 },
       } = world
-
-      console.log("newGrid5", toJS(newGrid5)) // zzz
 
       const reCreatedScenesGrid = Utils.reCreateGridFromCondensedGrid({
         gridDimensions,
@@ -201,11 +186,6 @@ class WorldBuilder extends Component {
   }
 
   addNewWorld = async () => {
-    console.log("") // zzz
-    console.log("") // zzz
-    console.log("addNewWorld----------------------------------") // zzz
-
-    // const previousMapName = 100
     const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
 
     const newName = previousMapName + 1
@@ -480,14 +460,11 @@ class WorldBuilder extends Component {
                     updateIsReleasedProperty={this.updateIsReleasedProperty}
                     updateReleasedToProd={this.updateReleasedToProd}
                     onChangeWorld={this.onChangeWorld}
-                    // onChangeWorld={({ mapId, index }) =>
-                    //   this.onChangeWorld({ mapId, index })
-                    // }
                   />
 
                   <Button
                     text={"+ New Map"}
-                    onClick={() => this.onChangeWorld({ index: -1 })}
+                    onClick={() => this.onChangeWorld({ newWorld: true })}
                   />
                 </div>
               </div>
