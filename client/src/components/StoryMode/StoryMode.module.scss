@@ -42,8 +42,10 @@
   display: flex;
   z-index: 1000;
   background-color: lightyellow !important;
-  height: 3%;
-  width: 3%;
-  top: 1px;
-  right: 300px;
+  top: 1%;
+  font-size: 3vh;
+  padding: 0.4% 1%;
+  left: 2%;
+  border-radius: 11px;
+  border: 2px solid purple;
 }
