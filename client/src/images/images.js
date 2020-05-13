@@ -102,6 +102,23 @@ import ash01 from "./creatures/ash01.png"
 import emmet01 from "./creatures/emmet01.png"
 import dennisTheMenace from "./creatures/dennisTheMenace.png"
 
+import tink from "./creatures/tink.png"
+import dress01 from "./creatures/dress01.png"
+import dress02 from "./creatures/dress02.png"
+import dress03 from "./creatures/dress03.png"
+
+import dress04 from "./creatures/dress04.png"
+import dress05 from "./creatures/dress05.png"
+import dress06 from "./creatures/dress06.png"
+import dress07 from "./creatures/dress07.png"
+
+import anna from "./creatures/anna.png"
+import vanellope_little from "./creatures/vanellope_little.png"
+import rapunzel01 from "./creatures/rapunzel01.png"
+import jasmine01 from "./creatures/jasmine01.png"
+import squirrel01 from "./creatures/squirrel01.png"
+import charlie01 from "./creatures/charlie01.png"
+
 //doors
 import doorGreen from "./doors/doorGreen.png"
 import doorYellow from "./doors/doorYellow.jpg"
@@ -412,6 +429,21 @@ const creatures = {
   dennisTheMenace,
   rori02,
   vulcan01,
+
+  tink,
+  dress01,
+  dress02,
+  dress03,
+  dress04,
+  dress05,
+  dress06,
+  dress07,
+  anna,
+  vanellope_little,
+  rapunzel01,
+  jasmine01,
+  squirrel01,
+  charlie01,
 }
 
 const items = {
@@ -447,6 +479,7 @@ const vehicles = {
   car,
   tug,
   van,
+  charlie01,
   bus,
 }
 

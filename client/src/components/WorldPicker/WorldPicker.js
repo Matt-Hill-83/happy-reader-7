@@ -68,10 +68,7 @@ class WorldPicker extends Component {
     const mapList = sortedMaps.map((map, index) => {
       const { id } = map
       const { name, title, released, releasedToProd } = map.data
-      const {
-        updateIsReleasedProperty,
-        updateReleasedToProdProperty,
-      } = this.props
+      const { updateIsReleasedProperty, updateReleasedToProd } = this.props
 
       console.log("id", id) // zzz
 
@@ -81,7 +78,7 @@ class WorldPicker extends Component {
           {/* {`id: ${id}`} */}
           <div className={css.mapPickerRowButtons}>
             {showReleased && (
-              <span className={"test"}>
+              <span className={css.mapPickerButton}>
                 Released
                 <Checkbox
                   onClick={() => updateIsReleasedProperty({ id })}
@@ -90,10 +87,10 @@ class WorldPicker extends Component {
               </span>
             )}
             {showReleasedToProd && (
-              <span className={"test"}>
+              <span className={css.mapPickerButton}>
                 To Prod
                 <Checkbox
-                  onClick={() => updateReleasedToProdProperty({ id })}
+                  onClick={() => updateReleasedToProd({ id })}
                   checked={releasedToProd}
                 />
               </span>
@@ -119,6 +116,7 @@ class WorldPicker extends Component {
     const worldPicker = (
       <Popover
         className={css.main}
+        popoverClassName={css.popoverClassName}
         content={renderedMapList}
         position={Position.BOTTOM}
       >
