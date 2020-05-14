@@ -154,6 +154,7 @@
   position: relative;
   padding: 2%;
   overflow: hidden;
+  padding-bottom: 0px;
 
   :global {
     [class*="WordGroup_main__"]:last-of-type {
@@ -333,8 +334,9 @@
   width: 18vh;
   border-radius: 7px;
   position: absolute;
-  left: 75%;
-  transform: translateX(-50%);
-  margin-top: 1%;
+  /* left: 75%; */
+  /* transform: translateX(-50%); */
+  margin-top: -3vh;
   background: none !important;
+  right: 8vh;
 }
