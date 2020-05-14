@@ -101,6 +101,7 @@ class MainStory extends React.Component {
 
   updateActiveScene = ({ sceneId }) => {
     localStateStore.setActiveSceneId(sceneId)
+    localStateStore.setActiveFrameIndex(0)
   }
 
   toggleWorldBuilder = () => {
@@ -153,6 +154,9 @@ class MainStory extends React.Component {
   }
 
   render() {
+    const test = localStateStore.getActiveFrameIndex()
+    console.log("test-----------------------------------", test) // zzz
+
     const { className } = this.props
     const activeWorld = localStateStore.getActiveWorld()
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
