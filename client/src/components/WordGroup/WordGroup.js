@@ -8,7 +8,7 @@ import css from "./WordGroup.module.scss"
 class WordGroup extends React.Component {
   state = {
     activeScene: undefined,
-    sound: null
+    sound: null,
   }
 
   async componentWillMount() {
@@ -45,8 +45,8 @@ class WordGroup extends React.Component {
             autoFocus
             tabIndex={tabIndex}
             className={css.sentenceWord}
-            onClick={event => this.playWordSound(event, { word })}
-            onFocus={event => this.playWordSound(event, { word })}
+            // onClick={event => this.playWordSound(event, { word })}
+            // onFocus={event => this.playWordSound(event, { word })}
           >
             {word}
           </span>
@@ -68,7 +68,7 @@ class WordGroup extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
-        <audio src={this.state.sound} autoPlay />
+        {/* <audio src={this.state.sound} autoPlay /> */}
         {this.renderNarrative()}
       </div>
     )

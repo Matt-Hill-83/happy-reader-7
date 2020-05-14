@@ -131,30 +131,12 @@ class Frame extends Component {
 
   renderNarrative = () => {
     const { frame, showNarrativeEditor } = this.state
-    const { isEditMode = true } = this.props
     const { story = [] } = frame
 
     if (!story.length || !story[0]) return null
-
-    const renderedNarrative = story.map((line, lineIndex) => {
-      if (isEditMode && showNarrativeEditor) {
-        return (
-          <InputGroup
-            value={line}
-            id="text-input"
-            placeholder="Placeholder text"
-            onChange={(event) => this.onChangeNarrative({ event, lineIndex })}
-            onBlur={(event) => this.saveNarrative({ event })}
-          />
-        )
-      } else {
-        return <WordGroup story={[line]} className={css.narrativeClass} />
-      }
-    })
   }
 
   renderDialog = () => {
-    const { isEditMode = true } = this.props
     const { showDialogEditor, frame } = this.state
     const dialog = (frame && frame.dialog) || []
 
@@ -165,7 +147,7 @@ class Frame extends Component {
 
       const className = `character${characterIndex}`
 
-      if (isEditMode && showDialogEditor) {
+      if (showDialogEditor) {
         return (
           <InputGroup
             className={`${css.line} ${css[className]}`}
@@ -190,16 +172,12 @@ class Frame extends Component {
     return (
       <div className={css.dialog}>
         {renderedDialogs}
-        {isEditMode && (
-          <Button
-            className={css.closeButton}
-            onClick={() =>
-              this.setState({ showDialogEditor: !showDialogEditor })
-            }
-          >
-            <Icon icon={IconNames.EDIT} />
-          </Button>
-        )}
+        <Button
+          className={css.closeButton}
+          onClick={() => this.setState({ showDialogEditor: !showDialogEditor })}
+        >
+          <Icon icon={IconNames.EDIT} />
+        </Button>
       </div>
     )
   }
@@ -250,7 +228,6 @@ class Frame extends Component {
   }
 
   renderBackground = () => {
-    const { isEditMode = true } = this.props
     const backgroundImageSky = Images.backgrounds["sky01"]
     const backgroundImageHill = Images.backgrounds["hill01"]
 
@@ -258,16 +235,12 @@ class Frame extends Component {
       <div className={css.backgroundImageContainer}>
         <div className={css.backgroundGrass}>
           <img
-            className={`${css.backgroundGrassImage} ${
-              isEditMode ? css.isEditMode : ""
-            }`}
+            className={`${css.backgroundGrassImage} ${css.isEditMode}`}
             src={backgroundImageSky}
             alt={`backgroundImage`}
           />
           <img
-            className={`${css.backgroundGrassHill} ${
-              isEditMode ? css.isEditMode : ""
-            }`}
+            className={`${css.backgroundGrassHill} ${css.isEditMode}`}
             src={backgroundImageHill}
             alt={`backgroundImage`}
           />
@@ -353,7 +326,7 @@ class Frame extends Component {
   }
 
   render() {
-    const { isEditMode = true, scene } = this.props
+    const { scene } = this.props
 
     const {
       frame,
@@ -382,14 +355,10 @@ class Frame extends Component {
     }
 
     return (
-      <div className={`${css.main} ${isEditMode ? css.editFrame : ""}`}>
-        <div
-          className={` ${css.scenesContainer} ${
-            isEditMode ? css.editingFrame : ""
-          }`}
-        >
+      <div className={`${css.main} ${css.editFrame}`}>
+        <div className={` ${css.scenesContainer} ${css.editingFrame}`}>
           {this.renderFrame({ allCharacters })}
-          {false && isEditMode && (
+          {false && (
             <CrudMachine
               className={css.crudMachine}
               items={items}
@@ -398,16 +367,14 @@ class Frame extends Component {
               title={"stuff"}
             />
           )}
-          {isEditMode && (
-            <Button className={css.closeButton} onClick={this.deleteFrame}>
-              X
-            </Button>
-          )}
+          (
+          <Button className={css.closeButton} onClick={this.deleteFrame}>
+            X
+          </Button>
         </div>
-        {isEditMode && showFacePicker && (
+        {showFacePicker && (
           <div className={css.girlPickersContainer}>
-            {isEditMode &&
-              this.renderFacePicker({ character: facePickerCharacter })}
+            {this.renderFacePicker({ character: facePickerCharacter })}
             <Button
               className={css.closeFacePickerButton}
               onClick={() => this.toggleFacePicker({})}
@@ -417,7 +384,7 @@ class Frame extends Component {
           </div>
         )}
 
-        {isEditMode && showItemPicker && (
+        {showItemPicker && (
           <CharacterPicker
             imageSets={[
               images.creatures,
