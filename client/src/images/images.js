@@ -145,9 +145,9 @@ import splashScreen01 from "./backgrounds/splash-screen-01.jpg"
 import leftArrow from "./backgrounds/left-arrow-01.png"
 import rightArrow from "./backgrounds/right-arrow-01.png"
 
-// liz2
+// liz
 import liz1 from "./rigged-girls/liz/png/liz-1.png"
-import liz2 from "./rigged-girls/liz/png/liz-2.png"
+import liz from "./rigged-girls/liz/png/liz-2.png"
 import liz3 from "./rigged-girls/liz/png/liz-3.png"
 import liz4 from "./rigged-girls/liz/png/liz-4.png"
 import liz5 from "./rigged-girls/liz/png/liz-5.png"
@@ -225,7 +225,7 @@ import sceneViewNotebook from "./scene-view/notebook-01.png"
 
 const lizHeads = [
   liz1,
-  liz2,
+  liz,
   liz3,
   liz4,
   liz5,
@@ -316,8 +316,8 @@ posableChad.images.heads = chadHeads.map((image) => {
 })
 
 const posableLiz = {
-  name: "liz2",
-  type: "liz2",
+  name: "liz",
+  type: "liz",
   mood: "liz1",
   images: {
     heads: [],
@@ -384,7 +384,7 @@ const locations = {
 const creatures = {
   blank,
   kat,
-  liz2,
+  liz,
   gonzay,
   chad: chad01,
   ant,
