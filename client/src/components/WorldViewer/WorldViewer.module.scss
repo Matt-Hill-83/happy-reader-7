@@ -48,6 +48,10 @@
   overflow: hidden;
   overflow-x: scroll;
   position: relative;
+  background: #fffffffa;
+  padding: 1%;
+  border: 2px solid purple;
+  border-radius: 1vh;
 }
 
 .innerMapScroller::-webkit-scrollbar {
