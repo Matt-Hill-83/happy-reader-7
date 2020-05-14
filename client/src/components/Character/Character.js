@@ -12,7 +12,7 @@ const girlImages = Images.posableGirls
 
 class Character extends Component {
   render() {
-    const { name, mood, isEditMode } = this.props
+    const { showHeadOnly, name, mood, isEditMode } = this.props
 
     const images = girlImages.find((girl) => girl.name === name)
 
@@ -34,18 +34,30 @@ class Character extends Component {
 
     const head = heads.find((head) => head.mood === mood) || heads[0]
 
-    const className = `${css.headForBody} ${isEditMode ? "" : css.noBorder}`
+    const className = showHeadOnly
+      ? css.headOnly
+      : `${css.headForBody} ${isEditMode ? "" : css.noBorder}`
+
+    const headOnly = (
+      <Head
+        name={name}
+        head={head}
+        className={className}
+        isEditMode={isEditMode}
+      />
+    )
+
+    if (showHeadOnly) {
+      return headOnly
+    }
+
+    console.log("headOnly", headOnly) // zzz
 
     return (
       <div className={css.girlBodyContainer}>
         <img className={`${css.girlBodyImage}`} src={body.image} alt={`name`} />
         <span className={`${css.bodyLabel}`}>{name}</span>
-        <Head
-          name={name}
-          head={head}
-          className={className}
-          isEditMode={isEditMode}
-        />
+        {headOnly}
       </div>
     )
   }

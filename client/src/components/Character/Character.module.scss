@@ -10,6 +10,10 @@
   }
 }
 
+.showHeadOnly {
+  // border: 4px solid red !important;
+}
+
 .characterContainer {
   // border: 1px solid red !important;
   display: flex;
@@ -18,8 +22,6 @@
 
 .characterImage {
   // border: 1px solid blue !important;
-  height: 100%;
-  width: auto;
   width: 100%;
   height: auto;
 }

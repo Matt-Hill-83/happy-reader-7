@@ -7,11 +7,7 @@ import css from "./CharacterPicker.module.scss"
 import { Button, Dialog } from "@blueprintjs/core"
 
 class CharacterPicker extends Component {
-  state = {
-    showFacePicker: false,
-    showNarrativeEditor: true,
-    showDialogEditor: true
-  }
+  state = {}
 
   componentWillMount() {
     const { imageSets } = this.props

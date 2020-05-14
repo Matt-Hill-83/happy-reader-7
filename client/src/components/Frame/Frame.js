@@ -3,6 +3,7 @@ import {
   Icon,
   Position,
   InputGroup,
+  TextArea,
   FormGroup,
 } from "@blueprintjs/core"
 import React, { Component } from "react"
@@ -15,7 +16,6 @@ import { toJS } from "mobx"
 import _get from "lodash.get"
 
 import Images from "../../images/images"
-import WordGroup from "../WordGroup/WordGroup"
 
 import css from "./Frame.module.scss"
 import CharacterPicker from "../CharacterPicker/CharacterPicker"
@@ -27,8 +27,6 @@ import Utils from "../../Utils/Utils"
 class Frame extends Component {
   state = {
     showFacePicker: false,
-    showNarrativeEditor: true,
-    showDialogEditor: true,
     showItemPicker: false,
     items: [],
   }
@@ -130,14 +128,14 @@ class Frame extends Component {
   }
 
   renderNarrative = () => {
-    const { frame, showNarrativeEditor } = this.state
+    const { frame } = this.state
     const { story = [] } = frame
 
     if (!story.length || !story[0]) return null
   }
 
   renderDialog = () => {
-    const { showDialogEditor, frame } = this.state
+    const { frame } = this.state
     const dialog = (frame && frame.dialog) || []
 
     const renderedDialogs = dialog.map((line, lineIndex) => {
@@ -147,39 +145,20 @@ class Frame extends Component {
 
       const className = `character${characterIndex}`
 
-      if (showDialogEditor) {
-        return (
-          <InputGroup
-            className={`${css.line} ${css[className]}`}
-            value={text}
-            id="text-input"
-            placeholder="Placeholder text"
-            onChange={(event) => this.onChangeDialog({ event, lineIndex })}
-            onBlur={(event) => this.saveNarrative({ event })}
-          />
-        )
-      } else {
-        return (
-          <WordGroup
-            index={lineIndex}
-            story={[text]}
-            className={`${css.line} ${css[className]}`}
-          />
-        )
-      }
+      return (
+        <TextArea
+          className={`${css.line} ${css[className]}`}
+          growVertically={true}
+          large={true}
+          onChange={(event) => this.onChangeDialog({ event, lineIndex })}
+          id="text-input"
+          value={text}
+          onBlur={(event) => this.saveNarrative({ event })}
+        />
+      )
     })
 
-    return (
-      <div className={css.dialog}>
-        {renderedDialogs}
-        <Button
-          className={css.closeButton}
-          onClick={() => this.setState({ showDialogEditor: !showDialogEditor })}
-        >
-          <Icon icon={IconNames.EDIT} />
-        </Button>
-      </div>
-    )
+    return <div className={css.dialog}>{renderedDialogs}</div>
   }
 
   onChangeDialog = ({ event, lineIndex }) => {
@@ -196,10 +175,6 @@ class Frame extends Component {
     const newMood = faces && faces.find((face) => face.character === name)
     mood = (newMood && newMood.face) || mood
     return mood
-  }
-
-  editNarrative = async () => {
-    this.setState({ showNarrativeEditor: true })
   }
 
   saveNarrative = async () => {
@@ -268,8 +243,8 @@ class Frame extends Component {
     })
   }
 
-  renderFriends = () => {
-    const { isEditMode = true, scene } = this.props
+  renderCharacters = () => {
+    const { scene } = this.props
 
     const { frame } = this.state
     const { faces = [] } = frame
@@ -280,6 +255,7 @@ class Frame extends Component {
 
     const allItems = (scene.items && scene.items.map((item) => item.name)) || []
 
+    // temp code DELETE ME!!! (end)
     allCharacters.push(...allItems)
     // temp code DELETE ME!!! (end)
 
@@ -289,7 +265,12 @@ class Frame extends Component {
       return (
         <div className={`${css.characterContainer}`} key={index}>
           <div onClick={() => this.toggleFacePicker({ character: friend })}>
-            <Character name={friend} mood={mood} isEditMode={isEditMode} />
+            <Character
+              showHeadOnly={true}
+              name={friend}
+              mood={mood}
+              isEditMode={true}
+            />
           </div>
         </div>
       )
@@ -302,7 +283,7 @@ class Frame extends Component {
     if (!frame) return null
 
     const renderedItems = this.renderItems()
-    const renderedFriends = this.renderFriends()
+    const renderedFriends = this.renderCharacters()
 
     return (
       <div className={`${css.scenes}`}>
