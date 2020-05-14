@@ -1,7 +1,15 @@
 @import "../../Styles/mixins.modules.scss";
 
-.addCharacterButton {
-  z-index: 10;
+.main {
+  display: flex;
+  flex: 1 1;
+  min-width: 23vw;
+  min-height: 40vh;
+  margin-right: 1vh;
+  margin-bottom: 1vh;
+  border: 2px solid purple;
+  border-radius: 1vh;
+  overflow: hidden;
 }
 
 .relativePositionedContent {
@@ -35,7 +43,7 @@
   margin-right: 6px;
 
   [class*="ImageDisplay_imageContainer"] {
-    border: 1px solid blue;
+    // border: 1px solid blue;
     border-radius: 10%;
     background: white;
     z-index: 1 !important;
@@ -55,10 +63,6 @@
   display: flex;
   position: relative;
   overflow: hidden;
-}
-
-.main {
-  display: flex;
   flex: 1;
 }
 
@@ -78,13 +82,6 @@
   [class*="Character_headForBody"] {
     bottom: 0;
   }
-  [class*="Frame_wordsContainer"] {
-    bottom: unset;
-    top: 0%;
-    padding: unset;
-  }
-  [class*="Frame_editingFrame"] {
-  }
 }
 
 .closeFacePickerButton {
@@ -95,7 +92,7 @@
 .locationLabel {
   @include item-label;
   position: absolute;
-  border: 1px solid blue !important;
+  // border: 1px solid blue !important;
   top: 2%;
   background: var(--light-pink);
   border-radius: 3px;
@@ -116,12 +113,17 @@
 }
 
 .wordsContainer {
+  bottom: unset;
+  top: 0%;
+  padding: unset;
+
   display: flex;
   z-index: 1;
   padding: 2%;
   width: 100%;
   flex-direction: column;
-  margin-bottom: 10%;
+  // border: 2px solid blue !important;
+  flex: 1;
 }
 
 .narrative {
@@ -145,23 +147,17 @@
   border: 1px solid;
   border-radius: 6px;
   background: white;
-  padding: 2%;
+  padding: 2% !important;
   position: relative;
 
-  :global {
-    [class*="WordGroup_main__"]:last-of-type {
-      margin-bottom: unset;
-    }
-  }
-
   .textAreaWrapper {
-    border: 4px solid green !important;
+    border: 1px solid green !important;
+    display: flex;
   }
 
   .line {
     margin-bottom: 2%;
     border-radius: 0.5rem;
-    // width: fit-content;
     min-width: 90%;
   }
 
@@ -171,7 +167,7 @@
     font-size: 1.5vh;
 
     &:focus {
-      border: 4px solid red !important;
+      border: 2px solid red !important;
     }
   }
 
@@ -232,24 +228,24 @@
 .narrativeClass {
   :global {
     [class*="WordGroup_sentenceWord__"] {
-      border: 1px solid green !important;
+      // border: 1px solid green !important;
       font-size: 3vmin;
     }
   }
 }
 
 .scenesContainer {
-  border: 1px solid blue;
+  // border: 1px solid blue;
   display: flex;
   height: 100%;
   position: relative;
 }
 
 .editingFrame {
-  border: 1px solid blue;
+  // border: 1px solid blue;
   display: flex;
   position: relative;
-  min-height: 30vw;
+  // min-height: 30vw;
   /* min-width: 0vw; */
   width: 100%;
   min-width: 290px;
@@ -276,7 +272,8 @@
 
 .backgroundImageContainer {
   display: flex;
-  position: relative;
+  position: absolute;
+  height: 100%;
 }
 
 .backgroundGrass {

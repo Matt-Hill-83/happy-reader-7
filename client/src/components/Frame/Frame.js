@@ -141,16 +141,14 @@ class Frame extends Component {
     const renderedDialogs = dialog.map((line, lineIndex) => {
       const { text, characterIndex } = line
 
-      // if (!text) return null
-
       const className = `character${characterIndex}`
 
       return (
         <div className={css.textAreaWrapper}>
           <TextArea
             className={`${css.line} ${css[className]}`}
-            growVertically={true}
-            large={true}
+            // growVertically={true}
+            // large={true}
             onChange={(event) => this.onChangeDialog({ event, lineIndex })}
             id="text-input"
             value={text}
