@@ -10,6 +10,28 @@
   border: 2px solid purple;
   border-radius: 1vh;
   overflow: hidden;
+
+  [class*="Frame_dialog"] {
+    padding: unset;
+  }
+  [class*="Frame_narrative"] {
+    padding: unset;
+    margin-bottom: unset;
+  }
+  [class*="Frame_line"] {
+    padding: unset;
+    margin-bottom: unset !important;
+  }
+  [class*="Character_headForBody"] {
+    bottom: 0;
+  }
+}
+
+.editingFrame {
+  // display: flex;
+  // position: relative;
+  // width: 100%;
+  // min-width: 290px;
 }
 
 .relativePositionedContent {
@@ -66,24 +88,6 @@
   flex: 1;
 }
 
-// Resize frames when editing
-.editFrame {
-  [class*="Frame_dialog"] {
-    padding: unset;
-  }
-  [class*="Frame_narrative"] {
-    padding: unset;
-    margin-bottom: unset;
-  }
-  [class*="Frame_line"] {
-    padding: unset;
-    margin-bottom: unset !important;
-  }
-  [class*="Character_headForBody"] {
-    bottom: 0;
-  }
-}
-
 .closeFacePickerButton {
   position: absolute;
   right: 0px;
@@ -135,7 +139,6 @@
   border-radius: 6px;
   background: white;
   padding: 2%;
-  // margin-bottom: 1rem;
   position: relative;
 }
 
@@ -151,7 +154,7 @@
   position: relative;
 
   .textAreaWrapper {
-    border: 1px solid green !important;
+    // border: 1px solid green !important;
     display: flex;
   }
 
@@ -239,14 +242,7 @@
   display: flex;
   height: 100%;
   position: relative;
-}
 
-.editingFrame {
-  // border: 1px solid blue;
-  display: flex;
-  position: relative;
-  // min-height: 30vw;
-  /* min-width: 0vw; */
   width: 100%;
   min-width: 290px;
 }

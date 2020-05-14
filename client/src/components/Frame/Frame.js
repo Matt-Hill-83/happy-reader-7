@@ -346,8 +346,8 @@ class Frame extends Component {
     }
 
     return (
-      <div className={`${css.main} ${css.editFrame}`}>
-        <div className={` ${css.scenesContainer} ${css.editingFrame}`}>
+      <div className={`${css.main}`}>
+        <div className={` ${css.scenesContainer}`}>
           {this.renderFrame({ allCharacters })}
           {false && (
             <CrudMachine
