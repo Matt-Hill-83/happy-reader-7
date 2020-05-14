@@ -1,4 +1,4 @@
-import { action, computed, decorate, observable, toJS } from "mobx"
+import { decorate, observable, toJS } from "mobx"
 import Utils from "../../Utils/Utils"
 
 class LocalStateStore {
@@ -79,11 +79,9 @@ class LocalStateStore {
 
   getActiveScene = () => {
     const activeSceneId = this.getActiveSceneId()
-    console.log("activeSceneId", toJS(activeSceneId)) // zzz
-
     const scenesGrid = this.getActiveWorldGrid()
+
     const activeScene = scenesGrid.find((item) => item.id === activeSceneId)
-    console.log("activeScene", toJS(activeScene)) // zzz
     return activeScene
   }
 }

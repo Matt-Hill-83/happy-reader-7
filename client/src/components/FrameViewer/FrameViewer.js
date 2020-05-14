@@ -48,13 +48,14 @@ class FrameViewer extends Component {
       const className = `character${characterIndex}`
       const characterName = line.character || ""
 
+      console.log("lineIndex---frameviewer", lineIndex) // zzz
+
       return (
-        // <div className={css.dialogRow}>
         <div className={`${css.line} ${css[className]}`}>
           <div className={cx(css.characterNameContainer)}>
             <span className={css.characterName}>{characterName}</span>
           </div>
-          <WordGroup index={lineIndex} story={[text]} />
+          <WordGroup lineIndex={lineIndex} story={[text]} />
         </div>
       )
     })

@@ -28,12 +28,23 @@ class WordGroup extends React.Component {
 
   renderNarrative = () => {
     const { story } = this.state
+    const { lineIndex } = this.props
+
+    console.log("") // zzz
+    console.log("") // zzz
+    console.log("") // zzz
+    console.log("lineIndex", lineIndex) // zzz
 
     const renderedNarrative = story.map((sentence, sentenceIndex) => {
       const parsedSentence = sentence.split(/\s/)
 
       const renderedSentence = parsedSentence.map((word, wordIndex) => {
-        const tabIndex = 100 * sentenceIndex + (wordIndex + 1)
+        const tabIndex =
+          1000 * lineIndex + 100 * sentenceIndex + (wordIndex + 1)
+        console.log("sentenceIndex", sentenceIndex) // zzz
+        console.log("wordIndex", wordIndex) // zzz
+
+        console.log("tabIndex", tabIndex) // zzz
 
         // TODO - fix autofocus
         const autofocus = tabIndex === 1 ? { autoFocus: true } : { test: 3 }
