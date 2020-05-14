@@ -74,9 +74,11 @@ class WorldPicker extends Component {
 
       const text = (
         <span className={css.mapPickerRow}>
-          {`map ${name}: ${title}`}
+          {`${title}`}
+          {/* {`map ${name}: ${title}`} */}
           {/* {`id: ${id}`} */}
           <div className={css.mapPickerRowButtons}>
+            <span className={css.mapPickerButton}>{`${name}  ---  `}</span>
             {showReleased && (
               <span className={css.mapPickerButton}>
                 Released

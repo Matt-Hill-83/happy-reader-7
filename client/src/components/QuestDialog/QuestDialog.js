@@ -39,7 +39,7 @@ class QuestDialog extends React.Component {
       })
     } else {
       filteredMaps = savedMaps.filter((map) => {
-        return map.data.released || map.data.releasedToProd
+        return map.data.released && !map.data.releasedToProd
       })
     }
 
