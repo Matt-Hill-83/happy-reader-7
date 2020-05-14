@@ -36,19 +36,14 @@ class FrameViewer extends Component {
   renderDialog = () => {
     const { frame } = this.props
     const dialog = (frame && frame.dialog) || []
-    console.log("frame", toJS(frame)) // zzz
 
     const renderedDialogs = dialog.map((line, lineIndex) => {
-      console.log("line", toJS(line)) // zzz
-
       const { text, characterIndex } = line
 
       if (!text) return null
 
       const className = `character${characterIndex}`
       const characterName = line.character || ""
-
-      console.log("lineIndex---frameviewer", lineIndex) // zzz
 
       return (
         <div className={`${css.line} ${css[className]}`}>

@@ -30,21 +30,12 @@ class WordGroup extends React.Component {
     const { story } = this.state
     const { lineIndex } = this.props
 
-    console.log("") // zzz
-    console.log("") // zzz
-    console.log("") // zzz
-    console.log("lineIndex", lineIndex) // zzz
-
     const renderedNarrative = story.map((sentence, sentenceIndex) => {
       const parsedSentence = sentence.split(/\s/)
 
       const renderedSentence = parsedSentence.map((word, wordIndex) => {
         const tabIndex =
           1000 * lineIndex + 100 * sentenceIndex + (wordIndex + 1)
-        console.log("sentenceIndex", sentenceIndex) // zzz
-        console.log("wordIndex", wordIndex) // zzz
-
-        console.log("tabIndex", tabIndex) // zzz
 
         // TODO - fix autofocus
         const autofocus = tabIndex === 1 ? { autoFocus: true } : { test: 3 }
@@ -52,8 +43,8 @@ class WordGroup extends React.Component {
         return (
           <span
             key={wordIndex}
-            {...autofocus}
-            autoFocus
+            // {...autofocus}
+            autoFocus={true}
             tabIndex={tabIndex}
             className={css.sentenceWord}
             // onClick={event => this.playWordSound(event, { word })}
