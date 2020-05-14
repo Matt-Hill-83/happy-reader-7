@@ -78,11 +78,15 @@ class WorldViewer extends React.Component {
     const leftArrow = Images.backgrounds["leftArrow"]
     const rightArrow = Images.backgrounds["rightArrow"]
 
+    const diamond2 = Images.backgrounds["introBackground"]
+
     return (
       <>
-        <img className={css.backgroundImage} src={mapImage} alt={"bk"} />
+        <img className={css.backgroundImage} src={diamond2} alt={"bk"} />
+        {/* <img className={css.backgroundImage} src={mapImage} alt={"bk"} /> */}
         <div className={`${css.mapScroller}`}>
           <div className={`${css.innerMapScroller}`}>
+            {/* <img className={css.diamond2Image} src={diamond2} alt={"imagex"} /> */}
             {this.renderSceneRows()}
           </div>
           <div className={css.scrollButtons}>

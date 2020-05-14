@@ -144,6 +144,7 @@ import splashScreen01 from "./backgrounds/splash-screen-01.jpg"
 // buttons
 import leftArrow from "./backgrounds/left-arrow-01.png"
 import rightArrow from "./backgrounds/right-arrow-01.png"
+import introBackground from "./backgrounds/introBackground.jpg"
 
 // liz
 import liz1 from "./rigged-girls/liz/png/liz-1.png"
@@ -506,6 +507,7 @@ const backgrounds = {
   splashScreen01,
   leftArrow,
   rightArrow,
+  introBackground,
   hill01,
   sky01,
 }
