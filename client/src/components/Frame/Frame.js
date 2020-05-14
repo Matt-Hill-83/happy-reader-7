@@ -141,20 +141,22 @@ class Frame extends Component {
     const renderedDialogs = dialog.map((line, lineIndex) => {
       const { text, characterIndex } = line
 
-      if (!text) return null
+      // if (!text) return null
 
       const className = `character${characterIndex}`
 
       return (
-        <TextArea
-          className={`${css.line} ${css[className]}`}
-          growVertically={true}
-          large={true}
-          onChange={(event) => this.onChangeDialog({ event, lineIndex })}
-          id="text-input"
-          value={text}
-          onBlur={(event) => this.saveNarrative({ event })}
-        />
+        <div className={css.textAreaWrapper}>
+          <TextArea
+            className={`${css.line} ${css[className]}`}
+            growVertically={true}
+            large={true}
+            onChange={(event) => this.onChangeDialog({ event, lineIndex })}
+            id="text-input"
+            value={text}
+            onBlur={(event) => this.saveDialog({ event })}
+          />
+        </div>
       )
     })
 
@@ -177,7 +179,17 @@ class Frame extends Component {
     return mood
   }
 
-  saveNarrative = async () => {
+  saveDialog = async (event) => {
+    console.log("") // zzz
+    console.log("") // zzz
+    console.log("") // zzz
+    console.log("saven narrative") // zzz
+    console.log("event", event) // zzz
+
+    if (event && !event.value) {
+      return
+    }
+
     const { updateMap } = this.props
     await updateMap({})
   }

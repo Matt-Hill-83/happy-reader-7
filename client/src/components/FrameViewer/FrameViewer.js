@@ -36,20 +36,26 @@ class FrameViewer extends Component {
   renderDialog = () => {
     const { frame } = this.props
     const dialog = (frame && frame.dialog) || []
+    console.log("frame", toJS(frame)) // zzz
 
     const renderedDialogs = dialog.map((line, lineIndex) => {
+      console.log("line", toJS(line)) // zzz
+
       const { text, characterIndex } = line
 
       if (!text) return null
 
       const className = `character${characterIndex}`
+      const characterName = line.character || ""
 
       return (
-        <WordGroup
-          index={lineIndex}
-          story={[text]}
-          className={`${css.line} ${css[className]}`}
-        />
+        // <div className={css.dialogRow}>
+        <div className={`${css.line} ${css[className]}`}>
+          <div className={cx(css.characterNameContainer)}>
+            <span className={css.characterName}>{characterName}</span>
+          </div>
+          <WordGroup index={lineIndex} story={[text]} />
+        </div>
       )
     })
 
@@ -191,7 +197,7 @@ class FrameViewer extends Component {
           <div className={css.wordsAndButtons}>
             <div className={css.sceneName}>{sceneName}</div>
             <div className={css.wordsContainer}>
-              {this.renderNarrative()}
+              {/* {this.renderNarrative()} */}
               {this.renderDialog()}
               {this.nextButtonRow()}
             </div>

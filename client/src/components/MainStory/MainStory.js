@@ -77,10 +77,6 @@ class MainStory extends React.Component {
 
   getTerminalScene = ({ start = true }) => {
     const map = localStateStore.getActiveWorld()
-
-    const startScene2 = map.data.startScene
-    const endScene2 = map.data.endScene
-
     const scenesGrid = _get(map, "data.newGrid5") || []
 
     const endScene = scenesGrid.find((item) => item.id === map.data.endSceneId)
@@ -89,7 +85,6 @@ class MainStory extends React.Component {
     )
 
     const terminalScene = start ? startScene : endScene
-
     const firstScene = scenesGrid[0]
     const lastScene = scenesGrid[scenesGrid.length - 1]
 

@@ -1,5 +1,28 @@
 @import "../../Styles/mixins.modules.scss";
 
+.dialogRow {
+  border: 1px solid green !important;
+  display: flex;
+  align-items: center;
+}
+
+.characterNameContainer {
+  border-right: 1px solid blue !important;
+  display: flex;
+  align-items: center;
+  height: unset;
+  padding: 0px 0.7vh;
+  font-size: 2vh;
+  // background: pink;
+}
+
+.characterName {
+  // border: 1px solid green !important;
+  display: flex;
+  align-items: center;
+  // height: 100%;
+}
+
 .sceneName {
   display: flex;
   justify-content: flex-start;
@@ -126,6 +149,7 @@
   background: white;
   position: relative;
   padding: 2%;
+  overflow: hidden;
 
   :global {
     [class*="WordGroup_main__"]:last-of-type {
@@ -146,12 +170,20 @@
     }
   }
 
+  .character0,
+  .character1 {
+    display: flex;
+    overflow: hidden;
+  }
+
   .character1 {
     border: 1px solid orange !important;
-    // color: #8610ff;
-    // background: #f7e59a;
     background: #f7e59a5e;
     margin-left: auto;
+
+    [class*="FrameViewer_characterNameContainer_"] {
+      border-right: 1px solid orange !important;
+    }
 
     [class*="WordGroup_sentence__"] {
       justify-content: flex-end;
@@ -159,9 +191,12 @@
   }
 
   .character0 {
-    border: 1px solid #ff005c !important;
     background: #ffcee685;
-    // color: #8610ff;
+    border: 1px solid #ff005c !important;
+
+    [class*="FrameViewer_characterNameContainer_"] {
+      border-right: 1px solid #ff005c !important;
+    }
 
     [class*="WordGroup_sentence__"] {
       justify-content: flex-start;
