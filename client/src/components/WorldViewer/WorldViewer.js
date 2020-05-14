@@ -66,13 +66,7 @@ class WorldViewer extends React.Component {
   }
 
   render() {
-    console.log("") // zzz
-    console.log("") // zzz
-    console.log("render ---------------WorldViewer") // zzz
-    console.log("render ---------------WorldViewer") // zzz
-    console.log("render ---------------WorldViewer") // zzz
     const { activeScene } = this.props
-    console.log("activeScene ----PP", toJS(activeScene)) // zzz
 
     const mapImage = Images.backgrounds["map"]
     const leftArrow = Images.backgrounds["leftArrow"]

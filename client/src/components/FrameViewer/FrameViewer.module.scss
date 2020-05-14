@@ -166,12 +166,13 @@
     margin-bottom: 2%;
     border-radius: 0.5rem;
     width: fit-content;
-    min-width: 73%;
+    min-width: 50%;
+    max-width: 95%;
 
     [class*="WordGroup_sentence__"] {
       padding-right: 0.5rem;
       padding-left: 0.5rem;
-      font-size: 3vmin;
+      font-size: 25px;
     }
   }
 

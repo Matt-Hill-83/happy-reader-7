@@ -4,7 +4,7 @@
     flex-direction: column;
 
     margin: auto;
-    padding: 0.6vh 0vh;
+    // padding: 0.6vh 0vh;
 
     .sentence {
       display: flex;
@@ -17,10 +17,10 @@
         border: 1px solid transparent !important;
         border-radius: 10px;
         margin-left: 0;
-        padding-right: 0.25em;
-        padding-left: 0.25em;
-        line-height: 2.4rem;
+        padding-right: 0.4em;
+        /* line-height: 1rem; */
         font-weight: 400;
+        // border: 1px solid blue !important;
       }
 
       .sentenceWord:focus {

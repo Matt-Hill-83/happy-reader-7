@@ -50,7 +50,6 @@ class WorldBuilder extends Component {
       return
     } else {
       const world = Utils.getMapFromId2({ id: mapId })
-      console.log("world", toJS(world)) // zzz
 
       const {
         data: { gridDimensions, newGrid5 },
@@ -60,7 +59,6 @@ class WorldBuilder extends Component {
         gridDimensions,
         newGrid5,
       })
-      console.log("reCreatedScenesGrid", reCreatedScenesGrid) // zzz
 
       localStateStore.setWorldBuilderWorld(world)
       localStateStore.setWorldBuilderScenesGrid(reCreatedScenesGrid)
@@ -99,8 +97,6 @@ class WorldBuilder extends Component {
   }
 
   changeTerminalScene = ({ name, scenesList, scene, map, isStartScene }) => {
-    console.log("changeScene") // zzz
-
     scenesList.forEach((scene) => {
       if (isStartScene) {
         scene.isStartScene = false
@@ -216,19 +212,12 @@ class WorldBuilder extends Component {
 
   // TODO - make this global Util
   updateMap = async ({ newProps = {} }) => {
-    console.log("updateMap") // zzz
-    console.log("newProps", newProps) // zzz
-
     const map = localStateStore.getWorldBuilderWorld()
     Object.assign(map.data, toJS(newProps))
-    console.log("map", toJS(map)) // zzz
 
     map.data.newGrid5 = Utils.createCondensedGridFromGrid()
 
-    console.log("map.data.grid", toJS(map.data.grid)) // zzz
-
     delete map.data.grid
-    console.log("map.data", toJS(map.data)) // zzz
     await map.update(map.data)
   }
 
@@ -290,7 +279,6 @@ class WorldBuilder extends Component {
   generateRandomLocation = ({ location, locationNames }) => {
     const randomName =
       locationNames[Math.floor(Math.random() * locationNames.length)]
-    console.log("randomName", toJS(randomName)) // zzz
 
     location.name = randomName
     this.updateMap({})
@@ -418,8 +406,6 @@ class WorldBuilder extends Component {
   }
 
   render() {
-    console.log("render------------------->>>WB") // zzz
-
     const { sceneToEdit, showFrameBuilder } = this.state
     const world = localStateStore.getWorldBuilderWorld()
 

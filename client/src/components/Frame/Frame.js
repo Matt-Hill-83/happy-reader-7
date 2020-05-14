@@ -178,12 +178,6 @@ class Frame extends Component {
   }
 
   saveDialog = async (event) => {
-    console.log("") // zzz
-    console.log("") // zzz
-    console.log("") // zzz
-    console.log("saven narrative") // zzz
-    console.log("event", event) // zzz
-
     if (event && !event.value) {
       return
     }

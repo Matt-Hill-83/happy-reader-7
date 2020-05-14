@@ -46,8 +46,6 @@ export default class Utils {
   }
 
   static getNewFrame = ({ characters }) => {
-    console.log("characters", toJS(characters)) // zzz
-
     const you = localStateStore.getYou()
     const yourName = you.name
     let allCharacters = [yourName]
@@ -95,7 +93,6 @@ export default class Utils {
         },
       ],
     }
-    console.log("newFrame", toJS(newFrame)) // zzz
 
     return newFrame
   }

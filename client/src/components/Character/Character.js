@@ -51,8 +51,6 @@ class Character extends Component {
       return headOnly
     }
 
-    console.log("headOnly", headOnly) // zzz
-
     return (
       <div className={css.girlBodyContainer}>
         <img className={`${css.girlBodyImage}`} src={body.image} alt={`name`} />
