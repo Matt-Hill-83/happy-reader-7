@@ -9,11 +9,11 @@ class Head extends Component {
     const {
       name,
       head: { image, mood, isEditMode },
-      className = "",
+      className = ""
     } = this.props
 
     let imageClassName = ""
-    if (name === "kat" || name === "liz" || name === "chad") {
+    if (name === "kat" || name === "liz2" || name === "chad") {
       imageClassName = css.girlHeadKat
     }
 

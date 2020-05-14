@@ -56,14 +56,14 @@ export default class Utils {
     }
 
     const creatureName0 = allCharacters[0] || "kat"
-    const creatureName1 = allCharacters[1] || "liz"
+    const creatureName1 = allCharacters[1] || "liz2"
 
     const newFrame = {
       // this is a hacky fix
       // this is a hacky fix
       // this is a hacky fix
       // this is a hacky fix
-      creatures: ["kat", "liz"],
+      creatures: ["kat", "liz2"],
       // creatures: allCharacters,
       story: [`${creatureName0} is happy.`],
       faces: [
@@ -192,7 +192,7 @@ export default class Utils {
 
   static getDummyFrame = ({ props }) => {
     const dummyFrame = {
-      creatures: ["kat", "liz"],
+      creatures: ["kat", "liz2"],
       dialog: [
         {
           character: "kat",
@@ -200,24 +200,24 @@ export default class Utils {
           text: "We can play.",
         },
         {
-          character: "liz",
+          character: "liz2",
           characterIndex: 1,
           text: "",
         },
         {
-          character: "liz",
+          character: "liz2",
           characterIndex: 0,
           text: "",
         },
         {
-          character: "liz",
+          character: "liz2",
           characterIndex: 1,
           text: "",
         },
       ],
       faces: [
         {
-          character: "liz",
+          character: "liz2",
           characterIndex: 1,
           face: "happy",
         },
@@ -245,7 +245,7 @@ export default class Utils {
       location: { name: "blank" },
       doorRight: { name: "doorYellow" },
       doorBottom: { name: "doorGreen" },
-      characters: [{ name: "kat" }, { name: "liz" }],
+      characters: [{ name: "kat" }, { name: "liz2" }],
       items: [{ name: "hat" }, { name: "pig" }],
       frameSet: { frames: [dummyFrame] },
       id,
