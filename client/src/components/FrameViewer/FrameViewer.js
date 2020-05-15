@@ -217,6 +217,7 @@ class FrameViewer extends Component {
     if (!frame) {
       return null
     }
+    console.log("frame", toJS(frame)) // zzz
 
     return (
       <div className={css.main}>

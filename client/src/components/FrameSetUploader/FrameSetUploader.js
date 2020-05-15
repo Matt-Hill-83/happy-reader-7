@@ -12,7 +12,7 @@ import Utils from "../../Utils/Utils"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 
 class FrameSetUploader extends Component {
-  state = { text: "" }
+  state = { text: `{"cat":5}` }
 
   onChangeDialog = ({ event, lineIndex }) => {
     const { text } = this.state
@@ -24,6 +24,13 @@ class FrameSetUploader extends Component {
   render = () => {
     const {} = this.props
     const { text } = this.state
+
+    let test = {}
+
+    if (text) {
+      test = JSON.parse(text)
+    }
+    console.log("test", test) // zzz
 
     return (
       <div className={css.main}>

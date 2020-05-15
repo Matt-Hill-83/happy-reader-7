@@ -176,13 +176,13 @@ class MainStory extends React.Component {
         {showWorldBuilder && <WorldBuilder />}
 
         {/* TODO: move this into StoryMode component */}
-        {this.renderButtons()}
         {!showWorldBuilder && (
           <FrameSetUploader
             className={css.frameSetUploaderBox}
             onSave={this.onChangeDialog}
           />
         )}
+        {this.renderButtons()}
         {!showWorldBuilder && (
           <StoryMode
             updateActiveScene={this.updateActiveScene}
