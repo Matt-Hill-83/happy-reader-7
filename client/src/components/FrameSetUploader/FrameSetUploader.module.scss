@@ -1,0 +1,73 @@
+@import "../../Styles/mixins.modules.scss";
+
+.main {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  border-radius: 9px;
+  border: 4px solid green !important;
+}
+
+.fourArrowsImage {
+  position: absolute;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin-top: -1%;
+}
+
+.diamond2Image {
+  position: absolute;
+  display: flex;
+  height: 110%;
+  width: 110%;
+  margin-top: -5%;
+}
+
+.choiceButton {
+  border: 1px solid var(--set1-purple-brdr);
+  background: white !important;
+  align-items: center;
+  border-radius: 0.7vh;
+  padding: 0.1vh 0.5vh !important;
+  min-width: 3vh;
+  height: 2.2vh;
+  min-height: unset;
+  display: flex !important;
+  font-size: 1.5vh;
+}
+
+.sceneLeft {
+  display: flex;
+  position: absolute;
+  right: 55%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sceneRight {
+  display: flex;
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sceneTop {
+  display: flex;
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(-50%);
+}
+
+.sceneBottom {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(50%);
+}

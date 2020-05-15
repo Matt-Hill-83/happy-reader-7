@@ -23,6 +23,7 @@ import images from "../../images/images"
 import CrudMachine from "../CrudMachine/CrudMachine"
 import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import Utils from "../../Utils/Utils"
+import FrameSetUploader from "../FrameSetUploader/FrameSetUploader"
 
 class Frame extends Component {
   state = {
@@ -339,8 +340,14 @@ class Frame extends Component {
       return <ImageDisplay item={item} />
     }
 
+    console.log("frame", toJS(frame)) // zzz
+
     return (
       <div className={`${css.main}`}>
+        <FrameSetUploader
+          className={css.frameSetUploaderBox}
+          onSave={this.onChangeDialog}
+        />
         <div className={` ${css.scenesContainer}`}>
           {this.renderFrame({ allCharacters })}
           {false && (
