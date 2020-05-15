@@ -3,7 +3,7 @@
     "1": [
       {
         "Kat": "Well, if princesss have so much gold, can't they just buy any dress they want?",
-        "Liz": "Oh they do.  They sure go.  They buy every dress they want.",
+        "Liz": "Oh they do.  They sure do.  They buy every dress they want.",
         "Kat": "Sooooo.....what's the problem?",
         "Liz": "The problem... is that some dresses are not for sale."
       }
@@ -17,7 +17,7 @@
       },
       {
         "Kat": "Wow",
-        "Liz": "Watta-Lee-Achee.",
+        "Liz": "Watta-Lee-Achee...",
         "Kat": "Doo-Da-Lee-Doo",
         "Liz": "What?"
       },
@@ -26,9 +26,49 @@
         "Liz": "Watta-Lee-Achee guards the dress of Atacama.  It's the most dazzling dress in 7 kingdoms.",
         "Kat": "Holy Moly",
         "Liz": "It glimmers and it shimmers.  It shines like a thousand suns.",
-        "Kat": "We should go get it.",
-        "Liz": "Ummm...hello? Kat, are you even listening to me?  There is a man eating dragon guarding that dress!",
-        "Kat": "Doo-Da-Lee-Doo."
+        "Kat": "We should go get it.  And give it to the princesses!",
+        "Liz": "Ummm...hello? Kat, are you even listening to me?  There is a girl-eating dragon guarding that dress!",
+        "Kat": "Well we have something even better.  We have the Queen of Crazy.  Let's go find Rori."
+      }
+    ],
+    "frame01": [
+      {
+        "girl01Kat": "Rori, I'm gonna get real with you.  Do you like sparkles and glitter beyond your wildest dreams.",
+        "Rori01": "Will it help free the dragons from Mordeds evil spell?",
+        "girl01Kat": "Can you help us defeat the dragon and rescue the dress?",
+        "Rori01": "What class?",
+        "girl02Liz": "Um….K2? No, K1, actually both.",
+        "Rori01": "I wasn't asking your kindergarten class.  What class dragon it?",
+        "girl02Liz": "Oh, yeah right.",
+        "Rori01": "Never mind.  Let's see. Veronia sits to the East of Mount Dracmore where fire dragons roam still roam free.",
+        "Rori01": "And it's been three generations since Queen Tafeta was driven away.",
+        "Rori01": "I'd say we are looking at a class 2 fire dragon and apossible healing enchantment.",
+        "Rori01": "But if you can get me that bling your friend spoke of then we have a deal.",
+        "Rori01": "I will help you get the dress from Watta-Lee-Achee",
+        "Kat": "Doo-Da-Lee-Doo",
+        "Rori": "What?",
+        "Kat": "on nothing..",
+        "girl04Liz": ""
+      },
+      {
+        "girl01Kat": "",
+        "girl02Liz": "",
+        "girl03Kat": "",
+        "girl04Liz": ""
+      }
+    ],
+    "frame02": [
+      {
+        "girl01Kat": "",
+        "girl02Liz": "",
+        "girl03Kat": "",
+        "girl04Liz": ""
+      },
+      {
+        "girl01Kat": "",
+        "girl02Liz": "",
+        "girl03Kat": "",
+        "girl04Liz": ""
       }
     ]
   }

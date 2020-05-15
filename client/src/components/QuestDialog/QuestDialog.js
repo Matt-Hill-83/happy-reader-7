@@ -90,6 +90,7 @@ class QuestDialog extends React.Component {
         <div className={css.questPage}>
           <div className={css.header}>
             <span className={css.gameTitle}>Fashion Slayer</span>
+            <span className={css.gameTitle}>Liz Goes Nuts</span>
           </div>
           <div className={css.playerStatsSection}>
             <div className={css.playerStatsRow}>
@@ -101,7 +102,7 @@ class QuestDialog extends React.Component {
               <span className={css.playerStatsValue}>2</span>
             </div>
             <div className={css.playerStatsRow}>
-              <span className={css.playerStatsKey}>Quests Won</span>
+              <span className={css.playerStatsKey}>Dresses</span>
               <span className={css.playerStatsValue}>0</span>
             </div>
           </div>
