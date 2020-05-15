@@ -78,10 +78,10 @@
       {
         "Kat": "I remember the fairy princess thing.  I just thought you were just playing pretend.",
         "Liz": "No Kat, I have a real life too. Hey, now that I think of it, Merlinda has tons of gold!",
-        "Kat": "Hold on! Your cousin has gold?"
+        "Kat": "Hold on! Your cousin has gold?",
+        "Liz": "Yeah, tons of it.  Literally.  Boatloads of gold.  Total boatloads of gold."
       },
       {
-        "Liz": "Yeah, tons of it.  Literally.  Pantloads of gold. Boatloads.",
         "Kat": "Do you think she will give us some, so I can buy that cell phone case?",
         "Liz": "Ha!  Keep dreaming Liz.  The only thing Merlinda will give us gold for is dresses.",
         "Kat": "Dresses?  You mean like this purple thing I am wearing?"
@@ -92,8 +92,10 @@
     "1": [
       {
         "Liz": "Yup.  Merlinda and her friends are nutty for dresses.",
-        "Kat": "Why?",
-        "Liz": "Oh my gosh Kat, have you ever seen a fairy princess?",
+        "Kat": "Well, If they have gold, can't they just buy any dress they want?",
+        "Liz": "Oh they do.  They buy every single dress they ever want.",
+        "Kat": "No.",
+        "Liz": "Oh my gosh Kat, have you never seen a fairy princess?",
         "Kat": "No."
       },
       {
