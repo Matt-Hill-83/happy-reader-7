@@ -4,7 +4,7 @@
   display: flex;
   flex: 1 1;
   min-width: 23vw;
-  min-height: 40vh;
+  min-height: 70vh;
   margin-right: 1vh;
   margin-bottom: 1vh;
   border: 2px solid purple;
@@ -18,20 +18,13 @@
     padding: unset;
     margin-bottom: unset;
   }
-  [class*="Frame_line"] {
-    padding: unset;
-    margin-bottom: unset !important;
-  }
+  // [class*="Frame_line"] {
+  //   padding: unset;
+  //   margin-bottom: unset !important;
+  // }
   [class*="Character_headForBody"] {
     bottom: 0;
   }
-}
-
-.editingFrame {
-  // display: flex;
-  // position: relative;
-  // width: 100%;
-  // min-width: 290px;
 }
 
 .relativePositionedContent {
@@ -117,17 +110,20 @@
 }
 
 .wordsContainer {
+  padding: 1vh;
   bottom: unset;
   top: 0%;
   padding: unset;
-
   display: flex;
   z-index: 1;
   padding: 2%;
   width: 100%;
   flex-direction: column;
-  // border: 2px solid blue !important;
-  flex: 1;
+  flex: 1 1;
+  overflow: auto;
+  margin-bottom: 1vh;
+  border: 1px solid red !important;
+  padding: 1vh;
 }
 
 .narrative {
@@ -154,7 +150,7 @@
   position: relative;
 
   .textAreaWrapper {
-    // border: 1px solid green !important;
+    border: 1px solid green !important;
     display: flex;
   }
 
@@ -162,6 +158,12 @@
     margin-bottom: 2%;
     border-radius: 0.5rem;
     min-width: 90%;
+
+    padding: unset;
+    margin-bottom: unset !important;
+    padding: 0.5vh 1vh;
+    font-size: 1.5vh;
+    height: 9vh;
   }
 
   .character0,

@@ -24,6 +24,7 @@ import CrudMachine from "../CrudMachine/CrudMachine"
 import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import Utils from "../../Utils/Utils"
 import FrameSetUploader from "../FrameSetUploader/FrameSetUploader"
+import cx from "classnames"
 
 class Frame extends Component {
   state = {
@@ -143,9 +144,13 @@ class Frame extends Component {
       const { text, characterIndex } = line
 
       const className = `character${characterIndex}`
+      const characterName = line.character || ""
 
       return (
         <div className={css.textAreaWrapper}>
+          <div className={cx(css.characterNameContainer)}>
+            <span className={css.characterName}>{characterName}</span>
+          </div>
           <TextArea
             className={`${css.line} ${css[className]}`}
             // growVertically={true}

@@ -409,49 +409,56 @@ class WorldBuilder extends Component {
 
   importFrameSet = ({ newFrameSet }) => {
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
-
-    console.log("") // zzz
-    console.log("importFrameSet") // zzz
-    console.log("scenesGrid", toJS(scenesGrid)) // zzz
     const testScene = scenesGrid[0][0]
-    console.log("testScene", toJS(testScene)) // zzz
-
     const frames = testScene.frameSet.frames
-    console.log("frames", toJS(frames)) // zzz
     const dialog = frames[0].dialog
-    console.log("dialog", toJS(dialog)) // zzz
-
-    console.log("newFrameSet", toJS(newFrameSet)) // zzz
     const newScene = newFrameSet.scenes[0]
-    console.log("newScene", toJS(newScene)) // zzz
-
     const newDialogs = []
+    const newDialogSets = []
+    let tempDialogSet = []
 
-    newScene.map((item, index) => {
-      console.log("item", toJS(item)) // zzz
+    newScene.map((item) => {
       const itemObj = JSON.parse(item)
-      console.log("itemObj", toJS(itemObj)) // zzz
 
       const itemKey = Object.keys(itemObj)[0]
       const itemValue = itemObj[itemKey]
 
-      console.log("itemKey", itemKey) // zzz
-      console.log("itemValue", itemValue) // zzz
+      if (itemKey === "xxx") {
+        // if (tempDialogSet.length > 0) {
+        newDialogSets.push(tempDialogSet)
+        tempDialogSet = []
+        // }
+      } else {
+        console.log("itemKey", itemKey) // zzz
+        console.log("itemValue", itemValue) // zzz
 
-      const newDialog = {
-        text: itemValue,
-        characterIndex: 0,
-        character: itemKey,
+        let characterIndex = 0
+
+        if (itemKey === "liz2") {
+          characterIndex = 1
+        }
+
+        const newDialog = {
+          character: itemKey,
+          text: itemValue,
+          characterIndex,
+        }
+
+        tempDialogSet.push(newDialog)
       }
-      newDialogs.push(newDialog)
-      // item.test = 7
+      // newDialogs.push(newDialog)
     })
     console.log("newDialogs", toJS(newDialogs)) // zzz
+
+    console.log("newDialogSets", toJS(newDialogSets)) // zzz
+
+    const newFrames = []
+    newDialogs.forEach((item) => {})
     console.log("newDialogs[0]", toJS(newDialogs[0])) // zzz
     console.log("dialog[0]", toJS(dialog[0])) // zzz
     dialog.length = 0
-    // dialog.push([newDialogs[0], newDialogs[1]])
-    dialog.push(...newDialogs)
+    dialog.push(...newDialogSets[0])
+    // dialog.push(...newDialogs)
     // this.updateMap({})
   }
 
