@@ -452,13 +452,28 @@ class WorldBuilder extends Component {
 
   importFrameSet = ({ newFrameSet }) => {
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
-    const scene = scenesGrid[0][0]
-    const newScene = newFrameSet.scenes[0]
 
-    const newFrames = this.createNewDialogSets({ newScene })
+    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
+    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
+    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
+    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
+    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
+    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
+    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
+    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
+    const newScenes = []
+    const scenes = newFrameSet.scenes
 
-    // put the new frames in the scene
-    scene.frameSet.frames = newFrames
+    scenes.forEach((item) => {
+      const newScene = newFrameSet.scenes[0]
+      const newFrames = this.createNewDialogSets({ newScene })
+
+      // put the new frames in the scene
+      const scene = scenesGrid[0][0]
+      scene.frameSet.frames = newFrames
+    })
+
+    newFrameSet.scenes = newScenes
     this.updateMap({})
   }
 
