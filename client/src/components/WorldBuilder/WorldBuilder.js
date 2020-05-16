@@ -407,17 +407,9 @@ class WorldBuilder extends Component {
     return <div className={css.newGrid}>{gridRows}</div>
   }
 
-  importFrameSet = ({ newFrameSet }) => {
-    const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
-    const scene = scenesGrid[0][0]
-    const frames = scene.frameSet.frames
-    const dialog = frames[0].dialog
-
-    const newScene = newFrameSet.scenes[0]
+  createNewDialogSets = ({ newScene }) => {
     const newDialogSets = []
     let tempDialogSet = []
-    const newFrames = []
-
     newScene.map((item) => {
       const itemObj = JSON.parse(item)
 
@@ -445,6 +437,19 @@ class WorldBuilder extends Component {
         tempDialogSet.push(newDialog)
       }
     })
+
+    return newDialogSets
+  }
+
+  importFrameSet = ({ newFrameSet }) => {
+    const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
+    const scene = scenesGrid[0][0]
+    const frames = scene.frameSet.frames
+    const dialog = frames[0].dialog
+
+    const newScene = newFrameSet.scenes[0]
+    const newFrames = []
+    const newDialogSets = this.createNewDialogSets({ newScene })
 
     newDialogSets.forEach((item) => {
       const newFrame = Utils.getDummyFrame2()
