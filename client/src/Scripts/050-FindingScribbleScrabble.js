@@ -26,6 +26,8 @@ const test100 = {
       `{"kat": "Well at least he used the best Roman Battle Smash!"}`,
       `{"xxx": "   <------------------------>"}`,
       `{"xxx": "   <------------------------>"}`,
+    ],
+    [
       `{"liz2": "RBS 6 was the better."}`,
       `{"kat": "Oh please!  Are you still mad because all your battle boats burned up in the harbor?"}`,
       `{"liz2": "Sigh. Yeah I suppose.  I never should hae built them out of that pitchy timber."}`,

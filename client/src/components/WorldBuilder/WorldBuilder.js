@@ -444,24 +444,20 @@ class WorldBuilder extends Component {
   importFrameSet = ({ newFrameSet }) => {
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
     const scene = scenesGrid[0][0]
-    const frames = scene.frameSet.frames
-    const dialog = frames[0].dialog
-
     const newScene = newFrameSet.scenes[0]
-    const newFrames = []
-    const newDialogSets = this.createNewDialogSets({ newScene })
 
+    const newDialogSets = this.createNewDialogSets({ newScene })
+    const newFrames = []
+
+    // Create each of the new frames
     newDialogSets.forEach((item) => {
       const newFrame = Utils.getDummyFrame2()
       newFrame.dialog = item
       newFrames.push(newFrame)
     })
 
+    // put the new frames in the scene
     scene.frameSet.frames = newFrames
-    console.log("newDialogSets", toJS(newDialogSets)) // zzz
-
-    dialog.length = 0
-    dialog.push(...newDialogSets[0])
     this.updateMap({})
   }
 
