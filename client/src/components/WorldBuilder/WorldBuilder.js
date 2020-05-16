@@ -407,16 +407,60 @@ class WorldBuilder extends Component {
     return <div className={css.newGrid}>{gridRows}</div>
   }
 
+  getDummyFrame = () => {
+    return {
+      story: ["I am Kat"],
+      dialog: [
+        {
+          character: "kat",
+          text: "Oh no! look at that baby dragon over there.",
+          characterIndex: 0,
+        },
+        {
+          text:
+            "Oh my goodness!  Why is it all white? It looks like the person that drew this dragon didn’t even bother to color it in",
+          characterIndex: 1,
+          character: "liz2",
+        },
+        {
+          text: "Wow Matt... just... wow!  That is so sloppy... just... wow...",
+          characterIndex: 0,
+          character: "kat",
+        },
+        {
+          text:
+            "It’s that Splatoon game.  Remember when Matt and Charlie used to sit around and color?  Now they just stare at that screen and giggle like monkeys.",
+          characterIndex: 1,
+          character: "liz2",
+        },
+      ],
+      faces: [
+        {
+          face: "happy",
+          characterIndex: 1,
+          character: "liz2",
+        },
+        {
+          face: "kat-happy.9e02afab.png",
+          characterIndex: 0,
+          character: "kat",
+        },
+      ],
+      creatures: ["kat", "liz2"],
+    }
+  }
+
   importFrameSet = ({ newFrameSet }) => {
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
-    const testScene = scenesGrid[0][0]
-    const frames = testScene.frameSet.frames
+    const scene = scenesGrid[0][0]
+    const frames = scene.frameSet.frames
     const dialog = frames[0].dialog
+    console.log("frames[0]", toJS(frames[0])) // zzz
 
     const newScene = newFrameSet.scenes[0]
-    const newDialogs = []
     const newDialogSets = []
     let tempDialogSet = []
+    const newFrames = []
 
     newScene.map((item) => {
       const itemObj = JSON.parse(item)
@@ -430,8 +474,8 @@ class WorldBuilder extends Component {
           tempDialogSet = []
         }
       } else {
-        console.log("itemKey", itemKey) // zzz
-        console.log("itemValue", itemValue) // zzz
+        // console.log("itemKey", itemKey) // zzz
+        // console.log("itemValue", itemValue) // zzz
 
         let characterIndex = 0
 
@@ -449,7 +493,14 @@ class WorldBuilder extends Component {
       }
     })
 
-    console.log("newDialogs", toJS(newDialogs)) // zzz
+    newDialogSets.forEach((item) => {
+      const newFrame = this.getDummyFrame()
+      newFrame.dialog = item
+      newFrames.push(newFrame)
+    })
+
+    scene.frameSet.frames = newFrames
+    // // console.log("newDialogs", toJS(newDialogs)) // zzz
     console.log("newDialogSets", toJS(newDialogSets)) // zzz
 
     dialog.length = 0
