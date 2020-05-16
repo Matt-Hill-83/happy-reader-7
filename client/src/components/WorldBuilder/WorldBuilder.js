@@ -412,6 +412,7 @@ class WorldBuilder extends Component {
     const testScene = scenesGrid[0][0]
     const frames = testScene.frameSet.frames
     const dialog = frames[0].dialog
+
     const newScene = newFrameSet.scenes[0]
     const newDialogs = []
     const newDialogSets = []
@@ -424,10 +425,10 @@ class WorldBuilder extends Component {
       const itemValue = itemObj[itemKey]
 
       if (itemKey === "xxx") {
-        // if (tempDialogSet.length > 0) {
-        newDialogSets.push(tempDialogSet)
-        tempDialogSet = []
-        // }
+        if (tempDialogSet.length > 0) {
+          newDialogSets.push(tempDialogSet)
+          tempDialogSet = []
+        }
       } else {
         console.log("itemKey", itemKey) // zzz
         console.log("itemValue", itemValue) // zzz
@@ -446,20 +447,14 @@ class WorldBuilder extends Component {
 
         tempDialogSet.push(newDialog)
       }
-      // newDialogs.push(newDialog)
     })
-    console.log("newDialogs", toJS(newDialogs)) // zzz
 
+    console.log("newDialogs", toJS(newDialogs)) // zzz
     console.log("newDialogSets", toJS(newDialogSets)) // zzz
 
-    const newFrames = []
-    newDialogs.forEach((item) => {})
-    console.log("newDialogs[0]", toJS(newDialogs[0])) // zzz
-    console.log("dialog[0]", toJS(dialog[0])) // zzz
     dialog.length = 0
     dialog.push(...newDialogSets[0])
-    // dialog.push(...newDialogs)
-    // this.updateMap({})
+    this.updateMap({})
   }
 
   render() {
