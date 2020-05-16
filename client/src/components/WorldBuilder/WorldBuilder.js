@@ -449,7 +449,9 @@ class WorldBuilder extends Component {
     console.log("newDialogs", toJS(newDialogs)) // zzz
     console.log("newDialogs[0]", toJS(newDialogs[0])) // zzz
     console.log("dialog[0]", toJS(dialog[0])) // zzz
-    dialog[0] = newDialogs[0]
+    dialog.length = 0
+    // dialog.push([newDialogs[0], newDialogs[1]])
+    dialog.push(...newDialogs)
     // this.updateMap({})
   }
 
