@@ -6,22 +6,12 @@ import cx from "classnames"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
-
-import Images from "../../images/images"
-import css from "./FrameSetUploader.module.scss"
-import Utils from "../../Utils/Utils"
-import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import test100 from "../../Scripts/050-FindingScribbleScrabble"
 
-const scenes = [`{"kat": "Oh no! look at that baby dragon over there."}`]
-const dummyText = test100
-// const dummyText = {
-//   title: "Title Goes Here",
-//   scenes: [scenes],
-// }
+import css from "./FrameSetUploader.module.scss"
 
 class FrameSetUploader extends Component {
-  state = { text: JSON.stringify(dummyText) }
+  state = { text: JSON.stringify(test100) }
   // state = { text: `{"dummyData":5}` }
 
   onChangeDialog = ({ event, lineIndex }) => {

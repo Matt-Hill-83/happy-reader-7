@@ -432,16 +432,24 @@ class WorldBuilder extends Component {
       const itemObj = JSON.parse(item)
       console.log("itemObj", toJS(itemObj)) // zzz
 
+      const itemKey = Object.keys(itemObj)[0]
+      const itemValue = itemObj[itemKey]
+
+      console.log("itemKey", itemKey) // zzz
+      console.log("itemValue", itemValue) // zzz
+
       const newDialog = {
-        text: 5,
-        characterIndex: 5,
-        character: 5,
+        text: itemValue,
+        characterIndex: 0,
+        character: itemKey,
       }
       newDialogs.push(newDialog)
       // item.test = 7
     })
     console.log("newDialogs", toJS(newDialogs)) // zzz
-
+    console.log("newDialogs[0]", toJS(newDialogs[0])) // zzz
+    console.log("dialog[0]", toJS(dialog[0])) // zzz
+    dialog[0] = newDialogs[0]
     // this.updateMap({})
   }
 
