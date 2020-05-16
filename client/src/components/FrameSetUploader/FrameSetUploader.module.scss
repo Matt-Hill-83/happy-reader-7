@@ -1,20 +1,21 @@
 .uploadButton {
   display: flex;
 }
+
 .main {
   display: flex;
   position: absolute;
   flex-direction: column;
   z-index: 100;
   width: 20%;
-  height: 90%;
+  height: 7vh;
   background: none;
   border: none;
   border-radius: 9px;
   border: 5px solid green !important;
   background: white;
-  right: 3%;
-  top: 3%;
+  right: 17%;
+  top: 0%;
 }
 
 .jsonPaster {
