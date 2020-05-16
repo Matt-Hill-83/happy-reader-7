@@ -438,15 +438,6 @@ class WorldBuilder extends Component {
       }
     })
 
-    return newDialogSets
-  }
-
-  importFrameSet = ({ newFrameSet }) => {
-    const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
-    const scene = scenesGrid[0][0]
-    const newScene = newFrameSet.scenes[0]
-
-    const newDialogSets = this.createNewDialogSets({ newScene })
     const newFrames = []
 
     // Create each of the new frames
@@ -455,6 +446,16 @@ class WorldBuilder extends Component {
       newFrame.dialog = item
       newFrames.push(newFrame)
     })
+
+    return newFrames
+  }
+
+  importFrameSet = ({ newFrameSet }) => {
+    const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
+    const scene = scenesGrid[0][0]
+    const newScene = newFrameSet.scenes[0]
+
+    const newFrames = this.createNewDialogSets({ newScene })
 
     // put the new frames in the scene
     scene.frameSet.frames = newFrames
