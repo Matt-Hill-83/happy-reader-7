@@ -409,10 +409,38 @@ class WorldBuilder extends Component {
 
   importFrameSet = ({ newFrameSet }) => {
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
-    console.log("scenesGrid", toJS(scenesGrid)) // zzz
 
+    console.log("") // zzz
     console.log("importFrameSet") // zzz
+    console.log("scenesGrid", toJS(scenesGrid)) // zzz
+    const testScene = scenesGrid[0][0]
+    console.log("testScene", toJS(testScene)) // zzz
+
+    const frames = testScene.frameSet.frames
+    console.log("frames", toJS(frames)) // zzz
+    const dialog = frames[0].dialog
+    console.log("dialog", toJS(dialog)) // zzz
+
     console.log("newFrameSet", toJS(newFrameSet)) // zzz
+    const newScene = newFrameSet.scenes[0]
+    console.log("newScene", toJS(newScene)) // zzz
+
+    const newDialogs = []
+
+    newScene.map((item, index) => {
+      console.log("item", toJS(item)) // zzz
+      const itemObj = JSON.parse(item)
+      console.log("itemObj", toJS(itemObj)) // zzz
+
+      const newDialog = {
+        text: 5,
+        characterIndex: 5,
+        character: 5,
+      }
+      newDialogs.push(newDialog)
+      // item.test = 7
+    })
+    console.log("newDialogs", toJS(newDialogs)) // zzz
 
     // this.updateMap({})
   }
@@ -433,7 +461,7 @@ class WorldBuilder extends Component {
         <FrameSetUploader
           className={css.frameSetUploaderBox}
           onSave={this.onChangeDialog}
-          importJson={this.importFrameSet}
+          onImportJson={this.importFrameSet}
         />
         <InputGroup
           value={title}

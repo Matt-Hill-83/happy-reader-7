@@ -11,9 +11,18 @@ import Images from "../../images/images"
 import css from "./FrameSetUploader.module.scss"
 import Utils from "../../Utils/Utils"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
+import test100 from "../../Scripts/050-FindingScribbleScrabble"
+
+const scenes = [`{"kat": "Oh no! look at that baby dragon over there."}`]
+const dummyText = test100
+// const dummyText = {
+//   title: "Title Goes Here",
+//   scenes: [scenes],
+// }
 
 class FrameSetUploader extends Component {
-  state = { text: `{"dummyData":5}` }
+  state = { text: JSON.stringify(dummyText) }
+  // state = { text: `{"dummyData":5}` }
 
   onChangeDialog = ({ event, lineIndex }) => {
     const text = event.target.value
@@ -22,7 +31,7 @@ class FrameSetUploader extends Component {
   }
 
   renderButton = () => {
-    const { importJson } = this.props
+    const { onImportJson } = this.props
     const text = this.state.text
 
     let newFrameSet = { noData: 5 }
@@ -33,7 +42,7 @@ class FrameSetUploader extends Component {
 
     return (
       <Button
-        onClick={() => importJson({ newFrameSet })}
+        onClick={() => onImportJson({ newFrameSet })}
         className={cx(css.uploadButton)}
       >
         Upload JSON
@@ -42,8 +51,6 @@ class FrameSetUploader extends Component {
   }
 
   render = () => {
-    return null
-
     const {} = this.props
     const { text } = this.state
 
