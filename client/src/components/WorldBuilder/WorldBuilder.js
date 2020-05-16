@@ -28,10 +28,10 @@ import WorldPicker from "../WorldPicker/WorldPicker"
 import FrameSetUploader from "../FrameSetUploader/FrameSetUploader"
 
 const INITIAL_MAP_INDEX = 0
-// const NUM_ROWS_LOCATIONS_GRID = 2
-// const NUM_COLS_LOCATIONS_GRID = 3
-const NUM_ROWS_LOCATIONS_GRID = 5
-const NUM_COLS_LOCATIONS_GRID = 9
+const NUM_ROWS_LOCATIONS_GRID = 2
+const NUM_COLS_LOCATIONS_GRID = 3
+// const NUM_ROWS_LOCATIONS_GRID = 5
+// const NUM_COLS_LOCATIONS_GRID = 9
 
 class WorldBuilder extends Component {
   state = {
@@ -289,8 +289,9 @@ class WorldBuilder extends Component {
   // in the appropriate place.
   // Right now, CrudMachine simply mutates a reference and calls a generic update.
   // Which is why you can change an item, but you can't add an item.
-  renderNewGrid = () => {
+  renderScenesGrid = () => {
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
+    console.log("scenesGrid", toJS(scenesGrid)) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -406,6 +407,16 @@ class WorldBuilder extends Component {
     return <div className={css.newGrid}>{gridRows}</div>
   }
 
+  importFrameSet = ({ newFrameSet }) => {
+    const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
+    console.log("scenesGrid", toJS(scenesGrid)) // zzz
+
+    console.log("importFrameSet") // zzz
+    console.log("newFrameSet", toJS(newFrameSet)) // zzz
+
+    // this.updateMap({})
+  }
+
   render() {
     const { sceneToEdit, showFrameBuilder } = this.state
     const world = localStateStore.getWorldBuilderWorld()
@@ -422,6 +433,7 @@ class WorldBuilder extends Component {
         <FrameSetUploader
           className={css.frameSetUploaderBox}
           onSave={this.onChangeDialog}
+          importJson={this.importFrameSet}
         />
         <InputGroup
           value={title}
@@ -464,7 +476,7 @@ class WorldBuilder extends Component {
           </div>
         )}
         {!showFrameBuilder && (
-          <div className={css.content}>{this.renderNewGrid()}</div>
+          <div className={css.content}>{this.renderScenesGrid()}</div>
         )}
         {showFrameBuilder && (
           <div className={css.content2}>

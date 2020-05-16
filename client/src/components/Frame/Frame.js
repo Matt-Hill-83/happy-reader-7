@@ -215,11 +215,6 @@ class Frame extends Component {
       <div className={css.backgroundImageContainer}>
         <div className={css.backgroundGrass}>
           <img
-            className={`${css.backgroundGrassImage} ${css.isEditMode}`}
-            src={backgroundImageSky}
-            alt={`backgroundImage`}
-          />
-          <img
             className={`${css.backgroundGrassHill} ${css.isEditMode}`}
             src={backgroundImageHill}
             alt={`backgroundImage`}

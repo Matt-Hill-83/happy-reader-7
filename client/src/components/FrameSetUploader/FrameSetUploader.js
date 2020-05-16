@@ -13,25 +13,37 @@ import Utils from "../../Utils/Utils"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 
 class FrameSetUploader extends Component {
-  state = { text: `{"cat":5}` }
+  state = { text: `{"dummyData":5}` }
 
   onChangeDialog = ({ event, lineIndex }) => {
-    const newText = event.target.value
+    const text = event.target.value
 
-    this.setState({ text: newText })
+    this.setState({ text })
   }
 
   renderButton = () => {
     const { importJson } = this.props
+    const text = this.state.text
+
+    let newFrameSet = { noData: 5 }
+
+    if (text) {
+      newFrameSet = JSON.parse(text)
+    }
 
     return (
-      <Button onClick={importJson} className={cx(css.uploadButton)}>
+      <Button
+        onClick={() => importJson({ newFrameSet })}
+        className={cx(css.uploadButton)}
+      >
         Upload JSON
       </Button>
     )
   }
 
   render = () => {
+    return null
+
     const {} = this.props
     const { text } = this.state
 

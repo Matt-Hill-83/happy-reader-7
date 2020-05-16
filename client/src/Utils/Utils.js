@@ -302,9 +302,9 @@ export default class Utils {
     // defined by the 2 array position
 
     const condensedGrid = []
-    const mapBuilderGrid = localStateStore.getWorldBuilderScenesGrid()
+    const worldBuilderGrid = localStateStore.getWorldBuilderScenesGrid()
 
-    mapBuilderGrid.forEach((row) => {
+    worldBuilderGrid.forEach((row) => {
       row.forEach((col) => {
         if (col.location.name && col.location.name !== "blank") {
           condensedGrid.push(col)

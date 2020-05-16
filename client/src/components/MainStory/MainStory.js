@@ -13,7 +13,6 @@ import Utils from "../../Utils/Utils"
 import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 
 import css from "./MainStory.module.scss"
-import FrameSetUploader from "../FrameSetUploader/FrameSetUploader.js"
 
 let isProdRelease
 isProdRelease = false
@@ -175,12 +174,6 @@ class MainStory extends React.Component {
       <div className={`${css.main} ${className}`}>
         {showWorldBuilder && <WorldBuilder />}
 
-        {/* {!showWorldBuilder && (
-          <FrameSetUploader
-            className={css.frameSetUploaderBox}
-            onSave={this.onChangeDialog}
-          />
-        )} */}
         {this.renderButtons()}
         {!showWorldBuilder && (
           <StoryMode
