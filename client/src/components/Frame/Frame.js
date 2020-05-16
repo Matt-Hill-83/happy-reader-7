@@ -23,7 +23,6 @@ import images from "../../images/images"
 import CrudMachine from "../CrudMachine/CrudMachine"
 import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import Utils from "../../Utils/Utils"
-import FrameSetUploader from "../FrameSetUploader/FrameSetUploader"
 import cx from "classnames"
 
 class Frame extends Component {
@@ -212,23 +211,6 @@ class Frame extends Component {
     )
   }
 
-  renderBackground = () => {
-    const backgroundImageSky = Images.backgrounds["sky01"]
-    const backgroundImageHill = Images.backgrounds["hill01"]
-
-    return (
-      <div className={css.backgroundImageContainer}>
-        <div className={css.backgroundGrass}>
-          <img
-            className={`${css.backgroundGrassHill} ${css.isEditMode}`}
-            src={backgroundImageHill}
-            alt={`backgroundImage`}
-          />
-        </div>
-      </div>
-    )
-  }
-
   saveItems = async ({ items = [] }) => {
     const { frame } = this.state
     const { updateMap } = this.props
@@ -292,7 +274,6 @@ class Frame extends Component {
 
     return (
       <div className={`${css.scenes}`}>
-        {this.renderBackground()}
         {this.renderLocationImage()}
 
         <div className={css.relativePositionedContent}>
@@ -344,10 +325,6 @@ class Frame extends Component {
 
     return (
       <div className={`${css.main}`}>
-        {/* <FrameSetUploader
-          className={css.frameSetUploaderBox}
-          onSave={this.onChangeDialog}
-        /> */}
         <div className={` ${css.scenesContainer}`}>
           {this.renderFrame({ allCharacters })}
           {false && (
