@@ -345,8 +345,7 @@ class WorldBuilder extends Component {
 
         const locationPicker =
           scene.location.name === "blank"
-            ? // const locationPicker = this.state.generateRandomLocation
-              randomLocationGenerator
+            ? randomLocationGenerator
             : locationCrudMachine
 
         gridRow.push(
@@ -452,6 +451,12 @@ class WorldBuilder extends Component {
 
   importFrameSet = ({ newFrameSet }) => {
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
+    console.log("newFrameSet", toJS(newFrameSet)) // zzz
+    console.log("newFrameSet.scenes", toJS(newFrameSet.scenes)) // zzz
+
+    const newSceneFromObj = newFrameSet.scenes
+
+    newSceneFromObj.forEach((item) => {})
 
     // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
     // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
@@ -461,19 +466,26 @@ class WorldBuilder extends Component {
     // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
     // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
     // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
-    const newScenes = []
+    // const newScenes = []
     const scenes = newFrameSet.scenes
 
-    scenes.forEach((item) => {
-      const newScene = newFrameSet.scenes[0]
+    scenes.forEach((item, index) => {
+      const newScene = newFrameSet.scenes[index]
       const newFrames = this.createNewDialogSets({ newScene })
 
+      const virginScene = Utils.getBlankScene({
+        props: { location: { name: "car" } },
+      })
+
+      console.log("virginScene", toJS(virginScene)) // zzz
+      virginScene.frameSet.frames = newFrames
+      scenesGrid[0][index] = virginScene
       // put the new frames in the scene
-      const scene = scenesGrid[0][0]
-      scene.frameSet.frames = newFrames
+      // const existingScene = scenesGrid[0][index]
+      // existingScene.frameSet.frames = newFrames
     })
 
-    newFrameSet.scenes = newScenes
+    // newFrameSet.scenes = newScenes
     this.updateMap({})
   }
 

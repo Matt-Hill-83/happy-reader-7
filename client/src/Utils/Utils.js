@@ -266,7 +266,7 @@ export default class Utils {
       doorRight: { name: "doorYellow" },
       doorBottom: { name: "doorGreen" },
       characters: [{ name: "kat" }, { name: "liz2" }],
-      items: [{ name: "hat" }, { name: "pig" }],
+      items: [{ name: "cup" }, { name: "pig" }],
       frameSet: { frames: [dummyFrame] },
       id,
     }
