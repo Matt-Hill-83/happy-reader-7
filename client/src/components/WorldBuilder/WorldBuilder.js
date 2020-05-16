@@ -25,6 +25,7 @@ import Utils from "../../Utils/Utils"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import css from "./WorldBuilder.module.scss"
 import WorldPicker from "../WorldPicker/WorldPicker"
+import FrameSetUploader from "../FrameSetUploader/FrameSetUploader"
 
 const INITIAL_MAP_INDEX = 0
 // const NUM_ROWS_LOCATIONS_GRID = 2
@@ -408,6 +409,7 @@ class WorldBuilder extends Component {
   render() {
     const { sceneToEdit, showFrameBuilder } = this.state
     const world = localStateStore.getWorldBuilderWorld()
+    console.log("sceneToEdit", toJS(sceneToEdit)) // zzz
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle
@@ -417,6 +419,10 @@ class WorldBuilder extends Component {
 
     return (
       <div className={css.main}>
+        <FrameSetUploader
+          className={css.frameSetUploaderBox}
+          onSave={this.onChangeDialog}
+        />
         <InputGroup
           value={title}
           id="text-input"

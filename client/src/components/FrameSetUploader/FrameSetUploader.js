@@ -1,5 +1,6 @@
 import { Button, TextArea } from "@blueprintjs/core"
-import React, { Component } from "react"
+import React, { Component, useState } from "react"
+
 import cx from "classnames"
 
 import { observer } from "mobx-react"
@@ -15,10 +16,19 @@ class FrameSetUploader extends Component {
   state = { text: `{"cat":5}` }
 
   onChangeDialog = ({ event, lineIndex }) => {
-    const { text } = this.state
     const newText = event.target.value
 
     this.setState({ text: newText })
+  }
+
+  renderButton = () => {
+    const { importJson } = this.props
+
+    return (
+      <Button onClick={importJson} className={cx(css.uploadButton)}>
+        Upload JSON
+      </Button>
+    )
   }
 
   render = () => {
@@ -34,6 +44,7 @@ class FrameSetUploader extends Component {
 
     return (
       <div className={css.main}>
+        {this.renderButton()}
         <TextArea
           className={`${css.jsonPaster} }`}
           onChange={(event) => this.onChangeDialog({ event })}

@@ -344,10 +344,10 @@ class Frame extends Component {
 
     return (
       <div className={`${css.main}`}>
-        <FrameSetUploader
+        {/* <FrameSetUploader
           className={css.frameSetUploaderBox}
           onSave={this.onChangeDialog}
-        />
+        /> */}
         <div className={` ${css.scenesContainer}`}>
           {this.renderFrame({ allCharacters })}
           {false && (
