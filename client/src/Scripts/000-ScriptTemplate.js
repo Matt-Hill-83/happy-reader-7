@@ -1,5 +1,5 @@
 const template = {
-  status: "imported",
+  status: "not imported",
   title: "Title Goes Here",
   scenes: {
     home: {
