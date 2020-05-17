@@ -1,6 +1,6 @@
 const story100 = {
   status: "working on it",
-  title: "Title Goes Here",
+  title: "Liz Goes Crazy",
   scenes: {
     home: {
       dialog: [
