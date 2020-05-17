@@ -1,25 +1,28 @@
-const test100 = {
+const story050 = {
+  status: "imported",
   title: "Title Goes Here",
   scenes: {
-    log: {
+    home: {
       dialog: [
-        `{"location": "log"}`,
         `{"kat": "Oh no! look at that baby dragon over there."}`,
         `{"liz2": "Oh my goodness!  Why is it all white? It looks like the person that drew this dragon didn’t even bother to color it in"}`,
-        `{"kat": "Wow Matt... "}`,
-        `{"kat": "...just...wow!  That is so sloppy... just... wow..."}`,
-        `{"kat": "This is a whole new level of lazy... ."}`,
-        `{"kat": "...just... wow..."}`,
-        `{"liz2": "It’s that Splatoon game.  Remember when Matt and Charlie used to sit around and color?  Now they just stare at that screen and giggle like monkeys."}`,
+        `{"kat": "...wow Matt... "}`,
+        `{"kat": "...just...wow...  ...so sloppy..."}`,
+        `{"kat": "This is a new level of lazy... ."}`,
+        `{"liz2": "It’s that Splatoon game."}`,
+        `{"liz2": "Remember when matt used to sit and color?"}`,
+        `{"kat": "Now they just stare at that screen and giggle like monkeys."}`,
         `{"xxx": "   <------------------------>"}`,
         `{"xxx": "   <------------------------>"}`,
-        `{"Kat": "His art has really taken a back seat."}`,
-        `{"liz2": "Ha ha! I know right!  Look at my body. What am I even looking at here?"}`,
-        `{"kat": "Ha! Ha! I think he was too lazy to draw our bodies.  He just pasted the body of a different girl on to our heads."}`,
+        `{"Kat": "His art has gone down the drain."}`,
+        `{"liz2": "Ha ha! I know right!  Like, look at my body. What is going on here?"}`,
+        `{"kat": "Ha! Ha! I think he was too lazy to draw us bodies.  He just pasted the body of a different girl on to our heads."}`,
         `{"kat": "Oh wow, I totally see that now."}`,
-        `{"xxx": "   <------------------------>"}`,
-        `{"xxx": "   <------------------------>"}`,
-        `{"liz2": "Ha! Ha! We are the stars of this show, and we look like we got cut in half with safety scissors."}`,
+      ],
+    },
+    slide: {
+      dialog: [
+        `{"liz2": "Ha! Ha! We are the stars of this show, and we look like we got cut in half with safety."}`,
         `{"kat": "But hey, at least we didn’t end up like that witch."}`,
         `{"liz2": "Oh I know!  With the watermark on her hat?  Poor thing.  I saw her at the well trying to scrub it out."}`,
         `{"kat": "That mark's not going anywhere.  She's a J-PEG.  She’s gonna need a codec to get that out."}`,
@@ -28,13 +31,11 @@ const test100 = {
         `{"kat": "But hey, that new sky Matt put in is fresh!"}`,
         `{"liz2": "Yeah, and I love that new splash screen!"}`,
         `{"kat": "I think he stole it from Roman Battle Smash 5."}`,
-        `{"xxx": "   <------------------------>"}`,
-        `{"xxx": "   <------------------------>"}`,
+        `{"liz2": "I love Roman Battle Smash 5."}`,
       ],
     },
-    slide: {
+    log: {
       dialog: [
-        `{"location": "slide"}`,
         `{"liz2": "I have an idea.  We can help that dragon.  Do you have your crayons on you?"}`,
         `{"kat": "Um, hello Kat, I’m 6 years old. Of course I have my crayons on me! Oh wait, no, I forgot them. I’m thirsty."}`,
         `{"xxx": "   <------------------------>"}`,
@@ -57,4 +58,4 @@ const test100 = {
   },
 }
 
-export default test100
+export default story050

@@ -6,12 +6,12 @@ import cx from "classnames"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
-import test100 from "../../Scripts/050-FindingScribbleScrabble"
+import story050 from "../../Scripts/050-FindingScribbleScrabble"
 
 import css from "./FrameSetUploader.module.scss"
 
 class FrameSetUploader extends Component {
-  state = { text: JSON.stringify(test100) }
+  state = { text: JSON.stringify(story050) }
   // state = { text: `{"dummyData":5}` }
 
   onChangeDialog = ({ event, lineIndex }) => {
