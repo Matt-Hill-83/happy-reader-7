@@ -163,6 +163,7 @@ class MainStory extends React.Component {
     if (!activeWorld || !activeWorld.data || !activeWorld.data.title) {
       return null
     }
+    console.log("activeWorld.id", toJS(activeWorld.id)) // zzz
 
     const activeScene = localStateStore.getActiveScene()
     if (!activeScene) {

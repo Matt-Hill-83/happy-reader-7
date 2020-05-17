@@ -291,7 +291,6 @@ class WorldBuilder extends Component {
   // Which is why you can change an item, but you can't add an item.
   renderScenesGrid = () => {
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
-    console.log("scenesGrid", toJS(scenesGrid)) // zzz
 
     const itemRenderer = ({ item }) => {
       return <ImageDisplay item={item} />
@@ -461,7 +460,11 @@ class WorldBuilder extends Component {
     const scenes = newFrameSet.scenes
     const sceneNames = Object.keys(scenes)
 
+    console.log("sceneNames", toJS(sceneNames)) // zzz
+
     sceneNames.forEach((sceneName, index) => {
+      console.log("sceneName", sceneName) // zzz
+
       const newScene = scenes[sceneName]
       console.log("newScene", toJS(newScene)) // zzz
 
@@ -488,7 +491,6 @@ class WorldBuilder extends Component {
   render() {
     const { sceneToEdit, showFrameBuilder } = this.state
     const world = localStateStore.getWorldBuilderWorld()
-    console.log("sceneToEdit", toJS(sceneToEdit)) // zzz
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle
