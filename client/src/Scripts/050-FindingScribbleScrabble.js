@@ -14,7 +14,7 @@ const test100 = {
         `{"xxx": "   <------------------------>"}`,
         `{"xxx": "   <------------------------>"}`,
         `{"Kat": "His art has really taken a back seat."}`,
-        `{"liz2": "Ha ha! I know right!  Look at my body. What am I evem looking at here?"}`,
+        `{"liz2": "Ha ha! I know right!  Look at my body. What am I even looking at here?"}`,
         `{"kat": "Ha! Ha! I think he was too lazy to draw our bodies.  He just pasted the body of a different girl on to our heads."}`,
         `{"kat": "Oh wow, I totally see that now."}`,
         `{"xxx": "   <------------------------>"}`,

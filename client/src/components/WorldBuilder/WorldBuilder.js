@@ -406,10 +406,10 @@ class WorldBuilder extends Component {
     return <div className={css.newGrid}>{gridRows}</div>
   }
 
-  createNewDialogSets = ({ dialog }) => {
+  createNewFrames = ({ dialog }) => {
     const newDialogSets = []
     let tempDialogSet = []
-    dialog.map((item) => {
+    dialog.forEach((item) => {
       const itemObj = JSON.parse(item)
 
       const itemKey = Object.keys(itemObj)[0]
@@ -421,6 +421,10 @@ class WorldBuilder extends Component {
           tempDialogSet = []
         }
       } else {
+        if (itemKey === "location") {
+          return
+        }
+
         let characterIndex = 0
 
         if (itemKey === "liz2") {
@@ -456,15 +460,12 @@ class WorldBuilder extends Component {
 
     const scenes = newFrameSet.scenes
     const sceneNames = Object.keys(scenes)
-    console.log("sceneNames", sceneNames) // zzz
 
     sceneNames.forEach((sceneName, index) => {
       const newScene = scenes[sceneName]
       console.log("newScene", toJS(newScene)) // zzz
 
-      const newFrames = this.createNewDialogSets({ dialog: newScene.dialog })
-
-      const virginScene = Utils.getBlankScene({
+      const newBornScene = Utils.getBlankScene({
         props: {
           coordinates: {
             col: index,
@@ -474,9 +475,11 @@ class WorldBuilder extends Component {
         },
       })
 
-      console.log("virginScene", toJS(virginScene)) // zzz
-      virginScene.frameSet.frames = newFrames
-      scenesGrid[0][index] = virginScene
+      const newFrames = this.createNewFrames({ dialog: newScene.dialog })
+      newBornScene.frameSet.frames = newFrames
+
+      console.log("newBornScene", toJS(newBornScene)) // zzz
+      scenesGrid[0][index] = newBornScene
     })
 
     this.updateMap({})

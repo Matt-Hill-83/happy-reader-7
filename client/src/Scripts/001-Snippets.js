@@ -19,7 +19,7 @@ const test = {
     ]},
   outline: {
     "1": [
-      "2 - Kat goes crazy.",
+      "2 - Cooler than a pack of peppermints.",
       "2 --------------------------.",
       "2 Well, there's this new girl named Rori. She needs a place to hide her dragon.",
 
