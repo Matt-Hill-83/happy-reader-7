@@ -14,7 +14,7 @@ const story050 = {
         `{"kat": "Now they just stare at that screen and giggle like monkeys."}`,
         `{"xxx": "   <------------------------>"}`,
         `{"xxx": "   <------------------------>"}`,
-        `{"Kat": "His art has gone down the drain."}`,
+        `{"Kat": "His art has gone wonky."}`,
         `{"liz2": "Ha ha! I know right!  Like, look at my body. What is going on here?"}`,
         `{"kat": "Ha! Ha! I think he was too lazy to draw us bodies.  He just pasted the body of a different girl on to our heads."}`,
         `{"kat": "Oh wow, I totally see that now."}`,
