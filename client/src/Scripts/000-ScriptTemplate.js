@@ -8,6 +8,8 @@ const template = {
         `{"liz2": "Um hello?"}`,
         `{"xxx": "   <------------------------>"}`,
         `{"xxx": "   <------------------------>"}`,
+        `{"kat": "knock knock."}`,
+        `{"liz2": "Um hello?"}`,
       ],
     },
     slide: {
