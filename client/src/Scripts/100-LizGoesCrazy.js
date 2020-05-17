@@ -17,13 +17,14 @@ const story100 = {
         `{"liz2": "In that cloud.  Right there."}`,
         `{"liz2": "Look straight ahead. There is a kid staring right at us."}`,
         `{"kat": "...uhhh...Still no...."}`,
+
         `{"xxx": "   <------------------------>"}`,
         `{"xxx": "   <------------------------>"}`,
       ],
     },
     slide: {
       dialog: [
-        `{"liz2: And any time I say anything… anything at all, she says it at the same time."}`,
+        `{"liz2": "And any time I say anything… anything at all, she says it at the same time."}`,
         `{"kat": "Liz, I don’t see anything."}`,
         `{"liz2": "She’s doing it.  She’s doing it right now!"}`,
         `{"xxx": "   <------------------------>"}`,
@@ -32,10 +33,8 @@ const story100 = {
         `{"liz2": "I can see her!"}`,
         `{"kat": "Look, I’ve been doing crazy since I was this tall."}`,
         `{"kat": "So I kind of know crazy."}`,
-        `{"kat": "But the kind of crazy I do is more"}`,
-        `{"kat": "screaming-in-Target kind of crazy."}`,
-        `{"kat": "The kind of crazy you are doing now is more like "}`,
-        `{"kat": "be-buh-dee-dee-dee-dee kind of crazy."}`,
+        `{"kat": "But the kind of crazy I do is more screaming-in-Target kind of crazy."}`,
+        `{"kat": "The kind of crazy you are doing now is more like be-buh-dee-dee-dee-dee kind of crazy."}`,
         `{"xxx": "   <------------------------>"}`,
         `{"xxx": "   <------------------------>"}`,
       ],
@@ -44,7 +43,7 @@ const story100 = {
       dialog: [
         `{"kat": "Kat!  I am not crazy!"}`,
         `{"liz2": "Ok."}`,
-        `{"kat": "I am not regular crazy. I am not be-buh-dee-dee-dee-dee crazy."}`,
+        `{"kat": "I am not regular crazy! I am not be-buh-dee-dee-dee-dee crazy."}`,
         `{"liz2": "Ok"}`,
         `{"kat": "I am perfectly normal!"}`,
         `{"liz2": "Um….check please!"}`,
