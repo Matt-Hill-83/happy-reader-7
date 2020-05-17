@@ -406,10 +406,10 @@ class WorldBuilder extends Component {
     return <div className={css.newGrid}>{gridRows}</div>
   }
 
-  createNewDialogSets = ({ newScene }) => {
+  createNewDialogSets = ({ dialog }) => {
     const newDialogSets = []
     let tempDialogSet = []
-    newScene.map((item) => {
+    dialog.map((item) => {
       const itemObj = JSON.parse(item)
 
       const itemKey = Object.keys(itemObj)[0]
@@ -454,38 +454,31 @@ class WorldBuilder extends Component {
     console.log("newFrameSet", toJS(newFrameSet)) // zzz
     console.log("newFrameSet.scenes", toJS(newFrameSet.scenes)) // zzz
 
-    const newSceneFromObj = newFrameSet.scenes
-
-    newSceneFromObj.forEach((item) => {})
-
-    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
-    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
-    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
-    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
-    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
-    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
-    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
-    // I need to now create a dummy scene for each new scene, and use that, instead of grabbing the existing scene.
-    // const newScenes = []
     const scenes = newFrameSet.scenes
+    const sceneNames = Object.keys(scenes)
+    console.log("sceneNames", sceneNames) // zzz
 
-    scenes.forEach((item, index) => {
-      const newScene = newFrameSet.scenes[index]
-      const newFrames = this.createNewDialogSets({ newScene })
+    sceneNames.forEach((sceneName, index) => {
+      const newScene = scenes[sceneName]
+      console.log("newScene", toJS(newScene)) // zzz
+
+      const newFrames = this.createNewDialogSets({ dialog: newScene.dialog })
 
       const virginScene = Utils.getBlankScene({
-        props: { location: { name: "car" } },
+        props: {
+          coordinates: {
+            col: index,
+            row: 0,
+          },
+          location: { name: sceneName },
+        },
       })
 
       console.log("virginScene", toJS(virginScene)) // zzz
       virginScene.frameSet.frames = newFrames
       scenesGrid[0][index] = virginScene
-      // put the new frames in the scene
-      // const existingScene = scenesGrid[0][index]
-      // existingScene.frameSet.frames = newFrames
     })
 
-    // newFrameSet.scenes = newScenes
     this.updateMap({})
   }
 

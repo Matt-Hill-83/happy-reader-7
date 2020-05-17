@@ -154,11 +154,10 @@ class MainStory extends React.Component {
   }
 
   render() {
-    const test = localStateStore.getActiveFrameIndex()
-    console.log("test-----------------------------------", test) // zzz
-
     const { className } = this.props
     const activeWorld = localStateStore.getActiveWorld()
+    console.log("activeWorld", toJS(activeWorld)) // zzz
+
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
 
     if (!activeWorld || !activeWorld.data || !activeWorld.data.title) {

@@ -256,6 +256,7 @@ export default class Utils {
 
   static getBlankScene = ({ props }) => {
     const dummyFrame = this.getDummyFrame({ props: {} })
+    console.log("props", toJS(props)) // zzz
 
     const id = Utils.generateUuid()
 
@@ -337,6 +338,9 @@ export default class Utils {
 
   static getNeighbor = ({ coordinates, direction }) => {
     const grid = localStateStore.getActiveWorldGrid()
+    console.log("grid", toJS(grid)) // zzz
+
+    console.log("grid[0].coordinates", toJS(grid[0].coordinates)) // zzz
 
     const neighborPositions = {
       [Utils.neighborPositionsEnum.left]: {
