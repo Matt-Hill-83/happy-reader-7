@@ -78,8 +78,8 @@ class FrameViewer extends Component {
   }
 
   renderBackground = () => {
-    const backgroundImageSky = Images.backgrounds["sky01"]
     const backgroundImageHill = Images.backgrounds["hill01"]
+    const brokenMonitor01 = Images.backgrounds["brokenMonitor01"]
 
     return (
       <div className={css.backgroundImageContainer}>
@@ -90,6 +90,13 @@ class FrameViewer extends Component {
             alt={`backgroundImage`}
           />
         </div>
+        {/* <div className={css.backgroundGrass}>
+          <img
+            className={css.backgroundGrassImage}
+            src={brokenMonitor01}
+            alt={`backgroundImage`}
+          />
+        </div> */}
       </div>
     )
   }

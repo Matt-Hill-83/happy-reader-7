@@ -250,40 +250,6 @@
   }
 }
 
-.backgroundSky {
-  .backgroundSkyImage {
-    display: flex;
-  }
-}
-
-.backgroundImageContainer {
-  display: flex;
-  position: absolute;
-  height: 100%;
-}
-
-.backgroundGrass {
-  display: flex;
-
-  .backgroundGrassImage {
-    display: flex;
-    width: 100%;
-    height: auto;
-    max-width: unset;
-
-    &.isEditMode {
-      max-width: 730px;
-    }
-  }
-}
-
-.backgroundGrassHill {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  height: 72%;
-}
-
 .charactersContainer {
   display: flex;
   width: 100%;
