@@ -115,6 +115,7 @@ class FrameViewer extends Component {
     const { scene, frame } = this.props
     const { faces = [] } = frame
     if (!frame) return null
+    console.log("frame", toJS(frame)) // zzz
 
     const allCharacters =
       (scene.characters && scene.characters.map((item) => item.name)) || []

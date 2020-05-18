@@ -13,13 +13,13 @@ import { toJS } from "mobx"
 
 const { words, wordTypes } = myWords
 
-const youCreatureOptions = Utils.getWordsByType({
-  words: words,
-  type: wordTypes.creature,
-  returnName: true,
-})
+// const youCreatureOptions = Utils.getWordsByType({
+//   words: words,
+//   type: wordTypes.creature,
+//   returnName: true,
+// })
 
-const youCreatureDefault = youCreatureOptions[3]
+// const youCreatureDefault = youCreatureOptions[3]
 const youNameDefault = "Dobby"
 
 class MiniLocation extends React.Component {
@@ -47,7 +47,7 @@ class MiniLocation extends React.Component {
 
   changeDoor = ({ event }) => {
     this.setState({
-      youCreature: event.target.value,
+      // youCreature: event.target.value,
       name: event.target.name,
     })
   }
@@ -88,7 +88,7 @@ class MiniLocation extends React.Component {
   state = {
     doors: this.defaultDoorIsOpen,
     youName: youNameDefault,
-    youCreature: youCreatureDefault,
+    // youCreature: youCreatureDefault,
   }
 
   createDoorPickerOptions = () => {

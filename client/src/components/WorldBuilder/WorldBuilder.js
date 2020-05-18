@@ -408,6 +408,7 @@ class WorldBuilder extends Component {
   createNewFrames = ({ dialog }) => {
     const newDialogSets = []
     let tempDialogSet = []
+
     dialog.forEach((item) => {
       const itemObj = JSON.parse(item)
 
@@ -426,7 +427,7 @@ class WorldBuilder extends Component {
 
         let characterIndex = 0
 
-        if (itemKey === "liz2") {
+        if (itemKey === "liz2" || itemKey === "katyKooper") {
           characterIndex = 1
         }
 

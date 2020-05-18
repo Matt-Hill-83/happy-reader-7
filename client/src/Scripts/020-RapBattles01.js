@@ -1,10 +1,19 @@
 const story020 = {
+  baseConfig: {
+    characters: ["kat", "liz2", "katyKooper"],
+    items: ["hat", "cup", "log"],
+  },
+
   status: "not imported",
   title: "Rap Battle",
   scenes: {
     cave: {
+      config: {
+        characters: ["kat", "liz2", "katyKooper"],
+        items: ["hat", "cup", "log"],
+      },
       dialog: [
-        `{"katyKooper" : "Yay, we are just in time for the rap battle"}`,
+        `{"katyKooper" : "test ---Yay, we are just in time for the rap battle"}`,
         `{"kat" : "Cool!  What's a rap battle?"}`,
         `{"katyKooper" : "No clue."}`,
         `{"katyKooper" : "But I bet there are snacks!."}`,
@@ -44,7 +53,7 @@ const story020 = {
         `{"kat": "This morning, I literally, saw a frog on a log."}`,
         `{"katyKooper": "That was so funny!  You had me dying!"}`,
         `{"kat": "Katie!!!!"}`,
-        `{"kat": "Stop Talking! For the first time in your blooping life!"}`,
+        `{"kat": "Stop Talking! For the first time in your life!"}`,
         `{"kat": "Listen to me very closely.  There is no rap."}`,
 
         `{"newFrame" : "   <------------------------>"}`,
@@ -111,7 +120,6 @@ const story020 = {
         `{"kat" : "Like 2 sea gulls that got locked in-."}`,
         `{"kat" : "side a donut shop."}`,
         `{"troll02" : "Donut Shop!"}`,
-        `{"troll01" : "Troll like Donut!"}`,
 
         `{"newFrame" : "   <------------------------>"}`,
         `{"kat" : "They said this was a battle, but you Trolls don't bloop."}`,
