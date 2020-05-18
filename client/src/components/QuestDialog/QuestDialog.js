@@ -111,7 +111,7 @@ class QuestDialog extends React.Component {
           <div className={css.content}>
             <div className={css.questTable}>
               {tableHeader}
-              {mapList}
+              <div className={css.scrollArea}>{mapList}</div>
             </div>
           </div>
         </div>

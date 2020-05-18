@@ -78,11 +78,11 @@ const story020 = {
         `{"kat": ", "In an old thrown shoe."}`,
 
         `{"kat": ", "Oh and wait, here's a bone for your pooch too."}`,
-        `{"kat": ", "Little kid, you want a cone for your loose tooth?"}`,
+        `{"kat": ", "Little kid, you want a cold cone for your loose tooth?"}`,
         `{"kat": ", "And here's some goop for the hole in your boot where your big hairy toes poke through"}`,
         `{"kat": ", "And you two, you ever heard of youTube?"}`,
         `{"troll01" : "Nope."}`,
-        `{"troll01" : "Not me. It's too new."}`,
+        `{"troll02" : "We don't do it. It's too new."}`,
 
         `{"kat": ", "But buddy, Bloop Blip Blop Flip Flop, won't do"}`,
         `{"kat": ", "Not for Trolls like you."}`,
