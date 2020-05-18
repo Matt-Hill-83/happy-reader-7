@@ -74,6 +74,9 @@ class QuestDialog extends React.Component {
         <div className={cx(css.tableCell, css.status)}>Completed</div>
       </div>
     )
+    const showProdButtonLabel = this.state.showProd
+      ? "New Quests"
+      : "Old Quests"
 
     return (
       <Dialog
@@ -82,14 +85,12 @@ class QuestDialog extends React.Component {
         className={css.main}
       >
         <ButtonGroup className={css.buttonGroup} color="primary">
-          <Button onClick={this.toggleShowProd}>
-            {`Show Prod-${this.state.showProd}`}
-          </Button>
+          <Button onClick={this.toggleShowProd}>{showProdButtonLabel}</Button>
         </ButtonGroup>
         <img className={css.backgroundImage} src={cloudImage} alt={"imagex"} />
         <div className={css.questPage}>
           <div className={css.header}>
-            <span className={css.gameTitle}>Fashion Slayer</span>
+            {/* <span className={css.gameTitle}>Fashion Slayer</span> */}
             <span className={css.gameTitle}>Liz Goes Nuts</span>
           </div>
           <div className={css.playerStatsSection}>

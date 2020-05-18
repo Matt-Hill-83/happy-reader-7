@@ -19,6 +19,8 @@ const test = {
     ]},
   outline: {
     "1": [
+      "2 - One of the characters sees will.",
+      "2 - Ughhh, on my gosh, will you go already?.",
       "2 - Cooler than a pack of peppermints.",
       "2 --------------------------.",
       "2 Well, there's this new girl named Rori. She needs a place to hide her dragon.",

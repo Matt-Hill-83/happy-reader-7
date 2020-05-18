@@ -6,13 +6,16 @@ import cx from "classnames"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
-import story050 from "../../Scripts/050-FindingScribbleScrabble"
-import story100 from "../../Scripts/100-LizGoesCrazy"
-
 import css from "./FrameSetUploader.module.scss"
 
+import story050 from "../../Scripts/050-FindingScribbleScrabble"
+import story100 from "../../Scripts/100-LizGoesCrazy"
+import story110 from "../../Scripts/110-LizBloops"
+import story020 from "../../Scripts/020-RapBattles01"
+
 class FrameSetUploader extends Component {
-  state = { text: JSON.stringify(story100) }
+  state = { text: JSON.stringify(story020) }
+  // state = { text: JSON.stringify(story110) }
   // state = { text: JSON.stringify(story050) }
   // state = { text: `{"dummyData":5}` }
 

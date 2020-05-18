@@ -4,12 +4,12 @@ const story100 = {
   scenes: {
     home: {
       dialog: [
-        `{"kat": "Kat, I’m so glad you are here. Look!  Quick!  Look in the sky!"}`,
-        `{"liz2": "ok."}`,
-        `{"kat": "And just sort of stare right at that cloud."}`,
-        `{"kat": "But don’t stare with your eyes."}`,
-        `{"kat": "Just sort of stare with your brain, but in that direction."}`,
-        `{"liz2": "Um….ok."}`,
+        `{"liz2": "Kat, I’m so glad you are here. Look!  Quick!  Look in the sky!"}`,
+        `{"kat": "ok."}`,
+        `{"liz2": "And just sort of stare right at that cloud."}`,
+        `{"liz2": "But don’t stare with your eyes."}`,
+        `{"liz2": "Just sort of stare with your brain, but in that direction."}`,
+        `{"kat": "Um….ok."}`,
         `{"xxx": "   <------------------------>"}`,
         `{"xxx": "   <------------------------>"}`,
         `{"liz2": "Do you see the kid?  Do you see the kid up there?"}`,
@@ -50,7 +50,7 @@ const story100 = {
         `{"xxx": "   <------------------------>"}`,
         `{"xxx": "   <------------------------>"}`,
         `{"liz2": "I’m not crazy!"}`,
-        `{"kat": "ok."}`,
+        `{"kat": "Liz, you are going just a little bit hay wire!"}`,
         `{"liz2": "Just watch Kat!  I’ll make her talk."}`,
         `{"kat": "I can make her say anything I want."}`,
         `{"liz2": "ok."}`,

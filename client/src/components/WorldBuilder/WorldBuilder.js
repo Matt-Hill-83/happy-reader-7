@@ -28,10 +28,10 @@ import WorldPicker from "../WorldPicker/WorldPicker"
 import FrameSetUploader from "../FrameSetUploader/FrameSetUploader"
 
 const INITIAL_MAP_INDEX = 0
-const NUM_ROWS_LOCATIONS_GRID = 2
-const NUM_COLS_LOCATIONS_GRID = 3
-// const NUM_ROWS_LOCATIONS_GRID = 5
-// const NUM_COLS_LOCATIONS_GRID = 9
+// const NUM_ROWS_LOCATIONS_GRID = 2
+// const NUM_COLS_LOCATIONS_GRID = 3
+const NUM_ROWS_LOCATIONS_GRID = 5
+const NUM_COLS_LOCATIONS_GRID = 15
 
 class WorldBuilder extends Component {
   state = {
