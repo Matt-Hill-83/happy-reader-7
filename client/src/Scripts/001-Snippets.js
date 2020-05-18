@@ -1,23 +1,33 @@
 const test = {
   title: "Snippets",
   characters: {
-    "1": [
-      "2 - Inventor girl gang.",
-      "2 - Oliver Boliver Butt",
-    ]
+    "1": ["2 - Inventor girl gang.", "2 - Oliver Boliver Butt"],
   },
-
-
-
-
 
   gamePlay: {
     "1": [
-
       `kat: "Select a dress to wear on your first quest"`,
-
-    ]},
-  outline: {
+      `kat: "Pass the mystical scepter to to player A."`,
+      `kat: "Everyone needs to go get a mystcal scepter.  Or a spatula."`,
+    ],
+  },
+  rhymes: {
+    "1": [
+      `kat: "Oh, and you too!  Super! Don't forget to grab a bathing suit for katy kooper!"`,
+      `kat: "Oh, and you too!  Super! Don't forget to grab a bathing suit for katy kooper!"`,
+      `kat: "Katy thinks I'm funner than a barrel full of Monkeys, but I really miss liz."`,
+      `kat: "She's the kid."`,
+      `kat: "at the top of my wish list for Christmas."`,
+      `kat: "When I see her, think of all the mischeif you'd witness."`,
+    ],
+  },
+  bigIdeas: {
+    "1": [
+      `they go to baby land where it's baby bottles and diapers everywhere`,
+      `?`,
+    ],
+  },
+  littleStuff: {
     "1": [
       "2 - One of the characters sees will.",
       "2 - Ughhh, on my gosh, will you go already?.",
@@ -25,16 +35,10 @@ const test = {
       "2 --------------------------.",
       "2 Well, there's this new girl named Rori. She needs a place to hide her dragon.",
 
-      `kat: "Katy thinks I'm funner than a barrel full of Monkeys, but I really miss liz."`,
-      `kat: "She's the kid."`,
-      `kat: "at the top of my wish list for Christmas."`,
-      `kat: "When I see her, think of all the mischeif you'd witness."`,
       `kat: "going fetal in target."`,
       `kat: "I picked MLNOP and the letter 2."`,
       "2 - Rori's rampage.",
       "2 - nun joke.",
-      `kat: "Pass the mystical scepter to to player A."`,
-      `kat: "Everyone needs to go get a mystcal scepter.  Or a spatula."`,
       "2 - user tries to select super cool character, but gets the pig instead.",
       "2 - A message says: You do not have enough gold to select this.",
       "2 - A message says, You will be the pig in a wig hat.",
@@ -81,38 +85,7 @@ const test = {
   },
   snippets: {
     howDoYouWokkaWokka: [],
-    sometimesIjustliketomakenoises: [
-      [
-        "---------------------------------------------------->liz: bleepity, bling blang blip blop!",
-        "kat: Hi liz. What's up?",
-        "---------------------------------------------------->liz: Oh hey Kat, what's blanging?",
-  snippets: {
-    howDoYouWokkaWokka: [],
-    sometimesIjustliketomakenoises: [
-      [
-        "---------------------------------------------------->liz: bleepity, bling blang blip blop!",
-        "kat: Hi liz. What's up?",
-        "---------------------------------------------------->liz: Oh hey Kat, what's blanging?",
-        "Kat: Wow Liz! Did you make that up?",
-        "Liz: Yeah, I've been saying it all day. And check this out:",
-        "Liz: Blip Blorp Bloop. Piddle-dee. Widdle-dee. Diddle-dee. Plippity Ploppity plump.",
-        "kat: Whoa, cool.",
-        "---------------------------------------------------->liz: I know, right? Its called blooping.  I made that up too.",
 
-        "---------------------------------------------------->kat: chugga... chugga... chugga.. chugga.. choo-choo!",
-        "---------------------------------------------------->liz: rickety! rockety!",
-        "---------------------------------------------------->liz: pickety! pockety!",
-        "Kat:  +++++++",
-        "Kat:  +++++++",
-        "Kat:  +++++++",
-        "Kat:  +++++++",
-        "---------------------------------------------------->liz: Hey Kat, what's blangin ?",
-        "Kat: Dang liz, you're good at  ?",
-        "---------------------------------------------------->liz: ------------------- ?",
-        "Kat:  +++++++",
-        "Kat: Dimple Dee Doop!",
-      ],
-    ],
     lizSayings: [
       [
         "kat: Hi liz, what's crack-a-lackin?",
