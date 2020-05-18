@@ -139,6 +139,7 @@ import rock from "./backgrounds/rock-2.jpg"
 import four_arrows from "./backgrounds/four_arrows.png"
 import diamond2 from "./backgrounds/diamond2.png"
 import splashScreen01 from "./backgrounds/splash-screen-01.jpg"
+import brokenMonitor01 from "./backgrounds/brokenMonitor01.png"
 
 // buttons
 import leftArrow from "./backgrounds/left-arrow-01.png"
@@ -506,6 +507,7 @@ const backgrounds = {
   four_arrows,
   diamond2,
   splashScreen01,
+  brokenMonitor01,
   leftArrow,
   rightArrow,
   introBackground,

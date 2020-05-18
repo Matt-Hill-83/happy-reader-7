@@ -85,12 +85,7 @@ class FrameViewer extends Component {
       <div className={css.backgroundImageContainer}>
         <div className={css.backgroundGrass}>
           <img
-            className={`${css.backgroundGrassImage}`}
-            src={backgroundImageSky}
-            alt={`backgroundImage`}
-          />
-          <img
-            className={css.backgroundGrassHill}
+            className={css.backgroundGrassImage}
             src={backgroundImageHill}
             alt={`backgroundImage`}
           />
