@@ -74,6 +74,7 @@ class QuestDialog extends React.Component {
         <div className={cx(css.tableCell, css.status)}>Completed</div>
       </div>
     )
+
     const showProdButtonLabel = this.state.showProd
       ? "New Quests"
       : "Old Quests"
