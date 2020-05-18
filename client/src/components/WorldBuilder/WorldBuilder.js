@@ -414,7 +414,7 @@ class WorldBuilder extends Component {
       const itemKey = Object.keys(itemObj)[0]
       const itemValue = itemObj[itemKey]
 
-      if (itemKey === "xxx") {
+      if (itemKey === "newFrame") {
         if (tempDialogSet.length > 0) {
           newDialogSets.push(tempDialogSet)
           tempDialogSet = []

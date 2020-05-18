@@ -125,6 +125,7 @@ class MainStory extends React.Component {
 
   onChangeWorld = ({ mapId }) => {
     localStateStore.setActiveMapId(mapId)
+    this.setState({ showYouWinModal: false })
 
     this.initWorld()
   }

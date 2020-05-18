@@ -121,6 +121,12 @@ import charlie01 from "./creatures/charlie01.png"
 
 import blankDragon01 from "./creatures/blankDragon01.png"
 import scribbleDragon01 from "./creatures/scribbleDragon01.png"
+import katieKooper01 from "./creatures/katieKooper01.png"
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 //doors
 import doorGreen from "./doors/doorGreen.png"
@@ -451,6 +457,7 @@ const creatures = {
   charlie01,
   blankDragon01,
   scribbleDragon01,
+  katieKooper01,
 }
 
 const items = {

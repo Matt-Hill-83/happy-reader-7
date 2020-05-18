@@ -116,9 +116,9 @@ class QuestDialog extends React.Component {
           </div>
         </div>
 
-        <Button className={css.playButton} onClick={closeYouWinModal}>
+        {/* <Button className={css.playButton} onClick={closeYouWinModal}>
           PLAY
-        </Button>
+        </Button> */}
       </Dialog>
     )
   }
