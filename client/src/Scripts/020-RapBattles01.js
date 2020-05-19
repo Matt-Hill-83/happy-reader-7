@@ -9,14 +9,16 @@ const story020 = {
   scenes: {
     cave: {
       sceneConfig: {
-        items: ["flag", "cup"],
+        items: [],
         creatures: ["kat", "katieKooper01", "troll01", "troll02"],
         isStartScene: true,
         isEndScene: false,
       },
       frames: [
         {
-          frameConfig: {},
+          frameConfig: {
+            items: [],
+          },
           dialogs: [
             `{"katieKooper01" : "Yay, we are just in time for the rap battle"}`,
             `{"kat" : "Cool!  What's a rap battle?"}`,

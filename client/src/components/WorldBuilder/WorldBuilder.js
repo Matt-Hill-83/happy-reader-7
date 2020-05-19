@@ -434,6 +434,13 @@ class WorldBuilder extends Component {
       } else {
         configProps.creatures = sceneConfig.creatures
       }
+
+      if (frameConfig && frameConfig.items) {
+        configProps.items = frameConfig.items
+      } else {
+        configProps.items = sceneConfig.items
+      }
+
       console.log("configProps", toJS(configProps)) // zzz
 
       // and put the properties into the new Frame...
