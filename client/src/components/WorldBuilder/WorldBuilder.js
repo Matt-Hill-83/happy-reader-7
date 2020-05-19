@@ -405,55 +405,71 @@ class WorldBuilder extends Component {
     return <div className={css.newGrid}>{gridRows}</div>
   }
 
-  createNewFrames = ({ dialog }) => {
-    const newDialogSets = []
-    let tempDialogSet = []
+  createNewFrames = ({ newScene }) => {
+    const {
+      frames,
+      // sceneConfig: { characters, items },
+      sceneConfig,
+    } = newScene
 
-    dialog.forEach((item) => {
-      const itemObj = JSON.parse(item)
+    console.log("") // zzz
+    console.log("createNewFrames") // zzz
+    console.log("newScene", toJS(newScene)) // zzz
+    console.log("frames", toJS(frames)) // zzz
 
-      const itemKey = Object.keys(itemObj)[0]
-      const itemValue = itemObj[itemKey]
+    // arrays of frames extracted from the json which has an easy to write struture,
+    // but need to be transformed.
 
-      if (itemKey === "newFrame") {
-        if (tempDialogSet.length > 0) {
-          newDialogSets.push(tempDialogSet)
-          tempDialogSet = []
-        }
-      } else {
-        if (itemKey === "location") {
-          return
-        }
+    // For each frame...
+    const newFrames = frames.map((frame) => {
+      const {
+        dialogs,
+        frameConfig,
+        // frameConfig: { characters, items },
+      } = frame
 
-        let characterIndex = 0
+      // Turn each row of dialog into a json object...
+      const newDialogs = this.createNewDialogs({ dialogs })
 
-        if (itemKey === "liz2" || itemKey === "katyKooper") {
-          characterIndex = 1
-        }
+      // and put the properties into the new Frame...
+      const newFrame = Utils.getDummyFrame({
+        props: { ...frameConfig, dialog: newDialogs },
+      })
 
-        const newDialog = {
-          character: itemKey,
-          text: itemValue,
-          characterIndex,
-        }
-
-        tempDialogSet.push(newDialog)
-      }
+      return newFrame
     })
 
-    const newFrames = []
-
-    // Create each of the new frames
-    newDialogSets.forEach((item) => {
-      const newFrame = Utils.getDummyFrame2()
-      newFrame.dialog = item
-      newFrames.push(newFrame)
-    })
+    console.log("newFrames", toJS(newFrames)) // zzz
 
     return newFrames
   }
 
-  importFrameSet = ({ newFrameSet }) => {
+  createNewDialogs = ({ dialogs }) => {
+    const newDialogs = dialogs.map((sentenceObj) => {
+      let characterIndex = 0
+
+      const itemObj = JSON.parse(sentenceObj)
+      const itemKey = Object.keys(itemObj)[0]
+      const itemValue = itemObj[itemKey]
+
+      if (
+        itemKey === "liz2" ||
+        itemKey === "katyKooper" ||
+        itemKey === "troll01"
+      ) {
+        characterIndex = 1
+      }
+
+      return {
+        character: itemKey,
+        text: itemValue,
+        characterIndex,
+      }
+    })
+    return newDialogs
+  }
+
+  importScenesGrid = ({ newFrameSet }) => {
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
     console.log("newFrameSet", toJS(newFrameSet)) // zzz
     console.log("newFrameSet.scenes", toJS(newFrameSet.scenes)) // zzz
@@ -463,6 +479,7 @@ class WorldBuilder extends Component {
 
     console.log("sceneNames", toJS(sceneNames)) // zzz
 
+    // Create a new scene, for each scene
     sceneNames.forEach((sceneName, index) => {
       console.log("sceneName", sceneName) // zzz
 
@@ -479,7 +496,10 @@ class WorldBuilder extends Component {
         },
       })
 
-      const newFrames = this.createNewFrames({ dialog: newScene.dialog })
+      const newFrames = this.createNewFrames({
+        dialog: newScene.dialog,
+        newScene,
+      })
       newBornScene.frameSet.frames = newFrames
 
       console.log("newBornScene", toJS(newBornScene)) // zzz
@@ -504,7 +524,7 @@ class WorldBuilder extends Component {
         <FrameSetUploader
           className={css.frameSetUploaderBox}
           onSave={this.onChangeDialog}
-          onImportJson={this.importFrameSet}
+          onImportJson={this.importScenesGrid}
         />
         <InputGroup
           value={title}

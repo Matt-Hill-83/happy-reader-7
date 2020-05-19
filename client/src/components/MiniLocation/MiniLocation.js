@@ -177,7 +177,7 @@ class MiniLocation extends React.Component {
       scene,
       isActive,
       className,
-      showLabel = true,
+      // showLabel = true,
       id,
       isEditMode,
     } = this.props
@@ -193,7 +193,7 @@ class MiniLocation extends React.Component {
     const localClass = isActive ? css.activeClass : ""
     const locationImage = Images.all[locationName]
 
-    const rockImage = Images.backgrounds["rock"]
+    // const rockImage = Images.backgrounds["rock"]
     const cloudImage = Images.backgrounds["cloud"]
     const defaultDoorImage = Images.backgrounds["door"]
 

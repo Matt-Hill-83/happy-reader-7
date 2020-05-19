@@ -234,8 +234,8 @@ export default class Utils {
     return dummyFrame
   }
 
-  static getDummyFrame2 = () => {
-    return {
+  static getDummyFrame2 = ({ props = {} }) => {
+    const newFrame = {
       story: ["I am Kat"],
       dialog: [],
       faces: [
@@ -252,6 +252,10 @@ export default class Utils {
       ],
       creatures: ["kat", "liz2"],
     }
+
+    Object.assign(newFrame, props)
+
+    return newFrame
   }
 
   static getBlankScene = ({ props }) => {
