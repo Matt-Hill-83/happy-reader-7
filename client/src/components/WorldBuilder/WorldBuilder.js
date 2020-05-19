@@ -457,7 +457,7 @@ class WorldBuilder extends Component {
 
       if (
         itemKey === "liz2" ||
-        itemKey === "katyKooper" ||
+        itemKey === "katieKooper01" ||
         itemKey === "troll01"
       ) {
         characterIndex = 1

@@ -1,6 +1,6 @@
 const story020 = {
   baseConfig: {
-    characters: ["kat", "liz2", "katyKooper"],
+    characters: ["kat", "liz2", "katieKooper01"],
     items: ["hat", "cup", "log"],
   },
 
@@ -10,28 +10,28 @@ const story020 = {
     cave: {
       config: {
         items: ["hat", "cup", "log"],
-        creatures: ["kat", "liz2", "katyKooper"],
+        creatures: ["kat", "liz2", "katieKooper01"],
       },
       frames: [
         {
           dialogs: [
-            `{"katyKooper" : "Yay, we are just in time for the rap battle"}`,
+            `{"katieKooper01" : "Yay, we are just in time for the rap battle"}`,
             `{"kat" : "Cool!  What's a rap battle?"}`,
-            `{"katyKooper" : "I don't know."}`,
-            `{"katyKooper" : "Let's find out!."}`,
+            `{"katieKooper01" : "I don't know."}`,
+            `{"katieKooper01" : "Let's find out!."}`,
             `{"kat" : "The trolls don't know we stole the diamond.  So just act cool."}`,
-            `{"katyKooper" : "What!  We STOLE the DIAMOND? "}`,
+            `{"katieKooper01" : "What!  We STOLE the DIAMOND? "}`,
             `{"kat" : "Shhhhhhhhhhh! "}`,
           ],
         },
         {
           dialogs: [
-            `{"katyKooper" : "Yay, we are just in time for the rap battle"}`,
+            `{"katieKooper01" : "Yay, we are just in time for the rap battle"}`,
             `{"kat" : "Cool!  What's a rap battle?"}`,
-            `{"katyKooper" : "I don't know."}`,
-            `{"katyKooper" : "Let's find out!."}`,
+            `{"katieKooper01" : "I don't know."}`,
+            `{"katieKooper01" : "Let's find out!."}`,
             `{"kat" : "The trolls don't know we stole the diamond.  So just act cool."}`,
-            `{"katyKooper" : "What!  We STOLE the DIAMOND? "}`,
+            `{"katieKooper01" : "What!  We STOLE the DIAMOND? "}`,
             `{"kat" : "Shhhhhhhhhhh! "}`,
           ],
         },
@@ -40,14 +40,14 @@ const story020 = {
         //   `{"troll02" : "GIRLS TAKE DIAMOND?"}`,
         //   `{"troll01" : "TROLLS EAT GIRLS!"}`,
         //   `{"kat" : "What? Who? Me? Don't be silly.  We hate diamonds!"}`,
-        //   `{"katyKooper" : "What?  Kat, we love diamonds!!!"}`,
+        //   `{"katieKooper01" : "What?  Kat, we love diamonds!!!"}`,
         //   `{"kat" : "Katie!!!!"}`,
         // ],
         // [
         //   `{"kat" : "Oh hello trolls.  We are not here to take your diamond."}`,
         //   `{"kat" : "We are here for....ummmm.... uuuuuhhhh..."}`,
         //   `{"kat" : "Katie!  Think of something quick!"}`,
-        //   `{"katyKooper" : "We're here for the rap battle!"}`,
+        //   `{"katieKooper01" : "We're here for the rap battle!"}`,
         //   `{"kat" : "Good save Katie Kooper!"}`,
         //   `{"kat" : "My friend Kat here is going to show you trolls how to rap!"}`,
         //   `{"kat" : "Katie!!!!"}`,
@@ -56,15 +56,15 @@ const story020 = {
         //   `{"troll01" : "RAP BATTLE!"}`,
         //   `{"troll02" : "RAP BATTLE!"}`,
         //   `{"kat": "Katie?  What in the world are you getting us into."}`,
-        //   `{"katyKooper": "Chill out Kat, it's fine."}`,
-        //   `{"katyKooper": "Just do the rap about the frog on the log."}`,
+        //   `{"katieKooper01": "Chill out Kat, it's fine."}`,
+        //   `{"katieKooper01": "Just do the rap about the frog on the log."}`,
         //   `{"kat": "The frog on the log?!?"}`,
         //   `{"kat": "Yeah. The one you did this morning! That was hilarious!"}`,
         // ],
         // [
         //   `{"kat": "Ugggghhh!  KatyKooper! That was not a rap!"}`,
         //   `{"kat": "This morning, I literally, saw a frog on a log."}`,
-        //   `{"katyKooper": "That was so funny!  You had me dying!"}`,
+        //   `{"katieKooper01": "That was so funny!  You had me dying!"}`,
         //   `{"kat": "Katie!!!!"}`,
         //   `{"kat": "Stop Talking! For the first time in your life!"}`,
         //   `{"kat": "Listen to me very closely.  There is no rap."}`,
@@ -167,12 +167,12 @@ const story020 = {
     //       `{"troll01" : "Hope you have a nice trip!"}`,
     //     ],
     //     [
-    //       `{"katyKooper" : "Kat, you won the Rap battle!"}`,
+    //       `{"katieKooper01" : "Kat, you won the Rap battle!"}`,
     //       `{"kat" : "What's a rap battle?"}`,
     //       `{"kat" : "Um.... Never mind.  Let's go find Liz!"}`,
     //       `{"troll01" : "Baby troll wants to come with you."}`,
     //       `{"kat" : "Oh dear.  Oh no no no no no... come on Matt!"}`,
-    //       `{"katyKooper" : "Cuuu----uuuute! OK!"}`,
+    //       `{"katieKooper01" : "Cuuu----uuuute! OK!"}`,
     //       `{"kat" : "Think about pretty dresses Katie.  Pretty Dresses!"}`,
     //     ],
     //     [

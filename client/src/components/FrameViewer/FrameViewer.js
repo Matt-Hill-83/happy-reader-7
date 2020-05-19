@@ -117,16 +117,18 @@ class FrameViewer extends Component {
     if (!frame) return null
     console.log("frame", toJS(frame)) // zzz
 
-    const allCharacters =
-      (scene.characters && scene.characters.map((item) => item.name)) || []
+    const allCharacters = frame.creatures || []
+
+    // const allCharacters =
+    //   (scene.characters && scene.characters.map((item) => item.name)) || []
 
     const allItems = (scene.items && scene.items.map((item) => item.name)) || []
     console.log("allItems", toJS(allItems)) // zzz
-    console.log("allCharacters", toJS(allCharacters)) // zzz
 
     // temp code DELETE ME!!! (start)
     allCharacters.push(...allItems)
     // temp code DELETE ME!!! (end)
+    console.log("allCharacters", toJS(allCharacters)) // zzz
 
     return allCharacters.map((character, index) => {
       const mood = this.getMood({ name: character, faces })
