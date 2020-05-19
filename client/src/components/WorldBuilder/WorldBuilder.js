@@ -422,19 +422,23 @@ class WorldBuilder extends Component {
 
     // For each frame...
     const newFrames = frames.map((frame) => {
-      const {
-        dialogs,
-        frameConfig,
-        // frameConfig: { characters, items },
-      } = frame
+      const { dialogs, frameConfig } = frame
       console.log("frameConfig", toJS(frameConfig)) // zzz
 
       // Turn each row of dialog into a json object...
       const newDialogs = this.createNewDialogs({ dialogs })
 
+      const configProps = {}
+      if (frameConfig && frameConfig.creatures) {
+        configProps.creatures = frameConfig.creatures
+      } else {
+        configProps.creatures = sceneConfig.creatures
+      }
+      console.log("configProps", toJS(configProps)) // zzz
+
       // and put the properties into the new Frame...
       const newFrame = Utils.getDummyFrame({
-        props: { creatures: null, ...frameConfig, dialog: newDialogs },
+        props: { ...configProps, dialog: newDialogs },
       })
 
       console.log("newFrame", toJS(newFrame)) // zzz
