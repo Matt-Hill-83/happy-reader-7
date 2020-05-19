@@ -434,7 +434,7 @@ class WorldBuilder extends Component {
 
       // and put the properties into the new Frame...
       const newFrame = Utils.getDummyFrame({
-        props: { ...frameConfig, dialog: newDialogs },
+        props: { creatures: null, ...frameConfig, dialog: newDialogs },
       })
 
       console.log("newFrame", toJS(newFrame)) // zzz
@@ -498,6 +498,9 @@ class WorldBuilder extends Component {
           location: { name: sceneName },
         },
       })
+      if (newScene.sceneConfig) {
+        Object.assign(newBornScene, newScene.sceneConfig)
+      }
 
       const newFrames = this.createNewFrames({
         dialog: newScene.dialog,
