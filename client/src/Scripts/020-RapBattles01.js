@@ -1,6 +1,6 @@
 const story020 = {
   baseConfig: {
-    characters: ["kat", "liz2", "katieKooper01"],
+    characters: ["kat", "katieKooper01"],
     items: ["hat", "cup", "log"],
   },
 
@@ -10,15 +10,15 @@ const story020 = {
     cave: {
       sceneConfig: {
         items: ["hat", "cup", "log"],
-        creatures: ["kat", "liz2", "katieKooper01"],
+        creatures: ["kat", "katieKooper01"],
         isStartScene: true,
         isEndScene: false,
       },
       frames: [
         {
           frameConfig: {
-            items: ["hat", "cup", "log"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            items: ["cap", "bag", "flag"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"katieKooper01" : "Yay, we are just in time for the rap battle"}`,
@@ -33,7 +33,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["cap", "bag", "flag"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"troll01" : "LOOK GIRLS!"}`,
@@ -47,7 +47,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["cap", "bag", "flag"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"kat" : "Oh hello trolls.  We are not here to take your diamond."}`,
@@ -62,7 +62,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["cap", "bag", "flag"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"troll01" : "RAP BATTLE!"}`,
@@ -77,7 +77,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["cap", "bag", "flag"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"kat": "Ugggghhh!  katieKooper01! That was not a rap!"}`,
@@ -91,7 +91,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["cap", "bag", "flag"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"kat": "This morning..."}`,
@@ -108,7 +108,7 @@ const story020 = {
     bog: {
       sceneConfig: {
         items: ["hat", "cup", "log"],
-        creatures: ["kat", "liz2", "katieKooper01"],
+        creatures: ["kat", "katieKooper01"],
         isStartScene: true,
         isEndScene: false,
       },
@@ -116,7 +116,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["hat", "cup", "log"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"katieKooper01" : "Yay, we are just in time for the rap battle"}`,
@@ -131,7 +131,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["cap", "bag", "flag"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"troll01" : "LOOK GIRLS!"}`,
@@ -145,7 +145,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["cap", "bag", "flag"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"kat" : "Oh hello trolls.  We are not here to take your diamond."}`,
@@ -160,7 +160,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["cap", "bag", "flag"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"troll01" : "RAP BATTLE!"}`,
@@ -175,7 +175,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["cap", "bag", "flag"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"kat": "Ugggghhh!  katieKooper01! That was not a rap!"}`,
@@ -189,7 +189,7 @@ const story020 = {
         {
           frameConfig: {
             items: ["cap", "bag", "flag"],
-            creatures: ["kat", "liz2", "katieKooper01"],
+            creatures: ["kat", "katieKooper01"],
           },
           dialogs: [
             `{"kat": "This morning..."}`,
