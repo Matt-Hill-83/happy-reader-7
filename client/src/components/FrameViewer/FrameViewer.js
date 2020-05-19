@@ -117,10 +117,13 @@ class FrameViewer extends Component {
     if (!frame) return null
     console.log("frame", toJS(frame)) // zzz
 
-    const allCharacters = frame.creatures || []
-
-    // const allCharacters =
-    //   (scene.characters && scene.characters.map((item) => item.name)) || []
+    let allCharacters = []
+    if (frame.creatures && frame.creatures.length > 0) {
+      allCharacters = frame.creatures || []
+    } else {
+      allCharacters =
+        (scene.characters && scene.characters.map((item) => item.name)) || []
+    }
 
     const allItems = (scene.items && scene.items.map((item) => item.name)) || []
     console.log("allItems", toJS(allItems)) // zzz
