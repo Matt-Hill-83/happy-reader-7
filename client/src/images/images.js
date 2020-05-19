@@ -63,6 +63,8 @@ import mermaid from "./creatures/mermaid.png"
 import monster from "./creatures/monster.png"
 import pig from "./creatures/pig.png"
 import troll from "./creatures/troll-01.png"
+import troll01 from "./creatures/troll-01.png"
+import troll02 from "./creatures/troll-01.png"
 import unicorn from "./creatures/unicorn-1.png"
 import wizard from "./creatures/wizard.png"
 import zombie from "./creatures/zombie.png"
@@ -70,10 +72,8 @@ import kat from "./rigged-girls/kat/kat-normal.png"
 import gonzay from "./rigged-girls/gonzay/gonzay-pt-mode.png"
 import star from "./creatures/star.png"
 import end from "./creatures/end.png"
-import poop from "./creatures/poop.png"
 import start from "./creatures/start.png"
 import rori from "./creatures/rori-front-01.png"
-import random from "./creatures/random.png"
 
 import ant from "./creatures/ant.png"
 import bat from "./creatures/bat.png"
@@ -418,9 +418,10 @@ const creatures = {
   pig,
   pug,
   rori,
-  random,
   rat,
   troll,
+  troll01,
+  troll02,
   unicorn,
   wizard,
 
@@ -481,7 +482,6 @@ const items = {
   mug,
   pan,
   pin,
-  poop,
   rori,
   rag,
   tag,
