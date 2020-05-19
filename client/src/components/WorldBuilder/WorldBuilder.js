@@ -427,6 +427,7 @@ class WorldBuilder extends Component {
         frameConfig,
         // frameConfig: { characters, items },
       } = frame
+      console.log("frameConfig", toJS(frameConfig)) // zzz
 
       // Turn each row of dialog into a json object...
       const newDialogs = this.createNewDialogs({ dialogs })
@@ -435,6 +436,8 @@ class WorldBuilder extends Component {
       const newFrame = Utils.getDummyFrame({
         props: { ...frameConfig, dialog: newDialogs },
       })
+
+      console.log("newFrame", toJS(newFrame)) // zzz
 
       return newFrame
     })

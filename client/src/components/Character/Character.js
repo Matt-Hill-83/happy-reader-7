@@ -18,7 +18,8 @@ class Character extends Component {
 
     // if there are no posable images
     if (!images) {
-      const image = Images.creatures[name]
+      const image = Images.all[name]
+      // const image = Images.creatures[name]
       if (!image) return null
       return (
         <div className={css.characterContainer}>
