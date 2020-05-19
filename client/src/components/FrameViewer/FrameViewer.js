@@ -119,7 +119,7 @@ class FrameViewer extends Component {
 
     let allCharacters = []
     if (frame.creatures && frame.creatures.length > 0) {
-      allCharacters = frame.creatures || []
+      allCharacters = [...frame.creatures]
     } else {
       allCharacters =
         (scene.characters && scene.characters.map((item) => item.name)) || []
