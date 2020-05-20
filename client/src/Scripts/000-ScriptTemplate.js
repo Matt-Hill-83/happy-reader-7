@@ -1,31 +1,60 @@
 const template = {
+  worldConfig: {
+    characters: ["kat", "katieKooper01"],
+    items: ["flag", "cup"],
+  },
+
   status: "not imported",
-  title: "Title Goes Here",
+  title: "No Title",
   scenes: {
-    home: {
-      dialog: [
-        `{"kat": "knock knock."}`,
-        `{"liz2": "Um hello?"}`,
-        `{"newFrame": "   <------------------------>"}`,
-        `{"newFrame": "   <------------------------>"}`,
-        `{"kat": "knock knock."}`,
-        `{"liz2": "Um hello?"}`,
+    cave: {
+      sceneConfig: {
+        items: [],
+        creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+        isStartScene: true,
+        isEndScene: false,
+      },
+      frames: [
+        {
+          frameConfig: {
+            items: [],
+          },
+          dialogs: [
+            `{"katieKooper01" ++++++++++++++++++++++++++++++++"}`,
+            `{"kat" : "++++++++++++++++++++++++++++++++"}`,
+          ],
+        },
+        {
+          frameConfig: {},
+          dialogs: [
+            `{"troll01" : "LOOK GIRLS!"}`,
+            `{"troll02" : "GIRLS TAKE DIAMOND?"}`,
+          ],
+        },
       ],
     },
-    slide: {
-      dialog: [
-        `{"kat": "knock knock."}`,
-        `{"liz2": "Um hello?"}`,
-        `{"newFrame": "   <------------------------>"}`,
-        `{"newFrame": "   <------------------------>"}`,
-      ],
-    },
-    log: {
-      dialog: [
-        `{"kat": "knock knock."}`,
-        `{"liz2": "Um hello?"}`,
-        `{"newFrame": "   <------------------------>"}`,
-        `{"newFrame": "   <------------------------>"}`,
+    bog: {
+      sceneConfig: {
+        items: ["flag", "cup"],
+        creatures: ["kat", "katieKooper01"],
+        isStartScene: true,
+        isEndScene: false,
+      },
+      frames: [
+        {
+          frameConfig: {},
+          dialogs: [
+            `{"kat" : "++++++++++++++++++++++++++++++++"}`,
+            `{"troll01" : "FROG ON LOG!"}`,
+          ],
+        },
+        {
+          frameConfig: {},
+          dialogs: [
+            `{"kat" : "++++++++++++++++++++++++++++++++"}`,
+            `{"troll01" : "TROLL LIKE BOG!"}`,
+          ],
+        },
       ],
     },
   },
