@@ -186,11 +186,17 @@
     overflow: hidden;
   }
 
+  .isOdd,
   .isEven {
-    border: 10px solid #ff005c !important;
+    border: 2px solid;
+  }
+
+  .isEven {
+    --border-color: #ff005c;
+    border-color: var(--border-color);
 
     [class*="FrameViewer_characterNameContainer_"] {
-      border-right: 1px solid #ff005c !important;
+      border-right: 2px solid var(--border-color);
     }
     [class*="WordGroup_sentence__"] {
       justify-content: flex-start;
@@ -198,10 +204,14 @@
   }
 
   .isOdd {
-    border: 1px solid #ff005c !important;
+    --border-color: orange;
+    border-color: var(--border-color);
+    justify-content: flex-end;
+    margin-left: auto;
 
     [class*="FrameViewer_characterNameContainer_"] {
-      border-left: 1px solid #ff005c !important;
+      border-left: 2px solid #ff005c;
+      border-color: var(--border-color);
     }
     [class*="WordGroup_sentence__"] {
       justify-content: flex-end;
@@ -209,47 +219,49 @@
   }
 
   .character0 {
+    --border-color: #ff005c;
+
+    border-color: var(--border-color);
     background: #ffcee685;
-    border: 1px solid #ff005c !important;
 
     [class*="FrameViewer_characterNameContainer_"] {
       background: #ffb5ce;
-      border-right: 1px solid #ff005c !important;
+      border-color: var(--border-color);
     }
   }
 
   .character1 {
-    border: 1px solid orange !important;
+    --border-color: orange;
+    border-color: var(--border-color);
     background: #f7e59a5e;
-    margin-left: auto;
 
     [class*="FrameViewer_characterNameContainer_"] {
+      border-color: var(--border-color);
       background: #fff1b9;
-      border-left: 1px solid orange !important;
-      margin-left: auto;
       display: flex;
     }
   }
 
   .character2 {
-    border: 1px solid lightseagreen !important;
+    --border-color: lightseagreen;
+    border-color: var(--border-color);
     background: #d4ffea;
-    margin-left: auto;
 
     [class*="FrameViewer_characterNameContainer_"] {
       background: #a2daa2;
-      border-right: 1px solid darkmagenta !important;
+      border-color: var(--border-color);
     }
   }
 
   .character3 {
-    border: 1px solid #cbcbff !important;
+    --border-color: #cbcbff;
+    border-color: var(--border-color);
     background: #e8f2ff;
-    margin-left: auto;
 
     [class*="FrameViewer_characterNameContainer_"] {
       background: #c0d8ff;
-      border-right: 1px solid darkmagenta !important;
+      border-color: var(--border-color);
+      // border-right: 1px solid darkmagenta !important;
     }
   }
 }
