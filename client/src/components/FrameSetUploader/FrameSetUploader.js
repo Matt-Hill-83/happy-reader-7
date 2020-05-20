@@ -16,7 +16,7 @@ import story110 from "../../Scripts/110-LizBloops"
 
 class FrameSetUploader extends Component {
   state = { text: JSON.stringify(story010) }
-  state = { text: JSON.stringify(story020) }
+  // state = { text: JSON.stringify(story020) }
   // state = { text: JSON.stringify(story110) }
   // state = { text: JSON.stringify(story050) }
   // state = { text: `{"dummyData":5}` }
