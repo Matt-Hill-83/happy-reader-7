@@ -153,6 +153,7 @@ const story020 = {
         {
           frameConfig: {},
           dialogs: [
+            `{"kat" : "My parents groan a lot."}`,
             `{"kat" : "You hear that rumble?  That's my tummy from the soda pop."}`,
             `{"kat" : "Call the doc!"}`,
             `{"kat" : "So we can ask if I'll explode or not!"}`,

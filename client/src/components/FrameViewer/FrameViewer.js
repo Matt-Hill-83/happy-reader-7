@@ -191,10 +191,10 @@ class FrameViewer extends Component {
 
   renderArrowNavigator = () => {
     const activeScene = localStateStore.getActiveScene()
-    const { updateActiveScene, openYouWinModal } = this.props
+    const { isLastFrame, updateActiveScene, openYouWinModal } = this.props
     const { isEndScene } = activeScene
 
-    if (isEndScene) {
+    if (isEndScene && isLastFrame) {
       return (
         <Button onClick={openYouWinModal} className={css.newGameButton}>
           New Game
