@@ -33,9 +33,11 @@ const test = {
       `"`,
       `You trolls stooped to a low that was new`,
       `When you sold me the goop for my shoe`,
-      `for the hole where the toes poke through`,
+      `for the hole where my toes poke through`,
       `quick get the alphabet blocks`,
       `Buy me a pony pop!`,
+      `How a bout it!`,
+      `You wanna take a stab at it?`,
       `"`,
     ],
   },
@@ -75,11 +77,9 @@ const test = {
   littleStuff: {
     "1": [
       `{"kat": "That was pretty fun, yelling at those trolls!}`,
-      `{"katie": "Oh, you even know!}`,
       `{"katie": "Yelling's my favorite!}`,
       `{"katie": "It's like my sweet stop!}`,
       `{"katie": "Yelling is where I get in the groove!}`,
-      `{"kat": "That was pretty fun, yelling at those trolls!}`,
     ],
     "1": [
       `{"kat": "That was pretty fun, yelling at those trolls!}`,

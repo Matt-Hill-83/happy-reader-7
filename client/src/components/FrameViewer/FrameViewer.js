@@ -47,14 +47,27 @@ class FrameViewer extends Component {
       const className = `character${characterIndex}`
       const characterName = line.character || ""
 
-      return (
-        <div className={`${css.line} ${css[className]}`}>
+      const indexIsEven = characterIndex % 2 === 0
+
+      const isEven = (
+        <div className={cx(css.line, css[className], css.isEven)}>
           <div className={cx(css.characterNameContainer)}>
             <span className={css.characterName}>{characterName}</span>
           </div>
           <WordGroup lineIndex={lineIndex} story={[text]} />
         </div>
       )
+
+      const isOdd = (
+        <div className={cx(css.line, css[className], css.isOdd)}>
+          <WordGroup lineIndex={lineIndex} story={[text]} />
+          <div className={cx(css.characterNameContainer)}>
+            <span className={css.characterName}>{characterName}</span>
+          </div>
+        </div>
+      )
+
+      return indexIsEven ? isEven : isOdd
     })
 
     return <div className={css.dialog}>{renderedDialogs}</div>

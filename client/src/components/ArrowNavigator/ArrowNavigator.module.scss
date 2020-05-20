@@ -1,29 +1,25 @@
 @import "../../Styles/mixins.modules.scss";
 
 .arrowNavigatorContainer {
+  position: absolute;
+  z-index: 10;
   display: flex;
   align-items: center;
-  width: 100%;
+
   font-size: 36px !important;
   font-weight: bold !important;
-  width: 40%;
-  height: 9vh;
-  width: 19vh;
-  border-radius: 7px;
-  position: absolute;
-  /* left: 75%; */
-  /* transform: translateX(-50%); */
-  margin-top: 0vh;
-  background: none !important;
-  right: 1vh;
-  background: white !important;
-  padding: 0.5vh;
+
+  height: 100%;
+  width: 100%;
+
   border: 2px solid purple;
-  /* border-top: none; */
+  border-radius: 7px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
-  margin-top: -2px;
-  z-index: 10;
+
+  padding: 0.5vh;
+  // margin-top: -2px;
+  background: white !important;
 }
 
 .fourArrowsImage {
