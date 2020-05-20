@@ -29,7 +29,7 @@ const template = {
     },
     bog: {
       sceneConfig: {
-        // items: ["flag", "cup"],
+        items: [],
         creatures: ["kat", "liz2"],
         isStartScene: true,
         isEndScene: false,

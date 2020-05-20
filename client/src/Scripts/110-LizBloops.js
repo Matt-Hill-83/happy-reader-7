@@ -47,7 +47,7 @@ const story110 = {
       dialog: [
         `{"kat": "plip plop!"}`,
         `{"liz2": "Dimple Dee Dip!"}`,
-        `{"rori": "Vulcan is the best at blooping!"}`,
+        `{"rori": "Vulcan can bloop better than any one!"}`,
         `{"kat": "cool"}`,
         `{"vulcan": "BLOOOOOOOP"}`,
         `{"newFrame": "   <------------------------>"}`,
