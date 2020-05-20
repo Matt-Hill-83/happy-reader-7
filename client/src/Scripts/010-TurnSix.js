@@ -63,7 +63,6 @@ const story010 = {
       },
       frames: [
         {
-          frameConfig: {},
           dialogs: [
             `{"liz2" : "The Troll?"}`,
             `{"liz2" : "Do you mean the 'TROLL NEEDS GOLD' Troll?"}`,
@@ -74,7 +73,6 @@ const story010 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"liz2" : "I don’t get it."}`,
             `{"liz2" : "Why does he run around yelling: 'TROLL NEED GOLD'?"}`,
@@ -95,7 +93,6 @@ const story010 = {
       },
       frames: [
         {
-          frameConfig: {},
           dialogs: [
             `{"liz2" : "Why does he always yell: 'TROLL NEED GOLD'?  It’s a valid question."}`,
             `{"kat" : "Well, I think he’s saying it because he needs gold."}`,
@@ -105,7 +102,6 @@ const story010 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"liz2" : "I understand that he is literally asking for gold."}`,
             `{"liz2" : "I'm six. Remember?"}`,
@@ -116,7 +112,6 @@ const story010 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "Wait, is that the kid that says:"}`,
             `{"kat" : "You get what you get and you don't get upset?"}`,
@@ -140,7 +135,6 @@ const story010 = {
       },
       frames: [
         {
-          frameConfig: {},
           dialogs: [
             `{"kat": "Liz!!!! Noooooooooooo!!!!"}`,
             `{"kat": "No! No! No! No! No!"}`,
@@ -151,7 +145,6 @@ const story010 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat": "Liz, never... ever... ever... ask for a creature's backstory"}`,
             `{"kat": "That's like Rule Number One!"}`,
@@ -160,7 +153,6 @@ const story010 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat": "You asked about the trolls back story."}`,
             `{"liz2": "So?"}`,
@@ -169,7 +161,6 @@ const story010 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"liz2": "What's a back story?"}`,
             `{"kat": "It's a story that tells where the creature came from."}`,
@@ -183,7 +174,6 @@ const story010 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat": "Liz, we are trying to find the that sparkly dress!"}`,
             `{"kat": "Remember... 'Dress Quest'?"}`,
@@ -205,7 +195,6 @@ const story010 = {
       },
       frames: [
         {
-          frameConfig: {},
           dialogs: [
             `{"kat": "Oh no... here it comes..."}`,
             `{"liz2": "Hey look! There's the troll."}`,
@@ -216,7 +205,6 @@ const story010 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"troll": "TROLL.... SOOOOOO..... SAD..."}`,
             `{"liz2": "Oh my goodness!  Why...?"}`,
@@ -226,7 +214,6 @@ const story010 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"liz2": "You poor thing!"}`,
             `{"troll": "TROLL WANT FROOT LOOPS!!!"}`,
