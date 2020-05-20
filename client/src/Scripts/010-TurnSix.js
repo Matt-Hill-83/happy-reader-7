@@ -1,8 +1,8 @@
 const story010 = {
   title: "010 - Turn Six",
   worldConfig: {
-    characters: ["kat", "katieKooper01"],
-    items: ["flag", "cup"],
+    characters: ["kat", "liz2"],
+    items: [],
   },
 
   status: "not imported",
@@ -10,7 +10,7 @@ const story010 = {
     pond: {
       sceneConfig: {
         items: [],
-        creatures: ["kat", "liz2", "troll01", "troll02"],
+        creatures: ["kat", "liz2"],
         isStartScene: true,
         isEndScene: false,
       },
@@ -56,8 +56,8 @@ const story010 = {
     },
     bog: {
       sceneConfig: {
-        items: ["flag", "cup"],
-        creatures: ["kat", "katieKooper01"],
+        items: [],
+        creatures: ["kat", "liz2"],
         isStartScene: true,
         isEndScene: false,
       },
@@ -88,8 +88,8 @@ const story010 = {
     },
     bees: {
       sceneConfig: {
-        items: ["flag", "cup"],
-        creatures: ["kat", "katieKooper01"],
+        items: [],
+        creatures: ["kat", "liz2"],
         isStartScene: true,
         isEndScene: false,
       },
@@ -133,8 +133,8 @@ const story010 = {
     },
     swamp: {
       sceneConfig: {
-        items: ["flag", "cup"],
-        creatures: ["kat", "katieKooper01"],
+        items: [],
+        creatures: ["kat", "liz2"],
         isStartScene: true,
         isEndScene: false,
       },
@@ -190,9 +190,20 @@ const story010 = {
             `{"kat": "I don't even think that's the name of this game anymore."}`,
             `{"liz2": "It's not."}`,
             `{"kat": "My point exactly!!!"}`,
-            `{"liz2": "I think it's Rapping Troll Cave'."}`,
+            `{"liz2": "I think it's Rapping Troll Cave."}`,
           ],
         },
+      ],
+    },
+
+    log: {
+      sceneConfig: {
+        items: [],
+        creatures: ["kat", "liz2", "troll01"],
+        isStartScene: true,
+        isEndScene: false,
+      },
+      frames: [
         {
           frameConfig: {},
           dialogs: [

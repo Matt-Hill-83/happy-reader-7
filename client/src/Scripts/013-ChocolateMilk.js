@@ -1,4 +1,4 @@
-const template = {
+const story013 = {
   title: "No Title",
   worldConfig: {
     characters: ["kat", "katieKooper01"],
@@ -60,4 +60,4 @@ const template = {
   },
 }
 
-export default template
+export default story013
