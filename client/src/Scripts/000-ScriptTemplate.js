@@ -1,16 +1,10 @@
 const template = {
   title: "No Title",
-  worldConfig: {
-    characters: ["kat", "katieKooper01"],
-    items: ["flag", "cup"],
-  },
-
-  status: "not imported",
   scenes: {
     cave: {
       sceneConfig: {
         items: [],
-        creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+        creatures: ["kat", "liz2", "troll01", "troll02"],
         isStartScene: true,
         isEndScene: false,
       },
@@ -20,23 +14,23 @@ const template = {
             items: [],
           },
           dialogs: [
-            `{"katieKooper01" ++++++++++++++++++++++++++++++++"}`,
             `{"kat" : "++++++++++++++++++++++++++++++++"}`,
+            `{"liz2" ++++++++++++++++++++++++++++++++"}`,
           ],
         },
         {
           // frameConfig: {},
           dialogs: [
-            `{"troll01" : "LOOK GIRLS!"}`,
-            `{"troll02" : "GIRLS TAKE DIAMOND?"}`,
+            `{"kat" : "++++++++++++++++++++++++++++++++"}`,
+            `{"liz2" ++++++++++++++++++++++++++++++++"}`,
           ],
         },
       ],
     },
     bog: {
       sceneConfig: {
-        items: ["flag", "cup"],
-        creatures: ["kat", "katieKooper01"],
+        // items: ["flag", "cup"],
+        creatures: ["kat", "liz2"],
         isStartScene: true,
         isEndScene: false,
       },
@@ -45,14 +39,14 @@ const template = {
           // frameConfig: {},
           dialogs: [
             `{"kat" : "++++++++++++++++++++++++++++++++"}`,
-            `{"troll01" : "FROG ON LOG!"}`,
+            `{"liz2" ++++++++++++++++++++++++++++++++"}`,
           ],
         },
         {
           // frameConfig: {},
           dialogs: [
             `{"kat" : "++++++++++++++++++++++++++++++++"}`,
-            `{"troll01" : "TROLL LIKE BOG!"}`,
+            `{"liz2" ++++++++++++++++++++++++++++++++"}`,
           ],
         },
       ],
