@@ -151,6 +151,7 @@ import brokenMonitor01 from "./backgrounds/brokenMonitor01.png"
 import leftArrow from "./backgrounds/left-arrow-01.png"
 import rightArrow from "./backgrounds/right-arrow-01.png"
 import introBackground from "./backgrounds/introBackground.jpg"
+import paperBackground01 from "./backgrounds/paperBackground01.png"
 
 // liz2
 import liz1 from "./rigged-girls/liz/png/liz-1.png"
@@ -518,6 +519,7 @@ const backgrounds = {
   leftArrow,
   rightArrow,
   introBackground,
+  paperBackground01,
   hill01,
   sky01,
 }
