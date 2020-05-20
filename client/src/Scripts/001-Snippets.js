@@ -13,13 +13,19 @@ const test = {
       "2 - A message says: You do not have enough gold to select this.",
       "2 - A message says, You will be the pig in a wig.",
       "2 - Your name will be Oinkers.",
+      "2 - You can spend gold to click a button to change your outfit.",
+      "2 - But its like a slot machine.  Once it changes you can't go back.",
+      "2 - And you never know what you are going to get.",
+      "2 - But you can see all the possible that you've uncovered.",
+      "2 - But you can see all the possible dresses.",
     ],
   },
   rhymes: {
     "1": [
       `kat: "in the slang one, say see you later alligator, instead of laters!"`,
       `kat: "Right back at ya! Baked Potater!"`,
-      `kat: "Oh, and bring the baby! Super! Don't forget to grab a bathing suit for, Katy kooper!"`,
+      `kat: "Oh, and if you think you wanna bring the baby! Super!"`,
+      `kat: "But don't forget to grab a bathing suit for, Katy kooper!"`,
       `kat: "Katy thinks I'm funner than a barrel full of Monkeys, but I really miss liz."`,
       `kat: "She's the kid."`,
       `kat: "at the top of my wish list for Christmas."`,
@@ -67,6 +73,18 @@ const test = {
     ],
   },
   littleStuff: {
+    "1": [
+      `{"kat": "That was pretty fun, yelling at those trolls!}`,
+      `{"katie": "Oh, you even know!}`,
+      `{"katie": "Yelling's my favorite!}`,
+      `{"katie": "It's like my sweet stop!}`,
+      `{"katie": "Yelling is where I get in the groove!}`,
+      `{"kat": "That was pretty fun, yelling at those trolls!}`,
+    ],
+    "1": [
+      `{"kat": "That was pretty fun, yelling at those trolls!}`,
+      `{"katie": "Yelling's my favorite!}`,
+    ],
     "1": [
       "2 - One of the characters sees will.",
       "2 - They look at the map and it's a screen grab of the scenesGrid in edit mode.",

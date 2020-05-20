@@ -164,6 +164,7 @@
   }
 
   .line {
+    display: flex;
     margin-bottom: 2%;
     border-radius: 0.5rem;
     width: fit-content;
@@ -179,7 +180,8 @@
 
   .character0,
   .character1,
-  .character2 {
+  .character2,
+  .character3 {
     display: flex;
     overflow: hidden;
   }
@@ -189,6 +191,7 @@
     border: 1px solid #ff005c !important;
 
     [class*="FrameViewer_characterNameContainer_"] {
+      background: #ffb5ce;
       border-right: 1px solid #ff005c !important;
     }
 
@@ -204,6 +207,7 @@
   margin-left: auto;
 
   [class*="FrameViewer_characterNameContainer_"] {
+    background: #fff1b9;
     border-right: 1px solid orange !important;
   }
 
@@ -218,6 +222,7 @@
   margin-left: auto;
 
   [class*="FrameViewer_characterNameContainer_"] {
+    background: #a2daa2;
     border-right: 1px solid darkmagenta !important;
   }
 
@@ -227,11 +232,12 @@
 }
 
 .character3 {
-  border: 1px solid blue !important;
-  background: #d4ffea;
+  border: 1px solid #cbcbff !important;
+  background: #e8f2ff;
   margin-left: auto;
 
   [class*="FrameViewer_characterNameContainer_"] {
+    background: #c0d8ff;
     border-right: 1px solid darkmagenta !important;
   }
 
