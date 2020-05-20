@@ -92,7 +92,10 @@ class QuestDialog extends React.Component {
         <div className={css.questPage}>
           <div className={css.header}>
             {/* <span className={css.gameTitle}>Fashion Slayer</span> */}
-            <span className={css.gameTitle}>Liz Goes Nuts</span>
+            <span className={css.gameTitle}>
+              Learn to Read! (with Ricky the Rat)
+            </span>
+            {/* <span className={css.gameTitle}>Liz Goes Nuts</span> */}
           </div>
           <div className={css.playerStatsSection}>
             <div className={css.playerStatsRow}>
