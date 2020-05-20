@@ -25,7 +25,7 @@ const template = {
           ],
         },
         {
-          frameConfig: {},
+          // frameConfig: {},
           dialogs: [
             `{"troll01" : "LOOK GIRLS!"}`,
             `{"troll02" : "GIRLS TAKE DIAMOND?"}`,
@@ -42,14 +42,14 @@ const template = {
       },
       frames: [
         {
-          frameConfig: {},
+          // frameConfig: {},
           dialogs: [
             `{"kat" : "++++++++++++++++++++++++++++++++"}`,
             `{"troll01" : "FROG ON LOG!"}`,
           ],
         },
         {
-          frameConfig: {},
+          // frameConfig: {},
           dialogs: [
             `{"kat" : "++++++++++++++++++++++++++++++++"}`,
             `{"troll01" : "TROLL LIKE BOG!"}`,

@@ -25,7 +25,6 @@ const story013 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"troll01" : "LOOK GIRLS!"}`,
             `{"troll02" : "GIRLS TAKE DIAMOND?"}`,
@@ -35,21 +34,19 @@ const story013 = {
     },
     bog: {
       sceneConfig: {
-        items: ["flag", "cup"],
+        items: [],
         creatures: ["kat", "katieKooper01"],
         isStartScene: true,
         isEndScene: false,
       },
       frames: [
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "++++++++++++++++++++++++++++++++"}`,
             `{"troll01" : "FROG ON LOG!"}`,
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "++++++++++++++++++++++++++++++++"}`,
             `{"troll01" : "TROLL LIKE BOG!"}`,
