@@ -24,6 +24,11 @@
         border: 1px solid blue !important;
         outline: none;
       }
+      .sentenceWord:hover {
+        border: 1px solid blue !important;
+        outline: none;
+        cursor: wait;
+      }
     }
 
     .sentence:nth-of-type(3n) {

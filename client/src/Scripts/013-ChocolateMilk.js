@@ -32,43 +32,6 @@ const story013 = {
         },
       ],
     },
-    slide: {
-      sceneConfig: {
-        items: [],
-        creatures: ["kat", "liz2"],
-        isStartScene: true,
-        isEndScene: false,
-      },
-      frames: [
-        {
-          frameConfig: {
-            items: [],
-          },
-          dialogs: [
-            `{"liz2" : "Oh rats!  You are so lucky though!  My mom says sugar rots your teeth."}`,
-            `{"kat" : "Really? I thought that was cotton candy."}`,
-            `{"liz2" : "Yup, she read it on the internet."}`,
-            `{"kat" : "Oh brother! Good luck with that."}`,
-            `{"liz2" : "I know. Right?"}`,
-          ],
-        },
-        {
-          dialogs: [
-            `{"kat" : "Hey have you ever heard of Marshmallow Fluff?"}`,
-            `{"kat" : "My cousin Emily eats it. She showed me on FaceTime."}`,
-            `{"liz2" : "Sounds cool!  What is it?"}`,
-            `{"liz2" : "Wait!  Who still uses FaceTime?"}`,
-            `{"kat" : "I know, right?"}`,
-            `{"kat" : "Any ways.  It’s like that Gloop that we made in summer camp..."}`,
-            `{"kat" : "...but you can eat it."}`,
-            `{"liz2" : "Wow..."}`,
-            `{"kat" : "And it tastes like... fairy magic."}`,
-            `{"liz2" : "Oh snap."}`,
-            `{"kat" : "You'll never want to eat real food again."}`,
-          ],
-        },
-      ],
-    },
     bees: {
       sceneConfig: {
         items: [],
@@ -94,6 +57,10 @@ const story013 = {
             `{"kat" : "Hey have you ever heard of Marshmallow Fluff?  My cousin Emily eats it. She showed me on Facetime."}`,
             `{"liz2" : "Sounds cool!  What is it?"}`,
             `{"kat" : "It’s like that Gloop that we made in summer camp."}`,
+          ],
+        },
+        {
+          dialogs: [
             `{"kat" : "But you can eat it and it tastes like fairy magic."}`,
             `{"kat" : "You'll never want to eat real food again."}`,
             `{"liz2" : "We have to go to Boston!"}`,
@@ -115,7 +82,7 @@ const story013 = {
             items: [],
           },
           dialogs: [
-            `{"kat" : "Hey, do you still have that Gloop we made in ASP?"}`,
+            `{"kat" : "Hey, do you still have that Gloop we made?"}`,
             `{"liz2" : "Sadly no.  Mine grew green fuzz on it and we threw it in the compost."}`,
             `{"kat" : "Cool!  That’s like something out of Zoe and Sassafras!"}`,
             `{"liz2" : "I know, I should have done some experiments with it."}`,
