@@ -40,6 +40,8 @@ class FrameViewer extends Component {
     const renderedDialogs = dialog.map((line, lineIndex) => {
       const { text, characterIndex } = line
 
+      console.log("characterIndex-----------------FV", toJS(characterIndex)) // zzz
+
       if (!text) return null
 
       const className = `character${characterIndex}`

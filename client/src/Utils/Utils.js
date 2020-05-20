@@ -11,7 +11,19 @@ export default class Utils {
     bottom: "bottom",
     top: "top",
   }
+
+  static characterDialogIndex = {
+    kat: 0,
+    liz2: 1,
+    katieKooper01: 1,
+    troll01: 2,
+    troll02: 3,
+  }
   // CONSTANTS ---------------------------------- end ---------------------------
+
+  static getCharacterDialogIndex = ({ characterId, characterName }) => {
+    return this.characterDialogIndex[characterName] || 0
+  }
 
   static getWordsByType = ({ words, type, returnName = false }) => {
     const items = words.filter((word) => {

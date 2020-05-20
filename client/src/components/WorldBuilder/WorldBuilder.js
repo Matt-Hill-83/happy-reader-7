@@ -460,19 +460,14 @@ class WorldBuilder extends Component {
 
   createNewDialogs = ({ dialogs }) => {
     const newDialogs = dialogs.map((sentenceObj) => {
-      let characterIndex = 0
-
       const itemObj = JSON.parse(sentenceObj)
       const itemKey = Object.keys(itemObj)[0]
       const itemValue = itemObj[itemKey]
 
-      if (
-        itemKey === "liz2" ||
-        itemKey === "katieKooper01" ||
-        itemKey === "troll01"
-      ) {
-        characterIndex = 1
-      }
+      const characterIndex = Utils.getCharacterDialogIndex({
+        characterName: itemKey,
+      })
+      console.log("characterIndex", characterIndex) // zzz
 
       return {
         character: itemKey,

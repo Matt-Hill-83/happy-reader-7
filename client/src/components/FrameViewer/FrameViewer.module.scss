@@ -178,23 +178,10 @@
   }
 
   .character0,
-  .character1 {
+  .character1,
+  .character2 {
     display: flex;
     overflow: hidden;
-  }
-
-  .character1 {
-    border: 1px solid orange !important;
-    background: #f7e59a5e;
-    margin-left: auto;
-
-    [class*="FrameViewer_characterNameContainer_"] {
-      border-right: 1px solid orange !important;
-    }
-
-    [class*="WordGroup_sentence__"] {
-      justify-content: flex-end;
-    }
   }
 
   .character0 {
@@ -208,6 +195,48 @@
     [class*="WordGroup_sentence__"] {
       justify-content: flex-start;
     }
+  }
+}
+
+.character1 {
+  border: 1px solid orange !important;
+  background: #f7e59a5e;
+  margin-left: auto;
+
+  [class*="FrameViewer_characterNameContainer_"] {
+    border-right: 1px solid orange !important;
+  }
+
+  [class*="WordGroup_sentence__"] {
+    justify-content: flex-end;
+  }
+}
+
+.character2 {
+  border: 1px solid lightseagreen !important;
+  background: #d4ffea;
+  margin-left: auto;
+
+  [class*="FrameViewer_characterNameContainer_"] {
+    border-right: 1px solid darkmagenta !important;
+  }
+
+  [class*="WordGroup_sentence__"] {
+    justify-content: flex-end;
+  }
+}
+
+.character2 {
+  border: 1px solid blue !important;
+  background: #d4ffea;
+  margin-left: auto;
+
+  [class*="FrameViewer_characterNameContainer_"] {
+    border-right: 1px solid darkmagenta !important;
+  }
+
+  [class*="WordGroup_sentence__"] {
+    justify-content: flex-end;
   }
 }
 

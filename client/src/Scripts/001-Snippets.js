@@ -17,8 +17,9 @@ const test = {
   },
   rhymes: {
     "1": [
-      `kat: "Oh, and you too!  Super! Don't forget to grab a bathing suit for katy kooper!"`,
-      `kat: "Oh, and you too!  Super! Don't forget to grab a bathing suit for katy kooper!"`,
+      `kat: "in the slang one, say see you later alligator, instead of laters!"`,
+      `kat: "Right back at ya! Baked Potater!"`,
+      `kat: "Oh, and bring the baby! Super! Don't forget to grab a bathing suit for, Katy kooper!"`,
       `kat: "Katy thinks I'm funner than a barrel full of Monkeys, but I really miss liz."`,
       `kat: "She's the kid."`,
       `kat: "at the top of my wish list for Christmas."`,

@@ -1,26 +1,13 @@
 import React from "react"
 import { observer } from "mobx-react"
-import { Button, Icon, Position, Tooltip, Checkbox } from "@blueprintjs/core"
 import { FormControl, MenuItem, OutlinedInput, Select } from "@material-ui/core"
 
 import Images from "../../images/images.js"
 import Utils from "../../Utils/Utils.js"
 import css from "./MiniLocation.module.scss"
-import myWords from "../../Models/words.js"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 
 import { toJS } from "mobx"
-
-const { words, wordTypes } = myWords
-
-// const youCreatureOptions = Utils.getWordsByType({
-//   words: words,
-//   type: wordTypes.creature,
-//   returnName: true,
-// })
-
-// const youCreatureDefault = youCreatureOptions[3]
-const youNameDefault = "Dobby"
 
 class MiniLocation extends React.Component {
   defaultDoorIsOpen = {
@@ -87,7 +74,6 @@ class MiniLocation extends React.Component {
 
   state = {
     doors: this.defaultDoorIsOpen,
-    youName: youNameDefault,
     // youCreature: youCreatureDefault,
   }
 
