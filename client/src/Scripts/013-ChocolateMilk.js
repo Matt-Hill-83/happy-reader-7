@@ -176,10 +176,10 @@ const story013 = {
             items: [],
           },
           dialogs: [
-            `{"liz2" : "1,2,3..."}`,
+            `{"liz2" : "...1,2,3..."}`,
             `{"kat" : "Hey come on let’s go!"}`,
             `{"liz2" : "...4,5,6..."}`,
-            `{"kat" : "Yeah! What do ya know"}`,
+            `{"kat" : "Yeah! What do ya know?"}`,
           ],
         },
         {
