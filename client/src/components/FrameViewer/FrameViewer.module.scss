@@ -150,12 +150,12 @@
   display: flex;
   flex: 1;
   overflow-y: auto;
-  // a solid blue !important;
-  align-items: flex-end;
+  // border: 2px solid blue !important;
+  // align-items: flex-end;
 }
 
 .dialog {
-  // a solid green !important;
+  // border: 2px solid green !important;
   display: flex;
   z-index: 10;
   flex-direction: column;
