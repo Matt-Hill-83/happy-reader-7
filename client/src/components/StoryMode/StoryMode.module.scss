@@ -13,13 +13,12 @@
   }
 
   .leftHalf {
-    width: 50%;
-    max-width: 730px;
+    flex: 1;
   }
 
   .rightHalf {
-    flex: 2;
-    width: 65vw;
+    flex: 1;
+    width: 65%;
   }
 }
 
