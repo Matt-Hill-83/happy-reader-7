@@ -166,7 +166,7 @@
   overflow: hidden;
   padding-bottom: 0px;
   flex: 1;
-  height: fit-content;
+  min-height: fit-content;
 
   :global {
     [class*="WordGroup_main__"]:last-of-type {
@@ -177,7 +177,7 @@
   .line {
     display: flex;
     margin-bottom: 2%;
-    border-radius: 0.5rem;
+    border-radius: 0.3vh;
     width: fit-content;
     min-width: 90%;
     max-width: 90%;
