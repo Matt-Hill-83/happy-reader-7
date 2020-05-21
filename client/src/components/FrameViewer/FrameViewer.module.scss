@@ -150,12 +150,11 @@
   display: flex;
   flex: 1;
   overflow-y: auto;
-  // border: 2px solid blue !important;
-  // align-items: flex-end;
+  border: 2px solid blue !important;
 }
 
 .dialog {
-  // border: 2px solid green !important;
+  border: 2px solid green !important;
   display: flex;
   z-index: 10;
   flex-direction: column;
@@ -169,6 +168,7 @@
   flex: 1;
   min-height: fit-content;
   height: fit-content;
+  margin-top: auto;
 
   :global {
     [class*="WordGroup_main__"]:last-of-type {
