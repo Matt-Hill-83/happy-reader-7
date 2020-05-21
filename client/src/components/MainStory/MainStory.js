@@ -26,6 +26,7 @@ class MainStory extends React.Component {
   state = {
     activeScene: undefined,
     showYouWinModal: false,
+    // showYouWinModal: true,
   }
 
   async componentWillMount() {
@@ -139,7 +140,7 @@ class MainStory extends React.Component {
         closeYouWinModal={this.closeYouWinModal}
         showYouWinModal={showYouWinModal}
         onChangeWorld={this.onChangeWorld}
-      ></QuestDialog>
+      />
     )
   }
 
@@ -147,7 +148,7 @@ class MainStory extends React.Component {
     return (
       <div className={css.floatingButtons}>
         <ButtonGroup color="primary">
-          {/* <Button onClick={this.toggleWorldBuilder}>World Builder</Button> */}
+          <Button onClick={this.toggleWorldBuilder}>World Builder</Button>
           <Button onClick={this.openYouWinModal}>Quests</Button>
         </ButtonGroup>
       </div>

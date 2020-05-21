@@ -15,11 +15,17 @@ import story050 from "../../Scripts/050-FindingScribbleScrabble"
 import story100 from "../../Scripts/100-LizGoesCrazy"
 import story110 from "../../Scripts/110-LizBloops"
 import story014 from "../../Scripts/014-TruthBomb"
+import testExport from "../../Scripts/000-aTestExport"
+import template2 from "../../Scripts/000-aTestExport"
+import test001 from "../../Scripts/000-aTestExport"
 
 class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story010) }
+  state = { text: JSON.stringify(test001) }
   // state = { text: JSON.stringify(story110) }
-  state = { text: JSON.stringify(story013) }
+  // state = { text: JSON.stringify(template2) }
+  // state = { text: JSON.stringify(testExport) }
+  // state = { text: JSON.stringify(story013) }
   // state = { text: JSON.stringify(story014) }
 
   // state = { text: JSON.stringify(story020) }

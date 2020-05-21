@@ -26,6 +26,7 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import css from "./WorldBuilder.module.scss"
 import WorldPicker from "../WorldPicker/WorldPicker"
 import FrameSetUploader from "../FrameSetUploader/FrameSetUploader"
+import GetSceneConfig from "../GetSceneConfig/GetSceneConfig"
 
 const INITIAL_MAP_INDEX = 0
 // const NUM_ROWS_LOCATIONS_GRID = 2
@@ -531,6 +532,7 @@ class WorldBuilder extends Component {
     const title =
       (world.data && world.data.title) || this.previousTitle + " copy"
 
+    const scenesGrid = world.data.newGrid5
     return (
       <div className={css.main}>
         <FrameSetUploader
@@ -538,6 +540,12 @@ class WorldBuilder extends Component {
           onSave={this.onChangeDialog}
           onImportJson={this.importScenesGrid}
         />
+        {/* <GetSceneConfig
+          className={css.frameSetUploaderBox}
+          onSave={this.onChangeDialog}
+          scenesGrid={scenesGrid}
+          // onImportJson={this.importScenesGrid}
+        /> */}
         <InputGroup
           value={title}
           id="text-input"
