@@ -70,7 +70,11 @@ class FrameViewer extends Component {
       return indexIsEven ? isEven : isOdd
     })
 
-    return <div className={css.dialog}>{renderedDialogs}</div>
+    return (
+      <div className={css.dialogScoller}>
+        <div className={css.dialog}>{renderedDialogs}</div>
+      </div>
+    )
   }
 
   getMood = ({ name, faces }) => {

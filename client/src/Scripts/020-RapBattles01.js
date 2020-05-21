@@ -1,10 +1,4 @@
 const story020 = {
-  worldConfig: {
-    characters: ["kat", "katieKooper01"],
-    items: ["flag", "cup"],
-  },
-
-  status: "not imported",
   title: "Rap Battle",
   scenes: {
     cave: {
@@ -30,7 +24,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"troll01" : "LOOK GIRLS!"}`,
             `{"troll02" : "GIRLS TAKE DIAMOND?"}`,
@@ -41,7 +34,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "Oh hello trolls.  We are not here to take your diamond."}`,
             `{"kat" : "We are here for....ummmm.... uuuuuhhhh..."}`,
@@ -53,7 +45,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"troll01" : "RAP BATTLE!"}`,
             `{"troll02" : "RAP BATTLE!"}`,
@@ -65,7 +56,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat": "Ugggghhh!  Katie! That was not a rap!"}`,
             `{"kat": "This morning, I literally, saw a frog on a log."}`,
@@ -76,7 +66,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat": "This morning..."}`,
             `{"kat": "I SAW A FROG..."}`,
@@ -91,14 +80,13 @@ const story020 = {
     },
     bog: {
       sceneConfig: {
-        items: ["flag", "cup"],
+        items: [],
         creatures: ["kat", "katieKooper01"],
         isStartScene: true,
         isEndScene: false,
       },
       frames: [
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "And I'm NOT gonna RAP."}`,
             `{"kat" : "It's just a silly fad."}`,
@@ -108,7 +96,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "First we saw a frog"}`,
             `{"kat" : "The frog was on a log."}`,
@@ -118,7 +105,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "Me and Liz took a walk. "}`,
             `{"kat" : "First we see a mop."}`,
@@ -130,7 +116,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "So quit squishin all the fish and sit and listen!"}`,
             `{"kat" : "Cause I'm the kinda kid that makes the grown ups stop."}`,
@@ -144,14 +129,13 @@ const story020 = {
     },
     swamp: {
       sceneConfig: {
-        items: ["flag", "cup"],
+        items: [],
         creatures: ["kat", "katieKooper01"],
         isStartScene: true,
         isEndScene: false,
       },
       frames: [
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "My parents groan a lot."}`,
             `{"kat" : "You hear that rumble?  That's my tummy from the soda pop."}`,
@@ -162,7 +146,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "I'll see you at my birthday when corona stops."}`,
             `{"kat" : "And when the party starts rockin..."}`,
@@ -173,7 +156,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "They said this was a battle, but you Trolls don't bloop."}`,
             `{"kat" : "Fellas, I'm about to tell a troll the stone cold truth."}`,
@@ -182,7 +164,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "And wait, here's a bone for your pooch too!"}`,
             `{"kat" : "Little kid, you want a cold cone for your loose tooth?"}`,
@@ -196,14 +177,13 @@ const story020 = {
     },
     hill: {
       sceneConfig: {
-        items: ["flag", "cup"],
+        items: [],
         creatures: ["kat", "katieKooper01"],
         isStartScene: true,
         isEndScene: false,
       },
       frames: [
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "Buddy, Bloop Blip,"}`,
             `{"kat" : "Flip Flop, won't do"}`,
@@ -215,7 +195,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"kat" : "I like you trolls a lot"}`,
             `{"kat" : "But I gotta find liz."}`,
@@ -225,7 +204,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"katieKooper01" : "Kat, you won the Rap battle!"}`,
             `{"kat" : "What's a rap battle?"}`,
@@ -237,7 +215,6 @@ const story020 = {
           ],
         },
         {
-          frameConfig: {},
           dialogs: [
             `{"troll01" : "Here is baby troll's diaper pin."}`,
             `{"kat" : "Oh no, it's sundown and we don't have the magical stone of Azkabat."}`,

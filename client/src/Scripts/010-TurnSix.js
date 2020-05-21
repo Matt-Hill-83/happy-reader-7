@@ -5,7 +5,6 @@ const story010 = {
     items: [],
   },
 
-  status: "not imported",
   scenes: {
     pond: {
       sceneConfig: {
@@ -206,19 +205,19 @@ const story010 = {
         },
         {
           dialogs: [
-            `{"troll": "TROLL.... SOOOOOO..... SAD..."}`,
+            `{"troll2": "TROLL.... SOOOOOO..... SAD..."}`,
             `{"liz2": "Oh my goodness!  Why...?"}`,
-            `{"troll": "BOO HOO!"}`,
+            `{"troll2": "BOO HOO!"}`,
             `{"kat": "Oh brother..."}`,
-            `{"troll": "TODAY.... TROLL BIRTHDAY..."}`,
+            `{"troll2": "TODAY.... TROLL BIRTHDAY..."}`,
           ],
         },
         {
           dialogs: [
             `{"liz2": "You poor thing!"}`,
-            `{"troll": "TROLL WANT FROOT LOOPS!!!"}`,
+            `{"troll2": "TROLL WANT FROOT LOOPS!!!"}`,
             `{"liz2": "Oh my gosh...  so sad."}`,
-            `{"troll": "TROLL MOM NOT LIKE SUGAR!!!"}`,
+            `{"troll2": "TROLL MOM NOT LIKE SUGAR!!!"}`,
             `{"liz2": "I'm so sorry..."}`,
             `{"kat": "We gotta go.  Bye! Bye!"}`,
           ],

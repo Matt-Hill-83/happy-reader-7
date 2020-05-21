@@ -53,8 +53,8 @@
   flex-direction: column;
   position: absolute;
   height: 100%;
-  // justify-content: flex-end;
   justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .imageGroupsContainer {
@@ -130,9 +130,10 @@
   border: 2px solid purple !important;
   border-radius: 0.6vh;
   background: white;
-  min-height: 40vh;
   overflow: hidden;
   border-top-left-radius: 0px;
+  min-height: 52vh;
+  max-height: 52vh;
 }
 
 .narrative {
@@ -145,7 +146,15 @@
   padding: 0.2vh 0vh;
 }
 
+.dialogScoller {
+  display: flex;
+  overflow-y: auto;
+  // border: 4px solid blue !important;
+  flex: 1;
+}
+
 .dialog {
+  // border: 4px solid green !important;
   display: flex;
   z-index: 10;
   flex-direction: column;
@@ -156,6 +165,8 @@
   padding: 2%;
   overflow: hidden;
   padding-bottom: 0px;
+  flex: 1;
+  height: fit-content;
 
   :global {
     [class*="WordGroup_main__"]:last-of-type {
@@ -174,7 +185,7 @@
     [class*="WordGroup_sentence__"] {
       padding-right: 0.5rem;
       padding-left: 0.5rem;
-      font-size: 25px;
+      font-size: 20px;
     }
   }
 
@@ -183,12 +194,12 @@
   .character2,
   .character3 {
     display: flex;
-    overflow: hidden;
   }
 
   .isOdd,
   .isEven {
     border: 2px solid;
+    overflow: initial;
   }
 
   .isEven {
@@ -388,8 +399,6 @@
   width: 18vh;
   border-radius: 7px;
   position: absolute;
-  /* left: 75%; */
-  /* transform: translateX(-50%); */
   margin-top: 0vh;
   background: none !important;
   right: 2vh;
