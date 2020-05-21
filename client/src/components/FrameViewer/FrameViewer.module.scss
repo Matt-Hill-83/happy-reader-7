@@ -148,13 +148,14 @@
 
 .dialogScoller {
   display: flex;
-  overflow-y: auto;
-  // border: 2px solid blue !important;
   flex: 1;
+  overflow-y: auto;
+  // a solid blue !important;
+  align-items: flex-end;
 }
 
 .dialog {
-  // border: 2px solid green !important;
+  // a solid green !important;
   display: flex;
   z-index: 10;
   flex-direction: column;
