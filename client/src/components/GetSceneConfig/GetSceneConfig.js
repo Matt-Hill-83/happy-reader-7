@@ -9,23 +9,8 @@ import _get from "lodash.get"
 // import _pick from "lodash.pick"
 import css from "./GetSceneConfig.module.scss"
 
-import story010 from "../../Scripts/010-TurnSix"
-import story013 from "../../Scripts/013-ChocolateMilk"
-import story020 from "../../Scripts/020-RapBattles01"
-import story050 from "../../Scripts/050-FindingScribbleScrabble"
-import story100 from "../../Scripts/100-LizGoesCrazy"
-import story110 from "../../Scripts/110-LizBloops"
-import story014 from "../../Scripts/014-TruthBomb"
-
 class GetSceneConfig extends Component {
-  // state = { text: JSON.stringify(story010) }
-  // state = { text: JSON.stringify(story110) }
-  // state = { text: JSON.stringify(story013) }
-  // state = { text: JSON.stringify(story014) }
-
-  // state = { text: JSON.stringify(story020) }
-  // state = { text: JSON.stringify(story050) }
-  // state = { text: `{"dummyData":5}` }
+  state = { text: `{"dummyData":5}` }
 
   onChangeDialog = ({ event, lineIndex }) => {
     const text = event.target.value

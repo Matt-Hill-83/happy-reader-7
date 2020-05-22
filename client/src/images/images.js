@@ -64,6 +64,7 @@ import monster from "./creatures/monster.png"
 import pig from "./creatures/pig.png"
 import troll from "./creatures/troll-01.png"
 import troll01 from "./creatures/troll-01.png"
+import dog01 from "./creatures/dog01.png"
 import troll02 from "./creatures/goblin.png"
 import unicorn from "./creatures/unicorn-1.png"
 import wizard from "./creatures/wizard.png"
@@ -452,6 +453,7 @@ const creatures = {
   troll,
   troll01,
   troll02,
+  dog01,
   unicorn,
   vanellope_little,
   vulcan01,

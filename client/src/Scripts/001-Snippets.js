@@ -1,7 +1,15 @@
 const test = {
   title: "Snippets",
   characters: {
-    "1": ["2 - Inventor girl gang.", "2 - Oliver Boliver Butt"],
+    "1": [
+      "2 - Inventor girl gang.",
+       "2 - Kid from sid the science kid",
+       "2 - magnetic figurines",
+       "2 - Kiki and Christmas Cat",
+       "2 - Oliver Boliver Butt",
+       "2 - Simple simon game",
+       "2 - discussion - Simple Simno vs Simn Says",
+      ],
   },
 
   gamePlay: {
@@ -31,14 +39,21 @@ const test = {
       `kat: "at the top of my wish list for Christmas."`,
       `kat: "When I see her, think of all the mischeif you'd witness."`,
       `"`,
-      `You trolls stooped to a low that was new`,
-      `When you sold me the goop for my shoe`,
+      elf:[
+      `Those trolls stooped to a low that was new`,
+      `When they sold me the goop for my shoe`,
       `for the hole where my toes poke through`,
+      `Liz: ummm.... make those words makes sense.`,
+      `Siri: this type of poem is called  `,
+
       `quick get the alphabet blocks`,
       `Buy me a pony pop!`,
       `How a bout it!`,
       `You wanna take a stab at it?`,
-      `"`,
+      `"What did the witch do when she forgot her spell?`,
+      `"She used her best guess spelling`,
+      `"Katy, you are one cool cat.`,
+      `"Kid from Sid the Science kid is at the rap battle.  In the audience at first`,]
     ],
   },
   bigIdeas: {
@@ -74,6 +89,152 @@ const test = {
       `?`,
     ],
   },
+  new01: {
+    "1": [
+      `{"gameplay": "A page that shows their dresses.}`,
+      `{"gameplay": "put info bubbles on words.}`,
+      `{"liz2": "So what should we do if we have no idea what you are talking about and none of this makes any sense?}`
+    ]
+    },
+  new02: {
+    "1": [
+      `{"asdf"}`,
+      `{"gameplay": "put info bubbles on words with cool link to reference or cool stuff.}`,
+      `{"gameplay": "spend gold to watch an add.  that's the only path to the next level}`,
+      `{"liz2": "So what should we do if we have no idea what you are talking about and none of this makes any sense?}`
+    ]
+    },
+  new03: {
+    "1": [
+      `{"asdf"}`,
+      `{"gameplay": "put info bubbles on words with cool link to reference or cool stuff.}`,
+      `{"gameplay": "spend gold to watch an add.  that's the only path to the next level}`,
+      `{"liz2": "So what should we do if we have no idea what you are talking about and none of this makes any sense?}`
+    ]
+    },
+
+
+
+
+
+  new01: {
+    "1": [
+      `{"liz2": "You need to be able to do a level 3 dragon roar to get in.}`,
+      `{"liz2": "So what should we do if we have no idea what you are talking about and none of this makes any sense?}`,
+      `{"liz2": "Who is crazy enough to have a roar-off with a dragon?}`,
+      `{"liz2": "They roar to communicate with the dragons across the sea}`,
+      `{"liz2": "Can we ues your baby dragon?}`,
+      `{"liz2": "Draggy Howls like a wolf}`,
+      `{"liz2": "Sorry Draggy, but your roar isn't loud enough to reach across the sea.}`,
+      `{"kat": "------>}`,
+      `{"liz2": "------>}`,
+      `{"kat": "That's pretty much it.}`,
+      `{"kat": "It's pretty legit}`,
+      `{"kat": "valid}`,
+      `{"liz2": "------>}`,
+      `{"liz2": "Put some pep in your step.}`,
+      `{"liz2": "What?"}`,
+      `{"liz2": "You are so sloooowwwww!!!!"}`,
+      `{"liz2": "What?, I'm not slow."}`,
+      `{"kat": "You are not slow when you want to be not slow, but you are a dawdler."}`,
+      `{"liz2": "Um... Siri, what the heck is my friend talking about?"}`,
+      `{"siri": "Dawdler:  someone who dilly dallies, also: a slow-poke. "}`,
+      `{"kat": "Ha. See, even siri thinks you are slow."}`,
+      `{"kat": "Liz, you are slower than a snail taped on top of a turtle."}`,
+      `{"liz2": "Aaaugh!!! , Siri! Take that back!"}`,
+      `{"liz2": "Take that back this instant!"}`,
+      `{"siri": "Did you want me to play: Take that back this instant - by the Backstreet Bugs? "}`,
+      `{"siri": "Ummmm.... hecka fricka yeah!"}`,
+      `{"siri": "I love the The backstreet bugs! "}`,
+      `{"kat": "Yo Check this out! "}`,
+      `{"kat": "Katie, drop me some Put-A-Cat-A! "}`,
+      `{"katie": " Put-A-Cat-A"}`,
+      `{"katie": "Summer Time is the funnest time"}`,
+      `{"katie": "Summer Time is the funnest time"}`,
+      `{"katie": "Summer Time is the funnest time"}`,
+      `{"katie": "Summer Time's is Fun!"}`,
+    ],
+  katieRapping: {
+    "1": [
+      `{"kat": "Come on!}`,
+      `{"liz2": "We're going to Carcassan!}`,
+      `{"liz2": "That place is so chill.}`,
+      `{"liz2": "I think you better go put your little}`,
+      `{"liz2": " parkas on.}`,
+    ],
+    "1": [
+      `{"kat": "That's what you get when you get what you get!}`,
+      `{"kat": "And you don't get upset!}`,
+      `{"kat": "And here's a poem for your pet!}`,
+      `{"kat": "I wrote it on my jet!}`,
+
+      `{"kat": "I wrote it on my jet!}`,
+      `{"kat": "Cuz you get what you get!}`,
+      `{"kat": "And if you get upset, then you don't get upset!}`,
+      `{"kat": "Be Cuz I jet when I go where I go!}`,
+      `{"kat": "Cuz I get that I go where !}`,
+      `{"kat": "where I go.. !}`,
+      `{"kat": "...when I go where I get!}`,
+      `{"kat": "Wanna make a bet!}`,
+
+      `{"kat": "I gotta get }`,
+      `{"kat": "me some more of this kitty kat litter for my little itty bitty widdy pet!"}`,
+      `{"kat": "Gotta get the Fresh Step."}`,
+      `{"kat": "But don't get the Fresh Scent."}`,
+
+      `{"kat": "Now my friend, I"}`,
+      `{"kat": " gotta go step to the left."}`,
+      `{"kat": "Cause you know I got a quest to complete"}`,
+      `{"kat": "It's like a test to compete"}`,
+      `{"kat": "I gotta get the very best dress"}`,
+      `{"kat": "Then I'll be the best dressed"}`,
+      `{"kat": "be the best dressed guest"}`,
+      `{"kat": "Can you guess what I'm able to assess "}`,
+      `{"kat": "I'm impressed"}`,
+      `{"kat": "I didn't know you kiddos know the Simple Simon"}`,
+      `{"kat": "I love Simple Simon, And I know this sounds super cliche, so don't hate."}`,
+      `{"kat": "I love Simple Simon, because he's...  ....well..he's...simple"}`,
+      `{"kat": "like a pimple!"}`,
+      `{"kat": "You're a pimple!"}`,
+      `{"kat": "Yeah, right there, that's the paradox?"}`,
+      `{"kat": "It's "}`,
+      `{"kat": "Ahhhh, liz you gave me Brain pretzel!"}`,
+      `{"kat": "Come on, let's go give people brain pretzel"}`,
+      `{"kat": "They use brain pretzel in a rap battle"}`,
+
+      `{"kat": "I think these people and these puzzles !}`,
+      `{"kat": "Make me less upset !}`,
+      `{"kat": "When the vet says my pet !}`,
+      `{"kat": "When the vet says my pet was a skunk not a kat!}`,
+      `{"kat": "It's not even a cat!}`,
+      `{"kat": "Well how about that?}`,
+      `{"kat": "But I guess}`,
+      `{"kat": "that explains why his breath smells like this}`,
+      `{"kat": "what you mean death?}`,
+      `{"kat": "yes}`,
+      `{"kat": "you hit the nail on the head"}`,
+      `{"kat": "that was a best guess"}`,
+      `{"kat": "I like best guess"}`,
+      `{"kat": "I can teach you best guess"}`,
+      `{"kat": "It jest goes like this"}`,
+      `{"kat": "I just guess"}`,
+
+      `{"kat": "Someone get this cat a mint.}`,
+      `{"kat": "He always jumps up on the desk.}`,
+      `{"kat": "And he gets in my face and I smell his bad breath.}`,
+      `{"kat": "get the best dress.}`,
+      `{"kat": "so I can be the best dressed.}`,
+
+      `{"katie": "Yelling's my favorite!}`,
+      `{"katie": "It's like my sweet stop!}`,
+      `{"katie": "Yelling is where I get in the groove!}`,
+
+      `{"katie": "Now that we got the gold what should we do?}`,
+      `{"katie": "Is this enough to open up a donut shop?}`,
+      `{"alice": "tots}`,
+      `{"katie": "Can you get the girls together and make it happen?}`,
+      `{"katie": "Let's call it the sweet spot!}`,
+    ],
   littleStuff: {
     "1": [
       `{"kat": "That was pretty fun, yelling at those trolls!}`,
@@ -156,33 +317,8 @@ const test = {
     ],
     katSayings: [
       [
-        "liz: It's not fair!",
-        "kat: What's not fair?",
-        "liz: Nothing is fair!",
-        "kat: Oh dear! You poor thing...  Wait hold on.",
-        "liz: What are you doing?",
-        "kat: Just a sec liz.  I'm making a call.",
-        "liz: Kat, that's not a phone, it's a piece of bark that you just picked up off the ground.",
-        "kat: Beep boop beep boop beep beep boop",
-        "kat: Hello, operator, please send over the wha-mulance! Yes it's liz again.",
-        "kat: Yes I'll hold.",
-        "kat: No I don't want to participate in a short survey after the call.",
-        "kat: What? Oh great!  Liz, they are sending the Wham-bulance over immediately.",
-        "kat: Oh what's that?  You have a message for liz?",
-        "Kat: Liz, the wha-mbulance people have a message for you!",
-        "Liz: Kat you are not funny!",
-        "kat: Whats that?  Tell her to turn six?  Oh what? And also stop being a whiny little cry-baby brat?",
-        "kat: Yeah I'll pass that along to her and see what she says?",
-        "kat: You have a good day too.",
-        "kat: Mmmm-bye",
-        "kat: Waaa-wer! Waaa-wer!",
-        "kat: Liz, I just got off the phone with --",
-        "liz: Ha! Ha!",
-        "liz: So funny I forgot to laugh.",
-        "kat: Turn six",
-        "liz: I hate you.",
+
       ],
-      "kat: don't yuck on my yum.",
     ],
   },
 }

@@ -16,6 +16,7 @@ export default class Utils {
     kat: 0,
     liz2: 1,
     katieKooper01: 1,
+    rori: 3,
     troll01: 2,
     troll02: 3,
   }
