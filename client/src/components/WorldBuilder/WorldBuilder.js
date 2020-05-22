@@ -533,6 +533,7 @@ class WorldBuilder extends Component {
       (world.data && world.data.title) || this.previousTitle + " copy"
 
     const scenesGrid = world.data.newGrid5
+
     return (
       <div className={css.main}>
         <FrameSetUploader

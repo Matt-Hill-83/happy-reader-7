@@ -25,7 +25,7 @@ SHOW_WORLD_BUILDER = false
 class MainStory extends React.Component {
   state = {
     activeScene: undefined,
-    showYouWinModal: false,
+    showYouWinModal: isProdRelease,
     // showYouWinModal: true,
   }
 
@@ -145,10 +145,14 @@ class MainStory extends React.Component {
   }
 
   renderButtons = () => {
+    const isProdRelease = localStateStore.getIsProdRelease()
+
     return (
       <div className={css.floatingButtons}>
         <ButtonGroup color="primary">
-          <Button onClick={this.toggleWorldBuilder}>World Builder</Button>
+          {!isProdRelease && (
+            <Button onClick={this.toggleWorldBuilder}>World Builder</Button>
+          )}
           <Button onClick={this.openYouWinModal}>Quests</Button>
         </ButtonGroup>
       </div>
