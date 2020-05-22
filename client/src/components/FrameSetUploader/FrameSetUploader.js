@@ -15,24 +15,21 @@ import story050 from "../../Scripts/050-FindingScribbleScrabble"
 import story100 from "../../Scripts/100-LizGoesCrazy"
 import story110 from "../../Scripts/110-LizBloops"
 import story014 from "../../Scripts/014-TruthBomb"
-import testExport from "../../Scripts/000-aTestExport"
-import template2 from "../../Scripts/000-aTestExport"
-import test001 from "../../Scripts/000-aTestExport"
 import story005 from "../../Scripts/005-Whambulance"
 import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
 
 class FrameSetUploader extends Component {
-  state = { text: JSON.stringify(story005) }
+  // state = { text: `{"dummyData":5}` }
+  // state = { text: JSON.stringify(story005) }
   // state = { text: JSON.stringify(story010) }
   // state = { text: JSON.stringify(story013) }
   // state = { text: JSON.stringify(story014) }
   // state = { text: JSON.stringify(story020) }
-  // state = { text: JSON.stringify(story050) }
+  state = { text: JSON.stringify(story050) }
   // state = { text: JSON.stringify(story110) }
   // state = { text: JSON.stringify(story310) }
   // state = { text: JSON.stringify(template2) }
   // state = { text: JSON.stringify(testExport) }
-  // state = { text: `{"dummyData":5}` }
 
   onChangeDialog = ({ event, lineIndex }) => {
     const text = event.target.value
