@@ -71,7 +71,7 @@ class FrameViewer extends Component {
     })
 
     return (
-      <div className={css.dialogScoller}>
+      <div className={css.dialogScroller}>
         <div className={css.dialog}>{renderedDialogs}</div>
       </div>
     )

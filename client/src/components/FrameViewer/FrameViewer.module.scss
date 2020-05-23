@@ -147,11 +147,12 @@
   padding: 0.2vh 0vh;
 }
 
-.dialogScoller {
+.dialogScroller {
   display: flex;
   flex: 1;
   overflow-y: auto;
-  // border: 2px solid blue !important;
+  margin-bottom: 10%;
+  border: 1px solid blue !important;
 }
 
 .dialog {
