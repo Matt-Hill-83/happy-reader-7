@@ -84,29 +84,31 @@ class WorldViewer extends React.Component {
             {/* <img className={css.diamond2Image} src={mainBackground} alt={"imagex"} /> */}
             {this.renderSceneRows()}
           </div>
-          <div className={css.scrollButtons}>
-            <Button
-              className={cx(css.scrollButton, css.leftScrollButton)}
-              onClick={() => this.scrollHorizontal({ reverse: true })}
-            >
-              <img
-                className={css.windowScrollButtonImage}
-                src={leftArrow}
-                alt={"bk"}
-              />
-            </Button>
+          {false && (
+            <div className={css.scrollButtons}>
+              <Button
+                className={cx(css.scrollButton, css.leftScrollButton)}
+                onClick={() => this.scrollHorizontal({ reverse: true })}
+              >
+                <img
+                  className={css.windowScrollButtonImage}
+                  src={leftArrow}
+                  alt={"bk"}
+                />
+              </Button>
 
-            <Button
-              className={cx(css.scrollButton, css.rightScrollButton)}
-              onClick={() => this.scrollHorizontal({})}
-            >
-              <img
-                className={css.windowScrollButtonImage}
-                src={rightArrow}
-                alt={"bk"}
-              />
-            </Button>
-          </div>
+              <Button
+                className={cx(css.scrollButton, css.rightScrollButton)}
+                onClick={() => this.scrollHorizontal({})}
+              >
+                <img
+                  className={css.windowScrollButtonImage}
+                  src={rightArrow}
+                  alt={"bk"}
+                />
+              </Button>
+            </div>
+          )}
         </div>
       </>
     )

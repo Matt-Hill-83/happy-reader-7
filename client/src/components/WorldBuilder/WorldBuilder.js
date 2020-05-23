@@ -433,7 +433,7 @@ class WorldBuilder extends Component {
       if (frameConfig && frameConfig.faces) {
         configProps.faces = frameConfig.faces
       } else {
-        configProps.faces = sceneConfig.faces
+        configProps.faces = sceneConfig.faces || []
       }
 
       if (frameConfig && frameConfig.creatures) {
@@ -456,22 +456,6 @@ class WorldBuilder extends Component {
       })
 
       console.log("newFrame", toJS(newFrame)) // zzz
-
-      const dummyFaces = [
-        {
-          // character: "liz2",
-          character: "liz-28.d900a123.png",
-          characterIndex: 1,
-          face: "happy",
-        },
-        {
-          character: "kat",
-          characterIndex: 0,
-          face: "kat-pigtails.22bff545.png",
-        },
-      ]
-
-      // newFrame.faces = dummyFaces
 
       return newFrame
     })
@@ -558,16 +542,16 @@ class WorldBuilder extends Component {
     return (
       <div className={css.main}>
         <FrameSetUploader
-          className={css.frameSetUploaderBox}
+          className={css.frameSetUploaderBox0}
           onSave={this.onChangeDialog}
           onImportJson={this.importScenesGrid}
         />
-        {/* <GetSceneConfig
-          className={css.frameSetUploaderBox}
+        <GetSceneConfig
+          className={css.frameSetUploaderBox1}
           onSave={this.onChangeDialog}
           scenesGrid={scenesGrid}
           // onImportJson={this.importScenesGrid}
-        /> */}
+        />
         <InputGroup
           value={title}
           id="text-input"

@@ -19,7 +19,6 @@ class GetSceneConfig extends Component {
   }
 
   renderButton = () => {
-    const { onImportJson } = this.props
     const text = this.state.text
 
     let newFrameSet = { noData: 5 }
@@ -30,7 +29,7 @@ class GetSceneConfig extends Component {
 
     return (
       <Button
-        onClick={() => onImportJson({ newFrameSet })}
+        // onClick={() => onImportJson({ newFrameSet })}
         className={cx(css.uploadButton)}
       >
         DOWNLOAD JSON
@@ -51,9 +50,13 @@ class GetSceneConfig extends Component {
 
       // convert the old frames into the new frames
       const newFrames = oldFrames.map((oldFrame) => {
+        console.log("oldFrame", toJS(oldFrame)) // zzz
+
         const newFrame = {
           frameConfig: {
             items: [],
+            faces: oldFrame.faces,
+            creatures: oldFrame.creatures,
           },
         }
         const newDialogs = oldFrame.dialog.map((item) => {
@@ -61,14 +64,18 @@ class GetSceneConfig extends Component {
         })
 
         newFrame.dialogs = newDialogs
-        newFrame.faces = oldFrame.faces
+        // newFrame.faces = oldFrame.faces
         return newFrame
       })
+
+      console.log("scene.characters", toJS(scene.characters)) // zzz
+
+      const creatures = scene.characters.map((item) => item.name)
 
       outputObj[scene.location.name] = {
         sceneConfig: {
           coordinates: scene.coordinates,
-          creatures: scene.characters,
+          creatures,
           isEndScene: scene.isEndScene,
           isStartScene: scene.isStartScene,
           items: scene.items,

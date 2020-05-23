@@ -1,230 +1,477 @@
 const test001 = {
-  title: "010 - Turn Six",
-  worldConfig: {
-    characters: ["kat", "liz2"],
-    items: [],
-  },
-
+  title: "title",
   scenes: {
-    pond: {
+    cave: {
       sceneConfig: {
-        items: [],
+        coordinates: { col: 0, row: 0 },
         creatures: ["kat", "liz2"],
-        isStartScene: true,
         isEndScene: false,
+        isStartScene: true,
+        items: [{ name: "empty" }],
       },
       frames: [
         {
           frameConfig: {
             items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                character: "kat",
+                characterIndex: 0,
+                face: "kat-smiling.49647334.png",
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
           dialogs: [
-            `{"liz2" : "I see a frog."}`,
-            `{"liz2" : "I see a frog... on a log."}`,
-            `{"liz2" : "Tee Hee Hee!"}`,
-            `{"kat" : "Wow Liz, you have good eyes! "}`,
-            `{"liz2" : "I see a pig."}`,
-            `{"liz2" : "I see a pig... in a wig!"}`,
-            `{"liz2" : "Tee Hee Hee!"}`,
+            '{"katieKooper01" : "Yay, we are just in time for the rap battle"}',
+            '{"kat" : "Cool! What\'s a rap battle?"}',
+            '{"katieKooper01" : "I don\'t know."}',
+            '{"katieKooper01" : "Let\'s find out!."}',
           ],
         },
         {
           frameConfig: {
             items: [],
+            faces: [
+              { character: "liz2", characterIndex: 1, face: "happy" },
+              {
+                character: "kat",
+                characterIndex: 0,
+                face: "kat-cringing.62a27ad4.png",
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
           dialogs: [
-            `{"kat" : "Liz, could we maybe talk about something else today? "}`,
-            `{"liz2" : "I see a goat."}`,
-            `{"liz2" : "I see a goat... in a boat!"}`,
-            `{"kat" : "Oh my gosh Kat! Turn six! "}`,
+            '{"kat" : "The trolls don\'t know we stole the diamond. So just act cool."}',
+            '{"katieKooper01" : "What! We STOLE the DIAMOND? "}',
+            '{"kat" : "Shhhhhhhhhhh! "}',
+            '{"troll01" : "LOOK GIRLS!"}',
+            '{"troll02" : "GIRLS TAKE DIAMOND?"}',
+            '{"troll01" : "TROLLS EAT GIRLS!"}',
           ],
         },
         {
           frameConfig: {
             items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-dismayed.b719035a.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
           dialogs: [
-            `{"liz2" : "What'evs girl...  I turned six when you were still riding a trycicle."}`,
-            `{"kat" : "Ha!  Good one!  Well, I turned six when you were still wearing Sponge Bob training pants!  "}`,
-            `{"liz2" : "Oh yeah, well your mom still drives you around in a backwards car seat!"}`,
-            `{"kat" : "Oh snap!  That’s a good one!"}`,
-            `{"kat" : "I’m going to drop that one on the Troll later!"}`,
+            '{"kat" : "What? Who? Me? Don\'t be silly. We hate diamonds!"}',
+            '{"katieKooper01" : "What? Kat, we love diamonds!!!"}',
+            '{"kat" : "Katie!!!!"}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-cringing.62a27ad4.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
+          dialogs: [
+            '{"kat" : "Oh hello trolls. We are not here to take your diamond."}',
+            '{"kat" : "We are here for....ummmm.... uuuuuhhhh..."}',
+            '{"kat" : "Katie! Think of something quick!"}',
+            '{"katieKooper01" : "We\'re here for the rap battle!"}',
+            '{"kat" : "Good save Katie Kooper!"}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-surprised.1c00ae4e.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
+          dialogs: [
+            '{"kat" : "My friend Kat here is going to show you trolls how to rap!"}',
+            '{"kat" : "Katie!!!!"}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-dismayed.b719035a.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
+          dialogs: [
+            '{"troll01" : "RAP BATTLE!"}',
+            '{"troll02" : "RAP BATTLE!"}',
+            '{"kat" : "Katie? What in the world are you getting us into."}',
+            '{"katieKooper01" : "Chill out Kat, it\'s fine."}',
+            '{"katieKooper01" : "Just do the rap about the frog on the log."}',
+            '{"kat" : "The frog on the log?!?"}',
+            '{"kat" : "Yeah. The one you did this morning! That was hilarious!"}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-loud.0dec3d35.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
+          dialogs: [
+            '{"kat" : "Ugggghhh! Katie! That was not a rap!"}',
+            '{"kat" : "This morning, I literally, saw a frog on a log."}',
+            '{"katieKooper01" : "That was so funny! You had me dying!"}',
+            '{"kat" : "Katie!!!!"}',
+            '{"kat" : "Stop Talking! For the first time in your life!"}',
+            '{"kat" : "Listen to me very closely. There is no rap."}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                character: "kat",
+                characterIndex: 0,
+                face: "kat-dismayed.b719035a.png",
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
+          dialogs: [
+            '{"kat" : "This morning..."}',
+            '{"kat" : "I SAW A FROG..."}',
+            '{"troll01" : "GIRL SAW FROG???"}',
+            '{"kat" : "...ON A LOG!"}',
+            '{"troll02" : "FROG ON LOG!"}',
+            '{"troll01" : "HA! HA! HOO! HOO!"}',
+            '{"troll01" : "TROLL LIKE FROG!"}',
           ],
         },
       ],
     },
     bog: {
       sceneConfig: {
-        items: [],
+        coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
-        isStartScene: true,
         isEndScene: false,
+        isStartScene: true,
+        items: ["flag", "cup"],
       },
       frames: [
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                character: "kat",
+                characterIndex: 0,
+                face: "kat-scared.a3316950.png",
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"liz2" : "The Troll?"}`,
-            `{"liz2" : "Do you mean the 'TROLL NEEDS GOLD' Troll?"}`,
-            `{"liz2" : "What’s up with that guy?"}`,
-            `{"kat" : "I know, right? He’s the coolest!"}`,
-            `{"liz2" : "Yeah, totally..."}`,
-            `{"liz2" : "...but what’s his deal?"}`,
+            '{"kat" : "And I\'m NOT gonna RAP."}',
+            '{"kat" : "It\'s just a silly fad."}',
+            '{"kat" : "You think your day was bad?"}',
+            '{"kat" : "Well let me tell you trolls about the day I\'ve had."}',
+            '{"troll01" : "FROG ON LOG!"}',
           ],
         },
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-cringing.62a27ad4.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"liz2" : "I don’t get it."}`,
-            `{"liz2" : "Why does he run around yelling: 'TROLL NEED GOLD'?"}`,
-            `{"kat" : "Really Liz?"}`,
-            `{"kat" : "Are you seriously asking me why the Troll runs around yelling: 'TROLL NEED GOLD'?"}`,
-            `{"liz2" : "Yes!"}`,
-            `{"kat" : "You’re not kidding?"}`,
-          ],
-        },
-      ],
-    },
-    bees: {
-      sceneConfig: {
-        items: [],
-        creatures: ["kat", "liz2"],
-        isStartScene: true,
-        isEndScene: false,
-      },
-      frames: [
-        {
-          dialogs: [
-            `{"liz2" : "Why does he always yell: 'TROLL NEED GOLD'?  It’s a valid question."}`,
-            `{"kat" : "Well, I think he’s saying it because he needs gold."}`,
-            `{"liz2" : "Um, yeah.  Thanks Albert Einstein."}`,
-            `{"liz2" : "I get that part."}`,
-            `{"kat" : "Oh."}`,
+            '{"kat" : "First we saw a frog"}',
+            '{"kat" : "The frog was on a log."}',
+            '{"kat" : "Then there was this dog..."}',
+            '{"kat" : "...stuck in a bog wearing clogs!"}',
+            '{"troll01" : "TROLL LIKE BOG!"}',
           ],
         },
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                character: "kat",
+                characterIndex: 0,
+                face: "kat-surprised.1c00ae4e.png",
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"liz2" : "I understand that he is literally asking for gold."}`,
-            `{"liz2" : "I'm six. Remember?"}`,
-            `{"kat" : "Ok."}`,
-            `{"liz2" : "But why does he need gold?"}`,
-            `{"liz2" : "Elliot says he doesn't ~need~ gold."}`,
-            `{"liz2" : "The troll probably just ~wants~ gold."}`,
+            '{"kat" : "Me and Liz took a walk. "}',
+            '{"kat" : "First we see a mop."}',
+            '{"kat" : "Then there was this top?"}',
+            '{"kat" : "Right next to a cop,"}',
+            '{"kat" : "with a frog on a log, drinking pop!"}',
+            '{"troll01" : "HA! HA! HOO! HOO!"}',
+            '{"troll02" : "FROGGY LIKE POP!"}',
           ],
         },
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-smiling.49647334.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"kat" : "Wait, is that the kid that says:"}`,
-            `{"kat" : "You get what you get and you don't get upset?"}`,
-            `{"kat" : "Well, I get upset!"}`,
-            `{"kat" : "Getting upset is my thing!"}`,
-            `{"liz2" : "Calm down Kat."}`,
-            `{"kat" : "It's my happy place!"}`,
-            `{"liz2" : "No one is trying to take away your crazy."}`,
-            `{"liz2" : "My parents better not hear aout that one..."}`,
-            `{"liz2" : "But the Troll... What’s his back story?"}`,
+            '{"kat" : "So quit squishin all the fish and sit and listen!"}',
+            '{"kat" : "Cause I\'m the kinda kid that makes the grown ups stop."}',
+            '{"kat" : "And yell: Honey! Hide the keys to the donut shop!"}',
+            '{"troll01" : "DONUT SHOP!"}',
+            '{"kat" : "You trolls like the Donut Shop?"}',
+            '{"troll21" : "DONUT SHOP!"}',
           ],
         },
       ],
     },
     swamp: {
       sceneConfig: {
-        items: [],
+        coordinates: { col: 2, row: 0 },
         creatures: ["kat", "liz2"],
-        isStartScene: true,
         isEndScene: false,
+        isStartScene: true,
+        items: ["flag", "cup"],
       },
       frames: [
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { character: "liz2", characterIndex: 1, face: "happy" },
+              {
+                face: "kat-silly.57a8c5ca.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"kat": "Liz!!!! Noooooooooooo!!!!"}`,
-            `{"kat": "No! No! No! No! No!"}`,
-            `{"liz2": "What?"}`,
-            `{"kat": "Undo! Undo!"}`,
-            `{"liz2": "Kat, today is not your day to be crazy."}`,
-            `{"liz2": "We need to take turns."}`,
+            '{"kat" : "My parents groan a lot."}',
+            '{"kat" : "You hear that rumble? That\'s my tummy from the soda pop."}',
+            '{"kat" : "Call the doc!"}',
+            '{"kat" : "So we can ask if I\'ll explode or not!"}',
+            '{"kat" : "I check my phone a lot, but it won\'t unlock!"}',
+            '{"kat" : "Yeah, it\'s bark, just wait. I\'ll get it Photoshopped."}',
           ],
         },
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-surprised.1c00ae4e.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"kat": "Liz, never... ever... ever... ask for a creature's backstory"}`,
-            `{"kat": "That's like Rule Number One!"}`,
-            `{"liz2": "I thought 'Never stand behind a donkey' was Rule Number One..."}`,
-            `{"kat": "Liiiiiiizzzz!"}`,
+            '{"kat" : "I\'ll see you at my birthday when corona stops."}',
+            '{"kat" : "And when the party starts rockin..."}',
+            '{"kat" : "That\'s just me and Liz squawkin..."}',
+            '{"kat" : "Like 2 sea gulls that got locked in-"}',
+            '{"kat" : "side a donut shop."}',
+            '{"troll01" : "DONUT SHOP!"}',
           ],
         },
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-unsure.35db04b3.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"kat": "You asked about the trolls back story."}`,
-            `{"liz2": "So?"}`,
-            `{"kat": "Now Matt is going to do some loooooong comic about the troll's back story."}`,
-            `{"kat": "Remember how distracted he gets?"}`,
+            '{"kat" : "They said this was a battle, but you Trolls don\'t bloop."}',
+            '{"kat" : "Fellas, I\'m about to tell a troll the stone cold truth."}',
+            '{"kat" : "Here\'s some cold stone soup."}',
+            '{"kat" : "In an old sewn shoe."}',
           ],
         },
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-normal.e1bc2b82.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"liz2": "What's a back story?"}`,
-            `{"kat": "It's a story that tells where the creature came from."}`,
-            `{"kat": "What's it's name?"}`,
-            `{"kat": "Where does it live?"}`,
-            `{"kat": "Did it have a happy child hood?"}`,
-            `{"liz2": "Cool!"}`,
-            `{"kat": "No! Not cool!"}`,
-            `{"kat": "The opposite of cool!"}`,
-            `{"liz2": "Warm?"}`,
-          ],
-        },
-        {
-          dialogs: [
-            `{"kat": "Liz, we are trying to find the that sparkly dress!"}`,
-            `{"kat": "Remember... 'Dress Quest'?"}`,
-            `{"kat": "I don't even think that's the name of this game anymore."}`,
-            `{"liz2": "It's not."}`,
-            `{"kat": "My point exactly!!!"}`,
-            `{"liz2": "I think it's Rapping Troll Cave."}`,
+            '{"kat" : "And wait, here\'s a bone for your pooch too!"}',
+            '{"kat" : "Little kid, you want a cold cone for your loose tooth?"}',
+            '{"kat" : "And here\'s some goop for the hole in your boot where your big hairy toes poke through."}',
+            '{"kat" : "And you two. You don\'t bloop? You ever heard of youTube?"}',
+            '{"troll01" : "We don\'t do it..."}',
+            '{"troll02" : "...it\'s too new."}',
           ],
         },
       ],
     },
-
-    log: {
+    hill: {
       sceneConfig: {
-        items: [],
-        creatures: ["kat", "liz2", "troll01"],
-        isStartScene: true,
+        coordinates: { col: 3, row: 0 },
+        creatures: ["kat", "liz2"],
         isEndScene: false,
+        isStartScene: true,
+        items: ["flag", "cup"],
       },
       frames: [
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-silly.57a8c5ca.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"kat": "Oh no... here it comes..."}`,
-            `{"liz2": "Hey look! There's the troll."}`,
-            `{"liz2": "I didn't see him there before."}`,
-            `{"kat": "Oh dear..."}`,
-            `{"liz2": "I swear he wasn't there 3 seconds ago."}`,
-            `{"liz2": "Hello Troll."}`,
+            '{"kat" : "Buddy, Bloop Blip,"}',
+            '{"kat" : "Flip Flop, won\'t do"}',
+            '{"kat" : "Not for Trolls like you."}',
+            '{"kat" : "Stop!"}',
+            '{"kat" : "Let me drop that Deedle Daddle, Ding Dong. Dilly Dally "}',
+            '{"kat" : "Blip Blap Flip."}',
+            '{"kat" : "Flap Flop Floop, Flizz."}',
           ],
         },
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-smiling.49647334.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"troll2": "TROLL.... SOOOOOO..... SAD..."}`,
-            `{"liz2": "Oh my goodness!  Why...?"}`,
-            `{"troll2": "BOO HOO!"}`,
-            `{"kat": "Oh brother..."}`,
-            `{"troll2": "TODAY.... TROLL BIRTHDAY..."}`,
+            '{"kat" : "I like you trolls a lot"}',
+            '{"kat" : "But I gotta find liz."}',
+            '{"troll01" : "Bye Bye!"}',
+            '{"troll02" : "See you soon!"}',
+            '{"troll01" : "Hope you have a nice trip!"}',
           ],
         },
         {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-funny.9fa7fcc4.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"liz2": "You poor thing!"}`,
-            `{"troll2": "TROLL WANT FROOT LOOPS!!!"}`,
-            `{"liz2": "Oh my gosh...  so sad."}`,
-            `{"troll2": "TROLL MOM NOT LIKE SUGAR!!!"}`,
-            `{"liz2": "I'm so sorry..."}`,
-            `{"kat": "We gotta go.  Bye! Bye!"}`,
+            '{"katieKooper01" : "Kat, you won the Rap battle!"}',
+            '{"kat" : "What\'s a rap battle?"}',
+            '{"kat" : "Um.... Never mind. Let\'s go find Liz!"}',
+            '{"troll01" : "Baby troll wants to come with you."}',
+            '{"kat" : "Oh dear. Oh no no no no no... come on Matt!"}',
+            '{"katieKooper01" : "Cuuu----uuuute! OK!"}',
+            '{"kat" : "Think about pretty dresses Katie. Pretty Dresses!"}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2", characterIndex: 1 },
+              {
+                face: "kat-surprised.1c00ae4e.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["kat", "katieKooper01", "troll01", "troll02"],
+          },
+          dialogs: [
+            '{"troll01" : "Here is baby troll\'s diaper pin."}',
+            '{"kat" : "Oh no, it\'s sundown and we don\'t have the magical stone of Azkabat."}',
+            '{"spoiler" : "It\'s actually part of the diaper pin"}',
           ],
         },
       ],
     },
   },
 }
-
 export default test001

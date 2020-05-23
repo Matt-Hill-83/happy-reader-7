@@ -18,6 +18,7 @@ import story014 from "../../Scripts/014-TruthBomb"
 import story005 from "../../Scripts/005-Whambulance"
 import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
 import testImport001 from "../../Scripts/000-aTestImport"
+import importTest002 from "../../Scripts/020-RapBattles01-test"
 
 class FrameSetUploader extends Component {
   // state = { text: `{"dummyData":5}` }
@@ -28,6 +29,7 @@ class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story020) }
   // state = { text: JSON.stringify(story050) }
   state = { text: JSON.stringify(testImport001) }
+  // state = { text: JSON.stringify(importTest002) }
   // state = { text: JSON.stringify(story110) }
   // state = { text: JSON.stringify(story310) }
   // state = { text: JSON.stringify(template2) }
