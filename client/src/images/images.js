@@ -45,7 +45,12 @@ import twig from "./locations/twig.png"
 import van from "./locations/van.png"
 
 // creatures
+// creatures
+// creatures
+// creatures
+// creatures
 import bug from "./creatures/bug.png"
+import gerald01 from "./creatures/gerald01.png"
 import princess_alibera from "./creatures/princess_alibera.png"
 import drake from "./creatures/drake.png"
 import cat_king from "./creatures/cat_king.gif"
@@ -112,6 +117,7 @@ import dress06 from "./creatures/dress06.png"
 import dress07 from "./creatures/dress07.png"
 
 import anna from "./creatures/anna.png"
+import sparkle01 from "./creatures/sparkle01.png"
 import vanellope_little from "./creatures/vanellope_little.png"
 import rapunzel01 from "./creatures/rapunzel01.png"
 import jasmine01 from "./creatures/jasmine01.png"
@@ -336,6 +342,7 @@ posableLiz.images.heads = lizHeads.map((image) => {
   const regex = `([^/]+?)$`
   const match = image.match(regex)
   const mood = match && match[0]
+  console.log("mood", mood) // zzz
 
   return {
     image,
@@ -390,6 +397,7 @@ const locations = {
 
 const creatures = {
   anna,
+  sparkle01,
   ant,
   ash01,
   bat,
@@ -419,7 +427,7 @@ const creatures = {
   elf,
   emmet01,
   fairy,
-  girl,
+  // girl,
   goblin,
   gonzay,
   hobbit,
@@ -436,6 +444,7 @@ const creatures = {
   pig,
   poppy01,
   princess_alibera,
+  gerald01,
   pug,
   queen_hashami,
   rapunzel01,

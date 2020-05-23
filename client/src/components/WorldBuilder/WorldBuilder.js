@@ -430,6 +430,12 @@ class WorldBuilder extends Component {
       const newDialogs = this.createNewDialogs({ dialogs })
 
       const configProps = {}
+      if (frameConfig && frameConfig.faces) {
+        configProps.faces = frameConfig.faces
+      } else {
+        configProps.faces = sceneConfig.faces
+      }
+
       if (frameConfig && frameConfig.creatures) {
         configProps.creatures = frameConfig.creatures
       } else {
@@ -450,6 +456,22 @@ class WorldBuilder extends Component {
       })
 
       console.log("newFrame", toJS(newFrame)) // zzz
+
+      const dummyFaces = [
+        {
+          // character: "liz2",
+          character: "liz-28.d900a123.png",
+          characterIndex: 1,
+          face: "happy",
+        },
+        {
+          character: "kat",
+          characterIndex: 0,
+          face: "kat-pigtails.22bff545.png",
+        },
+      ]
+
+      // newFrame.faces = dummyFaces
 
       return newFrame
     })
@@ -509,11 +531,10 @@ class WorldBuilder extends Component {
         Object.assign(newBornScene, newScene.sceneConfig)
       }
 
-      const newFrames = this.createNewFrames({
+      newBornScene.frameSet.frames = this.createNewFrames({
         dialog: newScene.dialog,
         newScene,
       })
-      newBornScene.frameSet.frames = newFrames
 
       console.log("newBornScene", toJS(newBornScene)) // zzz
       scenesGrid[0][index] = newBornScene

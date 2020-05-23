@@ -19,7 +19,7 @@ class QuestDialog extends React.Component {
   constructor(props) {
     super(props)
     const showProdInitialValue = localStateStore.getIsProdRelease()
-    this.state = { showProd: showProdInitialValue }
+    this.state = { showProd: !showProdInitialValue }
   }
 
   toggleShowProd = () => {
