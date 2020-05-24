@@ -1,5 +1,5 @@
 const story020 = {
-  title: "rap battle",
+  title: "title",
   scenes: {
     cave: {
       sceneConfig: {
@@ -12,12 +12,10 @@ const story020 = {
       frames: [
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                character: "kat",
-                face: "kat-smiling.49647334.png",
-              },
+              { character: "kat", face: "kat-smiling.49647334.png" },
             ],
             creatures: ["kat", "katieKooper01"],
           },
@@ -30,12 +28,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { character: "liz2", face: "happy" },
-              {
-                character: "kat",
-                face: "kat-cringing.62a27ad4.png",
-              },
+              { character: "kat", face: "kat-cringing.62a27ad4.png" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -50,12 +46,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-dismayed.b719035a.png",
-                character: "kat",
-              },
+              { face: "kat-dismayed.b719035a.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -67,12 +61,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-cringing.62a27ad4.png",
-                character: "kat",
-              },
+              { face: "kat-cringing.62a27ad4.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -86,12 +78,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-surprised.1c00ae4e.png",
-                character: "kat",
-              },
+              { face: "kat-surprised.1c00ae4e.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -102,12 +92,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-dismayed.b719035a.png",
-                character: "kat",
-              },
+              { face: "kat-dismayed.b719035a.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -123,12 +111,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-loud.0dec3d35.png",
-                character: "kat",
-              },
+              { face: "kat-loud.0dec3d35.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -143,12 +129,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                character: "kat",
-                face: "kat-dismayed.b719035a.png",
-              },
+              { character: "kat", face: "kat-dismayed.b719035a.png" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -175,12 +159,10 @@ const story020 = {
       frames: [
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                character: "kat",
-                face: "kat-scared.a3316950.png",
-              },
+              { character: "kat", face: "kat-scared.a3316950.png" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -194,12 +176,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-cringing.62a27ad4.png",
-                character: "kat",
-              },
+              { face: "kat-cringing.62a27ad4.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -213,12 +193,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                character: "kat",
-                face: "kat-surprised.1c00ae4e.png",
-              },
+              { character: "kat", face: "kat-surprised.1c00ae4e.png" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -234,12 +212,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-smiling.49647334.png",
-                character: "kat",
-              },
+              { face: "kat-smiling.49647334.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -265,12 +241,10 @@ const story020 = {
       frames: [
         {
           frameConfig: {
+            items: [],
             faces: [
               { character: "liz2", face: "happy" },
-              {
-                face: "kat-silly.57a8c5ca.png",
-                character: "kat",
-              },
+              { face: "kat-silly.57a8c5ca.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -285,12 +259,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-surprised.1c00ae4e.png",
-                character: "kat",
-              },
+              { face: "kat-surprised.1c00ae4e.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -305,12 +277,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-unsure.35db04b3.png",
-                character: "kat",
-              },
+              { face: "kat-unsure.35db04b3.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -323,12 +293,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-normal.e1bc2b82.png",
-                character: "kat",
-              },
+              { face: "kat-normal.e1bc2b82.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -354,12 +322,10 @@ const story020 = {
       frames: [
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-silly.57a8c5ca.png",
-                character: "kat",
-              },
+              { face: "kat-silly.57a8c5ca.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -375,12 +341,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-smiling.49647334.png",
-                character: "kat",
-              },
+              { face: "kat-smiling.49647334.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -394,12 +358,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-funny.9fa7fcc4.png",
-                character: "kat",
-              },
+              { face: "kat-funny.9fa7fcc4.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
@@ -415,12 +377,10 @@ const story020 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              {
-                face: "kat-surprised.1c00ae4e.png",
-                character: "kat",
-              },
+              { face: "kat-surprised.1c00ae4e.png", character: "kat" },
             ],
             creatures: ["kat", "katieKooper01", "troll01", "troll02"],
           },
