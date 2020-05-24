@@ -167,12 +167,49 @@ class FrameViewer extends Component {
 
       return (
         <div className={`${css.characterContainer}`} key={index}>
-          <div onClick={() => this.toggleFacePicker({ character: character })}>
-            <Character name={character} mood={mood} isEditMode={false} />
-          </div>
+          <Character
+            name={character}
+            mood={mood}
+            isEditMode={false}
+            showHeadOnly={false}
+          />
         </div>
       )
     })
+  }
+
+  renderSomeFriends = () => {
+    const { scene, frame } = this.props
+    const { faces = [] } = frame
+    if (!frame) return null
+
+    let allCharacters = []
+
+    if (frame.creatures && frame.creatures.length > 0) {
+      allCharacters = [...frame.creatures]
+    } else {
+      allCharacters =
+        (scene.characters && scene.characters.map((item) => item.name)) || []
+    }
+
+    const someCharacters = allCharacters.slice(0, 2)
+    const renderedCharacters = someCharacters.map((character, index) => {
+      const mood = this.getMood({ name: character, faces })
+
+      return (
+        <div className={`${css.characterContainer2}`} key={index}>
+          <Character
+            name={character}
+            mood={mood}
+            isEditMode={false}
+            showHeadOnly={true}
+            headClassName={css.headClassName}
+          />
+        </div>
+      )
+    })
+
+    return <div className={css.charactersContainer2}>{renderedCharacters}</div>
   }
 
   nextButtonRow = () => {
@@ -232,8 +269,11 @@ class FrameViewer extends Component {
           <div className={css.wordsAndButtons}>
             <div className={css.sceneName}>{sceneName}</div>
             <div className={css.wordsContainer}>
-              {/* {this.renderNarrative()} */}
               {this.renderDialog()}
+
+              {this.renderSomeFriends()}
+
+              {/* {this.renderNarrative()} */}
               {this.nextButtonRow()}
             </div>
             <div className={css.buttonsContainer}>

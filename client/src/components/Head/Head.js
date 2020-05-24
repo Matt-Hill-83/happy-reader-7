@@ -9,7 +9,7 @@ class Head extends Component {
     const {
       name,
       head: { image, mood, isEditMode },
-      className = ""
+      className = "",
     } = this.props
 
     let imageClassName = ""
@@ -17,8 +17,8 @@ class Head extends Component {
       imageClassName = css.girlHeadKat
     }
 
-    const imageClass = imageClassName || css.girlHeadAmber
-    const containerClass = imageClassName || css.girlHeadAmberContainer
+    const imageClass = !!imageClassName ? imageClassName : css.girlHeadAmber
+    const containerClass = !!imageClassName ? "" : css.girlHeadAmberContainer
 
     return (
       <div

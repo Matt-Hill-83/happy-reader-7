@@ -30,6 +30,11 @@ const test = {
   },
   rhymes: {
     "1": [
+      `kat: "stop and listen"`,
+      `kat: "the clock's ticking"`,
+      `kat: "Liz, get your clogs clickin"`,
+      `kat: "What?"`,
+      `kat: "Hurry up, you slowpoke!"`,
       `kat: "in the slang one, say see you later alligator, instead of laters!"`,
       `kat: "Right back at ya! Baked Potater!"`,
       `kat: "Oh, and if you think you wanna bring the baby! Super!"`,

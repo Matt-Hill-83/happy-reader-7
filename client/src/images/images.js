@@ -342,7 +342,7 @@ posableLiz.images.heads = lizHeads.map((image) => {
   const regex = `([^/]+?)$`
   const match = image.match(regex)
   const mood = match && match[0]
-  console.log("mood", mood) // zzz
+  // console.log("mood", mood) // zzz
 
   return {
     image,
