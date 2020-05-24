@@ -1,52 +1,80 @@
 const template = {
-  title: "No Title",
+  title: "title",
   scenes: {
     cave: {
       sceneConfig: {
-        items: [],
-        creatures: ["kat", "liz2", "troll01", "troll02"],
-        isStartScene: true,
+        coordinates: { col: 0, row: 0 },
+        creatures: ["kat", "liz2"],
         isEndScene: false,
+        isStartScene: true,
+        items: [{ name: "empty" }],
       },
       frames: [
         {
           frameConfig: {
             items: [],
+            faces: [
+              { face: "happy", character: "liz2" },
+              { character: "kat", face: "kat-smiling.49647334.png" },
+            ],
+            creatures: ["kat", "liz2"],
           },
           dialogs: [
-            `{"kat" : "++++++++++++++++++++++++++++++++"}`,
-            `{"liz2" ++++++++++++++++++++++++++++++++"}`,
+            '{"liz2" : "-----------------------------------------------"}',
+            '{"kat" : "++++++++++"}',
           ],
         },
         {
-          // frameConfig: {},
+          frameConfig: {
+            items: [],
+            faces: [
+              { character: "liz2", face: "happy" },
+              { character: "kat", face: "kat-cringing.62a27ad4.png" },
+            ],
+            creatures: ["kat", "liz2", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"kat" : "++++++++++++++++++++++++++++++++"}`,
-            `{"liz2" ++++++++++++++++++++++++++++++++"}`,
+            '{"kat" : "++++++++++"}',
+            '{"liz2" : "-----------------------------------------------"}',
           ],
         },
       ],
     },
-    bog: {
+    home: {
       sceneConfig: {
-        items: [],
+        coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
-        isStartScene: true,
         isEndScene: false,
+        isStartScene: true,
+        items: [{ name: "empty" }],
       },
       frames: [
         {
-          // frameConfig: {},
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "happy", character: "liz2" },
+              { character: "kat", face: "kat-smiling.49647334.png" },
+            ],
+            creatures: ["kat", "liz2"],
+          },
           dialogs: [
-            `{"kat" : "++++++++++++++++++++++++++++++++"}`,
-            `{"liz2" ++++++++++++++++++++++++++++++++"}`,
+            '{"liz2" : "-----------------------------------------------"}',
+            '{"kat" : "++++++++++"}',
           ],
         },
         {
-          // frameConfig: {},
+          frameConfig: {
+            items: [],
+            faces: [
+              { character: "liz2", face: "happy" },
+              { character: "kat", face: "kat-cringing.62a27ad4.png" },
+            ],
+            creatures: ["kat", "liz2", "troll01", "troll02"],
+          },
           dialogs: [
-            `{"kat" : "++++++++++++++++++++++++++++++++"}`,
-            `{"liz2" ++++++++++++++++++++++++++++++++"}`,
+            '{"kat" : "++++++++++"}',
+            '{"liz2" : "-----------------------------------------------"}',
           ],
         },
       ],
