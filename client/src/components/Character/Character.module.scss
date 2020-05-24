@@ -39,7 +39,9 @@
   border-radius: 45px;
   width: 136%;
   max-width: unset;
-  max-height: unset;
+  // max-height: unset;
+  max-height: 100%;
+
   display: flex;
 }
 
