@@ -89,10 +89,10 @@ const story014 = {
           dialogs: [
             '{"kat" : "Liz, I’m going to drop a truth bomb on you."}',
             '{"kat" : "Listen up."}',
-            '{"liz" : "Um ok."}',
+            '{"liz2" : "Um ok."}',
             '{"kat" : "Sometimes it’s better to ask for forgiveness..."}',
             '{"kat" : "...than for permission."}',
-            '{"liz" : "Huh? What are you talking about?"}',
+            '{"liz2" : "Huh? What are you talking about?"}',
             '{"kat" : "It takes a second."}',
             '{"kat" : "Just let it sink in..."}',
           ],
