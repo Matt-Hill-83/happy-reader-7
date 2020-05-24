@@ -49,6 +49,8 @@ import van from "./locations/van.png"
 // creatures
 // creatures
 // creatures
+import pigInAWig from "./creatures/pigInAWig.png"
+import goatInABoat from "./creatures/goatInABoat.png"
 import bug from "./creatures/bug.png"
 import gerald01 from "./creatures/gerald01.png"
 import princess_alibera from "./creatures/princess_alibera.png"
@@ -405,6 +407,7 @@ const creatures = {
   blank,
   blankDragon01,
   bug,
+  pigInAWig,
   bunny,
   camperGirl,
   cat_king,
@@ -414,6 +417,7 @@ const creatures = {
   cop,
   cub,
   dennisTheMenace,
+  goatInABoat,
   dragon,
   drake,
   drake01,

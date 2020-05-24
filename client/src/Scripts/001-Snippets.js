@@ -33,6 +33,8 @@ const test = {
       `kat: "stop and listen"`,
       `kat: "the clock's ticking"`,
       `kat: "Liz, get your clogs clickin"`,
+      `kat: "Liz, put some pep in your step"`,
+
       `kat: "What?"`,
       `kat: "Hurry up, you slowpoke!"`,
       `kat: "in the slang one, say see you later alligator, instead of laters!"`,
