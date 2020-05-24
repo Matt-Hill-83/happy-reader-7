@@ -138,6 +138,7 @@ import doorGreen from "./doors/doorGreen.png"
 import doorYellow from "./doors/doorYellow.jpg"
 
 // backgrounds
+import planetGlorp02 from "./backgrounds/planetGlorp02.png"
 import door from "./backgrounds/door.png"
 import cloud from "./backgrounds/cloud.png"
 import forest from "./backgrounds/forest-3.jpg"
@@ -511,6 +512,7 @@ const doors = {
 
 const backgrounds = {
   door,
+  planetGlorp02,
   cloud,
   forest,
   forestLeft,
