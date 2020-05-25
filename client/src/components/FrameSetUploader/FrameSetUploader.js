@@ -24,9 +24,9 @@ import template from "../../Scripts/000-ScriptTemplate.js"
 class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(importTest002) }
   // state = { text: JSON.stringify(story005) }
-  // state = { text: JSON.stringify(story010) }
+  state = { text: JSON.stringify(story010) }
   // state = { text: JSON.stringify(story013) }
-  state = { text: JSON.stringify(story014) }
+  // state = { text: JSON.stringify(story014) }
   // state = { text: JSON.stringify(story020) }
   // state = { text: JSON.stringify(story050) }
   // state = { text: JSON.stringify(story110) }

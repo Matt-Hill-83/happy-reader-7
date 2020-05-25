@@ -18,7 +18,7 @@ const story310 = {
             `{"liz2": "Oh they do.  They sure do.  They buy EVERY dress they want."}`,
             `{"kat": "Sooooo.....what's the problem?"}`,
             `{"liz2": "The problem...my dear, is that some dresses are not for sale."}`,
-            `{"liz2": "And those are the only dresses that princesses want."}`,
+            `{"liz2": "And those are the only dresses that a princess wants."}`,
           ],
         },
         {

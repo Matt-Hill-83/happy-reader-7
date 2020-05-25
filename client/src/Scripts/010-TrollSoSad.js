@@ -30,9 +30,28 @@ const story010 = {
             '{"liz2" : "I see a frog... on a log."}',
             '{"liz2" : "Tee Hee Hee!"}',
             '{"kat" : "Wow Liz, you have good eyes! "}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              {
+                character: "liz2",
+                face: "liz-22.c5ad2fd2.png",
+              },
+              {
+                face: "kat-funny.9fa7fcc4.png",
+                character: "kat",
+              },
+            ],
+            creatures: ["kat", "liz2"],
+          },
+          dialogs: [
             '{"liz2" : "I see a pig."}',
             '{"liz2" : "I see a pig... in a wig!"}',
             '{"liz2" : "Tee Hee Hee!"}',
+            '{"kat" : "Liz, could we maybe talk about something else today? "}',
           ],
         },
         {
@@ -51,7 +70,6 @@ const story010 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"kat" : "Liz, could we maybe talk about something else today? "}',
             '{"liz2" : "I see a goat."}',
             '{"liz2" : "I see a goat... in a boat!"}',
             '{"kat" : "Oh my gosh Kat! Turn six! "}',
@@ -108,8 +126,6 @@ const story010 = {
             '{"liz2" : "Do you mean the \'TROLL NEEDS GOLD\' Troll?"}',
             '{"liz2" : "What’s up with that guy?"}',
             '{"kat" : "I know, right? He’s the coolest!"}',
-            '{"liz2" : "Yeah, totally..."}',
-            '{"liz2" : "...but what’s his deal?"}',
           ],
         },
         {
@@ -128,12 +144,33 @@ const story010 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"liz2" : "I don’t get it."}',
-            '{"liz2" : "Why does he run around yelling: \'TROLL NEED GOLD\'?"}',
             '{"kat" : "Really Liz?"}',
             '{"kat" : "Are you seriously asking me why the Troll runs around yelling: \'TROLL NEED GOLD\'?"}',
             '{"liz2" : "Yes!"}',
             '{"kat" : "You’re not kidding?"}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              {
+                face: "liz-22.c5ad2fd2.png",
+                character: "liz2",
+              },
+              {
+                face: "kat-unsure.35db04b3.png",
+                character: "kat",
+              },
+            ],
+            creatures: ["kat", "liz2"],
+          },
+          dialogs: [
+            '{"liz2" : "Yeah, totally..."}',
+            '{"liz2" : "...but, I don’t get it."}',
+            '{"liz2" : "What’s his deal?"}',
+            '{"liz2" : "Why does he always yell: \'TROLL NEED GOLD\'?"}',
+            '{"liz2" : "It’s a valid question."}',
           ],
         },
       ],
@@ -163,7 +200,6 @@ const story010 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"liz2" : "Why does he always yell: \'TROLL NEED GOLD\'? It’s a valid question."}',
             '{"kat" : "Well, I think he’s saying it because he needs gold."}',
             '{"liz2" : "Um, yeah. Thanks Albert Einstein."}',
             '{"liz2" : "I get that part."}',
@@ -190,8 +226,6 @@ const story010 = {
             '{"liz2" : "I\'m six. Remember?"}',
             '{"kat" : "Ok."}',
             '{"liz2" : "But why does he need gold?"}',
-            '{"liz2" : "Elliot says he doesn\'t ~need~ gold."}',
-            '{"liz2" : "The troll probably just ~wants~ gold."}',
           ],
         },
         {
@@ -210,15 +244,33 @@ const story010 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
+            '{"liz2" : "Elliot says he doesn\'t ~need~ gold."}',
+            '{"liz2" : "The troll probably just ~wants~ gold."}',
             '{"kat" : "Wait, is that the kid that says:"}',
             '{"kat" : "You get what you get and you don\'t get upset?"}',
             '{"kat" : "Well, I get upset!"}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              {
+                character: "liz2",
+                face: "liz-23.5a4f9052.png",
+              },
+              {
+                face: "kat-scared.a3316950.png",
+                character: "kat",
+              },
+            ],
+            creatures: ["kat", "liz2"],
+          },
+          dialogs: [
             '{"kat" : "Getting upset is my thing!"}',
             '{"liz2" : "Calm down Kat."}',
-            '{"kat" : "It\'s my happy place!"}',
-            '{"liz2" : "No one is trying to take away your crazy."}',
-            '{"liz2" : "My parents better not hear aout that one..."}',
-            '{"liz2" : "But the Troll... What’s his back story?"}',
+            '{"kat" : "Getting upset is my happy place!"}',
+            '{"liz2" : "Kat, no one is trying to take away your crazy."}',
           ],
         },
       ],
@@ -245,8 +297,25 @@ const story010 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
+            '{"liz2" : "But the Troll... What’s his back story?"}',
             '{"kat" : "Liz!!!! Noooooooooooo!!!!"}',
+            '{"liz2" : "Huh?"}',
             '{"kat" : "No! No! No! No! No!"}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              { character: "liz2", face: "happy" },
+              {
+                character: "kat",
+                face: "kat-dismayed.b719035a.png",
+              },
+            ],
+            creatures: ["kat", "liz2"],
+          },
+          dialogs: [
             '{"liz2" : "What?"}',
             '{"kat" : "Undo! Undo!"}',
             '{"liz2" : "Kat, today is not your day to be crazy."}',
@@ -269,7 +338,8 @@ const story010 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"kat" : "Liz, never... ever... ever... ask for a creature\'s backstory"}',
+            '{"kat" : "Liz, never... ever... ever... "}',
+            '{"kat" : "...ask for a creature\'s backstory"}',
             '{"kat" : "That\'s like Rule Number One!"}',
             '{"liz2" : "I thought \'Never stand behind a donkey\' was Rule Number One..."}',
             '{"kat" : "Liiiiiiizzzz!"}',
@@ -291,9 +361,9 @@ const story010 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"kat" : "You asked about the trolls back story."}',
+            '{"kat" : "You asked about the troll\'s back story."}',
             '{"liz2" : "So?"}',
-            '{"kat" : "Now Matt is going to do some loooooong comic about the troll\'s back story."}',
+            '{"kat" : "Now Matt is going to do some loooooong story about the troll."}',
             '{"kat" : "Remember how distracted he gets?"}',
           ],
         },
@@ -313,11 +383,29 @@ const story010 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"liz2" : "What\'s a back story?"}',
+            '{"liz2" : "Wait, what\'s a back story?"}',
             '{"kat" : "It\'s a story that tells where the creature came from."}',
             '{"kat" : "What\'s it\'s name?"}',
             '{"kat" : "Where does it live?"}',
             '{"kat" : "Did it have a happy child hood?"}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              {
+                face: "liz-22.c5ad2fd2.png",
+                character: "liz2",
+              },
+              {
+                face: "kat-normal.e1bc2b82.png",
+                character: "kat",
+              },
+            ],
+            creatures: ["kat", "liz2"],
+          },
+          dialogs: [
             '{"liz2" : "Cool!"}',
             '{"kat" : "No! Not cool!"}',
             '{"kat" : "The opposite of cool!"}',
@@ -344,8 +432,6 @@ const story010 = {
             '{"kat" : "Remember... \'Dress Quest\'?"}',
             '{"kat" : "I don\'t even think that\'s the name of this game anymore."}',
             '{"liz2" : "It\'s not."}',
-            '{"kat" : "My point exactly!!!"}',
-            '{"liz2" : "I think it\'s Rapping Troll Cave."}',
           ],
         },
       ],
@@ -375,8 +461,28 @@ const story010 = {
             creatures: ["kat", "liz2", "troll01"],
           },
           dialogs: [
+            '{"kat" : "My point exactly!!!"}',
+            '{"liz2" : "I think it\'s Rapping Troll Cave."}',
             '{"kat" : "Oh no... here it comes..."}',
             '{"liz2" : "Hey look! There\'s the troll."}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              {
+                face: "liz-22.c5ad2fd2.png",
+                character: "liz2",
+              },
+              {
+                character: "kat",
+                face: "kat-tired.0d2a3c60.png",
+              },
+            ],
+            creatures: ["kat", "liz2", "troll01"],
+          },
+          dialogs: [
             '{"liz2" : "I didn\'t see him there before."}',
             '{"kat" : "Oh dear..."}',
             '{"liz2" : "I swear he wasn\'t there 3 seconds ago."}',

@@ -72,17 +72,22 @@ class GetSceneConfig extends Component {
 
       const creatures = scene.characters.map((item) => item.name)
 
-      outputObj[scene.location.name] = {
+      const newOutput = {
         sceneConfig: {
           coordinates: scene.coordinates,
           creatures,
           isEndScene: scene.isEndScene,
           isStartScene: scene.isStartScene,
-          items: scene.items,
         },
         frames: newFrames,
         faces: scene.frameSet.faces,
       }
+
+      if (scene.items && scene.items.length > 0) {
+        newOutput.sceneConfig.items = scene.items
+      }
+
+      outputObj[scene.location.name] = newOutput
     })
     console.log("outputObj", outputObj) // zzz
 
