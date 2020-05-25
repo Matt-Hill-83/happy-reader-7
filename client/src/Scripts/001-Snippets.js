@@ -64,6 +64,15 @@ const test = {
     ],
   },
   bigIdeas: {
+    "Intro to the Girls and Magic Valley": [
+      `{"kat": "Vulcan Nooooo!!!!!!!"}`,
+    ],
+    "Girls Split": [
+      `{"kat": "wha-mbulance episode, segues into them splitting."}`,
+    ],
+    "Liz goes to Happy Baby Land": [
+      `{"kat": "Vulcan Nooooo!!!!!!!"}`,
+    ],
     "1kat meets katy": [
       `{"kat": "Vulcan Nooooo!!!!!!!"}`,
       `{"kat": "Ugggggh!  What is it with me and weirdos?"}`,
@@ -139,27 +148,7 @@ const test = {
       `{"kat": "It's pretty legit}`,
       `{"kat": "valid}`,
       `{"liz2": "------>}`,
-      `{"liz2": "Put some pep in your step.}`,
-      `{"liz2": "What?"}`,
-      `{"liz2": "You are so sloooowwwww!!!!"}`,
-      `{"liz2": "What?, I'm not slow."}`,
-      `{"kat": "You are not slow when you want to be not slow, but you are a dawdler."}`,
-      `{"liz2": "Um... Siri, what the heck is my friend talking about?"}`,
-      `{"siri": "Dawdler:  someone who dilly dallies, also: a slow-poke. "}`,
-      `{"kat": "Ha. See, even siri thinks you are slow."}`,
-      `{"kat": "Liz, you are slower than a snail taped on top of a turtle."}`,
-      `{"liz2": "Aaaugh!!! , Siri! Take that back!"}`,
-      `{"liz2": "Take that back this instant!"}`,
-      `{"siri": "Did you want me to play: Take that back this instant - by the Backstreet Bugs? "}`,
-      `{"siri": "Ummmm.... hecka fricka yeah!"}`,
-      `{"siri": "I love the The backstreet bugs! "}`,
-      `{"kat": "Yo Check this out! "}`,
-      `{"kat": "Katie, drop me some Put-A-Cat-A! "}`,
-      `{"katie": " Put-A-Cat-A"}`,
-      `{"katie": "Summer Time is the funnest time"}`,
-      `{"katie": "Summer Time is the funnest time"}`,
-      `{"katie": "Summer Time is the funnest time"}`,
-      `{"katie": "Summer Time's is Fun!"}`,
+
     ],
   katieRapping: {
     "1": [
