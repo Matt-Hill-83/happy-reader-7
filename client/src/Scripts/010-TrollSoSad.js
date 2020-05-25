@@ -12,7 +12,6 @@ const story010 = {
       frames: [
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 character: "liz2",
@@ -34,7 +33,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 character: "liz2",
@@ -56,7 +54,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-12.d70620b2.png",
@@ -77,7 +74,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 character: "liz2",
@@ -111,7 +107,6 @@ const story010 = {
       frames: [
         {
           frameConfig: {
-            items: [],
             faces: [
               { face: "happy", character: "liz2" },
               {
@@ -130,7 +125,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-22.c5ad2fd2.png",
@@ -152,7 +146,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-22.c5ad2fd2.png",
@@ -186,7 +179,6 @@ const story010 = {
       frames: [
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-21.a5a24e47.png",
@@ -208,7 +200,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 character: "liz2",
@@ -230,7 +221,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 character: "liz2",
@@ -253,7 +243,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 character: "liz2",
@@ -286,7 +275,6 @@ const story010 = {
       frames: [
         {
           frameConfig: {
-            items: [],
             faces: [
               { character: "liz2", face: "happy" },
               {
@@ -305,7 +293,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               { character: "liz2", face: "happy" },
               {
@@ -324,7 +311,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-22.c5ad2fd2.png",
@@ -347,7 +333,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-15.a0aad93e.png",
@@ -369,7 +354,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-22.c5ad2fd2.png",
@@ -392,7 +376,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-22.c5ad2fd2.png",
@@ -414,7 +397,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-15.a0aad93e.png",
@@ -447,7 +429,6 @@ const story010 = {
       frames: [
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-2.abafcf11.png",
@@ -469,7 +450,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-22.c5ad2fd2.png",
@@ -491,7 +471,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-22.c5ad2fd2.png",
@@ -514,7 +493,6 @@ const story010 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-26.792f5b07.png",
