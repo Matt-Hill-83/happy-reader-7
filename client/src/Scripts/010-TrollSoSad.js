@@ -1,10 +1,10 @@
 const story010 = {
   title: "010 - Troll So Sad - test import",
-  description: "new desc",
-  // description: [
-  //   "1: some stuff----------------",
-  //   "2: some stuff----------------",
-  // ],
+  // description: "new desc",
+  description: [
+    "1: some stuff----------------",
+    "2: some stuff----------------",
+  ],
   scenes: {
     pond: {
       sceneConfig: {

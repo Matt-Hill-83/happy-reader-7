@@ -70,7 +70,7 @@ class WorldPicker extends Component {
       const text = (
         <span className={css.mapPickerRow}>
           {`${title}`}
-          {`${description}`}
+          {/* {`${description}`} */}
           {/* {`map ${name}: ${title}`} */}
           {/* {`id: ${id}`} */}
           <div className={css.mapPickerRowButtons}>
