@@ -214,10 +214,6 @@ class WorldBuilder extends Component {
 
   // TODO - make this global Util
   updateMap = async ({ newProps = {} }) => {
-    console.log("updateMap") // zzz
-
-    console.log("newProps", toJS(newProps)) // zzz
-
     const map = localStateStore.getWorldBuilderWorld()
     Object.assign(map.data, toJS(newProps))
 
@@ -413,18 +409,12 @@ class WorldBuilder extends Component {
   createNewFrames = ({ newScene }) => {
     const { frames, sceneConfig } = newScene
 
-    console.log("") // zzz
-    console.log("createNewFrames") // zzz
-    console.log("newScene", toJS(newScene)) // zzz
-    console.log("frames", toJS(frames)) // zzz
-
     // arrays of frames extracted from the json which has an easy to write struture,
     // but need to be transformed.
 
     // For each frame...
     const newFrames = frames.map((frame) => {
       const { dialogs, frameConfig } = frame
-      console.log("frameConfig", toJS(frameConfig)) // zzz
 
       // Turn each row of dialog into a json object...
       const newDialogs = this.createNewDialogs({ dialogs })
@@ -480,10 +470,8 @@ class WorldBuilder extends Component {
 
   importScenesGrid = ({ newFrameSet }) => {
     const { title, description } = newFrameSet
-    console.log("description--------------------------->>>", toJS(description)) // zzz
 
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
-    console.log("newFrameSet", toJS(newFrameSet)) // zzz
 
     const scenes = newFrameSet.scenes
     const sceneNames = Object.keys(scenes)
