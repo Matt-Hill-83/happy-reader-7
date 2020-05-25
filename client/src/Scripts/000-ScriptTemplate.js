@@ -1,5 +1,9 @@
 const template = {
   title: "title",
+  description: [
+    "1: some stuff----------------",
+    "2: some stuff----------------",
+  ],
   scenes: {
     cave: {
       sceneConfig: {

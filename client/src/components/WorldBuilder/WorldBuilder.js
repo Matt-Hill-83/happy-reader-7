@@ -214,6 +214,10 @@ class WorldBuilder extends Component {
 
   // TODO - make this global Util
   updateMap = async ({ newProps = {} }) => {
+    console.log("updateMap") // zzz
+
+    console.log("newProps", toJS(newProps)) // zzz
+
     const map = localStateStore.getWorldBuilderWorld()
     Object.assign(map.data, toJS(newProps))
 
@@ -407,11 +411,7 @@ class WorldBuilder extends Component {
   }
 
   createNewFrames = ({ newScene }) => {
-    const {
-      frames,
-      // sceneConfig: { characters, items },
-      sceneConfig,
-    } = newScene
+    const { frames, sceneConfig } = newScene
 
     console.log("") // zzz
     console.log("createNewFrames") // zzz
@@ -448,19 +448,13 @@ class WorldBuilder extends Component {
         configProps.items = sceneConfig.items
       }
 
-      console.log("configProps", toJS(configProps)) // zzz
-
       // and put the properties into the new Frame...
       const newFrame = Utils.getDummyFrame({
         props: { ...configProps, dialog: newDialogs },
       })
 
-      console.log("newFrame", toJS(newFrame)) // zzz
-
       return newFrame
     })
-
-    console.log("newFrames", toJS(newFrames)) // zzz
 
     return newFrames
   }
@@ -474,7 +468,6 @@ class WorldBuilder extends Component {
       const characterIndex = Utils.getCharacterDialogIndex({
         characterName: itemKey,
       })
-      console.log("characterIndex", characterIndex) // zzz
 
       return {
         character: itemKey,
@@ -486,21 +479,18 @@ class WorldBuilder extends Component {
   }
 
   importScenesGrid = ({ newFrameSet }) => {
+    const { title, description } = newFrameSet
+    console.log("description--------------------------->>>", toJS(description)) // zzz
+
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
     console.log("newFrameSet", toJS(newFrameSet)) // zzz
-    console.log("newFrameSet.scenes", toJS(newFrameSet.scenes)) // zzz
 
     const scenes = newFrameSet.scenes
     const sceneNames = Object.keys(scenes)
 
-    console.log("sceneNames", toJS(sceneNames)) // zzz
-
     // Create a new scene, for each scene
     sceneNames.forEach((sceneName, index) => {
-      console.log("sceneName", sceneName) // zzz
-
       const newScene = scenes[sceneName]
-      console.log("newScene", toJS(newScene)) // zzz
 
       const newBornScene = Utils.getBlankScene({
         props: {
@@ -520,11 +510,9 @@ class WorldBuilder extends Component {
         newScene,
       })
 
-      console.log("newBornScene", toJS(newBornScene)) // zzz
       scenesGrid[0][index] = newBornScene
     })
-
-    this.updateMap({})
+    this.updateMap({ newProps: { title, description } })
   }
 
   render() {
@@ -544,13 +532,14 @@ class WorldBuilder extends Component {
         <FrameSetUploader
           className={css.frameSetUploaderBox0}
           onSave={this.onChangeDialog}
-          onImportJson={this.importScenesGrid}
+          onImportJson={({ newFrameSet }) =>
+            this.importScenesGrid({ newFrameSet, moreProps: {} })
+          }
         />
         <GetSceneConfig
           className={css.frameSetUploaderBox1}
           onSave={this.onChangeDialog}
           scenesGrid={scenesGrid}
-          // onImportJson={this.importScenesGrid}
         />
         <InputGroup
           value={title}

@@ -19,28 +19,11 @@ class GetSceneConfig extends Component {
   }
 
   renderButton = () => {
-    const text = this.state.text
-
-    let newFrameSet = { noData: 5 }
-
-    if (text) {
-      newFrameSet = JSON.parse(text)
-    }
-
-    return (
-      <Button
-        // onClick={() => onImportJson({ newFrameSet })}
-        className={cx(css.uploadButton)}
-      >
-        DOWNLOAD JSON
-      </Button>
-    )
+    return <Button className={cx(css.uploadButton)}>DOWNLOAD JSON</Button>
   }
 
   render = () => {
-    // const { text } = this.state
     const { scenesGrid } = this.props
-    console.log("scenesGrid", toJS(scenesGrid)) // zzz
 
     const test1 = toJS(scenesGrid)
     console.log({ test1 })
@@ -50,8 +33,6 @@ class GetSceneConfig extends Component {
 
       // convert the old frames into the new frames
       const newFrames = oldFrames.map((oldFrame) => {
-        console.log("oldFrame", toJS(oldFrame)) // zzz
-
         const newFrame = {
           frameConfig: {
             items: [],
@@ -64,11 +45,8 @@ class GetSceneConfig extends Component {
         })
 
         newFrame.dialogs = newDialogs
-        // newFrame.faces = oldFrame.faces
         return newFrame
       })
-
-      console.log("scene.characters", toJS(scene.characters)) // zzz
 
       const creatures = scene.characters.map((item) => item.name)
 
@@ -89,16 +67,13 @@ class GetSceneConfig extends Component {
 
       outputObj[scene.location.name] = newOutput
     })
-    console.log("outputObj", outputObj) // zzz
 
     const output = {
-      title: "title",
+      title: "title-zzz",
       scenes: outputObj,
     }
 
-    // const flatJson = output
     const flatJson = JSON.stringify(output)
-    console.log("flatJson", toJS(flatJson)) // zzz
 
     return (
       <div className={css.main}>
@@ -106,10 +81,8 @@ class GetSceneConfig extends Component {
         {flatJson}
         <TextArea
           className={`${css.jsonPaster} }`}
-          // onChange={(event) => this.onChangeDialog({ event })}
           id="text-input"
           value={flatJson}
-          // value={text}
         />
       </div>
     )

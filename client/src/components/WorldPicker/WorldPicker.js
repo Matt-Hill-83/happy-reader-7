@@ -24,6 +24,7 @@ class WorldPicker extends Component {
   changeMap = ({ index, mapId }) => {
     const { onChangeWorld } = this.props
     const map = Utils.getMapFromId({ id: mapId })
+    console.log("map", toJS(map)) // zzz
 
     const mapName = map ? map.data && map.data.title : ""
 
@@ -63,12 +64,13 @@ class WorldPicker extends Component {
 
     const mapList = sortedMaps.map((map, index) => {
       const { id } = map
-      const { name, title, released, releasedToProd } = map.data
+      const { name, title, released, releasedToProd, description } = map.data
       const { updateIsReleasedProperty, updateReleasedToProd } = this.props
 
       const text = (
         <span className={css.mapPickerRow}>
           {`${title}`}
+          {`${description}`}
           {/* {`map ${name}: ${title}`} */}
           {/* {`id: ${id}`} */}
           <div className={css.mapPickerRowButtons}>
