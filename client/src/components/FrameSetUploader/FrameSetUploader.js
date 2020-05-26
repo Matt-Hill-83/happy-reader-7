@@ -21,13 +21,15 @@ import testImport001 from "../../Scripts/000-aTestImport"
 import template from "../../Scripts/000-ScriptTemplate.js"
 import story011 from "../../Scripts/011-LizIsSlow"
 import story015 from "../../Scripts/015-KatAndLizSplitUp"
-// import importTest002 from "../../Scripts/020-RapBattles01-test"
+import story004 from "../../Scripts/004-KatGoesOffScript"
+import story200 from "../../Scripts/200-DennisTheMenace"
 
 class FrameSetUploader extends Component {
-  // state = { text: JSON.stringify(importTest002) }
   // state = { text: JSON.stringify(story005) }
   // state = { text: JSON.stringify(story011) }
-  state = { text: JSON.stringify(story015) }
+  state = { text: JSON.stringify(story200) }
+  // state = { text: JSON.stringify(story004) }
+  // state = { text: JSON.stringify(story015) }
   // state = { text: JSON.stringify(story010) }
   // state = { text: JSON.stringify(story013) }
   // state = { text: JSON.stringify(story014) }

@@ -5,7 +5,7 @@ const story004 = {
     "2: some stuff----------------",
   ],
   scenes: {
-    house: {
+    log: {
       sceneConfig: {
         coordinates: { col: 0, row: 0 },
         creatures: ["kat", "liz2"],
@@ -48,7 +48,7 @@ const story004 = {
     },
     stump: {
       sceneConfig: {
-        coordinates: { col: 0, row: 0 },
+        coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
         isEndScene: false,
         isStartScene: true,
@@ -87,7 +87,7 @@ const story004 = {
     },
     bog: {
       sceneConfig: {
-        coordinates: { col: 0, row: 0 },
+        coordinates: { col: 2, row: 0 },
         creatures: ["kat", "liz2"],
         isEndScene: false,
         isStartScene: true,
@@ -129,4 +129,4 @@ const story004 = {
   },
 }
 
-export default story015
+export default story004
