@@ -1,5 +1,5 @@
 const story200 = {
-  title: "Dennis the Menace",
+  title: "200 - Dennis the Menace",
   description: "Dennis the Menace",
   scenes: {
     home: {
@@ -8,51 +8,45 @@ const story200 = {
         creatures: ["kat", "liz2"],
         isEndScene: false,
         isStartScene: true,
-        items: [{ name: "blank" }, { name: "dog01" }],
+        items: [],
       },
       frames: [
         {
           frameConfig: {
-            items: [],
             faces: [
-              { face: "happy", character: "liz2", characterIndex: 1 },
+              { face: "happy", character: "liz2" },
               {
                 face: "kat-optimistic.ded8aa68.png",
                 character: "kat",
-                characterIndex: 0,
               },
             ],
-            creatures: ["kat", "liz2"],
+            creatures: ["kat", "liz2", "dog01"],
           },
           dialogs: [
-            '{"kat" : ""}',
-            '{"liz2" : "Pete: Yo, what’s up Kat? "}',
-            '{"liz2" : "Nothin’ dog. Just chillin with my girl Liz."}',
-            '{"liz2" : "Sweet! Keep it Fresh Kat! I gotta bounce. I’ll catch you on the flip!"}',
+            '{"dog01" : "Yo, what’s up Kat? "}',
+            '{"kat" : "Nothin’ dog. Just chillin with my girl Liz."}',
+            '{"dog01" : "Sweet! Keep it Fresh Kat! I gotta bounce. I’ll catch you on the flip!"}',
           ],
         },
         {
           frameConfig: {
-            items: [],
             faces: [
-              { face: "happy", character: "liz2", characterIndex: 1 },
-              { face: "happy", character: "kat", characterIndex: 0 },
+              { face: "happy", character: "liz2" },
+              { face: "happy", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
           dialogs: [
             '{"kat" : "Laters!"}',
             '{"liz2" : "Bye Bye Pete! Hee Hee!"}',
-            '{"liz2" : ""}',
             '{"liz2" : "Wow Kat, where did you learn all those cool things to say?"}',
           ],
         },
         {
           frameConfig: {
-            items: [],
             faces: [
-              { face: "happy", character: "liz2", characterIndex: 1 },
-              { face: "happy", character: "kat", characterIndex: 0 },
+              { face: "happy", character: "liz2" },
+              { face: "happy", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
@@ -65,10 +59,9 @@ const story200 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
-              { face: "happy", character: "liz2", characterIndex: 1 },
-              { character: "kat", characterIndex: 0, face: "happy" },
+              { face: "happy", character: "liz2" },
+              { character: "kat", face: "happy" },
             ],
             creatures: ["kat", "liz2"],
           },
@@ -92,23 +85,21 @@ const story200 = {
       frames: [
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 character: "liz2",
-                characterIndex: 1,
                 face: "liz-22.c5ad2fd2.png",
               },
               {
                 face: "kat-optimistic.ded8aa68.png",
                 character: "kat",
-                characterIndex: 0,
               },
             ],
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"kat" : "Yeah, this kid Dennis. He’s hilarious. This one time he made me laugh so hard chocolate milk sprayed out of my nose. "}',
+            '{"kat" : "Yeah, this kid Dennis. He’s hilarious."}',
+            '{"kat" : "This one time he made me laugh so hard chocolate milk sprayed out of my nose. "}',
             '{"liz2" : "Wait.. Hold your horses. Back up!"}',
             '{"liz2" : "What?"}',
             '{"liz2" : "Are you talking about Dennis, as in, Dennis the Menace?"}',
@@ -116,50 +107,60 @@ const story200 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
-              { character: "liz2", characterIndex: 1, face: "happy" },
-              { face: "happy", character: "kat", characterIndex: 0 },
+              { character: "liz2", face: "happy" },
+              { face: "happy", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
           dialogs: [
             '{"kat" : "Yeah, that’s him."}',
-            '{"liz2" : "You know Dennis the Menace? The kid who runs up slides the wrong way and has a slingshot hanging out of his back pocket? "}',
-            '{"liz2" : "Yeah, totally. He’s super chill. We should go hang out with him."}',
-            '{"liz2" : "He is like the coolest kid in the Magic Forest! Zombie told the Elf that his parents grounded him until he turns 13!"}',
+            '{"liz2" : "You know Dennis the Menace?"}',
+            '{"liz2" : "The kid who runs up slides the wrong way and has a slingshot hanging out of his back pocket?"}',
+            '{"kat" : "Yeah, totally. He’s super chill. We should go hang out with him."}',
           ],
         },
         {
           frameConfig: {
-            items: [],
             faces: [
-              { character: "liz2", characterIndex: 1, face: "happy" },
-              { face: "happy", character: "kat", characterIndex: 0 },
+              { character: "liz2", face: "happy" },
+              { face: "happy", character: "kat" },
+            ],
+            creatures: ["kat", "liz2"],
+          },
+          dialogs: [
+            '{"liz2" : "He is like the coolest kid in the Magic Forest!"}',
+            '{"kat" : "For sure."}',
+            '{"liz2" : "Zombie said his parents grounded him until he turns 13!"}',
+          ],
+        },
+        {
+          frameConfig: {
+            faces: [
+              { character: "liz2", face: "happy" },
+              { face: "happy", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
           dialogs: [
             '{"kat" : "Wait, What does grounded mean?"}',
             '{"liz2" : "Oh sorry. Grounded is when you get in super big trouble and your parents don’t let you out of your room for a week!"}',
-            '{"liz2" : "Oh that. Yeah, he’s definitely grounded. But he sneaks out his bedroom window during nap and plays at the playground."}',
+            '{"kat" : "Oh that. Yeah, he’s definitely grounded."}',
+            '{"kat" : "But he sneaks out his bedroom window during nap and plays at the playground."}',
             '{"liz2" : "Wow!"}',
           ],
         },
         {
           frameConfig: {
-            items: [],
             faces: [
-              { face: "happy", character: "liz2", characterIndex: 1 },
-              { face: "happy", character: "kat", characterIndex: 0 },
+              { face: "happy", character: "liz2" },
+              { face: "happy", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
           dialogs: [
             '{"kat" : "Come on, let’s go see if he is at the slide."}',
             '{"liz2" : "Fine with me."}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
           ],
         },
       ],
@@ -175,10 +176,9 @@ const story200 = {
       frames: [
         {
           frameConfig: {
-            items: [],
             faces: [
-              { face: "happy", character: "liz2", characterIndex: 1 },
-              { face: "happy", character: "kat", characterIndex: 0 },
+              { face: "happy", character: "liz2" },
+              { face: "happy", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
@@ -191,14 +191,12 @@ const story200 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 face: "liz-2.abafcf11.png",
                 character: "liz2",
-                characterIndex: 1,
               },
-              { face: "happy", character: "kat", characterIndex: 0 },
+              { face: "happy", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
@@ -211,10 +209,9 @@ const story200 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
-              { face: "happy", character: "liz2", characterIndex: 1 },
-              { face: "happy", character: "kat", characterIndex: 0 },
+              { face: "happy", character: "liz2" },
+              { face: "happy", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
@@ -227,14 +224,13 @@ const story200 = {
         },
         {
           frameConfig: {
-            items: [],
             faces: [
               {
                 character: "liz2",
-                characterIndex: 1,
+
                 face: "liz-4.481f07e2.png",
               },
-              { character: "kat", characterIndex: 0, face: "happy" },
+              { character: "kat", face: "happy" },
             ],
             creatures: ["kat", "liz2"],
           },
