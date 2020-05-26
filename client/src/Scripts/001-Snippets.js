@@ -1,7 +1,36 @@
 const test = {
   title: "Snippets",
-  characters: {
+  narrative: {
     "1": [
+      "NEW---- - Some intro stuff",
+      "NEW---- - The log is my happy place.",
+      "110 - Liz Bloops",
+      "014 - Truth Bomb",
+      "200 - Dennis the Menace",
+      "050 - Liz Finds a Dragon",
+      "100 - Liz Goes Crazy",
+      "013 - Chocolate Milk",
+      "010 - Troll So Sad",
+      "015 -----NEW---- - Kat and Liz Split Up",
+      "020 - Rap Battle at Troll Cave",
+      "300 - Merlinda the Fairy Princess",
+      "310 - Kat Gets Real With Rori About the Dress",
+
+      "The story starts out with Kat telling Liz, okay, stay focussed.",
+      "Gold and dresss.  Gold and Dresses.",
+      "Gold and dresss.  Gold and Dresses.",
+      "Dennis should originate the I\'m the kinda kid... rap",
+      "They should discuss the troll cave rap battle early on, to foreshadow",
+      "It is a notoriously bad place, but it is the shortcut to the silver mountain.",
+      "Liz refuses and Kat says, cool liz.  I gotta take a detour here.  Let's meet back up later",
+      "Kat meets KK",
+
+
+      ],
+  },
+
+  characters: {
+    "Meet the girls": [
       "2 - Inventor girl gang.",
        "2 - Kid from sid the science kid",
        "2 - magnetic figurines",
@@ -74,6 +103,9 @@ const test = {
       `{"kat": "Vulcan Nooooo!!!!!!!"}`,
     ],
     "1kat meets katy": [
+      `{"liz2": "Kat, I am not going with you.  That's too dangerous."}`,
+      `{"liz2": "Is not."}`,
+      `{"kat": "Is too."}`,
       `{"kat": "Vulcan Nooooo!!!!!!!"}`,
       `{"kat": "Ugggggh!  What is it with me and weirdos?"}`,
       `{"kat": "We're like peanut butter and jelly."}`,
