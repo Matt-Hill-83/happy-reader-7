@@ -1,9 +1,6 @@
 const story015 = {
-  title: "015 - Kat And Liz Split Up.js",
-  description: [
-    "1: some stuff----------------",
-    "2: some stuff----------------",
-  ],
+  title: "015 - Kat and Liz Split Up.",
+  description: "015 - Kat and Liz Split Up.",
   scenes: {
     home: {
       sceneConfig: {
@@ -11,19 +8,20 @@ const story015 = {
         creatures: ["kat", "liz2"],
         isEndScene: false,
         isStartScene: true,
-        items: [{ name: "empty" }],
+        items: [{ name: "bee" }],
       },
       frames: [
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
-              { character: "kat", face: "kat-smiling.49647334.png" },
+              { face: "kat-smiling.49647334.png", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"kat" : "I see a bee..."}',
+            '{"liz2" : "I see a bee..."}',
             '{"kat" : "If we split up, we can find vulcan faster."}',
             '{"liz2" : "I see a bee...in a tree!"}',
             '{"liz2" : "Tee Hee Hee!"}',
@@ -31,8 +29,9 @@ const story015 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
-              { character: "liz2", face: "happy" },
+              { face: "happy", character: "liz2" },
               { character: "kat", face: "kat-cringing.62a27ad4.png" },
             ],
             creatures: ["kat", "liz2"],
@@ -55,6 +54,7 @@ const story015 = {
       frames: [
         {
           frameConfig: {
+            items: [],
             faces: [
               { face: "happy", character: "liz2" },
               { character: "kat", face: "kat-smiling.49647334.png" },
@@ -70,17 +70,19 @@ const story015 = {
         },
         {
           frameConfig: {
+            items: [],
             faces: [
-              { character: "liz2", face: "happy" },
-              { character: "kat", face: "kat-cringing.62a27ad4.png" },
+              { face: "happy", character: "liz2" },
+              { face: "kat-cringing.62a27ad4.png", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"kat" : "Liz, have you heard anything I just said."}',
+            '{"kat" : "Liz, have you heard anything I just said?"}',
             '{"liz2" : "I see a pug...and a mug!"}',
             '{"kat" : "Liiiiizzzzz!!!"}',
-            '{"liz2" : "ugggh!, yes Kat, smoke, river, burning stores, yadda yadda, log"}',
+            '{"liz2" : "Ugggh!, yes Kat!"}',
+            '{"liz2" : "Smoke, river, burning stores, yadda yadda... log."}',
             '{"liz2" : "I\'m in the zone Kat"}',
           ],
         },
@@ -97,34 +99,50 @@ const story015 = {
       frames: [
         {
           frameConfig: {
+            items: [],
             faces: [
-              { face: "happy", character: "liz2" },
-              { character: "kat", face: "kat-smiling.49647334.png" },
+              { face: "liz-17.9b753827.png", character: "liz2" },
+              { face: "kat-smiling.49647334.png", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
           dialogs: [
             '{"liz2" : "Give a girl some space when she\'s in the zone!"}',
-            '{"liz2" : "Yeah, the ryhming zone."}',
+            '{"kat" : "What zone?"}',
+            '{"liz2" : "he ryhming zone."}',
             '{"liz2" : "It\'s like everything is just clicking into place."}',
             '{"kat" : "Oh yeah, bust some rhymes!"}',
           ],
         },
         {
           frameConfig: {
+            items: [],
             faces: [
-              { character: "liz2", face: "happy" },
-              { character: "kat", face: "kat-cringing.62a27ad4.png" },
+              { face: "happy", character: "liz2" },
+              { face: "kat-optimistic.ded8aa68.png", character: "kat" },
             ],
             creatures: ["kat", "liz2"],
           },
           dialogs: [
             '{"kat" : "Put A Cat A "}',
             '{"kat" : "Put A Cat A "}',
-            '{"kat" : "My name is Liz!"}',
-            '{"kat" : "It starts with an L."}',
-            '{"kat" : "Let\'s go and play with goblin"}',
-            '{"kat" : "At the wishing well."}',
+            '{"liz2" : "My name is Liz!"}',
+            '{"liz2" : "It starts with an L."}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              { face: "liz-5.6c5f5f4d.png", character: "liz2" },
+              { face: "kat-happy.9e02afab.png", character: "kat" },
+            ],
+            creatures: ["kat", "liz2"],
+          },
+          dialogs: [
+            '{"liz2" : "Let\'s go and play with goblin"}',
+            '{"liz2" : "At the wishing well."}',
+            '{"kat" : "Fresh!!!"}',
           ],
         },
       ],
