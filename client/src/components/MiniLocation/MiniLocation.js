@@ -211,6 +211,7 @@ class MiniLocation extends React.Component {
             {showBottomPath && <div className={css.bottomPath}></div>}
             {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
             <div className={css.grassImage} />
+            {true && <div className={css.hexagon}></div>}
             {!isEditMode && showCloud && (
               <div className={css.cloudImageContainer}>
                 <img
