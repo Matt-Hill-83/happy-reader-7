@@ -27,6 +27,7 @@ import css from "./WorldBuilder.module.scss"
 import WorldPicker from "../WorldPicker/WorldPicker"
 import FrameSetUploader from "../FrameSetUploader/FrameSetUploader"
 import GetSceneConfig from "../GetSceneConfig/GetSceneConfig"
+import BuildEpic from "../BuildEpic/BuildEpic"
 
 const INITIAL_MAP_INDEX = 0
 // const NUM_ROWS_LOCATIONS_GRID = 2
@@ -517,18 +518,26 @@ class WorldBuilder extends Component {
 
     return (
       <div className={css.main}>
-        <FrameSetUploader
-          className={css.frameSetUploaderBox0}
-          onSave={this.onChangeDialog}
-          onImportJson={({ newFrameSet }) =>
-            this.importScenesGrid({ newFrameSet, moreProps: {} })
-          }
-        />
-        <GetSceneConfig
-          className={css.frameSetUploaderBox1}
-          onSave={this.onChangeDialog}
-          scenesGrid={scenesGrid}
-        />
+        <div className={css.buttonHolder}>
+          <FrameSetUploader
+            className={css.frameSetUploaderBox0}
+            onSave={this.onChangeDialog}
+            onImportJson={({ newFrameSet }) =>
+              this.importScenesGrid({ newFrameSet, moreProps: {} })
+            }
+          />
+          <GetSceneConfig
+            className={css.frameSetUploaderBox1}
+            onSave={this.onChangeDialog}
+            scenesGrid={scenesGrid}
+          />
+          <BuildEpic
+            className={css.frameSetUploaderBox1}
+            onSave={this.onChangeDialog}
+            scenesGrid={scenesGrid}
+          />
+        </div>
+
         <InputGroup
           value={title}
           id="text-input"
