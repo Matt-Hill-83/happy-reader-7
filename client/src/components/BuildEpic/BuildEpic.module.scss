@@ -1,30 +1,29 @@
-.uploadButton {
-  display: flex;
-}
-
 .main {
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  z-index: 100;
-  width: 20%;
-  height: 7vh;
-  background: none;
-  border: none;
-  border-radius: 9px;
-  border: 5px solid green !important;
-  background: white;
-  right: 9%;
-  top: 0%;
-  overflow: hidden;
-}
-
-.jsonPaster {
-  display: flex;
+  border: 2px solid green !important;
   position: relative;
-  width: 100%;
-  height: 100% !important;
-  background: none;
-  border: none;
-  background: #f1e1cc;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  z-index: 100;
+
+  border-radius: 9px;
+  background: white;
+  overflow: hidden;
+  width: auto;
+  max-height: 5vh;
+  max-height: 5vh;
+
+  .uploadButton {
+    display: flex;
+  }
+
+  .jsonPaster {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100% !important;
+    background: none;
+    border: none;
+    background: #f1e1cc;
+  }
 }

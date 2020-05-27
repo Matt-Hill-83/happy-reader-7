@@ -24,6 +24,9 @@ const test = {
       "It is a notoriously bad place, but it is the shortcut to the silver mountain.",
       "Liz refuses and Kat says, cool liz.  I gotta take a detour here.  Let's meet back up later",
       "Kat meets KK",
+      "They get Rori, to help them steal teh frog hopper.",
+      "But instead, while they are doing it, Maldred attacks.",
+      "And they fight him from the giant mechanical frog amusement park ride.",
 
 
       ],
