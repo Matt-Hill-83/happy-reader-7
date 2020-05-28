@@ -19,7 +19,8 @@ class QuestDialog extends React.Component {
   constructor(props) {
     super(props)
     const showProdInitialValue = localStateStore.getIsProdRelease()
-    this.state = { showProd: !showProdInitialValue }
+    this.state = { showProd: true }
+    // this.state = { showProd: showProdInitialValue }
   }
 
   toggleShowProd = () => {
@@ -27,7 +28,7 @@ class QuestDialog extends React.Component {
   }
 
   render = () => {
-    const { closeYouWinModal, showYouWinModal, onChangeWorld } = this.props
+    const { showYouWinModal, onChangeWorld } = this.props
     const { showProd } = this.state
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })

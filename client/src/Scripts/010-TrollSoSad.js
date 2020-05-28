@@ -1,6 +1,5 @@
 const story010 = {
-  title: "010 - Troll So Sad - test import -01",
-  // description: "new desc",
+  title: "010 - Troll So Sad",
   description: [
     "1: some stuff----------------",
     "2: some stuff----------------",

@@ -100,7 +100,7 @@ const story003 = {
       ],
     },
     {
-      title: "stump",
+      title: "swamp",
       sceneConfig: {
         coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],

@@ -1,7 +1,8 @@
 const story014 = {
-  title: "title",
-  scenes: {
-    cave: {
+  title: "014 - Truth Bomb",
+  scenes: [
+    {
+      title: "cave",
       sceneConfig: {
         coordinates: { col: 0, row: 0 },
         creatures: ["kat", "liz2"],
@@ -61,7 +62,8 @@ const story014 = {
         },
       ],
     },
-    bog: {
+    {
+      title: "bog",
       sceneConfig: {
         coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
@@ -123,7 +125,8 @@ const story014 = {
         },
       ],
     },
-    log: {
+    {
+      title: "log",
       sceneConfig: {
         coordinates: { col: 2, row: 0 },
         creatures: ["kat", "liz2"],
@@ -180,6 +183,6 @@ const story014 = {
         },
       ],
     },
-  },
+  ],
 }
 export default story014

@@ -1,7 +1,8 @@
 const story013 = {
-  title: "title",
-  scenes: {
-    swing: {
+  title: "013 - Chocolate Milk",
+  scenes: [
+    {
+      title: "swing",
       sceneConfig: {
         coordinates: { col: 0, row: 0 },
         creatures: ["kat", "liz2"],
@@ -45,7 +46,8 @@ const story013 = {
         },
       ],
     },
-    bees: {
+    {
+      title: "bees",
       sceneConfig: {
         coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
@@ -104,7 +106,8 @@ const story013 = {
         },
       ],
     },
-    log: {
+    {
+      title: "log",
       sceneConfig: {
         coordinates: { col: 2, row: 0 },
         creatures: ["kat", "liz2"],
@@ -147,7 +150,8 @@ const story013 = {
         },
       ],
     },
-    pool: {
+    {
+      title: "pool",
       sceneConfig: {
         coordinates: { col: 3, row: 0 },
         creatures: ["kat", "liz2"],
@@ -193,7 +197,8 @@ const story013 = {
         },
       ],
     },
-    stump: {
+    {
+      title: "stump",
       sceneConfig: {
         coordinates: { col: 4, row: 0 },
         creatures: ["kat", "liz2"],
@@ -240,7 +245,8 @@ const story013 = {
         },
       ],
     },
-    waterfall: {
+    {
+      title: "waterfall",
       sceneConfig: {
         coordinates: { col: 5, row: 0 },
         creatures: ["kat", "liz2"],
@@ -300,6 +306,6 @@ const story013 = {
         },
       ],
     },
-  },
+  ],
 }
 export default story013
