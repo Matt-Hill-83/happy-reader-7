@@ -17,12 +17,13 @@ import story011 from "../../Scripts/011-LizIsSlow"
 import story013 from "../../Scripts/013-ChocolateMilk"
 import story014 from "../../Scripts/014-TruthBomb"
 import story015 from "../../Scripts/015-KatAndLizSplitUp"
+import story020 from "../../Scripts/020-TrollCaveRapBattle"
 import story050 from "../../Scripts/050-FindingScribbleScrabble"
 import story100 from "../../Scripts/100-LizGoesCrazy"
 import story110 from "../../Scripts/110-LizBloops"
 import story200 from "../../Scripts/200-DennisTheMenace"
+import story300 from "../../Scripts/300-MerlindaTheFairyPrincessPart1"
 import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
-import story020 from "../../Scripts/020-TrollCaveRapBattle"
 
 class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story002) }
@@ -37,8 +38,9 @@ class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story020) }
   // state = { text: JSON.stringify(story050) }
   // state = { text: JSON.stringify(story100) }
-  state = { text: JSON.stringify(story110) }
+  // state = { text: JSON.stringify(story110) }
   // state = { text: JSON.stringify(story200) }
+  state = { text: JSON.stringify(story300) }
   // state = { text: JSON.stringify(story310) }
 
   onChangeDialog = ({ event, lineIndex }) => {

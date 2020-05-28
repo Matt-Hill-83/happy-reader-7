@@ -23,6 +23,7 @@ import story100 from "../../Scripts/100-LizGoesCrazy"
 import story110 from "../../Scripts/110-LizBloops"
 import story200 from "../../Scripts/200-DennisTheMenace"
 import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
+import story300 from "../../Scripts/300-MerlindaTheFairyPrincessPart1"
 
 const epicName = "000 - Epic test - 105"
 const storyList = [
@@ -38,8 +39,9 @@ const storyList = [
   story020,
   story050,
   story100,
-  // story110,
-  // story200,
+  story110,
+  story200,
+  story300,
   // story310,
 ]
 

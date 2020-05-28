@@ -1,8 +1,9 @@
 const story200 = {
   title: "200 - Dennis the Menace",
   description: "Dennis the Menace",
-  scenes: {
-    home: {
+  scenes: [
+    {
+      title: "home",
       sceneConfig: {
         coordinates: { col: 0, row: 1 },
         creatures: ["kat", "liz2"],
@@ -74,7 +75,8 @@ const story200 = {
         },
       ],
     },
-    log: {
+    {
+      title: "log",
       sceneConfig: {
         coordinates: { col: 1, row: 1 },
         creatures: ["kat", "liz2"],
@@ -165,7 +167,8 @@ const story200 = {
         },
       ],
     },
-    slide: {
+    {
+      title: "slide",
       sceneConfig: {
         coordinates: { col: 2, row: 1 },
         creatures: ["kat", "liz2"],
@@ -245,7 +248,7 @@ const story200 = {
         },
       ],
     },
-  },
+  ],
 }
 
 export default story200
