@@ -33,7 +33,7 @@ const INITIAL_MAP_INDEX = 0
 // const NUM_ROWS_LOCATIONS_GRID = 2
 // const NUM_COLS_LOCATIONS_GRID = 3
 const NUM_ROWS_LOCATIONS_GRID = 20
-const NUM_COLS_LOCATIONS_GRID = 30
+const NUM_COLS_LOCATIONS_GRID = 50
 
 class WorldBuilder extends Component {
   state = {
