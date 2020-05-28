@@ -1,7 +1,8 @@
 const story020 = {
-  title: "title",
-  scenes: {
-    cave: {
+  title: "020 - Rap Battle at Troll Cave",
+  scenes: [
+    {
+      title: "cave",
       sceneConfig: {
         coordinates: { col: 0, row: 0 },
         creatures: ["kat", "liz2"],
@@ -148,7 +149,8 @@ const story020 = {
         },
       ],
     },
-    bog: {
+    {
+      title: "bog",
       sceneConfig: {
         coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
@@ -230,7 +232,8 @@ const story020 = {
         },
       ],
     },
-    swamp: {
+    {
+      title: "swamp",
       sceneConfig: {
         coordinates: { col: 2, row: 0 },
         creatures: ["kat", "liz2"],
@@ -311,7 +314,8 @@ const story020 = {
         },
       ],
     },
-    hill: {
+    {
+      title: "hill",
       sceneConfig: {
         coordinates: { col: 3, row: 0 },
         creatures: ["kat", "liz2"],
@@ -392,6 +396,6 @@ const story020 = {
         },
       ],
     },
-  },
+  ],
 }
 export default story020

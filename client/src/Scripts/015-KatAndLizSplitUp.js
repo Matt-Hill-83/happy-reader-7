@@ -1,8 +1,9 @@
 const story015 = {
   title: "015 - Kat and Liz Split Up.",
   description: "015 - Kat and Liz Split Up.",
-  scenes: {
-    home: {
+  scenes: [
+    {
+      title: "home",
       sceneConfig: {
         coordinates: { col: 0, row: 0 },
         creatures: ["kat", "liz2"],
@@ -43,7 +44,8 @@ const story015 = {
         },
       ],
     },
-    stump: {
+    {
+      title: "stump",
       sceneConfig: {
         coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
@@ -88,7 +90,8 @@ const story015 = {
         },
       ],
     },
-    bog: {
+    {
+      title: "bog",
       sceneConfig: {
         coordinates: { col: 2, row: 0 },
         creatures: ["kat", "liz2"],
@@ -147,7 +150,7 @@ const story015 = {
         },
       ],
     },
-  },
+  ],
 }
 
 export default story015
