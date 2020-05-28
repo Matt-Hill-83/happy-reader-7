@@ -300,10 +300,10 @@
   }
 
   .locationImageContainer {
-    height: 11%;
+    height: 16%;
     position: absolute;
-    bottom: 33%;
-    left: 3%;
+    bottom: 3%;
+    left: 0%;
     z-index: 6;
 
     .locationImage {
@@ -340,8 +340,24 @@
     display: flex;
     width: 100%;
     position: relative;
-    margin-top: auto;
-    height: 22vh;
+    /* margin-top: auto; */
+    height: 16vh;
+    position: absolute;
+    right: -21vh;
+    // border: 4px solid blue !important;
+    bottom: 5vh;
+  }
+
+  .lizAndKatContainer {
+    display: flex;
+    width: 100%;
+    position: relative;
+    // margin-top: auto;
+    height: 14vh;
+    position: absolute;
+    bottom: 22vh;
+    z-index: 1;
+    left: 12vh;
   }
 
   .characterContainer {
