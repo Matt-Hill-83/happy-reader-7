@@ -59,7 +59,6 @@ class WorldViewer extends React.Component {
     const container = document.querySelector(
       "[class*='WorldViewer_innerMapScroller']"
     )
-    console.log("container", container) // zzz
 
     if (container) {
       container.scrollLeft += 135 * (reverse ? -1 : 1)
