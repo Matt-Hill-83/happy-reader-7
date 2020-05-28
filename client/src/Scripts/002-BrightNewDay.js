@@ -1,5 +1,6 @@
 const story002 = {
   title: "002 - A New Day",
+  notes: "fix me",
   storyConfig: {
     mission: {
       title: "Get the purple dress.",

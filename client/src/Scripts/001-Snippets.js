@@ -46,6 +46,8 @@ const test = {
 
   gamePlay: {
     "1": [
+      `kat: "make an epic that is all rap"`,
+      `kat: "make an epic that is all easy exclamations"`,
       `kat: "Select a dress to wear on your first quest"`,
       `kat: "Pass the mystical scepter to to player A."`,
       `kat: "Everyone needs to go get a mystcal scepter.  Or a spatula."`,
@@ -62,18 +64,7 @@ const test = {
   },
   rhymes: {
     "1": [
-      `liz2: "Bun Bun!"`,
-      `liz2: "Dag nabbit!"`,
-      `liz2: "Get over here and don't be a bad rabbit!"`,
-      `liz2: "I said: watch my juice!"`,
-      `liz2: "And instead"`,
-      `liz2: "you let my dad grab it."`,
-      `kat: "Liz, Liz, Liz, stop and listen"`,
-      `kat: "the clock's ticking"`,
-      `kat: "Can you please, put some pep in your step"`,
-      `kat: "and get your clogs clickin?"`,
-      `kat: "You're slower than a frog on a log in a bog."`,
-      `kat: "Stapled to a lost chicken!"`,
+
       `liz2: "The plot thickens!"`,
       `kat: "--------"`,
       `kat: "Liz, we gotta get moving!"`,
@@ -93,23 +84,11 @@ const test = {
       `kat: "Hurry up, you slowpoke!"`,
       `kat: "in the slang one, say see you later alligator, instead of laters!"`,
       `kat: "Right back at ya! Baked Potater!"`,
-      `kat: "Oh, and if you think you wanna bring the baby! Super!"`,
-      `kat: "But don't forget to grab a bathing suit for, Katy kooper!"`,
-      `kat: "Katy thinks I'm funner than a barrel full of Monkeys, but I really miss liz."`,
-      `kat: "She's the kid."`,
-      `kat: "at the top of my wish list for Christmas."`,
-      `kat: "When I see her, think of all the mischeif you'd witness."`,
-      `"`,
+
       elf:[
-      `Those trolls stooped to a low that was new`,
-      `When they sold me the goop for my shoe`,
-      `for the hole where my toes poke through`,
-      `Liz: ummm.... make those words makes sense.`,
-      `Siri: this type of poem is called  `,
+
 
       `quick get the alphabet blocks`,
-      `Buy me a pony pop!`,
-      `How a bout it!`,
       `You wanna take a stab at it?`,
       `"What did the witch do when she forgot her spell?`,
       `"She used her best guess spelling`,
@@ -118,106 +97,18 @@ const test = {
     ],
   },
   bigIdeas: {
-    "Intro to the Girls and Magic Valley": [
-      `{"kat": "Vulcan Nooooo!!!!!!!"}`,
-    ],
-    "There's a fly in my eye": [
-      `{"liz2": "I see a bug."}`,
-      `{"liz2": "I see a bug...  in a rug!"}`,
-      `{"kat": "I see a fly."}`,
-      `{"kat": "I see a fly... in my eye!."}`,
-      `{"kat": "Aaahhhh!  Liz!  There's a fly in my eye!"}`,
-      `{"kat": "I'm not kidding!"}`,
-      `{"liz2": "Oh no, what should we do?"}`,
-      `{"kat": "That frog!!!"}`,
-      `{"kat": "We have to get that frog!"}`,
-      `{"liz2": "You mean the frog on the log in the bog?"}`,
-      `{"kat": "That's the one!"}`,
-      `{"liz2": "Ummm...why do we need a frog?"}`,
-      `{"kat": "It's the only way to get a fly out of your eye!!!"}`,
-      `{"liz2": "What about a pig in a wig?"}`,
-      `{"kat": "Liiiizzzz!!!!"}`,
-      `{"kat": "That's just not how it works."}`,
-      `{"kat": "We need a frog!!!"}`,
-      `{"liz2": "Oh no, oh no , oh no!"}`,
-      `{"liz2": "Oh me, oh my!"}`,
-      `{"kat": "Ha! Gotcha!"}`,
-      `{"kat": "I was just kidding."}`,
-      `{"liz2": "Kat!  You are the worst!"}`,
-      `{"liz2": "You are bad to the bone!"}`,
-      `{"kat": "You make it so easy."}`,
-      `{"liz2": "Rrrrrrrr......"}`,
-      `{"kat": "-----------"}`,
-      `{"liz2": "-----------"}`,
-    ],
-    "Girls Split": [
-      `{"kat": "wha-mbulance episode, segues into them splitting."}`,
-    ],
+
+
     "Liz goes to Happy Baby Land": [
-      `{"kat": "Vulcan Nooooo!!!!!!!"}`,
-    ],
-    "1kat meets katy": [
-      `{"liz2": "Kat, I am not going with you.  That's too dangerous."}`,
-      `{"liz2": "Is not."}`,
-      `{"kat": "Is too."}`,
-      `{"kat": "Vulcan Nooooo!!!!!!!"}`,
-      `{"kat": "Ugggggh!  What is it with me and weirdos?"}`,
-      `{"kat": "We're like peanut butter and jelly."}`,
-      "",
-      `{"liz and kat meet with the fairies about the dresses."}`,
-      `{"kat is like cool! But liz thiks it's crazy."}`,
-      `{"liz and kat fight.  Kat meets katie."}`,
-      `{"Katie is super annoying, but kat, cuts to the chase."}`,
-      `{"Wow, Katie, you just never stop talking huh? ."}`,
-      `{"Katy Kooper!  She's coming to town! ."}`,
-      `{"kat": "Katie..."}`,
-      `{"Katy Kooper!  Go and get all the clowns! ."}`,
-      `{"kat": "Katie!"}`,
-      `{"Katy Kooper!  She's my kind of friend! ."}`,
-      `{"kat": "KATIE!!!!!"}`,
-      `{"kat": "What?"}`,
-      `{"kat": "Hey, did you ever see one of those Lilly Pad Hoppers at the state fair?"}`,
-      `{"katie": "Aaaaahh!"  I love those things}`,
-      `{"kat": "Could your hold the steering wheel and use the foot pedals at the same time?"}`,
-      `{"katie": "Totally!}`,
-      `{"kat": "Do you sparkly stuff ?"}`,
-      `{"katie": "Ummmm....hello?}`,
-      `{"kat": "Come on.  We are going on an adventure?}`,
-      `{"katie": "Woo Hoo!}`,
-      `?`,
-    ],
-    "1": [
       `they go to baby land where it's baby bottles and diapers everywhere`,
-      `?`,
-    ],
-  },
-  new01: {
-    "1": [
-      `{"gameplay": "A page that shows their dresses.}`,
-      `{"gameplay": "put info bubbles on words.}`,
-      `{"liz2": "So what should we do if we have no idea what you are talking about and none of this makes any sense?}`
-    ]
-    },
+
   new02: {
     "1": [
-      `{"asdf"}`,
+      `{"gameplay": "A page that shows their dresses.}`,
       `{"gameplay": "put info bubbles on words with cool link to reference or cool stuff.}`,
       `{"gameplay": "spend gold to watch an add.  that's the only path to the next level}`,
-      `{"liz2": "So what should we do if we have no idea what you are talking about and none of this makes any sense?}`
+
     ]
-    },
-  new03: {
-    "1": [
-      `{"asdf"}`,
-      `{"gameplay": "put info bubbles on words with cool link to reference or cool stuff.}`,
-      `{"gameplay": "spend gold to watch an add.  that's the only path to the next level}`,
-      `{"liz2": "So what should we do if we have no idea what you are talking about and none of this makes any sense?}`
-    ]
-    },
-
-
-
-
 
   new01: {
     "1": [
@@ -268,18 +159,13 @@ const test = {
       `{"kat": " gotta go step to the left."}`,
       `{"kat": "Cause you know I got a quest to complete"}`,
       `{"kat": "It's like a test to compete"}`,
-      `{"kat": "I gotta get the very best dress"}`,
-      `{"kat": "Then I'll be the best dressed"}`,
-      `{"kat": "be the best dressed guest"}`,
-      `{"kat": "Can you guess what I'm able to assess "}`,
-      `{"kat": "I'm impressed"}`,
+
       `{"kat": "I didn't know you kiddos know the Simple Simon"}`,
       `{"kat": "I love Simple Simon, And I know this sounds super cliche, so don't hate."}`,
       `{"kat": "I love Simple Simon, because he's...  ....well..he's...simple"}`,
       `{"kat": "like a pimple!"}`,
       `{"kat": "You're a pimple!"}`,
       `{"kat": "Yeah, right there, that's the paradox?"}`,
-      `{"kat": "It's "}`,
       `{"kat": "Ahhhh, liz you gave me Brain pretzel!"}`,
       `{"kat": "Come on, let's go give people brain pretzel"}`,
       `{"kat": "They use brain pretzel in a rap battle"}`,
@@ -304,8 +190,6 @@ const test = {
       `{"kat": "Someone get this cat a mint.}`,
       `{"kat": "He always jumps up on the desk.}`,
       `{"kat": "And he gets in my face and I smell his bad breath.}`,
-      `{"kat": "get the best dress.}`,
-      `{"kat": "so I can be the best dressed.}`,
 
       `{"katie": "Yelling's my favorite!}`,
       `{"katie": "It's like my sweet stop!}`,
@@ -314,52 +198,24 @@ const test = {
       `{"katie": "Now that we got the gold what should we do?}`,
       `{"katie": "Is this enough to open up a donut shop?}`,
       `{"alice": "tots}`,
-      `{"katie": "Can you get the girls together and make it happen?}`,
       `{"katie": "Let's call it the sweet spot!}`,
     ],
   littleStuff: {
-    "1": [
-      `{"kat": "That was pretty fun, yelling at those trolls!}`,
-      `{"katie": "Yelling's my favorite!}`,
-      `{"katie": "It's like my sweet stop!}`,
-      `{"katie": "Yelling is where I get in the groove!}`,
+
     ],
     "1": [
-      `{"kat": "That was pretty fun, yelling at those trolls!}`,
-      `{"katie": "Yelling's my favorite!}`,
-    ],
-    "1": [
-      "2 - One of the characters sees will.",
       "2 - They look at the map and it's a screen grab of the scenesGrid in edit mode.",
       "2 - Ughhh, on my gosh, will you go already?.",
       "2 - Cooler than a pack of peppermints.",
       "2 --------------------------.",
-      "2 Well, there's this new girl named Rori. She needs a place to hide her dragon.",
+      "2 --------------------------.",
 
-      `kat: "going fetal in target."`,
       `kat: "I picked MLNOP and the letter 2."`,
       "2 - Rori's rampage.",
-      "2 - nun joke.",
-      "2 - idea - the girls disvocer a forcefield and use it to go through a waterfall.",
-      "2 - idea - they get in an i'm rubber you're glue battle with a leperchaun - graeme.",
-      "2 - the leperchaum does forcefield and they are like what is that.",
-      "2 - Kat and liz part ways.",
-      "2 - liz goes to the log, and kat finds her own safe place.",
-      "2 - Kat find katy cooper, who talks incesantly.",
-      "2 - But Kat goes on her show and ....",
+
+
       "2 - I think I need to go do a repair ....",
-      "2 - She's my best friend, and even though I hate her sometimes, I still actually love ....",
-      "2 - OMG Katy, you are the most annoying person in the entire universe, will you please stop talking for 2 seconds.",
-      "2 - Katy: you know Kat, here's the thing.  I don't even know what I'm saying half the time.",
-      "2 - Katy::::: Look at me.  Do I look like I know what FaceTime is?  I have no idea what facetime it.  None at all",
-      "2 - Kat: Say more....",
-      `rori: "When I say hang on, I mean stop talking"`,
-      "2 - Katy::::: Sometimes I feel like some other person thinks up the stuff that I say",
-      "2 - Kat: Oh brother, not this again.",
-      "2 - Kat: You need to talk to liz about this.",
-      "2 - Kat: I think I see her over there yelling at a cloud about bananas.",
-      "2 - Katy: Oh thanks Kat.  Laters.  I have these weir dreams about jello.",
-      "2 - Katy: Maybe she's heard about zorblat.",
+
       "2 - Katy: I overhead soem graders talking about him.",
       "2 - Katy: We are gonna need a contraption.",
       "2 - Katy: I'll round up the girls.",
@@ -388,17 +244,90 @@ const test = {
         "liz: pick us up like snap peas!",
         "liz: Stick us on a shishka-bob and eat us!",
         "liz: Run for your lives!",
-        "liz: Mia's sister is like 9.  I think.  She told me this joke:",
-        "liz: What's black and white and read all over.",
-        "liz: A nun that got hit by a car.",
-        "liz: Ha.  OMG, that's so funny! What does it mean?",
-        "liz: I have no idea.  I was going to ask Grimelda.",
         "liz: Grimelda!  I love her! Did she ever find that pickle root.",
         "kat: She never did.",
       ],
     ],
     katSayings: [
       [
+
+        // Elf Ears
+        // Don’t go in the cave
+        // Raps
+        // I know this troll
+        // He lives in a hole
+        // He always runs around yelling: Gimme that gold!
+        // Train your parents
+
+        // Running gags
+        // [--snip--]
+        // I have a really big problem
+        // You mean like a math problem?
+
+
+        // Snippets
+
+        // What’s up with the caps on those new Crayola pens?
+        // My dad can never figure out how to get them back.  Last night he said he was going to gather them all up and throw them off the porch.  He says you can still get the old ones on ebay.
+
+
+        // [--snip--]
+        // OMG!  I got these stickers at a birthday party one time, and my dad wouldn’t let me keep them because they had cupcakes and lollipops on them.
+        // [--snip--]
+
+
+        // Magic bean story with edmund.
+        // Bless your sweet little heart
+        // Liz ---> You have the attention span of a fruit fly
+        // Liz ---> Happy as a pigeon in a pile of popcorn
+        // Run for the hils
+        // Run for your lives.
+        // Ta ta. Toodle ooo!
+        // Liz ---> Wait, Kat.  How can marbles be sharp?
+        // Kat ---> Oh Liz, bless your sweet little heart.
+        // A couple sandwiches short of  a picnic.
+        // Liz ---> Sometimes my mother is just too much!
+        // Liz ---> Is there really a Kid Book?
+        // If my grandmother had wheels she would be a bicycle.
+        // What you mean.
+        // Chop Chop!
+        // Is Beekle real.
+        // [--snip--]
+
+
+
+
+        // [--snip--]
+        // Kat ---> I can’t believe you guys still use Facetime.  That’s app is like so 5 minutes ago.
+        // Liz ---> I know.  It’s the worst.   My mom’s work makes her.
+        // Kat ---> I mean, you can’t record, there’s no screenshare.
+        // Liz ---> Um, Hello... Apple?  2011 called and they want their video app back.
+        // Kat ---> No wait, skype is even worse.
+        // Ha!  I forgot about them.  I wish I could use Zap Chat.  That’s what my cousins use.
+        // Liz ---> Your cousins are so cool!
+
+
+        // [--snip--]
+        // Liz ---> My dad says that I came in a box from amazon.
+        // Kat ---> Whoa!
+        // Liz ---> Wait, that’s not true right?  I mean that’s impossible right?
+        // Kat ---> I dunno kid.  It seems like every day, there’s some new thing that makes me just stop what I’m doing and go “dang”!
+        // Liz ---> Yeah, me too.  More like every second.   How would a kid breathe inside a box anyways?
+        // Kat ---> Liz, your dad says a lot of weird things.
+        // Liz ---> I hope I don’t get like that when I grow up.
+        // Kat ---> Oh Liz... bless your sweet little heart.
+        // [--snip--]
+
+
+        // Liz ---> The one where they visit their cousins
+        // Liz ---> alphabet blocks
+
+        // Oh Dang
+        // Liz ---> <Gasp!> Kat!  You can’t say that on the internet!  Are you crazy?
+        // Kat ---> B) Yes I am crazy.  How would you not know that?  We have only been friends for umpteen dang years!
+        // Liz ---> It could break the internet.
+
+
 
       ],
     ],
