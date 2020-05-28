@@ -505,7 +505,6 @@ class WorldBuilder extends Component {
       }
 
       newBornScene.frameSet.frames = this.createNewFrames({ newScene: scene })
-
       scenesGrid[coordinates.row][coordinates.col] = newBornScene
     })
 
