@@ -24,6 +24,7 @@ import story110 from "../../Scripts/110-LizBloops"
 import story200 from "../../Scripts/200-DennisTheMenace"
 import story300 from "../../Scripts/300-MerlindaTheFairyPrincessPart1"
 import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
+import story330 from "../../Scripts/330-MerlindaTheFairyPrincessPart3"
 
 class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story002) }
@@ -41,7 +42,8 @@ class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story110) }
   // state = { text: JSON.stringify(story200) }
   // state = { text: JSON.stringify(story300) }
-  state = { text: JSON.stringify(story310) }
+  // state = { text: JSON.stringify(story310) }
+  state = { text: JSON.stringify(story330) }
 
   onChangeDialog = ({ event, lineIndex }) => {
     const text = event.target.value
