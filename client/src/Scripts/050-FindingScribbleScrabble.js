@@ -1,7 +1,8 @@
 const story050 = {
-  title: "Finding a Baby Dragon",
-  scenes: {
-    home: {
+  title: "050 - Liz finds a Baby Dragon",
+  scenes: [
+    {
+      title: "home",
       sceneConfig: {
         items: [],
         creatures: ["kat", "liz2", "blankDragon01"],
@@ -29,13 +30,15 @@ const story050 = {
           dialogs: [
             `{"Kat": "His art has gone wonky."}`,
             `{"liz2": "Ha ha! I know right!  Like, look at my body. What is going on here?"}`,
-            `{"kat": "Ha! Ha! I think he was too lazy to draw us bodies.  He just pasted the body of a different girl on to our heads."}`,
-            `{"kat": "Oh wow, I totally see that now."}`,
+            `{"kat": "Ha! Ha! I think he was too lazy to draw us bodies."}`,
+            `{"kat": "Ha! Ha! He just pasted the body of a different girl on to our heads."}`,
+            `{"liz2": "Oh wow, I totally see that now."}`,
           ],
         },
       ],
     },
-    slide: {
+    {
+      title: "slide",
       sceneConfig: {
         items: [],
         creatures: ["kat", "liz2", "blankDragon01"],
@@ -61,7 +64,8 @@ const story050 = {
         },
       ],
     },
-    bog: {
+    {
+      title: "bog",
       sceneConfig: {
         items: [],
         creatures: ["kat", "liz2", "blankDragon01"],
@@ -97,7 +101,7 @@ const story050 = {
           dialogs: [
             `{"liz2": "Hi ya widdle draggy waggy."}`,
             `{"kat": "Did you lose your mommy?"}`,
-            `{"dragon": "Eep... Eep..."}`,
+            `{"dragon": "Eeeeeeeep... Eeeeeeeep..."}`,
             `{"kat": "The poor little girl."}`,
             `{"liz2": "Is it ok if we color you in a little?"}`,
             `{"kat": "Yip! Yip!"}`,
@@ -106,7 +110,8 @@ const story050 = {
         },
       ],
     },
-    bees: {
+    {
+      title: "bees",
       sceneConfig: {
         items: [],
         creatures: ["kat", "liz2", "scribbleDragon01"],
@@ -122,7 +127,7 @@ const story050 = {
         },
       ],
     },
-  },
+  ],
 }
 
 export default story050

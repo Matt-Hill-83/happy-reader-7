@@ -19,7 +19,7 @@ class QuestDialog extends React.Component {
   constructor(props) {
     super(props)
     const showProdInitialValue = localStateStore.getIsProdRelease()
-    this.state = { showProd: showProdInitialValue }
+    this.state = { showProd: true, showToggle: !showProdInitialValue }
   }
 
   toggleShowProd = () => {
@@ -28,7 +28,7 @@ class QuestDialog extends React.Component {
 
   render = () => {
     const { showYouWinModal, onChangeWorld } = this.props
-    const { showProd } = this.state
+    const { showProd, showToggle } = this.state
 
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     let filteredMaps = []
@@ -83,7 +83,7 @@ class QuestDialog extends React.Component {
         isCloseButtonShown={true}
         className={css.main}
       >
-        {!showProd && (
+        {showToggle && (
           <ButtonGroup className={css.buttonGroup} color="primary">
             <Button onClick={this.toggleShowProd}>{showProdButtonLabel}</Button>
           </ButtonGroup>

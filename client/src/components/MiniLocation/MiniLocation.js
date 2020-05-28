@@ -176,6 +176,8 @@ class MiniLocation extends React.Component {
     const locationName = scene.location.name
     const isBlank = locationName === "blank"
 
+    console.log("isActive", toJS(isActive)) // zzz
+
     const localClass = isActive ? css.activeClass : ""
     const locationImage = Images.all[locationName]
 

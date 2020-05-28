@@ -15,8 +15,8 @@ import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 import css from "./MainStory.module.scss"
 
 let isProdRelease
-isProdRelease = true
 isProdRelease = false
+isProdRelease = true
 
 let SHOW_WORLD_BUILDER
 SHOW_WORLD_BUILDER = true
