@@ -11,8 +11,9 @@ const story002 = {
     "1: some stuff----------------",
     "2: some stuff----------------",
   ],
-  scenes: {
-    cave: {
+  scenes: [
+    {
+      title: "cave",
       sceneConfig: {
         coordinates: { col: 0, row: 0 },
         creatures: ["kat"],
@@ -98,15 +99,14 @@ const story002 = {
             '{"liz2" : "-------------------"}',
             '{"liz2" : "No wait!"}',
             '{"liz2" : "Sixteen is eight plus eight????"}',
-            '{"liz2" : "I\'ve made a mistake!!!"}',
+            '{"liz2" : "Wait! I\'ve made a mistake!!!"}',
             '{"liz2" : "I was baking a cake"}',
-            '{"liz2" : "Grandma, go get me"}',
+            '{"liz2" : "Now It\'s gonna be the size of a lake!"}',
+            '{"liz2" : "Liz, go get me"}',
             '{"liz2" : "my right roller skate!"}',
             '{"liz2" : "and a roll of that bright pink tape."}',
             '{"liz2" : "What\'s eight plus eight?"}',
 
-            '{"liz2" : "Bubble wrap, and a role of that bright pink tape."}',
-            '{"liz2" : "Then build me a ramp ."}',
             '{"liz2" : "Those 2 cats ate."}',
             '{"liz2" : "All the pie on my plate."}',
 
@@ -115,10 +115,11 @@ const story002 = {
             '{"liz2" : "You can\'t out roller skate me."}',
             '{"liz2" : "It\'s fine! Just fine."}',
             '{"liz2" : "-------------------"}',
+            '{"liz2" : "-------------------"}',
+            '{"liz2" : "-------------------"}',
             '{"kat" : "What\'s nine plus nine?"}',
             '{"liz2" : "What\'s nine plus nine?"}',
             '{"liz2" : "Fine just fine!"}',
-            '{"liz2" : "I\'ll say it once last time."}',
             '{"liz2" : "I\'ll say it once last time."}',
             '{"liz2" : "------------"}',
             '{"liz2" : "------------"}',
@@ -133,7 +134,8 @@ const story002 = {
             '{"liz2" : "And liked my plate clean."}',
             '{"liz2" : "-------------------"}',
             '{"liz2" : "That\'s pretty silly."}',
-            '{"liz2" : "So."}',
+            '{"liz2" : "What\'s nine plus nine?"}',
+            '{"liz2" : "It\'s eighteen."}',
             '{"liz2" : "So."}',
             '{"liz2" : "-------------------"}',
             '{"liz2" : "Eight-teen"}',
@@ -145,7 +147,8 @@ const story002 = {
         },
       ],
     },
-    home: {
+    {
+      title: "home",
       sceneConfig: {
         coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
@@ -184,7 +187,7 @@ const story002 = {
         },
       ],
     },
-  },
+  ],
 }
 
 export default story002
