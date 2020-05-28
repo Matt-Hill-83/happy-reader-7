@@ -16,3 +16,32 @@
 // Kat ---> No that was today.  They tried to feed my green beans at lunch today+
 // Liz ---> Wait, you eat those at school+
 // Kat ---> Yeah, but that’s when the school makes them.+
+
+// Plot --> Liz is really smart.  She left her game to find piggy
+// Plot --> She goes off to find piggy, that's why they split up, to cover more ground
+// Liz ---> Liz uses the dragon to find piggy and volcano mountain
+// Kat ---> ++++++++++++++
+// Liz ---> ===============
+// Kat ---> ++++++++++++++
+// Liz ---> ===============
+// Kat ---> ++++++++++++++
+// Liz ---> ===============
+// Kat ---> ++++++++++++++
+// Liz ---> ===============
+// Kat ---> got any candy?
+// Kat ---> Oh man, I was just about to ask you that!
+// Kat ---> I wish!
+// Liz --->
+
+// Liz ---> So Kat, what's your thing?
+// Kat ---> My thing?
+// Kat ---> Getting aggravated maybe?
+// Kat ---> Being somehow relatable?
+// Liz ---> ===============
+// Kat ---> ++++++++++++++
+// Liz ---> ===============
+// Kat ---> ++++++++++++++
+// Liz ---> ===============
+// Kat ---> ++++++++++++++
+// Liz ---> lady bug girl
+// Kat ---> ++++++++++++++
