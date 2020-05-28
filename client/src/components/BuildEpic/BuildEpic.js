@@ -23,6 +23,7 @@ import story110 from "../../Scripts/110-LizBloops"
 import story200 from "../../Scripts/200-DennisTheMenace"
 import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
 
+const epicName = "000 - Epic test - 105"
 const storyList = [
   // story002,
   // story004,
@@ -45,13 +46,11 @@ class BuildEpic extends Component {
     const { onImportJson } = this.props
     console.log("onClickBuildEpic") // zzz
 
-    const epicName = "000 - Epic test - 103"
     const epicStory = {
       title: epicName,
       description: epicName,
       scenes: {},
       scenes2: [],
-      frameSetGrid: [],
     }
     console.log("epicStory", toJS(epicStory)) // zzz
 
