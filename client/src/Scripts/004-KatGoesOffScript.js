@@ -1,11 +1,12 @@
 const story004 = {
-  title: "004 - Kat Goes Off Script.js",
+  title: "004 - Kat Goes Off Script",
   description: [
     "1: some stuff----------------",
     "2: some stuff----------------",
   ],
-  scenes: {
-    log: {
+  scenes: [
+    {
+      title: "log",
       sceneConfig: {
         coordinates: { col: 0, row: 0 },
         creatures: ["kat", "liz2"],
@@ -46,7 +47,8 @@ const story004 = {
         },
       ],
     },
-    stump: {
+    {
+      title: "stump",
       sceneConfig: {
         coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
@@ -85,7 +87,8 @@ const story004 = {
         },
       ],
     },
-    bog: {
+    {
+      title: "bog",
       sceneConfig: {
         coordinates: { col: 2, row: 0 },
         creatures: ["kat", "liz2"],
@@ -127,7 +130,7 @@ const story004 = {
         },
       ],
     },
-  },
+  ],
 }
 
 export default story004
