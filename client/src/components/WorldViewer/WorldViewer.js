@@ -66,8 +66,6 @@ class WorldViewer extends React.Component {
   }
 
   render() {
-    const { activeScene } = this.props
-
     const mapImage = Images.backgrounds["map"]
     const leftArrow = Images.backgrounds["leftArrow"]
     const rightArrow = Images.backgrounds["rightArrow"]
@@ -87,7 +85,7 @@ class WorldViewer extends React.Component {
             {/* <img className={css.diamond2Image} src={mainBackground} alt={"imagex"} /> */}
             {this.renderSceneRows()}
           </div>
-          {false && (
+          {true && (
             <div className={css.scrollButtons}>
               <Button
                 className={cx(css.scrollButton, css.leftScrollButton)}

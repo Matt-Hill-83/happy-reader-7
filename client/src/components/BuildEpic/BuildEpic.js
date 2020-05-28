@@ -27,8 +27,7 @@ const storyList = [
   // story002,
   // story004,
   // story005,
-  // story010,
-  story011,
+  story010,
   story011,
   // story013,
   // story014,
@@ -42,8 +41,6 @@ const storyList = [
 ]
 
 class BuildEpic extends Component {
-  state = { text: `{ "test": "none" }` }
-
   onClickBuildEpic = () => {
     const { onImportJson } = this.props
     console.log("onClickBuildEpic") // zzz

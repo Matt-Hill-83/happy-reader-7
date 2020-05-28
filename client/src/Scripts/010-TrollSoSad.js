@@ -5,8 +5,9 @@ const story010 = {
     "1: some stuff----------------",
     "2: some stuff----------------",
   ],
-  scenes: {
-    pond: {
+  scenes: [
+    {
+      title: "pond",
       sceneConfig: {
         coordinates: { col: 0, row: 0 },
         creatures: ["kat", "liz2"],
@@ -101,7 +102,8 @@ const story010 = {
         },
       ],
     },
-    bog: {
+    {
+      title: "bog",
       sceneConfig: {
         coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
@@ -173,7 +175,8 @@ const story010 = {
         },
       ],
     },
-    bees: {
+    {
+      title: "bees",
       sceneConfig: {
         coordinates: { col: 2, row: 0 },
         creatures: ["kat", "liz2"],
@@ -269,7 +272,8 @@ const story010 = {
         },
       ],
     },
-    swamp: {
+    {
+      title: "swamp",
       sceneConfig: {
         coordinates: { col: 3, row: 0 },
         creatures: ["kat", "liz2"],
@@ -423,7 +427,8 @@ const story010 = {
         },
       ],
     },
-    log: {
+    {
+      title: "log",
       sceneConfig: {
         coordinates: { col: 4, row: 0 },
         creatures: ["kat", "liz2"],
@@ -521,6 +526,6 @@ const story010 = {
         },
       ],
     },
-  },
+  ],
 }
 export default story010
