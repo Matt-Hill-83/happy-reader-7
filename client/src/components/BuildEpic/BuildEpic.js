@@ -28,7 +28,7 @@ const epicName = "000 - Epic test - 105"
 const storyList = [
   story002,
   story003,
-  // story004,
+  story004,
   // story005,
   story010,
   story011,
