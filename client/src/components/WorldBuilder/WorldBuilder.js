@@ -473,7 +473,7 @@ class WorldBuilder extends Component {
     console.log("") // zzz
     console.log("uploadFrameSet------------") // zzz
 
-    const { title, description } = newFrameSet
+    const { title, description = "" } = newFrameSet
 
     console.log("newFrameSet", toJS(newFrameSet)) // zzz
 
