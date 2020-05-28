@@ -1,8 +1,9 @@
 const story110 = {
-  title: "Liz Bloops",
+  title: "110 - Liz Bloops",
 
-  scenes: {
-    cave: {
+  scenes: [
+    {
+      title: "cave",
       sceneConfig: {
         items: [],
         creatures: ["kat", "liz2"],
@@ -28,6 +29,10 @@ const story110 = {
             `{"liz2": "Piddle-dee. Widdle-dee. Diddle-dee."}`,
             `{"liz2": "Plippity Ploppity plump."}`,
             `{"kat": "Whoa, that's sooooo cool!"}`,
+          ],
+        },
+        {
+          dialogs: [
             `{"liz2": "I know, right? Its called blooping."}`,
             `{"liz2": "I made that up too."}`,
             `{"kat": "I gotta try this!"}`,
@@ -35,10 +40,11 @@ const story110 = {
         },
       ],
     },
-    bog: {
+    {
+      title: "bog",
       sceneConfig: {
         items: [],
-        creatures: ["kat", "liz2", "rori02"],
+        creatures: ["kat", "liz2", "rori", "vulcan01"],
         isStartScene: true,
         isEndScene: false,
       },
@@ -53,19 +59,20 @@ const story110 = {
         },
         {
           dialogs: [
-            `{"rori02": "Run for the hills! Maldred has the Dragon Stone --"}`,
+            `{"rori": "Run for the hills! Maldred has the Dragon Stone --"}`,
             `{"kat": "plip plop!"}`,
             `{"liz2": "Dimple Dee Dip!"}`,
-            `{"rori02": "Wait!  What are those noises?"}`,
-            `{"rori02": "It must be Maldred... "}`,
+            `{"rori": "Wait!  What are those noises?"}`,
+            `{"rori": "It must be Maldred... "}`,
           ],
         },
       ],
     },
-    log: {
+    {
+      title: "log",
       sceneConfig: {
         items: [],
-        creatures: ["kat", "liz2", "rori02", "vulcan"],
+        creatures: ["kat", "liz2", "rori", "vulcan"],
         isStartScene: true,
         isEndScene: false,
       },
@@ -74,21 +81,21 @@ const story110 = {
           dialogs: [
             `{"kat": "We are blooping!"}`,
             `{"liz2": "Hee Hee!"}`,
-            `{"rori02": "Oh.  Cool!"}`,
+            `{"rori": "Oh.  Cool!"}`,
           ],
         },
         {
           dialogs: [
             `{"kat": "plip plop!"}`,
             `{"liz2": "Dimple Dee Dip!"}`,
-            `{"rori02": "Vulcan can bloop better than any one!"}`,
+            `{"rori": "Vulcan can bloop better than any one!"}`,
             `{"kat": "cool"}`,
             `{"vulcan": "BLEEEEEEP!!!!!!!"}`,
           ],
         },
       ],
     },
-  },
+  ],
 }
 
 export default story110

@@ -36,8 +36,8 @@ class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story015) }
   // state = { text: JSON.stringify(story020) }
   // state = { text: JSON.stringify(story050) }
-  state = { text: JSON.stringify(story100) }
-  // state = { text: JSON.stringify(story110) }
+  // state = { text: JSON.stringify(story100) }
+  state = { text: JSON.stringify(story110) }
   // state = { text: JSON.stringify(story200) }
   // state = { text: JSON.stringify(story310) }
 
