@@ -21,10 +21,10 @@ body {
   --window-height: 100vh;
   --story-font-size: 16px;
 
-  [class*="PicturePage_main"] {
+  [class*="WorldViewer_main"] {
     flex-direction: column;
   }
-  [class*="PicturePage_leftHalf"] {
+  [class*="WorldViewer_leftHalf"] {
     width: 100%;
   }
 }

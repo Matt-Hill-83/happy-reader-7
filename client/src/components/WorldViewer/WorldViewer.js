@@ -57,8 +57,9 @@ class WorldViewer extends React.Component {
 
   scrollHorizontal = ({ reverse = false }) => {
     const container = document.querySelector(
-      "[class*='PicturePage_innerMapScroller']"
+      "[class*='WorldViewer_innerMapScroller']"
     )
+    console.log("container", container) // zzz
 
     if (container) {
       container.scrollLeft += 135 * (reverse ? -1 : 1)
