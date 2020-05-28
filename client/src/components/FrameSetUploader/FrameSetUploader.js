@@ -40,8 +40,8 @@ class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story100) }
   // state = { text: JSON.stringify(story110) }
   // state = { text: JSON.stringify(story200) }
-  state = { text: JSON.stringify(story300) }
-  // state = { text: JSON.stringify(story310) }
+  // state = { text: JSON.stringify(story300) }
+  state = { text: JSON.stringify(story310) }
 
   onChangeDialog = ({ event, lineIndex }) => {
     const text = event.target.value
