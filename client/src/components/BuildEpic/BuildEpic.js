@@ -1,5 +1,5 @@
-import { Button, TextArea } from "@blueprintjs/core"
-import React, { Component, useState } from "react"
+import { Button } from "@blueprintjs/core"
+import React, { Component } from "react"
 
 import cx from "classnames"
 
@@ -94,14 +94,8 @@ class BuildEpic extends Component {
           onClick={this.onClickBuildEpic}
           className={cx(css.uploadButton)}
         >
-          BUILD EPIC--
+          BUILD EPIC
         </Button>
-        {/* <TextArea
-          className={`${css.jsonPaster} }`}
-          // onChange={(event) => this.onClickBuildEpic({ event })}
-          id="text-input"
-          value={text}
-        /> */}
       </div>
     )
   }
