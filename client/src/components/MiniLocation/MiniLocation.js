@@ -242,7 +242,7 @@ class MiniLocation extends React.Component {
                 alt={"imagex"}
               />
             </div>
-            {renderedItems || null}
+            {/* {renderedItems || null} */}
 
             <div className={css.characters}>
               {this.renderCharacters({ creatures, isActive })}

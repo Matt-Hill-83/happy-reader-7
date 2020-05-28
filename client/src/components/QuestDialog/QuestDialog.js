@@ -19,8 +19,7 @@ class QuestDialog extends React.Component {
   constructor(props) {
     super(props)
     const showProdInitialValue = localStateStore.getIsProdRelease()
-    this.state = { showProd: true }
-    // this.state = { showProd: showProdInitialValue }
+    this.state = { showProd: showProdInitialValue }
   }
 
   toggleShowProd = () => {
@@ -76,9 +75,7 @@ class QuestDialog extends React.Component {
       </div>
     )
 
-    const showProdButtonLabel = this.state.showProd
-      ? "New Quests"
-      : "Old Quests"
+    const showProdButtonLabel = showProd ? "New Quests" : "Old Quests"
 
     return (
       <Dialog
@@ -86,9 +83,11 @@ class QuestDialog extends React.Component {
         isCloseButtonShown={true}
         className={css.main}
       >
-        <ButtonGroup className={css.buttonGroup} color="primary">
-          <Button onClick={this.toggleShowProd}>{showProdButtonLabel}</Button>
-        </ButtonGroup>
+        {!showProd && (
+          <ButtonGroup className={css.buttonGroup} color="primary">
+            <Button onClick={this.toggleShowProd}>{showProdButtonLabel}</Button>
+          </ButtonGroup>
+        )}
         <img className={css.backgroundImage} src={cloudImage} alt={"imagex"} />
         <div className={css.questPage}>
           <div className={css.header}>

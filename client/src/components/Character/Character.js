@@ -13,7 +13,6 @@ const girlImages = Images.posableGirls
 class Character extends Component {
   render() {
     const { headClassName, showHeadOnly, name, mood, isEditMode } = this.props
-    console.log("name", toJS(name)) // zzz
 
     const images = girlImages.find((girl) => girl.name === name)
 
@@ -35,8 +34,6 @@ class Character extends Component {
     } = images
 
     const head = heads.find((head) => head.mood === mood) || heads[0]
-
-    console.log("headClassName", toJS(headClassName)) // zzz
 
     const className = showHeadOnly
       ? css.headOnly
