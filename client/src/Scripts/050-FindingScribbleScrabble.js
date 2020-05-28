@@ -48,10 +48,16 @@ const story050 = {
       frames: [
         {
           dialogs: [
-            `{"liz2": "Ha! Ha! We are the stars of this show, and we look like we got cut in half with safety."}`,
+            `{"liz2": "Ha! Ha! We are the stars of this show, and we look like we got cut in half with safety scissors."}`,
             `{"kat": "But hey, at least we didn’t end up like that witch."}`,
-            `{"liz2": "Oh I know!  With the watermark on her hat?  Poor thing.  I saw her at the well trying to scrub it out."}`,
-            `{"kat": "That mark's not going anywhere.  She's a J-PEG.  She’s gonna need a codec to get that out."}`,
+          ],
+        },
+        {
+          dialogs: [
+            `{"liz2": "Oh I know!  With the watermark on her hat?  Poor thing."}`,
+            `{"liz2": "I saw her at the well trying to scrub it out."}`,
+            `{"kat": "That mark's not going anywhere.  She's a J-PEG.  "}`,
+            `{"kat": "She’s gonna need a codec to get that out."}`,
           ],
         },
         {
@@ -91,17 +97,13 @@ const story050 = {
         },
         {
           dialogs: [
-            `{"kat": "Matt! Hello, Matt! For Pete’s sake!  Can we get this story moving please?"}`,
-            `{"liz2": "Oh look, a box of markers is on the grass. I didn’t see that before."}`,
-            `{"kat": "Maybe they are Magic Markers! Ha!"}`,
-            `{"liz2": "Kat, you crack me up!"}`,
+            `{"liz2": "Hi ya widdle draggy waggy."}`,
+            `{"kat": "Did you lose your mommy?"}`,
+            `{"dragon": "Eeeeeeeep... Eeeeeeeep..."}`,
           ],
         },
         {
           dialogs: [
-            `{"liz2": "Hi ya widdle draggy waggy."}`,
-            `{"kat": "Did you lose your mommy?"}`,
-            `{"dragon": "Eeeeeeeep... Eeeeeeeep..."}`,
             `{"kat": "The poor little girl."}`,
             `{"liz2": "Is it ok if we color you in a little?"}`,
             `{"kat": "Yip! Yip!"}`,

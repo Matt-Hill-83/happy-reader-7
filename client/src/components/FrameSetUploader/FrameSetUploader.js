@@ -17,12 +17,12 @@ import story011 from "../../Scripts/011-LizIsSlow"
 import story013 from "../../Scripts/013-ChocolateMilk"
 import story014 from "../../Scripts/014-TruthBomb"
 import story015 from "../../Scripts/015-KatAndLizSplitUp"
-import story020 from "../../Scripts/020-RapBattles01"
 import story050 from "../../Scripts/050-FindingScribbleScrabble"
 import story100 from "../../Scripts/100-LizGoesCrazy"
 import story110 from "../../Scripts/110-LizBloops"
 import story200 from "../../Scripts/200-DennisTheMenace"
 import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
+import story020 from "../../Scripts/020-TrollCaveRapBattle"
 
 class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story002) }
