@@ -469,38 +469,66 @@ class WorldBuilder extends Component {
     return newDialogs
   }
 
-  importScenesGrid = ({ newFrameSet }) => {
+  uploadFrameSet = ({ newFrameSet }) => {
+    console.log("") // zzz
+    console.log("uploadFrameSet------------") // zzz
+
     const { title, description } = newFrameSet
 
+    console.log("newFrameSet", toJS(newFrameSet)) // zzz
+
+    // I should probably create a new scenesGrid here, based on the required dimensions
+    // I should probably create a new scenesGrid here, based on the required dimensions
+    // I should probably create a new scenesGrid here, based on the required dimensions
     const scenesGrid = localStateStore.getWorldBuilderScenesGrid()
 
-    const scenes = newFrameSet.scenes
-    const sceneNames = Object.keys(scenes)
+    if (newFrameSet.scenes2) {
+      newFrameSet.scenes2.forEach((scene) => {
+        const {
+          sceneConfig: { coordinates },
+        } = scene
+        console.log("coordinates", coordinates) // zzz
 
-    // Create a new scene, for each scene
-    sceneNames.forEach((sceneName, index) => {
-      const newScene = scenes[sceneName]
-
-      const newBornScene = Utils.getBlankScene({
-        props: {
-          coordinates: {
-            col: index,
-            row: 0,
+        const newBornScene = Utils.getBlankScene({
+          props: {
+            coordinates: coordinates,
+            location: { name: scene.title },
           },
-          location: { name: sceneName },
-        },
-      })
-      if (newScene.sceneConfig) {
-        Object.assign(newBornScene, newScene.sceneConfig)
-      }
+        })
 
-      newBornScene.frameSet.frames = this.createNewFrames({
-        dialog: newScene.dialog,
-        newScene,
-      })
+        if (scene.sceneConfig) {
+          Object.assign(newBornScene, scene.sceneConfig)
+        }
 
-      scenesGrid[0][index] = newBornScene
-    })
+        newBornScene.frameSet.frames = this.createNewFrames({ newScene: scene })
+
+        scenesGrid[coordinates.row][coordinates.col] = newBornScene
+      })
+    } else if (newFrameSet.scenes) {
+      // const scenes = newFrameSet.scenes
+      // const sceneNames = Object.keys(scenes)
+      // sceneNames.forEach((sceneName, index) => {
+      //   const newScene = scenes[sceneName]
+      //   const newBornScene = Utils.getBlankScene({
+      //     props: {
+      //       coordinates: {
+      //         col: index,
+      //         row: 0,
+      //       },
+      //       location: { name: sceneName },
+      //     },
+      //   })
+      //   if (newScene.sceneConfig) {
+      //     Object.assign(newBornScene, newScene.sceneConfig)
+      //   }
+      //   newBornScene.frameSet.frames = this.createNewFrames({
+      //     newScene,
+      //   })
+      //   scenesGrid[0][index] = newBornScene
+      // })
+    }
+    console.log("scenesGrid", toJS(scenesGrid)) // zzz
+
     this.updateMap({ newProps: { title, description } })
   }
 
@@ -523,7 +551,7 @@ class WorldBuilder extends Component {
             className={css.frameSetUploaderBox0}
             onSave={this.onChangeDialog}
             onImportJson={({ newFrameSet }) =>
-              this.importScenesGrid({ newFrameSet, moreProps: {} })
+              this.uploadFrameSet({ newFrameSet })
             }
           />
           <GetSceneConfig
@@ -535,6 +563,9 @@ class WorldBuilder extends Component {
             className={css.frameSetUploaderBox1}
             onSave={this.onChangeDialog}
             scenesGrid={scenesGrid}
+            onImportJson={({ newFrameSet }) =>
+              this.uploadFrameSet({ newFrameSet })
+            }
           />
         </div>
 

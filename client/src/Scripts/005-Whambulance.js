@@ -80,7 +80,7 @@ const story005 = {
           dialogs: [
             `{"liz2" : "Stop it!"}`,
             `{"liz2" : "Kat, you are a bad frog!!!"}`,
-            `{"kat" : "Don't yuck on my yum."}`,
+            `{"liz2" : "Bad froggy!!!"}`,
           ],
         },
       ],

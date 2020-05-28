@@ -4,8 +4,9 @@ const story011 = {
     "1: some stuff----------------",
     "2: some stuff----------------",
   ],
-  scenes: {
-    swing: {
+  scenes: [
+    {
+      title: "swing",
       sceneConfig: {
         coordinates: { col: 1, row: 1 },
         creatures: ["kat", "liz2"],
@@ -103,7 +104,8 @@ const story011 = {
         },
       ],
     },
-    lake: {
+    {
+      title: "lake",
       sceneConfig: {
         coordinates: { col: 1, row: 2 },
         creatures: ["kat", "liz2"],
@@ -130,7 +132,7 @@ const story011 = {
         },
       ],
     },
-  },
+  ],
 }
 
 export default story011

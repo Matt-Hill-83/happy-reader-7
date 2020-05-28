@@ -40,8 +40,6 @@ class FrameViewer extends Component {
     const renderedDialogs = dialog.map((line, lineIndex) => {
       const { text, characterIndex } = line
 
-      console.log("characterIndex-----------------FV", toJS(characterIndex)) // zzz
-
       if (!text) return null
 
       const className = `character${characterIndex}`
@@ -134,8 +132,6 @@ class FrameViewer extends Component {
     const { scene, frame } = this.props
     const { faces = [] } = frame
     if (!frame) return null
-    console.log("frame", toJS(frame)) // zzz
-    console.log("scene", toJS(scene)) // zzz
 
     let allCharacters = []
 
@@ -155,12 +151,10 @@ class FrameViewer extends Component {
     }
 
     // const allItems = (scene.items && scene.items.map((item) => item.name)) || []
-    console.log("allItems", toJS(allItems)) // zzz
 
     // temp code DELETE ME!!! (start)
     allCharacters.push(...allItems)
     // temp code DELETE ME!!! (end)
-    console.log("allCharacters", toJS(allCharacters)) // zzz
 
     return allCharacters.map((character, index) => {
       const mood = this.getMood({ name: character, faces })
@@ -296,7 +290,6 @@ class FrameViewer extends Component {
     if (!frame) {
       return null
     }
-    console.log("frame", toJS(frame)) // zzz
 
     return (
       <div className={css.main}>
