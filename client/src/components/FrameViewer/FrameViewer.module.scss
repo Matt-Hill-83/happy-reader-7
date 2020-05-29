@@ -414,20 +414,14 @@
   }
 
   .nextPageButtonRow {
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 36px !important;
     font-weight: bold !important;
-    /* margin-left: auto; */
-    /* height: 40px; */
-    position: relative;
     margin-bottom: 0.1vh;
-    z-index: 10000000;
-    position: absolute;
-    /* bottom: 11vh; */
-    /* right: -0.2vh; */
-    position: absolute;
+    z-index: 11;
     width: 100%;
     height: 100%;
     border: 4px solid green !important;
