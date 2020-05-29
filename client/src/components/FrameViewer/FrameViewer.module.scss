@@ -135,7 +135,6 @@
     display: flex;
     z-index: 1;
     flex-direction: column;
-    // border: 2px solid purple !important;
     border-radius: 0.6vh;
     background: white;
     overflow: hidden;
@@ -165,7 +164,6 @@
   }
 
   .dialog {
-    // border: 2px solid green !important;
     display: flex;
     z-index: 10;
     flex-direction: column;
@@ -446,8 +444,6 @@
     display: flex;
     align-items: center;
     font-size: 2.4vh;
-    /* height: 60%; */
-    /* width: 60%; */
     padding: 1vh;
   }
 
