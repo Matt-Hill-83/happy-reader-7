@@ -352,6 +352,7 @@
     background: white;
     padding: 0 1vh;
     border-radius: 3px;
-    width: 100%;
+    min-width: 100%;
+    white-space: nowrap;
   }
 }

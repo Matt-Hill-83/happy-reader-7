@@ -174,7 +174,7 @@ class MiniLocation extends React.Component {
 
     const {
       coordinates,
-      sceneConfig: { storyIndex, firstScene, isStartScene } = {},
+      sceneConfig: { storyIndex, firstScene, storyTitle } = {},
     } = scene
 
     const neighbors = Utils.getNeighbors({ coordinates })
@@ -210,13 +210,7 @@ class MiniLocation extends React.Component {
     const backgroundColor = colors[colorIndex]
 
     const style = {
-      border: `3px solid #${backgroundColor}`,
       "background-color": `#${backgroundColor}`,
-    }
-
-    const showSceneInfo = firstScene
-    if (firstScene) {
-      console.log("firstScene", firstScene) // zzz
     }
 
     return (
@@ -230,9 +224,7 @@ class MiniLocation extends React.Component {
       >
         {!isBlank && (
           <div className={css.container}>
-            {firstScene && (
-              <div className={css.firstScene}>{"Quest Title"}</div>
-            )}
+            {firstScene && <div className={css.firstScene}>{storyTitle}</div>}
 
             {/* Paths that connect scenes */}
             {showRightPath && <div className={css.rightPath}></div>}
@@ -240,7 +232,6 @@ class MiniLocation extends React.Component {
             {false && (
               <img className={css.rockImage} src={rockImage} alt={"imagex"} />
             )}
-            {/* <div className={css.grassImage} /> */}
             {false && <div className={css.hexagon}></div>}
             {!isEditMode && showCloud && (
               <div className={css.cloudImageContainer}>

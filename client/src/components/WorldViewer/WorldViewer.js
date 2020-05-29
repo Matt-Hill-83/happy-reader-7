@@ -70,7 +70,8 @@ class WorldViewer extends React.Component {
     const leftArrow = Images.backgrounds["leftArrow"]
     const rightArrow = Images.backgrounds["rightArrow"]
 
-    const mainBackground = Images.backgrounds["planetGlorp04"]
+    const mainBackground = Images.backgrounds["hill01"]
+    // const mainBackground = Images.backgrounds["planetGlorp04"]
     // const mainBackground = Images.backgrounds["planetGlorp03"]
     // const mainBackground = Images.backgrounds["planetGlorp02"]
     // const mainBackground = Images.backgrounds["introBackground"]

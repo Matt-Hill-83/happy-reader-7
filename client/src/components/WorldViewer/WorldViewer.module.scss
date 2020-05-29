@@ -1,11 +1,11 @@
 @import "../../Styles/mixins.modules.scss";
 .backgroundImage {
+  position: absolute;
   display: flex;
 
   width: 100%;
-  // width: 151%;
   height: 100%;
-  position: absolute;
+  transform: scaleX(-1);
 }
 
 .scrollButtons {
