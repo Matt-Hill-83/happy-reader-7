@@ -294,6 +294,13 @@ class FrameViewer extends Component {
 
     return (
       <div className={css.arrowNavigatorBox}>
+        {!isLastFrame && (
+          <div className={css.nextPageButtonRow}>
+            <Button onClick={this.onClickNext} className={css.nextButton}>
+              Next Page
+            </Button>
+          </div>
+        )}
         <ArrowNavigator
           activeScene={activeScene}
           updateActiveScene={updateActiveScene}
@@ -303,7 +310,7 @@ class FrameViewer extends Component {
   }
 
   renderFrame = () => {
-    const { scene } = this.props
+    const { scene, isLastFrame } = this.props
 
     const sceneName = scene.location.name
     const renderedItems = this.renderItems()
@@ -322,10 +329,15 @@ class FrameViewer extends Component {
               {this.renderSomeFriends()}
 
               {/* {this.renderNarrative()} */}
-              {this.nextButtonRow()}
+              {false && this.nextButtonRow()}
             </div>
             <div className={css.buttonsContainer}>
               {this.renderArrowNavigator()}
+              {/* {!isLastFrame && (
+                <Button onClick={this.onClickNext} className={css.nextButton}>
+                  Next Page
+                </Button>
+              )} */}
             </div>
           </div>
           <div className={css.imageGroupsContainer}>
