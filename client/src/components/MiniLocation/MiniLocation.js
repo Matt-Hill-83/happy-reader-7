@@ -176,12 +176,10 @@ class MiniLocation extends React.Component {
     const locationName = scene.location.name
     const isBlank = locationName === "blank"
 
-    console.log("isActive", toJS(isActive)) // zzz
-
     const localClass = isActive ? css.activeClass : ""
     const locationImage = Images.all[locationName]
 
-    // const rockImage = Images.backgrounds["rock"]
+    const rockImage = Images.backgrounds["rock"]
     const cloudImage = Images.backgrounds["cloud"]
     const defaultDoorImage = Images.backgrounds["door"]
 
@@ -211,7 +209,9 @@ class MiniLocation extends React.Component {
             {/* Paths that connect scenes */}
             {showRightPath && <div className={css.rightPath}></div>}
             {showBottomPath && <div className={css.bottomPath}></div>}
-            {/* <img className={css.rockImage} src={rockImage} alt={"imagex"} /> */}
+            {false && (
+              <img className={css.rockImage} src={rockImage} alt={"imagex"} />
+            )}
             <div className={css.grassImage} />
             {false && <div className={css.hexagon}></div>}
             {!isEditMode && showCloud && (
