@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import "@firebase/firestore"
 import "@blueprintjs/core/lib/css/blueprint.css"
+import "@blueprintjs/table/lib/css/table.css"
 
 // Import this first to initialize stores.
 import { test } from "./Stores/InitStores"
