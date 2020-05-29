@@ -168,6 +168,10 @@ class MiniLocation extends React.Component {
       isEditMode,
     } = this.props
 
+    if (scene && scene.location.name !== "blank") {
+      console.log("scene", toJS(scene)) // zzz
+    }
+
     const { coordinates } = scene
     const neighbors = Utils.getNeighbors({ coordinates })
 

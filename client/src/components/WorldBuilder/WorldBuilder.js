@@ -469,9 +469,9 @@ class WorldBuilder extends Component {
     return newDialogs
   }
 
-  uploadFrameSet = ({ newFrameSet }) => {
+  importWorld = ({ newFrameSet }) => {
     console.log("") // zzz
-    console.log("uploadFrameSet------------") // zzz
+    console.log("importWorld------------") // zzz
 
     const { title, description = "" } = newFrameSet
 
@@ -491,13 +491,9 @@ class WorldBuilder extends Component {
         col: sceneIndex,
         row: 0,
       }
-      console.log("coordinates", coordinates) // zzz
 
       const newBornScene = Utils.getBlankScene({
-        props: {
-          coordinates,
-          location: { name: scene.title },
-        },
+        props: { sceneConfig, coordinates, location: { name: scene.title } },
       })
 
       if (scene.sceneConfig) {
@@ -531,7 +527,7 @@ class WorldBuilder extends Component {
           <FrameSetUploader
             onSave={this.onChangeDialog}
             onImportJson={({ newFrameSet }) =>
-              this.uploadFrameSet({ newFrameSet })
+              this.importWorld({ newFrameSet })
             }
           />
           <GetSceneConfig
@@ -544,7 +540,7 @@ class WorldBuilder extends Component {
             onSave={this.onChangeDialog}
             scenesGrid={scenesGrid}
             onImportJson={({ newFrameSet }) =>
-              this.uploadFrameSet({ newFrameSet })
+              this.importWorld({ newFrameSet })
             }
           />
         </div>

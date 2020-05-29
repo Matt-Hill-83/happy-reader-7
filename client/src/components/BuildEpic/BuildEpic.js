@@ -76,6 +76,7 @@ class BuildEpic extends Component {
         const coords = { row: storyIndex, col: column }
         console.log("coords", coords) // zzz
 
+        scene.sceneConfig.title = story.title
         scene.sceneConfig.storyIndex = storyIndex
         scene.sceneConfig.coordinates = coords
         scenes2.push(scene)

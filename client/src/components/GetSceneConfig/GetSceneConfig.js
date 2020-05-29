@@ -27,7 +27,8 @@ class GetSceneConfig extends Component {
 
     const test1 = toJS(scenesGrid)
     console.log({ test1 })
-    const outputObj = {}
+    const newScenesList = []
+    // const newScenesList = {}
     test1.forEach((scene) => {
       const oldFrames = scene.frameSet.frames
 
@@ -36,6 +37,7 @@ class GetSceneConfig extends Component {
         const newFrame = {
           frameConfig: {
             items: [],
+            id: oldFrame.id,
             faces: oldFrame.faces,
             creatures: oldFrame.creatures,
           },
@@ -50,8 +52,11 @@ class GetSceneConfig extends Component {
 
       const creatures = scene.characters.map((item) => item.name)
 
-      const newOutput = {
+      const newBornScene = {
+        title: scene.location.name,
         sceneConfig: {
+          id: scene.location.id,
+          title: scene.location.name,
           coordinates: scene.coordinates,
           creatures,
           isEndScene: scene.isEndScene,
@@ -62,15 +67,15 @@ class GetSceneConfig extends Component {
       }
 
       if (scene.items && scene.items.length > 0) {
-        newOutput.sceneConfig.items = scene.items
+        newBornScene.sceneConfig.items = scene.items
       }
 
-      outputObj[scene.location.name] = newOutput
+      newScenesList.push(newBornScene)
     })
 
     const output = {
-      title: "title-zzz",
-      scenes: outputObj,
+      title: "story output",
+      scenes: newScenesList,
     }
 
     const flatJson = JSON.stringify(output)
