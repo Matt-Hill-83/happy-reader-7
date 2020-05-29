@@ -172,7 +172,8 @@ class MiniLocation extends React.Component {
       console.log("scene", toJS(scene)) // zzz
     }
 
-    const { coordinates } = scene
+    const { coordinates, sceneConfig: { storyIndex } = {} } = scene
+
     const neighbors = Utils.getNeighbors({ coordinates })
 
     const showCloud = false
@@ -200,6 +201,15 @@ class MiniLocation extends React.Component {
     const showBottomPath = neighbors[Utils.neighborPositionsEnum.bottom]
     const showRightPath = neighbors[Utils.neighborPositionsEnum.right]
 
+    const colorIndex = storyIndex % 5
+    const colors = ["227c9d", "17c3b2", "ffcb77", "fef9ef", "fe6d73"]
+    const backgroundColor = colors[colorIndex]
+
+    const style = {
+      border: `3px solid #${backgroundColor}`,
+      "background-color": `#${backgroundColor}`,
+    }
+
     return (
       <div
         key={id}
@@ -207,6 +217,7 @@ class MiniLocation extends React.Component {
         className={`${css.main} ${className} ${
           this.props.scene.isStartScene ? css.isStartScene : ""
         } ${isBlank ? css.isBlank : ""} ${localClass} `}
+        style={style}
       >
         {!isBlank && (
           <div className={css.container}>
@@ -216,7 +227,7 @@ class MiniLocation extends React.Component {
             {false && (
               <img className={css.rockImage} src={rockImage} alt={"imagex"} />
             )}
-            <div className={css.grassImage} />
+            {/* <div className={css.grassImage} /> */}
             {false && <div className={css.hexagon}></div>}
             {!isEditMode && showCloud && (
               <div className={css.cloudImageContainer}>

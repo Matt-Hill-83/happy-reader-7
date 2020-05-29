@@ -10,6 +10,11 @@
   }
 }
 
+.isBlank {
+  border: none !important;
+  background: none !important;
+}
+
 .main {
   --hex-color: var(--this-color-yellow);
   --hex-color: pink;
@@ -42,6 +47,7 @@
   margin-bottom: 2vh;
 
   overflow: visible;
+  background: var(--color-yellow);
 
   .container {
     display: flex;
@@ -128,10 +134,6 @@
     height: 25%;
     bottom: 8%;
     left: 10%;
-  }
-
-  .isBlank {
-    border: none !important;
   }
 
   .characterYouMini {
