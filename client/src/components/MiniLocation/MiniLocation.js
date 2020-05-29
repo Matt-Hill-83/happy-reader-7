@@ -172,7 +172,10 @@ class MiniLocation extends React.Component {
       console.log("scene", toJS(scene)) // zzz
     }
 
-    const { coordinates, sceneConfig: { storyIndex } = {} } = scene
+    const {
+      coordinates,
+      sceneConfig: { storyIndex, firstScene, isStartScene } = {},
+    } = scene
 
     const neighbors = Utils.getNeighbors({ coordinates })
 
@@ -201,13 +204,19 @@ class MiniLocation extends React.Component {
     const showBottomPath = neighbors[Utils.neighborPositionsEnum.bottom]
     const showRightPath = neighbors[Utils.neighborPositionsEnum.right]
 
-    const colorIndex = storyIndex % 5
-    const colors = ["227c9d", "17c3b2", "ffcb77", "fef9ef", "fe6d73"]
+    const colors = ["fcf6bd", "d0f4de", "a9def9", "e4c1f9"]
+
+    const colorIndex = storyIndex % colors.length
     const backgroundColor = colors[colorIndex]
 
     const style = {
       border: `3px solid #${backgroundColor}`,
       "background-color": `#${backgroundColor}`,
+    }
+
+    const showSceneInfo = firstScene
+    if (firstScene) {
+      console.log("firstScene", firstScene) // zzz
     }
 
     return (
@@ -221,6 +230,10 @@ class MiniLocation extends React.Component {
       >
         {!isBlank && (
           <div className={css.container}>
+            {firstScene && (
+              <div className={css.firstScene}>{"Quest Title"}</div>
+            )}
+
             {/* Paths that connect scenes */}
             {showRightPath && <div className={css.rightPath}></div>}
             {showBottomPath && <div className={css.bottomPath}></div>}
@@ -259,7 +272,7 @@ class MiniLocation extends React.Component {
                 alt={"imagex"}
               />
             </div>
-            {/* {renderedItems || null} */}
+            {(false && renderedItems) || null}
 
             <div className={css.characters}>
               {this.renderCharacters({ creatures, isActive })}

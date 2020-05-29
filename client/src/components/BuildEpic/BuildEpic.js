@@ -26,7 +26,7 @@ import story300 from "../../Scripts/300-MerlindaTheFairyPrincessPart1"
 import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
 import story330 from "../../Scripts/330-MerlindaTheFairyPrincessPart3"
 
-const epicName = "000 - Epic test - a100"
+const epicName = "000 - Epic test - a101"
 const storyList = [
   // story002,
   story003,
@@ -72,7 +72,9 @@ class BuildEpic extends Component {
 
       const { scenes } = clonedStory
 
-      scenes.forEach((scene) => {
+      scenes.forEach((scene, sceneIndex) => {
+        scene.sceneConfig.firstScene = sceneIndex === 0 ? true : false
+
         const coords = { row: storyIndex, col: column }
         console.log("coords", coords) // zzz
 

@@ -340,4 +340,18 @@
     background: var(--color-yellow);
     border-radius: 11px;
   }
+
+  .firstScene {
+    display: flex;
+    position: absolute;
+    flex: 1;
+    border: 2px solid red !important;
+    z-index: 1000;
+    top: 0;
+    transform: translateY(-100%);
+    background: white;
+    padding: 0 1vh;
+    border-radius: 3px;
+    width: 100%;
+  }
 }
