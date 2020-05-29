@@ -19,7 +19,8 @@
   --hex-color: var(--this-color-yellow);
   --hex-color: pink;
   --fence-width: 2%;
-  --story-item-height: 10vh;
+  --story-item-height: 5vh;
+  // --story-item-height: 10vh;
   --story-item-width: calc(var(--story-item-height) * 1);
 
   display: flex;
