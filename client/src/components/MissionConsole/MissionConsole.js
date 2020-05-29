@@ -1,19 +1,21 @@
 import { Button, TextArea } from "@blueprintjs/core"
 import React, { Component, useState } from "react"
+import { TruncatedFormat, Cell, Column, Table } from "@blueprintjs/table"
 
 import cx from "classnames"
 
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
-// import _pick from "lodash.pick"
 import css from "./MissionConsole.module.scss"
-import { Cell, Column, Table } from "@blueprintjs/table"
 
 const columnNames = ["Mission", "Status"]
 
 const tableData = [
-  ["get 5 gold", "not complete"],
+  [
+    "get 5 goldgoldgoldgoldgoldgoldgoldgoldgoldgoldgoldgoldgoldgoldgold",
+    "not complete",
+  ],
   ["make 1 friend", "complete"],
   ["eat one apple", "not complete"],
 ]
@@ -21,19 +23,16 @@ const tableData = [
 class MissionConsole extends Component {
   state = {}
 
-  onChangeDialog = ({ event, lineIndex }) => {
-    const text = event.target.value
-
-    this.setState({ text })
-  }
-
-  renderButton = () => {
-    return <Button className={cx(css.uploadButton)}>DOWNLOAD JSON</Button>
-  }
-
   renderCell = (row, col) => {
     const value = tableData[row][col]
-    return <Cell value={value.toString()} />
+    console.log("value", value) // zzz
+
+    return (
+      <Cell>
+        <TruncatedFormat>{value.toString()}</TruncatedFormat>
+      </Cell>
+    )
+    // return <Cell>{value.toString()}</Cell>
   }
 
   render = () => {
@@ -42,6 +41,8 @@ class MissionConsole extends Component {
     const columns = columnNames.map((name, index) => {
       return <Column key={index} cellRenderer={this.renderCell} name={name} />
     })
+    console.log("columns", toJS(columns)) // zzz
+
     const numRows = tableData.length
 
     return (
@@ -57,9 +58,9 @@ class MissionConsole extends Component {
               </Table>
             </div>
             <div className={css.right}>
-              <Table numRows={numRows} enableFocusedCell={false}>
+              {/* <Table numRows={numRows} enableFocusedCell={false}>
                 {columns}
-              </Table>
+              </Table> */}
             </div>
           </div>
         </div>
