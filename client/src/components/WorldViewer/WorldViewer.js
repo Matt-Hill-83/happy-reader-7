@@ -72,7 +72,7 @@ class WorldViewer extends React.Component {
 
     const mainBackground = Images.backgrounds["hill01"]
     // const mainBackground = Images.backgrounds["planetGlorp04"]
-    // const mainBackground = Images.backgrounds["planetGlorp03"]
+    const mainBackground2 = Images.backgrounds["planetGlorp03"]
     // const mainBackground = Images.backgrounds["planetGlorp02"]
     // const mainBackground = Images.backgrounds["introBackground"]
     // const mainBackground = Images.backgrounds["paperBackground01"]
@@ -80,6 +80,11 @@ class WorldViewer extends React.Component {
     return (
       <>
         <img className={css.backgroundImage} src={mainBackground} alt={"bk"} />
+        <img
+          className={css.backgroundImage2}
+          src={mainBackground2}
+          alt={"bk"}
+        />
         {/* <img className={css.backgroundImage} src={mapImage} alt={"bk"} /> */}
         <div className={`${css.mapScroller}`}>
           <div className={`${css.innerMapScroller}`}>
