@@ -43,12 +43,11 @@
   display: flex;
   z-index: 1000;
   background-color: lightyellow !important;
-  // top: 4%;
   font-size: 3vh;
   padding: 0.4% 1%;
-  /* right: 1%; */
   border-radius: 11px;
   border: 2px solid purple;
   left: 50%;
   transform: translateX(-50%);
+  top: 2vh;
 }
