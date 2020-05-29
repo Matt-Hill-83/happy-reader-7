@@ -28,6 +28,13 @@ const test = {
       "But instead, while they are doing it, Maldred attacks.",
       "And they fight him from the giant mechanical frog amusement park ride.",
 
+      "chit-chat"
+      "pollywog"
+      "kids have a word list whith their top word they've learned"
+      "nuance"
+      "put workds with dictionary links"
+      "do a word a day thing"
+      "put out a new story every day"
 
       ],
   },

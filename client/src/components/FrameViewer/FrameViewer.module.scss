@@ -300,10 +300,10 @@
   }
 
   .locationImageContainer {
-    height: 9%;
+    height: 16%;
     position: absolute;
-    bottom: 33%;
-    left: 3%;
+    bottom: 1%;
+    left: 0%;
     z-index: 6;
 
     .locationImage {
@@ -352,11 +352,10 @@
     display: flex;
     width: 100%;
     position: relative;
-    // margin-top: auto;
     height: 14vh;
     position: absolute;
     bottom: 22vh;
-    z-index: 1;
+    z-index: 10;
     left: 12vh;
   }
 

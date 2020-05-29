@@ -13,29 +13,27 @@ const story330 = {
         {
           dialogs: [
             `{"kat": "Rori, I'm gonna get real with you."}`,
-            `{"rori": "We must free the dragons from Morded's evil spell!"}`,
+            `{"rori": "We must free the dragons from Maldred's evil spell!"}`,
           ],
         },
         {
           dialogs: [
             `{"kat": "Rori, do you like sparkles and glitter beyond your wildest dreams?"}`,
             `{"rori": "Does it shimmer with the power of the dragon stone?"}`,
-            `{"kat": "Oh yes... Oh yes it does."}`,
+            `{"kat": "Oh yes... Oh yes it does..."}`,
+            `{"kat": "Now, will you help us steal the dress from the dragon Watta-Lee-Achee?"}`,
           ],
         },
         {
           dialogs: [
             `{"rori": "What class?"}`,
-            `{"liz2": "Um….K2? No, K1.  Um...  actually both?"}`,
+            `{"liz2": "K2. No, wait... K1.  Um...  both?"}`,
             `{"rori": "I wasn't asking your kindergarten class!"}`,
             `{"rori": "What class dragon is it?"}`,
           ],
         },
         {
-          dialogs: [
-            `{"liz2": "Oh... yeah right."}`,
-            `{"rori": "Never mind.  Let me think."}`,
-          ],
+          dialogs: [`{"liz2": "Oh... yeah right."}`, `{"rori": "Never mind."}`],
         },
       ],
     },
@@ -50,7 +48,7 @@ const story330 = {
       frames: [
         {
           dialogs: [
-            `{"rori": "I'd say she's a class 2 fire dragon with a minor healing enchantment."}`,
+            `{"rori": "I think Watta-Lee-Achee is a class 2 lava dragon with a minor healing enchantment."}`,
             `{"kat": "Doo-Da-Lee-Doo"}`,
             `{"rori" : "What?"}`,
             `{"liz2": "Ignore her..."}`,
