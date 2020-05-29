@@ -8,6 +8,7 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
 import css from "./MissionConsole.module.scss"
+import MiniTable from "../MiniTable/MiniTable"
 
 const columnNames = ["Mission", "Status"]
 
@@ -23,27 +24,8 @@ const tableData = [
 class MissionConsole extends Component {
   state = {}
 
-  renderCell = (row, col) => {
-    const value = tableData[row][col]
-    console.log("value", value) // zzz
-
-    return (
-      <Cell>
-        <TruncatedFormat>{value.toString()}</TruncatedFormat>
-      </Cell>
-    )
-    // return <Cell>{value.toString()}</Cell>
-  }
-
   render = () => {
     const { world } = this.props
-
-    const columns = columnNames.map((name, index) => {
-      return <Column key={index} cellRenderer={this.renderCell} name={name} />
-    })
-    console.log("columns", toJS(columns)) // zzz
-
-    const numRows = tableData.length
 
     return (
       <div className={css.main}>
@@ -53,15 +35,9 @@ class MissionConsole extends Component {
         <div className={css.body}>
           <div className={css.row}>
             <div className={css.left}>
-              <Table numRows={numRows} enableFocusedCell={false}>
-                {columns}
-              </Table>
+              <MiniTable columnNames={columnNames} tableData={tableData} />
             </div>
-            <div className={css.right}>
-              {/* <Table numRows={numRows} enableFocusedCell={false}>
-                {columns}
-              </Table> */}
-            </div>
+            <div className={css.right}></div>
           </div>
         </div>
       </div>
