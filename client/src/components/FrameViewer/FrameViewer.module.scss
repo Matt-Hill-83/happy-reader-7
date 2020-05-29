@@ -406,7 +406,9 @@
   }
 
   .buttonsContainer {
-    display: flex;
+    position: relative;
+    /* z-index: 9999999999999; */
+    height: 12vh;
   }
 
   .newGameButton {

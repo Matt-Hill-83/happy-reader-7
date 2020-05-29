@@ -1,5 +1,19 @@
 @import "../../Styles/mixins.modules.scss";
 
+.activeClass {
+  border: 4px solid green !important;
+  background: #fda7e6 !important;
+
+  :global {
+    [class*="MiniLocation_grassImage"] {
+      background: none !important;
+      // background: var(--color-yellow);
+      border-radius: 11px;
+      overflow: hidden;
+    }
+  }
+}
+
 .main {
   --hex-color: var(--this-color-yellow);
   --hex-color: pink;
@@ -122,17 +136,6 @@
 
   .isBlank {
     border: none !important;
-  }
-
-  .activeClass {
-    :global {
-      [class*="MiniLocation_grassImage"] {
-        background: blue !important;
-        // background: var(--color-yellow);
-        border-radius: 11px;
-        overflow: hidden;
-      }
-    }
   }
 
   .characterYouMini {
@@ -299,44 +302,44 @@
     right: 10%;
     bottom: 10%;
   }
-}
 
-.rightPath {
-  position: absolute;
-  display: flex;
-  height: 27%;
-  width: 50%;
-  right: -42%;
-  z-index: 18;
-  border-top: 1px solid green;
-  border-bottom: 1px solid green;
-  background: var(--color-yellow);
-  transform: translateY(-50%);
-  top: 50%;
-  width: 36%;
-  right: -34%;
-}
+  .rightPath {
+    position: absolute;
+    display: flex;
+    height: 27%;
+    width: 50%;
+    right: -42%;
+    z-index: 18;
+    border-top: 1px solid green;
+    border-bottom: 1px solid green;
+    background: var(--color-yellow);
+    transform: translateY(-50%);
+    top: 50%;
+    width: 36%;
+    right: -34%;
+  }
 
-.bottomPath {
-  position: absolute;
-  display: flex;
-  height: 4.5vh;
-  bottom: -4.5vh;
-  width: 27%;
-  z-index: 18;
-  transform: translateX(-50%);
-  left: 72%;
-  border-right: 1px solid green;
-  border-left: 1px solid green;
-  background: var(--color-yellow);
-}
+  .bottomPath {
+    position: absolute;
+    display: flex;
+    height: 4.5vh;
+    bottom: -4.5vh;
+    width: 27%;
+    z-index: 18;
+    transform: translateX(-50%);
+    left: 72%;
+    border-right: 1px solid green;
+    border-left: 1px solid green;
+    background: var(--color-yellow);
+  }
 
-.grassImage {
-  display: flex;
+  .grassImage {
+    display: flex;
 
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: var(--color-yellow);
-  border-radius: 11px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--color-yellow);
+    border-radius: 11px;
+  }
 }

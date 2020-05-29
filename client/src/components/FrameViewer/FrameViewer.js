@@ -328,7 +328,7 @@ class FrameViewer extends Component {
               <div className={css.buttonsContainer}>
                 {this.renderArrowNavigator()}
               </div>
-              {this.renderSomeFriends()}
+              {/* {this.renderSomeFriends()} */}
             </div>
           </div>
           <div className={css.imageGroupsContainer}>
