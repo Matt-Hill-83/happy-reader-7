@@ -15,6 +15,7 @@ import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import Utils from "../../Utils/Utils"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import ArrowNavigator from "../ArrowNavigator/ArrowNavigator"
+import MissionConsole from "../MissionConsole/MissionConsole"
 
 class FrameViewer extends Component {
   state = {}
@@ -321,6 +322,7 @@ class FrameViewer extends Component {
         {this.renderLocationImage()}
 
         <div className={css.relativePositionedContent}>
+          <MissionConsole />
           <div className={css.wordsAndButtons}>
             <div className={css.sceneName}>{sceneName}</div>
             <div className={css.wordsContainer}>
