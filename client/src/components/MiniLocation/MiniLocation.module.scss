@@ -1,15 +1,12 @@
 @import "../../Styles/mixins.modules.scss";
 
 .activeClass {
-  border: 4px solid green !important;
   background: #fda7e6 !important;
 
   :global {
     [class*="MiniLocation_grassImage"] {
       background: none !important;
-      // background: var(--color-yellow);
-      border-radius: 11px;
-      overflow: hidden;
+      // overflow: hidden;
     }
   }
 }
