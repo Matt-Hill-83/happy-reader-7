@@ -122,7 +122,6 @@ const story003 = {
             '{"kat" : "I just got my dress!"}',
             '{"kat" : "This dress is the best!"}',
             '{"kat" : "And I finished up my quest!"}',
-            '{"kat" : "It was my best Dress Quest quest yet!"}',
           ],
         },
         {
@@ -135,10 +134,10 @@ const story003 = {
             creatures: ["kat", "liz2", "troll01", "troll02"],
           },
           dialogs: [
-            '{"kat" : "That quest was the best!"}',
-            '{"troll01" : "Oh wow, I\'m impressed!"}',
+            '{"troll01" : "OH WOW, TROLL IMPRESSED!"}',
             '{"kat" : "And now I\'ve got a teeny tiny question..."}',
             '{"kat" : "...it\'s like a little test."}',
+            '{"troll01" : "I\'ll use my best quess!"}',
           ],
         },
         {

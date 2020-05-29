@@ -28,7 +28,7 @@ import story330 from "../../Scripts/330-MerlindaTheFairyPrincessPart3"
 
 class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story002) }
-  // state = { text: JSON.stringify(story003) }
+  state = { text: JSON.stringify(story003) }
   // state = { text: JSON.stringify(story004) }
   // state = { text: JSON.stringify(story005) }
   // state = { text: JSON.stringify(story010) }
@@ -43,7 +43,7 @@ class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story200) }
   // state = { text: JSON.stringify(story300) }
   // state = { text: JSON.stringify(story310) }
-  state = { text: JSON.stringify(story330) }
+  // state = { text: JSON.stringify(story330) }
 
   onChangeDialog = ({ event, lineIndex }) => {
     const text = event.target.value
