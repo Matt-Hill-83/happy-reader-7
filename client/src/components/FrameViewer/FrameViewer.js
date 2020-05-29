@@ -83,13 +83,13 @@ class FrameViewer extends Component {
   }
 
   renderLocationImage = () => {
-    const locationImage =
-      Images.locations[_get(this.props, "scene.location.name")]
+    const locationName = _get(this.props, "scene.location.name")
+    const locationImage = Images.locations[locationName]
 
     return (
       <div className={css.locationImageContainer}>
         <img className={css.locationImage} src={locationImage} alt={"imagex"} />
-        {/* <span className={`${css.locationLabel}`}>{scene.location.name}</span> */}
+        <span className={`${css.locationLabel}`}>{locationName}</span>
       </div>
     )
   }
@@ -325,19 +325,10 @@ class FrameViewer extends Component {
             <div className={css.sceneName}>{sceneName}</div>
             <div className={css.wordsContainer}>
               {this.renderDialog()}
-
+              <div className={css.buttonsContainer}>
+                {this.renderArrowNavigator()}
+              </div>
               {this.renderSomeFriends()}
-
-              {/* {this.renderNarrative()} */}
-              {false && this.nextButtonRow()}
-            </div>
-            <div className={css.buttonsContainer}>
-              {this.renderArrowNavigator()}
-              {/* {!isLastFrame && (
-                <Button onClick={this.onClickNext} className={css.nextButton}>
-                  Next Page
-                </Button>
-              )} */}
             </div>
           </div>
           <div className={css.imageGroupsContainer}>
