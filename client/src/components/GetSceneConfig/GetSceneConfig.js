@@ -10,7 +10,7 @@ import _get from "lodash.get"
 import css from "./GetSceneConfig.module.scss"
 
 class GetSceneConfig extends Component {
-  state = { text: `{"dummyData":5}` }
+  state = { text: `{"dumm":5}` }
 
   onChangeDialog = ({ event, lineIndex }) => {
     const text = event.target.value
@@ -23,12 +23,16 @@ class GetSceneConfig extends Component {
   }
 
   render = () => {
-    const { scenesGrid } = this.props
+    const { world } = this.props
+    if (!world) {
+      return null
+    }
+    // const { scenesGrid, world } = this.props
+    const scenesGrid = world.newGrid5
 
     const test1 = toJS(scenesGrid)
     console.log({ test1 })
     const newScenesList = []
-    // const newScenesList = {}
     test1.forEach((scene) => {
       const oldFrames = scene.frameSet.frames
 
@@ -56,7 +60,8 @@ class GetSceneConfig extends Component {
         title: scene.location.name,
         sceneConfig: {
           id: scene.location.id,
-          title: scene.location.name,
+          worldId: world.id,
+          worldTitle: world.title,
           coordinates: scene.coordinates,
           creatures,
           isEndScene: scene.isEndScene,

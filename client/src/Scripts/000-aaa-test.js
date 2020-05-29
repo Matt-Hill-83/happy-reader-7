@@ -1,10 +1,10 @@
-const story110 = {
+test = {
   title: "story output",
   scenes: [
     {
       title: "cave",
       sceneConfig: {
-        title: "cave",
+        worldTitle: "110 - Liz Bloops",
         coordinates: { col: 0, row: 0 },
         creatures: ["kat", "liz2"],
         isEndScene: false,
@@ -44,7 +44,7 @@ const story110 = {
     {
       title: "bog",
       sceneConfig: {
-        title: "bog",
+        worldTitle: "110 - Liz Bloops",
         coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
         isEndScene: false,
@@ -84,7 +84,7 @@ const story110 = {
     {
       title: "log",
       sceneConfig: {
-        title: "log",
+        worldTitle: "110 - Liz Bloops",
         coordinates: { col: 2, row: 0 },
         creatures: ["kat", "liz2"],
         isEndScene: true,
@@ -122,4 +122,3 @@ const story110 = {
     },
   ],
 }
-export default story110

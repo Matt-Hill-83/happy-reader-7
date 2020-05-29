@@ -518,7 +518,6 @@ class WorldBuilder extends Component {
 
     const title =
       (world.data && world.data.title) || this.previousTitle + " copy"
-
     const scenesGrid = world.data.newGrid5
 
     return (
@@ -533,7 +532,8 @@ class WorldBuilder extends Component {
           <GetSceneConfig
             className={css.frameSetUploaderBox1}
             onSave={this.onChangeDialog}
-            scenesGrid={scenesGrid}
+            // scenesGrid={scenesGrid}
+            world={world.data}
           />
           <BuildEpic
             className={css.frameSetUploaderBox1}
