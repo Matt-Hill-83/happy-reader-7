@@ -16,14 +16,15 @@ class MiniTable extends Component {
     const value = tableData[row][col]
 
     return (
-      <Cell>
+      <Cell tooltip={value.toString()}>
         <TruncatedFormat>{value.toString()}</TruncatedFormat>
       </Cell>
     )
   }
 
   render = () => {
-    const { columnNames, tableData } = this.props
+    const { columnNames, tableData, tableProps = {} } = this.props
+    console.log("tableProps", toJS(tableProps)) // zzz
 
     const columns = columnNames.map((name, index) => {
       return <Column key={index} cellRenderer={this.renderCell} name={name} />
@@ -33,7 +34,7 @@ class MiniTable extends Component {
 
     return (
       <div className={css.main}>
-        <Table numRows={numRows} enableRowHeader={false}>
+        <Table numRows={numRows} enableRowHeader={false} {...tableProps}>
           {columns}
         </Table>
       </div>

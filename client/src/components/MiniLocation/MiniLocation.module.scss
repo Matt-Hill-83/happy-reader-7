@@ -1,7 +1,7 @@
 @import "../../Styles/mixins.modules.scss";
 
 .activeClass {
-  background: #fda7e6 !important;
+  box-shadow: 0px 0px 0px 5px rgb(253, 47, 210);
 
   :global {
     [class*="MiniLocation_grassImage"] {
@@ -345,22 +345,38 @@
   }
 
   .firstScene {
-    display: flex;
     position: absolute;
+    display: flex;
+    flex-direction: column;
     flex: 1 1;
-    border: 2px solid red !important;
-    z-index: 1000;
-    /* top: 0; */
-    transform: translateY(-102%);
-    background: white;
-    padding: 0 1vh;
-    border-radius: 3px;
-    min-width: 100%;
+    border: 2px solid purple !important;
+    border-radius: 4px;
     white-space: nowrap;
-    top: 0px;
+    z-index: 1000;
+    background: white;
+    min-width: 100%;
+    bottom: 0px;
+    left: 0px;
+    transform: translateX(-104%);
+
+    :global {
+      // hide column headers
+      .bp3-table-quadrant.bp3-table-quadrant-top,
+      .bp3-table-top-container {
+        display: none;
+      }
+
+      .bp3-table-container {
+        min-height: unset;
+      }
+    }
   }
 
   .storyTitle {
     display: flex;
+    justify-content: center;
+    font-weight: 700;
+    background: #fee6f2;
+    white-space: break-spaces;
   }
 }

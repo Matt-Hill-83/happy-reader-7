@@ -3,4 +3,11 @@
   flex: 1 1;
   align-self: center;
   justify-self: center;
+
+  :global {
+    .bp3-table-truncated-format-text {
+      display: flex;
+      // border: 1px solid red !important;
+    }
+  }
 }

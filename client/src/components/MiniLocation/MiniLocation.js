@@ -221,10 +221,18 @@ class MiniLocation extends React.Component {
       ["Prizes", "shoes, [white, used]"],
     ]
 
+    const tableProps = {
+      defaultColumnWidth: 100,
+    }
+
     const firstSceneInfo = (
-      <div>
-        <MiniTable columnNames={columnNames} tableData={tableData} />
+      <div className={css.firstScene}>
         <span className={css.storyTitle}>{storyTitle}</span>
+        <MiniTable
+          tableProps={tableProps}
+          columnNames={columnNames}
+          tableData={tableData}
+        />
       </div>
     )
 
@@ -239,9 +247,7 @@ class MiniLocation extends React.Component {
       >
         {!isBlank && (
           <div className={css.container}>
-            {firstScene && (
-              <div className={css.firstScene}>{firstSceneInfo}</div>
-            )}
+            {firstScene && firstSceneInfo}
 
             {/* Paths that connect scenes */}
             {showRightPath && <div className={css.rightPath}></div>}

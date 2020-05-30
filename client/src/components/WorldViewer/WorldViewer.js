@@ -94,9 +94,14 @@ class WorldViewer extends React.Component {
         />
         {/* <img className={css.backgroundImage} src={mapImage} alt={"bk"} /> */}
         <div className={`${css.mapScroller}`}>
-          <img
+          {/* <img
             className={css.stoneRectangle01}
             src={stoneRectangle01}
+            alt={"bk"}
+          /> */}
+          <img
+            className={css.backgroundImage3}
+            src={mainBackground3}
             alt={"bk"}
           />
           <div className={`${css.innerMapScroller}`}>
