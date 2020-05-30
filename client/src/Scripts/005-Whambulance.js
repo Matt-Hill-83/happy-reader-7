@@ -4,7 +4,6 @@ const story005 = {
     {
       title: "bog",
       sceneConfig: {
-        items: [],
         creatures: ["kat", "liz2"],
         isStartScene: true,
         isEndScene: false,
@@ -58,7 +57,6 @@ const story005 = {
     {
       title: "swing",
       sceneConfig: {
-        items: [],
         creatures: ["kat", "liz2"],
         isStartScene: true,
         isEndScene: false,
@@ -100,7 +98,6 @@ const story005 = {
     {
       title: "stump",
       sceneConfig: {
-        items: [],
         creatures: ["kat", "liz2"],
         isStartScene: true,
         isEndScene: false,

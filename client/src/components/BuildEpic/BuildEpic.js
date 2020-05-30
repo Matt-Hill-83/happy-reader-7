@@ -26,26 +26,27 @@ import story300 from "../../Scripts/300-MerlindaTheFairyPrincessPart1"
 import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
 import story330 from "../../Scripts/330-MerlindaTheFairyPrincessPart3"
 
-const epicName = "000 - Epic test - a101"
-const storyList = [
-  // story002,
-  story003,
-  story004,
-  story005,
-  // story010,
-  // story011,
-  // story013,
-  // story014,
-  // story015,
-  // story020,
-  // story050,
-  // story100,
-  // story110,
-  // story200,
-  // story300,
-  // story310,
-  // story330,
-]
+const epicName = "000 - Epic 001 - Goof off with Liz "
+const storyList = [story005, story010, story011]
+// const storyList = [
+//   story002,
+//   story003,
+//   story004,
+//   story005,
+//   story010,
+//   story011,
+//   story013,
+//   story014,
+//   story015,
+//   story020,
+//   story050,
+//   story100,
+//   story110,
+//   story200,
+//   story300,
+//   story310,
+//   story330,
+// ]
 
 class BuildEpic extends Component {
   onClickBuildEpic = () => {
