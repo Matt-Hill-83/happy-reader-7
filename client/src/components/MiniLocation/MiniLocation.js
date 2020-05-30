@@ -189,6 +189,7 @@ class MiniLocation extends React.Component {
     const locationImage = Images.all[locationName]
 
     const rockImage = Images.backgrounds["rock"]
+    const rockImageVertical = Images.backgrounds["rock02Vertical"]
     const cloudImage = Images.backgrounds["cloud"]
     const defaultDoorImage = Images.backgrounds["door"]
 
@@ -214,8 +215,7 @@ class MiniLocation extends React.Component {
       "background-color": `#${backgroundColor}`,
     }
 
-    const columnNames = []
-    // const columnNames = ["Reward", ""]
+    const columnNames = ["", ""]
 
     const tableData = [
       ["Gold", "4"],
@@ -252,11 +252,21 @@ class MiniLocation extends React.Component {
             {firstScene && firstSceneInfo}
 
             {/* Paths that connect scenes */}
-            {showRightPath && <div className={css.rightPath}></div>}
-            {showBottomPath && <div className={css.bottomPath}></div>}
-            {false && (
-              <img className={css.rockImage} src={rockImage} alt={"imagex"} />
+            {showRightPath && (
+              <div className={css.rightPath}>
+                <img className={css.rockImage} src={rockImage} alt={"imagex"} />
+              </div>
             )}
+            {showBottomPath && (
+              <div className={css.bottomPath}>
+                <img
+                  className={css.rockImageVertical}
+                  src={rockImageVertical}
+                  alt={"imagex"}
+                />
+              </div>
+            )}
+
             {false && <div className={css.hexagon}></div>}
             {!isEditMode && showCloud && (
               <div className={css.cloudImageContainer}>

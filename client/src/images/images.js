@@ -153,7 +153,8 @@ import forestRight from "./backgrounds/forest-1-right.png"
 import hill01 from "./backgrounds/hill-03.png"
 import sky01 from "./backgrounds/sky-01.png"
 import map from "./backgrounds/map07.png"
-import rock from "./backgrounds/rock-2.jpg"
+import rock from "./backgrounds/rock02.png"
+import rock02Vertical from "./backgrounds/rock02Vertical.png"
 import four_arrows from "./backgrounds/four_arrows.png"
 import diamond2 from "./backgrounds/diamond2.png"
 import splashScreen01 from "./backgrounds/splash-screen-01.jpg"
@@ -531,6 +532,7 @@ const backgrounds = {
   forestRight,
   map,
   rock,
+  rock02Vertical,
   four_arrows,
   diamond2,
   splashScreen01,

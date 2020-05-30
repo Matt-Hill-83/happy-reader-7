@@ -164,6 +164,19 @@
     width: 100%;
   }
 
+  .rockImage {
+    display: flex;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  .rockImageVertical {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+
   .doorPickerContainer {
     display: flex;
     position: absolute;
@@ -316,8 +329,8 @@
     background: var(--color-yellow);
     transform: translateY(-50%);
     top: 50%;
-    width: 36%;
-    right: -34%;
+    width: 82%;
+    right: -74%;
   }
 
   .bottomPath {
@@ -355,7 +368,7 @@
     z-index: 1000;
     background: white;
     min-width: 100%;
-    bottom: 0px;
+    top: 0px;
     left: 0px;
     transform: translateX(-104%);
 
