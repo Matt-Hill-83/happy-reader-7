@@ -13,25 +13,25 @@ import MiniTable from "../MiniTable/MiniTable"
 const columnNames = ["Mission", "Status"]
 
 const tableData = [
-  [
-    "get 5 goldgoldgoldgoldgoldgoldgoldgoldgoldgoldgoldgoldgoldgoldgold",
-    "not complete",
-  ],
+  ["get 5 gold", "not started"],
+  ["eat one apple", "started"],
   ["make 1 friend", "complete"],
-  ["eat one apple", "not complete"],
+  ["steal diamond from trolls", "failed"],
 ]
 
 class MissionConsole extends Component {
   state = {}
 
   render = () => {
-    const { world } = this.props
+    const { showHeader = false } = this.props
 
     return (
       <div className={css.main}>
-        <div className={css.header}>
-          <div className={css.title}>Your Stuff</div>
-        </div>
+        {showHeader && (
+          <div className={css.header}>
+            <div className={css.title}>Your Stuff</div>
+          </div>
+        )}
         <div className={css.body}>
           <div className={css.row}>
             <div className={css.left}>
