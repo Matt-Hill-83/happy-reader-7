@@ -214,15 +214,17 @@ class MiniLocation extends React.Component {
       "background-color": `#${backgroundColor}`,
     }
 
-    const columnNames = ["Reward", ""]
+    const columnNames = []
+    // const columnNames = ["Reward", ""]
 
     const tableData = [
       ["Gold", "4"],
-      ["Prizes", "shoes, [white, used]"],
+      ["Prizes", "shoes, [white]"],
     ]
 
     const tableProps = {
       defaultColumnWidth: 100,
+      columnWidths: [70, 150],
     }
 
     const firstSceneInfo = (
