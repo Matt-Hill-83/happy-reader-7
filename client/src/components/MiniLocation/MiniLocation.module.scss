@@ -285,12 +285,12 @@
   }
 
   .miniLocationImage {
+    position: absolute;
     display: flex;
-    align-self: center;
-
     height: 50%;
     width: auto;
     max-width: 100%;
+    bottom: 6%;
   }
 
   .itemImage {
