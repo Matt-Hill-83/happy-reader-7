@@ -43,8 +43,8 @@ import top from "./locations/top.png"
 import tug from "./locations/tug.png"
 import twig from "./locations/twig.png"
 import van from "./locations/van.png"
-import barkPhone01 from "./locations/barkPhone01.png"
-import bookCoil01 from "./locations/bookCoil01.png"
+import barkPhone01 from "./creatures/barkPhone01.png"
+import bookCoil01 from "./backgrounds/bookCoil01.png"
 
 // creatures
 // creatures

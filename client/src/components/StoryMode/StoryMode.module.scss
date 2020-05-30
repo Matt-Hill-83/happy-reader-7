@@ -6,20 +6,38 @@
   height: 100%;
   width: 100vw;
   overflow: hidden;
+  background: white;
 
   .halfPage {
     display: flex;
     position: relative;
   }
 
+  .rightHalf,
   .leftHalf {
-    flex: 1;
+    flex: 1 1;
+    border-radius: 4.4vh;
+    border: 1px solid #565656;
+    overflow: hidden;
+    margin: 1vh;
+  }
+
+  .leftHalf {
+    border-right: none;
     max-width: 768px;
+    margin-right: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-shadow: 1px 6px 17px 3px #000000bd;
   }
 
   .rightHalf {
-    flex: 1;
+    border-left: none;
     width: 65%;
+    margin-left: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-shadow: 9px 8px 8px -5px #000000bd;
   }
 }
 
