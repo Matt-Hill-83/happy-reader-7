@@ -16,6 +16,10 @@ const test = {
       "300 - Merlinda the Fairy Princess",
       "310 - Kat Gets Real With Rori About the Dress",
 
+      "Liz's goal is to find Lord Zorblat and give him a piece of her mind.",
+      "Along the way she hears rumors about Matt.",
+      "There is a whole world of matt devotees, that live in some random place.",
+
       "The story starts out with Kat telling Liz, okay, stay focussed.",
       "Gold and dresss.  Gold and Dresses.",
       "Gold and dresss.  Gold and Dresses.",

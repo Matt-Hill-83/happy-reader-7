@@ -77,7 +77,7 @@ const story003 = {
             '{"liz2" : "You really, actually got a dress?"}',
             '{"kat" : "I did it, I did it!"}',
             '{"liz2" : "Like... a \'dress\' dress?"}',
-            '{"kat" : "Yes a \'dress\' dress"}',
+            '{"kat" : "Yes!  I got a \'dress\' dress!"}',
           ],
         },
         {
