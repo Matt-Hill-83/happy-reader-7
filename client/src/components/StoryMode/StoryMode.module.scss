@@ -59,12 +59,12 @@
   position: absolute;
   display: flex;
   z-index: 1000;
-  background-color: lightyellow !important;
   font-size: 3vh;
   padding: 0.4% 1%;
   border-radius: 11px;
   border: 2px solid purple;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 27%;
   top: 2vh;
+  transform: translatex(50%);
+  background: #f3c1ff !important;
 }
