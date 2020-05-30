@@ -351,12 +351,16 @@
     border: 2px solid red !important;
     z-index: 1000;
     /* top: 0; */
-    transform: translateY(108%);
+    transform: translateY(-102%);
     background: white;
     padding: 0 1vh;
     border-radius: 3px;
     min-width: 100%;
     white-space: nowrap;
-    bottom: 0px;
+    top: 0px;
+  }
+
+  .storyTitle {
+    display: flex;
   }
 }

@@ -8,6 +8,7 @@ import css from "./MiniLocation.module.scss"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 
 import { toJS } from "mobx"
+import MiniTable from "../MiniTable/MiniTable.js"
 
 class MiniLocation extends React.Component {
   defaultDoorIsOpen = {
@@ -213,6 +214,20 @@ class MiniLocation extends React.Component {
       "background-color": `#${backgroundColor}`,
     }
 
+    const columnNames = ["Reward", ""]
+
+    const tableData = [
+      ["Gold", "4"],
+      ["Prizes", "shoes, [white, used]"],
+    ]
+
+    const firstSceneInfo = (
+      <div>
+        <MiniTable columnNames={columnNames} tableData={tableData} />
+        <span className={css.storyTitle}>{storyTitle}</span>
+      </div>
+    )
+
     return (
       <div
         key={id}
@@ -224,7 +239,9 @@ class MiniLocation extends React.Component {
       >
         {!isBlank && (
           <div className={css.container}>
-            {firstScene && <div className={css.firstScene}>{storyTitle}</div>}
+            {firstScene && (
+              <div className={css.firstScene}>{firstSceneInfo}</div>
+            )}
 
             {/* Paths that connect scenes */}
             {showRightPath && <div className={css.rightPath}></div>}

@@ -164,6 +164,7 @@ import leftArrow from "./backgrounds/left-arrow-01.png"
 import rightArrow from "./backgrounds/right-arrow-01.png"
 import introBackground from "./backgrounds/introBackground.jpg"
 import paperBackground01 from "./backgrounds/paperBackground01.png"
+import stoneRectangle01 from "./backgrounds/stoneRectangle01.png"
 
 // liz2
 import liz1 from "./rigged-girls/liz/png/liz-1.png"
@@ -538,6 +539,7 @@ const backgrounds = {
   rightArrow,
   introBackground,
   paperBackground01,
+  stoneRectangle01,
   hill01,
   sky01,
   bookCoil01,
