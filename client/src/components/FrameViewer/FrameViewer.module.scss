@@ -301,11 +301,12 @@
   }
 
   .locationImageContainer {
-    height: 10vh;
+    height: 23vh;
     position: absolute;
-    bottom: 5vh;
-    left: 1vh;
     z-index: 6;
+    position: fixed;
+    right: 6vh;
+    bottom: 25vh;
 
     .locationImage {
       height: 100%;
@@ -339,13 +340,14 @@
 
   .charactersContainer {
     display: flex;
-    height: 18vh;
+    height: 29vh;
     z-index: 10;
     justify-content: center;
     background: none;
     position: absolute;
-    left: 1vh;
-    bottom: 11vh;
+    bottom: 8vh;
+    position: fixed;
+    left: 54vw;
 
     [class*="Character_characterImage"] {
       width: auto !important;

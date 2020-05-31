@@ -25,6 +25,11 @@
   [class*="Character_headForBody"] {
     bottom: 0;
   }
+
+  [class*="Head_girlHead__"] {
+    border: 1px solid red !important;
+    width: 11vh;
+  }
 }
 
 .relativePositionedContent {
