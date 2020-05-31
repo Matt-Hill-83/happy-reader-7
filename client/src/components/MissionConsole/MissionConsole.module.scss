@@ -24,7 +24,6 @@
   }
 
   .title {
-    // border: 2px solid green !important;
     position: relative;
     display: flex;
     flex: 1 1;
@@ -33,7 +32,6 @@
   }
 
   .row {
-    // border: 2px solid orange !important;
     position: relative;
     display: flex;
     flex: 1 1;
@@ -44,12 +42,11 @@
 
   .left,
   .right {
-    // border: 2px solid orange !important;
     position: relative;
     display: flex;
     flex: 1 1;
     border-radius: 0.5vh;
-    width: 100%;
+    width: 40%;
   }
 
   .left {

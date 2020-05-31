@@ -37,7 +37,9 @@ class MissionConsole extends Component {
             <div className={css.left}>
               <MiniTable columnNames={columnNames} tableData={tableData} />
             </div>
-            <div className={css.right}></div>
+            <div className={css.right}>
+              <MiniTable columnNames={columnNames} tableData={tableData} />
+            </div>
           </div>
         </div>
       </div>

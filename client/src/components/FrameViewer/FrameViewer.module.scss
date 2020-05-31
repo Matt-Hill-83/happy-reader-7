@@ -306,10 +306,10 @@
   }
 
   .locationImageContainer {
-    height: 16%;
+    height: 10vh;
     position: absolute;
-    top: 1vh;
-    right: 1vh;
+    bottom: 1vh;
+    left: 1vh;
     z-index: 6;
 
     .locationImage {
@@ -344,13 +344,13 @@
 
   .charactersContainer {
     display: flex;
-    height: 19vh;
+    height: 18vh;
     z-index: 10;
     justify-content: center;
     background: none;
     position: absolute;
     left: 1vh;
-    bottom: 5vh;
+    bottom: 11vh;
 
     [class*="Character_characterImage"] {
       width: auto !important;
