@@ -25,12 +25,14 @@ import story200 from "../../Scripts/200-DennisTheMenace"
 import story300 from "../../Scripts/300-MerlindaTheFairyPrincessPart1"
 import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
 import story330 from "../../Scripts/330-MerlindaTheFairyPrincessPart3"
+import story006 from "../../Scripts/006-KatHasFeelings"
 
 class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story002) }
-  state = { text: JSON.stringify(story003) }
+  // state = { text: JSON.stringify(story003) }
   // state = { text: JSON.stringify(story004) }
   // state = { text: JSON.stringify(story005) }
+  state = { text: JSON.stringify(story006) }
   // state = { text: JSON.stringify(story010) }
   // state = { text: JSON.stringify(story011) }
   // state = { text: JSON.stringify(story013) }

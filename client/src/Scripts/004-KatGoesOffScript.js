@@ -66,7 +66,7 @@ const story004 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"liz2" : "Kat, you are not thinking about going off script are you?"}',
+            '{"liz2" : "Kat, please tell me you are not going to go off script..."}',
             '{"liz2" : "Sorry Liz, but that ship has sailed.  I\'m going full improv today!"}',
             '{"liz2" : "But Kat, we could get in trouble!"}',
           ],
@@ -82,7 +82,7 @@ const story004 = {
           dialogs: [
             '{"liz2" : "Oh Liz, I already took care of that.  See these picture I drew of us?"}',
             '{"liz2" : "We just put them right here....."}',
-            '{"liz2" : "And viola!  We sneak out the back and if we hurry we can catch the elf slides on our way to Cave Mountain."}',
+            '{"liz2" : "And viola!  Now we just sneak out the back and head to Cave Mountain!"}',
           ],
         },
       ],
@@ -106,10 +106,10 @@ const story004 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"liz2" : "But what about the rules?"}',
-            '{"kat" : "Look, Liz, I love the scripts and all, the rhymes, the lost bunny, all that stuff."}',
-            '{"kat" : "Don\'t get me wrong."}',
-            '{"kat" : "But don\'t you ever think there may be something more to this place?  On the outside."}',
+            '{"liz2" : "Kat! What about the rules???"}',
+            '{"kat" : "Look, Liz, I love the scripts and all, the rhymes, the lost bunny... all that stuff."}',
+            '{"kat" : "But don\'t you ever think there may be something more to this place?"}',
+            '{"kat" : "On the outside."}',
           ],
         },
         {

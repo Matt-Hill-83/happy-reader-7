@@ -405,8 +405,9 @@
     z-index: 1;
     border-radius: 1vh;
     right: -4%;
-    top: 34vh;
+    bottom: 1vh;
     box-shadow: 5px 5px 15px 5px #000000;
+    transform: translateY(100%);
   }
 
   .newGameButton {

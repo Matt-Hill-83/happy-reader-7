@@ -11,8 +11,9 @@ const template = {
       rewards: [{ name: "dress01-basic" }],
     },
   },
-  scenes: {
-    cave: {
+  scenes: [
+    {
+      title: "cave",
       sceneConfig: {
         coordinates: { col: 0, row: 0 },
         creatures: ["kat", "liz2"],
@@ -51,7 +52,8 @@ const template = {
         },
       ],
     },
-    home: {
+    {
+      title: "home",
       sceneConfig: {
         coordinates: { col: 1, row: 0 },
         creatures: ["kat", "liz2"],
@@ -90,7 +92,7 @@ const template = {
         },
       ],
     },
-  },
+  ],
 }
 
 export default template
