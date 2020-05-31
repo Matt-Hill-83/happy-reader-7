@@ -60,6 +60,7 @@
     height: 100%;
     justify-content: space-between;
     justify-content: flex-end;
+    overflow: visible;
   }
 
   .imageGroupsContainer {
@@ -67,9 +68,6 @@
     bottom: 1%;
     width: 100%;
     flex-direction: column;
-    margin-top: 25%;
-    margin-top: 6%;
-    height: 42%;
   }
 
   .itemsContainer {
@@ -362,14 +360,14 @@
     /* width: fit-content; */
     justify-content: flex-end;
     width: 86%;
-    left: -33%;
     z-index: 11;
+    right: 33%;
   }
 
   .characterContainer {
     display: flex;
     height: 100%;
-    width: 24%;
+    width: 20%;
 
     &:nth-of-type(3) {
       margin-left: auto;
@@ -401,8 +399,14 @@
   }
 
   .buttonsContainer {
-    position: relative;
-    height: 12vh;
+    border: 1px solid black !important;
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+    border-radius: 1vh;
+    right: 2%;
+    top: 100%;
+    box-shadow: 5px 5px 15px 5px #000000;
   }
 
   .newGameButton {
@@ -433,6 +437,8 @@
     height: 100%;
     background: #f3c1ff;
     border: 2px solid purple !important;
+    // zzz fix this
+    display: none;
   }
 
   .nextButton {
@@ -445,12 +451,11 @@
   }
 
   .arrowNavigatorBox {
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
     height: 12vh;
     width: 18vh;
-    background: white !important;
     border-radius: 7px;
     bottom: 1%;
     right: 1vh;
@@ -458,17 +463,17 @@
   }
 
   .headClassName {
-    max-height: var(--mini-head-height);
-    min-height: var(--mini-head-height);
-    min-width: var(--mini-head-height);
-    max-width: var(--mini-head-height);
+    // max-height: var(--mini-head-height);
+    // min-height: var(--mini-head-height);
+    // min-width: var(--mini-head-height);
+    // max-width: var(--mini-head-height);
     border: unset;
     background: unset;
 
     [class*="Head_girlHeadKat"] {
-      width: auto;
-      margin-top: -3.5vh;
-      height: 100%;
+      // width: auto;
+      // margin-top: -3.5vh;
+      // height: 100%;
     }
   }
 }

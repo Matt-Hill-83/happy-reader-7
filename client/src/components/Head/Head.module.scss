@@ -14,19 +14,21 @@
   top: 0px;
   left: 0px;
 
-  max-height: var(--cell-height-small);
-  min-height: var(--cell-height-small);
+  // max-height: var(--cell-height-small);
+  // min-height: var(--cell-height-small);
 
-  min-width: var(--cell-height-small);
-  max-width: var(--cell-height-small);
+  // min-width: var(--cell-height-small);
+  // max-width: var(--cell-height-small);
 
   margin: 3px;
   border-radius: 6px;
 }
 
 .girlHead {
-  width: 100%;
-  height: auto;
+  // width: 100%;
+  // height: auto;
+  border: 4px solid blue !important;
+  width: 140%;
 }
 
 .girlHeadAmberContainer {
@@ -34,24 +36,26 @@
 }
 
 .girlHeadAmber {
-  width: 170%;
+  border: 4px solid red !important;
+  // width: 170%;
 }
 
 .girlHeadKat {
-  width: auto;
-  height: 85%;
+  border: 4px solid green !important;
+  // width: auto;
+  // height: 85%;
 }
 
 .moodLabel {
-  @include item-label;
-  border: 1px solid blue !important;
-  background: var(--light-pink);
-  border-radius: 3px;
-  padding: 0 3px;
-  position: absolute;
-  z-index: 10;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 1%;
-  top: unset;
+  // @include item-label;
+  // border: 1px solid blue !important;
+  // background: var(--light-pink);
+  // border-radius: 3px;
+  // padding: 0 3px;
+  // position: absolute;
+  // z-index: 10;
+  // left: 50%;
+  // transform: translateX(-50%);
+  // bottom: 1%;
+  // top: unset;
 }

@@ -1,25 +1,13 @@
 @import "../../Styles/mixins.modules.scss";
 
 .arrowNavigatorContainer {
-  position: absolute;
   z-index: 10;
   display: flex;
   align-items: center;
-
   font-size: 36px !important;
   font-weight: bold !important;
-
   height: 100%;
   width: 100%;
-
-  border: 2px solid purple;
-  border-radius: 7px;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
-
-  padding: 0.5vh;
-  // margin-top: -2px;
-  background: white !important;
 }
 
 .fourArrowsImage {
