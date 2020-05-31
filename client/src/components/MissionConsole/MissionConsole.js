@@ -13,10 +13,12 @@ import MiniTable from "../MiniTable/MiniTable"
 const columnNames = ["Mission", "Status"]
 
 const tableData = [
-  ["get 5 gold", "not started"],
-  ["eat one apple", "started"],
-  ["make 1 friend", "complete"],
-  ["steal diamond from trolls", "failed"],
+  ["talk on pretend phone", true],
+  ["eat one apple", false],
+  ["make 1 friend", false],
+  ["get 5 gold", false],
+  ["steal diamond from trolls", false],
+  ["win rap battle", false],
 ]
 
 class MissionConsole extends Component {
@@ -37,9 +39,7 @@ class MissionConsole extends Component {
             <div className={css.left}>
               <MiniTable columnNames={columnNames} tableData={tableData} />
             </div>
-            <div className={css.right}>
-              <MiniTable columnNames={columnNames} tableData={tableData} />
-            </div>
+            <div className={css.right}>{`GOLD:     0`}</div>
           </div>
         </div>
       </div>

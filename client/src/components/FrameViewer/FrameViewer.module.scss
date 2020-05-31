@@ -105,22 +105,17 @@
   .locationLabel {
     z-index: 10;
     position: absolute;
-    padding: 0 3px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     background: var(--light-pink);
     border: 1px solid purple !important;
     border-radius: 1vh;
-    padding: 0 49px;
     left: 50%;
     transform: translate(-50%, 25%);
-
-    bottom: 2vh;
+    bottom: -3vh;
     font-size: 3vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: unset;
     padding: 0 2vh;
-    align-items: flex-end;
   }
 
   .wordsAndButtons {
@@ -308,7 +303,7 @@
   .locationImageContainer {
     height: 10vh;
     position: absolute;
-    bottom: 1vh;
+    bottom: 5vh;
     left: 1vh;
     z-index: 6;
 

@@ -52,5 +52,12 @@
   .left {
   }
   .right {
+    position: relative;
+    display: flex;
+    flex: 1 1;
+    border-radius: 0.5vh;
+    width: 40%;
+    font-size: 30px;
+    justify-content: flex-end;
   }
 }

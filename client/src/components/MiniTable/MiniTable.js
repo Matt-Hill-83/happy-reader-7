@@ -7,6 +7,7 @@ import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
 import css from "./MiniTable.module.scss"
+import images from "../../images/images"
 
 class MiniTable extends Component {
   state = {}
@@ -15,11 +16,18 @@ class MiniTable extends Component {
     const { tableData } = this.props
     const value = tableData[row][col]
 
-    return (
-      <Cell tooltip={value.toString()}>
-        <TruncatedFormat>{value.toString()}</TruncatedFormat>
-      </Cell>
-    )
+    let cellContent = null
+
+    const rockImageVertical = images.backgrounds["checkMarkGreen01"]
+    if (value === true) {
+      cellContent = <span role="img">✅</span>
+    } else if (value === false) {
+      cellContent = <span role="img">❌</span>
+    } else {
+      cellContent = <TruncatedFormat>{value.toString()}</TruncatedFormat>
+    }
+
+    return <Cell tooltip={value.toString()}>{cellContent}</Cell>
   }
 
   render = () => {

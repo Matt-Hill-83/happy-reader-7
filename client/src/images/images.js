@@ -142,6 +142,8 @@ import doorGreen from "./doors/doorGreen.png"
 import doorYellow from "./doors/doorYellow.jpg"
 
 // backgrounds
+import checkMarkRed01 from "./backgrounds/checkMarkRed01.png"
+import checkMarkGreen01 from "./backgrounds/checkMarkGreen01.png"
 import planetGlorp02 from "./backgrounds/planetGlorp02.png"
 import planetGlorp03 from "./backgrounds/planetGlorp03.png"
 import planetGlorp04 from "./backgrounds/planetGlorp04.png"
@@ -524,6 +526,8 @@ const doors = {
 const backgrounds = {
   door,
   planetGlorp02,
+  checkMarkGreen01,
+  checkMarkRed01,
   planetGlorp03,
   planetGlorp04,
   cloud,
