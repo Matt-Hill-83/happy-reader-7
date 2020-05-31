@@ -64,10 +64,13 @@
   }
 
   .imageGroupsContainer {
+    position: relative;
     display: flex;
-    bottom: 1%;
-    width: 100%;
     flex-direction: column;
+    // border: 4px solid green !important;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
   }
 
   .itemsContainer {
@@ -84,7 +87,7 @@
     margin-right: 6px;
 
     [class*="ImageDisplay_imageContainer"] {
-      border: 1px solid blue;
+      // border: 1px solid blue;
       border-radius: 10%;
       background: white;
       z-index: 1 !important;
@@ -305,8 +308,8 @@
   .locationImageContainer {
     height: 16%;
     position: absolute;
-    bottom: 1%;
-    left: 0%;
+    top: 1vh;
+    right: 1vh;
     z-index: 6;
 
     .locationImage {
@@ -340,34 +343,36 @@
   }
 
   .charactersContainer {
-    position: absolute;
     display: flex;
-    width: 100%;
-    height: 16vh;
-    right: -21vh;
-    bottom: 0vh;
+    height: 19vh;
+    z-index: 10;
+    justify-content: center;
+    background: none;
+    position: absolute;
+    left: 1vh;
+    bottom: 5vh;
+
+    [class*="Character_characterImage"] {
+      width: auto !important;
+      height: 100% !important;
+    }
   }
 
   .lizAndKatContainer {
-    display: flex;
-    width: 100%;
-    position: relative;
-    height: 14vh;
     position: absolute;
-    bottom: 22vh;
+    display: flex;
+    bottom: 10vh;
     z-index: 10;
-    // border: 4px solid red !important;
-    /* width: fit-content; */
-    justify-content: flex-end;
-    width: 86%;
-    z-index: 11;
-    right: 33%;
+    right: 19%;
+    /* border: 1px solid blue !important; */
+    overflow: visible;
   }
 
   .characterContainer {
     display: flex;
-    height: 100%;
-    width: 20%;
+    // border: 4px solid red !important;
+    overflow: visible;
+    width: 12vh;
 
     &:nth-of-type(3) {
       margin-left: auto;
@@ -404,8 +409,8 @@
     overflow: hidden;
     z-index: 1;
     border-radius: 1vh;
-    right: 2%;
-    top: 100%;
+    right: -4%;
+    top: 34vh;
     box-shadow: 5px 5px 15px 5px #000000;
   }
 
