@@ -86,6 +86,7 @@ import drake from "./creatures/drake.png"
 import cat_king from "./creatures/cat_king.gif"
 import rori_nice from "./creatures/rori_nice.png"
 import queen_hashami from "./creatures/queen_hashami.png"
+import smoke from "./creatures/smoke.png"
 
 import dragon from "./creatures/dragon.png"
 import elf from "./creatures/elf-1.png"
@@ -317,29 +318,37 @@ const chadHeads = [
 ]
 
 const katHeads = [
-  katBlissful,
-  katCringing,
-  katCrying,
-  katDisgusted,
-  katDismayed,
-  katFunny,
   katHappy,
-  katHurt,
-  katKissing,
   katLauging,
-  katLoud,
-  katMad,
   katNormal,
   katOptimistic,
-  katSad,
-  katScared,
-  katSilly,
-  katSinister,
-  katSmiling,
+  //
   katSurprised,
-  katTired,
   katUnsure,
+  katFunny,
+  katKissing,
+  //
+  katSilly,
+  katSmiling,
   katWinking,
+  katBlissful,
+  //
+  katMad,
+  katLoud,
+  katScared,
+  katCringing,
+  //
+  katCrying,
+  katSad,
+  katDisgusted,
+  katDismayed,
+  //
+  katHurt,
+
+  katSinister,
+
+  katTired,
+
   katPigtails,
   katPonytail,
 ]
@@ -486,6 +495,7 @@ const creatures = {
   gerald01,
   pug,
   queen_hashami,
+  smoke,
   rapunzel01,
   rat,
   rori_nice,
@@ -509,6 +519,7 @@ const creatures = {
 const items = {
   blank,
   bag,
+  smoke,
   bun,
   cap,
   cup,

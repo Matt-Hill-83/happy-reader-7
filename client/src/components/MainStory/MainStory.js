@@ -64,6 +64,7 @@ class MainStory extends React.Component {
 
       const grid = Utils.reCreateGridFromCondensedGrid({
         gridDimensions,
+        maxDimensions: { numRows: 8, numCols: 12 },
         newGrid5,
       })
 
