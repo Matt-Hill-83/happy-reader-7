@@ -189,12 +189,12 @@ class WorldBuilder extends Component {
   }
 
   addNewWorld = async () => {
-    const previousMapName = toJS(
-      (worldNameStore.docs &&
-        worldNameStore.docs[0] &&
-        worldNameStore.docs[0].data.previousMapName) ||
-        100
-    )
+    let previousMapName =
+      toJS(
+        worldNameStore.docs &&
+          worldNameStore.docs[0] &&
+          worldNameStore.docs[0].data.previousMapName
+      ) || 100
 
     const newName = previousMapName + 1
     if (worldNameStore.docs[0]) {
