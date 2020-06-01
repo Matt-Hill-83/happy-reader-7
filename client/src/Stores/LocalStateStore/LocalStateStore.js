@@ -15,7 +15,14 @@ class LocalStateStore {
   activeFrameIndex = 0
   activeSceneId = null
 
-  questStatus = { quests: [], pockets: [] }
+  questStatus = {
+    quests: [{ name: "Quest 1", completed: false }],
+    pockets: [{ name: "mop", amount: 1 }],
+    rewards: [
+      { name: "gold", amount: 5 },
+      { name: "dresses", amount: 0 },
+    ],
+  }
 
   getYou = () => this.you
   setYou = (you) => {

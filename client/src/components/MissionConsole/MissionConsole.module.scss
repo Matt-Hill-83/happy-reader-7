@@ -1,13 +1,14 @@
 .main {
-  border: 2px solid purple !important;
   display: flex;
   flex-direction: column;
   flex: 1 1;
   align-self: center;
   justify-self: center;
-  border-radius: 9px;
-  background: white;
-  padding: 1vh;
+  border-radius: 2px;
+  background: unset;
+  margin-left: 5vh;
+  margin: 0vh 1vh;
+  margin-top: 0vh;
 
   .header {
     display: flex;
@@ -39,7 +40,9 @@
     display: flex;
     flex: 1 1;
     border-radius: 0.5vh;
-    // width: 40%;
+    max-width: 40%;
+    font-size: 2vh;
+    overflow: hidden;
   }
 
   .left {
@@ -47,10 +50,10 @@
   .right {
     position: relative;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     flex: 1 1;
     border-radius: 0.5vh;
-    // width: 40%;
     font-size: 30px;
-    justify-content: flex-end;
   }
 }

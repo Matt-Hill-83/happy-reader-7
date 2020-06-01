@@ -30,7 +30,11 @@ class MiniTable extends Component {
       )
     }
 
-    return <Cell tooltip={value ? value.toString() : ""}>{cellContent}</Cell>
+    return (
+      <Cell className={css.cellClass} tooltip={value ? value.toString() : ""}>
+        {cellContent}
+      </Cell>
+    )
   }
 
   render = () => {
@@ -45,7 +49,12 @@ class MiniTable extends Component {
 
     return (
       <div className={css.main}>
-        <Table numRows={numRows} enableRowHeader={false} {...tableProps}>
+        <Table
+          minColumnWidth={5}
+          numRows={numRows}
+          enableRowHeader={false}
+          {...tableProps}
+        >
           {columns}
         </Table>
       </div>

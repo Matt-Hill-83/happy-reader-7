@@ -15,27 +15,37 @@ class MissionConsole extends Component {
   state = {}
 
   render = () => {
-    const world = localStateStore.getActiveWorld()
-
-    console.log("world", toJS(world)) // zzz
-
-    console.log("world.data.questConfig", toJS(world.data.questConfig)) // zzz
-    const missions = _get(world, "data.questConfig.missions") || []
-    const pockets = _get(world, "data.questConfig.pockets") || []
-    const missionNames = missions.map((item) => item.name)
-    const pocketNames = pockets.map((item) => item.name)
-    console.log("missionNames", toJS(missionNames)) // zzz
-    console.log("pocketNames", toJS(pocketNames)) // zzz
-
     const { showHeader = false } = this.props
+    const world = localStateStore.getActiveWorld()
+    const missions = _get(world, "data.questConfig.missions") || []
 
-    const columnNames = ["Mission", "Status"]
+    const questStatus = localStateStore.getQuestStatus()
 
+    const columnNames = ["Mission", "Gold", ""]
+    const tableProps = { columnWidths: [175, 40, 40] }
+    if (missions.length === 0) {
+      return null
+    }
     const tableData = missions.map((mission) => {
-      const { item, recipient, name, rewards } = mission
+      const { item, recipient, rewards } = mission
 
-      const missionString = `${name}:  find the ${item.name} and give it to ${recipient.name} to get ${rewards[0].name}`
-      return [missionString, true]
+      const missionString = `Bring the ${item.name} to the ${recipient.name}`
+      const rewardString = `${rewards[0].amount}`
+      return [missionString, rewardString, true]
+    })
+
+    const columnNames2 = ["Loot", ""]
+    const tableProps2 = { columnWidths: [150, 60] }
+    const tableData2 = questStatus.rewards.map((reward) => {
+      const { name, amount } = reward
+      return [name, amount]
+    })
+
+    const columnNames3 = ["Pockets", ""]
+    const tableProps3 = { columnWidths: [150, 60] }
+    const tableData3 = questStatus.pockets.map((item) => {
+      const { name, amount } = item
+      return [name, amount]
     })
 
     return (
@@ -48,9 +58,24 @@ class MissionConsole extends Component {
         <div className={css.body}>
           <div className={css.row}>
             <div className={css.left}>
-              <MiniTable columnNames={columnNames} tableData={tableData} />
+              <MiniTable
+                columnNames={columnNames}
+                tableData={tableData}
+                tableProps={tableProps}
+              />
             </div>
-            <div className={css.right}>{`GOLD:     0`}</div>
+            <div className={css.right}>
+              <MiniTable
+                tableProps={tableProps2}
+                columnNames={columnNames2}
+                tableData={tableData2}
+              />
+              <MiniTable
+                tableProps={tableProps3}
+                columnNames={columnNames3}
+                tableData={tableData3}
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,13 +1,40 @@
 .main {
   display: flex;
-  flex: 1 1;
-  align-self: center;
   justify-self: center;
+  align-self: flex-start;
 
   :global {
     .bp3-table-truncated-format-text {
       display: flex;
       // border: 1px solid red !important;
     }
+
+    .bp3-table-header {
+      display: flex;
+      // border: 1px solid red !important;
+      line-height: 2vh;
+      min-height: unset;
+      height: 2vh;
+    }
+
+    .bp3-table-column-name-text {
+      font-size: 1.2vh;
+      // border: 1px solid red !important;
+      padding: unset;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 0.5vh;
+      line-height: 2vh;
+      min-height: 2vh;
+      flex: 1;
+      width: 100%;
+    }
+  }
+
+  .cellClass {
+    // border: 1px solid blue !important;
+    display: flex;
+    font-size: 1vh;
   }
 }
