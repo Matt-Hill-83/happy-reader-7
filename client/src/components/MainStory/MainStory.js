@@ -11,6 +11,7 @@ import StoryMode from "../StoryMode/StoryMode"
 import QuestDialog from "../QuestDialog/QuestDialog.js"
 import Utils from "../../Utils/Utils"
 import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
+import { UserConfigStore } from "../../Stores/UserConfigStore.js"
 
 import css from "./MainStory.module.scss"
 
@@ -127,8 +128,21 @@ class MainStory extends React.Component {
 
   onChangeWorld = ({ mapId }) => {
     localStateStore.setActiveMapId(mapId)
-    this.setState({ showYouWinModal: false })
 
+    const map = localStateStore.getActiveWorld()
+    console.log("map----------------------", toJS(map)) // zzz
+
+    console.log("map.questConfig", toJS(map.questConfig)) // zzz
+
+    const { questConfig } = map.data
+
+    if (questConfig) {
+      console.log("questConfig", toJS(questConfig)) // zzz
+      const questStatus = localStateStore.getQuestStatus()
+      console.log("questStatus", toJS(questStatus)) // zzz
+    }
+
+    this.setState({ showYouWinModal: false })
     this.initWorld()
   }
 
@@ -164,6 +178,11 @@ class MainStory extends React.Component {
     const { className } = this.props
     const activeWorld = localStateStore.getActiveWorld()
     console.log("activeWorld", toJS(activeWorld)) // zzz
+    console.log("-------") // zzz
+    console.log("-------") // zzz
+    console.log("-------") // zzz
+
+    console.log("UserConfigStore", toJS(UserConfigStore)) // zzz
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
 

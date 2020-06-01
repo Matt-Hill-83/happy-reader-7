@@ -15,6 +15,8 @@ class LocalStateStore {
   activeFrameIndex = 0
   activeSceneId = null
 
+  questStatus = { quests: [], pockets: [] }
+
   getYou = () => this.you
   setYou = (you) => {
     this.you = you
@@ -77,6 +79,13 @@ class LocalStateStore {
     this.activeSceneId = activeSceneId
   }
 
+  getQuestNames = () => this.questStatus.quests.map((item) => item.name)
+
+  getQuestStatus = () => this.questStatus
+  setQuestStatus = (questStatus) => {
+    this.questStatus = questStatus
+  }
+
   getActiveScene = () => {
     const activeSceneId = this.getActiveSceneId()
     const scenesGrid = this.getActiveWorldGrid()
@@ -99,6 +108,7 @@ decorate(LocalStateStore, {
   locationDetails: observable,
   activeFrameIndex: observable,
   activeSceneId: observable,
+  questStatus: observable,
 })
 
 const localStateStore = new LocalStateStore()

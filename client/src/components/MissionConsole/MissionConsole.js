@@ -9,25 +9,34 @@ import { toJS } from "mobx"
 import _get from "lodash.get"
 import css from "./MissionConsole.module.scss"
 import MiniTable from "../MiniTable/MiniTable"
-
-const columnNames = ["Mission", "Status"]
-
-const tableData = [
-  ["talk on pretend phone", true],
-  ["eat one apple", false],
-  ["make 1 friend", false],
-  ["get 5 gold", false],
-  ["steal diamond from trolls", false],
-  ["win rap battle", false],
-]
+import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 
 class MissionConsole extends Component {
   state = {}
 
   render = () => {
-    const { showHeader = false, world = {} } = this.props
-    console.log("world.questConfig", toJS(world.questConfig)) // zzz
-    console.log("world", toJS(world.questConfig)) // zzz
+    const world = localStateStore.getActiveWorld()
+
+    console.log("world", toJS(world)) // zzz
+
+    console.log("world.data.questConfig", toJS(world.data.questConfig)) // zzz
+    const missions = _get(world, "data.questConfig.missions") || []
+    const pockets = _get(world, "data.questConfig.pockets") || []
+    const missionNames = missions.map((item) => item.name)
+    const pocketNames = pockets.map((item) => item.name)
+    console.log("missionNames", toJS(missionNames)) // zzz
+    console.log("pocketNames", toJS(pocketNames)) // zzz
+
+    const { showHeader = false } = this.props
+
+    const columnNames = ["Mission", "Status"]
+
+    const tableData = missions.map((mission) => {
+      const { item, recipient, name, rewards } = mission
+
+      const missionString = `${name}:  find the ${item.name} and give it to ${recipient.name} to get ${rewards[0].name}`
+      return [missionString, true]
+    })
 
     return (
       <div className={css.main}>

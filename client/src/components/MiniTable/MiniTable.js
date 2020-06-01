@@ -18,16 +18,19 @@ class MiniTable extends Component {
 
     let cellContent = null
 
-    const rockImageVertical = images.backgrounds["checkMarkGreen01"]
-    if (value === true) {
+    if (typeof value === "undefined") {
+      cellContent = ""
+    } else if (value === true) {
       cellContent = <span role="img">✅</span>
     } else if (value === false) {
       cellContent = <span role="img">❌</span>
     } else {
-      cellContent = <TruncatedFormat>{value.toString()}</TruncatedFormat>
+      cellContent = (
+        <TruncatedFormat>{value ? value.toString() : ""}</TruncatedFormat>
+      )
     }
 
-    return <Cell tooltip={value.toString()}>{cellContent}</Cell>
+    return <Cell tooltip={value ? value.toString() : ""}>{cellContent}</Cell>
   }
 
   render = () => {

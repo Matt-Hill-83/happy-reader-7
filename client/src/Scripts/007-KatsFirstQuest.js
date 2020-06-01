@@ -6,9 +6,9 @@ const story007 = {
       {
         name: "Find Piggy",
         rewards: [{ name: "gold", amount: 5 }],
-        item: ["pig"],
-        recipient: ["troll"],
-        pockets: ["top"],
+        item: { name: "pig" },
+        recipient: { name: "troll" },
+        pockets: [{ name: "top" }],
       },
     ],
   },
