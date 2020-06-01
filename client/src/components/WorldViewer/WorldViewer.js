@@ -73,8 +73,8 @@ class WorldViewer extends React.Component {
     const mainBackground = Images.backgrounds["hill01"]
     // const mainBackground = Images.backgrounds["planetGlorp04"]
     const mainBackground2 = Images.backgrounds["planetGlorp03"]
-    const mainBackground3 = Images.backgrounds["bookCoil01"]
-    const stoneRectangle01 = Images.backgrounds["stoneRectangle01"]
+    const bookCoil01 = Images.backgrounds["bookCoil01"]
+    // const stoneRectangle01 = Images.backgrounds["stoneRectangle01"]
     // const mapBackground = Images.backgrounds["mapBackground07"]
     // const mapBackground = Images.backgrounds["mapBackground09"]
     const mapBackground = Images.backgrounds["mapBackground11"]
@@ -91,11 +91,7 @@ class WorldViewer extends React.Component {
           src={mainBackground2}
           alt={"bk"}
         />
-        <img
-          className={css.backgroundImage3}
-          src={mainBackground3}
-          alt={"bk"}
-        />
+        <img className={css.backgroundImage3} src={bookCoil01} alt={"bk"} />
         {/* <img className={css.backgroundImage} src={mapImage} alt={"bk"} /> */}
         <div className={`${css.mapScroller}`}>
           {/* <img
@@ -103,17 +99,13 @@ class WorldViewer extends React.Component {
             src={stoneRectangle01}
             alt={"bk"}
           /> */}
-          <img
-            className={css.backgroundImage3}
-            src={mainBackground3}
-            alt={"bk"}
-          />
           <div className={`${css.innerMapScroller}`}>
             <img
               className={css.mapBackground}
               src={mapBackground}
               alt={"imagex"}
             />
+            <img className={css.backgroundImage3} src={bookCoil01} alt={"bk"} />
             {this.renderSceneRows()}
           </div>
           {true && (
