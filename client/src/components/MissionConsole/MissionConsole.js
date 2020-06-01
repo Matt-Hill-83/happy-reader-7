@@ -25,7 +25,9 @@ class MissionConsole extends Component {
   state = {}
 
   render = () => {
-    const { showHeader = false } = this.props
+    const { showHeader = false, world = {} } = this.props
+    console.log("world.questConfig", toJS(world.questConfig)) // zzz
+    console.log("world", toJS(world.questConfig)) // zzz
 
     return (
       <div className={css.main}>

@@ -1,5 +1,12 @@
 @import "../../Styles/mixins.modules.scss";
 
+.missionConsoleBox {
+  position: absolute;
+  display: flex;
+  border: 4px solid green !important;
+  z-index: 20;
+}
+
 .mapBackground {
   z-index: 0;
   display: flex;

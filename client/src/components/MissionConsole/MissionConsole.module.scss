@@ -1,20 +1,17 @@
 .main {
-  position: absolute;
   border: 2px solid purple !important;
   display: flex;
   flex-direction: column;
   flex: 1 1;
   align-self: center;
   justify-self: center;
-
   border-radius: 9px;
-  width: auto;
-  max-height: 10vh;
+  /* width: auto; */
+  /* max-height: 10vh; */
   background: white;
-  top: 0;
+  /* top: 0; */
   padding: 1vh;
-  margin: 1vh;
-  width: 90%;
+  /* margin: 1vh; */
 
   .header {
     display: flex;

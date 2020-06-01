@@ -10,6 +10,7 @@ import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
 import MiniLocation from "../MiniLocation/MiniLocation.js"
 
 import css from "./WorldViewer.module.scss"
+import MissionConsole from "../MissionConsole/MissionConsole.js"
 
 class WorldViewer extends React.Component {
   renderSceneRows = () => {
@@ -66,6 +67,8 @@ class WorldViewer extends React.Component {
   }
 
   render() {
+    const map = localStateStore.getActiveWorld()
+
     const leftArrow = Images.backgrounds["leftArrow"]
     const rightArrow = Images.backgrounds["rightArrow"]
 
@@ -84,6 +87,9 @@ class WorldViewer extends React.Component {
           alt={"bk"}
         />
         <div className={`${css.mapScroller}`}>
+          <div className={`${css.missionConsoleBox}`}>
+            <MissionConsole world={map} />
+          </div>
           <div className={`${css.innerMapScroller}`}>
             <img
               className={css.mapBackground}
