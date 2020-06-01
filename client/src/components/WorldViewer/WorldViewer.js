@@ -75,6 +75,10 @@ class WorldViewer extends React.Component {
     const mainBackground2 = Images.backgrounds["planetGlorp03"]
     const mainBackground3 = Images.backgrounds["bookCoil01"]
     const stoneRectangle01 = Images.backgrounds["stoneRectangle01"]
+    // const mapBackground = Images.backgrounds["mapBackground07"]
+    // const mapBackground = Images.backgrounds["mapBackground09"]
+    const mapBackground = Images.backgrounds["mapBackground11"]
+    // const mapBackground = Images.backgrounds["mapBackground21"]
     // const mainBackground = Images.backgrounds["planetGlorp02"]
     // const mainBackground = Images.backgrounds["introBackground"]
     // const mainBackground = Images.backgrounds["paperBackground01"]
@@ -105,7 +109,11 @@ class WorldViewer extends React.Component {
             alt={"bk"}
           />
           <div className={`${css.innerMapScroller}`}>
-            {/* <img className={css.diamond2Image} src={mainBackground} alt={"imagex"} /> */}
+            <img
+              className={css.mapBackground}
+              src={mapBackground}
+              alt={"imagex"}
+            />
             {this.renderSceneRows()}
           </div>
           {true && (

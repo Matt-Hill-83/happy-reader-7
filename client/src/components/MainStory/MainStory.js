@@ -19,7 +19,7 @@ isProdRelease = true
 isProdRelease = false
 
 let SHOW_WORLD_BUILDER
-SHOW_WORLD_BUILDER = true
+// SHOW_WORLD_BUILDER = true
 SHOW_WORLD_BUILDER = false
 
 class MainStory extends React.Component {

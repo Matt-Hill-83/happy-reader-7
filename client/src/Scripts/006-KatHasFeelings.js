@@ -22,8 +22,9 @@ const story006 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"liz2" : "-------------test--------------"}',
-            '{"kat" : "-------------test--------------"}',
+            '{"kat" : "Hello."}',
+            '{"kat" : "I am Kat."}',
+            '{"liz2" : "And I am Liz."}',
           ],
         },
         {
@@ -36,8 +37,10 @@ const story006 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"kat" : "-------------test--------------"}',
-            '{"liz2" : "-------------test--------------"}',
+            '{"kat" : "We have fun."}',
+            '{"liz2" : "We have fun..."}',
+            '{"liz2" : "...in the sun!"}',
+            '{"liz2" : "Tee Hee Hee!"}',
           ],
         },
       ],
@@ -63,8 +66,10 @@ const story006 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"liz2" : "-------------test--------------"}',
-            '{"kat" : "-------------test--------------"}',
+            '{"kat" : "I see Bun-Bun."}',
+            '{"liz2" : "Run,   Bun-Bun!  Run!"}',
+            '{"liz2" : "Bun-Bun has fun in the sun!"}',
+            '{"liz2" : "Tee Hee Hee!"}',
           ],
         },
         {
@@ -76,10 +81,7 @@ const story006 = {
             ],
             creatures: ["kat", "liz2"],
           },
-          dialogs: [
-            '{"kat" : "-------------test--------------"}',
-            '{"liz2" : "-------------test--------------"}',
-          ],
+          dialogs: [],
         },
       ],
     },
@@ -105,28 +107,16 @@ const story006 = {
                 face: "kat-happy.9e02afab.png",
               },
             ],
-            creatures: ["kat", "liz2"],
+            creatures: ["kat", "liz2", "troll02"],
           },
           dialogs: [
-            '{"kat" : "We can play."}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
+            '{"troll01" : "OK, BOOK ALL DONE!"}',
+            '{"kat" : "Thanks Grumbo."}',
+            '{"kat" : "Hey, did my hair look okay?"}',
+            '{"troll01" : "HAIR GOOD!"}',
+            '{"kat" : "Oh thanks.  It was getting all frizzy this morning."}',
           ],
         },
-      ],
-    },
-    {
-      title: "end",
-      sceneConfig: {
-        worldTitle: "story output",
-        coordinates: { col: 2, row: 1 },
-        creatures: ["kat", "liz2"],
-        isEndScene: false,
-        isStartScene: false,
-        items: [{ name: "cup" }, { name: "pig" }],
-      },
-      frames: [
         {
           frameConfig: {
             items: [],
@@ -141,142 +131,10 @@ const story006 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
-            '{"kat" : "We can play."}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
-          ],
-        },
-      ],
-    },
-    {
-      title: "hill",
-      sceneConfig: {
-        worldTitle: "story output",
-        coordinates: { col: 3, row: 1 },
-        creatures: ["kat", "liz2"],
-        isEndScene: true,
-        isStartScene: false,
-        items: [{ name: "cup" }, { name: "pig" }],
-      },
-      frames: [
-        {
-          frameConfig: {
-            items: [],
-            faces: [
-              { character: "liz2", characterIndex: 1, face: "happy" },
-              {
-                character: "kat",
-                characterIndex: 0,
-                face: "kat-happy.9e02afab.png",
-              },
-            ],
-            creatures: ["kat", "liz2"],
-          },
-          dialogs: [
-            '{"kat" : "We can play."}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
-          ],
-        },
-      ],
-    },
-    {
-      title: "waterfall",
-      sceneConfig: {
-        worldTitle: "story output",
-        coordinates: { col: 2, row: 2 },
-        creatures: ["kat", "liz2"],
-        isEndScene: false,
-        isStartScene: false,
-        items: [{ name: "cup" }, { name: "pig" }],
-      },
-      frames: [
-        {
-          frameConfig: {
-            items: [],
-            faces: [
-              { character: "liz2", characterIndex: 1, face: "happy" },
-              {
-                character: "kat",
-                characterIndex: 0,
-                face: "kat-happy.9e02afab.png",
-              },
-            ],
-            creatures: ["kat", "liz2"],
-          },
-          dialogs: [
-            '{"kat" : "We can play."}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
-          ],
-        },
-      ],
-    },
-    {
-      title: "castle",
-      sceneConfig: {
-        worldTitle: "story output",
-        coordinates: { col: 2, row: 3 },
-        creatures: ["kat", "liz2"],
-        isEndScene: false,
-        isStartScene: false,
-        items: [{ name: "cup" }, { name: "pig" }],
-      },
-      frames: [
-        {
-          frameConfig: {
-            items: [],
-            faces: [
-              { character: "liz2", characterIndex: 1, face: "happy" },
-              {
-                character: "kat",
-                characterIndex: 0,
-                face: "kat-happy.9e02afab.png",
-              },
-            ],
-            creatures: ["kat", "liz2"],
-          },
-          dialogs: [
-            '{"kat" : "We can play."}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
-          ],
-        },
-      ],
-    },
-    {
-      title: "cave",
-      sceneConfig: {
-        worldTitle: "story output",
-        coordinates: { col: 2, row: 4 },
-        creatures: ["kat", "liz2"],
-        isEndScene: false,
-        isStartScene: false,
-        items: [{ name: "cup" }, { name: "pig" }],
-      },
-      frames: [
-        {
-          frameConfig: {
-            items: [],
-            faces: [
-              { character: "liz2", characterIndex: 1, face: "happy" },
-              {
-                character: "kat",
-                characterIndex: 0,
-                face: "kat-happy.9e02afab.png",
-              },
-            ],
-            creatures: ["kat", "liz2"],
-          },
-          dialogs: [
-            '{"kat" : "We can play."}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
-            '{"liz2" : ""}',
+            '{"kat" : "Liz, I love making these short little books!"}',
+            '{"liz2" : "Me too!  We\'re done by 10:00 and have the whole afternoon free!."}',
+            '{"kat" : "Let\'s go to the slide."}',
+            '{"kat" : "That sounds good to me!"}',
           ],
         },
       ],
