@@ -4,13 +4,7 @@ const story003 = {
     "1: some stuff----------------",
     "2: some stuff----------------",
   ],
-  storyConfig: {
-    mission: {
-      title: "Get the purple dress.",
-      completed: false,
-      rewards: [{ name: "dress01-basic" }],
-    },
-  },
+
   scenes: [
     {
       title: "bees",

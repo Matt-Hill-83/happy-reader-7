@@ -4,12 +4,17 @@ const template = {
     "1: some stuff----------------",
     "2: some stuff----------------",
   ],
-  storyConfig: {
-    mission: {
-      title: "Get the purple dress.",
-      completed: false,
-      rewards: [{ name: "dress01-basic" }],
-    },
+  questConfig: {
+    pockets: [{ name: "apple" }],
+    missions: [
+      {
+        name: "Find Piggy",
+        rewards: [{ name: "gold", amount: 5 }],
+        item: ["pig"],
+        recipient: ["troll"],
+        pockets: ["top"],
+      },
+    ],
   },
   scenes: [
     {

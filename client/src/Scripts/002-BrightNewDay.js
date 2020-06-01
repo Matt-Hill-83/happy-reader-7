@@ -1,13 +1,7 @@
 const story002 = {
   title: "002 - A New Day",
   notes: "fix me",
-  storyConfig: {
-    mission: {
-      title: "Get the purple dress.",
-      completed: false,
-      rewards: [{ name: "dress01-basic" }],
-    },
-  },
+
   description: [
     "1: some stuff----------------",
     "2: some stuff----------------",

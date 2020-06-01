@@ -473,7 +473,7 @@ class WorldBuilder extends Component {
     console.log("") // zzz
     console.log("importWorld------------") // zzz
 
-    const { title, description = "" } = newFrameSet
+    const { title, description = "", questConfig } = newFrameSet
 
     console.log("newFrameSet", toJS(newFrameSet)) // zzz
 
@@ -506,7 +506,7 @@ class WorldBuilder extends Component {
 
     console.log("scenesGrid", toJS(scenesGrid)) // zzz
 
-    this.updateMap({ newProps: { title, description } })
+    this.updateMap({ newProps: { title, description, questConfig } })
   }
 
   render() {
