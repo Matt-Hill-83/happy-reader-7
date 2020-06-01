@@ -91,7 +91,7 @@ class WorldViewer extends React.Component {
           src={mainBackground2}
           alt={"bk"}
         />
-        <img className={css.backgroundImage3} src={bookCoil01} alt={"bk"} />
+        {/* <img className={css.bookCoil01} src={bookCoil01} alt={"bk"} /> */}
         {/* <img className={css.backgroundImage} src={mapImage} alt={"bk"} /> */}
         <div className={`${css.mapScroller}`}>
           {/* <img
@@ -105,10 +105,12 @@ class WorldViewer extends React.Component {
               src={mapBackground}
               alt={"imagex"}
             />
-            <img className={css.backgroundImage3} src={bookCoil01} alt={"bk"} />
+            {false && (
+              <img className={css.bookCoil01} src={bookCoil01} alt={"bk"} />
+            )}
             {this.renderSceneRows()}
           </div>
-          {true && (
+          {false && (
             <div className={css.scrollButtons}>
               <Button
                 className={cx(css.scrollButton, css.leftScrollButton)}
@@ -134,6 +136,7 @@ class WorldViewer extends React.Component {
             </div>
           )}
         </div>
+        <img className={css.bookCoil01} src={bookCoil01} alt={"bk"} />
       </>
     )
   }

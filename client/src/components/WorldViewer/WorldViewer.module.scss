@@ -28,10 +28,12 @@
   top: 23%;
 }
 
-.backgroundImage3 {
-  position: absolute;
+.bookCoil01 {
+  position: fixed;
   display: flex;
   justify-self: center;
+  width: 9vh;
+  left: 46.8%;
 }
 
 .stoneRectangle01 {
@@ -79,7 +81,7 @@
   height: 44vh;
   width: 94%;
   top: 4vh;
-  left: 0vh;
+  left: 4vh;
   right: 1vh;
   border-bottom-right-radius: 3vh;
 }
