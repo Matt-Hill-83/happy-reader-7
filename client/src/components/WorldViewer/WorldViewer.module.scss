@@ -3,8 +3,11 @@
 .missionConsoleBox {
   position: absolute;
   display: flex;
-  border: 4px solid green !important;
+  /* border: 4px solid green !important; */
   z-index: 20;
+  top: 0px;
+  width: 100%;
+  padding: 1vh;
 }
 
 .mapBackground {

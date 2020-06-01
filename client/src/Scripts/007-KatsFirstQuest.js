@@ -10,6 +10,13 @@ const story007 = {
         recipient: { name: "troll" },
         pockets: [{ name: "top" }],
       },
+      {
+        name: "Unlock the yellow door",
+        rewards: [{ name: "gold", amount: 5 }],
+        item: { name: "keyYellow01" },
+        recipient: { name: "bog" },
+        pockets: [{ name: "top" }],
+      },
     ],
   },
   scenes: [
