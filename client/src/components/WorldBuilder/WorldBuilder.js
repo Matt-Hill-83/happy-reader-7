@@ -13,6 +13,7 @@ import {
 } from "@blueprintjs/core"
 
 import { IconNames } from "@blueprintjs/icons"
+import _get from "lodash.get"
 
 import { maps } from "../../Stores/InitStores"
 import { worldNameStore } from "../../Stores/FrameSetStore"
@@ -53,6 +54,9 @@ class WorldBuilder extends Component {
       return
     } else {
       const world = Utils.getMapFromId2({ id: mapId })
+      if (!world.data) {
+        return
+      }
 
       const {
         data: { gridDimensions, newGrid5 },
@@ -185,14 +189,21 @@ class WorldBuilder extends Component {
   }
 
   addNewWorld = async () => {
-    const previousMapName = toJS(worldNameStore.docs[0].data.previousMapName)
+    const previousMapName = toJS(
+      (worldNameStore.docs &&
+        worldNameStore.docs[0] &&
+        worldNameStore.docs[0].data.previousMapName) ||
+        100
+    )
 
     const newName = previousMapName + 1
-    await worldNameStore.docs[0].update({
-      previousMapName: newName,
-      // Transitioning to this new name
-      previousWorld: newName,
-    })
+    if (worldNameStore.docs[0]) {
+      await worldNameStore.docs[0].update({
+        previousMapName: newName,
+        // Transitioning to this new name
+        previousWorld: newName,
+      })
+    }
     const { grid, gridDimensions } = this.createNewGrid()
 
     const newGrid5 = []
@@ -511,14 +522,17 @@ class WorldBuilder extends Component {
 
   render() {
     const { sceneToEdit, showFrameBuilder } = this.state
-    const world = localStateStore.getWorldBuilderWorld()
+    const world = localStateStore.getWorldBuilderWorld() || {}
 
     // Record title for when map is copied
     this.previousTitle = (world.data && world.data.title) || this.previousTitle
 
-    const title =
-      (world.data && world.data.title) || this.previousTitle + " copy"
-    const scenesGrid = world.data.newGrid5
+    let title = "no title"
+    let scenesGrid = []
+    if (world.data) {
+      title = (world.data && world.data.title) || this.previousTitle + " copy"
+      scenesGrid = world.data.newGrid5 || []
+    }
 
     return (
       <div className={css.main}>
