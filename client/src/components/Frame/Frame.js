@@ -200,8 +200,7 @@ class Frame extends Component {
 
   renderLocationImage = () => {
     const { scene = true } = this.props
-    const locationImage =
-      Images.locations[_get(this.props, "scene.location.name")]
+    const locationImage = Images.all[_get(this.props, "scene.location.name")]
 
     return (
       <div className={css.locationImageContainer}>
@@ -357,7 +356,7 @@ class Frame extends Component {
           <CharacterPicker
             imageSets={[
               images.creatures,
-              images.locations,
+              images.all,
               images.vehicles,
               images.items,
             ]}

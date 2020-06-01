@@ -85,7 +85,7 @@ class FrameViewer extends Component {
 
   renderLocationImage = () => {
     const locationName = _get(this.props, "scene.location.name")
-    const locationImage = Images.locations[locationName]
+    const locationImage = Images.all[locationName]
 
     return (
       <div className={css.locationImageContainer}>
