@@ -45,6 +45,8 @@ class MainStory extends React.Component {
       localStateStore.setActiveMapId(mapId)
     }
 
+    // use this toggle to start in World Builder mode:
+    // if (true) {
     if (SHOW_WORLD_BUILDER) {
       this.toggleWorldBuilder()
     } else {
@@ -110,6 +112,7 @@ class MainStory extends React.Component {
   toggleWorldBuilder = () => {
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
     const newShowWorldBuilder = !showWorldBuilder
+    console.log("newShowWorldBuilder", newShowWorldBuilder) // zzz
 
     localStateStore.setShowWorldBuilder(newShowWorldBuilder)
 
@@ -185,6 +188,16 @@ class MainStory extends React.Component {
     console.log("UserConfigStore", toJS(UserConfigStore)) // zzz
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
+    console.log("showWorldBuilder", toJS(showWorldBuilder)) // zzz
+
+    if (showWorldBuilder) {
+      return (
+        <div className={`${css.main} ${className}`}>
+          {showWorldBuilder && <WorldBuilder />}
+          {this.renderButtons()}
+        </div>
+      )
+    }
 
     if (!activeWorld || !activeWorld.data || !activeWorld.data.title) {
       return null
@@ -198,16 +211,12 @@ class MainStory extends React.Component {
 
     return (
       <div className={`${css.main} ${className}`}>
-        {showWorldBuilder && <WorldBuilder />}
-
         {this.renderButtons()}
-        {!showWorldBuilder && (
-          <StoryMode
-            updateActiveScene={this.updateActiveScene}
-            activeScene={activeScene}
-            openYouWinModal={this.openYouWinModal}
-          />
-        )}
+        <StoryMode
+          updateActiveScene={this.updateActiveScene}
+          activeScene={activeScene}
+          openYouWinModal={this.openYouWinModal}
+        />
         {this.state.showYouWinModal && this.renderYouWinModal()}
       </div>
     )
