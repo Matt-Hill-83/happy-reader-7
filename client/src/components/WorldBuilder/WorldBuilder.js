@@ -232,6 +232,8 @@ class WorldBuilder extends Component {
     map.data.newGrid5 = Utils.createCondensedGridFromGrid()
 
     delete map.data.grid
+    console.log("map.data", toJS(map.data)) // zzz
+
     await map.update(map.data)
   }
 
@@ -439,15 +441,15 @@ class WorldBuilder extends Component {
       }
 
       if (frameConfig && frameConfig.creatures) {
-        configProps.creatures = frameConfig.creatures
+        configProps.creatures = frameConfig.creatures || []
       } else {
-        configProps.creatures = sceneConfig.creatures
+        configProps.creatures = sceneConfig.creatures || []
       }
 
       if (frameConfig && frameConfig.items) {
         configProps.items = frameConfig.items
       } else {
-        configProps.items = sceneConfig.items
+        configProps.items = sceneConfig.items || []
       }
 
       // and put the properties into the new Frame...
@@ -484,7 +486,11 @@ class WorldBuilder extends Component {
     console.log("") // zzz
     console.log("importWorld------------") // zzz
 
-    const { title, description = "", questConfig } = newFrameSet
+    const {
+      title = "no title",
+      description = "none",
+      questConfig = { data: "none" },
+    } = newFrameSet
 
     console.log("newFrameSet", toJS(newFrameSet)) // zzz
 
@@ -516,8 +522,10 @@ class WorldBuilder extends Component {
     })
 
     console.log("scenesGrid", toJS(scenesGrid)) // zzz
+    const newProps = { title, description, questConfig }
+    console.log("newProps", toJS(newProps)) // zzz
 
-    this.updateMap({ newProps: { title, description, questConfig } })
+    this.updateMap({ newProps })
   }
 
   render() {
