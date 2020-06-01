@@ -340,7 +340,7 @@
 
   .charactersContainer {
     display: flex;
-    height: 29vh;
+    // height: 29vh;
     z-index: 10;
     justify-content: center;
     background: none;
@@ -350,8 +350,7 @@
     left: 54vw;
 
     [class*="Character_characterImage"] {
-      width: auto !important;
-      height: 100% !important;
+      width: 24vh;
     }
   }
 

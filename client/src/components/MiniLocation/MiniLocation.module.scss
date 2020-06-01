@@ -47,11 +47,14 @@
   max-height: var(--story-item-height);
   max-width: var(--story-item-width);
 
-  margin-right: 3vh;
-  margin-bottom: 2vh;
+  // margin-right: 3vh;
+  // margin-bottom: 2vh;
 
   overflow: visible;
   background: var(--color-yellow);
+
+  margin-right: 5vh;
+  margin-bottom: 3vh;
 
   .container {
     display: flex;
@@ -332,15 +335,17 @@
     background: var(--color-yellow);
     transform: translateY(-50%);
     top: 50%;
-    width: 82%;
-    right: -74%;
+    // width: 82%;
+    // right: -74%;
+    width: 129%;
+    right: -120%;
   }
 
   .bottomPath {
     position: absolute;
     display: flex;
-    height: 2.7vh;
-    bottom: -2.5vh;
+    height: 85%;
+    bottom: -79%;
     width: 27%;
     z-index: 18;
     transform: translateX(-50%);
