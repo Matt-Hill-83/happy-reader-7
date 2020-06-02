@@ -401,14 +401,15 @@
 
   .buttonsContainer {
     border: 1px solid black !important;
-    position: absolute;
+    position: fixed;
     overflow: hidden;
     z-index: 1;
     border-radius: 1vh;
-    right: -4%;
-    bottom: 1vh;
+    left: 50vw;
+    bottom: 25vh;
     box-shadow: 5px 5px 15px 5px #000000;
-    transform: translateY(100%);
+    transform: translateX(-50%);
+    background: #ffffff24;
   }
 
   .newGameButton {

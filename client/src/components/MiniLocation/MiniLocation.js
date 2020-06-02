@@ -6,6 +6,7 @@ import Images from "../../images/images.js"
 import Utils from "../../Utils/Utils.js"
 import css from "./MiniLocation.module.scss"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
+import cx from "classnames"
 
 import { toJS } from "mobx"
 import MiniTable from "../MiniTable/MiniTable.js"
@@ -193,6 +194,23 @@ class MiniLocation extends React.Component {
     const cloudImage = Images.backgrounds["cloud"]
     const defaultDoorImage = Images.backgrounds["door"]
 
+    // let renderedLocationImg = null
+
+    const showLocationOnly = locationName === "roadLeftRight01"
+
+    if (showLocationOnly) {
+      const roadLeftRight01 = Images.items["roadLeftRight01"]
+      return (
+        <div className={`${css.main} ${className} ${localClass}`}>
+          <div className={css.container}>
+            <div className={css.roadLeftRight01}>
+              <img className={css.none} src={roadLeftRight01} alt={"imagex"} />
+            </div>
+          </div>
+        </div>
+      )
+    }
+
     let renderedItems
     renderedItems = items.map((item) => {
       const renderedItem = Images.all[item.name]
@@ -215,33 +233,42 @@ class MiniLocation extends React.Component {
       "background-color": `#${backgroundColor}`,
     }
 
-    const columnNames = ["", ""]
+    // const columnNames = ["", ""]
 
-    const tableData = [
-      ["Gold", "4"],
-      ["Prizes", "shoes, [white]"],
-    ]
+    // const tableData = [
+    //   ["Gold", "4"],
+    //   ["Prizes", "shoes, [white]"],
+    // ]
 
-    const tableProps = {
-      defaultColumnWidth: 100,
-      columnWidths: [70, 150],
-    }
+    // const tableProps = {
+    //   defaultColumnWidth: 100,
+    //   columnWidths: [70, 150],
+    // }
 
-    const firstSceneInfo = (
-      <div className={css.firstScene}>
-        <span className={css.storyTitle}>{storyTitle}</span>
-        <MiniTable
-          tableProps={tableProps}
-          columnNames={columnNames}
-          tableData={tableData}
-        />
-      </div>
-    )
+    // const firstSceneInfo = (
+    //   <div className={css.firstScene}>
+    //     <span className={css.storyTitle}>{storyTitle}</span>
+    //     <MiniTable
+    //       tableProps={tableProps}
+    //       columnNames={columnNames}
+    //       tableData={tableData}
+    //     />
+    //   </div>
+    // )
 
     return (
       <div
         key={id}
         id={id}
+        // className={cx(
+        //   css.main,
+        //   className,
+        //   {
+        //     [css.isStartScene]: this.props.scene.isStartScene,
+        //     [css.isBlank]: this.props.scene.isBlank,
+        //   },
+        //   localClass
+        // )}
         className={`${css.main} ${className} ${
           this.props.scene.isStartScene ? css.isStartScene : ""
         } ${isBlank ? css.isBlank : ""} ${localClass} `}
@@ -249,7 +276,7 @@ class MiniLocation extends React.Component {
       >
         {!isBlank && (
           <div className={css.container}>
-            {firstScene && firstSceneInfo}
+            {/* {firstScene && firstSceneInfo} */}
 
             {/* Paths that connect scenes */}
             {showRightPath && (

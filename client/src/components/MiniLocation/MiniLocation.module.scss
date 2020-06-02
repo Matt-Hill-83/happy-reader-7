@@ -214,7 +214,7 @@
     transform: translate(-50%, 50%);
 
     &.door-open {
-      background: var(--grass-color) !important;
+      // background: var(--grass-color) !important;
       width: 20%;
     }
 
@@ -399,5 +399,21 @@
     font-weight: 700;
     background: #fee6f2;
     white-space: break-spaces;
+  }
+}
+
+.roadLeftRight01 {
+  border: 1px solid red !important;
+  display: flex;
+  /* flex: 1 1; */
+  // width: 100%;
+  overflow: hidden;
+
+  > img {
+    height: 1.4vh;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    width: auto;
   }
 }

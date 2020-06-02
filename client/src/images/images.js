@@ -195,6 +195,7 @@ import rightArrow from "./backgrounds/right-arrow-01.png"
 import introBackground from "./backgrounds/introBackground.jpg"
 import paperBackground01 from "./backgrounds/paperBackground01.png"
 import stoneRectangle01 from "./backgrounds/stoneRectangle01.png"
+import roadLeftRight01 from "./backgrounds/roadLeftRight01.png"
 
 // liz2
 import liz1 from "./rigged-girls/liz/png/liz-1.png"
@@ -435,7 +436,6 @@ const locations = {
   swamp,
   swing,
   tree,
-  // road_left_right,
   waterfall,
   end,
   blank,
@@ -518,6 +518,7 @@ const creatures = {
 
 const items = {
   blank,
+  // roadLeftRight01,
   bag,
   smoke,
   bun,

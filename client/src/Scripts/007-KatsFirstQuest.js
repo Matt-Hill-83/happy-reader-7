@@ -26,6 +26,44 @@ const story007 = {
   },
   scenes: [
     {
+      title: "home",
+      sceneConfig: {
+        worldTitle: "000 - EZ reader - 001",
+        coordinates: { col: 0, row: 0 },
+        creatures: ["liz2"],
+        isEndScene: false,
+        isStartScene: false,
+        items: [{ name: "blank" }, { name: "blank" }],
+      },
+      frames: [
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              {
+                character: "liz2",
+                characterIndex: 1,
+                face: "liz-25.7f6c8c15.png",
+              },
+              {
+                face: "kat-unsure.35db04b3.png",
+                character: "kat",
+                characterIndex: 0,
+              },
+            ],
+            creatures: ["liz2"],
+          },
+          dialogs: [
+            '{"kat" : ""}',
+            '{"liz2" : "I am not craaaazy!!!!!"}',
+            '{"liz2" : ""}',
+            '{"liz2" : "I am perfectly normal!!!!"}',
+          ],
+        },
+      ],
+    },
+
+    {
       title: "coop",
       sceneConfig: {
         worldTitle: "000 - EZ reader - 001",
@@ -86,43 +124,7 @@ const story007 = {
         },
       ],
     },
-    {
-      title: "home",
-      sceneConfig: {
-        worldTitle: "000 - EZ reader - 001",
-        coordinates: { col: 2, row: 0 },
-        creatures: ["liz2"],
-        isEndScene: false,
-        isStartScene: false,
-        items: [{ name: "blank" }, { name: "blank" }],
-      },
-      frames: [
-        {
-          frameConfig: {
-            items: [],
-            faces: [
-              {
-                character: "liz2",
-                characterIndex: 1,
-                face: "liz-25.7f6c8c15.png",
-              },
-              {
-                face: "kat-unsure.35db04b3.png",
-                character: "kat",
-                characterIndex: 0,
-              },
-            ],
-            creatures: ["liz2"],
-          },
-          dialogs: [
-            '{"kat" : ""}',
-            '{"liz2" : "I am not craaaazy!!!!!"}',
-            '{"liz2" : ""}',
-            '{"liz2" : "I am perfectly normal!!!!"}',
-          ],
-        },
-      ],
-    },
+
     {
       title: "bog",
       sceneConfig: {
