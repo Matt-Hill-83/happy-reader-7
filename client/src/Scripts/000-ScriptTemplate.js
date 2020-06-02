@@ -10,9 +10,20 @@ const template = {
       {
         name: "Find Piggy",
         rewards: [{ name: "gold", amount: 5 }],
-        item: ["pig"],
-        recipient: ["troll"],
-        pockets: ["top"],
+        item: { name: "pig" },
+        recipient: { name: "troll" },
+      },
+      {
+        name: "Unlock the yellow door",
+        rewards: [{ name: "gold", amount: 5 }],
+        item: { name: "keyYellow01" },
+        recipient: { name: "bog" },
+      },
+      {
+        name: "Bring the Unicorn Home",
+        rewards: [{ name: "gold", amount: 5 }],
+        item: { name: "unicorn" },
+        recipient: { name: "end" },
       },
     ],
   },

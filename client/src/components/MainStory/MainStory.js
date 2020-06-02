@@ -46,8 +46,8 @@ class MainStory extends React.Component {
     }
 
     // use this toggle to start in World Builder mode:
-    // if (true) {
-    if (SHOW_WORLD_BUILDER) {
+    if (true) {
+      // if (SHOW_WORLD_BUILDER) {
       this.toggleWorldBuilder()
     } else {
       await this.init()

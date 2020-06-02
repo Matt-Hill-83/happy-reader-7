@@ -1,13 +1,14 @@
 @import "../../Styles/mixins.modules.scss";
 
 .missionConsoleBox {
-  position: absolute;
+  position: fixed;
   display: flex;
-  /* border: 4px solid green !important; */
+  // border: 4px solid green !important;
   z-index: 20;
-  top: 0px;
-  width: 100%;
-  padding: 1vh;
+  top: 2vh;
+  left: 2vh;
+  margin: 1vh;
+  width: 74vh;
 }
 
 .mapBackground {

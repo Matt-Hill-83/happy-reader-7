@@ -1,7 +1,7 @@
 @import "../../Styles/mixins.modules.scss";
 
 .activeClass {
-  box-shadow: 0px 0px 0px 5px rgb(253, 47, 210);
+  box-shadow: 0px 0px 0px 5px rgb(253, 47, 210) !important;
 
   :global {
     [class*="MiniLocation_grassImage"] {
