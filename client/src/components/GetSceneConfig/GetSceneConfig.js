@@ -29,6 +29,8 @@ class GetSceneConfig extends Component {
     }
     // const { scenesGrid, world } = this.props
     const scenesGrid = world.newGrid5
+    const { questConfig } = world
+    console.log("world", toJS(world)) // zzz
 
     const test1 = toJS(scenesGrid)
     console.log({ test1 })
@@ -81,6 +83,7 @@ class GetSceneConfig extends Component {
     const output = {
       title: "story output",
       scenes: newScenesList,
+      questConfig,
     }
 
     const flatJson = JSON.stringify(output)

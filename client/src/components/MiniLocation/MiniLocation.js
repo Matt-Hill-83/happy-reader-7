@@ -76,7 +76,6 @@ class MiniLocation extends React.Component {
 
   state = {
     doors: this.defaultDoorIsOpen,
-    // youCreature: youCreatureDefault,
   }
 
   createDoorPickerOptions = () => {
@@ -117,7 +116,7 @@ class MiniLocation extends React.Component {
     )
   }
 
-  renderCharacters = ({ isActive, creatures }) => {
+  renderCreatures = ({ isActive, creatures }) => {
     const renderedCharacters = creatures.map((creature) => {
       const creatureType = creature && creature.type
 
@@ -328,7 +327,7 @@ class MiniLocation extends React.Component {
             {(false && renderedItems) || null}
 
             <div className={css.characters}>
-              {this.renderCharacters({ creatures, isActive })}
+              {this.renderCreatures({ creatures, isActive })}
             </div>
 
             <span className={css.locationTitle}>{locationName}</span>

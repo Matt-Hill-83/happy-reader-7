@@ -119,8 +119,9 @@ class FrameViewer extends Component {
     )
   }
 
-  renderItems = () => {
-    const items = _get(this, "props.scene.items") || []
+  renderPocketItems = () => {
+    const questStatus = localStateStore.getQuestStatus()
+    const items = questStatus.pockets
 
     return items.map((item) => {
       const { name } = item
@@ -134,12 +135,12 @@ class FrameViewer extends Component {
     const { faces = [] } = frame
     if (!frame) return null
 
-    let allCharacters = []
+    let allCreatures = []
 
     if (frame.creatures && frame.creatures.length > 0) {
-      allCharacters = [...frame.creatures]
+      allCreatures = [...frame.creatures]
     } else {
-      allCharacters =
+      allCreatures =
         (scene.characters && scene.characters.map((item) => item.name)) || []
     }
 
@@ -150,17 +151,21 @@ class FrameViewer extends Component {
     } else {
       allItems = (scene.items && scene.items.map((item) => item.name)) || []
     }
+    console.log("allItems", toJS(allItems)) // zzz
+    console.log("scene.items", toJS(scene.items)) // zzz
 
     // const allItems = (scene.items && scene.items.map((item) => item.name)) || []
 
     // temp code DELETE ME!!! (start)
-    allCharacters.push(...allItems)
+    allCreatures.push(...allItems)
     // temp code DELETE ME!!! (end)
-    console.log("allCharacters", toJS(allCharacters)) // zzz
+    console.log("allCreatures", toJS(allCreatures)) // zzz
 
-    const filteredCharacters = allCharacters.filter((item) => {
+    const filteredCharacters = allCreatures.filter((item) => {
       return !["liz2", "kat", "katieKooper01"].includes(item)
     })
+
+    const lock01 = Images.backgrounds["lock01"]
 
     return filteredCharacters.map((character, index) => {
       const mood = this.getMood({ name: character, faces })
@@ -173,6 +178,7 @@ class FrameViewer extends Component {
             isEditMode={false}
             showHeadOnly={false}
           />
+          <img className={css.lock01} src={lock01} alt={`backgroundImage`} />
         </div>
       )
     })
@@ -183,12 +189,12 @@ class FrameViewer extends Component {
     const { faces = [] } = frame
     if (!frame) return null
 
-    let allCharacters = []
+    let allCreatures = []
 
     if (frame.creatures && frame.creatures.length > 0) {
-      allCharacters = [...frame.creatures]
+      allCreatures = [...frame.creatures]
     } else {
-      allCharacters =
+      allCreatures =
         (scene.characters && scene.characters.map((item) => item.name)) || []
     }
 
@@ -203,11 +209,11 @@ class FrameViewer extends Component {
     // const allItems = (scene.items && scene.items.map((item) => item.name)) || []
 
     // temp code DELETE ME!!! (start)
-    allCharacters.push(...allItems)
+    allCreatures.push(...allItems)
     // temp code DELETE ME!!! (end)
-    console.log("allCharacters", toJS(allCharacters)) // zzz
+    console.log("allCreatures", toJS(allCreatures)) // zzz
 
-    const filteredCharacters = allCharacters.filter((item) => {
+    const filteredCharacters = allCreatures.filter((item) => {
       return ["liz2", "kat", "katieKooper01"].includes(item)
     })
 
@@ -226,41 +232,6 @@ class FrameViewer extends Component {
       )
     })
   }
-
-  // renderSomeFriends = () => {
-  //   const { scene, frame } = this.props
-  //   const { faces = [] } = frame
-  //   if (!frame) return null
-
-  //   let allCharacters = []
-
-  //   if (frame.creatures && frame.creatures.length > 0) {
-  //     allCharacters = [...frame.creatures]
-  //   } else {
-  //     allCharacters =
-  //       (scene.characters && scene.characters.map((item) => item.name)) || []
-  //   }
-
-  //   const someCharacters = allCharacters.slice(0, 2)
-  //   const renderedCharacters = someCharacters.map((character, index) => {
-  //     const mood = this.getMood({ name: character, faces })
-
-  //     return (
-  //       <div className={`${css.characterContainer2}`} key={index}>
-  //         <Character
-  //           name={character}
-  //           mood={mood}
-  //           isEditMode={false}
-  //           showHeadOnly={true}
-  //           headClassName={css.headClassName}
-  //         />
-  //       </div>
-  //     )
-  //   })
-
-  //   return <div className={css.charactersContainer2}></div>
-  //   // return <div className={css.charactersContainer2}>{renderedCharacters}</div>
-  // }
 
   nextButtonRow = () => {
     const { isLastFrame } = this.props
@@ -314,7 +285,6 @@ class FrameViewer extends Component {
     const { scene, isLastFrame } = this.props
 
     const sceneName = scene.location.name
-    const renderedItems = this.renderItems()
 
     return (
       <div className={`${css.scenes}`}>
@@ -325,23 +295,20 @@ class FrameViewer extends Component {
           <MissionConsole />
           <div className={css.wordsAndButtons}>
             <div className={css.sceneName}>{sceneName}</div>
-            <div className={css.wordsContainer}>
-              {this.renderDialog()}
-              {/* {this.renderSomeFriends()} */}
-            </div>
+            <div className={css.wordsContainer}>{this.renderDialog()}</div>
             <div className={css.buttonsContainer}>
               {this.renderArrowNavigator()}
             </div>
           </div>
           <div className={css.imageGroupsContainer}>
             {/* uncomment this when more than 2 characters can be added */}
-            {/* <div className={css.itemsContainer}>{renderedItems}</div> */}
             <div className={css.lizAndKatContainer}>
               {this.renderLizAndKat()}
             </div>
             <div className={css.charactersContainer}>
               {this.renderFriends()}
             </div>
+            <div className={css.itemsContainer}>{this.renderPocketItems()}</div>
           </div>
         </div>
       </div>

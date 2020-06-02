@@ -146,6 +146,7 @@ import dress04 from "./creatures/dress04.png"
 import dress05 from "./creatures/dress05.png"
 import dress06 from "./creatures/dress06.png"
 import dress07 from "./creatures/dress07.png"
+import dress08 from "./creatures/dress08.png"
 
 import anna from "./creatures/anna.png"
 import sparkle01 from "./creatures/sparkle01.png"
@@ -169,6 +170,7 @@ import doorGreen from "./doors/doorGreen.png"
 import doorYellow from "./doors/doorYellow.jpg"
 
 // backgrounds
+import lock01 from "./backgrounds/lock01.png"
 import checkMarkRed01 from "./backgrounds/checkMarkRed01.png"
 import checkMarkGreen01 from "./backgrounds/checkMarkGreen01.png"
 import planetGlorp02 from "./backgrounds/planetGlorp02.png"
@@ -472,6 +474,8 @@ const creatures = {
   dress05,
   dress06,
   dress07,
+  dress08,
+
   elf,
   emmet01,
   fairy,
@@ -562,6 +566,7 @@ const doors = {
 }
 
 const backgrounds = {
+  lock01,
   door,
   planetGlorp02,
   checkMarkGreen01,

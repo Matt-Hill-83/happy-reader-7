@@ -104,9 +104,18 @@ class MainStory extends React.Component {
     this.updateActiveScene({ sceneId: startScene.id })
   }
 
+  updateQuestStatus = ({ sceneId }) => {
+    const questStatus = localStateStore.getQuestStatus()
+    console.log("questStatus", toJS(questStatus)) // zzz
+
+    const activeScene = localStateStore.getActiveScene()
+    console.log("activeScene", toJS(activeScene)) // zzz
+  }
+
   updateActiveScene = ({ sceneId }) => {
     localStateStore.setActiveSceneId(sceneId)
     localStateStore.setActiveFrameIndex(0)
+    this.updateQuestStatus({ sceneId })
   }
 
   toggleWorldBuilder = () => {
@@ -130,6 +139,10 @@ class MainStory extends React.Component {
   }
 
   onChangeWorld = ({ mapId }) => {
+    // TODO: I need to update the questStatus here
+    // TODO: I need to update the questStatus here
+    // TODO: I need to update the questStatus here
+    // TODO: I need to update the questStatus here
     localStateStore.setActiveMapId(mapId)
 
     const map = localStateStore.getActiveWorld()
@@ -140,9 +153,13 @@ class MainStory extends React.Component {
     const { questConfig } = map.data
 
     if (questConfig) {
+      const clonedQuestConfig = JSON.parse(JSON.stringify(questConfig))
       console.log("questConfig", toJS(questConfig)) // zzz
       const questStatus = localStateStore.getQuestStatus()
-      console.log("questStatus", toJS(questStatus)) // zzz
+      console.log("questStatus--------------------", toJS(questStatus)) // zzz
+      // localStateStore.setQuestStatus(questConfig)
+      const questStatus2 = localStateStore.getQuestStatus()
+      console.log("questStatus2--------------------", toJS(questStatus2)) // zzz
     }
 
     this.setState({ showYouWinModal: false })

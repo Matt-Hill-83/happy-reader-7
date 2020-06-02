@@ -17,7 +17,7 @@ class LocalStateStore {
 
   questStatus = {
     quests: [{ name: "Quest 1", completed: false }],
-    pockets: [{ name: "mop", amount: 1 }],
+    pockets: [{ name: "flag", amount: 1 }],
     rewards: [
       { name: "gold", amount: 5 },
       { name: "dresses", amount: 0 },
