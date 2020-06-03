@@ -21,21 +21,22 @@ class MissionConsole extends Component {
 
     const questStatus = localStateStore.getQuestStatus()
 
-    const columnNames = ["Mission", "Gold", ""]
-    // const tableProps = { columnWidths: [175, 40, 40] }
-    const tableProps = {}
+    const columnNames = ["Mission", "Bring the", "to the", "Gold", "Complete"]
+    const tableProps = { columnWidths: [175, 40, 40, null, null] }
+    // const tableProps = {}
     if (missions.length === 0) {
       return null
     }
     const tableData = missions.map((mission) => {
-      const { item, recipient, rewards } = mission
+      const { name, item, recipient, rewards } = mission
 
-      const missionString = `Bring the ${item.name} to the ${recipient.name}`
+      // const missionString = `Bring the ${item.name} to the ${recipient.name}`
       const rewardString = `${rewards[0].amount}`
-      return [missionString, rewardString, true]
+      return [name, item.name, recipient.name, rewardString, false]
+      // return [name, missionString, rewardString, true]
     })
 
-    const columnNames2 = ["Loot", ""]
+    const columnNamesRewards = ["Loot", ""]
     const tableProps2 = {}
     // const tableProps2 = { columnWidths: [150, 60] }
     const rewards = localStateStore.getQuestRewards()
@@ -72,7 +73,7 @@ class MissionConsole extends Component {
             <div className={css.right}>
               <MiniTable
                 tableProps={tableProps2}
-                columnNames={columnNames2}
+                columnNames={columnNamesRewards}
                 tableData={tableDataRewards}
               />
               <MiniTable

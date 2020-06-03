@@ -18,7 +18,7 @@ class LocalStateStore {
   _defaultQuestStatus = {
     activeMission: 0,
     questConfig: {
-      pockets: [{ name: "apple" }],
+      pockets: [{ name: "apple", amount: 1 }],
       missions: [
         {
           name: "Feed Piggy",
@@ -49,24 +49,28 @@ class LocalStateStore {
     this.questStatus = { ...this._defaultQuestStatus }
   }
 
-  // _getDesiredItems = () => {
-  //   const desiredItems = this.questStatus.activeMission.map((mission) => {
-  //     return mission.item
-  //   })
-
-  //   console.log("desiredItems", toJS(desiredItems)) // zzz
-
-  //   return desiredItems
-  // }
-
   updateQuestState = ({ itemsInScene }) => {
+    if (!this.questStatus.questConfig.missions) {
+      return null
+    }
+    const activeMission = this.questStatus.questConfig.missions[
+      this.questStatus.activeMission
+    ]
+
+    console.log("activeMission.name", toJS(activeMission.name)) // zzz
+
     const desiredItem = this.questStatus.questConfig.missions[
-      this.activeMission
+      this.questStatus.activeMission
     ].item
     console.log("desiredItem", toJS(desiredItem)) // zzz
 
-    let itemFound = itemsInScene.find((item) => item.name === desiredItem.name)
-    console.log("itemFound", itemFound) // zzz
+    const itemFound =
+      itemsInScene.find((item) => item.name === desiredItem.name) || null
+    console.log("itemFound", toJS(itemFound)) // zzz
+
+    if (itemFound) {
+    }
+    return { itemFound, missionCompleted: this.questStatus.activeMission }
   }
 
   getQuestItems = () => {

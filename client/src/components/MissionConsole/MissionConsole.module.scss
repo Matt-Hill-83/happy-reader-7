@@ -40,6 +40,7 @@
     justify-content: space-between;
     border-radius: 0.5vh;
     width: 100%;
+    flex-direction: column;
   }
 
   .left,
@@ -48,20 +49,16 @@
     display: flex;
     flex: 1 1;
     border-radius: 0.5vh;
-    max-width: 40%;
     font-size: 2vh;
     overflow: hidden;
+    border: 1px solid black !important;
+    margin: 0.5vh;
   }
 
   .left {
   }
   .right {
-    position: relative;
-    display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    flex: 1 1;
-    border-radius: 0.5vh;
-    font-size: 30px;
   }
 }
