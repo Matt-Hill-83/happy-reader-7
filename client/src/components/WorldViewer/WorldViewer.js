@@ -87,9 +87,9 @@ class WorldViewer extends React.Component {
           alt={"bk"}
         />
         <div className={`${css.mapScroller}`}>
-          <div className={`${css.missionConsoleBox}`}>
+          {/* <div className={`${css.missionConsoleBox}`}>
             <MissionConsole world={map} />
-          </div>
+          </div> */}
           <div className={`${css.innerMapScroller}`}>
             <img
               className={css.mapBackground}

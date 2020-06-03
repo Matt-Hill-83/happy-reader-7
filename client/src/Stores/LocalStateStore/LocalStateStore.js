@@ -15,13 +15,52 @@ class LocalStateStore {
   activeFrameIndex = 0
   activeSceneId = null
 
-  questStatus = {
-    quests: [{ name: "Quest 1", completed: false }],
-    pockets: [{ name: "flag", amount: 1 }],
-    rewards: [
-      { name: "gold", amount: 5 },
-      { name: "dresses", amount: 0 },
-    ],
+  _defaultQuestStatus = {
+    questConfig: {
+      pockets: [{ name: "apple" }],
+      missions: [
+        {
+          name: "Feed Piggy",
+          rewards: [{ name: "pig", amount: 1 }],
+          item: { name: "bun" },
+          recipient: { name: "log" },
+        },
+        {
+          name: "Bring Piggy Home",
+          rewards: [{ name: "gold", amount: 5 }],
+          item: { name: "pig" },
+          recipient: { name: "troll" },
+        },
+      ],
+    },
+  }
+
+  questStatus = { ...this._defaultQuestStatus }
+
+  getQuestNames = () => this.questStatus.quests.map((item) => item.name)
+
+  getQuestStatus = () => this.questStatus
+  setQuestStatus = (questStatus) => {
+    this.questStatus = questStatus
+  }
+
+  setQuestStatusToDefault = (questStatus) => {
+    this.questStatus = { ...this._defaultQuestStatus }
+  }
+
+  getQuestItems = () => {
+    const questItems = []
+    this.questStatus.questConfig.missions.forEach((mission) => {
+      questItems.push(...mission.items)
+    })
+    return questItems
+  }
+  getQuestRewards = () => {
+    const questItems = []
+    this.questStatus.questConfig.missions.forEach((mission) => {
+      questItems.push(...mission.rewards)
+    })
+    return questItems
   }
 
   getYou = () => this.you
@@ -84,13 +123,6 @@ class LocalStateStore {
   getActiveSceneId = () => this.activeSceneId
   setActiveSceneId = (activeSceneId) => {
     this.activeSceneId = activeSceneId
-  }
-
-  getQuestNames = () => this.questStatus.quests.map((item) => item.name)
-
-  getQuestStatus = () => this.questStatus
-  setQuestStatus = (questStatus) => {
-    this.questStatus = questStatus
   }
 
   getActiveScene = () => {

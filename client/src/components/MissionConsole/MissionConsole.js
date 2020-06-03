@@ -22,7 +22,8 @@ class MissionConsole extends Component {
     const questStatus = localStateStore.getQuestStatus()
 
     const columnNames = ["Mission", "Gold", ""]
-    const tableProps = { columnWidths: [175, 40, 40] }
+    // const tableProps = { columnWidths: [175, 40, 40] }
+    const tableProps = {}
     if (missions.length === 0) {
       return null
     }
@@ -35,15 +36,18 @@ class MissionConsole extends Component {
     })
 
     const columnNames2 = ["Loot", ""]
-    const tableProps2 = { columnWidths: [150, 60] }
-    const tableData2 = questStatus.rewards.map((reward) => {
+    const tableProps2 = {}
+    // const tableProps2 = { columnWidths: [150, 60] }
+    const rewards = localStateStore.getQuestRewards()
+
+    const tableDataRewards = rewards.map((reward) => {
       const { name, amount } = reward
       return [name, amount]
     })
 
     const columnNames3 = ["Pockets", ""]
     const tableProps3 = { columnWidths: [150, 60] }
-    const tableData3 = questStatus.pockets.map((item) => {
+    const tableData3 = questStatus.questConfig.pockets.map((item) => {
       const { name, amount } = item
       return [name, amount]
     })
@@ -68,7 +72,7 @@ class MissionConsole extends Component {
               <MiniTable
                 tableProps={tableProps2}
                 columnNames={columnNames2}
-                tableData={tableData2}
+                tableData={tableDataRewards}
               />
               <MiniTable
                 tableProps={tableProps3}

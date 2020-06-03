@@ -183,11 +183,10 @@
       padding: 2%;
       overflow: hidden;
       padding-bottom: 0px;
-      flex: 1;
-      min-height: fit-content;
+      flex: 1 1;
+      min-height: 15vh;
       height: fit-content;
       margin-top: auto;
-      // border: 3px solid purple !important;
 
       :global {
         [class*="WordGroup_main__"]:last-of-type {

@@ -121,7 +121,7 @@ class FrameViewer extends Component {
 
   renderPocketItems = () => {
     const questStatus = localStateStore.getQuestStatus()
-    const items = questStatus.pockets
+    const items = questStatus.questConfig.pockets
 
     return items.map((item) => {
       const { name } = item
