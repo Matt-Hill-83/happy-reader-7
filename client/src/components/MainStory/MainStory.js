@@ -88,7 +88,6 @@ class MainStory extends React.Component {
     if (SHOW_WORLD_BUILDER) return
     const mapId = localStateStore.getActiveWorldId()
     this.onChangeWorld({ mapId })
-    // this.initWorld()
   }
 
   getTerminalScene = ({ start = true }) => {

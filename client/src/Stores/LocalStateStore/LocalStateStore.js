@@ -20,7 +20,7 @@ class LocalStateStore {
     activeMission: 0,
     questConfig: {
       pockets: [{ name: "top", amount: 1 }],
-      pockets2: { apple: 1 },
+      pockets: { apple: 1 },
       missions: [
         {
           name: "Feed Piggy",
@@ -62,7 +62,7 @@ class LocalStateStore {
     if (!tempQuestStatus.questConfig) {
       return null
     }
-    const { missions, pockets, pockets2 } = tempQuestStatus.questConfig
+    const { missions, pockets } = tempQuestStatus.questConfig
 
     if (!missions) {
       return null
@@ -84,15 +84,14 @@ class LocalStateStore {
       if (!foundItem.amount) {
         foundItem.amount = 1
       }
-      pockets.push(foundItem)
 
-      if (pockets2[foundItem.name]) {
-        pockets2[foundItem.name].amount =
-          pockets2[foundItem.name].amount + foundItem.amount
+      if (pockets[foundItem.name]) {
+        pockets[foundItem.name].amount =
+          pockets[foundItem.name].amount + foundItem.amount
       } else {
-        pockets2[foundItem.name] = { amount: foundItem.amount }
+        pockets[foundItem.name] = { amount: foundItem.amount }
       }
-      console.log("pockets2", toJS(pockets2)) // zzz
+      console.log("pockets", toJS(pockets)) // zzz
 
       activeMission.completed = true
       this.setQuestStatus(tempQuestStatus)

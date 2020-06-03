@@ -52,10 +52,10 @@ class MissionConsole extends Component {
     const columnNames3 = ["Pockets", ""]
     const tableProps3 = {}
 
-    const tableData3 = []
+    const tableDataPockets = []
     for (const itemName in pockets) {
       const { amount } = pockets[itemName]
-      tableData3.push([itemName, amount])
+      tableDataPockets.push([itemName, amount])
     }
 
     return (
@@ -83,7 +83,7 @@ class MissionConsole extends Component {
               <MiniTable
                 tableProps={tableProps3}
                 columnNames={columnNames3}
-                tableData={tableData3}
+                tableData={tableDataPockets}
               />
             </div>
           </div>
