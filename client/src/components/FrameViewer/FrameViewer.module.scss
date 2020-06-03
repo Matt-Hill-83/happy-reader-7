@@ -161,32 +161,38 @@
 
   .dialogScroller {
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     z-index: 10;
     overflow-y: auto;
-    flex: 1;
-  }
-
-  .dialog {
-    display: flex;
-    z-index: 10;
-    flex-direction: column;
-    justify-content: flex-end;
+    flex: 1 1;
+    position: fixed;
+    right: 51.3vw;
+    left: 3vw;
+    border: 2px solid purple !important;
+    box-shadow: 5px 5px 15px 5px #000000;
     border-radius: 6px;
-    background: white;
-    position: relative;
-    padding: 2%;
-    overflow: hidden;
-    padding-bottom: 0px;
-    flex: 1;
-    min-height: fit-content;
-    height: fit-content;
-    margin-top: auto;
-    border: 3px solid purple !important;
 
-    :global {
-      [class*="WordGroup_main__"]:last-of-type {
-        margin-bottom: unset;
+    .dialog {
+      display: flex;
+      z-index: 10;
+      flex-direction: column;
+      justify-content: flex-end;
+      border-radius: 6px;
+      background: white;
+      position: relative;
+      padding: 2%;
+      overflow: hidden;
+      padding-bottom: 0px;
+      flex: 1;
+      min-height: fit-content;
+      height: fit-content;
+      margin-top: auto;
+      // border: 3px solid purple !important;
+
+      :global {
+        [class*="WordGroup_main__"]:last-of-type {
+          margin-bottom: unset;
+        }
       }
     }
 
@@ -411,7 +417,7 @@
     border: 1px solid black !important;
     position: fixed;
     overflow: hidden;
-    z-index: 1;
+    z-index: 2;
     border-radius: 1vh;
     left: 50vw;
     bottom: 25vh;
