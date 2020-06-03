@@ -50,18 +50,18 @@ class LocalStateStore {
   }
 
   updateQuestState = ({ itemsInScene }) => {
-    if (!this.questStatus.questConfig.missions) {
+    const tempQuestStatus = this.questStatus
+    const missions = tempQuestStatus.questConfig.missions
+
+    if (!missions) {
       return null
     }
-    const activeMission = this.questStatus.questConfig.missions[
-      this.questStatus.activeMission
-    ]
+
+    const activeMission = missions[tempQuestStatus.activeMission] || {}
 
     console.log("activeMission.name", toJS(activeMission.name)) // zzz
 
-    const desiredItem = this.questStatus.questConfig.missions[
-      this.questStatus.activeMission
-    ].item
+    const desiredItem = activeMission.item
     console.log("desiredItem", toJS(desiredItem)) // zzz
 
     const itemFound =
@@ -69,7 +69,13 @@ class LocalStateStore {
     console.log("itemFound", toJS(itemFound)) // zzz
 
     if (itemFound) {
+      tempQuestStatus.activeMission++
+      activeMission.completed = true
+      this.setQuestStatus(tempQuestStatus)
     }
+
+    console.log("activeMission", toJS(activeMission)) // zzz
+
     return { itemFound, missionCompleted: this.questStatus.activeMission }
   }
 

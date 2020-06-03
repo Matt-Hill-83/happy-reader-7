@@ -15,6 +15,10 @@ class MissionConsole extends Component {
   state = {}
 
   render = () => {
+    console.log("render mission console----------------------------") // zzz
+    console.log("render mission console----------------------------") // zzz
+    console.log("render mission console----------------------------") // zzz
+
     const { showHeader = false } = this.props
     const world = localStateStore.getActiveWorld()
     const missions = _get(world, "data.questConfig.missions") || []
@@ -23,17 +27,15 @@ class MissionConsole extends Component {
 
     const columnNames = ["Mission", "Bring the", "to the", "Gold", "Complete"]
     const tableProps = { columnWidths: [175, 40, 40, null, null] }
-    // const tableProps = {}
     if (missions.length === 0) {
       return null
     }
     const tableData = missions.map((mission) => {
-      const { name, item, recipient, rewards } = mission
+      const { name, item, recipient, rewards, completed } = mission
+      console.log("completed", completed) // zzz
 
-      // const missionString = `Bring the ${item.name} to the ${recipient.name}`
       const rewardString = `${rewards[0].amount}`
-      return [name, item.name, recipient.name, rewardString, false]
-      // return [name, missionString, rewardString, true]
+      return [name, item.name, recipient.name, rewardString, completed]
     })
 
     const columnNamesRewards = ["Loot", ""]

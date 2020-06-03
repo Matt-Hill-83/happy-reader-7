@@ -124,14 +124,15 @@ class MainStory extends React.Component {
     const questStatus = localStateStore.getQuestStatus()
     console.log("questStatus", toJS(questStatus)) // zzz
 
-    const questStatus2 = localStateStore.getQuestStatus()
-    console.log("questStatus2", toJS(questStatus2)) // zzz
-
     const activeScene = localStateStore.getActiveScene()
     console.log("activeScene", toJS(activeScene)) // zzz
 
     const itemsInScene = activeScene.items || []
     const test = localStateStore.updateQuestState({ itemsInScene })
+    console.log("test", toJS(test)) // zzz
+    const questStatus2 = localStateStore.getQuestStatus()
+    console.log("questStatus2", toJS(questStatus2)) // zzz
+    this.setState({ dummy: new Date() })
   }
 
   onChangeWorld = ({ mapId }) => {
@@ -209,6 +210,8 @@ class MainStory extends React.Component {
   }
 
   render() {
+    console.log("render main story =============================>>>") // zzz
+
     const { className } = this.props
     const activeWorld = localStateStore.getActiveWorld()
     console.log("activeWorld", toJS(activeWorld)) // zzz

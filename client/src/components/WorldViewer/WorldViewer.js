@@ -43,11 +43,14 @@ class WorldViewer extends React.Component {
     const isActive = scene.id === activeScene.id ? true : false
 
     const id = `${colIndex}-${rowIndex}`
-    const onClick = () =>
-      updateActiveScene({
-        sceneId: scene.id,
-      })
-
+    let onClick = () => {}
+    if (scene.location.name !== "blank") {
+      onClick = () => {
+        updateActiveScene({
+          sceneId: scene.id,
+        })
+      }
+    }
     return (
       // This wrapper div seems to be required to make things render withought ghost divs being included in the list.
       <div onClick={onClick} className={css.minilocationWrapper}>
@@ -87,9 +90,9 @@ class WorldViewer extends React.Component {
           alt={"bk"}
         />
         <div className={`${css.mapScroller}`}>
-          {/* <div className={`${css.missionConsoleBox}`}>
+          <div className={`${css.missionConsoleBox}`}>
             <MissionConsole world={map} />
-          </div> */}
+          </div>
           <div className={`${css.innerMapScroller}`}>
             <img
               className={css.mapBackground}
