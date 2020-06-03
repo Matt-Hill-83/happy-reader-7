@@ -19,6 +19,11 @@ let isProdRelease
 isProdRelease = true
 isProdRelease = false
 
+let useDefaultWorldId
+useDefaultWorldId = false
+useDefaultWorldId = true
+const defaultWorldId = "Kx78cfHCkhpm2NQnmCp8"
+
 let SHOW_WORLD_BUILDER
 // SHOW_WORLD_BUILDER = true
 SHOW_WORLD_BUILDER = false
@@ -42,7 +47,12 @@ class MainStory extends React.Component {
     if (maps.docs && maps.docs[0]) {
       const defaultMap = Utils.getFirstReleasedMap()
       const mapId = _get(defaultMap, "id")
-      localStateStore.setActiveMapId(mapId)
+
+      if (useDefaultWorldId) {
+        localStateStore.setActiveMapId(defaultWorldId)
+      } else {
+        localStateStore.setActiveMapId(mapId)
+      }
     }
 
     // use this toggle to start in World Builder mode:
@@ -55,7 +65,7 @@ class MainStory extends React.Component {
   }
 
   init = async () => {
-    Utils.getFirstReleasedMap()
+    // Utils.getFirstReleasedMap()
     const savedMaps = Utils.getItemsFromDbObj({ dbList: maps })
     const filteredMaps = savedMaps.filter((map) => map.data.released)
 
