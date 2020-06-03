@@ -157,7 +157,7 @@ const story007 = {
             '{"troll" : "TROLL SOOOOOO SAD!!!!"}',
             '{"kat" : "Oh brother... here it comes..."}',
             '{"liz2" : "Oh no! Troll, why are you sad?"}',
-            '{"troll" : "TROLL LOSE PIGGY!"}',
+            '{"troll" : "TROLL LOST PIGGY!"}',
           ],
         },
         {

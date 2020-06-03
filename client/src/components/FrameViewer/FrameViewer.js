@@ -167,6 +167,11 @@ class FrameViewer extends Component {
 
     const lock01 = Images.backgrounds["lock01"]
 
+    // - determine is an item in the scene is a reward in a quest
+    // -- if so pick it up
+    // - determine if the user has
+    const playerHasCompletedAllQuests = false
+
     return filteredCharacters.map((character, index) => {
       const mood = this.getMood({ name: character, faces })
 
@@ -178,7 +183,9 @@ class FrameViewer extends Component {
             isEditMode={false}
             showHeadOnly={false}
           />
-          <img className={css.lock01} src={lock01} alt={`backgroundImage`} />
+          {playerHasCompletedAllQuests && (
+            <img className={css.lock01} src={lock01} alt={`backgroundImage`} />
+          )}
         </div>
       )
     })
