@@ -48,7 +48,7 @@ class MainStory extends React.Component {
       const defaultMap = Utils.getFirstReleasedMap()
       const mapId = _get(defaultMap, "id")
 
-      if (useDefaultWorldId) {
+      if (!isProdRelease && useDefaultWorldId) {
         localStateStore.setActiveMapId(defaultWorldId)
       } else {
         localStateStore.setActiveMapId(mapId)
