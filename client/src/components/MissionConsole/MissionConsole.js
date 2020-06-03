@@ -19,11 +19,12 @@ class MissionConsole extends Component {
     console.log("render mission console----------------------------") // zzz
     console.log("render mission console----------------------------") // zzz
 
-    const { showHeader = false } = this.props
+    const { showHeader = false, key } = this.props
     const world = localStateStore.getActiveWorld()
     const missions = _get(world, "data.questConfig.missions") || []
 
     const questStatus = localStateStore.getQuestStatus()
+    console.log("questStatus", toJS(questStatus)) // zzz
 
     const columnNames = ["Mission", "Bring the", "to the", "Gold", "Complete"]
     const tableProps = { columnWidths: [175, 40, 40, null, null] }
@@ -33,6 +34,7 @@ class MissionConsole extends Component {
     const tableData = missions.map((mission) => {
       const { name, item, recipient, rewards, completed } = mission
       console.log("completed", completed) // zzz
+      console.log("mission", toJS(mission)) // zzz
 
       const rewardString = `${rewards[0].amount}`
       return [name, item.name, recipient.name, rewardString, completed]
@@ -56,8 +58,13 @@ class MissionConsole extends Component {
       return [name, amount]
     })
 
+    const test = localStateStore.test
+    console.log("test", toJS(test)) // zzz
+    console.log("key", key) // zzz
+
     return (
       <div className={css.main}>
+        {/* <div>{test}</div> */}
         {showHeader && (
           <div className={css.header}>
             <div className={css.title}>Your Stuff</div>

@@ -299,7 +299,7 @@ class FrameViewer extends Component {
         {this.renderLocationImage()}
 
         <div className={css.relativePositionedContent}>
-          <MissionConsole />
+          {/* <MissionConsole /> */}
           <div className={css.wordsAndButtons}>
             <div className={css.sceneName}>{sceneName}</div>
             <div className={css.wordsContainer}>{this.renderDialog()}</div>

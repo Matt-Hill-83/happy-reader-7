@@ -14,6 +14,7 @@ class LocalStateStore {
   activeMapId = null
   activeFrameIndex = 0
   activeSceneId = null
+  test = null
 
   _defaultQuestStatus = {
     activeMission: 0,
@@ -45,24 +46,30 @@ class LocalStateStore {
     this.questStatus = questStatus
   }
 
-  setQuestStatusToDefault = (questStatus) => {
+  setQuestStatusToDefault = () => {
     this.questStatus = { ...this._defaultQuestStatus }
   }
 
   updateQuestState = ({ itemsInScene }) => {
     const tempQuestStatus = this.questStatus
+    console.log("tempQuestStatus", toJS(tempQuestStatus)) // zzz
+
     const missions = tempQuestStatus.questConfig.missions
+    console.log("missions", toJS(missions)) // zzz
 
     if (!missions) {
       return null
     }
 
-    const activeMission = missions[tempQuestStatus.activeMission] || {}
-
-    console.log("activeMission.name", toJS(activeMission.name)) // zzz
+    const activeMission = missions[tempQuestStatus.activeMission] || null
+    if (!activeMission) {
+      return {}
+    }
+    console.log("activeMission", toJS(activeMission)) // zzz
 
     const desiredItem = activeMission.item
     console.log("desiredItem", toJS(desiredItem)) // zzz
+    console.log("itemsInScene", toJS(itemsInScene)) // zzz
 
     const itemFound =
       itemsInScene.find((item) => item.name === desiredItem.name) || null
@@ -72,6 +79,8 @@ class LocalStateStore {
       tempQuestStatus.activeMission++
       activeMission.completed = true
       this.setQuestStatus(tempQuestStatus)
+      this.questStatus = tempQuestStatus
+      this.test = new Date()
     }
 
     console.log("activeMission", toJS(activeMission)) // zzz
@@ -86,6 +95,7 @@ class LocalStateStore {
     })
     return questItems
   }
+
   getQuestRewards = () => {
     const questItems = []
     this.questStatus.questConfig.missions.forEach((mission) => {
@@ -179,6 +189,7 @@ decorate(LocalStateStore, {
   activeFrameIndex: observable,
   activeSceneId: observable,
   questStatus: observable,
+  test: observable,
 })
 
 const localStateStore = new LocalStateStore()
