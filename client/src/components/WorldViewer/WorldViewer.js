@@ -75,7 +75,7 @@ class WorldViewer extends React.Component {
     console.log("render World Viewer+++++++++++++++++++++++++") // zzz
 
     const map = localStateStore.getActiveWorld()
-    const key = localStateStore.questStatus
+    const key = new Date()
 
     const leftArrow = Images.backgrounds["leftArrow"]
     const rightArrow = Images.backgrounds["rightArrow"]
@@ -96,7 +96,7 @@ class WorldViewer extends React.Component {
         />
         <div className={`${css.mapScroller}`}>
           <div className={`${css.missionConsoleBox}`}>
-            <MissionConsole world={map} key={new Date()} />
+            <MissionConsole world={map} key={key} />
           </div>
           <div className={`${css.innerMapScroller}`}>
             <img
