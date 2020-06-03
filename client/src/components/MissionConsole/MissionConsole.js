@@ -22,7 +22,10 @@ class MissionConsole extends Component {
     const { showHeader = false } = this.props
 
     const questStatus = localStateStore.getQuestStatus()
-    const { missions } = questStatus.questConfig
+    if (!questStatus.questConfig) {
+      return null
+    }
+    const { missions, pockets } = questStatus.questConfig
 
     const columnNames = ["Mission", "Bring the", "to the", "Gold", "Complete"]
     const tableProps = { columnWidths: [175, 40, 40, null, null] }
@@ -48,11 +51,12 @@ class MissionConsole extends Component {
 
     const columnNames3 = ["Pockets", ""]
     const tableProps3 = {}
-    // const tableProps3 = { columnWidths: [150, 60] }
-    const tableData3 = questStatus.questConfig.pockets.map((item) => {
-      const { name, amount } = item
-      return [name, amount]
-    })
+
+    const tableData3 = []
+    for (const itemName in pockets) {
+      const { amount } = pockets[itemName]
+      tableData3.push([itemName, amount])
+    }
 
     return (
       <div className={css.main}>

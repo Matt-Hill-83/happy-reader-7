@@ -39,7 +39,6 @@ class MiniTable extends Component {
 
   render = () => {
     const { columnNames, tableData, tableProps = {} } = this.props
-    console.log("tableProps", toJS(tableProps)) // zzz
 
     const columns = columnNames.map((name, index) => {
       return <Column key={index} cellRenderer={this.renderCell} name={name} />

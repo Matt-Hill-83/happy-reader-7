@@ -121,12 +121,15 @@ class FrameViewer extends Component {
 
   renderPocketItems = () => {
     const questStatus = localStateStore.getQuestStatus()
-    const items = questStatus.questConfig.pockets
+    console.log("questStatus-----FV---------------", toJS(questStatus)) // zzz
 
-    return items.map((item) => {
-      const { name } = item
-
-      return <ImageDisplay className={css.itemContainer} item={{ name }} />
+    const items = _get(questStatus, "questConfig.pockets")
+    const itemKeys = Object.keys(items)
+    if (!itemKeys) {
+      return null
+    }
+    return itemKeys.map((key) => {
+      return <ImageDisplay className={css.itemContainer} item={{ key }} />
     })
   }
 

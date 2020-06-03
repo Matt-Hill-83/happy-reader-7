@@ -1,7 +1,7 @@
 const story007 = {
-  title: "story output",
+  title: "007 - Kat's First Quest",
   questConfig: {
-    pockets: [{ name: "apple" }],
+    pockets: { cup: { amount: 1 }, flag: { amount: 2 } },
     missions: [
       {
         name: "Feed Piggy",

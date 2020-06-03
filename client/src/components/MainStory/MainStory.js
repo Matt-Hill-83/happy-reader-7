@@ -86,8 +86,9 @@ class MainStory extends React.Component {
 
     localStateStore.setShowWorldBuilder(SHOW_WORLD_BUILDER)
     if (SHOW_WORLD_BUILDER) return
-
-    this.initWorld()
+    const mapId = localStateStore.getActiveWorldId()
+    this.onChangeWorld({ mapId })
+    // this.initWorld()
   }
 
   getTerminalScene = ({ start = true }) => {
@@ -121,41 +122,29 @@ class MainStory extends React.Component {
   }
 
   updateQuestStatus = () => {
-    const questStatus = localStateStore.getQuestStatus()
-    console.log("questStatus", toJS(questStatus)) // zzz
-
     const activeScene = localStateStore.getActiveScene()
-    console.log("activeScene", toJS(activeScene)) // zzz
-
     const itemsInScene = activeScene.items || []
-    const test = localStateStore.updateQuestState({ itemsInScene })
-    console.log("test", toJS(test)) // zzz
-    const questStatus2 = localStateStore.getQuestStatus()
-    console.log("questStatus2", toJS(questStatus2)) // zzz
+    localStateStore.updateQuestState({ itemsInScene })
     this.setState({ dummy: new Date() })
   }
 
   onChangeWorld = ({ mapId }) => {
-    console.log("onChangeWorld=======================================>>>>>>>") // zzz
-    console.log("onChangeWorld=======================================>>>>>>>") // zzz
+    console.log("mapId", mapId) // zzz
 
-    // TODO: I need to update the questStatus here
-    // TODO: I need to update the questStatus here
-    // TODO: I need to update the questStatus here
-    // TODO: I need to update the questStatus here
+    console.log("onChangeWorld") // zzz
+    console.log("onChangeWorld") // zzz
+
     localStateStore.setActiveMapId(mapId)
-
     const map = localStateStore.getActiveWorld()
-
     const { questConfig } = map.data
+    console.log("questConfig", toJS(questConfig)) // zzz
 
     if (questConfig) {
-      // const questStatus = localStateStore.getQuestStatus()
-
       const clonedQuestConfig = JSON.parse(JSON.stringify(questConfig))
-
-      localStateStore.setQuestStatus(clonedQuestConfig)
-      // const questStatus2 = localStateStore.getQuestStatus()
+      localStateStore.setQuestStatus({
+        activeMission: 0,
+        questConfig: clonedQuestConfig,
+      })
     }
 
     this.setState({ showYouWinModal: false })
@@ -210,19 +199,10 @@ class MainStory extends React.Component {
   }
 
   render() {
-    console.log("render main story =============================>>>") // zzz
-
     const { className } = this.props
     const activeWorld = localStateStore.getActiveWorld()
-    console.log("activeWorld", toJS(activeWorld)) // zzz
-    console.log("-------") // zzz
-    console.log("-------") // zzz
-    console.log("-------") // zzz
-
-    console.log("UserConfigStore", toJS(UserConfigStore)) // zzz
 
     const showWorldBuilder = localStateStore.getShowWorldBuilder()
-    console.log("showWorldBuilder", toJS(showWorldBuilder)) // zzz
 
     if (showWorldBuilder) {
       return (
@@ -236,7 +216,6 @@ class MainStory extends React.Component {
     if (!activeWorld || !activeWorld.data || !activeWorld.data.title) {
       return null
     }
-    console.log("activeWorld.id", toJS(activeWorld.id)) // zzz
 
     const activeScene = localStateStore.getActiveScene()
     if (!activeScene) {
