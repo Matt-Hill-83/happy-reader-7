@@ -46,7 +46,8 @@ class MissionConsole extends Component {
     })
 
     const columnNames3 = ["Pockets", ""]
-    const tableProps3 = { columnWidths: [150, 60] }
+    const tableProps3 = {}
+    // const tableProps3 = { columnWidths: [150, 60] }
     const tableData3 = questStatus.questConfig.pockets.map((item) => {
       const { name, amount } = item
       return [name, amount]

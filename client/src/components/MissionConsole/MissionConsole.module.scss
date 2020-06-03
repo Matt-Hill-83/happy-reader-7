@@ -1,14 +1,22 @@
 .main {
+  position: fixed;
   display: flex;
   flex-direction: column;
   flex: 1 1;
-  align-self: center;
-  justify-self: center;
-  border-radius: 2px;
-  background: unset;
-  margin-left: 5vh;
-  margin: 0vh 1vh;
-  margin-top: 0vh;
+  top: 6vh;
+  left: 3vw;
+  right: 51.6vw;
+  overflow: hidden;
+  background: #ffffffa6;
+  border: 1px solid black !important;
+  border-radius: 1vh;
+  box-shadow: 5px 5px 15px 5px #000000;
+  z-index: 1;
+  background: #ffffffa6;
+  border: 1px solid black !important;
+  border-radius: 1vh;
+  box-shadow: 5px 5px 15px 5px #000000;
+  z-index: 1;
 
   .header {
     display: flex;

@@ -16,6 +16,7 @@ class LocalStateStore {
   activeSceneId = null
 
   _defaultQuestStatus = {
+    activeMission: 0,
     questConfig: {
       pockets: [{ name: "apple" }],
       missions: [
@@ -46,6 +47,26 @@ class LocalStateStore {
 
   setQuestStatusToDefault = (questStatus) => {
     this.questStatus = { ...this._defaultQuestStatus }
+  }
+
+  // _getDesiredItems = () => {
+  //   const desiredItems = this.questStatus.activeMission.map((mission) => {
+  //     return mission.item
+  //   })
+
+  //   console.log("desiredItems", toJS(desiredItems)) // zzz
+
+  //   return desiredItems
+  // }
+
+  updateQuestState = ({ itemsInScene }) => {
+    const desiredItem = this.questStatus.questConfig.missions[
+      this.activeMission
+    ].item
+    console.log("desiredItem", toJS(desiredItem)) // zzz
+
+    let itemFound = itemsInScene.find((item) => item.name === desiredItem.name)
+    console.log("itemFound", itemFound) // zzz
   }
 
   getQuestItems = () => {

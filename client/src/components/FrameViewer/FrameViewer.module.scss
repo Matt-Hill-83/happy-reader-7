@@ -37,7 +37,6 @@
     justify-content: flex-start;
     font-size: 2.6vh;
     text-transform: capitalize;
-    background: white;
     width: fit-content;
     padding: 0px 1vh;
     border-radius: 0.4vh;
@@ -75,13 +74,15 @@
 
   .itemsContainer {
     --box-height: 6vh;
-
     display: flex;
     overflow: hidden;
     width: fit-content;
-    margin-left: 3vh;
+    /* margin-left: 3vh; */
     position: absolute;
-    top: 7vh;
+    top: 21vh;
+    position: fixed;
+    left: 28vw;
+    border: 1px solid red !important;
 
     .itemContainer {
       display: flex;
