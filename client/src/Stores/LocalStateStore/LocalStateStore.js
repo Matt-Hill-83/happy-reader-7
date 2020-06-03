@@ -19,8 +19,7 @@ class LocalStateStore {
   _defaultQuestStatus = {
     activeMission: 0,
     questConfig: {
-      pockets: [{ name: "top", amount: 1 }],
-      pockets: { apple: 1 },
+      pockets: { top: { amount: 1 } },
       missions: [
         {
           name: "Feed Piggy",
@@ -62,7 +61,7 @@ class LocalStateStore {
     if (!tempQuestStatus.questConfig) {
       return null
     }
-    const { missions, pockets } = tempQuestStatus.questConfig
+    const { missions, pockets = {} } = tempQuestStatus.questConfig
 
     if (!missions) {
       return null
