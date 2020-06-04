@@ -23,9 +23,9 @@ class LocalStateStore {
       missions: [
         {
           name: "Feed Piggy",
-          rewards: [{ name: "pig", amount: 1 }],
+          rewards: [{ name: "gold", amount: 1 }],
           item: { name: "bun" },
-          recipient: { name: "log" },
+          recipient: { name: "pig" },
         },
         {
           name: "Bring Piggy Home",
@@ -50,7 +50,7 @@ class LocalStateStore {
     this.questStatus = { ...this._defaultQuestStatus }
   }
 
-  updateQuestState = ({ itemsInScene }) => {
+  updateQuestState = ({ itemsInScene, charactersInScene }) => {
     const questStatus = this.questStatus
     console.log("questStatus--------------LSS----->>>", toJS(questStatus)) // zzz
 
@@ -71,15 +71,78 @@ class LocalStateStore {
     // activeMission.completed = true
 
     const desiredItem = activeMission.item
+    const desiredRecipient = activeMission.recipient
     console.log("itemsInScene", toJS(itemsInScene)) // zzz
 
     const foundItem = this._findItem({ itemsInScene, desiredItem, questStatus })
+    const completedMission = this._completeMission({
+      charactersInScene,
+      desiredItem,
+      desiredRecipient,
+      questStatus,
+    })
 
     return { foundItem, completedMission: this.questStatus.activeMission }
   }
 
+  _isDesiredItemInPocket = ({ desiredItem, pockets }) => {
+    const itemsInPockets = Object.keys(pockets)
+    console.log(
+      "itemsInPockets===========================>>>",
+      toJS(itemsInPockets)
+    ) // zzz
+    console.log("desiredItem", toJS(desiredItem)) // zzz
+
+    return itemsInPockets.includes(desiredItem.name)
+  }
+
+  _isDesiredRecipientHere = ({ desiredItem, pockets }) => {
+    const itemsInPockets = Object.keys(pockets)
+    console.log(
+      "itemsInPockets===========================>>>",
+      toJS(itemsInPockets)
+    ) // zzz
+    console.log("desiredItem", toJS(desiredItem)) // zzz
+
+    return itemsInPockets.includes(desiredItem.name)
+  }
+
+  _completeMission = ({
+    charactersInScene,
+    desiredItem,
+    desiredRecipient,
+    questStatus,
+  }) => {
+    const { pockets = {} } = questStatus.questConfig
+
+    const isDesiredItemInPocket = this._isDesiredItemInPocket({
+      desiredItem,
+      pockets,
+    })
+
+    const isDesiredRecipientHere = this._isDesiredRecipientHere({
+      desiredItem,
+      pockets,
+    })
+
+    console.log("isDesiredRecipientHere", toJS(isDesiredRecipientHere)) // zzz
+    console.log("isDesiredItemInPocket", toJS(isDesiredItemInPocket)) // zzz
+
+    const missionCompleted = isDesiredRecipientHere && isDesiredItemInPocket
+    console.log("missionCompleted", toJS(missionCompleted)) // zzz
+
+    console.log("pockets", toJS(pockets)) // zzz
+
+    // questStatus.activeMission++
+    this.setQuestStatus(questStatus)
+    // return foundCharacter
+  }
+
   _findItem = ({ itemsInScene, desiredItem, questStatus }) => {
     const { pockets = {} } = questStatus.questConfig
+
+    console.log("itemsInScene+_+_+_+_+_+_+_=-=-=-=-=-", toJS(itemsInScene)) // zzz
+    console.log("desiredItem", toJS(desiredItem)) // zzz
 
     const foundItem =
       itemsInScene.find((item) => item.name === desiredItem.name) || null
@@ -93,9 +156,10 @@ class LocalStateStore {
       foundItem.amount = 1
     }
 
-    if (pockets[foundItem.name]) {
-      pockets[foundItem.name].amount =
-        pockets[foundItem.name].amount + foundItem.amount
+    const itemsInPockets = pockets[foundItem.name]
+
+    if (itemsInPockets) {
+      itemsInPockets.amount = itemsInPockets.amount + foundItem.amount
     } else {
       pockets[foundItem.name] = { amount: foundItem.amount }
     }
