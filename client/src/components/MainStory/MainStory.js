@@ -168,8 +168,19 @@ class MainStory extends React.Component {
 
     if (questConfig) {
       const clonedQuestConfig = JSON.parse(JSON.stringify(questConfig))
+
+      const combinedPockets = localStateStore.addToPockets({
+        newPockets: clonedQuestConfig.pockets,
+      })
+
+      console.log(
+        "combinedPockets++++++++++++++++++++++_+_",
+        toJS(combinedPockets)
+      ) // zzz
+
       localStateStore.setQuestStatus({
         activeMission: 0,
+        pockets: combinedPockets,
         questConfig: clonedQuestConfig,
       })
     }

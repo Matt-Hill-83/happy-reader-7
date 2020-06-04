@@ -25,7 +25,8 @@ class MissionConsole extends Component {
     if (!questStatus.questConfig) {
       return null
     }
-    const { missions, pockets } = questStatus.questConfig
+    const { missions } = questStatus.questConfig
+    const { pockets } = questStatus
 
     const columnNames = [
       "Mission",
@@ -43,16 +44,6 @@ class MissionConsole extends Component {
 
       const rewardString = `${rewards[0].amount}`
       return [name, item.name, recipient.name, rewardString, completed]
-    })
-
-    const columnNamesRewards = ["Loot", ""]
-    const tableProps2 = {}
-    // const tableProps2 = { columnWidths: [150, 60] }
-    const rewards = localStateStore.getQuestRewards()
-
-    const tableDataRewards = rewards.map((reward) => {
-      const { name, amount } = reward
-      return [name, amount]
     })
 
     const columnNames3 = ["Pockets", ""]

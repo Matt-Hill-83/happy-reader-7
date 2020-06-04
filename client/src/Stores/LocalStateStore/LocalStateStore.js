@@ -18,8 +18,9 @@ class LocalStateStore {
 
   _defaultQuestStatus = {
     activeMission: 0,
+    pockets: { top: { amount: 1 } },
     questConfig: {
-      pockets: { top: { amount: 1 } },
+      // pockets: { top: { amount: 1 } },
       missions: [
         {
           name: "Feed Piggy",
@@ -71,6 +72,24 @@ class LocalStateStore {
     return activeMission.recipient
   }
 
+  addToPockets = ({ newPockets }) => {
+    const existingPockets = this.getQuestStatus().pockets || {}
+    for (const newPocketName in newPockets) {
+      const newPocket = newPockets[newPocketName]
+      const existingItemWithSameName = existingPockets[newPocketName]
+
+      if (existingItemWithSameName) {
+        existingItemWithSameName.amount =
+          existingItemWithSameName.amount + newPocket.amount
+      } else {
+        existingPockets[newPocketName] = {
+          amount: newPocket.amount,
+        }
+      }
+    }
+    return existingPockets
+  }
+
   updateQuestState = ({ itemsInScene, charactersInScene }) => {
     const questStatus = this.questStatus
     console.log("questStatus--------------LSS----->>>", toJS(questStatus)) // zzz
@@ -90,12 +109,8 @@ class LocalStateStore {
       return {}
     }
 
-    // const desiredRecipient = activeMission.recipient
-    console.log("itemsInScene", toJS(itemsInScene)) // zzz
-
     const completedMission = this._completeMission({
       charactersInScene,
-      // desiredRecipient,
       questStatus,
     })
 
@@ -111,6 +126,10 @@ class LocalStateStore {
   }
 
   _isDesiredItemInPocket = ({ desiredItem, pockets }) => {
+    console.log("_isDesiredItemInPocket") // zzz
+
+    console.log("pockets", toJS(pockets)) // zzz
+
     const itemsInPockets = Object.keys(pockets)
     console.log(
       "itemsInPockets===========================>>>",
@@ -134,7 +153,7 @@ class LocalStateStore {
     const desiredItem = this.getDesiredItem({})
     const desiredRecipient = this.getDesiredRecipient({})
 
-    const { pockets = {} } = this.questStatus.questConfig
+    const { pockets = {} } = this.questStatus
 
     const isDesiredItemInPocket = this._isDesiredItemInPocket({
       desiredItem,
@@ -157,7 +176,7 @@ class LocalStateStore {
     const desiredItem = this.getDesiredItem({})
     const questStatus = this.questStatus
 
-    const { pockets = {} } = questStatus.questConfig
+    const { pockets = {} } = questStatus
 
     console.log("itemsInScene", toJS(itemsInScene)) // zzz
     console.log("desiredItem.name", toJS(desiredItem.name)) // zzz

@@ -123,7 +123,7 @@ class FrameViewer extends Component {
     const questStatus = localStateStore.getQuestStatus()
     console.log("questStatus-----FV---------------", toJS(questStatus)) // zzz
 
-    const items = _get(questStatus, "questConfig.pockets") || null
+    const items = _get(questStatus, "pockets") || null
 
     const itemKeys = Object.keys(items)
     if (itemKeys.length === 0 || !items) {
