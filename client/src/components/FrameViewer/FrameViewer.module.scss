@@ -35,7 +35,7 @@
   .sceneName {
     display: flex;
     justify-content: flex-start;
-    font-size: 2.6vh;
+    font-size: 2.2vh;
     text-transform: capitalize;
     width: fit-content;
     padding: 0px 1vh;
@@ -48,6 +48,9 @@
     margin-bottom: -1px;
     z-index: 10;
     border-bottom: 1px solid grey;
+    position: fixed;
+    top: 3vh;
+    right: 5vw;
   }
 
   .relativePositionedContent {
@@ -169,7 +172,7 @@
     position: fixed;
     right: 51.3vw;
     left: 3vw;
-    border: 2px solid purple !important;
+    border: 1px solid black !important;
     box-shadow: 5px 5px 15px 5px #000000;
     border-radius: 6px;
 
@@ -424,6 +427,8 @@
     box-shadow: 5px 5px 15px 5px #000000;
     transform: translateX(-50%);
     background: #ffffff24;
+    height: 12vh;
+    width: 18vh;
   }
 
   .newGameButton {
@@ -452,10 +457,6 @@
     z-index: 11;
     width: 100%;
     height: 100%;
-    background: #f3c1ff;
-    border: 2px solid purple !important;
-    // zzz fix this
-    // display: none;
   }
 
   .nextButton {
@@ -471,12 +472,12 @@
     position: relative;
     display: flex;
     align-items: center;
-    height: 12vh;
-    width: 18vh;
     border-radius: 7px;
     bottom: 1%;
-    right: 1vh;
+    /* right: 1vh; */
     overflow: hidden;
+    height: 100%;
+    width: 100%;
   }
 
   .headClassName {

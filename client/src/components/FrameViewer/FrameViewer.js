@@ -123,13 +123,18 @@ class FrameViewer extends Component {
     const questStatus = localStateStore.getQuestStatus()
     console.log("questStatus-----FV---------------", toJS(questStatus)) // zzz
 
-    const items = _get(questStatus, "questConfig.pockets")
+    const items = _get(questStatus, "questConfig.pockets") || null
+
     const itemKeys = Object.keys(items)
-    if (!itemKeys) {
+    if (itemKeys.length === 0 || !items) {
       return null
     }
-    return itemKeys.map((key) => {
-      return <ImageDisplay className={css.itemContainer} item={{ key }} />
+
+    return itemKeys.map((key, index) => {
+      const newItem = { name: key, index }
+      console.log("key================-=-=-=-", toJS(key)) // zzz
+
+      return <ImageDisplay className={css.itemContainer} item={newItem} />
     })
   }
 
@@ -244,15 +249,11 @@ class FrameViewer extends Component {
   }
 
   nextButtonRow = () => {
-    const { isLastFrame } = this.props
-
     return (
       <div className={css.nextPageButtonRow}>
-        {!isLastFrame && (
-          <Button onClick={this.onClickNext} className={css.nextButton}>
-            Next Page
-          </Button>
-        )}
+        <Button onClick={this.onClickNext} className={css.nextButton}>
+          Next Page
+        </Button>
       </div>
     )
   }
@@ -283,10 +284,12 @@ class FrameViewer extends Component {
             </Button>
           </div>
         )}
-        <ArrowNavigator
-          activeScene={activeScene}
-          updateActiveScene={updateActiveScene}
-        />
+        {isLastFrame && (
+          <ArrowNavigator
+            activeScene={activeScene}
+            updateActiveScene={updateActiveScene}
+          />
+        )}
       </div>
     )
   }
