@@ -16,8 +16,8 @@ import { UserConfigStore } from "../../Stores/UserConfigStore.js"
 import css from "./MainStory.module.scss"
 
 let isProdRelease
-isProdRelease = false
 isProdRelease = true
+isProdRelease = false
 
 let useDefaultWorldId
 useDefaultWorldId = false
@@ -52,7 +52,8 @@ class MainStory extends React.Component {
       const defaultMap = Utils.getFirstReleasedMap()
       const mapId = _get(defaultMap, "id")
 
-      if (!isProdRelease && useDefaultWorldId) {
+      if (useDefaultWorldId) {
+        // if (!isProdRelease && useDefaultWorldId) {
         localStateStore.setActiveMapId(defaultWorldId)
       } else {
         localStateStore.setActiveMapId(mapId)
