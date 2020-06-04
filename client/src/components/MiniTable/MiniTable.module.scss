@@ -17,6 +17,16 @@
       height: 2vh;
     }
 
+    // hide column headers
+    .bp3-table-quadrant.bp3-table-quadrant-top,
+    .bp3-table-top-container {
+      max-height: 2.1vh;
+    }
+
+    // .bp3-table-container {
+    //   min-height: unset;
+    // }
+
     .bp3-table-column-name-text {
       font-size: 1.2vh;
       // border: 1px solid red !important;
