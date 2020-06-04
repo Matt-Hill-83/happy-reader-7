@@ -272,6 +272,7 @@ import katPonytail from "./rigged-girls/kat/kat-ponytail.png"
 import greenKey from "./items/green-key.png"
 import hat from "./items/hat.png"
 import key from "./items/key.png"
+import gold from "./items/gold.png"
 
 // scene view
 import sceneViewBook from "./scene-view/book01.png"
@@ -538,6 +539,7 @@ const items = {
   hug,
   jug,
   key,
+  gold,
   mat,
   mop,
   mug,

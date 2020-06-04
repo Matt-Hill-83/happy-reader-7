@@ -18,9 +18,8 @@ class LocalStateStore {
 
   _defaultQuestStatus = {
     activeMission: 0,
-    pockets: { top: { amount: 1 } },
+    pockets: { top: { amount: 1 }, gold: { amount: 5 } },
     questConfig: {
-      // pockets: { top: { amount: 1 } },
       missions: [
         {
           name: "Feed Piggy",
