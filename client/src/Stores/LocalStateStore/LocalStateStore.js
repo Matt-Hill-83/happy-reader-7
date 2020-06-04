@@ -99,7 +99,7 @@ class LocalStateStore {
 
     console.log("activeMission", toJS(activeMission)) // zzz
 
-    return { foundItem, missionCompleted: this.questStatus.activeMission }
+    return { foundItem, completedMission: this.questStatus.activeMission }
   }
 
   getQuestItems = () => {

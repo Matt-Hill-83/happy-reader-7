@@ -2,7 +2,13 @@ import React from "react"
 import { observer } from "mobx-react"
 import { toJS } from "mobx"
 import _get from "lodash.get"
-import { ButtonGroup, Button } from "@blueprintjs/core"
+import {
+  Toaster,
+  Position,
+  Toast,
+  ButtonGroup,
+  Button,
+} from "@blueprintjs/core"
 
 import { maps } from "../../Stores/InitStores.js"
 import { worldNameStore } from "../../Stores/FrameSetStore.js"
@@ -27,6 +33,10 @@ const defaultWorldId = "Kx78cfHCkhpm2NQnmCp8"
 let SHOW_WORLD_BUILDER
 // SHOW_WORLD_BUILDER = true
 SHOW_WORLD_BUILDER = false
+
+const toaster = Toaster.create({
+  position: Position.TOP,
+})
 
 class MainStory extends React.Component {
   state = {
@@ -124,7 +134,22 @@ class MainStory extends React.Component {
     const activeScene = localStateStore.getActiveScene()
     const { items = [] } = activeScene
 
-    localStateStore.updateQuestState({ itemsInScene: items })
+    const { foundItem, completedMission } = localStateStore.updateQuestState({
+      itemsInScene: items,
+    })
+
+    if (foundItem) {
+      console.log("foundItem", toJS(foundItem)) // zzz
+      const message = (
+        <div>
+          <span>{`You find a ${foundItem.name}.`}</span>
+          <br />
+          <span>{`You put it in your pocket.`}</span>
+        </div>
+      )
+      toaster.show({ message, className: css.toaster, timeout: 120000 })
+    }
+
     this.setState({ dummy: new Date() })
   }
 
