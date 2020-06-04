@@ -27,8 +27,14 @@ class MissionConsole extends Component {
     }
     const { missions, pockets } = questStatus.questConfig
 
-    const columnNames = ["Mission", "Bring the", "to the", "Gold", "Complete"]
-    const tableProps = { columnWidths: [175, 40, 40, null, null] }
+    const columnNames = [
+      "Mission",
+      "Bring the...",
+      "to the...",
+      "Gold",
+      "Complete",
+    ]
+    const tableProps = { columnWidths: [175, 80, 80, null, null] }
     if (missions.length === 0) {
       return null
     }
