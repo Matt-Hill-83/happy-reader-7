@@ -121,7 +121,10 @@ class LocalStateStore {
     }
 
     const foundItem = this._findItem({ itemsInScene })
-    return { foundItem, completedMission }
+    return {
+      foundItem,
+      completedMission: completedMission ? activeMission : false,
+    }
   }
 
   _isDesiredItemInPocket = ({ desiredItem, pockets }) => {

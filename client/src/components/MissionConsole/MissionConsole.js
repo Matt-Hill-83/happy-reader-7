@@ -16,8 +16,6 @@ class MissionConsole extends Component {
 
   render = () => {
     console.log("render mission console----------------------------") // zzz
-    console.log("render mission console----------------------------") // zzz
-    console.log("render mission console----------------------------") // zzz
 
     const { showHeader = false } = this.props
 
@@ -26,7 +24,6 @@ class MissionConsole extends Component {
       return null
     }
     const { missions } = questStatus.questConfig
-    const { pockets } = questStatus
 
     const columnNames = [
       "Mission",
@@ -62,18 +59,7 @@ class MissionConsole extends Component {
                 tableProps={tableProps}
               />
             </div>
-            <div className={css.right}>
-              {/* <MiniTable
-                tableProps={tableProps2}
-                columnNames={columnNamesRewards}
-                tableData={tableDataRewards}
-              /> */}
-              {/* <MiniTable
-                tableProps={tableProps3}
-                columnNames={columnNames3}
-                tableData={tableDataPockets}
-              /> */}
-            </div>
+            {/* <div className={css.right}></div> */}
           </div>
         </div>
       </div>

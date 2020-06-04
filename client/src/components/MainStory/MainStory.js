@@ -141,7 +141,6 @@ class MainStory extends React.Component {
       itemsInScene: items,
       charactersInScene: [...characters, ...items],
     })
-    console.log("completedMission", completedMission) // zzz
 
     if (foundItem) {
       console.log("foundItem", toJS(foundItem)) // zzz
@@ -150,6 +149,25 @@ class MainStory extends React.Component {
           <span>{`You find a ${foundItem.name}.`}</span>
           <br />
           <span>{`You put it in your pocket.`}</span>
+        </div>
+      )
+      toaster.show({ message, className: css.toaster, timeout: 120000 })
+    }
+
+    console.log("completedMission", toJS(completedMission)) // zzz
+    if (completedMission) {
+      const { rewards, item, recipient, name } = completedMission
+
+      const reward = rewards[0]
+      const message = (
+        <div>
+          <span>{`You give the  ${item.name} to ${recipient.name}.`}</span>
+          <br />
+          <span>{`Good Job!`}</span>
+          <br />
+          <span>{`Mission Complete: "${name}".`}</span>
+          <br />
+          <span>{`You win: ${reward.amount}  ${reward.name}.`}</span>
         </div>
       )
       toaster.show({ message, className: css.toaster, timeout: 120000 })
