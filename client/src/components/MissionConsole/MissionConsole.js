@@ -77,11 +77,11 @@ class MissionConsole extends Component {
                 columnNames={columnNamesRewards}
                 tableData={tableDataRewards}
               /> */}
-              <MiniTable
+              {/* <MiniTable
                 tableProps={tableProps3}
                 columnNames={columnNames3}
                 tableData={tableDataPockets}
-              />
+              /> */}
             </div>
           </div>
         </div>

@@ -173,11 +173,6 @@ class MainStory extends React.Component {
         newPockets: clonedQuestConfig.pockets,
       })
 
-      console.log(
-        "combinedPockets++++++++++++++++++++++_+_",
-        toJS(combinedPockets)
-      ) // zzz
-
       localStateStore.setQuestStatus({
         activeMission: 0,
         pockets: combinedPockets,
