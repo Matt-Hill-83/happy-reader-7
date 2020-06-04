@@ -51,55 +51,58 @@ class LocalStateStore {
   }
 
   updateQuestState = ({ itemsInScene }) => {
-    const tempQuestStatus = this.questStatus
-    console.log(
-      "tempQuestStatus--------------LSS----->>>",
-      toJS(tempQuestStatus)
-    ) // zzz
+    const questStatus = this.questStatus
+    console.log("questStatus--------------LSS----->>>", toJS(questStatus)) // zzz
 
-    console.log("tempQuestStatus", toJS(tempQuestStatus)) // zzz
-    if (!tempQuestStatus.questConfig) {
+    console.log("questStatus", toJS(questStatus)) // zzz
+    if (!questStatus.questConfig) {
       return null
     }
-    const { missions, pockets = {} } = tempQuestStatus.questConfig
+    const { missions } = questStatus.questConfig
 
     if (!missions) {
       return null
     }
 
-    const activeMission = missions[tempQuestStatus.activeMission] || null
+    const activeMission = missions[questStatus.activeMission] || null
     if (!activeMission) {
       return {}
     }
+    // activeMission.completed = true
 
     const desiredItem = activeMission.item
     console.log("itemsInScene", toJS(itemsInScene)) // zzz
+
+    const foundItem = this._findItem({ itemsInScene, desiredItem, questStatus })
+
+    return { foundItem, completedMission: this.questStatus.activeMission }
+  }
+
+  _findItem = ({ itemsInScene, desiredItem, questStatus }) => {
+    const { pockets = {} } = questStatus.questConfig
 
     const foundItem =
       itemsInScene.find((item) => item.name === desiredItem.name) || null
     console.log("foundItem---------------------------->>>", toJS(foundItem)) // zzz
 
-    if (foundItem) {
-      tempQuestStatus.activeMission++
-      if (!foundItem.amount) {
-        foundItem.amount = 1
-      }
-
-      if (pockets[foundItem.name]) {
-        pockets[foundItem.name].amount =
-          pockets[foundItem.name].amount + foundItem.amount
-      } else {
-        pockets[foundItem.name] = { amount: foundItem.amount }
-      }
-      console.log("pockets", toJS(pockets)) // zzz
-
-      activeMission.completed = true
-      this.setQuestStatus(tempQuestStatus)
+    if (!foundItem) {
+      return null
     }
 
-    console.log("activeMission", toJS(activeMission)) // zzz
+    if (!foundItem.amount) {
+      foundItem.amount = 1
+    }
 
-    return { foundItem, completedMission: this.questStatus.activeMission }
+    if (pockets[foundItem.name]) {
+      pockets[foundItem.name].amount =
+        pockets[foundItem.name].amount + foundItem.amount
+    } else {
+      pockets[foundItem.name] = { amount: foundItem.amount }
+    }
+    console.log("pockets", toJS(pockets)) // zzz
+
+    questStatus.activeMission++
+    this.setQuestStatus(questStatus)
   }
 
   getQuestItems = () => {

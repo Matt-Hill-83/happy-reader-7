@@ -1,13 +1,13 @@
 const story007 = {
   title: "007 - Kat's First Quest",
   questConfig: {
-    pockets: { cup: { amount: 1 }, flag: { amount: 2 } },
+    pockets: { cup: { amount: 1 } },
     missions: [
       {
-        name: "Feed Piggy",
-        rewards: [{ name: "pig", amount: 1 }],
+        name: "Catch Piggy",
+        rewards: [{ name: "gold", amount: 1 }],
         item: { name: "bun" },
-        recipient: { name: "log" },
+        recipient: { name: "pig" },
       },
       {
         name: "Bring Piggy Home",
