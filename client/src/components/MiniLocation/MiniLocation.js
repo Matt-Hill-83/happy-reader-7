@@ -170,7 +170,6 @@ class MiniLocation extends React.Component {
     } = this.props
 
     if (scene && scene.location.name !== "blank") {
-      console.log("scene", toJS(scene)) // zzz
     }
 
     const {

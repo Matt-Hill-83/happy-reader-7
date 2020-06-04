@@ -131,12 +131,15 @@ class MainStory extends React.Component {
   }
 
   updateQuestStatus = () => {
+    toaster.clear()
     const activeScene = localStateStore.getActiveScene()
+    console.log("activeScene", toJS(activeScene)) // zzz
+
     const { items = [], characters = [] } = activeScene
 
     const { foundItem, completedMission } = localStateStore.updateQuestState({
       itemsInScene: items,
-      charactersInScene: characters,
+      charactersInScene: [...characters, ...items],
     })
     console.log("completedMission", completedMission) // zzz
 
