@@ -41,4 +41,18 @@
       bottom: 6%;
     }
   }
+
+  .amount {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    border: 1px solid black !important;
+    width: 2vh;
+    height: 2vh;
+    z-index: 2;
+    justify-content: center;
+    border-radius: 3px;
+    background: #ffb8b87a;
+    right: 0px;
+  }
 }

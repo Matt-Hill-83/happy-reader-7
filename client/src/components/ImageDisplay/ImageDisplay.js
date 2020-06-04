@@ -23,6 +23,7 @@ class ImageDisplay extends Component {
     const {
       item: { name, id, index },
       showLabel,
+      amount = 0,
       className,
     } = this.props
 
@@ -33,6 +34,7 @@ class ImageDisplay extends Component {
         className={`${css.main} ${className ? className : ""}`}
         key={id || index}
       >
+        <div className={css.amount}>{amount}</div>
         <div className={css.imageContainer}>
           {image && <img className={css.image} src={image} alt={name} />}
           {showLabel && <span className={`${css.itemLabel}`}>{name}</span>}

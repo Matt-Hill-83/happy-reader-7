@@ -18,7 +18,7 @@ class LocalStateStore {
 
   _defaultQuestStatus = {
     activeMission: 0,
-    pockets: { top: { amount: 1 }, gold: { amount: 5 } },
+    pockets: { gold: { amount: 5 } },
     questConfig: {
       missions: [
         {
@@ -172,7 +172,7 @@ class LocalStateStore {
   }
 
   _findItem = ({ itemsInScene }) => {
-    const desiredItem = this.getDesiredItem({})
+    const desiredItem = this.getDesiredItem({}) || {}
     const questStatus = this.questStatus
 
     const { pockets = {} } = questStatus

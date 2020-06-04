@@ -15,7 +15,6 @@ import ImageDisplay from "../ImageDisplay/ImageDisplay"
 import Utils from "../../Utils/Utils"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
 import ArrowNavigator from "../ArrowNavigator/ArrowNavigator"
-import MissionConsole from "../MissionConsole/MissionConsole"
 
 class FrameViewer extends Component {
   state = {}
@@ -131,10 +130,21 @@ class FrameViewer extends Component {
     }
 
     return itemKeys.map((key, index) => {
+      const existingItem = items[key]
+      const { amount } = existingItem
+      console.log("existingItem------------------->>>", toJS(existingItem)) // zzz
+
       const newItem = { name: key, index }
       console.log("key================-=-=-=-", toJS(key)) // zzz
 
-      return <ImageDisplay className={css.itemContainer} item={newItem} />
+      return (
+        <ImageDisplay
+          className={css.itemContainer}
+          item={newItem}
+          showLabel={true}
+          amount={amount}
+        />
+      )
     })
   }
 
@@ -305,7 +315,6 @@ class FrameViewer extends Component {
         {this.renderLocationImage()}
 
         <div className={css.relativePositionedContent}>
-          {/* <MissionConsole /> */}
           <div className={css.wordsAndButtons}>
             <div className={css.sceneName}>{sceneName}</div>
             <div className={css.wordsContainer}>{this.renderDialog()}</div>
@@ -321,7 +330,10 @@ class FrameViewer extends Component {
             <div className={css.charactersContainer}>
               {this.renderFriends()}
             </div>
-            <div className={css.itemsContainer}>{this.renderPocketItems()}</div>
+            <div className={css.itemsContainer}>
+              <div className={css.itemContainerTitle}>Your Pockets</div>
+              {this.renderPocketItems()}
+            </div>
           </div>
         </div>
       </div>
