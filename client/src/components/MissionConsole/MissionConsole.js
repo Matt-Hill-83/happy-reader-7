@@ -33,7 +33,7 @@ class MissionConsole extends Component {
       "Complete",
     ]
     const tableProps = { columnWidths: [175, 80, 80, null, null] }
-    if (missions.length === 0) {
+    if (!missions || missions.length === 0) {
       return null
     }
     const tableData = missions.map((mission) => {

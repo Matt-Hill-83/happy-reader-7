@@ -85,6 +85,8 @@ class WorldViewer extends React.Component {
     const bookCoil01 = Images.backgrounds["bookCoil01"]
 
     const mapBackground = Images.backgrounds["mapBackground11"]
+    const hideMissionConsole = localStateStore.getQuestStatus()
+      .hideMissionConsole
 
     return (
       <>
@@ -96,7 +98,7 @@ class WorldViewer extends React.Component {
         />
         <div className={`${css.mapScroller}`}>
           <div className={`${css.missionConsoleBox}`}>
-            <MissionConsole world={map} key={key} />
+            {!hideMissionConsole && <MissionConsole world={map} key={key} />}
           </div>
           <div className={`${css.innerMapScroller}`}>
             <img

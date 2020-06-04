@@ -127,7 +127,13 @@ class MainStory extends React.Component {
   updateActiveScene = ({ sceneId }) => {
     localStateStore.setActiveSceneId(sceneId)
     localStateStore.setActiveFrameIndex(0)
-    this.updateQuestStatus({ sceneId })
+
+    const hideMissionConsole = localStateStore.getQuestStatus()
+      .hideMissionConsole
+
+    if (!hideMissionConsole) {
+      this.updateQuestStatus({ sceneId })
+    }
   }
 
   updateQuestStatus = () => {
@@ -200,6 +206,11 @@ class MainStory extends React.Component {
         activeMission: 0,
         pockets: combinedPockets,
         questConfig: clonedQuestConfig,
+      })
+    } else {
+      localStateStore.setQuestStatus({
+        activeMission: 0,
+        hideMissionConsole: true,
       })
     }
 
