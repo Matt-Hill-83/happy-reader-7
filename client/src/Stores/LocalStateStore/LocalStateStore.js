@@ -78,16 +78,11 @@ class LocalStateStore {
       return {}
     }
 
-    const desiredItem = this.getDesiredItem({})
-    console.log("desiredItem", desiredItem) // zzz
-
-    // const desiredItem = activeMission.item
     const desiredRecipient = activeMission.recipient
     console.log("itemsInScene", toJS(itemsInScene)) // zzz
 
     const completedMission = this._completeMission({
       charactersInScene,
-      desiredItem,
       desiredRecipient,
       questStatus,
     })
@@ -101,7 +96,6 @@ class LocalStateStore {
 
     const foundItem = this._findItem({
       itemsInScene,
-      desiredItem,
       questStatus: this.questStatus,
     })
     return { foundItem, completedMission }
@@ -127,13 +121,9 @@ class LocalStateStore {
     return characterNames.includes(desiredRecipient.name)
   }
 
-  _completeMission = ({
-    charactersInScene,
-    desiredItem,
-    desiredRecipient,
-    questStatus,
-  }) => {
-    const { pockets = {} } = questStatus.questConfig
+  _completeMission = ({ charactersInScene, desiredRecipient }) => {
+    const desiredItem = this.getDesiredItem({})
+    const { pockets = {} } = this.questStatus.questConfig
 
     const isDesiredItemInPocket = this._isDesiredItemInPocket({
       desiredItem,
