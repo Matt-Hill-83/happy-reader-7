@@ -148,7 +148,7 @@ class MainStory extends React.Component {
         <div>
           <span>{`You find a ${foundItem.name}.`}</span>
           <br />
-          <span>{`You put it in your pocket.`}</span>
+          <span>{`You put the ${foundItem.name} your pocket.`}</span>
         </div>
       )
       toaster.show({ message, className: css.toaster, timeout: 120000 })
@@ -159,10 +159,10 @@ class MainStory extends React.Component {
       const { rewards, item, recipient, name } = completedMission
 
       const reward = rewards[0]
-      const message = (
+      const message = `You give the  ${item.name} to the ${recipient.name}.`
+
+      const message2 = (
         <div>
-          <span>{`You give the  ${item.name} to ${recipient.name}.`}</span>
-          <br />
           <span>{`Good Job!`}</span>
           <br />
           <span>{`Mission Complete: "${name}".`}</span>
@@ -170,6 +170,11 @@ class MainStory extends React.Component {
           <span>{`You win: ${reward.amount}  ${reward.name}.`}</span>
         </div>
       )
+      toaster.show({
+        message: message2,
+        className: css.toaster,
+        timeout: 120000,
+      })
       toaster.show({ message, className: css.toaster, timeout: 120000 })
     }
 

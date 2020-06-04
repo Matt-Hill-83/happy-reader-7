@@ -117,6 +117,13 @@ class LocalStateStore {
       activeMission.completed = true
       questStatus.activeMission++
 
+      // TODO: add new rewards correctly;
+      // TODO: add new rewards correctly;
+      // TODO: add new rewards correctly;
+      // TODO: add new rewards correctly;
+      const newPockets = { hat: { amount: 5 } }
+      this.addToPockets({ newPockets })
+
       this.setQuestStatus(questStatus)
     }
 
