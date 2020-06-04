@@ -50,13 +50,25 @@ class LocalStateStore {
     this.questStatus = { ...this._defaultQuestStatus }
   }
 
-  getDesiredItem = ({}) => {
-    const { missions } = this.questStatus.questConfig
-    const activeMission = missions[this.questStatus.activeMission] || null
+  getDesiredItem = () => {
+    const activeMission = this.getActiveMission()
     if (!activeMission) {
-      return {}
+      return null
     }
     return activeMission.item
+  }
+
+  getActiveMission = () => {
+    const { missions } = this.questStatus.questConfig
+    return missions[this.questStatus.activeMission] || null
+  }
+
+  getDesiredRecipient = () => {
+    const activeMission = this.getActiveMission()
+    if (!activeMission) {
+      return null
+    }
+    return activeMission.recipient
   }
 
   updateQuestState = ({ itemsInScene, charactersInScene }) => {
@@ -78,12 +90,12 @@ class LocalStateStore {
       return {}
     }
 
-    const desiredRecipient = activeMission.recipient
+    // const desiredRecipient = activeMission.recipient
     console.log("itemsInScene", toJS(itemsInScene)) // zzz
 
     const completedMission = this._completeMission({
       charactersInScene,
-      desiredRecipient,
+      // desiredRecipient,
       questStatus,
     })
 
@@ -94,10 +106,7 @@ class LocalStateStore {
       this.setQuestStatus(questStatus)
     }
 
-    const foundItem = this._findItem({
-      itemsInScene,
-      questStatus: this.questStatus,
-    })
+    const foundItem = this._findItem({ itemsInScene })
     return { foundItem, completedMission }
   }
 
@@ -121,8 +130,10 @@ class LocalStateStore {
     return characterNames.includes(desiredRecipient.name)
   }
 
-  _completeMission = ({ charactersInScene, desiredRecipient }) => {
+  _completeMission = ({ charactersInScene }) => {
     const desiredItem = this.getDesiredItem({})
+    const desiredRecipient = this.getDesiredRecipient({})
+
     const { pockets = {} } = this.questStatus.questConfig
 
     const isDesiredItemInPocket = this._isDesiredItemInPocket({
