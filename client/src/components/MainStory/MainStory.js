@@ -122,21 +122,19 @@ class MainStory extends React.Component {
 
   updateQuestStatus = () => {
     const activeScene = localStateStore.getActiveScene()
-    const itemsInScene = activeScene.items || []
-    localStateStore.updateQuestState({ itemsInScene })
+    const { items = [] } = activeScene
+
+    localStateStore.updateQuestState({ itemsInScene: items })
     this.setState({ dummy: new Date() })
   }
 
   onChangeWorld = ({ mapId }) => {
-    console.log("mapId", mapId) // zzz
-
     console.log("onChangeWorld") // zzz
     console.log("onChangeWorld") // zzz
 
     localStateStore.setActiveMapId(mapId)
     const map = localStateStore.getActiveWorld()
     const { questConfig } = map.data
-    console.log("questConfig", toJS(questConfig)) // zzz
 
     if (questConfig) {
       const clonedQuestConfig = JSON.parse(JSON.stringify(questConfig))

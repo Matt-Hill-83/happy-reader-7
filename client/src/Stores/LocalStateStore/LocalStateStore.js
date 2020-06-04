@@ -73,10 +73,11 @@ class LocalStateStore {
     }
 
     const desiredItem = activeMission.item
+    console.log("itemsInScene", toJS(itemsInScene)) // zzz
 
     const foundItem =
       itemsInScene.find((item) => item.name === desiredItem.name) || null
-    // console.log("foundItem", toJS(foundItem)) // zzz
+    console.log("foundItem---------------------------->>>", toJS(foundItem)) // zzz
 
     if (foundItem) {
       tempQuestStatus.activeMission++
