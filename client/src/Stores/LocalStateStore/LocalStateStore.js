@@ -103,6 +103,7 @@ class LocalStateStore {
 
     questStatus.activeMission++
     this.setQuestStatus(questStatus)
+    return foundItem
   }
 
   getQuestItems = () => {
