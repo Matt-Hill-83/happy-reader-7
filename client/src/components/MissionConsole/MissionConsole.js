@@ -46,15 +46,6 @@ class MissionConsole extends Component {
       return [name, item.name, recipient.name, rewardString, completed]
     })
 
-    const columnNames3 = ["Pockets", ""]
-    const tableProps3 = {}
-
-    const tableDataPockets = []
-    for (const itemName in pockets) {
-      const { amount } = pockets[itemName]
-      tableDataPockets.push([itemName, amount])
-    }
-
     return (
       <div className={css.main}>
         {showHeader && (
