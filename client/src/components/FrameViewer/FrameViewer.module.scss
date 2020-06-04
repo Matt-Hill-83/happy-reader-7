@@ -97,6 +97,7 @@
     border-radius: 11px;
     overflow: visible;
     min-width: 24vh;
+    min-height: var(--box-height);
 
     .itemContainer {
       position: relative;

@@ -16,8 +16,8 @@ import { UserConfigStore } from "../../Stores/UserConfigStore.js"
 import css from "./MainStory.module.scss"
 
 let isProdRelease
-isProdRelease = true
 isProdRelease = false
+isProdRelease = true
 
 let useDefaultWorldId
 useDefaultWorldId = false
