@@ -10,9 +10,40 @@ import _get from "lodash.get"
 import css from "./MissionConsole.module.scss"
 import MiniTable from "../MiniTable/MiniTable"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore"
+import ImageDisplay from "../ImageDisplay/ImageDisplay"
 
 class MissionConsole extends Component {
   state = {}
+
+  renderPocketItems = () => {
+    const questStatus = localStateStore.getQuestStatus()
+    console.log("questStatus-----FV---------------", toJS(questStatus)) // zzz
+
+    const items = _get(questStatus, "pockets") || null
+
+    const itemKeys = Object.keys(items)
+    if (itemKeys.length === 0 || !items) {
+      return null
+    }
+
+    return itemKeys.map((key, index) => {
+      const existingItem = items[key]
+      const { amount } = existingItem
+      console.log("existingItem------------------->>>", toJS(existingItem)) // zzz
+
+      const newItem = { name: key, index }
+      console.log("key================-=-=-=-", toJS(key)) // zzz
+
+      return (
+        <ImageDisplay
+          className={css.itemContainer}
+          item={newItem}
+          showLabel={true}
+          amount={amount}
+        />
+      )
+    })
+  }
 
   render = () => {
     console.log("render mission console----------------------------") // zzz
@@ -59,7 +90,18 @@ class MissionConsole extends Component {
                 tableProps={tableProps}
               />
             </div>
-            {/* <div className={css.right}></div> */}
+            <div className={css.right}>
+              <div className={css.itemsContainerBox}>
+                <div className={css.itemsContainer}>
+                  <div className={css.itemContainerTitle}>Your Pockets</div>
+                  {this.renderPocketItems()}
+                </div>
+                <div className={css.itemsContainer}>
+                  <div className={css.itemContainerTitle}>Your Pockets</div>
+                  {this.renderPocketItems()}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

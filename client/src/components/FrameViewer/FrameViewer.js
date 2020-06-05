@@ -357,10 +357,16 @@ class FrameViewer extends Component {
             <div className={css.charactersContainer}>
               {this.renderFriends()}
             </div>
-            {!hideMissionConsole && (
-              <div className={css.itemsContainer}>
-                <div className={css.itemContainerTitle}>Your Pockets</div>
-                {this.renderPocketItems()}
+            {false && !hideMissionConsole && (
+              <div className={css.itemsContainerBox}>
+                <div className={css.itemsContainer}>
+                  <div className={css.itemContainerTitle}>Your Pockets</div>
+                  {this.renderPocketItems()}
+                </div>
+                <div className={css.itemsContainer}>
+                  <div className={css.itemContainerTitle}>Your Pockets</div>
+                  {this.renderPocketItems()}
+                </div>
               </div>
             )}
           </div>
