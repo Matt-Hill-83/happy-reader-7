@@ -108,14 +108,18 @@ class LocalStateStore {
       return {}
     }
 
-    const completedMission = this._completeMission({
+    const isMissionCompleted = this._completeMission({
       charactersInScene,
       questStatus,
     })
 
-    if (completedMission) {
+    if (isMissionCompleted) {
       activeMission.completed = true
       questStatus.activeMission++
+
+      // remove item from pocket
+      const desiredItem = this.getDesiredItem({})
+      console.log("desiredItem.name", toJS(desiredItem.name)) // zzz
 
       // TODO: add new rewards correctly;
       // TODO: add new rewards correctly;
@@ -130,7 +134,7 @@ class LocalStateStore {
     const foundItem = this._findItem({ itemsInScene })
     return {
       foundItem,
-      completedMission: completedMission ? activeMission : false,
+      completedMission: isMissionCompleted ? activeMission : false,
     }
   }
 
