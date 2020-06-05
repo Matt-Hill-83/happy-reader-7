@@ -33,7 +33,7 @@ class FrameViewer extends Component {
     // return <div className={css.narrative}>{renderedNarrative}</div>
   }
 
-  renderDialog = () => {
+  renderDialog = ({ cloneIndex }) => {
     const { frame } = this.props
     const dialog = (frame && frame.dialog) || []
 
@@ -68,8 +68,14 @@ class FrameViewer extends Component {
       return indexIsEven ? isEven : isOdd
     })
 
+    const scalingFactor = 1.6
+    const style = {
+      "margin-left": `-${cloneIndex * scalingFactor}vh`,
+      "margin-top": `${cloneIndex * scalingFactor}vh`,
+      border: "3px solid red",
+    }
     return (
-      <div className={css.dialogScroller}>
+      <div className={css.dialogScroller} style={style}>
         <div className={css.dialog}>{renderedDialogs}</div>
       </div>
     )
@@ -304,6 +310,25 @@ class FrameViewer extends Component {
     )
   }
 
+  cloneDialogs = () => {
+    const numPages = 3
+    const dialogClones = []
+    for (let cloneIndex = 0; cloneIndex < numPages; cloneIndex++) {
+      const dialog = this.renderDialog({ cloneIndex })
+      dialogClones.push(dialog)
+    }
+
+    return dialogClones
+
+    // return (
+    //   <>
+    //     {this.renderDialog()}
+    //     {this.renderDialog()}
+    //     {this.renderDialog()}
+    //   </>
+    // )
+  }
+
   renderFrame = () => {
     const { scene, isLastFrame } = this.props
 
@@ -319,7 +344,7 @@ class FrameViewer extends Component {
         <div className={css.relativePositionedContent}>
           <div className={css.wordsAndButtons}>
             <div className={css.sceneName}>{sceneName}</div>
-            <div className={css.wordsContainer}>{this.renderDialog()}</div>
+            <div className={css.wordsContainer}>{this.cloneDialogs()}</div>
             <div className={css.buttonsContainer}>
               {this.renderArrowNavigator()}
             </div>
