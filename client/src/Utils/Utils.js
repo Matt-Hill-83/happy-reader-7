@@ -1,4 +1,3 @@
-import myWords from "../Models/words.js"
 import localStateStore from "../Stores/LocalStateStore/LocalStateStore.js"
 import { maps } from "../Stores/InitStores.js"
 import { toJS } from "mobx"
