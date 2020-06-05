@@ -23,6 +23,23 @@
     }
 
     .itemLabel {
+      position: absolute;
+      border-top: 1px solid red !important;
+      background: var(--light-pink);
+      padding: 0 3px;
+      bottom: 0vh;
+      left: 0vh;
+      width: 100%;
+      display: flex;
+      font-size: 1vh;
+      font-weight: 500;
+      margin: 0px;
+      line-height: 1vh;
+      /* text-align: center; */
+      justify-content: center;
+    }
+
+    .xxxitemLabel {
       @include item-label;
       position: absolute;
       border: 1px solid blue !important;
@@ -46,13 +63,18 @@
     position: absolute;
     display: flex;
     align-items: center;
-    border: 1px solid black !important;
-    width: 2vh;
-    height: 2vh;
+    border: 1px solid black;
+    /* width: 2vh; */
+    /* height: 2vh; */
     z-index: 2;
     justify-content: center;
-    border-radius: 3px;
+    border-radius: 0px;
     background: #ffb8b87a;
     right: 0px;
+    font-size: 1vh;
+    padding: 0 0.1rem;
+    border-bottom-left-radius: 4px;
+    border-top: none;
+    border-right: none;
   }
 }

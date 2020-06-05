@@ -34,23 +34,16 @@
 
   .sceneName {
     display: flex;
-    justify-content: flex-start;
-    font-size: 2.2vh;
-    text-transform: capitalize;
-    width: fit-content;
-    padding: 0px 1vh;
-    border-radius: 0.4vh;
-    border: 1px solid purple;
-    border-bottom-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-    background: #dedede;
-    border-bottom: none;
-    margin-bottom: -1px;
-    z-index: 10;
-    border-bottom: 1px solid grey;
-    position: fixed;
+    display: none;
+    z-index: 30;
+    font-size: 2vh;
+    padding: 0% 1%;
+    border-radius: 11px;
+    border: 1px solid black;
+    left: 85vh;
     top: 3vh;
-    right: 5vw;
+    background: white;
+    position: fixed;
   }
 
   .relativePositionedContent {
@@ -86,29 +79,50 @@
   }
 
   .itemsContainer {
-    --box-height: 6vh;
+    --box-height: 4.8vh;
     position: fixed;
     display: flex;
     width: fit-content;
-    top: 18vh;
-    left: 3vw;
-    border: 2px solid red !important;
+    top: 3vh;
+    left: 9vh;
+    border: 1px solid red !important;
     z-index: 1;
-    border-radius: 11px;
+    border-radius: 5px;
     overflow: visible;
     min-width: 24vh;
     min-height: var(--box-height);
+    background: pink;
+    overflow: hidden;
+
+    :global {
+      [className*="ImageDisplay_itemLabel__"] {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        border: 1px solid red !important;
+        background: var(--light-pink);
+        padding: 0 3px;
+        top: 0vh;
+        left: 0vh;
+        width: 100%;
+        font-size: 1.1vh;
+        font-weight: 600;
+        margin: 0px;
+      }
+    }
 
     .itemContainer {
       position: relative;
-      border: 1px solid black !important;
-      margin-right: 1vh;
       display: flex;
-      flex: 1;
+      flex: 1 1;
+      border-right: 1px solid red !important;
+      border-left: 1px solid red !important;
+      margin-right: 1vh;
       max-width: var(--box-height);
+      border-radius: 0px;
 
       [class*="ImageDisplay_imageContainer"] {
-        border-radius: 10%;
+        // border-radius: 10%;
         background: white;
         z-index: 1 !important;
         height: var(--box-height);

@@ -56,14 +56,13 @@
 }
 
 .worldTitle {
-  position: absolute;
   display: flex;
-  z-index: 1000;
+  z-index: 30;
   font-size: 2vh;
   padding: 0% 1%;
   border-radius: 11px;
   border: 1px solid black;
-  left: 2vw;
+  right: 51vw;
   top: 3vh;
   background: white;
   position: fixed;
