@@ -152,7 +152,7 @@ class MainStory extends React.Component {
           <span>{`You put the ${foundItem.name} your pocket.`}</span>
         </div>
       )
-      toaster.show({ message, className: css.toaster, timeout: 120000 })
+      toaster.show({ message, className: css.toaster, timeout: 30000 })
     }
 
     console.log("completedMission", toJS(completedMission)) // zzz
@@ -174,9 +174,9 @@ class MainStory extends React.Component {
       toaster.show({
         message: message2,
         className: css.toaster,
-        timeout: 120000,
+        timeout: 30000,
       })
-      toaster.show({ message, className: css.toaster, timeout: 120000 })
+      toaster.show({ message, className: css.toaster, timeout: 30000 })
     }
 
     this.setState({ dummy: new Date() })
