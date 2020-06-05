@@ -46,6 +46,21 @@ class LocalStateStore {
     this.questStatus = questStatus
   }
 
+  convertItemToObjFormat = ({ itemsArray = [] }) => {
+    const newObj = {}
+    itemsArray.forEach((item) => {
+      const itemName = item.name
+      const value = newObj[itemName]
+      if (value) {
+        value.ammount += item.amount
+      } else {
+        newObj[itemName] = { amount: item.amount }
+      }
+    })
+
+    return newObj
+  }
+
   setQuestStatusToDefault = () => {
     this.questStatus = { ...this._defaultQuestStatus }
   }
@@ -98,6 +113,7 @@ class LocalStateStore {
       return null
     }
     const { missions } = questStatus.questConfig
+    const { pockets } = questStatus
 
     if (!missions) {
       return null
@@ -114,18 +130,28 @@ class LocalStateStore {
     })
 
     if (isMissionCompleted) {
+      // remove item from pocket
+      const desiredItem = this.getDesiredItem()
+      console.log("desiredItem", toJS(desiredItem.name)) // zzz
+
+      console.log("pockets", toJS(pockets)) // zzz
+      delete pockets[desiredItem.name]
+      console.log("pockets", toJS(pockets)) // zzz
+
       activeMission.completed = true
       questStatus.activeMission++
 
-      // remove item from pocket
-      const desiredItem = this.getDesiredItem({})
-      console.log("desiredItem.name", toJS(desiredItem.name)) // zzz
+      // TODO: add new rewards correctly;
+      // TODO: add new rewards correctly;
+      // TODO: add new rewards correctly;
+      // TODO: add new rewards correctly;
 
-      // TODO: add new rewards correctly;
-      // TODO: add new rewards correctly;
-      // TODO: add new rewards correctly;
-      // TODO: add new rewards correctly;
-      const newPockets = { hat: { amount: 5 } }
+      const newPockets = this.convertItemToObjFormat({
+        itemsArray: activeMission.rewards,
+      })
+      console.log("newPockets", toJS(newPockets)) // zzz
+
+      // const newPockets = { hat: { amount: 5 } }
       this.addToPockets({ newPockets })
 
       this.setQuestStatus(questStatus)
@@ -163,7 +189,9 @@ class LocalStateStore {
   }
 
   _completeMission = ({ charactersInScene }) => {
-    const desiredItem = this.getDesiredItem({})
+    const desiredItem = this.getDesiredItem()
+    console.log("desiredItem", toJS(desiredItem)) // zzz
+
     const desiredRecipient = this.getDesiredRecipient({})
 
     const { pockets = {} } = this.questStatus
@@ -186,7 +214,7 @@ class LocalStateStore {
   }
 
   _findItem = ({ itemsInScene }) => {
-    const desiredItem = this.getDesiredItem({}) || {}
+    const desiredItem = this.getDesiredItem() || {}
     const questStatus = this.questStatus
 
     const { pockets = {} } = questStatus
