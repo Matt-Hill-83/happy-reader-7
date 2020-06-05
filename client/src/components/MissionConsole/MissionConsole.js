@@ -15,7 +15,7 @@ import ImageDisplay from "../ImageDisplay/ImageDisplay"
 class MissionConsole extends Component {
   state = {}
 
-  renderPocketItems = () => {
+  renderPocketItems = ({ goldOnly = false }) => {
     const questStatus = localStateStore.getQuestStatus()
     console.log("questStatus-----FV---------------", toJS(questStatus)) // zzz
 
@@ -26,7 +26,18 @@ class MissionConsole extends Component {
       return null
     }
 
-    return itemKeys.map((key, index) => {
+    let filteredItemKeys
+    console.log("filteredItemKeys", toJS(filteredItemKeys)) // zzz
+    console.log("goldOnly", goldOnly) // zzz
+
+    const prizes = ["gold", "dress", "trophy"]
+    if (goldOnly) {
+      filteredItemKeys = itemKeys.filter((item) => prizes.includes(item))
+    } else {
+      filteredItemKeys = itemKeys.filter((item) => !prizes.includes(item))
+    }
+
+    const renderedItems = filteredItemKeys.map((key, index) => {
       const existingItem = items[key]
       const { amount } = existingItem
       console.log("existingItem------------------->>>", toJS(existingItem)) // zzz
@@ -43,6 +54,8 @@ class MissionConsole extends Component {
         />
       )
     })
+
+    return <div className={css.items}>{renderedItems}</div>
   }
 
   render = () => {
@@ -94,11 +107,11 @@ class MissionConsole extends Component {
               <div className={css.itemsContainerBox}>
                 <div className={css.itemsContainer}>
                   <div className={css.itemContainerTitle}>Your Pockets</div>
-                  {this.renderPocketItems()}
+                  {this.renderPocketItems({ goldOnly: false })}
                 </div>
                 <div className={css.itemsContainer}>
-                  <div className={css.itemContainerTitle}>Your Pockets</div>
-                  {this.renderPocketItems()}
+                  <div className={css.itemContainerTitle}>Prizes</div>
+                  {this.renderPocketItems({ goldOnly: true })}
                 </div>
               </div>
             </div>

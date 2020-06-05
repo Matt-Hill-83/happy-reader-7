@@ -3,12 +3,13 @@
 .missionConsoleBox {
   position: fixed;
   display: flex;
-  // border: 4px solid green !important;
+  flex-direction: column;
+  flex: 1 1;
   z-index: 20;
-  top: 2vh;
-  left: 2vh;
   margin: 1vh;
-  width: 74vh;
+  top: 5vh;
+  left: 2vw;
+  right: 50.8vw;
 }
 
 .mapBackground {

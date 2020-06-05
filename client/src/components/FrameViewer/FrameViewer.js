@@ -333,8 +333,8 @@ class FrameViewer extends Component {
     const { scene, isLastFrame } = this.props
 
     const sceneName = scene.location.name
-    const hideMissionConsole = localStateStore.getQuestStatus()
-      .hideMissionConsole
+    // const hideMissionConsole = localStateStore.getQuestStatus()
+    //   .hideMissionConsole
 
     return (
       <div className={`${css.scenes}`}>
@@ -357,18 +357,6 @@ class FrameViewer extends Component {
             <div className={css.charactersContainer}>
               {this.renderFriends()}
             </div>
-            {false && !hideMissionConsole && (
-              <div className={css.itemsContainerBox}>
-                <div className={css.itemsContainer}>
-                  <div className={css.itemContainerTitle}>Your Pockets</div>
-                  {this.renderPocketItems()}
-                </div>
-                <div className={css.itemsContainer}>
-                  <div className={css.itemContainerTitle}>Your Pockets</div>
-                  {this.renderPocketItems()}
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
