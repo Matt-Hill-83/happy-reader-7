@@ -196,6 +196,7 @@ class MainStory extends React.Component {
       const combinedPockets = localStateStore.addToPockets({
         newPockets: clonedQuestConfig.pockets,
       })
+      console.log("combinedPockets", toJS(combinedPockets)) // zzz
 
       localStateStore.setQuestStatus({
         activeMission: 0,
@@ -254,7 +255,7 @@ class MainStory extends React.Component {
           {!isProdRelease && (
             <Button onClick={this.toggleWorldBuilder}>World Builder</Button>
           )}
-          <Button onClick={this.openYouWinModal}>Quests</Button>
+          <Button onClick={this.openYouWinModal}>Pick a Quest...</Button>
         </ButtonGroup>
       </div>
     )

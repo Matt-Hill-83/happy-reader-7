@@ -105,6 +105,8 @@ class LocalStateStore {
   }
 
   updateQuestState = ({ itemsInScene, charactersInScene }) => {
+    console.log("updateQuestState") // zzz
+
     const questStatus = this.questStatus
     console.log("questStatus--------------LSS----->>>", toJS(questStatus)) // zzz
 
