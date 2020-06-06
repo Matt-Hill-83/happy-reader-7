@@ -14,10 +14,11 @@ import WorldBuilder from "../WorldBuilder/WorldBuilder.js"
 import { UserConfigStore } from "../../Stores/UserConfigStore.js"
 
 import css from "./MainStory.module.scss"
+import BookPicker from "../BookPicker/BookPicker.js"
 
 let isProdRelease
-isProdRelease = true
 isProdRelease = false
+isProdRelease = true
 
 let useDefaultWorldId
 useDefaultWorldId = false
@@ -246,6 +247,19 @@ class MainStory extends React.Component {
     )
   }
 
+  renderBookPicker = () => {
+    const { showProd, showYouWinModal } = this.state
+
+    return (
+      <BookPicker
+        showProd={showProd}
+        closeYouWinModal={this.closeYouWinModal}
+        showYouWinModal={showYouWinModal}
+        onChangeWorld={this.onChangeWorld}
+      />
+    )
+  }
+
   renderButtons = () => {
     const isProdRelease = localStateStore.getIsProdRelease()
 
@@ -293,7 +307,8 @@ class MainStory extends React.Component {
           activeScene={activeScene}
           openYouWinModal={this.openYouWinModal}
         />
-        {this.state.showYouWinModal && this.renderWorldPicker()}
+        {this.state.showYouWinModal && this.renderBookPicker()}
+        {/* {this.state.showYouWinModal && this.renderWorldPicker()} */}
       </div>
     )
   }

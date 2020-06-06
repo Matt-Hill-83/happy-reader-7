@@ -1,3 +1,5 @@
+import { toJS } from "mobx"
+
 //locations
 import barn from "./locations/barn.png"
 import blank from "./locations/blank.png"
@@ -46,35 +48,20 @@ import van from "./locations/van.png"
 import barkPhone01 from "./creatures/barkPhone01.png"
 import bookCoil01 from "./backgrounds/bookCoil01.png"
 
-// import mapBackground01 from "./backgrounds/mapBackground01.jpg"
-// import mapBackground02 from "./backgrounds/mapBackground02.jpg"
-// import mapBackground03 from "./backgrounds/mapBackground03.jpg"
-// import mapBackground04 from "./backgrounds/mapBackground04.jpg"
-// import mapBackground05 from "./backgrounds/mapBackground05.jpg"
-// import mapBackground06 from "./backgrounds/mapBackground06.jpg"
 import mapBackground07 from "./backgrounds/mapBackground07.jpg"
-// import mapBackground08 from "./backgrounds/mapBackground08.jpg"
 import mapBackground09 from "./backgrounds/mapBackground09.jpg"
-// import mapBackground10 from "./backgrounds/mapBackground10.jpg"
 import mapBackground11 from "./backgrounds/mapBackground11.jpg"
-// import mapBackground12 from "./backgrounds/mapBackground12.jpg"
-// import mapBackground13 from "./backgrounds/mapBackground13.jpg"
-// import mapBackground14 from "./backgrounds/mapBackground14.jpg"
-// import mapBackground15 from "./backgrounds/mapBackground15.jpg"
-// import mapBackground16 from "./backgrounds/mapBackground16.jpg"
-// import mapBackground17 from "./backgrounds/mapBackground17.jpg"
-// import mapBackground18 from "./backgrounds/mapBackground18.jpg"
-// import mapBackground19 from "./backgrounds/mapBackground19.jpg"
-// import mapBackground20 from "./backgrounds/mapBackground20.jpg"
 import mapBackground21 from "./backgrounds/mapBackground21.jpg"
-// import mapBackground22 from "./backgrounds/mapBackground22.jpg"
-// import mapBackground23 from "./backgrounds/mapBackground23.jpg"
-// import mapBackground24 from "./backgrounds/mapBackground24.jpg"
-// import mapBackground25 from "./backgrounds/mapBackground25.jpg"
+import meadow from "./backgrounds/meadow.png"
 
-// creatures
-// creatures
-// creatures
+// bookcovers
+// bookcovers
+// bookcovers
+// bookcovers
+// bookcovers
+import bookCover01BatOfDoom from "./bookcovers/bookCover01BatOfDoom.png"
+import bookTableOfContents01 from "./bookcovers/bookTableOfContents01.png"
+
 // creatures
 // creatures
 import pigInAWig from "./creatures/pigInAWig.png"
@@ -98,6 +85,7 @@ import hog from "./creatures/hog.png"
 import mermaid from "./creatures/mermaid.png"
 import monster from "./creatures/monster.png"
 import pig from "./creatures/pig.png"
+import cat01 from "./creatures/cat01.png"
 import troll from "./creatures/troll-01.png"
 import troll01 from "./creatures/troll-01.png"
 import dog01 from "./creatures/dog01.png"
@@ -494,6 +482,7 @@ const creatures = {
   man,
   mermaid,
   monster,
+  cat01,
   pig,
   poppy01,
   princess_alibera,
@@ -594,32 +583,14 @@ const backgrounds = {
   hill01,
   sky01,
   bookCoil01,
+  bookTableOfContents01,
 
-  // mapBackground01,
-  // mapBackground02,
-  // mapBackground03,
-  // mapBackground04,
-  // mapBackground05,
-  // mapBackground06,
   mapBackground07,
-  // mapBackground08,
   mapBackground09,
-  // mapBackground10,
   mapBackground11,
-  // mapBackground12,
-  // mapBackground13,
-  // mapBackground14,
-  // mapBackground15,
-  // mapBackground16,
-  // mapBackground17,
-  // mapBackground18,
-  // mapBackground19,
-  // mapBackground20,
   mapBackground21,
-  // mapBackground22,
-  // mapBackground23,
-  // mapBackground24,
-  // mapBackground25,
+  bookCover01BatOfDoom,
+  meadow,
 }
 
 const all = { ...locations, ...creatures, ...items, ...vehicles, ...doors }
