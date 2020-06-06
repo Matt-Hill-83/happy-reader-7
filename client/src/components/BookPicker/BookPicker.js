@@ -10,21 +10,40 @@ import Utils from "../../Utils/Utils.js"
 
 import css from "./BookPicker.module.scss"
 import localStateStore from "../../Stores/LocalStateStore/LocalStateStore.js"
+import BookTableOfContents from "../BookTableOfContents/BookTableOfContents.js"
 
 const bookList = [
-  { name: "Liz Sees a Bird", imageName: "bookCover01BatOfDoom" },
-  { name: "The Scary Bat!!!", imageName: "bookCover01BatOfDoom" },
-  { name: "Run for the Hills!!!", imageName: "bookCover01BatOfDoom" },
+  {
+    name: "Liz Sees a Bird",
+    imageName: "bookCover01BatOfDoom",
+    chapters: [
+      "yFhG3pGNtOVZKoQ7K5fG",
+      "27Y99OE8wA2YbFX3vElF",
+      "ZR0GOSFFqFPoWjSgvgOQ",
+    ],
+  },
+  {
+    name: "The Scary Bat!!!",
+    imageName: "bookCover01BatOfDoom",
+    chapters: [
+      "yFhG3pGNtOVZKoQ7K5fG",
+      "27Y99OE8wA2YbFX3vElF",
+      "ZR0GOSFFqFPoWjSgvgOQ",
+    ],
+  },
+  {
+    name: "Run for the Hills!!!",
+    imageName: "bookCover01BatOfDoom",
+    chapters: [
+      "yFhG3pGNtOVZKoQ7K5fG",
+      "27Y99OE8wA2YbFX3vElF",
+      "ZR0GOSFFqFPoWjSgvgOQ",
+    ],
+  },
 ]
 
 class BookPicker extends React.Component {
   state = { showChapterView: false }
-
-  // constructor(props) {
-  //   super(props)
-  //   const showProdInitialValue = localStateStore.getIsProdRelease()
-  //   this.state = { showProd: true, showToggle: !showProdInitialValue }
-  // }
 
   toggleChapterView = ({ index }) => {
     const selectedBook = bookList[index]
@@ -37,11 +56,26 @@ class BookPicker extends React.Component {
   }
 
   renderChapterView = () => {
+    const { selectedBook } = this.state
+
+    const bookImage = Images.backgrounds[selectedBook.imageName]
+    const bookTableOfContents01 = Images.backgrounds["bookTableOfContents01"]
+
     return (
-      <div className={css.chatperView}>
-        test
+      <div className={css.chapterView}>
+        <img
+          className={cx(css.bookTableOfContents01)}
+          src={bookTableOfContents01}
+          alt={"imagex"}
+        />
+        <img
+          className={cx(css.bookImage, css.bookImageChapterView)}
+          src={bookImage}
+          alt={"imagex"}
+        />
+        <BookTableOfContents selectedBook={selectedBook} />
         <Button className={css.playButton} onClick={this.toggleChapterView}>
-          Back to Book View
+          Back
         </Button>
       </div>
     )

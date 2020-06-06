@@ -3,48 +3,18 @@
 .main {
   --pink-background: rgba(230, 230, 250, 0.34);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   position: absolute;
   background: var(--light-pink);
   color: var(--set1-purple-brdr);
-  padding: 1vh;
-  height: 80vh;
-  width: 70vw;
+  /* padding: 1vh; */
+  height: 90%;
+  width: 44%;
   overflow: hidden;
-  margin: unset;
+  margin: 3vh;
   border: 2px solid #000 !important;
-
-  .bookImage {
-    height: 30vh;
-    width: auto;
-  }
-}
-
-.chapterView {
-  // border: 1px solid blue !important;
-  display: flex;
-  width: 98%;
-  height: 79%;
-  position: relative;
-  align-self: center;
-  justify-self: flex-end;
-  margin-top: 10vh;
-}
-
-.bookImageChapterView {
-  height: 84% !important;
-  width: 41% !important;
-  z-index: 1;
-  align-self: center;
-  margin-left: 4vh;
-}
-
-.bookTableOfContents01 {
-  // border: 4px solid blue !important;
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  right: 0px;
 }
 
 .buttonGroup {
@@ -63,16 +33,14 @@
 
 .playButton {
   display: flex;
-  font-size: 2vh;
+  font-size: 5vh;
   background-color: var(--color-purple) !important;
   z-index: 1;
   font-family: fantasy;
   padding: 2%;
-  position: relative;
-  /* width: 6vh; */
+  position: absolute;
   right: 1vh;
   bottom: 1vh;
-  position: absolute;
 }
 
 .questPage {
@@ -124,14 +92,16 @@
 }
 
 .content {
-  position: absolute;
   display: flex;
+  border: 1px solid black !important;
+  width: 82%;
+  max-height: 85%;
+  margin-top: 2%;
+  padding: 0 1vh;
+  background: var(--pink-background);
+  border-radius: 0.8vh;
+  background: whitesmoke;
   align-self: center;
-  justify-self: center;
-  margin-top: 25vh;
-
-  // border-radius: 0.8vh;
-  padding: 0px;
 }
 
 .playerStatsRow {
@@ -153,31 +123,28 @@
   display: flex;
   width: 100%;
   flex: 1 1;
+
   flex-direction: column;
   font-size: 24px;
   color: black;
-  padding: 0vh;
+  padding: 2.5vh;
 }
 
 .scrollArea {
   display: flex;
   overflow: auto;
-  /* flex-direction: column; */
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .questRow {
   display: flex;
-  /* border: 1px solid #cecece !important; */
-  /* border-bottom: none; */
-  /* width: 100%; */
+  border: 1px solid #cecece !important;
+  border-bottom: none;
+  width: 100%;
   flex: 1 1;
-  /* background: #e9f0ff; */
-  /* margin-bottom: 1vh; */
+  background: #e9f0ff;
+  margin-bottom: 1vh;
   border-radius: 0.6vh;
-  /* border: 1px solid blue !important; */
-  justify-content: center;
-  margin-right: 2vh;
 
   &:hover {
     background-color: #cacade;
@@ -194,20 +161,13 @@
 
 .tableCell {
   display: flex;
-  // padding: 0.4vh 1.2vh;
-  flex-direction: column;
-  position: relative;
+  padding: 0.4vh 1.2vh;
 }
 
+.name,
 .questName {
-  position: absolute;
+  flex: 1 1;
   display: flex;
-  width: 30%;
-  top: 2vh;
-  right: 3vh;
-  font-size: 3vh;
-  font-weight: 600;
-  line-height: 2.8rem;
 }
 
 .dragonPoints,
