@@ -37,7 +37,14 @@ class BookPicker extends React.Component {
   }
 
   renderChapterView = () => {
-    return <div className={css.chatperView}>test</div>
+    return (
+      <div className={css.chatperView}>
+        test
+        <Button className={css.playButton} onClick={this.toggleChapterView}>
+          Back to Book View
+        </Button>
+      </div>
+    )
   }
 
   render = () => {
@@ -99,8 +106,8 @@ class BookPicker extends React.Component {
               <span className={css.playerStatsValue}>0</span>
             </div>
           </div>
+          {showChapterView && this.renderChapterView()}
           <div className={css.content}>
-            {showChapterView && this.renderChapterView()}
             {!showChapterView && (
               <div className={css.questTable}>
                 <div className={css.scrollArea}>{renderedBookList}</div>

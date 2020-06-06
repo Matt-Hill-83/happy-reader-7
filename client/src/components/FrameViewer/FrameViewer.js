@@ -319,22 +319,12 @@ class FrameViewer extends Component {
     }
 
     return dialogClones
-
-    // return (
-    //   <>
-    //     {this.renderDialog()}
-    //     {this.renderDialog()}
-    //     {this.renderDialog()}
-    //   </>
-    // )
   }
 
   renderFrame = () => {
     const { scene, isLastFrame } = this.props
 
     const sceneName = scene.location.name
-    // const hideMissionConsole = localStateStore.getQuestStatus()
-    //   .hideMissionConsole
 
     return (
       <div className={`${css.scenes}`}>
