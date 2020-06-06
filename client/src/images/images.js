@@ -61,6 +61,7 @@ import meadow from "./backgrounds/meadow.png"
 // bookcovers
 import bookCover01BatOfDoom from "./bookcovers/bookCover01BatOfDoom.png"
 import bookTableOfContents01 from "./bookcovers/bookTableOfContents01.png"
+import dummyQuest01 from "./bookcovers/dummyQuest01.png"
 
 // creatures
 // creatures
@@ -584,6 +585,7 @@ const backgrounds = {
   sky01,
   bookCoil01,
   bookTableOfContents01,
+  dummyQuest01,
 
   mapBackground07,
   mapBackground09,

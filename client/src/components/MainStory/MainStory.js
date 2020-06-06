@@ -17,8 +17,12 @@ import css from "./MainStory.module.scss"
 import BookPicker from "../BookPicker/BookPicker.js"
 
 let isProdRelease
-isProdRelease = false
 isProdRelease = true
+isProdRelease = false
+
+let SHOW_BOOK_PICKER
+SHOW_BOOK_PICKER = false
+SHOW_BOOK_PICKER = true
 
 let useDefaultWorldId
 useDefaultWorldId = false
@@ -186,6 +190,7 @@ class MainStory extends React.Component {
   onChangeWorld = ({ mapId }) => {
     console.log("onChangeWorld") // zzz
     console.log("onChangeWorld") // zzz
+    console.log("mapId", mapId)
 
     localStateStore.setActiveMapId(mapId)
     const map = localStateStore.getActiveWorld()
@@ -307,8 +312,12 @@ class MainStory extends React.Component {
           activeScene={activeScene}
           openYouWinModal={this.openYouWinModal}
         />
-        {this.state.showYouWinModal && this.renderBookPicker()}
-        {/* {this.state.showYouWinModal && this.renderWorldPicker()} */}
+        {SHOW_BOOK_PICKER &&
+          this.state.showYouWinModal &&
+          this.renderBookPicker()}
+        {!SHOW_BOOK_PICKER &&
+          this.state.showYouWinModal &&
+          this.renderWorldPicker()}
       </div>
     )
   }

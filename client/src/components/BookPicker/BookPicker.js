@@ -16,34 +16,26 @@ const bookList = [
   {
     name: "Liz Sees a Bird",
     imageName: "bookCover01BatOfDoom",
-    chapters: [
-      "yFhG3pGNtOVZKoQ7K5fG",
-      "27Y99OE8wA2YbFX3vElF",
-      "ZR0GOSFFqFPoWjSgvgOQ",
-    ],
+    chapters: ["yFhG3pGNtOVZKoQ7K5fG"],
   },
   {
     name: "The Scary Bat!!!",
     imageName: "bookCover01BatOfDoom",
-    chapters: [
-      "yFhG3pGNtOVZKoQ7K5fG",
-      "27Y99OE8wA2YbFX3vElF",
-      "ZR0GOSFFqFPoWjSgvgOQ",
-    ],
+    chapters: ["yFhG3pGNtOVZKoQ7K5fG", "Kx78cfHCkhpm2NQnmCp8"],
   },
   {
     name: "Run for the Hills!!!",
     imageName: "bookCover01BatOfDoom",
     chapters: [
       "yFhG3pGNtOVZKoQ7K5fG",
-      "27Y99OE8wA2YbFX3vElF",
+      "Kx78cfHCkhpm2NQnmCp8",
       "ZR0GOSFFqFPoWjSgvgOQ",
     ],
   },
 ]
 
 class BookPicker extends React.Component {
-  state = { showChapterView: false }
+  state = { showChapterView: false, selectedBook: bookList[0] }
 
   toggleChapterView = ({ index }) => {
     const selectedBook = bookList[index]
@@ -73,7 +65,10 @@ class BookPicker extends React.Component {
           src={bookImage}
           alt={"imagex"}
         />
-        <BookTableOfContents selectedBook={selectedBook} />
+        <BookTableOfContents
+          selectedBook={selectedBook}
+          onChangeWorld={this.props.onChangeWorld}
+        />
         <Button className={css.playButton} onClick={this.toggleChapterView}>
           Back
         </Button>
@@ -140,13 +135,11 @@ class BookPicker extends React.Component {
               <span className={css.playerStatsValue}>0</span>
             </div>
           </div>
-          {showChapterView && this.renderChapterView()}
           <div className={css.content}>
-            {!showChapterView && (
-              <div className={css.questTable}>
-                <div className={css.scrollArea}>{renderedBookList}</div>
-              </div>
-            )}
+            <div className={css.questTable}>
+              <div className={css.scrollArea}>{renderedBookList}</div>
+            </div>
+            {this.renderChapterView()}
           </div>
         </div>
       </Dialog>

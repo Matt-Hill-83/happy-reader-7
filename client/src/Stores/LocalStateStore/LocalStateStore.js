@@ -112,13 +112,13 @@ class LocalStateStore {
 
     console.log("questStatus", toJS(questStatus)) // zzz
     if (!questStatus.questConfig) {
-      return null
+      return {}
     }
     const { missions } = questStatus.questConfig
     const { pockets } = questStatus
 
     if (!missions) {
-      return null
+      return {}
     }
 
     const activeMission = missions[questStatus.activeMission] || null

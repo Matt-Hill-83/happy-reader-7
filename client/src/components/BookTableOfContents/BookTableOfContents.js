@@ -74,13 +74,18 @@ class BookTableOfContents extends React.Component {
         <div className={cx(css.tableCell, css.status)}>Completed</div>
       </div>
     )
-
+    const dummyQuest01 = Images.backgrounds["dummyQuest01"]
     return (
       <div className={css.main}>
         <div className={css.questTable}>
           {tableHeader}
           <div className={css.scrollArea}>{mapList}</div>
         </div>
+        <img
+          className={cx(css.dummyQuest01)}
+          src={dummyQuest01}
+          alt={"imagex"}
+        />
       </div>
     )
   }
