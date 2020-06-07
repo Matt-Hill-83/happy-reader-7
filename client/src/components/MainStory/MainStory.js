@@ -21,8 +21,8 @@ isProdRelease = true
 isProdRelease = false
 
 let SHOW_BOOK_PICKER
-SHOW_BOOK_PICKER = false
 SHOW_BOOK_PICKER = true
+SHOW_BOOK_PICKER = false
 
 let useDefaultWorldId
 useDefaultWorldId = false

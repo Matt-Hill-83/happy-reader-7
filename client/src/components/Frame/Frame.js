@@ -273,7 +273,7 @@ class Frame extends Component {
 
     return (
       <div className={`${css.scenes}`}>
-        {this.renderLocationImage()}
+        {/* {this.renderLocationImage()} */}
 
         <div className={css.relativePositionedContent}>
           <div className={css.wordsContainer}>
