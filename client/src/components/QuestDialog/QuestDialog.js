@@ -78,11 +78,7 @@ class QuestDialog extends React.Component {
     const showProdButtonLabel = showProd ? "New Quests" : "Old Quests"
 
     return (
-      <Dialog
-        isOpen={showYouWinModal}
-        isCloseButtonShown={true}
-        className={css.main}
-      >
+      <Dialog isOpen={true} isCloseButtonShown={true} className={css.main}>
         {showToggle && (
           <ButtonGroup className={css.buttonGroup} color="primary">
             <Button onClick={this.toggleShowProd}>{showProdButtonLabel}</Button>

@@ -15,6 +15,7 @@ class LocalStateStore {
   activeFrameIndex = 0
   activeSceneId = null
   test = null
+  showBookPicker = false
 
   _defaultQuestStatus = {
     activeMission: 0,
@@ -105,12 +106,8 @@ class LocalStateStore {
   }
 
   updateQuestState = ({ itemsInScene, charactersInScene }) => {
-    console.log("updateQuestState") // zzz
-
     const questStatus = this.questStatus
-    console.log("questStatus--------------LSS----->>>", toJS(questStatus)) // zzz
 
-    console.log("questStatus", toJS(questStatus)) // zzz
     if (!questStatus.questConfig) {
       return {}
     }
@@ -134,28 +131,17 @@ class LocalStateStore {
     if (isMissionCompleted) {
       // remove item from pocket
       const desiredItem = this.getDesiredItem()
-      console.log("desiredItem", toJS(desiredItem.name)) // zzz
 
-      console.log("pockets", toJS(pockets)) // zzz
       delete pockets[desiredItem.name]
-      console.log("pockets", toJS(pockets)) // zzz
 
       activeMission.completed = true
       questStatus.activeMission++
 
-      // TODO: add new rewards correctly;
-      // TODO: add new rewards correctly;
-      // TODO: add new rewards correctly;
-      // TODO: add new rewards correctly;
-
       const newPockets = this.convertItemToObjFormat({
         itemsArray: activeMission.rewards,
       })
-      console.log("newPockets", toJS(newPockets)) // zzz
 
-      // const newPockets = { hat: { amount: 5 } }
       this.addToPockets({ newPockets })
-
       this.setQuestStatus(questStatus)
     }
 
@@ -167,32 +153,18 @@ class LocalStateStore {
   }
 
   _isDesiredItemInPocket = ({ desiredItem, pockets }) => {
-    console.log("_isDesiredItemInPocket") // zzz
-
-    console.log("pockets", toJS(pockets)) // zzz
-
     const itemsInPockets = Object.keys(pockets)
-    console.log(
-      "itemsInPockets===========================>>>",
-      toJS(itemsInPockets)
-    ) // zzz
-    console.log("desiredItem", toJS(desiredItem)) // zzz
-
     return itemsInPockets.includes(desiredItem.name)
   }
 
   _isDesiredRecipientHere = ({ desiredRecipient, charactersInScene }) => {
     const characterNames = charactersInScene.map((item) => item.name)
 
-    console.log("characterNames=>>", toJS(characterNames)) // zzz
-    console.log("desiredRecipient.name", toJS(desiredRecipient.name)) // zzz
-
     return characterNames.includes(desiredRecipient.name)
   }
 
   _completeMission = ({ charactersInScene }) => {
     const desiredItem = this.getDesiredItem()
-    console.log("desiredItem", toJS(desiredItem)) // zzz
 
     const desiredRecipient = this.getDesiredRecipient({})
 
@@ -208,10 +180,6 @@ class LocalStateStore {
       charactersInScene,
     })
 
-    console.log("isDesiredRecipientHere", toJS(isDesiredRecipientHere)) // zzz
-    console.log("isDesiredItemInPocket", toJS(isDesiredItemInPocket)) // zzz
-    console.log("pockets", toJS(pockets)) // zzz
-
     return isDesiredRecipientHere && isDesiredItemInPocket
   }
 
@@ -220,9 +188,6 @@ class LocalStateStore {
     const questStatus = this.questStatus
 
     const { pockets = {} } = questStatus
-
-    console.log("itemsInScene", toJS(itemsInScene)) // zzz
-    console.log("desiredItem.name", toJS(desiredItem.name)) // zzz
 
     const foundItem =
       itemsInScene.find((item) => item.name === desiredItem.name) || null
@@ -242,7 +207,6 @@ class LocalStateStore {
     } else {
       pockets[foundItem.name] = { amount: foundItem.amount }
     }
-    console.log("pockets", toJS(pockets)) // zzz
 
     this.setQuestStatus(questStatus)
     return foundItem
@@ -282,6 +246,11 @@ class LocalStateStore {
   getShowWorldBuilder = () => this.showWorldBuilder
   setShowWorldBuilder = (showWorldBuilder) => {
     this.showWorldBuilder = showWorldBuilder
+  }
+
+  getShowBookPicker = () => this.showBookPicker
+  setShowBookPicker = (showBookPicker) => {
+    this.showBookPicker = showBookPicker
   }
 
   getActiveWorld = () => {
@@ -350,6 +319,7 @@ decorate(LocalStateStore, {
   activeSceneId: observable,
   questStatus: observable,
   test: observable,
+  showBookPicker: observable,
 })
 
 const localStateStore = new LocalStateStore()

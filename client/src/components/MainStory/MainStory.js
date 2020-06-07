@@ -41,7 +41,7 @@ class MainStory extends React.Component {
   state = {
     activeScene: undefined,
     showYouWinModal: isProdRelease,
-    // showYouWinModal: true,
+    showBookPicker: true,
   }
 
   async componentWillMount() {
@@ -65,8 +65,8 @@ class MainStory extends React.Component {
       }
     }
 
-    // use this toggle to start in World Builder mode:
-    // if (true) {
+    localStateStore.setShowBookPicker(SHOW_BOOK_PICKER)
+
     if (SHOW_WORLD_BUILDER) {
       this.toggleWorldBuilder()
     } else {
@@ -231,6 +231,15 @@ class MainStory extends React.Component {
     }
   }
 
+  toggleBookPicker = () => {
+    const test = localStateStore.getShowBookPicker()
+    console.log("test", toJS(test)) // zzz
+
+    localStateStore.setShowBookPicker(!test)
+    const test2 = localStateStore.getShowBookPicker()
+    console.log("test2", toJS(test2)) // zzz
+  }
+
   closeYouWinModal = () => {
     this.setState({ showYouWinModal: false })
   }
@@ -274,7 +283,10 @@ class MainStory extends React.Component {
           {!isProdRelease && (
             <Button onClick={this.toggleWorldBuilder}>World Builder</Button>
           )}
-          <Button onClick={this.openYouWinModal}>Pick a Quest...</Button>
+          <Button onClick={this.openYouWinModal}>Pick a Single Quest...</Button>
+          <Button onClick={this.toggleBookPicker}>
+            Pick a Book of Quests...
+          </Button>
         </ButtonGroup>
       </div>
     )
@@ -304,6 +316,8 @@ class MainStory extends React.Component {
       return null
     }
 
+    const showBookPicker = !localStateStore.getShowBookPicker()
+
     return (
       <div className={`${css.main} ${className}`}>
         {this.renderButtons()}
@@ -312,12 +326,8 @@ class MainStory extends React.Component {
           activeScene={activeScene}
           openYouWinModal={this.openYouWinModal}
         />
-        {SHOW_BOOK_PICKER &&
-          this.state.showYouWinModal &&
-          this.renderBookPicker()}
-        {!SHOW_BOOK_PICKER &&
-          this.state.showYouWinModal &&
-          this.renderWorldPicker()}
+        {showBookPicker && this.renderBookPicker()}
+        {this.state.showYouWinModal && this.renderWorldPicker()}
       </div>
     )
   }
