@@ -27,7 +27,7 @@ import story310 from "../../Scripts/310-MerlindaTheFairyPrincessPart2"
 import story330 from "../../Scripts/330-MerlindaTheFairyPrincessPart3"
 import story006 from "../../Scripts/006-KatHasFeelings"
 import story007 from "../../Scripts/007-KatsFirstQuest"
-import story1000 from "../../Scripts/1000-ANewSoundInTheWoods"
+import story9000 from "../../Scripts/9000-ANewSoundInTheWoods"
 
 class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story002) }
@@ -49,7 +49,7 @@ class FrameSetUploader extends Component {
   // state = { text: JSON.stringify(story300) }
   // state = { text: JSON.stringify(story310) }
   // state = { text: JSON.stringify(story330) }
-  state = { text: JSON.stringify(story1000) }
+  state = { text: JSON.stringify(story9000) }
 
   onChangeDialog = ({ event, lineIndex }) => {
     const text = event.target.value

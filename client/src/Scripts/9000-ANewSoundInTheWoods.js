@@ -1,5 +1,5 @@
 const story1000 = {
-  title: "1000 - A Troll Eats Gerald",
+  title: "9000 - A Troll Eats Gerald",
   scenes: [
     {
       title: "pin",
