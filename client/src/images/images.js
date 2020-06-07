@@ -43,7 +43,6 @@ import rag from "./locations/rag.png"
 import tag from "./locations/tag.png"
 import top from "./locations/top.png"
 import tug from "./locations/tug.png"
-import twig from "./locations/twig.png"
 import van from "./locations/van.png"
 import barkPhone01 from "./creatures/barkPhone01.png"
 import bookCoil01 from "./backgrounds/bookCoil01.png"
@@ -540,7 +539,6 @@ const items = {
   rag,
   tag,
   top,
-  twig,
 }
 
 const vehicles = {
@@ -606,8 +604,8 @@ export default {
   doors,
   backgrounds,
   posableGirls: [posableLiz, posableKat, posableChad],
-  sceneView: {
-    book: sceneViewBook,
-    notebook: sceneViewNotebook,
-  },
+  // sceneView: {
+  //   book: sceneViewBook,
+  //   notebook: sceneViewNotebook,
+  // },
 }

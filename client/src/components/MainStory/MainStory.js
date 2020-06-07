@@ -215,6 +215,7 @@ class MainStory extends React.Component {
         hideMissionConsole: true,
       })
     }
+    localStateStore.setShowBookPicker(false)
 
     this.setState({ showYouWinModal: false })
     this.initWorld()
@@ -240,6 +241,10 @@ class MainStory extends React.Component {
     console.log("test2", toJS(test2)) // zzz
   }
 
+  closeBookPicker = () => {
+    localStateStore.setShowBookPicker(false)
+  }
+
   closeYouWinModal = () => {
     this.setState({ showYouWinModal: false })
   }
@@ -262,13 +267,11 @@ class MainStory extends React.Component {
   }
 
   renderBookPicker = () => {
-    const { showProd, showYouWinModal } = this.state
+    // const { showProd, showYouWinModal } = this.state
 
     return (
       <BookPicker
-        showProd={showProd}
-        closeYouWinModal={this.closeYouWinModal}
-        showYouWinModal={showYouWinModal}
+        closeYouWinModal={this.closeBookPicker}
         onChangeWorld={this.onChangeWorld}
       />
     )
@@ -316,7 +319,7 @@ class MainStory extends React.Component {
       return null
     }
 
-    const showBookPicker = !localStateStore.getShowBookPicker()
+    const showBookPicker = localStateStore.getShowBookPicker()
 
     return (
       <div className={`${css.main} ${className}`}>

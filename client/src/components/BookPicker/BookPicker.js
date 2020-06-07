@@ -50,7 +50,7 @@ class BookPicker extends React.Component {
   renderChapterView = () => {
     const { selectedBook } = this.state
 
-    const bookImage = Images.backgrounds[selectedBook.imageName]
+    const bookImage = Images.backgrounds[selectedBook && selectedBook.imageName]
     const bookTableOfContents01 = Images.backgrounds["bookTableOfContents01"]
 
     return (
@@ -103,7 +103,6 @@ class BookPicker extends React.Component {
     const backgroundImage = Images.backgrounds["meadow"]
 
     const showProdButtonLabel = "Back To Book LIst"
-    console.log("showChapterView", showChapterView) // zzz
 
     return (
       <Dialog isOpen={true} isCloseButtonShown={true} className={css.main}>
@@ -141,6 +140,10 @@ class BookPicker extends React.Component {
             </div>
             {this.renderChapterView()}
           </div>
+
+          {/* <Button className={css.playButton} onClick={closeYouWinModal}>
+            PLAY
+          </Button> */}
         </div>
       </Dialog>
     )

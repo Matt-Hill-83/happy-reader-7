@@ -317,7 +317,8 @@ class WorldBuilder extends Component {
 
     const characterImageSets = [images.creatures]
     const doorImageSets = [images.doors]
-    const locationImageSets = [images.locations, images.vehicles, images.items]
+    // const locationImageSets = [images.locations, images.vehicles, images.items]
+    const locationImageSets = [images.all]
 
     const locationNames = Object.keys(images.locations)
 
