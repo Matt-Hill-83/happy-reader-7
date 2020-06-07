@@ -141,11 +141,11 @@ class MainStory extends React.Component {
     const activeScene = localStateStore.getActiveScene()
     console.log("activeScene", toJS(activeScene)) // zzz
 
-    const { items = [], characters = [] } = activeScene
+    const { items = [], characters = [], location } = activeScene
 
     const { foundItem, completedMission } = localStateStore.updateQuestState({
       itemsInScene: items,
-      charactersInScene: [...characters, ...items],
+      charactersInScene: [...characters, ...items, location],
     })
 
     if (foundItem) {

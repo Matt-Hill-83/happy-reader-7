@@ -76,7 +76,7 @@ class MissionConsole extends Component {
       "Gold",
       "Complete",
     ]
-    const tableProps = { columnWidths: [175, 80, 80, null, null] }
+    const tableProps = { columnWidths: [255, 80, 80, null, null] }
     if (!missions || missions.length === 0) {
       return null
     }

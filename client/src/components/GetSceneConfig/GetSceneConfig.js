@@ -31,6 +31,7 @@ class GetSceneConfig extends Component {
     const scenesGrid = world.newGrid5
     const { questConfig } = world
     console.log("world", toJS(world)) // zzz
+    console.log("questConfig", toJS(questConfig)) // zzz
 
     const test1 = toJS(scenesGrid)
     console.log({ test1 })
@@ -81,7 +82,8 @@ class GetSceneConfig extends Component {
     })
 
     const output = {
-      title: "story output",
+      title: world.title,
+      // title: "story output",
       scenes: newScenesList,
       questConfig,
     }

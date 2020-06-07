@@ -14,23 +14,18 @@ import BookTableOfContents from "../BookTableOfContents/BookTableOfContents.js"
 
 const bookList = [
   {
-    name: "Liz Sees a Bird",
-    imageName: "bookCover01BatOfDoom",
-    chapters: ["yFhG3pGNtOVZKoQ7K5fG"],
-  },
-  {
-    name: "The Scary Bat!!!",
-    imageName: "bookCover01BatOfDoom",
-    chapters: ["yFhG3pGNtOVZKoQ7K5fG", "Kx78cfHCkhpm2NQnmCp8"],
-  },
-  {
     name: "Run for the Hills!!!",
     imageName: "bookCover01BatOfDoom",
     chapters: [
       "yFhG3pGNtOVZKoQ7K5fG",
-      "Kx78cfHCkhpm2NQnmCp8",
-      "ZR0GOSFFqFPoWjSgvgOQ",
+      "8hmBGXtP870qDA8xlXbw",
+      "UA2QDGO1knDcq6Y9sD4y",
     ],
+  },
+  {
+    name: "The Scary Bat!!!",
+    imageName: "bookCover01BatOfDoom",
+    chapters: ["Kx78cfHCkhpm2NQnmCp8", "8hmBGXtP870qDA8xlXbw"],
   },
 ]
 
@@ -69,16 +64,16 @@ class BookPicker extends React.Component {
           selectedBook={selectedBook}
           onChangeWorld={this.props.onChangeWorld}
         />
-        <Button className={css.playButton} onClick={this.toggleChapterView}>
+        {/* <Button className={css.playButton} onClick={this.toggleChapterView}>
           Back
-        </Button>
+        </Button> */}
       </div>
     )
   }
 
   render = () => {
     const {} = this.props
-    const { showChapterView, showToggle } = this.state
+    const { showToggle } = this.state
 
     const renderedBookList = bookList.map((book, index) => {
       const title = book.name

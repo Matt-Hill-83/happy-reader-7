@@ -43,11 +43,12 @@ class BookTableOfContents extends React.Component {
       )
     })
 
-    const sortedMaps = Utils.sortDataByNestedKey({
-      data: filteredMaps,
-      keys: ["data", "title"],
-      order: "ASC",
-    })
+    const sortedMaps = filteredMaps
+    // const sortedMaps = Utils.sortDataByNestedKey({
+    //   data: filteredMaps,
+    //   keys: ["data", "title"],
+    //   order: "ASC",
+    // })
 
     const mapList = sortedMaps.map((map, index) => {
       const { title } = map.data

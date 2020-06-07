@@ -85,6 +85,7 @@ import hog from "./creatures/hog.png"
 import mermaid from "./creatures/mermaid.png"
 import monster from "./creatures/monster.png"
 import pig from "./creatures/pig.png"
+import pup01 from "./creatures/pup01.png"
 import cat01 from "./creatures/cat01.png"
 import troll from "./creatures/troll-01.png"
 import troll01 from "./creatures/troll-01.png"
@@ -484,6 +485,7 @@ const creatures = {
   monster,
   cat01,
   pig,
+  pup01,
   poppy01,
   princess_alibera,
   gerald01,
