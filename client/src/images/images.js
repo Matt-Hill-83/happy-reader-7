@@ -263,6 +263,10 @@ import hat from "./items/hat.png"
 import key from "./items/key.png"
 import gold from "./items/gold.png"
 
+import skull01 from "./items/skull01.png"
+import ringOfZandar01 from "./items/ringOfZandar01.png"
+// import glenda01NoFace from "./items/glenda01NoFace.png"
+
 // scene view
 import sceneViewBook from "./scene-view/book01.png"
 import sceneViewNotebook from "./scene-view/notebook-01.png"
@@ -517,6 +521,11 @@ const items = {
   // roadLeftRight01,
   bag,
   smoke,
+
+  skull01,
+  ringOfZandar01,
+  // glenda01NoFace,
+
   bun,
   cap,
   cup,

@@ -1019,6 +1019,7 @@ const story1000 = {
             '{"kat" : "Do I look like I could fit a dress in my pocket?"}',
             '{"kat" : "Oh wait. I forgot."}',
             '{"kat" : "I put it right here in my pocket right next to my pet hippopotamus."}',
+
             '{"kat" : "Um hello? Did you tie your bun too tight this morning..."}',
           ],
         },
@@ -1045,6 +1046,24 @@ const story1000 = {
             creatures: ["kat", "liz2"],
           },
           dialogs: [
+            '{"Vanelope" : "Did you see a big pink bubble above you that said:"}',
+            '{"kat" : "You put the dress in your pocket."}',
+            '{"liz2" : "...bubble...?"}',
+            '{"kat" : "What?"}',
+          ],
+        },
+        {
+          frameConfig: {
+            items: [],
+            faces: [
+              { character: "liz2", face: "happy", characterIndex: 1 },
+              { face: "happy", characterIndex: 0, character: "kat" },
+            ],
+            creatures: ["kat", "liz2"],
+          },
+          dialogs: [
+            '{"Vanelope" : "Never mind. We need to get you to skunk hollow, and fast!"}',
+            '{"liz2" : "Do we need to go slow to go fast...?"}',
             '{"vanelope" : "Never mind. We need to get to skunk hollow, and fast!"}',
             '{"liz2" : "Do we still need to go slow to go fast...?"}',
           ],
