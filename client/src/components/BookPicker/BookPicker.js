@@ -27,12 +27,41 @@ const bookList = [
     imageName: "bookCover01BatOfDoom",
     chapters: ["Kx78cfHCkhpm2NQnmCp8", "8hmBGXtP870qDA8xlXbw"],
   },
+  {
+    name: "Fun Dialog",
+    imageName: "bookCover01BatOfDoom",
+    chapters: ["Kx78cfHCkhpm2NQnmCp8", "8hmBGXtP870qDA8xlXbw"],
+  },
+  {
+    name: "Old Stuff",
+    imageName: "bookCover01BatOfDoom",
+    chapters: ["Kx78cfHCkhpm2NQnmCp8", "8hmBGXtP870qDA8xlXbw"],
+  },
+  {
+    name: "Charlie Stuff",
+    imageName: "bookCover01BatOfDoom",
+    chapters: [
+      "K2MNaqNyN5doDvq5DeSsU",
+      "KsdQq5puwQMFlMIfOENJV",
+      "KryOfvqHlBCWpPKWjp8vJ",
+      "KSHNmmMhxxShqpWhOpFjU",
+      "Ki2FknxtJIPxjyApAIrQ5",
+      "KJkrRsMGKkoatdAG6XCn3",
+      "KPT0kV1znaii2wzDm5hwJ",
+    ],
+  },
+  {
+    name: "Scraps",
+    imageName: "bookCover01BatOfDoom",
+
+    chapters: [],
+  },
 ]
 
 class BookPicker extends React.Component {
   state = { showChapterView: false, selectedBook: bookList[0] }
 
-  toggleChapterView = ({ index }) => {
+  changeSelectedBook = ({ index }) => {
     const selectedBook = bookList[index]
     console.log("selectedBook", toJS(selectedBook)) // zzz
 
@@ -45,7 +74,7 @@ class BookPicker extends React.Component {
   renderChapterView = () => {
     const { selectedBook } = this.state
 
-    const bookImage = Images.backgrounds[selectedBook && selectedBook.imageName]
+    // const bookImage = Images.backgrounds[selectedBook && selectedBook.imageName]
     const bookTableOfContents01 = Images.backgrounds["bookTableOfContents01"]
 
     return (
@@ -55,16 +84,12 @@ class BookPicker extends React.Component {
           src={bookTableOfContents01}
           alt={"imagex"}
         />
-        {/* <img
-          className={cx(css.bookImage, css.bookImageChapterView)}
-          src={bookImage}
-          alt={"imagex"}
-        /> */}
+
         <BookTableOfContents
           selectedBook={selectedBook}
           onChangeWorld={this.props.onChangeWorld}
         />
-        {/* <Button className={css.playButton} onClick={this.toggleChapterView}>
+        {/* <Button className={css.playButton} onClick={this.changeSelectedBook}>
           Back
         </Button> */}
       </div>
@@ -83,7 +108,7 @@ class BookPicker extends React.Component {
 
       const text = (
         <div
-          onClick={() => this.toggleChapterView({ index, mapId })}
+          onClick={() => this.changeSelectedBook({ index, mapId })}
           className={css.questRow}
         >
           <div className={cx(css.tableCell)}>
@@ -96,14 +121,13 @@ class BookPicker extends React.Component {
     })
 
     const backgroundImage = Images.backgrounds["meadow"]
-
-    const showProdButtonLabel = "Back To Book LIst"
+    const backButtonLabel = "Back To Book LIst"
 
     return (
       <Dialog isOpen={true} isCloseButtonShown={true} className={css.main}>
         {showToggle && (
           <ButtonGroup className={css.buttonGroup} color="primary">
-            <Button onClick={this.toggleShowProd}>{showProdButtonLabel}</Button>
+            <Button onClick={this.toggleShowProd}>{backButtonLabel}</Button>
           </ButtonGroup>
         )}
         <img

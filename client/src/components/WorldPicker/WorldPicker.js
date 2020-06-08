@@ -101,6 +101,9 @@ class WorldPicker extends Component {
           </div>
         </span>
       )
+
+      console.log("id", id) // zzz
+
       return (
         <MenuItem
           onClick={() => this.changeMap({ index, mapId: id })}
