@@ -154,7 +154,7 @@ class MainStory extends React.Component {
         <div>
           <span>{`You find a ${foundItem.name}.`}</span>
           <br />
-          <span>{`You put the ${foundItem.name} your pocket.`}</span>
+          <span>{`You put the ${foundItem.name} in your pocket.`}</span>
         </div>
       )
       toaster.show({ message, className: css.toaster, timeout: 30000 })

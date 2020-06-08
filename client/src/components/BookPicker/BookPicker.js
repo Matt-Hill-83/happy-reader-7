@@ -55,11 +55,11 @@ class BookPicker extends React.Component {
           src={bookTableOfContents01}
           alt={"imagex"}
         />
-        <img
+        {/* <img
           className={cx(css.bookImage, css.bookImageChapterView)}
           src={bookImage}
           alt={"imagex"}
-        />
+        /> */}
         <BookTableOfContents
           selectedBook={selectedBook}
           onChangeWorld={this.props.onChangeWorld}

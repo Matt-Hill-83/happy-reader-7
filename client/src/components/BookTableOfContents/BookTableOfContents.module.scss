@@ -1,24 +1,24 @@
 @import "../../Styles/mixins.modules.scss";
 
 .main {
-  --pink-background: rgba(230, 230, 250, 0.34);
+  /* border: 5px solid red !important; */
   display: flex;
+  /* width: 50%; */
+  height: 100%;
   position: absolute;
-  background: var(--light-pink);
-  color: var(--set1-purple-brdr);
-  height: 90%;
-  width: 44%;
-  overflow: hidden;
-  margin: 3vh;
-  border: 2px solid #000 !important;
-  right: 0px;
-  flex-direction: column;
+  /* left: 49vw; */
+  /* right: -61vw; */
+  width: 42vw;
+  padding: 1vh;
 
   .dummyQuest01 {
-    border: 1px solid red !important;
     display: flex;
-    width: auto;
-    height: 50%;
+    height: auto;
+    position: absolute;
+    left: 51vw;
+    width: 43vw;
+    top: 5vh;
+    height: 87%;
   }
 
   .buttonGroup {
@@ -125,13 +125,18 @@
 
   .questTable {
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     flex: 1 1;
-
     flex-direction: column;
     font-size: 24px;
     color: black;
-    padding: 2.5vh;
+    position: absolute;
+    padding: 2vh;
+    /* border: 1px solid red !important; */
+    right: 51vw;
+    left: 1vw;
+    /* width: 44vw; */
+    width: inherit;
   }
 
   .scrollArea {

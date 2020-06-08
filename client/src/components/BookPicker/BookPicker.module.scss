@@ -9,8 +9,8 @@
   background: var(--light-pink);
   color: var(--set1-purple-brdr);
   padding: 1vh;
-  height: 80vh;
-  width: 70vw;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
   margin: unset;
   border: 2px solid #000 !important;
@@ -29,6 +29,8 @@
     justify-self: flex-end;
     margin-top: 1vh;
     position: relative;
+    height: 68vh;
+    width: 97vw;
   }
 
   .bookImageChapterView {
@@ -167,14 +169,9 @@
 
   .questRow {
     display: flex;
-    /* border: 1px solid #cecece !important; */
-    /* border-bottom: none; */
-    /* width: 100%; */
-    flex: 1 1;
-    /* background: #e9f0ff; */
-    /* margin-bottom: 1vh; */
+
     border-radius: 0.6vh;
-    /* border: 1px solid blue !important; */
+    border: 1px solid blue !important;
     justify-content: center;
     margin-right: 2vh;
 
