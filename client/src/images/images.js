@@ -492,7 +492,7 @@ const creatures = {
   pug,
   queen_hashami,
   smoke,
-  rapunzel01,
+  // rapunzel01,
   rat,
   rori_nice,
   rori,
